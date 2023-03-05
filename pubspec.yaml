@@ -4,7 +4,7 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: '>=2.19.2 <3.0.0'
 
 dependencies:
   flutter:
@@ -18,6 +18,7 @@ dependencies:
   
   flutter_svg: ^2.0.2
   easy_splash_screen: ^1.0.4
+  flutter_riverpod: ^2.3.0
 
   chopper: ^6.1.1
   json_annotation: ^4.8.0
