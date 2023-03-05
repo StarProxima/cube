@@ -29,6 +29,7 @@ class _TimetablePage extends ConsumerStatefulWidget {
 class _TimetablePageState extends ConsumerState<_TimetablePage> {
   @override
   Widget build(BuildContext context) {
+    lessonNumber = 3;
     return Scaffold(
       appBar: const TimetablePageAppBar(),
       body: Column(
