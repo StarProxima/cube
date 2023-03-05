@@ -4,7 +4,7 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: '>=3.0.0-233.0.dev <4.0.0'
+  sdk: '>=2.18.0 <3.0.0'
 
 dependencies:
   flutter:
@@ -34,9 +34,8 @@ dev_dependencies:
   json_serializable: ^6.6.1
   theme_tailor: ^1.0.8
 
-  build_runner: ^2.4.0
+  build_runner: ^2.3.3
   flutter_gen_runner: ^5.2.0
-
   swagger_dart_code_generator: ^2.10.2
 
 
