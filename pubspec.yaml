@@ -4,7 +4,7 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: '>=3.0.0-233.0.dev <4.0.0'
+  sdk: '>=2.18.0 <3.0.0'
 
 dependencies:
   flutter:
@@ -19,6 +19,9 @@ dependencies:
   flutter_svg: ^2.0.2
   easy_splash_screen: ^1.0.4
 
+  chopper: ^6.1.1
+  json_annotation: ^4.8.0
+
 
 dev_dependencies:
   flutter_test:
@@ -31,13 +34,15 @@ dev_dependencies:
   json_serializable: ^6.6.1
   theme_tailor: ^1.0.8
 
-  build_runner: ^2.4.0
-  flutter_gen_runner: ^5.2.0
+  build_runner: ^2.3.3
+  # flutter_gen_runner: ^5.2.0
+  swagger_dart_code_generator: ^2.10.2
+  chopper_generator: ^6.0.0
 
 
-flutter_gen:
-  integrations:
-    flutter_svg: true
+# flutter_gen:
+#   integrations:
+#     flutter_svg: true
 
 
 flutter:
