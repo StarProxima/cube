@@ -329,8 +329,8 @@ class _$CubeApi extends CubeApi {
   Future<Response<PageUserFullInDb>> _apiUsersGet({
     String? search,
     List<int>? roleIds,
-    Object? sortBy,
-    Object? sortOrder,
+    dynamic sortBy,
+    dynamic sortOrder,
     int? page,
     int? size,
     String? clientName,
@@ -1930,8 +1930,8 @@ class _$CubeApi extends CubeApi {
     List<int>? groups,
     bool? isMain,
     bool? isDeputyMain,
-    Object? sortBy,
-    Object? sortOrder,
+    dynamic sortBy,
+    dynamic sortOrder,
     int? page,
     int? size,
     String? clientName,
@@ -2323,15 +2323,17 @@ class _$CubeApi extends CubeApi {
 
   @override
   Future<Response<LessonAutocomplete>> _apiLessonsAutocompleteGet(
-      {required String? q}) {
+      {required String? q}) async {
     final Uri $url = Uri.parse('/api/lessons/autocomplete');
     final Map<String, dynamic> $params = <String, dynamic>{'q': q};
+
     final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
       parameters: $params,
     );
+
     return client.send<LessonAutocomplete, LessonAutocomplete>($request);
   }
 
@@ -2461,8 +2463,8 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<dynamic>> _apiLessonsGet({
-    Object? header,
+  Future<Response<List<LessonFullNamesInDb>>> _apiLessonsGet({
+    dynamic header,
     bool? fullData,
     String? search,
     required String? startDate,
@@ -2480,9 +2482,9 @@ class _$CubeApi extends CubeApi {
     List<int>? places,
     List<int>? types,
     bool? themeIsNull,
-    Object? status,
-    Object? sortBy,
-    Object? sortOrder,
+    String? status,
+    dynamic sortBy,
+    dynamic sortOrder,
     String? clientName,
   }) {
     final Uri $url = Uri.parse('/api/lessons');
@@ -2519,7 +2521,8 @@ class _$CubeApi extends CubeApi {
       parameters: $params,
       headers: $headers,
     );
-    return client.send<dynamic, dynamic>($request);
+    return client
+        .send<List<LessonFullNamesInDb>, LessonFullNamesInDb>($request);
   }
 
   @override
@@ -2721,7 +2724,7 @@ class _$CubeApi extends CubeApi {
 
   @override
   Future<Response<MainLessonResults>> _apiMainLessonsGet({
-    Object? header,
+    dynamic header,
     String? search,
     int? facultyId,
     int? semesterId,

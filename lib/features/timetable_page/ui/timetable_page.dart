@@ -1,3 +1,4 @@
+import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/lesson_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -30,6 +31,9 @@ class _TimetablePage extends ConsumerStatefulWidget {
 class _TimetablePageState extends ConsumerState<_TimetablePage> {
   @override
   Widget build(BuildContext context) {
+    final manager = ref.read(timetablePageManager);
+    manager.getCurrentTimetable();
+
     return Scaffold(
       appBar: const TimetablePageAppBar(),
       body: Column(

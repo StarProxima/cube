@@ -11,7 +11,6 @@ import 'dart:async';
 import 'package:chopper/chopper.dart' as chopper;
 import 'cube_api.enums.swagger.dart' as enums;
 import 'cube_api.enums.swagger.dart';
-
 export 'cube_api.enums.swagger.dart';
 
 part 'cube_api.swagger.chopper.dart';
@@ -392,8 +391,8 @@ abstract class CubeApi extends ChopperService {
   Future<chopper.Response<PageUserFullInDb>> apiUsersGet({
     String? search,
     List<int>? roleIds,
-    Object? sortBy,
-    Object? sortOrder,
+    UserSortBy? sortBy,
+    SortOrder? sortOrder,
     int? page,
     int? size,
     String? clientName,
@@ -423,8 +422,8 @@ abstract class CubeApi extends ChopperService {
   Future<chopper.Response<PageUserFullInDb>> _apiUsersGet({
     @Query('search') String? search,
     @Query('role_ids') List<int>? roleIds,
-    @Query('sort_by') Object? sortBy,
-    @Query('sort_order') Object? sortOrder,
+    @Query('sort_by') UserSortBy? sortBy,
+    @Query('sort_order') SortOrder? sortOrder,
     @Query('page') int? page,
     @Query('size') int? size,
     @Header('Client_name') String? clientName,
@@ -2296,8 +2295,8 @@ abstract class CubeApi extends ChopperService {
     List<int>? groups,
     bool? isMain,
     bool? isDeputyMain,
-    Object? sortBy,
-    Object? sortOrder,
+    StudentSortBy? sortBy,
+    SortOrder? sortOrder,
     int? page,
     int? size,
     String? clientName,
@@ -2333,8 +2332,8 @@ abstract class CubeApi extends ChopperService {
     @Query('groups') List<int>? groups,
     @Query('is_main') bool? isMain,
     @Query('is_deputy_main') bool? isDeputyMain,
-    @Query('sort_by') Object? sortBy,
-    @Query('sort_order') Object? sortOrder,
+    @Query('sort_by') StudentSortBy? sortBy,
+    @Query('sort_order') SortOrder? sortOrder,
     @Query('page') int? page,
     @Query('size') int? size,
     @Header('Client_name') String? clientName,
@@ -2953,8 +2952,8 @@ abstract class CubeApi extends ChopperService {
   ///@param sort_by Сортируемый столбец
   ///@param sort_order Параметр сортировки
   ///@param Client_name
-  Future<chopper.Response> apiLessonsGet({
-    Object? header,
+  Future<chopper.Response<List<LessonFullNamesInDb>>> apiLessonsGet({
+    GetLessonHeader? header,
     bool? fullData,
     String? search,
     required String? startDate,
@@ -2972,11 +2971,14 @@ abstract class CubeApi extends ChopperService {
     List<int>? places,
     List<int>? types,
     bool? themeIsNull,
-    Object? status,
-    Object? sortBy,
-    Object? sortOrder,
+    enums.LessonStatus? status,
+    LessonSortBy? sortBy,
+    SortOrder? sortOrder,
     String? clientName,
   }) {
+    generatedMapping.putIfAbsent(
+        LessonFullNamesInDb, () => LessonFullNamesInDb.fromJsonFactory);
+
     return _apiLessonsGet(
         header: header,
         fullData: fullData,
@@ -2996,7 +2998,7 @@ abstract class CubeApi extends ChopperService {
         places: places,
         types: types,
         themeIsNull: themeIsNull,
-        status: status,
+        status: status?.value?.toString(),
         sortBy: sortBy,
         sortOrder: sortOrder,
         clientName: clientName);
@@ -3026,8 +3028,8 @@ abstract class CubeApi extends ChopperService {
   ///@param sort_order Параметр сортировки
   ///@param Client_name
   @Get(path: '/api/lessons')
-  Future<chopper.Response> _apiLessonsGet({
-    @Query('header') Object? header,
+  Future<chopper.Response<List<LessonFullNamesInDb>>> _apiLessonsGet({
+    @Query('header') GetLessonHeader? header,
     @Query('full_data') bool? fullData,
     @Query('search') String? search,
     @Query('start_date') required String? startDate,
@@ -3045,9 +3047,9 @@ abstract class CubeApi extends ChopperService {
     @Query('places') List<int>? places,
     @Query('types') List<int>? types,
     @Query('theme_is_null') bool? themeIsNull,
-    @Query('status') Object? status,
-    @Query('sort_by') Object? sortBy,
-    @Query('sort_order') Object? sortOrder,
+    @Query('status') String? status,
+    @Query('sort_by') LessonSortBy? sortBy,
+    @Query('sort_order') SortOrder? sortOrder,
     @Header('Client_name') String? clientName,
   });
 
@@ -3329,7 +3331,7 @@ abstract class CubeApi extends ChopperService {
   ///@param types Список идентификаторов типов занятий
   ///@param Client_name
   Future<chopper.Response<MainLessonResults>> apiMainLessonsGet({
-    Object? header,
+    GetLessonHeader? header,
     String? search,
     int? facultyId,
     int? semesterId,
@@ -3384,7 +3386,7 @@ abstract class CubeApi extends ChopperService {
   ///@param Client_name
   @Get(path: '/api/main_lessons')
   Future<chopper.Response<MainLessonResults>> _apiMainLessonsGet({
-    @Query('header') Object? header,
+    @Query('header') GetLessonHeader? header,
     @Query('search') String? search,
     @Query('faculty_id') int? facultyId,
     @Query('semester_id') int? semesterId,
