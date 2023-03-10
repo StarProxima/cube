@@ -10,6 +10,8 @@ import 'client_mapping.dart';
 import 'dart:async';
 import 'package:chopper/chopper.dart' as chopper;
 import 'cube_api.enums.swagger.dart' as enums;
+import 'cube_api.enums.swagger.dart';
+
 export 'cube_api.enums.swagger.dart';
 
 part 'cube_api.swagger.chopper.dart';

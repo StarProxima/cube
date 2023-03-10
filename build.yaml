@@ -7,5 +7,5 @@ targets:
     builders:
       swagger_dart_code_generator:
         options:
-          output_folder: 'lib/generated/api'
+          output_folder: 'lib/gen/api'
           input_folder: 'api_spec/'
