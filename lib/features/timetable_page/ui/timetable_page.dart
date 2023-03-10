@@ -1,4 +1,4 @@
-import 'package:cube_system/features/timetable_page/ui/widgets/timetable_lesson_card.dart';
+import 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/lesson_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -49,7 +49,7 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
                 parent: AlwaysScrollableScrollPhysics(),
               ),
               itemCount: 3,
-              itemBuilder: (context, index) => const TimetableLessonCard(),
+              itemBuilder: (context, index) => const LessonCard(),
               separatorBuilder: (context, index) => const SizedBox(height: 16),
             ),
           ),
