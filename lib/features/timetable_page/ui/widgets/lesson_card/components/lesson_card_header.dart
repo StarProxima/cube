@@ -1,14 +1,16 @@
-
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../lesson_card.dart';
+part of 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/lesson_card.dart';
 
 class LessonCardHeader extends ConsumerWidget {
   const LessonCardHeader({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final number = ref
+        .watch(_lessonInLessonCard.select((value) => value.number))
+        .toString();
+
+    // final time = ref.watch(_lessonInLessonCard.select((value) => value.date));
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -23,7 +25,7 @@ class LessonCardHeader extends ConsumerWidget {
               ),
               child: Center(
                 child: Text(
-                  "${lessonNumber++}",
+                  number,
                   style: const TextStyle(
                     fontSize: 14,
                     color: Colors.black,
@@ -33,13 +35,13 @@ class LessonCardHeader extends ConsumerWidget {
             ),
             const SizedBox(width: 8),
             const Text(
-              '15:40 - 17:00',
+              '',
               style: TextStyle(fontSize: 12),
             ),
           ],
         ),
         const Text(
-          'До конца 1ч 56м',
+          '',
           style: TextStyle(fontSize: 10),
         ),
       ],

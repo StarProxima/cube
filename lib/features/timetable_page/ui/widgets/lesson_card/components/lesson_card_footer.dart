@@ -1,11 +1,22 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+part of 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/lesson_card.dart';
 
 class LessonCardFooter extends ConsumerWidget {
   const LessonCardFooter({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final teachers = ref
+            .watch(_lessonInLessonCard.select((value) => value.teacherNames))
+            ?.join(",") ??
+        "null";
+
+    final type =
+        ref.watch(_lessonInLessonCard.select((value) => value.type.shortName));
+
+    final place =
+        ref.watch(_lessonInLessonCard.select((value) => value.place?.name)) ??
+            'null';
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -15,10 +26,10 @@ class LessonCardFooter extends ConsumerWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              const Flexible(
+              Flexible(
                 child: Text(
-                  'Вишняков Ю. М.',
-                  style: TextStyle(fontSize: 12),
+                  teachers,
+                  style: const TextStyle(fontSize: 12),
                 ),
               ),
               const SizedBox(width: 8),
@@ -28,18 +39,18 @@ class LessonCardFooter extends ConsumerWidget {
                   borderRadius: BorderRadius.circular(2),
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                child: const Text(
-                  'ЛР',
-                  style: TextStyle(fontSize: 12, color: Colors.white),
+                child: Text(
+                  type,
+                  style: const TextStyle(fontSize: 12, color: Colors.white),
                 ),
               ),
             ],
           ),
         ),
-        const Flexible(
+        Flexible(
           child: Text(
-            '107/5',
-            style: TextStyle(fontSize: 12),
+            place,
+            style: const TextStyle(fontSize: 12),
           ),
         ),
       ],

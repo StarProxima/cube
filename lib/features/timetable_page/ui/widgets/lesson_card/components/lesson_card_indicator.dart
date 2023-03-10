@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+part of 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/lesson_card.dart';
 
 class LessonCardIndicator extends ConsumerWidget {
   const LessonCardIndicator({super.key});

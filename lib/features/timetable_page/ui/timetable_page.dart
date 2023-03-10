@@ -1,4 +1,5 @@
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
+import 'package:cube_system/features/timetable_page/state_holders/timetable_page_lessons.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/lesson_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -34,6 +35,8 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
     final manager = ref.read(timetablePageManager);
     manager.getCurrentTimetable();
 
+    final lessons = ref.watch(timetablePageLessons);
+
     return Scaffold(
       appBar: const TimetablePageAppBar(),
       body: Column(
@@ -49,8 +52,8 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
               physics: const BouncingScrollPhysics(
                 parent: AlwaysScrollableScrollPhysics(),
               ),
-              itemCount: 3,
-              itemBuilder: (context, index) => const LessonCard(),
+              itemCount: lessons.length,
+              itemBuilder: (context, index) => LessonCard(lessons[index]),
               separatorBuilder: (context, index) => const SizedBox(height: 16),
             ),
           ),

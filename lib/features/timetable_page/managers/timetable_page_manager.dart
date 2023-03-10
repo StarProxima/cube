@@ -1,17 +1,24 @@
 import 'package:cube_system/api/cube_api.dart';
-import 'package:cube_system/gen/api/client_index.dart';
+import 'package:cube_system/gen/api/cube_api.swagger.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../state_holders/timetable_page_lessons.dart';
 
 final timetablePageManager = Provider<TimetablePageManager>((ref) {
   return TimetablePageManager(
     api: ref.watch(cubeApi),
+    timetablePageLessons: ref.watch(timetablePageLessons.notifier),
   );
 });
 
 class TimetablePageManager {
   final CubeApi api;
+  final StateController<List<LessonFullNamesInDb>> timetablePageLessons;
 
-  TimetablePageManager({required this.api});
+  TimetablePageManager({
+    required this.api,
+    required this.timetablePageLessons,
+  });
 
   Future<void> getCurrentTimetable() async {
     final request = await api.apiLessonsAutocompleteGet(q: "36/2");
@@ -26,6 +33,6 @@ class TimetablePageManager {
 
     final res2 = t2.body!;
 
-    return;
+    timetablePageLessons.state = res2;
   }
 }
