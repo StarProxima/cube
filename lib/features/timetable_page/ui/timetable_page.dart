@@ -50,7 +50,7 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
               ),
               itemCount: 3,
               itemBuilder: (context, index) => const TimetableLessonCard(),
-              separatorBuilder: (context, index) => const SizedBox(height: 8),
+              separatorBuilder: (context, index) => const SizedBox(height: 16),
             ),
           ),
         ],
