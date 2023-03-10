@@ -2,7 +2,8 @@ import 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/lesso
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'widgets/timetable_page_app_bar.dart';
+import 'components/timetable_page_app_bar.dart';
+import 'components/timetable_page_header.dart';
 
 // final _load = FutureProvider<void>((ref) async {
 //   await Future(() {});
@@ -29,7 +30,6 @@ class _TimetablePage extends ConsumerStatefulWidget {
 class _TimetablePageState extends ConsumerState<_TimetablePage> {
   @override
   Widget build(BuildContext context) {
-    lessonNumber = 3;
     return Scaffold(
       appBar: const TimetablePageAppBar(),
       body: Column(
@@ -37,10 +37,7 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
         children: [
           const Padding(
             padding: EdgeInsets.all(12),
-            child: Text(
-              "Timetable Name",
-              style: TextStyle(fontSize: 30),
-            ),
+            child: TimetablePageHeader(),
           ),
           Expanded(
             child: ListView.separated(

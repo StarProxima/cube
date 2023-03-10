@@ -1,10 +1,10 @@
-import 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/widgets/lesson_card_body.dart';
-import 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/widgets/lesson_card_footer.dart';
-import 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/widgets/lesson_card_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'widgets/lesson_card_header.dart';
+import 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/components/lesson_card_body.dart';
+import 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/components/lesson_card_footer.dart';
+import 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/components/lesson_card_header.dart';
+import 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/components/lesson_card_indicator.dart';
 
 int lessonNumber = 3;
 
