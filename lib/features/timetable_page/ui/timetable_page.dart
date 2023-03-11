@@ -2,6 +2,7 @@ import 'package:cube_system/features/timetable_page/managers/timetable_page_mana
 import 'package:cube_system/features/timetable_page/state_holders/current_date.dart';
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_lessons.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/lesson_card.dart';
+import 'package:cube_system/features/timetable_page/ui/widgets/week_timeline/week_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -49,6 +50,7 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
             padding: EdgeInsets.all(12),
             child: TimetablePageHeader(),
           ),
+          const WeekTimeline(),
           Expanded(
             child: ListView.separated(
               padding: const EdgeInsets.all(16),

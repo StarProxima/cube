@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'features/timetable_page/ui/timetable_page.dart';
@@ -14,6 +15,15 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const ProviderScope(
       child: MaterialApp(
+        localizationsDelegates: [
+          GlobalCupertinoLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+        ],
+        supportedLocales: [
+          Locale('ru'),
+          Locale('en'),
+        ],
+        title: 'StudRasp',
         home: TimetablePage(),
       ),
     );
