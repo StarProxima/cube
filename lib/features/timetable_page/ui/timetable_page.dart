@@ -1,8 +1,8 @@
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
-import 'package:cube_system/features/timetable_page/state_holders/current_date.dart';
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_lessons.dart';
+import 'package:cube_system/features/timetable_page/state_holders/timetable_page_selected_date.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/lesson_card.dart';
-import 'package:cube_system/features/timetable_page/ui/widgets/week_timeline/week_timeline.dart';
+import 'package:cube_system/features/timetable_page/ui/widgets/week_timeline/ui/week_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -21,7 +21,7 @@ class TimetablePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final manager = ref.read(timetablePageManager);
-    manager.getCurrentTimetable();
+    manager.updateCurrentTimetable();
     return const _TimetablePage();
   }
 }
@@ -37,7 +37,7 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
   @override
   Widget build(BuildContext context) {
     final manager = ref.read(timetablePageManager);
-    final date = ref.read(currentDate).add(const Duration(days: 0));
+    final date = ref.watch(timetablePageSelectedDate);
 
     final lessons = ref.watch(timetablePageDayLessons(date));
 
