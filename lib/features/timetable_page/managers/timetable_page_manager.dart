@@ -7,17 +7,18 @@ import '../state_holders/timetable_page_lessons.dart';
 final timetablePageManager = Provider<TimetablePageManager>((ref) {
   return TimetablePageManager(
     api: ref.watch(cubeApi),
-    timetablePageLessons: ref.watch(timetablePageLessons.notifier),
+    timetable: ref.watch(timetablePageTimetable.notifier),
   );
 });
 
 class TimetablePageManager {
   final CubeApi api;
-  final StateController<List<LessonFullNamesInDb>> timetablePageLessons;
+
+  final StateController<Map<DateTime, List<LessonFullNamesInDb>>> timetable;
 
   TimetablePageManager({
     required this.api,
-    required this.timetablePageLessons,
+    required this.timetable,
   });
 
   Future<void> getCurrentTimetable() async {
@@ -27,12 +28,18 @@ class TimetablePageManager {
     final t2 = await api.apiLessonsGet(
       fullData: true,
       groups: [res.groups.first.id],
-      startDate: '2023-03-11',
-      endDate: '2023-03-11',
+      startDate: '2023-03-01',
+      endDate: '2023-03-20',
     );
 
-    final res2 = t2.body!;
+    final lessons = t2.body!;
 
-    timetablePageLessons.state = res2;
+    Map<DateTime, List<LessonFullNamesInDb>> map = {};
+    for (final lesson in lessons) {
+      map[lesson.date] = (map[lesson.date] ?? []);
+      map[lesson.date]!.add(lesson);
+    }
+
+    timetable.state = map;
   }
 }

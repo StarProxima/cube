@@ -1,4 +1,5 @@
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
+import 'package:cube_system/features/timetable_page/state_holders/current_date.dart';
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_lessons.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/lesson_card.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,8 @@ class TimetablePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final manager = ref.read(timetablePageManager);
+    manager.getCurrentTimetable();
     return const _TimetablePage();
   }
 }
@@ -33,9 +36,9 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
   @override
   Widget build(BuildContext context) {
     final manager = ref.read(timetablePageManager);
-    manager.getCurrentTimetable();
+    final date = ref.read(currentDate).add(const Duration(days: 0));
 
-    final lessons = ref.watch(timetablePageLessons);
+    final lessons = ref.watch(timetablePageDayLessons(date));
 
     return Scaffold(
       appBar: const TimetablePageAppBar(),
