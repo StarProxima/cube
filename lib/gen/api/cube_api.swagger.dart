@@ -1,5 +1,6 @@
 // ignore_for_file: type=lint
 
+import 'package:cube_system/gen/api/cube_api.swagger.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:collection/collection.dart';
 import 'dart:convert';
@@ -10,7 +11,6 @@ import 'client_mapping.dart';
 import 'dart:async';
 import 'package:chopper/chopper.dart' as chopper;
 import 'cube_api.enums.swagger.dart' as enums;
-import 'cube_api.enums.swagger.dart';
 export 'cube_api.enums.swagger.dart';
 
 part 'cube_api.swagger.chopper.dart';
@@ -1233,7 +1233,7 @@ abstract class CubeApi extends ChopperService {
     int? facultyId,
     String? name,
     String? cipher,
-    List<DegreeStudy>? degreeStudy,
+    List<enums.DegreeStudy>? degreeStudy,
   }) {
     generatedMapping.putIfAbsent(
         DirectionInDb, () => DirectionInDb.fromJsonFactory);
@@ -1243,7 +1243,7 @@ abstract class CubeApi extends ChopperService {
         facultyId: facultyId,
         name: name,
         cipher: cipher,
-        degreeStudy: degreeStudy);
+        degreeStudy: degreeStudyListToJson(degreeStudy));
   }
 
   ///Get Directions
@@ -1258,7 +1258,7 @@ abstract class CubeApi extends ChopperService {
     @Query('faculty_id') int? facultyId,
     @Query('name') String? name,
     @Query('cipher') String? cipher,
-    @Query('degree_study') List<DegreeStudy>? degreeStudy,
+    @Query('degree_study') List<String?>? degreeStudy,
   });
 
   ///Create Direction
@@ -2961,7 +2961,7 @@ abstract class CubeApi extends ChopperService {
     List<int>? numbers,
     int? semesterId,
     int? facultyId,
-    List<DegreeStudy>? degreeStudies,
+    List<enums.DegreeStudy>? degreeStudies,
     List<int>? directions,
     List<int>? profiles,
     List<int>? courses,
@@ -2988,7 +2988,7 @@ abstract class CubeApi extends ChopperService {
         numbers: numbers,
         semesterId: semesterId,
         facultyId: facultyId,
-        degreeStudies: degreeStudies,
+        degreeStudies: degreeStudyListToJson(degreeStudies),
         directions: directions,
         profiles: profiles,
         courses: courses,
@@ -3037,7 +3037,7 @@ abstract class CubeApi extends ChopperService {
     @Query('numbers') List<int>? numbers,
     @Query('semester_id') int? semesterId,
     @Query('faculty_id') int? facultyId,
-    @Query('degree_studies') List<DegreeStudy>? degreeStudies,
+    @Query('degree_studies') List<String?>? degreeStudies,
     @Query('directions') List<int>? directions,
     @Query('profiles') List<int>? profiles,
     @Query('courses') List<int>? courses,
@@ -3336,7 +3336,7 @@ abstract class CubeApi extends ChopperService {
     int? facultyId,
     int? semesterId,
     List<int>? numbers,
-    List<DegreeStudy>? degreeStudies,
+    List<enums.DegreeStudy>? degreeStudies,
     List<int>? directions,
     List<int>? profiles,
     List<int>? courses,
@@ -3356,7 +3356,7 @@ abstract class CubeApi extends ChopperService {
         facultyId: facultyId,
         semesterId: semesterId,
         numbers: numbers,
-        degreeStudies: degreeStudies,
+        degreeStudies: degreeStudyListToJson(degreeStudies),
         directions: directions,
         profiles: profiles,
         courses: courses,
@@ -3391,7 +3391,7 @@ abstract class CubeApi extends ChopperService {
     @Query('faculty_id') int? facultyId,
     @Query('semester_id') int? semesterId,
     @Query('numbers') List<int>? numbers,
-    @Query('degree_studies') List<DegreeStudy>? degreeStudies,
+    @Query('degree_studies') List<String?>? degreeStudies,
     @Query('directions') List<int>? directions,
     @Query('profiles') List<int>? profiles,
     @Query('courses') List<int>? courses,

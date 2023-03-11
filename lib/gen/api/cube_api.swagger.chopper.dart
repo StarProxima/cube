@@ -1059,7 +1059,7 @@ class _$CubeApi extends CubeApi {
     int? facultyId,
     String? name,
     String? cipher,
-    List<dynamic>? degreeStudy,
+    List<String?>? degreeStudy,
   }) {
     final Uri $url = Uri.parse('/api/directions');
     final Map<String, dynamic> $params = <String, dynamic>{
@@ -2323,17 +2323,15 @@ class _$CubeApi extends CubeApi {
 
   @override
   Future<Response<LessonAutocomplete>> _apiLessonsAutocompleteGet(
-      {required String? q}) async {
+      {required String? q}) {
     final Uri $url = Uri.parse('/api/lessons/autocomplete');
     final Map<String, dynamic> $params = <String, dynamic>{'q': q};
-
     final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
       parameters: $params,
     );
-
     return client.send<LessonAutocomplete, LessonAutocomplete>($request);
   }
 
@@ -2472,7 +2470,7 @@ class _$CubeApi extends CubeApi {
     List<int>? numbers,
     int? semesterId,
     int? facultyId,
-    List<dynamic>? degreeStudies,
+    List<String?>? degreeStudies,
     List<int>? directions,
     List<int>? profiles,
     List<int>? courses,
@@ -2729,7 +2727,7 @@ class _$CubeApi extends CubeApi {
     int? facultyId,
     int? semesterId,
     List<int>? numbers,
-    List<dynamic>? degreeStudies,
+    List<String?>? degreeStudies,
     List<int>? directions,
     List<int>? profiles,
     List<int>? courses,
