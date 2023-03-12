@@ -7,7 +7,6 @@ import 'package:cube_system/features/timetable_page/features/lesson_card/state_h
 import 'package:cube_system/models/lesson/lesson.dart';
 
 import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_card_time_left.dart';
-import 'package:intl/intl.dart';
 
 import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_card_active_lesson.dart';
 
@@ -75,12 +74,6 @@ class LessonCard extends ConsumerWidget {
                           LessonCardBody(),
                           SizedBox(height: 8),
                           LessonCardFooter(),
-                          // SizedBox(height: 10),
-                          // Divider(
-                          //   thickness: 1.5,
-                          //   height: 1,
-                          // ),
-                          // SizedBox(height: 10),
                         ],
                       ),
                     ),

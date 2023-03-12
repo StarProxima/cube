@@ -23,7 +23,7 @@ class LessonCardIndicator extends ConsumerWidget {
       child: Align(
         alignment: Alignment.bottomCenter,
         child: FractionallySizedBox(
-          heightFactor: 1 - value,
+          heightFactor: value,
           child: Container(
             width: 5,
             decoration: const BoxDecoration(

@@ -20,8 +20,8 @@ final lessonCardIndicatorValue =
   final lessonStartDateTime = lessonDate.add(startDuration);
   final lessonEndDateTime = lessonDate.add(endDuration);
 
-  final lessonIsOver = lessonStartDateTime.isAfter(dateTime);
-  final lessonNotStarted = lessonEndDateTime.isBefore(dateTime);
+  final lessonIsOver = lessonEndDateTime.isBefore(dateTime);
+  final lessonNotStarted = lessonStartDateTime.isAfter(dateTime);
 
   final isActiveLesson = ref.read(lessonCardActiveLesson) == lesson;
 
@@ -49,5 +49,5 @@ final lessonCardIndicatorValue =
   final value =
       currentDuration.inMilliseconds / relativeEndDuration.inMilliseconds;
 
-  return value;
+  return 1 - value;
 });
