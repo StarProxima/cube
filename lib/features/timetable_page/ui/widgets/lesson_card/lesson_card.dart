@@ -1,6 +1,8 @@
+import 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/state_holders/lesson_card_indicator_value.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../gen/api/cube_api.swagger.dart';
+import '../../../state_holders/pairs_timings.dart';
 
 part 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/components/lesson_card_body.dart';
 part 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/components/lesson_card_footer.dart';
@@ -11,6 +13,10 @@ final _lessonInLessonCard = Provider<LessonFullNamesInDb>((ref) {
   return throw UnimplementedError();
 });
 
+final _timingInLessonCard = Provider<List<TimeOfDay>>((ref) {
+  return throw UnimplementedError();
+});
+
 class LessonCard extends ConsumerWidget {
   final LessonFullNamesInDb lesson;
 
@@ -18,9 +24,14 @@ class LessonCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final number = lesson.number;
+
+    final timing = ref.watch(pairsTimings)[number]!;
+
     return ProviderScope(
       overrides: [
         _lessonInLessonCard.overrideWithValue(lesson),
+        _timingInLessonCard.overrideWithValue(timing),
       ],
       child: Container(
         decoration: BoxDecoration(

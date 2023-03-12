@@ -5,15 +5,25 @@ class LessonCardIndicator extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final lesson = ref.watch(_lessonInLessonCard);
+
+    var value = ref.watch(lessonCardIndicatorValue(lesson));
+
+    if (value >= 1) {
+      value = 0.99999;
+    } else if (value <= 0) {
+      value = 0.00001;
+    }
+
     return Container(
       width: 5,
       decoration: BoxDecoration(
-        color: Colors.amber.withOpacity(0.5),
+        color: Colors.amber.withOpacity(0.6),
       ),
       child: Align(
         alignment: Alignment.bottomCenter,
         child: FractionallySizedBox(
-          heightFactor: 0.75,
+          heightFactor: value,
           child: Container(
             width: 5,
             decoration: const BoxDecoration(

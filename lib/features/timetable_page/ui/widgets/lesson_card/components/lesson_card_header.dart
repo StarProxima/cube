@@ -9,7 +9,10 @@ class LessonCardHeader extends ConsumerWidget {
         .watch(_lessonInLessonCard.select((value) => value.number))
         .toString();
 
-    // final time = ref.watch(_lessonInLessonCard.select((value) => value.date));
+    final timing = ref.watch(_timingInLessonCard);
+
+    final timingStr =
+        '${timing.first.format(context)} - ${timing.last.format(context)}';
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -34,9 +37,9 @@ class LessonCardHeader extends ConsumerWidget {
               ),
             ),
             const SizedBox(width: 8),
-            const Text(
-              '',
-              style: TextStyle(fontSize: 12),
+            Text(
+              timingStr,
+              style: const TextStyle(fontSize: 12),
             ),
           ],
         ),
