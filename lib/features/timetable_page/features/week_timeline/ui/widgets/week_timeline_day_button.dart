@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
-import '../../managers/week_timeline_manager.dart';
+import 'package:cube_system/features/timetable_page/features/week_timeline/managers/week_timeline_manager.dart';
 
 class WeekTimelineDayButton extends ConsumerWidget {
   final DateTime date;

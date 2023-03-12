@@ -18,14 +18,16 @@ Map<String, dynamic> _$AccessTokenToJson(AccessToken instance) =>
     };
 
 AttendanceSettingsUpdate _$AttendanceSettingsUpdateFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     AttendanceSettingsUpdate(
       attendanceLectureTime: json['attendance_lecture_time'] as String?,
       attendancePracticeTime: json['attendance_practice_time'] as String?,
     );
 
 Map<String, dynamic> _$AttendanceSettingsUpdateToJson(
-        AttendanceSettingsUpdate instance) =>
+  AttendanceSettingsUpdate instance,
+) =>
     <String, dynamic>{
       'attendance_lecture_time': instance.attendanceLectureTime,
       'attendance_practice_time': instance.attendancePracticeTime,
@@ -85,65 +87,75 @@ Map<String, dynamic> _$BellUpdateToJson(BellUpdate instance) =>
     };
 
 BodyImportBellsApiBellsImportPost _$BodyImportBellsApiBellsImportPostFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     BodyImportBellsApiBellsImportPost(
       file: json['file'] as String,
     );
 
 Map<String, dynamic> _$BodyImportBellsApiBellsImportPostToJson(
-        BodyImportBellsApiBellsImportPost instance) =>
+  BodyImportBellsApiBellsImportPost instance,
+) =>
     <String, dynamic>{
       'file': instance.file,
     };
 
 BodyImportDirectionsApiDirectionsImportPost
     _$BodyImportDirectionsApiDirectionsImportPostFromJson(
-            Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
         BodyImportDirectionsApiDirectionsImportPost(
           file: json['file'] as String,
         );
 
 Map<String, dynamic> _$BodyImportDirectionsApiDirectionsImportPostToJson(
-        BodyImportDirectionsApiDirectionsImportPost instance) =>
+  BodyImportDirectionsApiDirectionsImportPost instance,
+) =>
     <String, dynamic>{
       'file': instance.file,
     };
 
 BodyImportDisciplinesApiDisciplinesImportPost
     _$BodyImportDisciplinesApiDisciplinesImportPostFromJson(
-            Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
         BodyImportDisciplinesApiDisciplinesImportPost(
           file: json['file'] as String,
         );
 
 Map<String, dynamic> _$BodyImportDisciplinesApiDisciplinesImportPostToJson(
-        BodyImportDisciplinesApiDisciplinesImportPost instance) =>
+  BodyImportDisciplinesApiDisciplinesImportPost instance,
+) =>
     <String, dynamic>{
       'file': instance.file,
     };
 
 BodyImportEquipmentsApiEquipmentsImportPost
     _$BodyImportEquipmentsApiEquipmentsImportPostFromJson(
-            Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
         BodyImportEquipmentsApiEquipmentsImportPost(
           file: json['file'] as String,
         );
 
 Map<String, dynamic> _$BodyImportEquipmentsApiEquipmentsImportPostToJson(
-        BodyImportEquipmentsApiEquipmentsImportPost instance) =>
+  BodyImportEquipmentsApiEquipmentsImportPost instance,
+) =>
     <String, dynamic>{
       'file': instance.file,
     };
 
 BodyImportFacultiesApiFacultiesImportPost
     _$BodyImportFacultiesApiFacultiesImportPostFromJson(
-            Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
         BodyImportFacultiesApiFacultiesImportPost(
           file: json['file'] as String,
         );
 
 Map<String, dynamic> _$BodyImportFacultiesApiFacultiesImportPostToJson(
-        BodyImportFacultiesApiFacultiesImportPost instance) =>
+  BodyImportFacultiesApiFacultiesImportPost instance,
+) =>
     <String, dynamic>{
       'file': instance.file,
     };
@@ -155,7 +167,8 @@ BodyImportGroupsApiGroupsImportPost
         );
 
 Map<String, dynamic> _$BodyImportGroupsApiGroupsImportPostToJson(
-        BodyImportGroupsApiGroupsImportPost instance) =>
+  BodyImportGroupsApiGroupsImportPost instance,
+) =>
     <String, dynamic>{
       'file': instance.file,
     };
@@ -167,52 +180,60 @@ BodyImportPlacesApiPlacesImportPost
         );
 
 Map<String, dynamic> _$BodyImportPlacesApiPlacesImportPostToJson(
-        BodyImportPlacesApiPlacesImportPost instance) =>
+  BodyImportPlacesApiPlacesImportPost instance,
+) =>
     <String, dynamic>{
       'file': instance.file,
     };
 
 BodyImportProfilesApiProfilesImportPost
     _$BodyImportProfilesApiProfilesImportPostFromJson(
-            Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
         BodyImportProfilesApiProfilesImportPost(
           file: json['file'] as String,
         );
 
 Map<String, dynamic> _$BodyImportProfilesApiProfilesImportPostToJson(
-        BodyImportProfilesApiProfilesImportPost instance) =>
+  BodyImportProfilesApiProfilesImportPost instance,
+) =>
     <String, dynamic>{
       'file': instance.file,
     };
 
 BodyImportStudentsApiStudentsImportPost
     _$BodyImportStudentsApiStudentsImportPostFromJson(
-            Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
         BodyImportStudentsApiStudentsImportPost(
           file: json['file'] as String,
         );
 
 Map<String, dynamic> _$BodyImportStudentsApiStudentsImportPostToJson(
-        BodyImportStudentsApiStudentsImportPost instance) =>
+  BodyImportStudentsApiStudentsImportPost instance,
+) =>
     <String, dynamic>{
       'file': instance.file,
     };
 
 BodyImportTeachersApiTeachersImportPost
     _$BodyImportTeachersApiTeachersImportPostFromJson(
-            Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
         BodyImportTeachersApiTeachersImportPost(
           file: json['file'] as String,
         );
 
 Map<String, dynamic> _$BodyImportTeachersApiTeachersImportPostToJson(
-        BodyImportTeachersApiTeachersImportPost instance) =>
+  BodyImportTeachersApiTeachersImportPost instance,
+) =>
     <String, dynamic>{
       'file': instance.file,
     };
 
 BodyLoginApiAuthLoginPost _$BodyLoginApiAuthLoginPostFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     BodyLoginApiAuthLoginPost(
       grantType: json['grant_type'] as String?,
       username: json['username'] as String,
@@ -223,7 +244,8 @@ BodyLoginApiAuthLoginPost _$BodyLoginApiAuthLoginPostFromJson(
     );
 
 Map<String, dynamic> _$BodyLoginApiAuthLoginPostToJson(
-        BodyLoginApiAuthLoginPost instance) =>
+  BodyLoginApiAuthLoginPost instance,
+) =>
     <String, dynamic>{
       'grant_type': instance.grantType,
       'username': instance.username,
@@ -241,8 +263,10 @@ DirectionCreate _$DirectionCreateFromJson(Map<String, dynamic> json) =>
       degreeStudy: degreeStudyFromJson(json['degree_study']),
       facultyId: json['faculty_id'] as int,
       placeLoads: (json['place_loads'] as List<dynamic>?)
-              ?.map((e) =>
-                  DirectionPlaceLoadInfo.fromJson(e as Map<String, dynamic>))
+              ?.map(
+                (e) =>
+                    DirectionPlaceLoadInfo.fromJson(e as Map<String, dynamic>),
+              )
               .toList() ??
           [],
     );
@@ -265,8 +289,10 @@ DirectionInDb _$DirectionInDbFromJson(Map<String, dynamic> json) =>
       degreeStudy: degreeStudyFromJson(json['degree_study']),
       facultyId: json['faculty_id'] as int,
       placeLoads: (json['place_loads'] as List<dynamic>?)
-              ?.map((e) =>
-                  DirectionPlaceLoadInfo.fromJson(e as Map<String, dynamic>))
+              ?.map(
+                (e) =>
+                    DirectionPlaceLoadInfo.fromJson(e as Map<String, dynamic>),
+              )
               .toList() ??
           [],
       id: json['id'] as int,
@@ -284,7 +310,8 @@ Map<String, dynamic> _$DirectionInDbToJson(DirectionInDb instance) =>
     };
 
 DirectionPlaceLoadInfo _$DirectionPlaceLoadInfoFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     DirectionPlaceLoadInfo(
       course: json['course'] as int,
       minLoad: json['min_load'] as int,
@@ -292,7 +319,8 @@ DirectionPlaceLoadInfo _$DirectionPlaceLoadInfoFromJson(
     );
 
 Map<String, dynamic> _$DirectionPlaceLoadInfoToJson(
-        DirectionPlaceLoadInfo instance) =>
+  DirectionPlaceLoadInfo instance,
+) =>
     <String, dynamic>{
       'course': instance.course,
       'min_load': instance.minLoad,
@@ -307,8 +335,10 @@ DirectionUpdate _$DirectionUpdateFromJson(Map<String, dynamic> json) =>
       degreeStudy: degreeStudyFromJson(json['degree_study']),
       facultyId: json['faculty_id'] as int,
       placeLoads: (json['place_loads'] as List<dynamic>?)
-              ?.map((e) =>
-                  DirectionPlaceLoadInfo.fromJson(e as Map<String, dynamic>))
+              ?.map(
+                (e) =>
+                    DirectionPlaceLoadInfo.fromJson(e as Map<String, dynamic>),
+              )
               .toList() ??
           [],
     );
@@ -568,19 +598,22 @@ HTTPValidationError _$HTTPValidationErrorFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$HTTPValidationErrorToJson(
-        HTTPValidationError instance) =>
+  HTTPValidationError instance,
+) =>
     <String, dynamic>{
       'detail': instance.detail?.map((e) => e.toJson()).toList(),
     };
 
 HourlyReportSettingsUpdate _$HourlyReportSettingsUpdateFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     HourlyReportSettingsUpdate(
       setThemeTime: json['set_theme_time'] as String?,
     );
 
 Map<String, dynamic> _$HourlyReportSettingsUpdateToJson(
-        HourlyReportSettingsUpdate instance) =>
+  HourlyReportSettingsUpdate instance,
+) =>
     <String, dynamic>{
       'set_theme_time': instance.setThemeTime,
     };
@@ -588,8 +621,9 @@ Map<String, dynamic> _$HourlyReportSettingsUpdateToJson(
 JournalCreate _$JournalCreateFromJson(Map<String, dynamic> json) =>
     JournalCreate(
       data: (json['data'] as List<dynamic>?)
-              ?.map((e) =>
-                  JournalStudentReason.fromJson(e as Map<String, dynamic>))
+              ?.map(
+                (e) => JournalStudentReason.fromJson(e as Map<String, dynamic>),
+              )
               .toList() ??
           [],
       groupId: json['group_id'] as int,
@@ -606,14 +640,16 @@ Map<String, dynamic> _$JournalCreateToJson(JournalCreate instance) =>
     };
 
 JournalStudentReason _$JournalStudentReasonFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     JournalStudentReason(
       studentId: json['student_id'] as int,
       isSeriousReason: json['is_serious_reason'] as bool,
     );
 
 Map<String, dynamic> _$JournalStudentReasonToJson(
-        JournalStudentReason instance) =>
+  JournalStudentReason instance,
+) =>
     <String, dynamic>{
       'student_id': instance.studentId,
       'is_serious_reason': instance.isSeriousReason,
@@ -622,7 +658,8 @@ Map<String, dynamic> _$JournalStudentReasonToJson(
 LastChange _$LastChangeFromJson(Map<String, dynamic> json) => LastChange(
       timestamp: DateTime.parse(json['timestamp'] as String),
       user: AppSchemasUserUserFullNameInDb.fromJson(
-          json['user'] as Map<String, dynamic>),
+        json['user'] as Map<String, dynamic>,
+      ),
     );
 
 Map<String, dynamic> _$LastChangeToJson(LastChange instance) =>
@@ -705,7 +742,8 @@ LessonCollisionInfo _$LessonCollisionInfoFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$LessonCollisionInfoToJson(
-        LessonCollisionInfo instance) =>
+  LessonCollisionInfo instance,
+) =>
     <String, dynamic>{
       'number': instance.number,
       'is_remotely': instance.isRemotely,
@@ -751,7 +789,8 @@ Map<String, dynamic> _$LessonCreateToJson(LessonCreate instance) =>
     };
 
 LessonCreateWithParams _$LessonCreateWithParamsFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     LessonCreateWithParams(
       ignoreCollisions: json['ignore_collisions'] as bool? ?? false,
       notify: json['notify'] as bool? ?? false,
@@ -759,7 +798,8 @@ LessonCreateWithParams _$LessonCreateWithParamsFromJson(
     );
 
 Map<String, dynamic> _$LessonCreateWithParamsToJson(
-        LessonCreateWithParams instance) =>
+  LessonCreateWithParams instance,
+) =>
     <String, dynamic>{
       'ignore_collisions': instance.ignoreCollisions,
       'notify': instance.notify,
@@ -833,7 +873,8 @@ LessonFullNamesInDb _$LessonFullNamesInDbFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$LessonFullNamesInDbToJson(
-        LessonFullNamesInDb instance) =>
+  LessonFullNamesInDb instance,
+) =>
     <String, dynamic>{
       'id': instance.id,
       'theme': instance.theme,
@@ -853,10 +894,12 @@ LessonHistory _$LessonHistoryFromJson(Map<String, dynamic> json) =>
     LessonHistory(
       id: json['id'] as int,
       user: AppSchemasUserUserFullNameInDb.fromJson(
-          json['user'] as Map<String, dynamic>),
+        json['user'] as Map<String, dynamic>,
+      ),
       changes: (json['changes'] as List<dynamic>?)
               ?.map(
-                  (e) => LessonHistoryField.fromJson(e as Map<String, dynamic>))
+                (e) => LessonHistoryField.fromJson(e as Map<String, dynamic>),
+              )
               .toList() ??
           [],
       timestamp: DateTime.parse(json['timestamp'] as String),
@@ -1001,7 +1044,8 @@ Map<String, dynamic> _$LessonUpdateToJson(LessonUpdate instance) =>
     };
 
 LessonUpdateWithParams _$LessonUpdateWithParamsFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     LessonUpdateWithParams(
       ignoreCollisions: json['ignore_collisions'] as bool? ?? false,
       notify: json['notify'] as bool? ?? false,
@@ -1009,7 +1053,8 @@ LessonUpdateWithParams _$LessonUpdateWithParamsFromJson(
     );
 
 Map<String, dynamic> _$LessonUpdateWithParamsToJson(
-        LessonUpdateWithParams instance) =>
+  LessonUpdateWithParams instance,
+) =>
     <String, dynamic>{
       'ignore_collisions': instance.ignoreCollisions,
       'notify': instance.notify,
@@ -1041,7 +1086,8 @@ Log _$LogFromJson(Map<String, dynamic> json) => Log(
       user: json['user'] == null
           ? null
           : AppSchemasUserUserFullNameInDb.fromJson(
-              json['user'] as Map<String, dynamic>),
+              json['user'] as Map<String, dynamic>,
+            ),
     );
 
 Map<String, dynamic> _$LogToJson(Log instance) => <String, dynamic>{
@@ -1091,18 +1137,21 @@ MainLessonCollision _$MainLessonCollisionFromJson(Map<String, dynamic> json) =>
     MainLessonCollision(
       field: json['field'] as String,
       data: MainLessonCollisionInfo.fromJson(
-          json['data'] as Map<String, dynamic>),
+        json['data'] as Map<String, dynamic>,
+      ),
     );
 
 Map<String, dynamic> _$MainLessonCollisionToJson(
-        MainLessonCollision instance) =>
+  MainLessonCollision instance,
+) =>
     <String, dynamic>{
       'field': instance.field,
       'data': instance.data.toJson(),
     };
 
 MainLessonCollisionInfo _$MainLessonCollisionInfoFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     MainLessonCollisionInfo(
       number: json['number'] as int,
       isRemotely: json['is_remotely'] as bool,
@@ -1128,7 +1177,8 @@ MainLessonCollisionInfo _$MainLessonCollisionInfoFromJson(
     );
 
 Map<String, dynamic> _$MainLessonCollisionInfoToJson(
-        MainLessonCollisionInfo instance) =>
+  MainLessonCollisionInfo instance,
+) =>
     <String, dynamic>{
       'number': instance.number,
       'is_remotely': instance.isRemotely,
@@ -1186,7 +1236,8 @@ Map<String, dynamic> _$MainLessonCreateToJson(MainLessonCreate instance) =>
     };
 
 MainLessonCreateWithParams _$MainLessonCreateWithParamsFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     MainLessonCreateWithParams(
       ignoreCollisions: json['ignore_collisions'] as bool? ?? false,
       notify: json['notify'] as bool? ?? false,
@@ -1194,7 +1245,8 @@ MainLessonCreateWithParams _$MainLessonCreateWithParamsFromJson(
     );
 
 Map<String, dynamic> _$MainLessonCreateWithParamsToJson(
-        MainLessonCreateWithParams instance) =>
+  MainLessonCreateWithParams instance,
+) =>
     <String, dynamic>{
       'ignore_collisions': instance.ignoreCollisions,
       'notify': instance.notify,
@@ -1235,7 +1287,8 @@ Map<String, dynamic> _$MainLessonExportToJson(MainLessonExport instance) =>
     };
 
 MainLessonFullWithRelated _$MainLessonFullWithRelatedFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     MainLessonFullWithRelated(
       number: json['number'] as int,
       isRemotely: json['is_remotely'] as bool,
@@ -1269,7 +1322,8 @@ MainLessonFullWithRelated _$MainLessonFullWithRelatedFromJson(
     );
 
 Map<String, dynamic> _$MainLessonFullWithRelatedToJson(
-        MainLessonFullWithRelated instance) =>
+  MainLessonFullWithRelated instance,
+) =>
     <String, dynamic>{
       'number': instance.number,
       'is_remotely': instance.isRemotely,
@@ -1292,10 +1346,13 @@ MainLessonHistory _$MainLessonHistoryFromJson(Map<String, dynamic> json) =>
     MainLessonHistory(
       id: json['id'] as int,
       user: AppSchemasUserUserFullNameInDb.fromJson(
-          json['user'] as Map<String, dynamic>),
+        json['user'] as Map<String, dynamic>,
+      ),
       changes: (json['changes'] as List<dynamic>?)
-              ?.map((e) =>
-                  MainLessonHistoryField.fromJson(e as Map<String, dynamic>))
+              ?.map(
+                (e) =>
+                    MainLessonHistoryField.fromJson(e as Map<String, dynamic>),
+              )
               .toList() ??
           [],
       timestamp: DateTime.parse(json['timestamp'] as String),
@@ -1310,7 +1367,8 @@ Map<String, dynamic> _$MainLessonHistoryToJson(MainLessonHistory instance) =>
     };
 
 MainLessonHistoryField _$MainLessonHistoryFieldFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     MainLessonHistoryField(
       field: historyFieldFromJson(json['field']),
       newValue: json['new_value'] as String?,
@@ -1318,7 +1376,8 @@ MainLessonHistoryField _$MainLessonHistoryFieldFromJson(
     );
 
 Map<String, dynamic> _$MainLessonHistoryFieldToJson(
-        MainLessonHistoryField instance) =>
+  MainLessonHistoryField instance,
+) =>
     <String, dynamic>{
       'field': historyFieldToJson(instance.field),
       'new_value': instance.newValue,
@@ -1432,7 +1491,8 @@ Map<String, dynamic> _$MainLessonUpdateToJson(MainLessonUpdate instance) =>
     };
 
 MainLessonUpdateWithParams _$MainLessonUpdateWithParamsFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     MainLessonUpdateWithParams(
       ignoreCollisions: json['ignore_collisions'] as bool? ?? false,
       notify: json['notify'] as bool? ?? false,
@@ -1440,7 +1500,8 @@ MainLessonUpdateWithParams _$MainLessonUpdateWithParamsFromJson(
     );
 
 Map<String, dynamic> _$MainLessonUpdateWithParamsToJson(
-        MainLessonUpdateWithParams instance) =>
+  MainLessonUpdateWithParams instance,
+) =>
     <String, dynamic>{
       'ignore_collisions': instance.ignoreCollisions,
       'notify': instance.notify,
@@ -1448,7 +1509,8 @@ Map<String, dynamic> _$MainLessonUpdateWithParamsToJson(
     };
 
 MainLessonWithRelated _$MainLessonWithRelatedFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     MainLessonWithRelated(
       number: json['number'] as int,
       isRemotely: json['is_remotely'] as bool,
@@ -1478,7 +1540,8 @@ MainLessonWithRelated _$MainLessonWithRelatedFromJson(
     );
 
 Map<String, dynamic> _$MainLessonWithRelatedToJson(
-        MainLessonWithRelated instance) =>
+  MainLessonWithRelated instance,
+) =>
     <String, dynamic>{
       'number': instance.number,
       'is_remotely': instance.isRemotely,
@@ -1515,7 +1578,8 @@ Map<String, dynamic> _$PageLogToJson(PageLog instance) => <String, dynamic>{
     };
 
 PageStudentShortInDb _$PageStudentShortInDbFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     PageStudentShortInDb(
       items: (json['items'] as List<dynamic>?)
               ?.map((e) => StudentShortInDb.fromJson(e as Map<String, dynamic>))
@@ -1527,7 +1591,8 @@ PageStudentShortInDb _$PageStudentShortInDbFromJson(
     );
 
 Map<String, dynamic> _$PageStudentShortInDbToJson(
-        PageStudentShortInDb instance) =>
+  PageStudentShortInDb instance,
+) =>
     <String, dynamic>{
       'items': instance.items.map((e) => e.toJson()).toList(),
       'total': instance.total,
@@ -1649,8 +1714,10 @@ PlaceCreate _$PlaceCreateFromJson(Map<String, dynamic> json) => PlaceCreate(
       size: json['size'] as int?,
       facultyId: json['faculty_id'] as int?,
       equipments: (json['equipments'] as List<dynamic>?)
-              ?.map((e) =>
-                  PlaceEquipmentShortInfo.fromJson(e as Map<String, dynamic>))
+              ?.map(
+                (e) =>
+                    PlaceEquipmentShortInfo.fromJson(e as Map<String, dynamic>),
+              )
               .toList() ??
           [],
     );
@@ -1678,14 +1745,16 @@ Map<String, dynamic> _$PlaceEquipmentInfoToJson(PlaceEquipmentInfo instance) =>
     };
 
 PlaceEquipmentShortInfo _$PlaceEquipmentShortInfoFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     PlaceEquipmentShortInfo(
       equipmentId: json['equipment_id'] as int,
       amount: json['amount'] as int?,
     );
 
 Map<String, dynamic> _$PlaceEquipmentShortInfoToJson(
-        PlaceEquipmentShortInfo instance) =>
+  PlaceEquipmentShortInfo instance,
+) =>
     <String, dynamic>{
       'equipment_id': instance.equipmentId,
       'amount': instance.amount,
@@ -1707,7 +1776,8 @@ PlaceInDb _$PlaceInDbFromJson(Map<String, dynamic> json) => PlaceInDb(
       size: json['size'] as int?,
       placeEquipments: (json['place_equipments'] as List<dynamic>?)
               ?.map(
-                  (e) => PlaceEquipmentInfo.fromJson(e as Map<String, dynamic>))
+                (e) => PlaceEquipmentInfo.fromJson(e as Map<String, dynamic>),
+              )
               .toList() ??
           [],
       id: json['id'] as int,
@@ -1743,8 +1813,10 @@ PlaceShortInDb _$PlaceShortInDbFromJson(Map<String, dynamic> json) =>
       size: json['size'] as int?,
       id: json['id'] as int,
       equipments: (json['equipments'] as List<dynamic>?)
-              ?.map((e) =>
-                  PlaceEquipmentShortInfo.fromJson(e as Map<String, dynamic>))
+              ?.map(
+                (e) =>
+                    PlaceEquipmentShortInfo.fromJson(e as Map<String, dynamic>),
+              )
               .toList() ??
           [],
     );
@@ -1765,8 +1837,10 @@ PlaceUpdate _$PlaceUpdateFromJson(Map<String, dynamic> json) => PlaceUpdate(
       size: json['size'] as int?,
       facultyId: json['faculty_id'] as int?,
       equipments: (json['equipments'] as List<dynamic>?)
-              ?.map((e) =>
-                  PlaceEquipmentShortInfo.fromJson(e as Map<String, dynamic>))
+              ?.map(
+                (e) =>
+                    PlaceEquipmentShortInfo.fromJson(e as Map<String, dynamic>),
+              )
               .toList() ??
           [],
     );
@@ -1781,21 +1855,24 @@ Map<String, dynamic> _$PlaceUpdateToJson(PlaceUpdate instance) =>
     };
 
 ProductionCalendarDayCreate _$ProductionCalendarDayCreateFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     ProductionCalendarDayCreate(
       date: json['date'] as String,
       isHoliday: json['is_holiday'] as bool,
     );
 
 Map<String, dynamic> _$ProductionCalendarDayCreateToJson(
-        ProductionCalendarDayCreate instance) =>
+  ProductionCalendarDayCreate instance,
+) =>
     <String, dynamic>{
       'date': instance.date,
       'is_holiday': instance.isHoliday,
     };
 
 ProductionCalendarDayInDb _$ProductionCalendarDayInDbFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     ProductionCalendarDayInDb(
       date: DateTime.parse(json['date'] as String),
       isHoliday: json['is_holiday'] as bool,
@@ -1803,7 +1880,8 @@ ProductionCalendarDayInDb _$ProductionCalendarDayInDbFromJson(
     );
 
 Map<String, dynamic> _$ProductionCalendarDayInDbToJson(
-        ProductionCalendarDayInDb instance) =>
+  ProductionCalendarDayInDb instance,
+) =>
     <String, dynamic>{
       'date': _dateToJson(instance.date),
       'is_holiday': instance.isHoliday,
@@ -1811,13 +1889,15 @@ Map<String, dynamic> _$ProductionCalendarDayInDbToJson(
     };
 
 ProductionCalendarDayUpdate _$ProductionCalendarDayUpdateFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     ProductionCalendarDayUpdate(
       isHoliday: json['is_holiday'] as bool,
     );
 
 Map<String, dynamic> _$ProductionCalendarDayUpdateToJson(
-        ProductionCalendarDayUpdate instance) =>
+  ProductionCalendarDayUpdate instance,
+) =>
     <String, dynamic>{
       'is_holiday': instance.isHoliday,
     };
@@ -1896,7 +1976,8 @@ RolePermissionsInDb _$RolePermissionsInDbFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$RolePermissionsInDbToJson(
-        RolePermissionsInDb instance) =>
+  RolePermissionsInDb instance,
+) =>
     <String, dynamic>{
       'name': instance.name,
       'id': instance.id,
@@ -1928,7 +2009,8 @@ Map<String, dynamic> _$SemesterCreateToJson(SemesterCreate instance) =>
     };
 
 SemesterDirectionCreate _$SemesterDirectionCreateFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     SemesterDirectionCreate(
       directionId: json['direction_id'] as int?,
       course: json['course'] as int,
@@ -1940,7 +2022,8 @@ SemesterDirectionCreate _$SemesterDirectionCreateFromJson(
     );
 
 Map<String, dynamic> _$SemesterDirectionCreateToJson(
-        SemesterDirectionCreate instance) =>
+  SemesterDirectionCreate instance,
+) =>
     <String, dynamic>{
       'direction_id': instance.directionId,
       'course': instance.course,
@@ -1952,7 +2035,8 @@ Map<String, dynamic> _$SemesterDirectionCreateToJson(
     };
 
 SemesterDirectionInDb _$SemesterDirectionInDbFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     SemesterDirectionInDb(
       id: json['id'] as int,
       directionId: json['direction_id'] as int,
@@ -1965,7 +2049,8 @@ SemesterDirectionInDb _$SemesterDirectionInDbFromJson(
     );
 
 Map<String, dynamic> _$SemesterDirectionInDbToJson(
-        SemesterDirectionInDb instance) =>
+  SemesterDirectionInDb instance,
+) =>
     <String, dynamic>{
       'id': instance.id,
       'direction_id': instance.directionId,
@@ -1978,7 +2063,8 @@ Map<String, dynamic> _$SemesterDirectionInDbToJson(
     };
 
 SemesterDirectionUpdate _$SemesterDirectionUpdateFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     SemesterDirectionUpdate(
       directionId: json['direction_id'] as int?,
       course: json['course'] as int,
@@ -1990,7 +2076,8 @@ SemesterDirectionUpdate _$SemesterDirectionUpdateFromJson(
     );
 
 Map<String, dynamic> _$SemesterDirectionUpdateToJson(
-        SemesterDirectionUpdate instance) =>
+  SemesterDirectionUpdate instance,
+) =>
     <String, dynamic>{
       'direction_id': instance.directionId,
       'course': instance.course,
@@ -2031,22 +2118,26 @@ Map<String, dynamic> _$SemesterUpdateToJson(SemesterUpdate instance) =>
     };
 
 SessionEventCollision _$SessionEventCollisionFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     SessionEventCollision(
       field: json['field'] as String,
       data: SessionEventCollisionInfo.fromJson(
-          json['data'] as Map<String, dynamic>),
+        json['data'] as Map<String, dynamic>,
+      ),
     );
 
 Map<String, dynamic> _$SessionEventCollisionToJson(
-        SessionEventCollision instance) =>
+  SessionEventCollision instance,
+) =>
     <String, dynamic>{
       'field': instance.field,
       'data': instance.data.toJson(),
     };
 
 SessionEventCollisionInfo _$SessionEventCollisionInfoFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     SessionEventCollisionInfo(
       eventTypeId: sessionEventTypeFromJson(json['event_type_id']),
       date: DateTime.parse(json['date'] as String),
@@ -2071,7 +2162,8 @@ SessionEventCollisionInfo _$SessionEventCollisionInfoFromJson(
     );
 
 Map<String, dynamic> _$SessionEventCollisionInfoToJson(
-        SessionEventCollisionInfo instance) =>
+  SessionEventCollisionInfo instance,
+) =>
     <String, dynamic>{
       'event_type_id': sessionEventTypeToJson(instance.eventTypeId),
       'date': _dateToJson(instance.date),
@@ -2117,16 +2209,19 @@ Map<String, dynamic> _$SessionEventCreateToJson(SessionEventCreate instance) =>
     };
 
 SessionEventCreateWithParams _$SessionEventCreateWithParamsFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     SessionEventCreateWithParams(
       ignoreCollisions: json['ignore_collisions'] as bool? ?? false,
       notify: json['notify'] as bool? ?? false,
       sessionEvent: SessionEventCreate.fromJson(
-          json['session_event'] as Map<String, dynamic>),
+        json['session_event'] as Map<String, dynamic>,
+      ),
     );
 
 Map<String, dynamic> _$SessionEventCreateWithParamsToJson(
-        SessionEventCreateWithParams instance) =>
+  SessionEventCreateWithParams instance,
+) =>
     <String, dynamic>{
       'ignore_collisions': instance.ignoreCollisions,
       'notify': instance.notify,
@@ -2252,16 +2347,19 @@ Map<String, dynamic> _$SessionEventUpdateToJson(SessionEventUpdate instance) =>
     };
 
 SessionEventUpdateWithParams _$SessionEventUpdateWithParamsFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     SessionEventUpdateWithParams(
       ignoreCollisions: json['ignore_collisions'] as bool? ?? false,
       notify: json['notify'] as bool? ?? false,
       sessionEvent: SessionEventUpdate.fromJson(
-          json['session_event'] as Map<String, dynamic>),
+        json['session_event'] as Map<String, dynamic>,
+      ),
     );
 
 Map<String, dynamic> _$SessionEventUpdateWithParamsToJson(
-        SessionEventUpdateWithParams instance) =>
+  SessionEventUpdateWithParams instance,
+) =>
     <String, dynamic>{
       'ignore_collisions': instance.ignoreCollisions,
       'notify': instance.notify,
@@ -2269,7 +2367,8 @@ Map<String, dynamic> _$SessionEventUpdateWithParamsToJson(
     };
 
 SessionSettingsUpdate _$SessionSettingsUpdateFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     SessionSettingsUpdate(
       sessionEventBeforeDays: json['session_event_before_days'] as int?,
       sessionEventBeforeDaysTime:
@@ -2278,7 +2377,8 @@ SessionSettingsUpdate _$SessionSettingsUpdateFromJson(
     );
 
 Map<String, dynamic> _$SessionSettingsUpdateToJson(
-        SessionSettingsUpdate instance) =>
+  SessionSettingsUpdate instance,
+) =>
     <String, dynamic>{
       'session_event_before_days': instance.sessionEventBeforeDays,
       'session_event_before_days_time': instance.sessionEventBeforeDaysTime,
@@ -2407,7 +2507,8 @@ Map<String, dynamic> _$StudentUpdateToJson(StudentUpdate instance) =>
     };
 
 TeacherAcademicDegreeInDb _$TeacherAcademicDegreeInDbFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     TeacherAcademicDegreeInDb(
       name: json['name'] as String,
       shortName: json['short_name'] as String,
@@ -2415,7 +2516,8 @@ TeacherAcademicDegreeInDb _$TeacherAcademicDegreeInDbFromJson(
     );
 
 Map<String, dynamic> _$TeacherAcademicDegreeInDbToJson(
-        TeacherAcademicDegreeInDb instance) =>
+  TeacherAcademicDegreeInDb instance,
+) =>
     <String, dynamic>{
       'name': instance.name,
       'short_name': instance.shortName,
@@ -2455,7 +2557,8 @@ TeacherFullInDb _$TeacherFullInDbFromJson(Map<String, dynamic> json) =>
       academicDegree: json['academic_degree'] == null
           ? null
           : TeacherAcademicDegreeInDb.fromJson(
-              json['academic_degree'] as Map<String, dynamic>),
+              json['academic_degree'] as Map<String, dynamic>,
+            ),
       id: json['id'] as int,
       facultiesIds: (json['faculties_ids'] as List<dynamic>?)
               ?.map((e) => e as int)
@@ -2581,7 +2684,8 @@ Map<String, dynamic> _$TelegramIdToJson(TelegramId instance) =>
     };
 
 TimetableSettingsUpdate _$TimetableSettingsUpdateFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     TimetableSettingsUpdate(
       timetableTodayLessons: json['timetable_today_lessons'] as String?,
       timetableTomorrowLessons: json['timetable_tomorrow_lessons'] as String?,
@@ -2589,7 +2693,8 @@ TimetableSettingsUpdate _$TimetableSettingsUpdateFromJson(
     );
 
 Map<String, dynamic> _$TimetableSettingsUpdateToJson(
-        TimetableSettingsUpdate instance) =>
+  TimetableSettingsUpdate instance,
+) =>
     <String, dynamic>{
       'timetable_today_lessons': instance.timetableTodayLessons,
       'timetable_tomorrow_lessons': instance.timetableTomorrowLessons,
@@ -2622,7 +2727,8 @@ TimetableViewUpdate _$TimetableViewUpdateFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$TimetableViewUpdateToJson(
-        TimetableViewUpdate instance) =>
+  TimetableViewUpdate instance,
+) =>
     <String, dynamic>{
       'faculty_id': instance.facultyId,
       'semester_id': instance.semesterId,
@@ -2679,7 +2785,8 @@ Map<String, dynamic> _$UserCreateToJson(UserCreate instance) =>
     };
 
 UserCreateFromPerson _$UserCreateFromPersonFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     UserCreateFromPerson(
       password: json['password'] as String,
       confirmPassword: json['confirm_password'] as String,
@@ -2689,7 +2796,8 @@ UserCreateFromPerson _$UserCreateFromPersonFromJson(
     );
 
 Map<String, dynamic> _$UserCreateFromPersonToJson(
-        UserCreateFromPerson instance) =>
+  UserCreateFromPerson instance,
+) =>
     <String, dynamic>{
       'password': instance.password,
       'confirm_password': instance.confirmPassword,
@@ -2699,31 +2807,36 @@ Map<String, dynamic> _$UserCreateFromPersonToJson(
     };
 
 UserFacultyForbiddenCreate _$UserFacultyForbiddenCreateFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     UserFacultyForbiddenCreate(
       facultyId: json['faculty_id'] as int,
       userId: json['user_id'] as int,
     );
 
 Map<String, dynamic> _$UserFacultyForbiddenCreateToJson(
-        UserFacultyForbiddenCreate instance) =>
+  UserFacultyForbiddenCreate instance,
+) =>
     <String, dynamic>{
       'faculty_id': instance.facultyId,
       'user_id': instance.userId,
     };
 
 UserFacultyForbiddenInDb _$UserFacultyForbiddenInDbFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     UserFacultyForbiddenInDb(
       facultyId: json['faculty_id'] as int,
       userId: json['user_id'] as int,
       faculty: FacultyInDb.fromJson(json['faculty'] as Map<String, dynamic>),
       user: AppSchemasOtherPermissionUserFullNameInDb.fromJson(
-          json['user'] as Map<String, dynamic>),
+        json['user'] as Map<String, dynamic>,
+      ),
     );
 
 Map<String, dynamic> _$UserFacultyForbiddenInDbToJson(
-        UserFacultyForbiddenInDb instance) =>
+  UserFacultyForbiddenInDb instance,
+) =>
     <String, dynamic>{
       'faculty_id': instance.facultyId,
       'user_id': instance.userId,
@@ -2732,14 +2845,16 @@ Map<String, dynamic> _$UserFacultyForbiddenInDbToJson(
     };
 
 UserFacultyForbiddenUpdate _$UserFacultyForbiddenUpdateFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     UserFacultyForbiddenUpdate(
       users: (json['users'] as List<dynamic>?)?.map((e) => e as int).toList() ??
           [],
     );
 
 Map<String, dynamic> _$UserFacultyForbiddenUpdateToJson(
-        UserFacultyForbiddenUpdate instance) =>
+  UserFacultyForbiddenUpdate instance,
+) =>
     <String, dynamic>{
       'users': instance.users,
     };
@@ -2764,7 +2879,8 @@ Map<String, dynamic> _$UserFullInDbToJson(UserFullInDb instance) =>
     };
 
 UserFullWithStatisticInDb _$UserFullWithStatisticInDbFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     UserFullWithStatisticInDb(
       login: json['login'] as String,
       id: json['id'] as int,
@@ -2777,7 +2893,8 @@ UserFullWithStatisticInDb _$UserFullWithStatisticInDbFromJson(
     );
 
 Map<String, dynamic> _$UserFullWithStatisticInDbToJson(
-        UserFullWithStatisticInDb instance) =>
+  UserFullWithStatisticInDb instance,
+) =>
     <String, dynamic>{
       'login': instance.login,
       'id': instance.id,
@@ -2794,7 +2911,8 @@ UserMeInDb _$UserMeInDbFromJson(Map<String, dynamic> json) => UserMeInDb(
       person: PersonInDb.fromJson(json['person'] as Map<String, dynamic>),
       role: RolePermissionsInDb.fromJson(json['role'] as Map<String, dynamic>),
       otherPermissions: FacultyForbidden.fromJson(
-          json['other_permissions'] as Map<String, dynamic>),
+        json['other_permissions'] as Map<String, dynamic>,
+      ),
       userPermissions:
           permissionsListFromJson(json['user_permissions'] as List?),
     );
@@ -2833,27 +2951,31 @@ Map<String, dynamic> _$UserPermissionBaseToJson(UserPermissionBase instance) =>
     };
 
 UserPermissionCreate _$UserPermissionCreateFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     UserPermissionCreate(
       userPermissions:
           permissionsListFromJson(json['user_permissions'] as List?),
     );
 
 Map<String, dynamic> _$UserPermissionCreateToJson(
-        UserPermissionCreate instance) =>
+  UserPermissionCreate instance,
+) =>
     <String, dynamic>{
       'user_permissions': permissionsListToJson(instance.userPermissions),
     };
 
 UserPermissionUpdate _$UserPermissionUpdateFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     UserPermissionUpdate(
       userPermissions:
           permissionsListFromJson(json['user_permissions'] as List?),
     );
 
 Map<String, dynamic> _$UserPermissionUpdateToJson(
-        UserPermissionUpdate instance) =>
+  UserPermissionUpdate instance,
+) =>
     <String, dynamic>{
       'user_permissions': permissionsListToJson(instance.userPermissions),
     };
@@ -2913,7 +3035,8 @@ Map<String, dynamic> _$ValidationErrorToJson(ValidationError instance) =>
     };
 
 WeatherSettingsUpdate _$WeatherSettingsUpdateFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     WeatherSettingsUpdate(
       weatherSendTime: json['weather_send_time'] as String?,
       weatherSendDaily: json['weather_send_daily'] as bool?,
@@ -2922,7 +3045,8 @@ WeatherSettingsUpdate _$WeatherSettingsUpdateFromJson(
     );
 
 Map<String, dynamic> _$WeatherSettingsUpdateToJson(
-        WeatherSettingsUpdate instance) =>
+  WeatherSettingsUpdate instance,
+) =>
     <String, dynamic>{
       'weather_send_time': instance.weatherSendTime,
       'weather_send_daily': instance.weatherSendDaily,
@@ -2932,7 +3056,8 @@ Map<String, dynamic> _$WeatherSettingsUpdateToJson(
 
 AppSchemasOtherPermissionUserFullNameInDb
     _$AppSchemasOtherPermissionUserFullNameInDbFromJson(
-            Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
         AppSchemasOtherPermissionUserFullNameInDb(
           id: json['id'] as int,
           person:
@@ -2940,21 +3065,24 @@ AppSchemasOtherPermissionUserFullNameInDb
         );
 
 Map<String, dynamic> _$AppSchemasOtherPermissionUserFullNameInDbToJson(
-        AppSchemasOtherPermissionUserFullNameInDb instance) =>
+  AppSchemasOtherPermissionUserFullNameInDb instance,
+) =>
     <String, dynamic>{
       'id': instance.id,
       'person': instance.person.toJson(),
     };
 
 AppSchemasUserUserFullNameInDb _$AppSchemasUserUserFullNameInDbFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     AppSchemasUserUserFullNameInDb(
       id: json['id'] as int,
       person: PersonFullName.fromJson(json['person'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$AppSchemasUserUserFullNameInDbToJson(
-        AppSchemasUserUserFullNameInDb instance) =>
+  AppSchemasUserUserFullNameInDb instance,
+) =>
     <String, dynamic>{
       'id': instance.id,
       'person': instance.person.toJson(),

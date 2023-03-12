@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../../../gen/api/cube_api.swagger.dart';
-import '../../../../state_holders/current_date.dart';
-import '../../../../state_holders/pairs_timings.dart';
+import 'package:cube_system/gen/api/cube_api.swagger.dart';
+import 'package:cube_system/features/timetable_page/state_holders/current_date.dart';
+import 'package:cube_system/features/timetable_page/state_holders/pairs_timings.dart';
 
 final lessonCardIndicatorValue =
     Provider.family.autoDispose<double, LessonFullNamesInDb>((ref, lesson) {

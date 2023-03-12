@@ -1,13 +1,13 @@
-import 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/state_holders/lesson_card_indicator_value.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../gen/api/cube_api.swagger.dart';
-import '../../../state_holders/pairs_timings.dart';
+import 'package:cube_system/gen/api/cube_api.swagger.dart';
+import 'package:cube_system/features/timetable_page/state_holders/pairs_timings.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_card_indicator_value.dart';
 
-part 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/components/lesson_card_body.dart';
-part 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/components/lesson_card_footer.dart';
-part 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/components/lesson_card_header.dart';
-part 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/components/lesson_card_indicator.dart';
+part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_body.dart';
+part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_footer.dart';
+part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_header.dart';
+part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_indicator.dart';
 
 final _lessonInLessonCard = Provider<LessonFullNamesInDb>((ref) {
   return throw UnimplementedError();

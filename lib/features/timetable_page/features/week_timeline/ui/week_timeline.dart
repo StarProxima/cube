@@ -2,9 +2,9 @@ import 'package:cube_system/features/timetable_page/state_holders/timetable_page
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../state_holders/current_date.dart';
-import 'components/custom_page_view_scroll_physics.dart';
-import 'components/week_timeline_day_button.dart';
+import 'package:cube_system/features/timetable_page/state_holders/current_date.dart';
+import 'package:cube_system/features/timetable_page/features/week_timeline/ui/widgets/custom_page_view_scroll_physics.dart';
+import 'package:cube_system/features/timetable_page/features/week_timeline/ui/widgets/week_timeline_day_button.dart';
 
 class WeekTimeline extends ConsumerStatefulWidget {
   const WeekTimeline({Key? key}) : super(key: key);

@@ -1,13 +1,13 @@
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_lessons.dart';
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_selected_date.dart';
-import 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/lesson_card.dart';
-import 'package:cube_system/features/timetable_page/ui/widgets/week_timeline/ui/week_timeline.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/ui/lesson_card.dart';
+import 'package:cube_system/features/timetable_page/features/week_timeline/ui/week_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'components/timetable_page_app_bar.dart';
-import 'components/timetable_page_header.dart';
+import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_app_bar.dart';
+import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_header.dart';
 
 // final _load = FutureProvider<void>((ref) async {
 //   await Future(() {});

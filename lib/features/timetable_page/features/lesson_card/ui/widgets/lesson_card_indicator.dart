@@ -1,4 +1,4 @@
-part of 'package:cube_system/features/timetable_page/ui/widgets/lesson_card/lesson_card.dart';
+part of 'package:cube_system/features/timetable_page/features/lesson_card/ui/lesson_card.dart';
 
 class LessonCardIndicator extends ConsumerWidget {
   const LessonCardIndicator({super.key});

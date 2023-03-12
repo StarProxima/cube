@@ -4,7 +4,7 @@ import 'package:cube_system/gen/api/cube_api.swagger.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
-import '../state_holders/timetable_page_lessons.dart';
+import 'package:cube_system/features/timetable_page/state_holders/timetable_page_lessons.dart';
 
 final timetablePageManager = Provider<TimetablePageManager>((ref) {
   return TimetablePageManager(

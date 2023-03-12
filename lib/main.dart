@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'features/timetable_page/ui/timetable_page.dart';
+import 'package:cube_system/features/timetable_page/ui/timetable_page.dart';
 
 void main() {
   runApp(const MainApp());
