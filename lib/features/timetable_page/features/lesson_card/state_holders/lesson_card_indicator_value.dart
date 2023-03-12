@@ -6,6 +6,8 @@ import 'package:cube_system/features/timetable_page/state_holders/pairs_timings.
 
 final lessonCardIndicatorValue =
     Provider.family.autoDispose<double, LessonFullNamesInDb>((ref, lesson) {
+  final dateTime = ref.watch(currentDateTime);
+
   final number = lesson.number;
   final timing = ref.watch(pairsTimings)[number]!;
 
@@ -18,8 +20,6 @@ final lessonCardIndicatorValue =
 
   final lessonStartDateTime = lessonDate.add(startDuration);
   final lessonEndDateTime = lessonDate.add(endDuration);
-
-  final dateTime = ref.watch(currentDateTime);
 
   if (lessonStartDateTime.isAfter(dateTime)) return 1;
   if (lessonEndDateTime.isBefore(dateTime)) return 0;

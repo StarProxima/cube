@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cube_system/api/cube_api.dart';
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_selected_date.dart';
 import 'package:cube_system/gen/api/cube_api.swagger.dart';
