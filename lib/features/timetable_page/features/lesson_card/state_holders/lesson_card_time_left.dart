@@ -16,6 +16,7 @@ final lessonCardTimeLeft = StateProvider<DateTime?>((ref) {
     hours: dateTime.hour,
     minutes: dateTime.minute,
     seconds: dateTime.second,
+    milliseconds: dateTime.millisecond,
   );
 
   if (currentDuration > endDuration) return null;
