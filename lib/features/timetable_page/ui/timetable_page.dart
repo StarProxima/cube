@@ -9,7 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_app_bar.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_header.dart';
 
-import 'package:cube_system/features/timetable_page/managers/timetable_datetime_manager.dart';
+import 'package:cube_system/features/timetable_page/managers/timetable_date_time_manager.dart';
 
 // final _load = FutureProvider<void>((ref) async {
 //   await Future(() {});
@@ -23,8 +23,8 @@ class TimetablePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final timeManager = ref.watch(timetableDatetimeManager);
-    timeManager.setCurrentDateTimeTimer();
-
+    timeManager.setCurrentDateLazyTimeTimer();
+    timeManager.setCurrentDateQuickTimeTimer();
     final manager = ref.read(timetablePageManager);
     manager.updateCurrentTimetable();
 

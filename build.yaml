@@ -9,3 +9,5 @@ targets:
         options:
           output_folder: 'lib/gen/api'
           input_folder: 'api_spec/'
+          separate_models: true
+          

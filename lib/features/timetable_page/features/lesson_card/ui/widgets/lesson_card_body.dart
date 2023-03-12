@@ -6,7 +6,7 @@ class LessonCardBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final name = ref.watch(
-          _lessonInLessonCard.select((value) => value.discipline?.name),
+          _lessonInLessonCard.select((value) => value.lesson.discipline?.name),
         ) ??
         "null";
     return Text(

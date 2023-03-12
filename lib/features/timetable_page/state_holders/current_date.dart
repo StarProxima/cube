@@ -7,10 +7,18 @@ final currentDate = StateProvider<DateTime>((ref) {
   return DateUtils.dateOnly(DateTime.now());
 });
 
-final currentDateTime = StateProvider<DateTime>((ref) {
+final currentDateTimeQuick = StateProvider<DateTime>((ref) {
   return DateTime.now();
 });
 
-final currentDateTimeTimer = StateProvider<Timer?>((ref) {
+final currentDateTimeQuickTimer = StateProvider<Timer?>((ref) {
+  return null;
+});
+
+final currentDateTimeLazy = StateProvider<DateTime>((ref) {
+  return DateTime.now();
+});
+
+final currentDateTimeLazyTimer = StateProvider<Timer?>((ref) {
   return null;
 });

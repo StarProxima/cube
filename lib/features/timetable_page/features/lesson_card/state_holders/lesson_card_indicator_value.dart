@@ -1,28 +1,38 @@
+import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_card_active_lesson.dart';
+import 'package:cube_system/models/lesson/lesson.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/gen/api/cube_api.swagger.dart';
 import 'package:cube_system/features/timetable_page/state_holders/current_date.dart';
-import 'package:cube_system/features/timetable_page/state_holders/pairs_timings.dart';
 
 final lessonCardIndicatorValue =
-    Provider.family.autoDispose<double, LessonFullNamesInDb>((ref, lesson) {
-  final dateTime = ref.watch(currentDateTime);
+    Provider.family.autoDispose<double, Lesson>((ref, lesson) {
+  final dateTime = ref.watch(currentDateTimeLazy);
 
-  final number = lesson.number;
-  final timing = ref.watch(pairsTimings)[number]!;
+  final timings = lesson.timings;
 
   final startDuration =
-      Duration(hours: timing.first.hour, minutes: timing.first.minute);
+      Duration(hours: timings.start.hour, minutes: timings.start.minute);
   final endDuration =
-      Duration(hours: timing.last.hour, minutes: timing.last.minute);
+      Duration(hours: timings.end.hour, minutes: timings.end.minute);
 
-  final lessonDate = lesson.date;
+  final lessonDate = lesson.lesson.date;
 
   final lessonStartDateTime = lessonDate.add(startDuration);
   final lessonEndDateTime = lessonDate.add(endDuration);
 
-  if (lessonStartDateTime.isAfter(dateTime)) return 1;
-  if (lessonEndDateTime.isBefore(dateTime)) return 0;
+  final lessonIsOver = lessonStartDateTime.isAfter(dateTime);
+  final lessonNotStarted = lessonEndDateTime.isBefore(dateTime);
+
+  final isActiveLesson = ref.read(lessonCardActiveLesson) == lesson;
+
+  if (isActiveLesson && (lessonIsOver || lessonNotStarted)) {
+    Future(() => ref.read(lessonCardActiveLesson.notifier).state = null);
+  }
+
+  if (lessonIsOver) return 0;
+  if (lessonNotStarted) return 1;
+
+  Future(() => ref.read(lessonCardActiveLesson.notifier).state = lesson);
 
   final currentDuration = Duration(
     hours: dateTime.hour,
@@ -39,5 +49,5 @@ final lessonCardIndicatorValue =
   final value =
       currentDuration.inMilliseconds / relativeEndDuration.inMilliseconds;
 
-  return 1 - value;
+  return value;
 });

@@ -6,13 +6,14 @@ class LessonCardHeader extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final number = ref
-        .watch(_lessonInLessonCard.select((value) => value.number))
+        .watch(_lessonInLessonCard.select((value) => value.lesson.number))
         .toString();
 
-    final timing = ref.watch(_timingInLessonCard);
+    final timings =
+        ref.watch(_lessonInLessonCard.select((value) => value.timings));
 
-    final timingStr =
-        '${timing.first.format(context)} - ${timing.last.format(context)}';
+    final timingsStr =
+        '${timings.start.format(context)} - ${timings.end.format(context)}';
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -38,15 +39,12 @@ class LessonCardHeader extends ConsumerWidget {
             ),
             const SizedBox(width: 8),
             Text(
-              timingStr,
+              timingsStr,
               style: const TextStyle(fontSize: 12),
             ),
           ],
         ),
-        const Text(
-          '',
-          style: TextStyle(fontSize: 10),
-        ),
+        const LessonCardTimeLeft(),
       ],
     );
   }
