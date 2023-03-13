@@ -13,18 +13,21 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  json_annotation: ^4.8.0
   freezed_annotation: ^2.2.0
   theme_tailor_annotation: ^1.0.3
+
   proxima_logger: ^0.6.3
   intl: ^0.17.0
   google_fonts: ^4.0.3
-  
   flutter_svg: ^2.0.2
   easy_splash_screen: ^1.0.4
+
   flutter_riverpod: ^2.3.0
 
   chopper: ^6.1.1
-  json_annotation: ^4.8.0
+
+
 
 
 dev_dependencies:
