@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:cube_system/api/cube_api.dart';
 import 'package:cube_system/features/timetable_page/managers/lesson_convertor.dart';
-import 'package:cube_system/features/timetable_page/state_holders/timetable_page_selected_date.dart';
+import 'package:cube_system/features/timetable_page/state_holders/selected_date.dart';
 import 'package:cube_system/gen/api/cube_api.swagger.dart';
 import 'package:cube_system/models/lesson/lesson.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,12 +10,16 @@ import 'package:intl/intl.dart';
 
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_lessons.dart';
 
+import 'package:cube_system/features/timetable_page/state_holders/current_picked_date_in_page_view.dart';
+
 final timetablePageManager = Provider<TimetablePageManager>((ref) {
   return TimetablePageManager(
     api: ref.watch(cubeApi),
     timetable: ref.watch(timetablePageTimetable.notifier),
-    selectedDate: ref.watch(timetablePageSelectedDate.notifier),
+    selectedDate: ref.watch(selectedDate.notifier),
     lessonConvertor: ref.watch(lessonConvertor),
+    currentPickedDateInPageView:
+        ref.watch(currentPickedDateInPageView.notifier),
   );
 });
 
@@ -24,6 +28,7 @@ class TimetablePageManager {
 
   final StateController<Map<DateTime, List<Lesson>>> timetable;
   final StateController<DateTime> selectedDate;
+  final StateController<DateTime> currentPickedDateInPageView;
 
   final LessonConvertor lessonConvertor;
 
@@ -32,6 +37,7 @@ class TimetablePageManager {
     required this.timetable,
     required this.selectedDate,
     required this.lessonConvertor,
+    required this.currentPickedDateInPageView,
   });
 
   Future<void> updateCurrentTimetable() async {
@@ -80,6 +86,17 @@ class TimetablePageManager {
 
     if (newDate.isBefore(weekStart) || newDate.isAfter(weekEnd)) {
       updateCurrentTimetable();
+    }
+  }
+
+  void handlePageViewChange(DateTime newDate) {
+    final lastDate = currentPickedDateInPageView.state;
+    currentPickedDateInPageView.state = newDate;
+
+    //Если предыщая дата является выбранной, то мы меняем страницу с помощью свайпа,
+    //поэтому нужно обновить выбранную дату, иначе дата выбирается виджетом WeekTime
+    if (lastDate == selectedDate.state) {
+      pickSelectedDate(newDate);
     }
   }
 }

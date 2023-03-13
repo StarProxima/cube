@@ -9,19 +9,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_date_time_manager.dart';
 
 import 'package:cube_system/features/timetable_page/features/week_timeline/ui/week_timeline.dart';
-import 'package:cube_system/features/timetable_page/state_holders/timetable_page_selected_date.dart';
+import 'package:cube_system/features/timetable_page/state_holders/selected_date.dart';
 
-// final _load = FutureProvider<void>((ref) async {
-//   await Future(() {});
-// });
-
-// final targetDateForPageView = StateProvider<DateTime>((ref) {
-//   return ref.read(timetablePageSelectedDate);
-// });
-
-final _pickedDateTimeInPageView = StateProvider<DateTime>((ref) {
-  return ref.read(timetablePageSelectedDate);
-});
+import 'package:cube_system/features/timetable_page/state_holders/current_picked_date_in_page_view.dart';
 
 class TimetablePage extends ConsumerWidget {
   const TimetablePage({
@@ -55,10 +45,11 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
   Widget build(BuildContext context) {
     final manager = ref.read(timetablePageManager);
 
-    final date = ref.read(currentDate);
+    final date = ref.watch(currentDate);
 
-    ref.listen(timetablePageSelectedDate, (prev, next) {
-      if (ref.read(_pickedDateTimeInPageView) == next) return;
+    // Обрабатывается изменение выбранной даты из WeekTimeline.
+    ref.listen(selectedDate, (prev, next) {
+      if (ref.read(currentPickedDateInPageView) == next) return;
       final targetPage = initialPage - date.difference(next).inDays;
 
       final distanceIsTooLong =
@@ -74,6 +65,9 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
         );
       }
     });
+
+    DateTime getDateByPageIndex(int index) =>
+        date.add(Duration(days: index - initialPage));
 
     return Scaffold(
       appBar: const TimetablePageAppBar(),
@@ -93,19 +87,12 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
             child: PageView.builder(
               controller: pageController,
               itemCount: initialPage * 2,
-              onPageChanged: (index) {
-                final newDate = date.add(Duration(days: index - initialPage));
-                final selectedDate = ref.read(timetablePageSelectedDate);
-                final lastDate = ref.read(_pickedDateTimeInPageView);
-                ref.read(_pickedDateTimeInPageView.notifier).state = newDate;
-                if (lastDate == selectedDate) {
-                  manager.pickSelectedDate(newDate);
-                }
-              },
+              onPageChanged: (index) => manager.handlePageViewChange(
+                getDateByPageIndex(index),
+              ),
               itemBuilder: (context, index) {
-                final day = date.add(Duration(days: index - initialPage));
                 return TimetablePageDay(
-                  date: day,
+                  date: getDateByPageIndex(index),
                 );
               },
             ),

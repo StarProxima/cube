@@ -1,4 +1,4 @@
-import 'package:cube_system/features/timetable_page/state_holders/timetable_page_selected_date.dart';
+import 'package:cube_system/features/timetable_page/state_holders/selected_date.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -22,7 +22,7 @@ class _WeekTimelineState extends ConsumerState<WeekTimeline> {
     final weekDay = ref.watch(currentDate).weekday - 1;
 
     ref.listen<DateTime>(
-      timetablePageSelectedDate,
+      selectedDate,
       (previous, next) {
         // var offsetDay = Duration(
         //   days: next.inDays + weekDay,

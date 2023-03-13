@@ -1,5 +1,5 @@
 import 'package:cube_system/features/timetable_page/state_holders/current_date.dart';
-import 'package:cube_system/features/timetable_page/state_holders/timetable_page_selected_date.dart';
+import 'package:cube_system/features/timetable_page/state_holders/selected_date.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,7 +20,7 @@ class WeekTimelineDayButton extends ConsumerWidget {
     final manager = ref.watch(weekTimelineManager);
 
     final isCurrentDate = date == ref.watch(currentDate);
-    final isSelectedDate = date == ref.watch(timetablePageSelectedDate);
+    final isSelectedDate = date == ref.watch(selectedDate);
 
     final color = isSelectedDate
         ? Colors.blue
@@ -48,7 +48,7 @@ class WeekTimelineDayButton extends ConsumerWidget {
                 color: context.colors.subduedText,
               ),
             ),
-            const SizedBox(height: 2),
+            const SizedBox(height: 4),
             Container(
               padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 5),
               decoration: BoxDecoration(
