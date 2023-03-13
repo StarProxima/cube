@@ -1,3 +1,6 @@
+import 'package:cube_system/styles/app_colors/app_colors.dart';
+import 'package:cube_system/styles/app_text_styles/app_text_styles.dart';
+import 'package:cube_system/styles/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,18 +16,26 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ProviderScope(
+    final appColors = AppColors.light;
+    final appTextStyles = AppTextStyles.light;
+
+    return ProviderScope(
       child: MaterialApp(
-        localizationsDelegates: [
+        title: 'Cube',
+        localizationsDelegates: const [
           GlobalCupertinoLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
         ],
-        supportedLocales: [
+        supportedLocales: const [
           Locale('ru'),
           Locale('en'),
         ],
-        title: 'StudRasp',
-        home: TimetablePage(),
+        themeMode: ThemeMode.light,
+        theme: AppTheme.themeByStyles(
+          colors: appColors,
+          textStyles: appTextStyles,
+        ),
+        home: const TimetablePage(),
       ),
     );
   }

@@ -43,8 +43,8 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
   @override
   Widget build(BuildContext context) {
     final manager = ref.read(timetablePageManager);
-    final date = ref.watch(timetablePageSelectedDate);
 
+    final date = ref.watch(timetablePageSelectedDate);
     final lessons = ref.watch(timetablePageDayLessons(date));
 
     return Scaffold(

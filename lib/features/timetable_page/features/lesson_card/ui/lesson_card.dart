@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:cube_system/gen/api/cube_api.swagger.dart';
-import 'package:cube_system/features/timetable_page/state_holders/pairs_timings.dart';
 import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_card_indicator_value.dart';
 
 import 'package:cube_system/models/lesson/lesson.dart';
@@ -22,30 +20,15 @@ final _lessonInLessonCard = Provider<Lesson>((ref) {
 });
 
 class LessonCard extends ConsumerWidget {
-  final LessonFullNamesInDb lesson;
+  final Lesson lesson;
 
   const LessonCard(this.lesson, {super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final number = lesson.number;
-
-    final timings = ref.watch(pairsTimings)[number]!;
-
-    final hexColor = lesson.type.color;
-
-    final color =
-        Color(int.parse(hexColor.substring(1, 7), radix: 16) + 0xFF000000);
-
-    final lessonWithTimings = Lesson(
-      lesson: lesson,
-      timings: timings,
-      color: color,
-    );
-
     return ProviderScope(
       overrides: [
-        _lessonInLessonCard.overrideWithValue(lessonWithTimings),
+        _lessonInLessonCard.overrideWithValue(lesson),
       ],
       child: Stack(
         children: [

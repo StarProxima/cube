@@ -25,6 +25,7 @@ class LessonCardHeader extends ConsumerWidget {
             Container(
               height: 22,
               width: 22,
+              padding: const EdgeInsets.only(left: 0.75),
               decoration: BoxDecoration(
                 color: color,
                 shape: BoxShape.circle,

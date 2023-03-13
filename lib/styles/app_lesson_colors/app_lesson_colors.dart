@@ -5,14 +5,14 @@ import 'package:theme_tailor_annotation/theme_tailor_annotation.dart';
 part 'app_lesson_colors.tailor.dart';
 
 @Tailor(
-  themes: ['light'],
+  themes: ['cube', 'custom'],
   themeGetter: ThemeGetter.none,
 )
 class _$AppLessonColors {
-  static List<Color> lecture = [Colors.amber];
-  static List<Color> laboratory = [Colors.teal];
-  static List<Color> practice = [Colors.blueGrey];
-  static List<Color> seminar = [Colors.lightBlue];
-  static List<Color> ksrs = [Colors.grey[400]!];
-  static List<Color> additional = [Colors.pink];
+  static List<Color?> lecture = [null, Colors.orange];
+  static List<Color?> laboratory = [null, Colors.indigo];
+  static List<Color?> practice = [null, Colors.blueGrey];
+  static List<Color?> seminar = [null, Colors.lightBlue];
+  static List<Color?> ksrs = [null, Colors.grey[400]!];
+  static List<Color?> additional = [null, Colors.pink];
 }
