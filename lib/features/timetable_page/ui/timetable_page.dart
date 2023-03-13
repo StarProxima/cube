@@ -57,6 +57,10 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
             child: TimetablePageHeader(),
           ),
           const WeekTimeline(),
+          const Divider(
+            thickness: 1,
+            height: 1,
+          ),
           Expanded(
             child: ListView.separated(
               padding: const EdgeInsets.all(16),

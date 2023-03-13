@@ -45,13 +45,4 @@ class _$AppTextStyles {
       color: _textColor,
     ),
   ];
-
-  static List<TextStyle> iconLabel = [
-    GoogleFonts.inter(
-      fontSize: 11,
-      fontWeight: FontWeight.w700,
-      height: 1.1,
-      color: Colors.white,
-    ),
-  ];
 }

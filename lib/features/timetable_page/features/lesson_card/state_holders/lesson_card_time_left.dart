@@ -27,7 +27,7 @@ final lessonCardTimeLeft = StateProvider<DateTime?>((ref) {
 final lessonCardTimeLeftStr = StateProvider<String>((ref) {
   final timeLeft = ref.watch(lessonCardTimeLeft);
 
-  if (timeLeft == null) return '00:00:00';
+  if (timeLeft == null) return '00:00';
 
   final timeLeftBuffer = StringBuffer();
 

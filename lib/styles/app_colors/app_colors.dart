@@ -13,4 +13,5 @@ class _$AppColors {
   static List<Color> card = [Colors.blueGrey[50]!];
   static List<Color> text = [const Color(0xFF2B2B2B)];
   static List<Color> subduedText = [const Color.fromARGB(255, 109, 109, 109)];
+  static List<Color> border = [const Color(0xFFDEE2F5)];
 }

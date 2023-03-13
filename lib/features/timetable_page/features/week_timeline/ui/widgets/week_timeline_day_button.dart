@@ -1,5 +1,6 @@
 import 'package:cube_system/features/timetable_page/state_holders/current_date.dart';
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_selected_date.dart';
+import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -21,30 +22,47 @@ class WeekTimelineDayButton extends ConsumerWidget {
     final isCurrentDate = date == ref.watch(currentDate);
     final isSelectedDate = date == ref.watch(timetablePageSelectedDate);
 
+    final color = isSelectedDate
+        ? Colors.blue
+        : isCurrentDate
+            ? Colors.blue.withOpacity(0.5)
+            : null;
+
     return Container(
       height: 48,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(width: isCurrentDate ? 2 : 1),
-        color: isSelectedDate ? Colors.blueGrey[100] : null,
+        borderRadius: BorderRadius.circular(8),
+        color: null,
       ),
       child: InkWell(
         onTap: () => manager.pickSelectedDate(date),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(8),
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               DateFormat('EEE', 'ru').format(date),
-              style: const TextStyle(
-                fontSize: 10,
+              style: context.textStyles.smallLabel.copyWith(
+                color: context.colors.subduedText,
               ),
             ),
-            Text(
-              '${date.day}',
-              style: const TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w800,
+            const SizedBox(height: 2),
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 5),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                color: color,
+              ),
+              child: Text(
+                '${date.day}',
+                style: context.textStyles.label.copyWith(
+                  color: isSelectedDate || isCurrentDate
+                      ? context.colors.white
+                      : context.colors.text,
+                  fontWeight: FontWeight.w800,
+                ),
               ),
             ),
           ],
