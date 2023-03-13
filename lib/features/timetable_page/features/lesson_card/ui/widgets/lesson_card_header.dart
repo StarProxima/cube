@@ -25,7 +25,7 @@ class LessonCardHeader extends ConsumerWidget {
             Container(
               height: 22,
               width: 22,
-              padding: const EdgeInsets.only(left: 0.75),
+              padding: const EdgeInsets.only(left: 0.75, bottom: 0.75),
               decoration: BoxDecoration(
                 color: color,
                 shape: BoxShape.circle,
@@ -33,9 +33,7 @@ class LessonCardHeader extends ConsumerWidget {
               child: Center(
                 child: Text(
                   number,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
+                  style: context.textStyles.label.copyWith(
                     color: Colors.white,
                   ),
                 ),
@@ -44,7 +42,9 @@ class LessonCardHeader extends ConsumerWidget {
             const SizedBox(width: 8),
             Text(
               timingsStr,
-              style: const TextStyle(fontSize: 12),
+              style: context.textStyles.smallLabel.copyWith(
+                color: context.colors.subduedText,
+              ),
             ),
           ],
         ),

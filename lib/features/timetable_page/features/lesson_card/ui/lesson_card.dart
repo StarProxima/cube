@@ -1,3 +1,4 @@
+import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_card_indicator_value.dart';
@@ -36,7 +37,7 @@ class LessonCard extends ConsumerWidget {
             margin: const EdgeInsets.only(top: 8),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(7),
-              color: Colors.blueGrey[50],
+              color: context.colors.card,
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.15),

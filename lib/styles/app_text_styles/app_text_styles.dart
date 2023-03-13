@@ -20,4 +20,38 @@ class _$AppTextStyles {
       color: _textColor,
     ),
   ];
+
+  static List<TextStyle> label = [
+    GoogleFonts.inter(
+      fontSize: 14,
+      fontWeight: FontWeight.w600,
+      color: _textColor,
+    ),
+  ];
+
+  static List<TextStyle> smallLabel = [
+    GoogleFonts.inter(
+      fontSize: 12,
+      fontWeight: FontWeight.w500,
+      color: _textColor,
+    ),
+  ];
+
+  static List<TextStyle> chipLabel = [
+    GoogleFonts.inter(
+      fontSize: 12,
+      fontWeight: FontWeight.w600,
+      height: 1,
+      color: _textColor,
+    ),
+  ];
+
+  static List<TextStyle> iconLabel = [
+    GoogleFonts.inter(
+      fontSize: 11,
+      fontWeight: FontWeight.w700,
+      height: 1.1,
+      color: Colors.white,
+    ),
+  ];
 }

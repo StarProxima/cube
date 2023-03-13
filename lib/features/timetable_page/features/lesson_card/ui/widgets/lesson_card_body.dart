@@ -11,7 +11,7 @@ class LessonCardBody extends ConsumerWidget {
         "null";
     return Text(
       name,
-      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+      style: context.textStyles.label,
     );
   }
 }

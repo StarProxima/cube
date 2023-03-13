@@ -46,7 +46,9 @@ class LessonCardFooter extends ConsumerWidget {
                       ),
                       child: Text(
                         teachers,
-                        style: const TextStyle(fontSize: 12),
+                        style: context.textStyles.smallLabel.copyWith(
+                          color: context.colors.subduedText,
+                        ),
                       ),
                     ),
                   ),
@@ -63,7 +65,8 @@ class LessonCardFooter extends ConsumerWidget {
                 ),
                 child: Text(
                   type,
-                  style: const TextStyle(fontSize: 12, color: Colors.white),
+                  style: context.textStyles.chipLabel
+                      .copyWith(color: Colors.white),
                 ),
               ),
             ],
@@ -77,7 +80,9 @@ class LessonCardFooter extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
               child: Text(
                 place,
-                style: const TextStyle(fontSize: 12),
+                style: context.textStyles.smallLabel.copyWith(
+                  color: context.colors.subduedText,
+                ),
               ),
             ),
           ),

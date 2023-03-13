@@ -47,11 +47,8 @@ class LessonCardTimeLeft extends ConsumerWidget {
 
         return Text(
           timeLeftBuffer.toString(),
-          style: const TextStyle(
-            fontSize: 11,
-            fontWeight: FontWeight.w600,
-            color: Colors.white,
-          ),
+          style: context.textStyles.chipLabel
+              .copyWith(color: context.colors.white),
         );
       },
     );
