@@ -1,19 +1,27 @@
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
-import 'package:cube_system/features/timetable_page/state_holders/timetable_page_lessons.dart';
-import 'package:cube_system/features/timetable_page/state_holders/timetable_page_selected_date.dart';
-import 'package:cube_system/features/timetable_page/features/lesson_card/ui/lesson_card.dart';
-import 'package:cube_system/features/timetable_page/features/week_timeline/ui/week_timeline.dart';
+import 'package:cube_system/features/timetable_page/state_holders/current_date.dart';
+import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_app_bar.dart';
+import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_day.dart';
+import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_app_bar.dart';
-import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_header.dart';
-
 import 'package:cube_system/features/timetable_page/managers/timetable_date_time_manager.dart';
+
+import 'package:cube_system/features/timetable_page/features/week_timeline/ui/week_timeline.dart';
+import 'package:cube_system/features/timetable_page/state_holders/timetable_page_selected_date.dart';
 
 // final _load = FutureProvider<void>((ref) async {
 //   await Future(() {});
 // });
+
+// final targetDateForPageView = StateProvider<DateTime>((ref) {
+//   return ref.read(timetablePageSelectedDate);
+// });
+
+final _pickedDateTimeInPageView = StateProvider<DateTime>((ref) {
+  return ref.read(timetablePageSelectedDate);
+});
 
 class TimetablePage extends ConsumerWidget {
   const TimetablePage({
@@ -23,8 +31,8 @@ class TimetablePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final timeManager = ref.watch(timetableDatetimeManager);
-    timeManager.setCurrentDateLazyTimeTimer();
-    timeManager.setCurrentDateQuickTimeTimer();
+    timeManager.setTimers();
+
     final manager = ref.read(timetablePageManager);
     manager.updateCurrentTimetable();
 
@@ -40,12 +48,32 @@ class _TimetablePage extends ConsumerStatefulWidget {
 }
 
 class _TimetablePageState extends ConsumerState<_TimetablePage> {
+  final initialPage = 1000;
+  late final pageController = PageController(initialPage: initialPage);
+
   @override
   Widget build(BuildContext context) {
     final manager = ref.read(timetablePageManager);
 
-    final date = ref.watch(timetablePageSelectedDate);
-    final lessons = ref.watch(timetablePageDayLessons(date));
+    final date = ref.read(currentDate);
+
+    ref.listen(timetablePageSelectedDate, (prev, next) {
+      if (ref.read(_pickedDateTimeInPageView) == next) return;
+      final targetPage = initialPage - date.difference(next).inDays;
+
+      final distanceIsTooLong =
+          (pageController.page!.round() - targetPage).abs() > 7;
+
+      if (distanceIsTooLong) {
+        pageController.jumpToPage(targetPage);
+      } else {
+        pageController.animateToPage(
+          targetPage,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+        );
+      }
+    });
 
     return Scaffold(
       appBar: const TimetablePageAppBar(),
@@ -62,14 +90,24 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
             height: 1,
           ),
           Expanded(
-            child: ListView.separated(
-              padding: const EdgeInsets.all(16),
-              physics: const BouncingScrollPhysics(
-                parent: AlwaysScrollableScrollPhysics(),
-              ),
-              itemCount: lessons.length,
-              itemBuilder: (context, index) => LessonCard(lessons[index]),
-              separatorBuilder: (context, index) => const SizedBox(height: 16),
+            child: PageView.builder(
+              controller: pageController,
+              itemCount: initialPage * 2,
+              onPageChanged: (index) {
+                final newDate = date.add(Duration(days: index - initialPage));
+                final selectedDate = ref.read(timetablePageSelectedDate);
+                final lastDate = ref.read(_pickedDateTimeInPageView);
+                ref.read(_pickedDateTimeInPageView.notifier).state = newDate;
+                if (lastDate == selectedDate) {
+                  manager.pickSelectedDate(newDate);
+                }
+              },
+              itemBuilder: (context, index) {
+                final day = date.add(Duration(days: index - initialPage));
+                return TimetablePageDay(
+                  date: day,
+                );
+              },
             ),
           ),
         ],

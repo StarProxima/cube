@@ -10,7 +10,9 @@ final weekTimelineManager = Provider<WeekTimelineManager>((ref) {
 class WeekTimelineManager {
   final TimetablePageManager timetableManager;
 
-  WeekTimelineManager({required this.timetableManager});
+  WeekTimelineManager({
+    required this.timetableManager,
+  });
 
   void pickSelectedDate(DateTime date) {
     timetableManager.pickSelectedDate(date);

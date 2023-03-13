@@ -32,6 +32,11 @@ class TimetableDatetimeManager {
     required this.dateTimeQuickDelay,
   });
 
+  void setTimers() {
+    setCurrentDateLazyTimeTimer();
+    setCurrentDateQuickTimeTimer();
+  }
+
   void setCurrentDateLazyTimeTimer() async {
     await Future(() {});
 
