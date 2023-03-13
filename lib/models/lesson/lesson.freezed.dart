@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Lesson {
   LessonFullNamesInDb get lesson => throw _privateConstructorUsedError;
   LessonTimings get timings => throw _privateConstructorUsedError;
+  Color get color => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LessonCopyWith<Lesson> get copyWith => throw _privateConstructorUsedError;
@@ -28,7 +29,7 @@ abstract class $LessonCopyWith<$Res> {
   factory $LessonCopyWith(Lesson value, $Res Function(Lesson) then) =
       _$LessonCopyWithImpl<$Res, Lesson>;
   @useResult
-  $Res call({LessonFullNamesInDb lesson, LessonTimings timings});
+  $Res call({LessonFullNamesInDb lesson, LessonTimings timings, Color color});
 
   $LessonTimingsCopyWith<$Res> get timings;
 }
@@ -48,6 +49,7 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
   $Res call({
     Object? lesson = null,
     Object? timings = null,
+    Object? color = null,
   }) {
     return _then(_value.copyWith(
       lesson: null == lesson
@@ -58,6 +60,10 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
           ? _value.timings
           : timings // ignore: cast_nullable_to_non_nullable
               as LessonTimings,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color,
     ) as $Val);
   }
 
@@ -76,7 +82,7 @@ abstract class _$$_LessonCopyWith<$Res> implements $LessonCopyWith<$Res> {
       __$$_LessonCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({LessonFullNamesInDb lesson, LessonTimings timings});
+  $Res call({LessonFullNamesInDb lesson, LessonTimings timings, Color color});
 
   @override
   $LessonTimingsCopyWith<$Res> get timings;
@@ -94,6 +100,7 @@ class __$$_LessonCopyWithImpl<$Res>
   $Res call({
     Object? lesson = null,
     Object? timings = null,
+    Object? color = null,
   }) {
     return _then(_$_Lesson(
       lesson: null == lesson
@@ -104,6 +111,10 @@ class __$$_LessonCopyWithImpl<$Res>
           ? _value.timings
           : timings // ignore: cast_nullable_to_non_nullable
               as LessonTimings,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color,
     ));
   }
 }
@@ -111,16 +122,18 @@ class __$$_LessonCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Lesson implements _Lesson {
-  _$_Lesson({required this.lesson, required this.timings});
+  _$_Lesson({required this.lesson, required this.timings, required this.color});
 
   @override
   final LessonFullNamesInDb lesson;
   @override
   final LessonTimings timings;
+  @override
+  final Color color;
 
   @override
   String toString() {
-    return 'Lesson(lesson: $lesson, timings: $timings)';
+    return 'Lesson(lesson: $lesson, timings: $timings, color: $color)';
   }
 
   @override
@@ -129,11 +142,12 @@ class _$_Lesson implements _Lesson {
         (other.runtimeType == runtimeType &&
             other is _$_Lesson &&
             (identical(other.lesson, lesson) || other.lesson == lesson) &&
-            (identical(other.timings, timings) || other.timings == timings));
+            (identical(other.timings, timings) || other.timings == timings) &&
+            (identical(other.color, color) || other.color == color));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, lesson, timings);
+  int get hashCode => Object.hash(runtimeType, lesson, timings, color);
 
   @JsonKey(ignore: true)
   @override
@@ -145,12 +159,15 @@ class _$_Lesson implements _Lesson {
 abstract class _Lesson implements Lesson {
   factory _Lesson(
       {required final LessonFullNamesInDb lesson,
-      required final LessonTimings timings}) = _$_Lesson;
+      required final LessonTimings timings,
+      required final Color color}) = _$_Lesson;
 
   @override
   LessonFullNamesInDb get lesson;
   @override
   LessonTimings get timings;
+  @override
+  Color get color;
   @override
   @JsonKey(ignore: true)
   _$$_LessonCopyWith<_$_Lesson> get copyWith =>

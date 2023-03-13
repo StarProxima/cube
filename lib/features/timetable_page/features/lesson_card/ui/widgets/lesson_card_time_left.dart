@@ -17,7 +17,11 @@ class LessonCardTimeLeft extends ConsumerWidget {
         if (timeLeft == null) {
           return const Text(
             '00:00:00',
-            style: TextStyle(fontSize: 10),
+            style: TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+            ),
           );
         }
 
@@ -41,11 +45,13 @@ class LessonCardTimeLeft extends ConsumerWidget {
           );
         }
 
-        print(timeLeftBuffer.toString());
-
         return Text(
           timeLeftBuffer.toString(),
-          style: const TextStyle(fontSize: 10),
+          style: const TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+          ),
         );
       },
     );

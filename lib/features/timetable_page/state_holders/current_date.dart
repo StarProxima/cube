@@ -22,7 +22,7 @@ final currentDateTimeQuickDelay = StateProvider<Duration>((ref) {
       ref.watch(lessonCardTimeLeft.select((value) => value?.minute));
 
   if (timeLeft != null && timeLeft < 1) {
-    return const Duration(milliseconds: 40);
+    return const Duration(milliseconds: 10);
   }
   return const Duration(seconds: 1);
 });

@@ -15,6 +15,7 @@ part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widget
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_header.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_indicator.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_time_left.dart';
+part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_icons.dart';
 
 final _lessonInLessonCard = Provider<Lesson>((ref) {
   return throw UnimplementedError();
@@ -31,7 +32,16 @@ class LessonCard extends ConsumerWidget {
 
     final timings = ref.watch(pairsTimings)[number]!;
 
-    final lessonWithTimings = Lesson(lesson: lesson, timings: timings);
+    final hexColor = lesson.type.color;
+
+    final color =
+        Color(int.parse(hexColor.substring(1, 7), radix: 16) + 0xFF000000);
+
+    final lessonWithTimings = Lesson(
+      lesson: lesson,
+      timings: timings,
+      color: color,
+    );
 
     return ProviderScope(
       overrides: [
@@ -40,7 +50,7 @@ class LessonCard extends ConsumerWidget {
       child: Stack(
         children: [
           Container(
-            margin: const EdgeInsets.only(top: 6),
+            margin: const EdgeInsets.only(top: 8),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(7),
               color: Colors.blueGrey[50],
@@ -53,86 +63,59 @@ class LessonCard extends ConsumerWidget {
               ],
             ),
             clipBehavior: Clip.antiAlias,
-            child: IntrinsicHeight(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const LessonCardIndicator(),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                        left: 12,
-                        right: 12,
-                        top: 8,
-                        bottom: 8,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          LessonCardHeader(),
-                          SizedBox(height: 8),
-                          LessonCardBody(),
-                          SizedBox(height: 8),
-                          LessonCardFooter(),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Positioned(
-            top: 0,
-            right: 8,
-            child: Row(
-              children: [
-                // Container(
-                //   margin: const EdgeInsets.only(right: 4),
-                //   child: const Icon(
-                //     Icons.notifications,
-                //     size: 20,
-                //     color: Colors.amber,
-                //   ),
-                // ),
-                Container(
-                  margin: const EdgeInsets.only(right: 4),
-                  width: 14,
-                  height: 14,
-                  decoration: const BoxDecoration(
-                    color: Colors.orange,
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    Icons.priority_high_rounded,
-                    size: 11,
-                    color: Colors.white,
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(right: 4),
-                  width: 14,
-                  height: 14,
-                  decoration: const BoxDecoration(
-                    color: Colors.orange,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Center(
-                    child: Container(
-                      padding: const EdgeInsets.only(top: 0.75, left: 0.75),
-                      child: const Text(
-                        '2',
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
+            child: Material(
+              type: MaterialType.transparency,
+              child: IntrinsicHeight(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const LessonCardIndicator(),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {},
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                left: 12,
+                                right: 12,
+                                top: 8,
+                                bottom: 8,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  LessonCardHeader(),
+                                  SizedBox(height: 8),
+                                  LessonCardBody(),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                left: 4,
+                                right: 4,
+                                bottom: 4,
+                              ),
+                              child: Column(
+                                children: const [
+                                  LessonCardFooter(),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
+          ),
+          const Positioned(
+            top: 0,
+            right: 8,
+            child: LessonCardIcons(),
           ),
         ],
       ),

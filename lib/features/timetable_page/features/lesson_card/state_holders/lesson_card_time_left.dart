@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final lessonCardTimeLeft = StateProvider<DateTime?>((ref) {
   final dateTime = ref.watch(currentDateTimeQuick);
-  final activeLesson = ref.read(lessonCardActiveLesson);
+  final activeLesson = ref.watch(lessonCardActiveLesson);
 
   if (activeLesson == null) return null;
 

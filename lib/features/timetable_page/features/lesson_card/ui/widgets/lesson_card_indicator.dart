@@ -15,19 +15,21 @@ class LessonCardIndicator extends ConsumerWidget {
       value = 0.00001;
     }
 
+    final color = ref.watch(_lessonInLessonCard.select((value) => value.color));
+
     return Container(
-      width: 5,
+      width: 6,
       decoration: BoxDecoration(
-        color: Colors.amber.withOpacity(0.6),
+        color: color.withOpacity(0.6),
       ),
       child: Align(
         alignment: Alignment.bottomCenter,
         child: FractionallySizedBox(
           heightFactor: value,
           child: Container(
-            width: 5,
-            decoration: const BoxDecoration(
-              color: Colors.amber,
+            width: 6,
+            decoration: BoxDecoration(
+              color: color,
             ),
           ),
         ),

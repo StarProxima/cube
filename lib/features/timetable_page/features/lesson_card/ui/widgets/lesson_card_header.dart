@@ -44,7 +44,6 @@ class LessonCardHeader extends ConsumerWidget {
             ),
           ],
         ),
-        const LessonCardTimeLeft(),
       ],
     );
   }

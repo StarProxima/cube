@@ -21,6 +21,10 @@ class LessonCardFooter extends ConsumerWidget {
         ) ??
         'null';
 
+    final color = ref.watch(_lessonInLessonCard.select((value) => value.color));
+
+    final teachersIsNotEmpty = teachers != "";
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -30,19 +34,33 @@ class LessonCardFooter extends ConsumerWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Flexible(
-                child: Text(
-                  teachers,
-                  style: const TextStyle(fontSize: 12),
+              if (teachersIsNotEmpty)
+                Flexible(
+                  child: InkWell(
+                    onTap: () {},
+                    borderRadius: BorderRadius.circular(8),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 4,
+                        horizontal: 8,
+                      ),
+                      child: Text(
+                        teachers,
+                        style: const TextStyle(fontSize: 12),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-              const SizedBox(width: 8),
               Container(
-                decoration: BoxDecoration(
-                  color: Colors.amber,
-                  borderRadius: BorderRadius.circular(2),
+                margin: EdgeInsets.only(
+                  bottom: 4,
+                  left: teachersIsNotEmpty ? 2 : 8,
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                decoration: BoxDecoration(
+                  color: color,
+                  borderRadius: BorderRadius.circular(2),
+                ),
                 child: Text(
                   type,
                   style: const TextStyle(fontSize: 12, color: Colors.white),
@@ -52,9 +70,16 @@ class LessonCardFooter extends ConsumerWidget {
           ),
         ),
         Flexible(
-          child: Text(
-            place,
-            style: const TextStyle(fontSize: 12),
+          child: InkWell(
+            onTap: () {},
+            borderRadius: BorderRadius.circular(8),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+              child: Text(
+                place,
+                style: const TextStyle(fontSize: 12),
+              ),
+            ),
           ),
         ),
       ],
