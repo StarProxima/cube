@@ -29,7 +29,6 @@ class WeekTimelineDayButton extends ConsumerWidget {
             : null;
 
     return Container(
-      height: 48,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         color: null,
