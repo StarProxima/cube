@@ -15,16 +15,18 @@ class LessonCardHeader extends ConsumerWidget {
     final timingsStr =
         '${timings.start.format(context)} - ${timings.end.format(context)}';
 
+    final color = ref.watch(_lessonInLessonCard.select((value) => value.color));
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
           children: [
             Container(
-              height: 24,
-              width: 24,
+              height: 22,
+              width: 22,
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.05),
+                color: color,
                 shape: BoxShape.circle,
               ),
               child: Center(
@@ -32,7 +34,8 @@ class LessonCardHeader extends ConsumerWidget {
                   number,
                   style: const TextStyle(
                     fontSize: 14,
-                    color: Colors.black,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
                   ),
                 ),
               ),
