@@ -26,7 +26,7 @@ final pairsTimings = StateProvider<Map<int, LessonTimings>>((ref) {
     ),
     5: LessonTimings(
       start: const TimeOfDay(hour: 14, minute: 10),
-      end: const TimeOfDay(hour: 15, minute: 40),
+      end: const TimeOfDay(hour: 15, minute: 30),
     ),
     6: LessonTimings(
       start: const TimeOfDay(hour: 15, minute: 40),

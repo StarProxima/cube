@@ -23,3 +23,30 @@ final lessonCardTimeLeft = StateProvider<DateTime?>((ref) {
 
   return endDateTime.subtract(currentDuration);
 });
+
+final lessonCardTimeLeftStr = StateProvider<String>((ref) {
+  final timeLeft = ref.watch(lessonCardTimeLeft);
+
+  if (timeLeft == null) return '00:00:00';
+
+  final timeLeftBuffer = StringBuffer();
+
+  if (timeLeft.hour > 0) {
+    timeLeftBuffer.write("${timeLeft.hour}:");
+  }
+
+  if (timeLeft.minute > 0 || timeLeft.hour > 0) {
+    timeLeftBuffer.write("${timeLeft.minute}".padLeft(2, '0'));
+    timeLeftBuffer.write(":");
+  }
+
+  timeLeftBuffer.write("${timeLeft.second}".padLeft(2, '0'));
+
+  if (timeLeft.minute == 0 && timeLeft.hour == 0) {
+    timeLeftBuffer.write(":");
+    timeLeftBuffer
+        .write("${timeLeft.millisecond}".padLeft(2, '0').substring(0, 2));
+  }
+
+  return timeLeftBuffer.toString();
+});
