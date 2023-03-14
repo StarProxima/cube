@@ -37,6 +37,8 @@ class LessonConvertor {
 
     final colors = lessonColors.state;
 
+    bool isEvent = false;
+
     switch (lesson.type.shortName) {
       case 'ЛК':
         color = colors.lecture;
@@ -52,6 +54,7 @@ class LessonConvertor {
         break;
       case 'КСРС':
         color = colors.ksrs;
+        isEvent = true;
         break;
       case 'ДП':
         color = colors.additional;
@@ -62,13 +65,14 @@ class LessonConvertor {
       int.parse(lesson.type.color.substring(1, 7), radix: 16) + 0xFF000000,
     );
 
-    final lessonWithTimings = Lesson(
+    final newLesson = Lesson(
       lesson: lesson,
       timings: timings,
       color: color,
       fadedColor: color.withOpacity(0.5),
+      isEvent: isEvent,
     );
 
-    return lessonWithTimings;
+    return newLesson;
   }
 }

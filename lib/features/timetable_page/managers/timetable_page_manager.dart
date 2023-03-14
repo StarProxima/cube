@@ -2,9 +2,11 @@ import 'dart:async';
 
 import 'package:cube_system/api/cube_api.dart';
 import 'package:cube_system/features/timetable_page/managers/lesson_convertor.dart';
+import 'package:cube_system/features/timetable_page/state_holders/current_date_time_state_holders.dart';
 import 'package:cube_system/features/timetable_page/state_holders/selected_date.dart';
 import 'package:cube_system/gen/api/cube_api.swagger.dart';
 import 'package:cube_system/models/lesson/lesson.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
@@ -14,35 +16,51 @@ import 'package:cube_system/features/timetable_page/state_holders/current_picked
 
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_title.dart';
 
+import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_card_expected_next_lesson.dart';
+
+import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_card_active_lesson.dart';
+
 final timetablePageManager = Provider<TimetablePageManager>((ref) {
   return TimetablePageManager(
     api: ref.watch(cubeApi),
-    timetable: ref.watch(timetablePageTimetable.notifier),
-    selectedDate: ref.watch(selectedDate.notifier),
     lessonConvertor: ref.watch(lessonConvertor),
+    timetable: ref.watch(timetablePageTimetable.notifier),
+    currentDateTime: ref.watch(currentDateTimeQuick.notifier),
+    selectedDate: ref.watch(selectedDate.notifier),
     currentPickedDateInPageView:
         ref.watch(currentPickedDateInPageView.notifier),
     timetablePageTitle: ref.watch(timetablePageTitle.notifier),
+    lessonCardActiveLesson: ref.watch(lessonCardActiveLesson.notifier),
+    lessonCardExpectedNextLesson:
+        ref.watch(lessonCardExpectedNextLesson.notifier),
+    lessonCardLastLesson: ref.watch(lessonCardLastLesson.notifier),
   );
 });
 
 class TimetablePageManager {
   final CubeApi api;
+  final LessonConvertor lessonConvertor;
 
   final StateController<Map<DateTime, List<Lesson>>> timetable;
+  final StateController<DateTime> currentDateTime;
   final StateController<DateTime> selectedDate;
   final StateController<DateTime> currentPickedDateInPageView;
   final StateController<String> timetablePageTitle;
-
-  final LessonConvertor lessonConvertor;
+  final StateController<Lesson?> lessonCardActiveLesson;
+  final StateController<Lesson?> lessonCardExpectedNextLesson;
+  final StateController<Lesson?> lessonCardLastLesson;
 
   TimetablePageManager({
     required this.api,
-    required this.timetable,
-    required this.selectedDate,
     required this.lessonConvertor,
+    required this.timetable,
+    required this.currentDateTime,
+    required this.selectedDate,
     required this.currentPickedDateInPageView,
     required this.timetablePageTitle,
+    required this.lessonCardActiveLesson,
+    required this.lessonCardExpectedNextLesson,
+    required this.lessonCardLastLesson,
   });
 
   Future<void> updateCurrentTimetable() async {
@@ -104,6 +122,31 @@ class TimetablePageManager {
     //поэтому нужно обновить выбранную дату, иначе дата выбирается виджетом WeekTime
     if (lastDate == selectedDate.state) {
       pickSelectedDate(newDate);
+    }
+  }
+
+  void findExpectedNextLesson() {
+    final curdateTime = currentDateTime.state;
+    final currentDate = DateUtils.dateOnly(curdateTime);
+
+    for (int dayOffset = 0; dayOffset < 7; dayOffset++) {
+      final date = currentDate.add(Duration(days: dayOffset));
+      final lessons = timetable.state[date];
+      if (lessons != null) {
+        for (final lesson in lessons) {
+          final lessonStart = lesson.timings.start;
+          final lessonStartDateTime = date.add(
+            Duration(hours: lessonStart.hour, minutes: lessonStart.minute),
+          );
+
+          if (curdateTime.isBefore(lessonStartDateTime) && !lesson.isEvent) {
+            lessonCardExpectedNextLesson.state = lesson;
+            return;
+          }
+
+          lessonCardLastLesson.state = lesson;
+        }
+      }
     }
   }
 }

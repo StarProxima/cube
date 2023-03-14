@@ -20,6 +20,7 @@ mixin _$Lesson {
   LessonTimings get timings => throw _privateConstructorUsedError;
   Color get color => throw _privateConstructorUsedError;
   Color get fadedColor => throw _privateConstructorUsedError;
+  bool get isEvent => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LessonCopyWith<Lesson> get copyWith => throw _privateConstructorUsedError;
@@ -34,7 +35,8 @@ abstract class $LessonCopyWith<$Res> {
       {LessonFullNamesInDb lesson,
       LessonTimings timings,
       Color color,
-      Color fadedColor});
+      Color fadedColor,
+      bool isEvent});
 
   $LessonTimingsCopyWith<$Res> get timings;
 }
@@ -56,6 +58,7 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
     Object? timings = null,
     Object? color = null,
     Object? fadedColor = null,
+    Object? isEvent = null,
   }) {
     return _then(_value.copyWith(
       lesson: null == lesson
@@ -74,6 +77,10 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
           ? _value.fadedColor
           : fadedColor // ignore: cast_nullable_to_non_nullable
               as Color,
+      isEvent: null == isEvent
+          ? _value.isEvent
+          : isEvent // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -96,7 +103,8 @@ abstract class _$$_LessonCopyWith<$Res> implements $LessonCopyWith<$Res> {
       {LessonFullNamesInDb lesson,
       LessonTimings timings,
       Color color,
-      Color fadedColor});
+      Color fadedColor,
+      bool isEvent});
 
   @override
   $LessonTimingsCopyWith<$Res> get timings;
@@ -116,6 +124,7 @@ class __$$_LessonCopyWithImpl<$Res>
     Object? timings = null,
     Object? color = null,
     Object? fadedColor = null,
+    Object? isEvent = null,
   }) {
     return _then(_$_Lesson(
       lesson: null == lesson
@@ -134,6 +143,10 @@ class __$$_LessonCopyWithImpl<$Res>
           ? _value.fadedColor
           : fadedColor // ignore: cast_nullable_to_non_nullable
               as Color,
+      isEvent: null == isEvent
+          ? _value.isEvent
+          : isEvent // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -145,7 +158,8 @@ class _$_Lesson implements _Lesson {
       {required this.lesson,
       required this.timings,
       required this.color,
-      required this.fadedColor});
+      required this.fadedColor,
+      required this.isEvent});
 
   @override
   final LessonFullNamesInDb lesson;
@@ -155,10 +169,12 @@ class _$_Lesson implements _Lesson {
   final Color color;
   @override
   final Color fadedColor;
+  @override
+  final bool isEvent;
 
   @override
   String toString() {
-    return 'Lesson(lesson: $lesson, timings: $timings, color: $color, fadedColor: $fadedColor)';
+    return 'Lesson(lesson: $lesson, timings: $timings, color: $color, fadedColor: $fadedColor, isEvent: $isEvent)';
   }
 
   @override
@@ -170,12 +186,13 @@ class _$_Lesson implements _Lesson {
             (identical(other.timings, timings) || other.timings == timings) &&
             (identical(other.color, color) || other.color == color) &&
             (identical(other.fadedColor, fadedColor) ||
-                other.fadedColor == fadedColor));
+                other.fadedColor == fadedColor) &&
+            (identical(other.isEvent, isEvent) || other.isEvent == isEvent));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, lesson, timings, color, fadedColor);
+      Object.hash(runtimeType, lesson, timings, color, fadedColor, isEvent);
 
   @JsonKey(ignore: true)
   @override
@@ -189,7 +206,8 @@ abstract class _Lesson implements Lesson {
       {required final LessonFullNamesInDb lesson,
       required final LessonTimings timings,
       required final Color color,
-      required final Color fadedColor}) = _$_Lesson;
+      required final Color fadedColor,
+      required final bool isEvent}) = _$_Lesson;
 
   @override
   LessonFullNamesInDb get lesson;
@@ -199,6 +217,8 @@ abstract class _Lesson implements Lesson {
   Color get color;
   @override
   Color get fadedColor;
+  @override
+  bool get isEvent;
   @override
   @JsonKey(ignore: true)
   _$$_LessonCopyWith<_$_Lesson> get copyWith =>

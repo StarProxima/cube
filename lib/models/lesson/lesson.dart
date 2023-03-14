@@ -14,5 +14,6 @@ class Lesson with _$Lesson {
     required LessonTimings timings,
     required Color color,
     required Color fadedColor,
+    required bool isEvent,
   }) = _Lesson;
 }
