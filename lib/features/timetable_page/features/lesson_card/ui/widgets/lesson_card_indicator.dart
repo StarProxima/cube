@@ -7,13 +7,7 @@ class LessonCardIndicator extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final lesson = ref.watch(_lessonInLessonCard);
 
-    var value = ref.watch(lessonCardIndicatorValue(lesson));
-
-    if (value >= 1) {
-      value = 0.99999;
-    } else if (value <= 0) {
-      value = 0.00001;
-    }
+    double value = ref.watch(lessonCardIndicatorValue(lesson));
 
     final color = ref.watch(_lessonInLessonCard.select((value) => value.color));
 
