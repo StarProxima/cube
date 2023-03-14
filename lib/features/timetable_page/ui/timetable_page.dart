@@ -1,5 +1,5 @@
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
-import 'package:cube_system/features/timetable_page/state_holders/current_date.dart';
+import 'package:cube_system/features/timetable_page/state_holders/current_date_time_state_holders.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_day.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_header.dart';
 import 'package:flutter/material.dart';

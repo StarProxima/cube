@@ -74,22 +74,31 @@ class LessonCardIcons extends ConsumerWidget {
             ),
           ),
         if (isActiveLessons)
-          Container(
-            margin: const EdgeInsets.only(right: 4),
-            padding: const EdgeInsets.symmetric(vertical: 1.5, horizontal: 5),
-            constraints: const BoxConstraints(
-              minWidth: 46,
-            ),
-            decoration: BoxDecoration(
-              color: color,
-              borderRadius: const BorderRadius.all(Radius.circular(16)),
-            ),
-            child: const Center(
-              child: Padding(
-                padding: EdgeInsets.only(top: 0.5, left: 0),
-                child: LessonCardTimeLeft(),
-              ),
-            ),
+          Consumer(
+            builder: (context, ref, _) {
+              ref.watch(lessonCardTimeLeftStr.select((value) => value.length));
+
+              final hasHours = (ref.read(lessonCardTimeLeft)?.hour ?? 0) > 0;
+
+              return Container(
+                margin: const EdgeInsets.only(right: 4),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 1.5, horizontal: 5),
+                constraints: BoxConstraints(
+                  minWidth: hasHours ? 66 : 46,
+                ),
+                decoration: BoxDecoration(
+                  color: color,
+                  borderRadius: const BorderRadius.all(Radius.circular(16)),
+                ),
+                child: const Center(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 0.5, left: 0),
+                    child: LessonCardTimeLeft(),
+                  ),
+                ),
+              );
+            },
           ),
       ],
     );

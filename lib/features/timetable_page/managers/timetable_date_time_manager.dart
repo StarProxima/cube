@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/features/timetable_page/state_holders/current_date.dart';
+import 'package:cube_system/features/timetable_page/state_holders/current_date_time_state_holders.dart';
 
 final timetableDatetimeManager = Provider<TimetableDatetimeManager>((ref) {
   return TimetableDatetimeManager(

@@ -1,4 +1,4 @@
-import 'package:cube_system/features/timetable_page/state_holders/current_date.dart';
+import 'package:cube_system/features/timetable_page/state_holders/current_date_time_state_holders.dart';
 import 'package:cube_system/features/timetable_page/state_holders/selected_date.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';

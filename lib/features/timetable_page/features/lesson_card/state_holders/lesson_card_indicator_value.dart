@@ -1,9 +1,8 @@
 import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_card_active_lesson.dart';
 import 'package:cube_system/models/lesson/lesson.dart';
-import 'package:cube_system/source/extensions.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/features/timetable_page/state_holders/current_date.dart';
+import 'package:cube_system/features/timetable_page/state_holders/current_date_time_state_holders.dart';
 
 import 'package:cube_system/source/utils.dart';
 
