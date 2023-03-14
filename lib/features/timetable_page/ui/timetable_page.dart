@@ -1,6 +1,5 @@
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/timetable_page/state_holders/current_date.dart';
-import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_app_bar.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_day.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_header.dart';
 import 'package:flutter/material.dart';
@@ -70,34 +69,36 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
         date.add(Duration(days: index - initialPage));
 
     return Scaffold(
-      appBar: const TimetablePageAppBar(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Padding(
-            padding: EdgeInsets.all(12),
-            child: TimetablePageHeader(),
-          ),
-          const WeekTimeline(),
-          const Divider(
-            thickness: 1,
-            height: 1,
-          ),
-          Expanded(
-            child: PageView.builder(
-              controller: pageController,
-              itemCount: initialPage * 2,
-              onPageChanged: (index) => manager.handlePageViewChange(
-                getDateByPageIndex(index),
-              ),
-              itemBuilder: (context, index) {
-                return TimetablePageDay(
-                  date: getDateByPageIndex(index),
-                );
-              },
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(),
+              child: TimetablePageHeader(),
             ),
-          ),
-        ],
+            const WeekTimeline(),
+            const SizedBox(height: 10),
+            const Divider(
+              thickness: 1,
+              height: 1,
+            ),
+            Expanded(
+              child: PageView.builder(
+                controller: pageController,
+                itemCount: initialPage * 2,
+                onPageChanged: (index) => manager.handlePageViewChange(
+                  getDateByPageIndex(index),
+                ),
+                itemBuilder: (context, index) {
+                  return TimetablePageDay(
+                    date: getDateByPageIndex(index),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

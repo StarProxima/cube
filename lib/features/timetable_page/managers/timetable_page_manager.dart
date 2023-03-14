@@ -12,6 +12,8 @@ import 'package:cube_system/features/timetable_page/state_holders/timetable_page
 
 import 'package:cube_system/features/timetable_page/state_holders/current_picked_date_in_page_view.dart';
 
+import 'package:cube_system/features/timetable_page/state_holders/timetable_page_title.dart';
+
 final timetablePageManager = Provider<TimetablePageManager>((ref) {
   return TimetablePageManager(
     api: ref.watch(cubeApi),
@@ -20,6 +22,7 @@ final timetablePageManager = Provider<TimetablePageManager>((ref) {
     lessonConvertor: ref.watch(lessonConvertor),
     currentPickedDateInPageView:
         ref.watch(currentPickedDateInPageView.notifier),
+    timetablePageTitle: ref.watch(timetablePageTitle.notifier),
   );
 });
 
@@ -29,6 +32,7 @@ class TimetablePageManager {
   final StateController<Map<DateTime, List<Lesson>>> timetable;
   final StateController<DateTime> selectedDate;
   final StateController<DateTime> currentPickedDateInPageView;
+  final StateController<String> timetablePageTitle;
 
   final LessonConvertor lessonConvertor;
 
@@ -38,12 +42,15 @@ class TimetablePageManager {
     required this.selectedDate,
     required this.lessonConvertor,
     required this.currentPickedDateInPageView,
+    required this.timetablePageTitle,
   });
 
   Future<void> updateCurrentTimetable() async {
     final request = await api.apiLessonsAutocompleteGet(q: "36/2");
 
     final res = request.body!;
+
+    timetablePageTitle.state = res.groups.first.name;
 
     final date = selectedDate.state;
 

@@ -14,9 +14,9 @@ class _$AppTextStyles {
   static const _textColorBlue = Color(0xFF47A4F2);
 
   static List<TextStyle> largeTitle = [
-    GoogleFonts.montserrat(
-      fontSize: 32,
-      fontWeight: FontWeight.w900,
+    GoogleFonts.inter(
+      fontSize: 16,
+      fontWeight: FontWeight.w700,
       color: _textColor,
     ),
   ];

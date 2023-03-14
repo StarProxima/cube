@@ -45,17 +45,16 @@ class _WeekTimelineState extends ConsumerState<WeekTimeline> {
         );
 
     return SizedBox(
-      height: 87,
+      height: 60,
       child: PageView.builder(
         physics: const CustomPageViewScrollPhysics(),
         controller: controller,
         itemCount: initialPage * 2,
         itemBuilder: (BuildContext context, int pageNumber) {
           final weekDate = getDateByDayAndWeek(weekDay, pageNumber);
-          final showInfo = date.month != weekDate.month ||
-              date.difference(weekDate).inDays > 31;
+          manager.setShownWeekDate(weekDate);
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Row(
               children: [
                 for (int dayNumber = 0; dayNumber < 7; dayNumber++)

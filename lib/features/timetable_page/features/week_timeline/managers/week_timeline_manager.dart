@@ -3,24 +3,33 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/timetable_page/state_holders/current_date.dart';
 
+import 'package:cube_system/features/timetable_page/features/week_timeline/state_holders/week_timeline_shown_week_date.dart';
+
 final weekTimelineManager = Provider<WeekTimelineManager>((ref) {
   return WeekTimelineManager(
     timetableManager: ref.watch(timetablePageManager),
     currentDate: ref.watch(currentDate.notifier),
+    shownWeekDate: ref.watch(weekTimelineShownWeekDate.notifier),
   );
 });
 
 class WeekTimelineManager {
   final TimetablePageManager timetableManager;
   final StateController<DateTime> currentDate;
-
+  final StateController<DateTime> shownWeekDate;
   WeekTimelineManager({
     required this.timetableManager,
     required this.currentDate,
+    required this.shownWeekDate,
   });
 
   void pickSelectedDate(DateTime date) {
     timetableManager.pickSelectedDate(date);
+  }
+
+  Future<void> setShownWeekDate(DateTime weekDate) async {
+    await Future(() {});
+    shownWeekDate.state = weekDate;
   }
 
   int calculateWeekOffset(DateTime newSelectedDate) {
