@@ -10,11 +10,11 @@ class LessonWaitingProgressIndicator extends ConsumerWidget {
 
     if (lesson != expectedNextlesson) return const SizedBox();
 
-    final timeLeft = ref.watch(lessonCardExpectedNextLessonTimeLeft);
+    final timeToStart = ref.watch(nextLessonTimeToStart);
 
     final value = ref.watch(lessonWaitingProgressIndicatorValue);
 
-    final timeLeftStr = timeLeft?.format() ?? '00:00';
+    final timeToStartStr = timeToStart?.format() ?? '00:00';
 
     return Container(
       height: 16,
@@ -41,7 +41,7 @@ class LessonWaitingProgressIndicator extends ConsumerWidget {
           ),
           Center(
             child: Text(
-              timeLeftStr,
+              timeToStartStr,
               style: context.textStyles.chipLabel
                   .copyWith(color: context.colors.white),
             ),

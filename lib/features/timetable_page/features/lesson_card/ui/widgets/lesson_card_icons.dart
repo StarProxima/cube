@@ -76,9 +76,13 @@ class LessonCardIcons extends ConsumerWidget {
         if (isActiveLessons)
           Consumer(
             builder: (context, ref, _) {
-              ref.watch(lessonCardTimeLeftStr.select((value) => value.length));
+              ref.watch(
+                currentLessonTimeToEnd
+                    .select((value) => value?.format().length),
+              );
 
-              final hasHours = (ref.read(lessonCardTimeLeft)?.hour ?? 0) > 0;
+              final hasHours =
+                  (ref.read(currentLessonTimeToEnd)?.hours ?? 0) > 0;
 
               return Container(
                 margin: const EdgeInsets.only(right: 4),

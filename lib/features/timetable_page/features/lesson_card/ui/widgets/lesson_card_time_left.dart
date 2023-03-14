@@ -12,9 +12,10 @@ class LessonCardTimeLeft extends ConsumerWidget {
 
     return Consumer(
       builder: (context, ref, _) {
-        final timeLeftStr = ref.watch(lessonCardTimeLeftStr);
+        final timeToEnd = ref.watch(currentLessonTimeToEnd);
+        final timeToEndStr = timeToEnd?.format() ?? '00:00';
         return Text(
-          timeLeftStr,
+          timeToEndStr,
           style: context.textStyles.chipLabel
               .copyWith(color: context.colors.white),
         );
