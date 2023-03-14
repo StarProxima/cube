@@ -7,7 +7,7 @@ class LessonCardIndicator extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final lesson = ref.watch(_lessonInLessonCard);
 
-    double value = ref.watch(lessonCardIndicatorValue(lesson));
+    double value = ref.watch(currentLessonTimeToEndProgressValue(lesson));
 
     final color = ref.watch(_lessonInLessonCard.select((value) => value.color));
     final fadedColor =

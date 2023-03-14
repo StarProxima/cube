@@ -20,3 +20,34 @@ final currentLessonTimeToEnd = StateProvider<DateTimeDuration?>((ref) {
 
   return DateTimeDuration(duration);
 });
+
+final currentLessonTimeToEndProgressValue =
+    Provider.family.autoDispose<double, Lesson>((ref, lesson) {
+  final currentDateTime = ref.watch(currentDateTimeLazy);
+
+  final lessonStart = lesson.timings.startDateTime;
+  final lessonEnd = lesson.timings.endDateTime;
+
+  final lessonIsOver = currentDateTime.isAfter(lessonEnd);
+  final lessonNotStarted = currentDateTime.isBefore(lessonStart);
+
+  final isActiveLesson = ref.read(currentLesson) == lesson;
+
+  if (isActiveLesson && (lessonIsOver || lessonNotStarted)) {
+    Future(() => ref.read(currentLesson.notifier).state = null);
+  }
+
+  if (lessonIsOver) return 0;
+  if (lessonNotStarted) return 1;
+
+  Future(() => ref.read(currentLesson.notifier).state = lesson);
+
+  final relativeCurrentDateTime = currentDateTime.difference(lessonStart);
+
+  final relativeLessonEnd = lessonEnd.difference(lessonStart);
+
+  final value =
+      relativeCurrentDateTime.inMilliseconds / relativeLessonEnd.inMilliseconds;
+
+  return 1 - value;
+});

@@ -12,7 +12,7 @@ class LessonWaitingProgressIndicator extends ConsumerWidget {
 
     final timeToStart = ref.watch(nextLessonTimeToStart);
 
-    final value = ref.watch(lessonWaitingProgressIndicatorValue);
+    final value = ref.watch(nextLessonTimeToStartProgressValue);
 
     final timeToStartStr = timeToStart?.format() ?? '00:00';
 
