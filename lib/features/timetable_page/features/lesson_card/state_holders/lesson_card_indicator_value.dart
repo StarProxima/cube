@@ -1,4 +1,4 @@
-import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_card_active_lesson.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/current_lesson.dart';
 import 'package:cube_system/models/lesson/lesson.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -23,16 +23,16 @@ final lessonCardIndicatorValue =
   final lessonIsOver = lessonEndDateTime.isBefore(dateTime);
   final lessonNotStarted = lessonStartDateTime.isAfter(dateTime);
 
-  final isActiveLesson = ref.read(lessonCardActiveLesson) == lesson;
+  final isActiveLesson = ref.read(currentLesson) == lesson;
 
   if (isActiveLesson && (lessonIsOver || lessonNotStarted)) {
-    Future(() => ref.read(lessonCardActiveLesson.notifier).state = null);
+    Future(() => ref.read(currentLesson.notifier).state = null);
   }
 
   if (lessonIsOver) return 0;
   if (lessonNotStarted) return 1;
 
-  Future(() => ref.read(lessonCardActiveLesson.notifier).state = lesson);
+  Future(() => ref.read(currentLesson.notifier).state = lesson);
 
   final currentDuration = Duration(
     hours: dateTime.hour,

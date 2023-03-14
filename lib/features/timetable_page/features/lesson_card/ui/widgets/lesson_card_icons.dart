@@ -11,7 +11,7 @@ class LessonCardIcons extends ConsumerWidget {
     //     .watch(_lessonInLessonCard.select((value) => value.lesson.isRemotely));
 
     final isActiveLessons =
-        ref.watch(_lessonInLessonCard) == ref.watch(lessonCardActiveLesson);
+        ref.watch(_lessonInLessonCard) == ref.watch(currentLesson);
 
     final color = ref.watch(_lessonInLessonCard.select((value) => value.color));
 

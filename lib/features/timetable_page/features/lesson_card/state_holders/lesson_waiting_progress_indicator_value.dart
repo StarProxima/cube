@@ -1,10 +1,10 @@
 import 'package:cube_system/features/timetable_page/state_holders/current_date_time_state_holders.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_card_expected_next_lesson.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/next_lesson.dart';
 
 final lessonWaitingProgressIndicatorValue = StateProvider<double>((ref) {
-  final expectedNextLesson = ref.watch(lessonCardExpectedNextLesson);
+  final expectedNextLesson = ref.watch(nextLesson);
   final lastLesson = ref.watch(lessonCardLastLesson);
   final date = ref.watch(currentDateTimeQuick);
 

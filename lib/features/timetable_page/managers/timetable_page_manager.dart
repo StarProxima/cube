@@ -16,9 +16,11 @@ import 'package:cube_system/features/timetable_page/state_holders/current_picked
 
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_title.dart';
 
-import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_card_expected_next_lesson.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/next_lesson.dart';
 
-import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_card_active_lesson.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/current_lesson.dart';
+
+import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/last_lesson.dart';
 
 final timetablePageManager = Provider<TimetablePageManager>((ref) {
   return TimetablePageManager(
@@ -30,10 +32,9 @@ final timetablePageManager = Provider<TimetablePageManager>((ref) {
     currentPickedDateInPageView:
         ref.watch(currentPickedDateInPageView.notifier),
     timetablePageTitle: ref.watch(timetablePageTitle.notifier),
-    lessonCardActiveLesson: ref.watch(lessonCardActiveLesson.notifier),
-    lessonCardExpectedNextLesson:
-        ref.watch(lessonCardExpectedNextLesson.notifier),
-    lessonCardLastLesson: ref.watch(lessonCardLastLesson.notifier),
+    lessonCardActiveLesson: ref.watch(currentLesson.notifier),
+    lessonCardExpectedNextLesson: ref.watch(nextLesson.notifier),
+    lessonCardLastLesson: ref.watch(lastLesson.notifier),
   );
 });
 

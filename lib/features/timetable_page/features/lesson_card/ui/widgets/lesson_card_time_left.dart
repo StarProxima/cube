@@ -6,7 +6,7 @@ class LessonCardTimeLeft extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isActiveLessons =
-        ref.watch(_lessonInLessonCard) == ref.watch(lessonCardActiveLesson);
+        ref.watch(_lessonInLessonCard) == ref.watch(currentLesson);
 
     if (!isActiveLessons) return const SizedBox();
 

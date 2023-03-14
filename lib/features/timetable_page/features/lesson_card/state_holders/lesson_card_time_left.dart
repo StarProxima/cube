@@ -1,10 +1,10 @@
-import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_card_active_lesson.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/current_lesson.dart';
 import 'package:cube_system/features/timetable_page/state_holders/current_date_time_state_holders.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final lessonCardTimeLeft = StateProvider<DateTime?>((ref) {
   final dateTime = ref.watch(currentDateTimeQuick);
-  final activeLesson = ref.watch(lessonCardActiveLesson);
+  final activeLesson = ref.watch(currentLesson);
 
   if (activeLesson == null) return null;
 

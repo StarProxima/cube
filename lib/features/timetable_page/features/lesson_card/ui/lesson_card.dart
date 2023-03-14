@@ -4,8 +4,8 @@ import 'package:cube_system/features/timetable_page/managers/timetable_page_mana
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_card_active_lesson.dart';
-import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_card_expected_next_lesson.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/current_lesson.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/next_lesson.dart';
 import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_card_indicator_value.dart';
 import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_card_time_left.dart';
 import 'package:cube_system/models/lesson/lesson.dart';

@@ -6,7 +6,7 @@ class LessonWaitingProgressIndicator extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final lesson = ref.watch(_lessonInLessonCard);
-    final expectedNextlesson = ref.watch(lessonCardExpectedNextLesson);
+    final expectedNextlesson = ref.watch(nextLesson);
 
     if (lesson != expectedNextlesson) return const SizedBox();
 
