@@ -50,9 +50,9 @@ class _WeekTimelineState extends ConsumerState<WeekTimeline> {
         physics: const CustomPageViewScrollPhysics(),
         controller: controller,
         itemCount: initialPage * 2,
+        onPageChanged: (weekIndex) =>
+            manager.setShownWeekDate(getDateByDayAndWeek(weekDay, weekIndex)),
         itemBuilder: (BuildContext context, int pageNumber) {
-          final weekDate = getDateByDayAndWeek(weekDay, pageNumber);
-          manager.setShownWeekDate(weekDate);
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Row(
