@@ -51,18 +51,11 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
       if (ref.read(currentPickedDateInPageView) == next) return;
       final targetPage = initialPage - date.difference(next).inDays;
 
-      final distanceIsTooLong =
-          (pageController.page!.round() - targetPage).abs() > 7;
-
-      if (distanceIsTooLong) {
-        pageController.jumpToPage(targetPage);
-      } else {
-        pageController.animateToPage(
-          targetPage,
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeInOut,
-        );
-      }
+      pageController.animateToPage(
+        targetPage,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
     });
 
     DateTime getDateByPageIndex(int index) =>
