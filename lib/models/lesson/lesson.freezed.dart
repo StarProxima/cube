@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Lesson {
   LessonFullNamesInDb get lesson => throw _privateConstructorUsedError;
-  LessonTimings get timings => throw _privateConstructorUsedError;
+  LessonFullTimings get timings => throw _privateConstructorUsedError;
   Color get color => throw _privateConstructorUsedError;
   Color get fadedColor => throw _privateConstructorUsedError;
   bool get isEvent => throw _privateConstructorUsedError;
@@ -33,12 +33,12 @@ abstract class $LessonCopyWith<$Res> {
   @useResult
   $Res call(
       {LessonFullNamesInDb lesson,
-      LessonTimings timings,
+      LessonFullTimings timings,
       Color color,
       Color fadedColor,
       bool isEvent});
 
-  $LessonTimingsCopyWith<$Res> get timings;
+  $LessonFullTimingsCopyWith<$Res> get timings;
 }
 
 /// @nodoc
@@ -68,7 +68,7 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
       timings: null == timings
           ? _value.timings
           : timings // ignore: cast_nullable_to_non_nullable
-              as LessonTimings,
+              as LessonFullTimings,
       color: null == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -86,8 +86,8 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
 
   @override
   @pragma('vm:prefer-inline')
-  $LessonTimingsCopyWith<$Res> get timings {
-    return $LessonTimingsCopyWith<$Res>(_value.timings, (value) {
+  $LessonFullTimingsCopyWith<$Res> get timings {
+    return $LessonFullTimingsCopyWith<$Res>(_value.timings, (value) {
       return _then(_value.copyWith(timings: value) as $Val);
     });
   }
@@ -101,13 +101,13 @@ abstract class _$$_LessonCopyWith<$Res> implements $LessonCopyWith<$Res> {
   @useResult
   $Res call(
       {LessonFullNamesInDb lesson,
-      LessonTimings timings,
+      LessonFullTimings timings,
       Color color,
       Color fadedColor,
       bool isEvent});
 
   @override
-  $LessonTimingsCopyWith<$Res> get timings;
+  $LessonFullTimingsCopyWith<$Res> get timings;
 }
 
 /// @nodoc
@@ -134,7 +134,7 @@ class __$$_LessonCopyWithImpl<$Res>
       timings: null == timings
           ? _value.timings
           : timings // ignore: cast_nullable_to_non_nullable
-              as LessonTimings,
+              as LessonFullTimings,
       color: null == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -164,7 +164,7 @@ class _$_Lesson implements _Lesson {
   @override
   final LessonFullNamesInDb lesson;
   @override
-  final LessonTimings timings;
+  final LessonFullTimings timings;
   @override
   final Color color;
   @override
@@ -204,7 +204,7 @@ class _$_Lesson implements _Lesson {
 abstract class _Lesson implements Lesson {
   factory _Lesson(
       {required final LessonFullNamesInDb lesson,
-      required final LessonTimings timings,
+      required final LessonFullTimings timings,
       required final Color color,
       required final Color fadedColor,
       required final bool isEvent}) = _$_Lesson;
@@ -212,7 +212,7 @@ abstract class _Lesson implements Lesson {
   @override
   LessonFullNamesInDb get lesson;
   @override
-  LessonTimings get timings;
+  LessonFullTimings get timings;
   @override
   Color get color;
   @override

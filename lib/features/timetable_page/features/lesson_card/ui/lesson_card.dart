@@ -14,6 +14,8 @@ import 'package:cube_system/styles/app_theme_context_extension.dart';
 
 import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_card_expected_next_lesson_time_left.dart';
 
+import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_waiting_progress_indicator_value.dart';
+
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_body.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_footer.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_header.dart';

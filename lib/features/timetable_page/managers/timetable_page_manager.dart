@@ -129,23 +129,23 @@ class TimetablePageManager {
     final curdateTime = currentDateTime.state;
     final currentDate = DateUtils.dateOnly(curdateTime);
 
-    for (int dayOffset = 0; dayOffset < 7; dayOffset++) {
-      final date = currentDate.add(Duration(days: dayOffset));
-      final lessons = timetable.state[date];
-      if (lessons != null) {
-        for (final lesson in lessons) {
-          final lessonStart = lesson.timings.start;
-          final lessonStartDateTime = date.add(
-            Duration(hours: lessonStart.hour, minutes: lessonStart.minute),
-          );
+    for (final date in timetable.state.keys) {
+      final lessons = timetable.state[date]!;
 
-          if (curdateTime.isBefore(lessonStartDateTime) && !lesson.isEvent) {
-            lessonCardExpectedNextLesson.state = lesson;
-            return;
-          }
+      for (final lesson in lessons) {
+        if (lesson.isEvent) continue;
 
-          lessonCardLastLesson.state = lesson;
+        final lessonStart = lesson.timings.start;
+        final lessonStartDateTime = date.add(
+          Duration(hours: lessonStart.hour, minutes: lessonStart.minute),
+        );
+
+        if (curdateTime.isBefore(lessonStartDateTime)) {
+          lessonCardExpectedNextLesson.state = lesson;
+          return;
         }
+
+        lessonCardLastLesson.state = lesson;
       }
     }
   }

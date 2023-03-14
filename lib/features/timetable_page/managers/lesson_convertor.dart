@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:cube_system/gen/api/cube_api.swagger.dart';
+import 'package:cube_system/models/lesson_timings/lesson_full_timings.dart';
 import 'package:cube_system/styles/app_lesson_colors/app_lesson_colors.dart';
 import 'package:cube_system/styles/app_theme_state_holders/app_lesson_colors.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -30,8 +31,6 @@ class LessonConvertor {
     required LessonFullNamesInDb lesson,
   }) {
     final number = lesson.number;
-
-    final timings = lessonTimings.state[number]!;
 
     Color? color;
 
@@ -65,11 +64,26 @@ class LessonConvertor {
       int.parse(lesson.type.color.substring(1, 7), radix: 16) + 0xFF000000,
     );
 
+    final date = lesson.date;
+
+    final timings = lessonTimings.state[number]!;
+
+    final fullTiminigs = LessonFullTimings(
+      start: timings.start,
+      end: timings.end,
+      startDateTime: date.add(
+        Duration(hours: timings.start.hour, minutes: timings.start.minute),
+      ),
+      endDateTime: date.add(
+        Duration(hours: timings.end.hour, minutes: timings.end.minute),
+      ),
+    );
+
     final newLesson = Lesson(
       lesson: lesson,
-      timings: timings,
+      timings: fullTiminigs,
       color: color,
-      fadedColor: color.withOpacity(0.5),
+      fadedColor: color.withOpacity(0.6),
       isEvent: isEvent,
     );
 

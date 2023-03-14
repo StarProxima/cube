@@ -10,7 +10,11 @@ class LessonWaitingProgressIndicator extends ConsumerWidget {
 
     if (lesson != expectedNextlesson) return const SizedBox();
 
-    final timeLeftStr = ref.watch(lessonCardExpectedNextLessonTimeLeftStr);
+    final timeLeft = ref.watch(lessonCardExpectedNextLessonTimeLeft);
+
+    final value = ref.watch(lessonWaitingProgressIndicatorValue);
+
+    final timeLeftStr = timeLeft?.format() ?? '00:00';
 
     return Container(
       height: 16,
@@ -26,7 +30,7 @@ class LessonWaitingProgressIndicator extends ConsumerWidget {
             child: Align(
               alignment: Alignment.centerRight,
               child: FractionallySizedBox(
-                widthFactor: 1,
+                widthFactor: value.cutNumberEdgesZeroToOne(),
                 child: Container(
                   decoration: BoxDecoration(
                     color: lesson.color,
