@@ -3,15 +3,23 @@ part of 'package:cube_system/features/timetable_page/features/lesson_card/ui/les
 class LessonCardIcons extends ConsumerWidget {
   const LessonCardIcons({super.key});
 
+  static final _random = Random();
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isRemotely = ref
-        .watch(_lessonInLessonCard.select((value) => value.lesson.isRemotely));
+    // final isRemotely = ref
+    //     .watch(_lessonInLessonCard.select((value) => value.lesson.isRemotely));
 
     final isActiveLessons =
         ref.watch(_lessonInLessonCard) == ref.watch(lessonCardActiveLesson);
 
     final color = ref.watch(_lessonInLessonCard.select((value) => value.color));
+
+    final isRemotely = _random.nextInt(100) < 15;
+
+    final presentImportantNote = _random.nextInt(100) < 40;
+
+    final numberOfNotes = _random.nextInt(100) < 60 ? _random.nextInt(7) : 0;
 
     return Row(
       children: [
@@ -30,39 +38,41 @@ class LessonCardIcons extends ConsumerWidget {
               color: Colors.white,
             ),
           ),
-        Container(
-          margin: const EdgeInsets.only(right: 4),
-          width: 16,
-          height: 16,
-          decoration: BoxDecoration(
-            color: color,
-            shape: BoxShape.circle,
+        if (presentImportantNote)
+          Container(
+            margin: const EdgeInsets.only(right: 4),
+            width: 16,
+            height: 16,
+            decoration: BoxDecoration(
+              color: color,
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(
+              Icons.priority_high_rounded,
+              size: 12,
+              color: Colors.white,
+            ),
           ),
-          child: const Icon(
-            Icons.priority_high_rounded,
-            size: 12,
-            color: Colors.white,
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.only(right: 4),
-          width: 16,
-          height: 16,
-          decoration: BoxDecoration(
-            color: color,
-            shape: BoxShape.circle,
-          ),
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 0.5),
-              child: Text(
-                '2',
-                style: context.textStyles.chipLabel
-                    .copyWith(color: context.colors.white),
+        if (numberOfNotes > 0)
+          Container(
+            margin: const EdgeInsets.only(right: 4),
+            width: 16,
+            height: 16,
+            decoration: BoxDecoration(
+              color: color,
+              shape: BoxShape.circle,
+            ),
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 0.5),
+                child: Text(
+                  numberOfNotes.toString(),
+                  style: context.textStyles.chipLabel
+                      .copyWith(color: context.colors.white),
+                ),
               ),
             ),
           ),
-        ),
         if (isActiveLessons)
           Container(
             margin: const EdgeInsets.only(right: 4),
