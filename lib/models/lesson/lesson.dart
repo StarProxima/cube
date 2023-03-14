@@ -13,5 +13,6 @@ class Lesson with _$Lesson {
     required LessonFullNamesInDb lesson,
     required LessonTimings timings,
     required Color color,
+    required Color fadedColor,
   }) = _Lesson;
 }

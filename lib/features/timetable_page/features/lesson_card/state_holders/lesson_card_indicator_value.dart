@@ -4,8 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/timetable_page/state_holders/current_date_time_state_holders.dart';
 
-import 'package:cube_system/source/utils.dart';
-
 final lessonCardIndicatorValue =
     Provider.family.autoDispose<double, Lesson>((ref, lesson) {
   final dateTime = ref.watch(currentDateTimeLazy);
@@ -31,8 +29,8 @@ final lessonCardIndicatorValue =
     Future(() => ref.read(lessonCardActiveLesson.notifier).state = null);
   }
 
-  if (lessonIsOver) return catNumberEdgesOneToZero(0);
-  if (lessonNotStarted) return catNumberEdgesOneToZero(1);
+  if (lessonIsOver) return 0;
+  if (lessonNotStarted) return 1;
 
   Future(() => ref.read(lessonCardActiveLesson.notifier).state = lesson);
 
@@ -51,5 +49,5 @@ final lessonCardIndicatorValue =
   final value =
       currentDuration.inMilliseconds / relativeEndDuration.inMilliseconds;
 
-  return catNumberEdgesOneToZero(1 - value);
+  return 1 - value;
 });

@@ -66,6 +66,7 @@ class LessonConvertor {
       lesson: lesson,
       timings: timings,
       color: color,
+      fadedColor: color.withOpacity(0.5),
     );
 
     return lessonWithTimings;

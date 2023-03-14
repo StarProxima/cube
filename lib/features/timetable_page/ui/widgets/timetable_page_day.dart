@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/models/lesson/lesson.dart';
 import 'package:cube_system/features/timetable_page/features/lesson_card/ui/lesson_card.dart';
 
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_lessons.dart';
