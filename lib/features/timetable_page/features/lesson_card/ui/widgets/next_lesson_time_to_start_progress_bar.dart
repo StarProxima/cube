@@ -11,7 +11,7 @@ class NextLessonTimeToStartProgressBar extends ConsumerWidget {
     final timeToStartStr = timeToStart?.format() ?? '00:00';
 
     return SizedBox(
-      height: 16,
+      height: 20,
       child: Stack(
         children: [
           Container(

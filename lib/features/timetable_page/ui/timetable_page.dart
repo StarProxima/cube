@@ -12,6 +12,8 @@ import 'package:cube_system/features/timetable_page/state_holders/selected_date.
 
 import 'package:cube_system/features/timetable_page/state_holders/current_picked_date_in_page_view.dart';
 
+import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/current_lesson.dart';
+
 class TimetablePage extends ConsumerWidget {
   const TimetablePage({
     super.key,
@@ -24,6 +26,11 @@ class TimetablePage extends ConsumerWidget {
 
     final manager = ref.read(timetablePageManager);
     manager.updateCurrentTimetable();
+
+    ref.listen(
+      currentLesson,
+      (previous, next) => manager.findNextAndLastLesson(),
+    );
 
     return const _TimetablePage();
   }

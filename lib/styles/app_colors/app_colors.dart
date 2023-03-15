@@ -14,4 +14,5 @@ class _$AppColors {
   static List<Color> text = [const Color(0xFF2B2B2B)];
   static List<Color> subduedText = [const Color.fromARGB(255, 109, 109, 109)];
   static List<Color> border = [const Color(0xFFDEE2F5)];
+  static List<Color> shadow = [const Color.fromARGB(50, 131, 136, 162)];
 }

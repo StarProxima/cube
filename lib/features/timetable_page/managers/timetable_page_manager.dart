@@ -31,9 +31,9 @@ final timetablePageManager = Provider<TimetablePageManager>((ref) {
     currentPickedDateInPageView:
         ref.watch(currentPickedDateInPageView.notifier),
     timetablePageTitle: ref.watch(timetablePageTitle.notifier),
-    lessonCardActiveLesson: ref.watch(currentLesson.notifier),
-    lessonCardExpectedNextLesson: ref.watch(nextLesson.notifier),
-    lessonCardLastLesson: ref.watch(lastLesson.notifier),
+    currentLesson: ref.watch(currentLesson.notifier),
+    nextLesson: ref.watch(nextLesson.notifier),
+    lastLesson: ref.watch(lastLesson.notifier),
   );
 });
 
@@ -46,9 +46,9 @@ class TimetablePageManager {
   final StateController<DateTime> selectedDate;
   final StateController<DateTime> currentPickedDateInPageView;
   final StateController<String> timetablePageTitle;
-  final StateController<Lesson?> lessonCardActiveLesson;
-  final StateController<Lesson?> lessonCardExpectedNextLesson;
-  final StateController<Lesson?> lessonCardLastLesson;
+  final StateController<Lesson?> currentLesson;
+  final StateController<Lesson?> nextLesson;
+  final StateController<Lesson?> lastLesson;
 
   TimetablePageManager({
     required this.api,
@@ -58,9 +58,9 @@ class TimetablePageManager {
     required this.selectedDate,
     required this.currentPickedDateInPageView,
     required this.timetablePageTitle,
-    required this.lessonCardActiveLesson,
-    required this.lessonCardExpectedNextLesson,
-    required this.lessonCardLastLesson,
+    required this.currentLesson,
+    required this.nextLesson,
+    required this.lastLesson,
   });
 
   Future<void> updateCurrentTimetable() async {
@@ -99,6 +99,8 @@ class TimetablePageManager {
     }
 
     timetable.state = map;
+
+    findNextAndLastLesson();
   }
 
   void pickSelectedDate(DateTime newDate) {
@@ -135,11 +137,11 @@ class TimetablePageManager {
         if (lesson.isEvent) continue;
 
         if (currentDate.isBefore(lesson.timings.startDateTime)) {
-          lessonCardExpectedNextLesson.state = lesson;
+          nextLesson.state = lesson;
           return;
         }
 
-        lessonCardLastLesson.state = lesson;
+        lastLesson.state = lesson;
       }
     }
   }

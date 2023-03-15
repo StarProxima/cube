@@ -15,6 +15,7 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.text,
     required this.subduedText,
     required this.border,
+    required this.shadow,
   });
 
   final Color white;
@@ -22,6 +23,7 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color text;
   final Color subduedText;
   final Color border;
+  final Color shadow;
 
   static final AppColors light = AppColors(
     white: _$AppColors.white[0],
@@ -29,6 +31,7 @@ class AppColors extends ThemeExtension<AppColors> {
     text: _$AppColors.text[0],
     subduedText: _$AppColors.subduedText[0],
     border: _$AppColors.border[0],
+    shadow: _$AppColors.shadow[0],
   );
 
   static final themes = [
@@ -42,6 +45,7 @@ class AppColors extends ThemeExtension<AppColors> {
     Color? text,
     Color? subduedText,
     Color? border,
+    Color? shadow,
   }) {
     return AppColors(
       white: white ?? this.white,
@@ -49,6 +53,7 @@ class AppColors extends ThemeExtension<AppColors> {
       text: text ?? this.text,
       subduedText: subduedText ?? this.subduedText,
       border: border ?? this.border,
+      shadow: shadow ?? this.shadow,
     );
   }
 
@@ -61,6 +66,7 @@ class AppColors extends ThemeExtension<AppColors> {
       text: Color.lerp(text, other.text, t)!,
       subduedText: Color.lerp(subduedText, other.subduedText, t)!,
       border: Color.lerp(border, other.border, t)!,
+      shadow: Color.lerp(shadow, other.shadow, t)!,
     );
   }
 
@@ -74,7 +80,8 @@ class AppColors extends ThemeExtension<AppColors> {
             const DeepCollectionEquality().equals(text, other.text) &&
             const DeepCollectionEquality()
                 .equals(subduedText, other.subduedText) &&
-            const DeepCollectionEquality().equals(border, other.border));
+            const DeepCollectionEquality().equals(border, other.border) &&
+            const DeepCollectionEquality().equals(shadow, other.shadow));
   }
 
   @override
@@ -85,6 +92,7 @@ class AppColors extends ThemeExtension<AppColors> {
         const DeepCollectionEquality().hash(card),
         const DeepCollectionEquality().hash(text),
         const DeepCollectionEquality().hash(subduedText),
-        const DeepCollectionEquality().hash(border));
+        const DeepCollectionEquality().hash(border),
+        const DeepCollectionEquality().hash(shadow));
   }
 }

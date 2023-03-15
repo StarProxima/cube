@@ -9,6 +9,7 @@ class AppTheme {
   }) {
     final theme = ThemeData.light();
     return theme.copyWith(
+      scaffoldBackgroundColor: colors.card,
       dividerColor: colors.border,
       extensions: [
         colors,

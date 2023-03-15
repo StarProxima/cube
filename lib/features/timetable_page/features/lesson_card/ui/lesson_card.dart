@@ -58,7 +58,7 @@ class LessonCard extends ConsumerWidget {
                   color: context.colors.card,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.15),
+                      color: context.colors.shadow,
                       blurRadius: 12,
                       offset: const Offset(0, 1),
                     )
