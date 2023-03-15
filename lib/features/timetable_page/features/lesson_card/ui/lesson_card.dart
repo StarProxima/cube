@@ -16,7 +16,7 @@ part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widget
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_icons.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_indicator.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_time_left.dart';
-part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_waiting_progress_indicator.dart';
+part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/next_lesson_time_to_start_progress_bar.dart';
 
 final _lessonInLessonCard = Provider<Lesson>((ref) {
   return throw UnimplementedError();
@@ -36,7 +36,19 @@ class LessonCard extends ConsumerWidget {
       ],
       child: Column(
         children: [
-          const LessonWaitingProgressIndicator(),
+          Consumer(
+            builder: (context, ref, _) {
+              final lessonNext = ref.watch(nextLesson);
+              final lessonCurrent = ref.watch(currentLesson);
+              if (lesson != lessonNext || lessonCurrent != null) {
+                return const SizedBox();
+              }
+              return const Padding(
+                padding: EdgeInsets.only(bottom: 8),
+                child: NextLessonTimeToStartProgressBar(),
+              );
+            },
+          ),
           Stack(
             children: [
               Container(
@@ -62,7 +74,7 @@ class LessonCard extends ConsumerWidget {
                         const LessonCardIndicator(),
                         Expanded(
                           child: InkWell(
-                            onTap: manager.findExpectedNextLesson,
+                            onTap: manager.findNextAndLastLesson,
                             child: Column(
                               children: [
                                 Padding(

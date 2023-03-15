@@ -1,24 +1,17 @@
 part of 'package:cube_system/features/timetable_page/features/lesson_card/ui/lesson_card.dart';
 
-class LessonWaitingProgressIndicator extends ConsumerWidget {
-  const LessonWaitingProgressIndicator({super.key});
+class NextLessonTimeToStartProgressBar extends ConsumerWidget {
+  const NextLessonTimeToStartProgressBar({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final lesson = ref.watch(_lessonInLessonCard);
-    final expectedNextlesson = ref.watch(nextLesson);
-
-    if (lesson != expectedNextlesson) return const SizedBox();
-
     final timeToStart = ref.watch(nextLessonTimeToStart);
-
     final value = ref.watch(nextLessonTimeToStartProgressValue);
-
     final timeToStartStr = timeToStart?.format() ?? '00:00';
 
-    return Container(
+    return SizedBox(
       height: 16,
-      margin: const EdgeInsets.only(bottom: 8),
       child: Stack(
         children: [
           Container(

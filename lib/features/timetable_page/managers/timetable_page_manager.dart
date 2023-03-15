@@ -6,7 +6,6 @@ import 'package:cube_system/features/timetable_page/state_holders/current_date_t
 import 'package:cube_system/features/timetable_page/state_holders/selected_date.dart';
 import 'package:cube_system/gen/api/cube_api.swagger.dart';
 import 'package:cube_system/models/lesson/lesson.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
@@ -126,9 +125,8 @@ class TimetablePageManager {
     }
   }
 
-  void findExpectedNextLesson() {
-    final curdateTime = currentDateTime.state;
-    final currentDate = DateUtils.dateOnly(curdateTime);
+  void findNextAndLastLesson() {
+    final currentDate = currentDateTime.state;
 
     for (final date in timetable.state.keys) {
       final lessons = timetable.state[date]!;
@@ -136,12 +134,7 @@ class TimetablePageManager {
       for (final lesson in lessons) {
         if (lesson.isEvent) continue;
 
-        final lessonStart = lesson.timings.start;
-        final lessonStartDateTime = date.add(
-          Duration(hours: lessonStart.hour, minutes: lessonStart.minute),
-        );
-
-        if (curdateTime.isBefore(lessonStartDateTime)) {
+        if (currentDate.isBefore(lesson.timings.startDateTime)) {
           lessonCardExpectedNextLesson.state = lesson;
           return;
         }
