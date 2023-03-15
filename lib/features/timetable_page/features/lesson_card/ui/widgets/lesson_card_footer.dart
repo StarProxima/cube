@@ -30,7 +30,6 @@ class LessonCardFooter extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Flexible(
-          flex: 4,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -72,17 +71,15 @@ class LessonCardFooter extends ConsumerWidget {
             ],
           ),
         ),
-        Flexible(
-          child: InkWell(
-            onTap: () {},
-            borderRadius: BorderRadius.circular(8),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-              child: Text(
-                place,
-                style: context.textStyles.smallLabel.copyWith(
-                  color: context.colors.subduedText,
-                ),
+        InkWell(
+          onTap: () {},
+          borderRadius: BorderRadius.circular(8),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+            child: Text(
+              place,
+              style: context.textStyles.smallLabel.copyWith(
+                color: context.colors.subduedText,
               ),
             ),
           ),

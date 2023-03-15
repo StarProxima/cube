@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cube_system/styles/app_colors/app_colors.dart';
 import 'package:cube_system/styles/app_text_styles/app_text_styles.dart';
 import 'package:cube_system/styles/app_theme.dart';
@@ -6,8 +8,14 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/timetable_page/ui/timetable_page.dart';
+import 'package:window_size/window_size.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+    setWindowTitle('Куб.Расписание');
+    setWindowMinSize(const Size(400, 380));
+  }
   runApp(const MainApp());
 }
 
@@ -21,7 +29,7 @@ class MainApp extends StatelessWidget {
 
     return ProviderScope(
       child: MaterialApp(
-        title: 'Cube',
+        title: 'Куб.Расписание',
         localizationsDelegates: const [
           GlobalCupertinoLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,

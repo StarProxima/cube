@@ -18,7 +18,7 @@ dependencies:
   theme_tailor_annotation: ^1.0.3
 
   proxima_logger: ^0.6.3
-  intl: ^0.17.0
+  intl: ^0.18.0
   google_fonts: ^4.0.3
   flutter_svg: ^2.0.2
   easy_splash_screen: ^1.0.4
@@ -26,6 +26,11 @@ dependencies:
   flutter_riverpod: ^2.3.0
 
   chopper: ^6.1.1
+  
+  window_size:
+    git:
+      url: https://github.com/google/flutter-desktop-embedding
+      path: plugins/window_size
 
 
 
