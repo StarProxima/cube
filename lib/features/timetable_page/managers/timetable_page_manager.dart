@@ -15,11 +15,11 @@ import 'package:cube_system/features/timetable_page/state_holders/current_picked
 
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_title.dart';
 
-import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/next_lesson.dart';
+import 'package:cube_system/features/timetable_page/state_holders/lessons/next_lesson.dart';
 
-import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/current_lesson.dart';
+import 'package:cube_system/features/timetable_page/state_holders/lessons/current_lesson.dart';
 
-import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/last_lesson.dart';
+import 'package:cube_system/features/timetable_page/state_holders/lessons/last_lesson.dart';
 
 final timetablePageManager = Provider<TimetablePageManager>((ref) {
   return TimetablePageManager(
