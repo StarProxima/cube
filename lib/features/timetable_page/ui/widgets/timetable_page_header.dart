@@ -26,7 +26,9 @@ class TimetablePageHeader extends ConsumerWidget {
 
     final difference = date.difference(weekDate).inDays;
 
-    final showBackButton = date.month != weekDate.month || difference > 32;
+    final dur = Duration(days: date.weekday + difference);
+
+    final showBackButton = dur.inDays < 0 || dur.inDays >= 7;
 
     final backButtonIsRigth = difference.isNegative;
 
