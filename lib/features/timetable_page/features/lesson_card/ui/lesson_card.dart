@@ -74,11 +74,11 @@ class LessonCard extends ConsumerWidget {
                         const LessonCardIndicator(),
                         Expanded(
                           child: InkWell(
-                            onTap: manager.findNextAndLastLesson,
-                            child: const Column(
+                            onTap: manager.findLastCurrentNextLesson,
+                            child: Column(
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                     left: 12,
                                     right: 12,
                                     top: 8,
@@ -87,7 +87,7 @@ class LessonCard extends ConsumerWidget {
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                    children: [
+                                    children: const [
                                       LessonCardHeader(),
                                       SizedBox(height: 8),
                                       LessonCardBody(),
@@ -95,13 +95,13 @@ class LessonCard extends ConsumerWidget {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                     left: 4,
                                     right: 4,
                                     bottom: 4,
                                   ),
                                   child: Column(
-                                    children: [
+                                    children: const [
                                       LessonCardFooter(),
                                     ],
                                   ),

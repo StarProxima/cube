@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/timetable_page/state_holders/current_date_time_state_holders.dart';
 
-final timetableDatetimeManager = Provider<TimetableDatetimeManager>((ref) {
+final timetableDateTimeManager = Provider<TimetableDatetimeManager>((ref) {
   return TimetableDatetimeManager(
     dateTimeLazy: ref.watch(currentDateTimeLazy.notifier),
     dateTimeLazyTimer: ref.watch(currentDateTimeLazyTimer.notifier),

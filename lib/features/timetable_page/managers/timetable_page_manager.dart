@@ -100,7 +100,7 @@ class TimetablePageManager {
 
     timetable.state = map;
 
-    findNextAndLastLesson();
+    findLastCurrentNextLesson();
   }
 
   void pickSelectedDate(DateTime newDate) {
@@ -127,8 +127,11 @@ class TimetablePageManager {
     }
   }
 
-  void findNextAndLastLesson() {
-    final currentDate = currentDateTime.state;
+  void findLastCurrentNextLesson() async {
+    await Future(() {});
+    final currentDate = currentDateTime.state.add(const Duration(seconds: 1));
+
+    Lesson? lessonCurrent;
 
     for (final date in timetable.state.keys) {
       final lessons = timetable.state[date]!;
@@ -136,8 +139,12 @@ class TimetablePageManager {
       for (final lesson in lessons) {
         if (lesson.isEvent) continue;
 
-        if (currentDate.isBefore(lesson.timings.startDateTime)) {
+        if (currentDate.isAfter(lesson.timings.startDateTime) &&
+            currentDate.isBefore(lesson.timings.endDateTime)) {
+          lessonCurrent = lesson;
+        } else if (currentDate.isBefore(lesson.timings.startDateTime)) {
           nextLesson.state = lesson;
+          currentLesson.state = lessonCurrent;
           return;
         }
 

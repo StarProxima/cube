@@ -12,7 +12,7 @@ import 'package:cube_system/features/timetable_page/state_holders/selected_date.
 
 import 'package:cube_system/features/timetable_page/state_holders/current_picked_date_in_page_view.dart';
 
-import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/current_lesson.dart';
+import 'package:cube_system/features/timetable_page/state_holders/lessons/last_current_next_lesson_listener.dart';
 
 class TimetablePage extends ConsumerWidget {
   const TimetablePage({
@@ -21,16 +21,15 @@ class TimetablePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final timeManager = ref.watch(timetableDatetimeManager);
+    final timeManager = ref.watch(timetableDateTimeManager);
     timeManager.setTimers();
 
     final manager = ref.read(timetablePageManager);
     manager.updateCurrentTimetable();
 
-    ref.listen(
-      currentLesson,
-      (previous, next) => manager.findNextAndLastLesson(),
-    );
+    ref.listen(lastCurrentNextLessonListener, (_, __) {
+      manager.findLastCurrentNextLesson();
+    });
 
     return const _TimetablePage();
   }
