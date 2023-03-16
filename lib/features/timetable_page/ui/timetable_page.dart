@@ -86,9 +86,8 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
               child: PageView.builder(
                 controller: pageController,
                 itemCount: initialPage * 2,
-                onPageChanged: (index) => manager.handlePageViewChange(
-                  getDateByPageIndex(index),
-                ),
+                onPageChanged: (index) =>
+                    manager.handlePageViewChange(getDateByPageIndex(index)),
                 itemBuilder: (context, index) {
                   return TimetablePageDay(
                     date: getDateByPageIndex(index),

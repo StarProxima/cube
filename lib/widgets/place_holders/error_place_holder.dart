@@ -4,15 +4,25 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/gen/assets/assets.gen.dart';
 
-class RestPlaceHolder extends ConsumerWidget {
+import 'package:cube_system/models/lesson_event/lesson_event.dart';
+
+class ErrorPlaceHolder extends ConsumerWidget {
   final String title;
   final String subTitle;
 
-  const RestPlaceHolder({
+  const ErrorPlaceHolder({
     this.title = 'В этот день занятий нет',
     this.subTitle = 'Можно отдохнуть',
     super.key,
   });
+
+  factory ErrorPlaceHolder.fromEvent({
+    required LessonEvent event,
+  }) =>
+      ErrorPlaceHolder(
+        title: event.title ?? '',
+        subTitle: event.subTitle ?? '',
+      );
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,7 +32,7 @@ class RestPlaceHolder extends ConsumerWidget {
           margin: const EdgeInsets.only(top: 24, left: 36, right: 36),
           height: 300,
           width: 300,
-          child: Assets.brooklyn.rest3.svg(),
+          child: Assets.brooklyn.noConnection4.svg(),
         ),
         Text(
           title,
