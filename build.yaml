@@ -1,8 +1,11 @@
 targets:  
   $default:
     sources:
+     include:
+      - "pubspec.yaml"
       - $package$ 
       - api_spec/**
+      - assets/**
       - lib/**
     builders:
       swagger_dart_code_generator:

@@ -47,15 +47,20 @@ dev_dependencies:
   theme_tailor: ^1.0.8
 
   build_runner: ^2.3.3
-  # flutter_gen_runner: ^5.2.0
+  flutter_gen_runner: ^5.2.0
   swagger_dart_code_generator: ^2.10.2
   chopper_generator: ^6.0.0
 
 
-# flutter_gen:
-#   integrations:
-#     flutter_svg: true
+flutter_gen:
+  output: lib/gen/assets
+  integrations:
+    flutter_svg: true
 
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/brooklyn/

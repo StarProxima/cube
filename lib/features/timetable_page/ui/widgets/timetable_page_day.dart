@@ -1,3 +1,4 @@
+import 'package:cube_system/gen/assets/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -13,6 +14,20 @@ class TimetablePageDay extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final lessons = ref.watch(timetablePageDayLessons(date));
+    final isEmpty = lessons.isEmpty;
+    final isEvent = lessons.where((element) => element.isEvent).isNotEmpty;
+
+    if (isEmpty || isEvent) {
+      return Column(
+        children: [
+          SizedBox(
+            height: 300,
+            width: 300,
+            child: Assets.brooklyn.rest3.svg(),
+          ),
+        ],
+      );
+    }
 
     return ListView.separated(
       padding: const EdgeInsets.all(16),
