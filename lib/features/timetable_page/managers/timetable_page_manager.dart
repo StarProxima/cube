@@ -111,6 +111,10 @@ class TimetablePageManager {
     final lessons = t2.body!;
 
     for (final lesson in lessons) {
+      if (timetableMap.containsKey(lesson.date)) timetableMap[lesson.date] = [];
+    }
+
+    for (final lesson in lessons) {
       timetableMap[lesson.date] = (timetableMap[lesson.date] ?? []);
       final l = lessonConvertor.lessonByLessonFullNamesInDb(lesson: lesson);
       timetableMap[lesson.date]!.add(l);
