@@ -9,6 +9,8 @@ import 'package:cube_system/features/timetable_page/features/lesson_card/ui/less
 
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_lessons.dart';
 
+import 'package:cube_system/widgets/event_pages/ksrs_event_page.dart';
+
 class TimetablePageDay extends ConsumerWidget {
   final DateTime date;
 
@@ -32,7 +34,11 @@ class TimetablePageDay extends ConsumerWidget {
     final isKSRS =
         lessons?.where((element) => element.isEvent).isNotEmpty ?? false;
 
-    if (event.type == LessonEventType.weekend || isKSRS) {
+    if (isKSRS) {
+      return const KsrsEventPage();
+    }
+
+    if (event.type == LessonEventType.weekend) {
       return const WeekendEventPage();
     }
 

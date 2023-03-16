@@ -47,29 +47,33 @@ class AppEventPage extends ConsumerWidget {
     return SingleChildScrollView(
       physics:
           const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-      child: Column(
-        children: [
-          Container(
-            margin: const EdgeInsets.only(top: 24, left: 36, right: 36),
-            height: 300,
-            width: 300,
-            child: picture,
-          ),
-          Text(
-            title ?? '',
-            style: context.textStyles.largeTitle,
-          ),
-          const SizedBox(height: 8),
-          Text(
-            subTitle ?? '',
-            style: context.textStyles.subTitle,
-          ),
-          const SizedBox(height: 8),
-          Text(
-            description ?? '',
-            style: context.textStyles.subTitle,
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 36),
+        child: Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.only(top: 24),
+              height: 300,
+              width: 300,
+              child: picture,
+            ),
+            Text(
+              title ?? '',
+              style: context.textStyles.largeTitle,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              subTitle ?? '',
+              style: context.textStyles.subTitle,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              description ?? '',
+              style: context.textStyles.subTitle,
+            ),
+          ],
+        ),
       ),
     );
   }
