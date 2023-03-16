@@ -1,14 +1,13 @@
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_events.dart';
 import 'package:cube_system/models/lesson_event/lesson_event_type.dart';
-import 'package:cube_system/widgets/place_holders/error_place_holder.dart';
+import 'package:cube_system/widgets/event_pages/no_connection_event_page.dart';
+import 'package:cube_system/widgets/event_pages/weekend_event_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/timetable_page/features/lesson_card/ui/lesson_card.dart';
 
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_lessons.dart';
-
-import 'package:cube_system/widgets/place_holders/rest_place_holder.dart';
 
 class TimetablePageDay extends ConsumerWidget {
   final DateTime date;
@@ -32,12 +31,13 @@ class TimetablePageDay extends ConsumerWidget {
 
     final isKSRS =
         lessons?.where((element) => element.isEvent).isNotEmpty ?? false;
+
     if (event.type == LessonEventType.weekend || isKSRS) {
-      return const RestPlaceHolder();
+      return const WeekendEventPage();
     }
 
     if (lessons == null) {
-      return const ErrorPlaceHolder();
+      return const NoConnectionEventPage();
     }
 
     return ListView.separated(
