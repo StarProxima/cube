@@ -36,7 +36,7 @@ class TimetablePageDay extends ConsumerWidget {
       return const WeekendEventPage();
     }
 
-    if (lessons == null) {
+    if (event.type == LessonEventType.error || lessons == null) {
       return const NoConnectionEventPage();
     }
 

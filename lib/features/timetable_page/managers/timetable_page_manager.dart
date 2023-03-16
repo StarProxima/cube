@@ -72,12 +72,7 @@ class TimetablePageManager {
 
   // TODO: Refactor and decompose
   Future<void> updateCurrentTimetable() async {
-    final request = await api.apiLessonsAutocompleteGet(q: "36/2");
-
-    final res = request.body!;
-
-    timetablePageTitle.state = res.groups.first.name;
-
+    await Future(() {});
     final date = selectedDate.state;
 
     final dayOffset = date.weekday - 1;
@@ -93,7 +88,9 @@ class TimetablePageManager {
 
     for (int day = 0; day < endDate.difference(startDate).inDays; day++) {
       final date = startDate.add(Duration(days: day));
-      if (!eventMap.containsKey(date)) {
+      final shouldLoading = !eventMap.containsKey(date) ||
+          eventMap[date]?.type == LessonEventType.error;
+      if (shouldLoading) {
         eventMap[date] = LessonEvent(type: LessonEventType.loading);
       }
     }
@@ -101,38 +98,56 @@ class TimetablePageManager {
 
     final format = DateFormat('yyyy-MM-dd');
 
-    final t2 = await api.apiLessonsGet(
-      fullData: true,
-      groups: [res.groups.first.id],
-      startDate: format.format(startDate),
-      endDate: format.format(endDate),
-    );
+    try {
+      final request = await api.apiLessonsAutocompleteGet(q: "36/2");
 
-    final lessons = t2.body!;
+      final res = request.body!;
 
-    for (final lesson in lessons) {
-      if (timetableMap.containsKey(lesson.date)) timetableMap[lesson.date] = [];
+      timetablePageTitle.state = res.groups.first.name;
+
+      final t2 = await api.apiLessonsGet(
+        fullData: true,
+        groups: [res.groups.first.id],
+        startDate: format.format(startDate),
+        endDate: format.format(endDate),
+      );
+
+      final lessons = t2.body!;
+
+      for (final lesson in lessons) {
+        if (timetableMap.containsKey(lesson.date)) {
+          timetableMap[lesson.date] = [];
+        }
+      }
+
+      for (final lesson in lessons) {
+        timetableMap[lesson.date] = (timetableMap[lesson.date] ?? []);
+        final l = lessonConvertor.lessonByLessonFullNamesInDb(lesson: lesson);
+        timetableMap[lesson.date]!.add(l);
+      }
+      timetable.state = timetableMap;
+
+      events.state = eventMap.map(
+        (key, value) {
+          return MapEntry(
+            key,
+            LessonEvent(
+              type: timetableMap[key]?.isEmpty ?? true
+                  ? LessonEventType.weekend
+                  : LessonEventType.lesson,
+            ),
+          );
+        },
+      );
+    } catch (e) {
+      for (final entry in eventMap.entries) {
+        if (entry.value.type == LessonEventType.loading) {
+          eventMap[entry.key] = LessonEvent(type: LessonEventType.error);
+        }
+      }
+
+      events.state = eventMap;
     }
-
-    for (final lesson in lessons) {
-      timetableMap[lesson.date] = (timetableMap[lesson.date] ?? []);
-      final l = lessonConvertor.lessonByLessonFullNamesInDb(lesson: lesson);
-      timetableMap[lesson.date]!.add(l);
-    }
-    timetable.state = timetableMap;
-
-    events.state = eventMap.map(
-      (key, value) {
-        return MapEntry(
-          key,
-          LessonEvent(
-            type: timetableMap[key]?.isEmpty ?? true
-                ? LessonEventType.weekend
-                : LessonEventType.lesson,
-          ),
-        );
-      },
-    );
 
     findLastCurrentNextLesson();
   }
