@@ -1,14 +1,11 @@
-import 'dart:async';
-
 import 'package:cube_system/api/cube_api.dart';
 import 'package:cube_system/features/timetable_page/managers/lesson_convertor.dart';
+import 'package:cube_system/features/timetable_page/managers/timetable_lessons_manager.dart';
 import 'package:cube_system/features/timetable_page/state_holders/current_date_time_state_holders.dart';
 import 'package:cube_system/features/timetable_page/state_holders/selected_date.dart';
 import 'package:cube_system/gen/api/cube_api.swagger.dart';
 import 'package:cube_system/models/lesson/lesson.dart';
-import 'package:cube_system/models/timetable_day/timetable_day_type.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_lessons.dart';
 
@@ -29,6 +26,7 @@ final timetablePageManager = Provider<TimetablePageManager>((ref) {
   return TimetablePageManager(
     api: ref.watch(cubeApi),
     lessonConvertor: ref.watch(lessonConvertor),
+    lessonsManager: ref.watch(timetableLessonsManager),
     timetable: ref.watch(timetablePageTimetable.notifier),
     events: ref.watch(timetablePageLessonEvents.notifier),
     currentDateTime: ref.watch(currentDateTimeQuick.notifier),
@@ -45,6 +43,7 @@ final timetablePageManager = Provider<TimetablePageManager>((ref) {
 class TimetablePageManager {
   final CubeApi api;
   final LessonConvertor lessonConvertor;
+  final TimetableLessonsManager lessonsManager;
 
   final StateController<Map<DateTime, List<Lesson>>> timetable;
   final StateController<Map<DateTime, TimetableDayEvent>> events;
@@ -59,6 +58,7 @@ class TimetablePageManager {
   TimetablePageManager({
     required this.api,
     required this.lessonConvertor,
+    required this.lessonsManager,
     required this.timetable,
     required this.events,
     required this.currentDateTime,
@@ -70,87 +70,10 @@ class TimetablePageManager {
     required this.lastLesson,
   });
 
-  // TODO: Refactor and decompose
-  Future<void> updateCurrentTimetable() async {
-    await Future(() {});
-    final date = selectedDate.state;
+  void updateCurrentTimetable() => lessonsManager.updateCurrentTimetable();
 
-    final dayOffset = date.weekday - 1;
-    final weekStart = date.add(Duration(days: -dayOffset));
-    final weekEnd = date.add(Duration(days: 6 - dayOffset));
-
-    final startDate = weekStart.add(const Duration(days: -7));
-
-    final endDate = weekEnd.add(const Duration(days: 7));
-
-    Map<DateTime, List<Lesson>> timetableMap = timetable.state.cast();
-    Map<DateTime, TimetableDayEvent> eventMap = events.state.cast();
-
-    for (int day = 0; day < endDate.difference(startDate).inDays; day++) {
-      final date = startDate.add(Duration(days: day));
-      final shouldLoading = !eventMap.containsKey(date) ||
-          eventMap[date]?.type == TimetableDayType.error;
-      if (shouldLoading) {
-        eventMap[date] = TimetableDayEvent(type: TimetableDayType.loading);
-      }
-    }
-    events.state = eventMap;
-
-    final format = DateFormat('yyyy-MM-dd');
-
-    try {
-      final request = await api.apiLessonsAutocompleteGet(q: "36/2");
-
-      final res = request.body!;
-
-      timetablePageTitle.state = res.groups.first.name;
-
-      final t2 = await api.apiLessonsGet(
-        fullData: true,
-        groups: [res.groups.first.id],
-        startDate: format.format(startDate),
-        endDate: format.format(endDate),
-      );
-
-      final lessons = t2.body!;
-
-      for (final lesson in lessons) {
-        if (timetableMap.containsKey(lesson.date)) {
-          timetableMap[lesson.date] = [];
-        }
-      }
-
-      for (final lesson in lessons) {
-        timetableMap[lesson.date] = (timetableMap[lesson.date] ?? []);
-        final l = lessonConvertor.lessonByLessonFullNamesInDb(lesson: lesson);
-        timetableMap[lesson.date]!.add(l);
-      }
-      timetable.state = timetableMap;
-
-      events.state = eventMap.map(
-        (key, value) {
-          return MapEntry(
-            key,
-            TimetableDayEvent(
-              type: timetableMap[key]?.isEmpty ?? true
-                  ? TimetableDayType.weekend
-                  : TimetableDayType.lessons,
-            ),
-          );
-        },
-      );
-    } catch (e) {
-      for (final entry in eventMap.entries) {
-        if (entry.value.type == TimetableDayType.loading) {
-          eventMap[entry.key] = TimetableDayEvent(type: TimetableDayType.error);
-        }
-      }
-
-      events.state = eventMap;
-    }
-
-    findLastCurrentNextLesson();
-  }
+  void findLastCurrentNextLesson() =>
+      lessonsManager.findLastCurrentNextLesson();
 
   void pickSelectedDate(DateTime newDate) {
     final date = selectedDate.state;
@@ -161,7 +84,7 @@ class TimetablePageManager {
     final weekEnd = date.add(Duration(days: 6 - dayOffset));
 
     if (newDate.isBefore(weekStart) || newDate.isAfter(weekEnd)) {
-      updateCurrentTimetable();
+      lessonsManager.updateCurrentTimetable();
     }
   }
 
@@ -173,32 +96,6 @@ class TimetablePageManager {
     //поэтому нужно обновить выбранную дату, иначе дата выбирается виджетом WeekTime
     if (lastDate == selectedDate.state) {
       pickSelectedDate(newDate);
-    }
-  }
-
-  void findLastCurrentNextLesson() async {
-    await Future(() {});
-    final currentDate = currentDateTime.state.add(const Duration(seconds: 1));
-
-    Lesson? lessonCurrent;
-
-    for (final date in timetable.state.keys) {
-      final lessons = timetable.state[date]!;
-
-      for (final lesson in lessons) {
-        if (lesson.isEvent) continue;
-
-        if (currentDate.isAfter(lesson.timings.startDateTime) &&
-            currentDate.isBefore(lesson.timings.endDateTime)) {
-          lessonCurrent = lesson;
-        } else if (currentDate.isBefore(lesson.timings.startDateTime)) {
-          nextLesson.state = lesson;
-          currentLesson.state = lessonCurrent;
-          return;
-        }
-
-        lastLesson.state = lesson;
-      }
     }
   }
 }
