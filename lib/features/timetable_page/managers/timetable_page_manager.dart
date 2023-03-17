@@ -6,7 +6,7 @@ import 'package:cube_system/features/timetable_page/state_holders/current_date_t
 import 'package:cube_system/features/timetable_page/state_holders/selected_date.dart';
 import 'package:cube_system/gen/api/cube_api.swagger.dart';
 import 'package:cube_system/models/lesson/lesson.dart';
-import 'package:cube_system/models/lesson_event/lesson_event_type.dart';
+import 'package:cube_system/models/timetable_day/timetable_day_type.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
@@ -22,7 +22,7 @@ import 'package:cube_system/features/timetable_page/state_holders/lessons/curren
 
 import 'package:cube_system/features/timetable_page/state_holders/lessons/last_lesson.dart';
 
-import 'package:cube_system/models/lesson_event/lesson_event.dart';
+import 'package:cube_system/models/timetable_day/timetable_day_event.dart';
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_events.dart';
 
 final timetablePageManager = Provider<TimetablePageManager>((ref) {
@@ -47,7 +47,7 @@ class TimetablePageManager {
   final LessonConvertor lessonConvertor;
 
   final StateController<Map<DateTime, List<Lesson>>> timetable;
-  final StateController<Map<DateTime, LessonEvent>> events;
+  final StateController<Map<DateTime, TimetableDayEvent>> events;
   final StateController<DateTime> currentDateTime;
   final StateController<DateTime> selectedDate;
   final StateController<DateTime> currentPickedDateInPageView;
@@ -84,14 +84,14 @@ class TimetablePageManager {
     final endDate = weekEnd.add(const Duration(days: 7));
 
     Map<DateTime, List<Lesson>> timetableMap = timetable.state.cast();
-    Map<DateTime, LessonEvent> eventMap = events.state.cast();
+    Map<DateTime, TimetableDayEvent> eventMap = events.state.cast();
 
     for (int day = 0; day < endDate.difference(startDate).inDays; day++) {
       final date = startDate.add(Duration(days: day));
       final shouldLoading = !eventMap.containsKey(date) ||
-          eventMap[date]?.type == LessonEventType.error;
+          eventMap[date]?.type == TimetableDayType.error;
       if (shouldLoading) {
-        eventMap[date] = LessonEvent(type: LessonEventType.loading);
+        eventMap[date] = TimetableDayEvent(type: TimetableDayType.loading);
       }
     }
     events.state = eventMap;
@@ -131,18 +131,18 @@ class TimetablePageManager {
         (key, value) {
           return MapEntry(
             key,
-            LessonEvent(
+            TimetableDayEvent(
               type: timetableMap[key]?.isEmpty ?? true
-                  ? LessonEventType.weekend
-                  : LessonEventType.lesson,
+                  ? TimetableDayType.weekend
+                  : TimetableDayType.lessons,
             ),
           );
         },
       );
     } catch (e) {
       for (final entry in eventMap.entries) {
-        if (entry.value.type == LessonEventType.loading) {
-          eventMap[entry.key] = LessonEvent(type: LessonEventType.error);
+        if (entry.value.type == TimetableDayType.loading) {
+          eventMap[entry.key] = TimetableDayEvent(type: TimetableDayType.error);
         }
       }
 

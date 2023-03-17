@@ -1,5 +1,5 @@
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_events.dart';
-import 'package:cube_system/models/lesson_event/lesson_event_type.dart';
+import 'package:cube_system/models/timetable_day/timetable_day_type.dart';
 import 'package:cube_system/widgets/event_pages/no_connection_event_page.dart';
 import 'package:cube_system/widgets/event_pages/weekend_event_page.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +22,7 @@ class TimetablePageDay extends ConsumerWidget {
 
     final event = ref.watch(timetablePageDayLessonEvent(date));
 
-    if (event == null || event.type == LessonEventType.loading) {
+    if (event == null || event.type == TimetableDayType.loading) {
       return const Center(
         child: Padding(
           padding: EdgeInsets.only(bottom: 36),
@@ -38,11 +38,11 @@ class TimetablePageDay extends ConsumerWidget {
       return const KsrsEventPage();
     }
 
-    if (event.type == LessonEventType.weekend) {
+    if (event.type == TimetableDayType.weekend) {
       return const WeekendEventPage();
     }
 
-    if (event.type == LessonEventType.error || lessons == null) {
+    if (event.type == TimetableDayType.error || lessons == null) {
       return const NoConnectionEventPage();
     }
 

@@ -1,5 +1,5 @@
-import 'package:cube_system/models/lesson_event/lesson_event.dart';
-import 'package:cube_system/models/lesson_event/lesson_event_type.dart';
+import 'package:cube_system/models/timetable_day/timetable_day_event.dart';
+import 'package:cube_system/models/timetable_day/timetable_day_type.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,7 +20,7 @@ class AppEventPage extends ConsumerWidget {
     super.key,
   });
 
-  factory AppEventPage.fromEvent(LessonEvent event) {
+  factory AppEventPage.fromEvent(TimetableDayEvent event) {
     return AppEventPage(
       picture: _getPictureByType(event.type),
       title: event.title,
@@ -29,13 +29,13 @@ class AppEventPage extends ConsumerWidget {
     );
   }
 
-  static Widget? _getPictureByType(LessonEventType type) {
+  static Widget? _getPictureByType(TimetableDayType type) {
     switch (type) {
-      case LessonEventType.holiday:
+      case TimetableDayType.holiday:
         return Assets.brooklyn.beingProductive3.svg();
-      case LessonEventType.error:
+      case TimetableDayType.error:
         return Assets.brooklyn.noConnection4.svg();
-      case LessonEventType.weekend:
+      case TimetableDayType.weekend:
         return Assets.brooklyn.rest3.svg();
       default:
         return null;
