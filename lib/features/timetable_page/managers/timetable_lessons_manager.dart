@@ -5,7 +5,6 @@ import 'package:cube_system/gen/api/cube_api.swagger.dart';
 import 'package:cube_system/models/lesson/lesson.dart';
 import 'package:cube_system/models/timetable_day/timetable_day_event.dart';
 import 'package:cube_system/features/timetable_page/state_holders/current_date_time_state_holders.dart';
-import 'package:cube_system/features/timetable_page/state_holders/current_picked_date_in_page_view.dart';
 import 'package:cube_system/features/timetable_page/state_holders/lessons/current_lesson.dart';
 import 'package:cube_system/features/timetable_page/state_holders/lessons/last_lesson.dart';
 import 'package:cube_system/features/timetable_page/state_holders/lessons/next_lesson.dart';
@@ -26,8 +25,6 @@ final timetableLessonsManager = Provider<TimetableLessonsManager>((ref) {
     events: ref.watch(timetablePageLessonEvents.notifier),
     currentDateTime: ref.watch(currentDateTimeQuick.notifier),
     selectedDate: ref.watch(selectedDate.notifier),
-    currentPickedDateInPageView:
-        ref.watch(currentPickedDateInPageView.notifier),
     timetablePageTitle: ref.watch(timetablePageTitle.notifier),
     currentLesson: ref.watch(currentLesson.notifier),
     nextLesson: ref.watch(nextLesson.notifier),
@@ -43,7 +40,6 @@ class TimetableLessonsManager {
   final StateController<Map<DateTime, TimetableDayEvent>> events;
   final StateController<DateTime> currentDateTime;
   final StateController<DateTime> selectedDate;
-  final StateController<DateTime> currentPickedDateInPageView;
   final StateController<String> timetablePageTitle;
   final StateController<Lesson?> currentLesson;
   final StateController<Lesson?> nextLesson;
@@ -56,7 +52,6 @@ class TimetableLessonsManager {
     required this.events,
     required this.currentDateTime,
     required this.selectedDate,
-    required this.currentPickedDateInPageView,
     required this.timetablePageTitle,
     required this.currentLesson,
     required this.nextLesson,
