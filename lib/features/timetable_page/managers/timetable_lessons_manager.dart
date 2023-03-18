@@ -1,4 +1,5 @@
 import 'package:cube_system/features/timetable_page/managers/timetable_day_event_manager.dart';
+import 'package:cube_system/models/timetable/timetable_type.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/api/cube_api.dart';
@@ -16,11 +17,16 @@ import 'package:cube_system/features/timetable_page/state_holders/timetable_page
 import 'package:cube_system/features/timetable_page/managers/lesson_convertor.dart';
 import 'package:intl/intl.dart';
 
+import 'package:cube_system/models/timetable/timetable_info.dart';
+
+import 'package:cube_system/features/timetable_page/state_holders/selected_timetable.dart';
+
 final timetableLessonsManager = Provider<TimetableLessonsManager>((ref) {
   return TimetableLessonsManager(
     api: ref.watch(cubeApi),
     lessonConvertor: ref.watch(lessonConvertor),
     eventManager: ref.watch(timetableDayEventManager),
+    selectedTimetable: ref.watch(selectedTimetable.notifier),
     timetable: ref.watch(timetablePageTimetable.notifier),
     events: ref.watch(timetablePageLessonEvents.notifier),
     currentDateTime: ref.watch(currentDateTimeQuick.notifier),
@@ -37,6 +43,7 @@ class TimetableLessonsManager {
   final LessonConvertor lessonConvertor;
   final TimetableDayEventManager eventManager;
 
+  final StateController<TimetableInfo?> selectedTimetable;
   final StateController<Map<DateTime, List<Lesson>>> timetable;
   final StateController<Map<DateTime, TimetableDayEvent>> events;
   final StateController<DateTime> currentDateTime;
@@ -50,6 +57,7 @@ class TimetableLessonsManager {
     required this.api,
     required this.lessonConvertor,
     required this.eventManager,
+    required this.selectedTimetable,
     required this.timetable,
     required this.events,
     required this.currentDateTime,
@@ -78,9 +86,40 @@ class TimetableLessonsManager {
     timetable.state = timetableMap;
   }
 
+  Future<List<LessonFullNamesInDb>> _getLessons({
+    required DateTime startDate,
+    required DateTime endDate,
+  }) async {
+    final format = DateFormat('yyyy-MM-dd');
+
+    final timetable = selectedTimetable.state;
+
+    if (timetable == null) return [];
+
+    final lessonResponse = await api.apiLessonsGet(
+      fullData: true,
+      groups: timetable.type == TimetableType.group ? [timetable.id] : null,
+      teachers: timetable.type == TimetableType.teacher ? [timetable.id] : null,
+      places: timetable.type == TimetableType.place ? [timetable.id] : null,
+      startDate: format.format(startDate),
+      endDate: format.format(endDate),
+    );
+
+    return lessonResponse.body!;
+  }
+
   Future<void> updateCurrentTimetable() async {
     await Future(() {});
     final date = selectedDate.state;
+
+    final request = await api.apiLessonsAutocompleteGet(q: "36/2");
+    final group = request.body!.groups.first;
+
+    selectedTimetable.state = TimetableInfo(
+      id: group.id,
+      label: group.name,
+      type: TimetableType.group,
+    );
 
     final dayOffset = date.weekday - 1;
     final weekStart = date.add(Duration(days: -dayOffset));
@@ -91,23 +130,8 @@ class TimetableLessonsManager {
 
     eventManager.setLoadingEvents(startDate: startDate, endDate: endDate);
 
-    final format = DateFormat('yyyy-MM-dd');
-
     try {
-      final request = await api.apiLessonsAutocompleteGet(q: "36/2");
-
-      final res = request.body!;
-
-      timetablePageTitle.state = res.groups.first.name;
-
-      final t2 = await api.apiLessonsGet(
-        fullData: true,
-        groups: [res.groups.first.id],
-        startDate: format.format(startDate),
-        endDate: format.format(endDate),
-      );
-
-      final lessons = t2.body!;
+      final lessons = await _getLessons(startDate: startDate, endDate: endDate);
 
       _setLessons(lessons);
 

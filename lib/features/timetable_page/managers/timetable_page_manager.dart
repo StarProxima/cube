@@ -1,15 +1,19 @@
 import 'package:cube_system/features/timetable_page/managers/timetable_lessons_manager.dart';
 import 'package:cube_system/features/timetable_page/state_holders/current_date_time_state_holders.dart';
 import 'package:cube_system/features/timetable_page/state_holders/selected_date.dart';
+import 'package:cube_system/models/timetable/timetable_info.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/timetable_page/state_holders/current_picked_date_in_page_view.dart';
 
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_title.dart';
 
+import 'package:cube_system/features/timetable_page/state_holders/selected_timetable.dart';
+
 final timetablePageManager = Provider<TimetablePageManager>((ref) {
   return TimetablePageManager(
     lessonsManager: ref.watch(timetableLessonsManager),
+    selectedTimetable: ref.watch(selectedTimetable.notifier),
     currentDateTime: ref.watch(currentDateTimeQuick.notifier),
     selectedDate: ref.watch(selectedDate.notifier),
     currentPickedDateInPageView:
@@ -21,6 +25,7 @@ final timetablePageManager = Provider<TimetablePageManager>((ref) {
 class TimetablePageManager {
   final TimetableLessonsManager lessonsManager;
 
+  final StateController<TimetableInfo?> selectedTimetable;
   final StateController<DateTime> currentDateTime;
   final StateController<DateTime> selectedDate;
   final StateController<DateTime> currentPickedDateInPageView;
@@ -28,6 +33,7 @@ class TimetablePageManager {
 
   TimetablePageManager({
     required this.lessonsManager,
+    required this.selectedTimetable,
     required this.currentDateTime,
     required this.selectedDate,
     required this.currentPickedDateInPageView,
