@@ -1,3 +1,4 @@
+import 'package:cube_system/features/timetable_page/managers/timetable_day_event_manager.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/api/cube_api.dart';
@@ -15,12 +16,11 @@ import 'package:cube_system/features/timetable_page/state_holders/timetable_page
 import 'package:cube_system/features/timetable_page/managers/lesson_convertor.dart';
 import 'package:intl/intl.dart';
 
-import 'package:cube_system/models/timetable_day/timetable_day_type.dart';
-
 final timetableLessonsManager = Provider<TimetableLessonsManager>((ref) {
   return TimetableLessonsManager(
     api: ref.watch(cubeApi),
     lessonConvertor: ref.watch(lessonConvertor),
+    eventManager: ref.watch(timetableDayEventManager),
     timetable: ref.watch(timetablePageTimetable.notifier),
     events: ref.watch(timetablePageLessonEvents.notifier),
     currentDateTime: ref.watch(currentDateTimeQuick.notifier),
@@ -35,6 +35,7 @@ final timetableLessonsManager = Provider<TimetableLessonsManager>((ref) {
 class TimetableLessonsManager {
   final CubeApi api;
   final LessonConvertor lessonConvertor;
+  final TimetableDayEventManager eventManager;
 
   final StateController<Map<DateTime, List<Lesson>>> timetable;
   final StateController<Map<DateTime, TimetableDayEvent>> events;
@@ -48,6 +49,7 @@ class TimetableLessonsManager {
   TimetableLessonsManager({
     required this.api,
     required this.lessonConvertor,
+    required this.eventManager,
     required this.timetable,
     required this.events,
     required this.currentDateTime,
@@ -58,7 +60,24 @@ class TimetableLessonsManager {
     required this.lastLesson,
   });
 
-  // TODO: Refactor and decompose
+  void _setLessons(List<LessonFullNamesInDb> lessons) {
+    Map<DateTime, List<Lesson>> timetableMap = timetable.state.cast();
+
+    for (final lesson in lessons) {
+      if (timetableMap.containsKey(lesson.date)) {
+        timetableMap[lesson.date] = [];
+      }
+    }
+
+    for (final lesson in lessons) {
+      timetableMap[lesson.date] = (timetableMap[lesson.date] ?? []);
+      final l = lessonConvertor.lessonByLessonFullNamesInDb(lesson: lesson);
+      timetableMap[lesson.date]!.add(l);
+    }
+
+    timetable.state = timetableMap;
+  }
+
   Future<void> updateCurrentTimetable() async {
     await Future(() {});
     final date = selectedDate.state;
@@ -68,21 +87,9 @@ class TimetableLessonsManager {
     final weekEnd = date.add(Duration(days: 6 - dayOffset));
 
     final startDate = weekStart.add(const Duration(days: -7));
-
     final endDate = weekEnd.add(const Duration(days: 7));
 
-    Map<DateTime, List<Lesson>> timetableMap = timetable.state.cast();
-    Map<DateTime, TimetableDayEvent> eventMap = events.state.cast();
-
-    for (int day = 0; day < endDate.difference(startDate).inDays; day++) {
-      final date = startDate.add(Duration(days: day));
-      final shouldLoading = !eventMap.containsKey(date) ||
-          eventMap[date]?.type == TimetableDayType.error;
-      if (shouldLoading) {
-        eventMap[date] = TimetableDayEvent(type: TimetableDayType.loading);
-      }
-    }
-    events.state = eventMap;
+    eventManager.setLoadingEvents(startDate: startDate, endDate: endDate);
 
     final format = DateFormat('yyyy-MM-dd');
 
@@ -102,39 +109,11 @@ class TimetableLessonsManager {
 
       final lessons = t2.body!;
 
-      for (final lesson in lessons) {
-        if (timetableMap.containsKey(lesson.date)) {
-          timetableMap[lesson.date] = [];
-        }
-      }
+      _setLessons(lessons);
 
-      for (final lesson in lessons) {
-        timetableMap[lesson.date] = (timetableMap[lesson.date] ?? []);
-        final l = lessonConvertor.lessonByLessonFullNamesInDb(lesson: lesson);
-        timetableMap[lesson.date]!.add(l);
-      }
-      timetable.state = timetableMap;
-
-      events.state = eventMap.map(
-        (key, value) {
-          return MapEntry(
-            key,
-            TimetableDayEvent(
-              type: timetableMap[key]?.isEmpty ?? true
-                  ? TimetableDayType.weekend
-                  : TimetableDayType.lessons,
-            ),
-          );
-        },
-      );
+      eventManager.setLessonsAfterLoading();
     } catch (e) {
-      for (final entry in eventMap.entries) {
-        if (entry.value.type == TimetableDayType.loading) {
-          eventMap[entry.key] = TimetableDayEvent(type: TimetableDayType.error);
-        }
-      }
-
-      events.state = eventMap;
+      eventManager.setErrorsAfterLoading();
     }
 
     findLastCurrentNextLesson();
@@ -145,6 +124,7 @@ class TimetableLessonsManager {
     final currentDate = currentDateTime.state.add(const Duration(seconds: 1));
 
     Lesson? lessonCurrent;
+    Lesson? lessonLast;
 
     for (final date in timetable.state.keys) {
       final lessons = timetable.state[date]!;
@@ -158,10 +138,11 @@ class TimetableLessonsManager {
         } else if (currentDate.isBefore(lesson.timings.startDateTime)) {
           nextLesson.state = lesson;
           currentLesson.state = lessonCurrent;
+          lastLesson.state = lessonLast;
           return;
         }
 
-        lastLesson.state = lesson;
+        lessonLast = lesson;
       }
     }
   }
