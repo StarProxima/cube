@@ -9,6 +9,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_title.dart';
 import 'package:intl/intl.dart';
 
+import 'package:cube_system/features/timetable_page/features/week_timeline/state_holders/week_timeline_offset_back_button_direction.dart';
+
 class TimetablePageHeader extends ConsumerWidget {
   const TimetablePageHeader({super.key});
 
@@ -24,13 +26,7 @@ class TimetablePageHeader extends ConsumerWidget {
         ? DateFormat('MMMM', 'ru')
         : DateFormat('MMMM', 'ru').addPattern('yyyy');
 
-    final difference = date.difference(weekDate).inDays;
-
-    final dur = Duration(days: date.weekday + difference);
-
-    final showBackButton = dur.inDays < 0 || dur.inDays >= 7;
-
-    final backButtonIsRigth = difference.isNegative;
+    final weekOffsetButton = ref.watch(weekTimelineOffsetBackButtonDirection);
 
     return SizedBox(
       height: 53,
@@ -75,7 +71,8 @@ class TimetablePageHeader extends ConsumerWidget {
               alignment: Alignment.centerRight,
               child: Padding(
                 padding: const EdgeInsets.only(right: 8),
-                child: showBackButton
+                child: weekOffsetButton !=
+                        WeekTimelineOffsetBackButtonDirection.stay
                     ? InkWell(
                         onTap: () =>
                             manager.pickSelectedDate(date.add(Duration.zero)),
@@ -84,9 +81,11 @@ class TimetablePageHeader extends ConsumerWidget {
                         child: Container(
                           padding: const EdgeInsets.all(4),
                           child: Icon(
-                            backButtonIsRigth
-                                ? Icons.arrow_back_ios_new_rounded
-                                : Icons.arrow_forward_ios_rounded,
+                            weekOffsetButton ==
+                                    WeekTimelineOffsetBackButtonDirection
+                                        .forward
+                                ? Icons.arrow_forward_ios_rounded
+                                : Icons.arrow_back_ios_new_rounded,
                             size: 20,
                           ),
                         ),
