@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'cube_api.swagger.dart';
+part of 'cube_api.models.swagger.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

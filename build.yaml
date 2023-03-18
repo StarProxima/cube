@@ -1,11 +1,16 @@
 targets:  
   $default:
     sources:
+     include:
+      - "pubspec.yaml"
       - $package$ 
       - api_spec/**
+      - assets/**
       - lib/**
     builders:
       swagger_dart_code_generator:
         options:
           output_folder: 'lib/gen/api'
           input_folder: 'api_spec/'
+          separate_models: true
+          

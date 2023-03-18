@@ -611,8 +611,7 @@ paths:
         - description: Сортируемый столбец
           required: false
           schema:
-            allOf:
-              - $ref: '#/components/schemas/UserSortBy'
+            $ref: '#/components/schemas/UserSortBy'
             description: Сортируемый столбец
             default: login
           name: sort_by
@@ -620,8 +619,7 @@ paths:
         - description: Параметр сортировки
           required: false
           schema:
-            allOf:
-              - $ref: '#/components/schemas/SortOrder'
+            $ref: '#/components/schemas/SortOrder'
             description: Параметр сортировки
             default: asc
           name: sort_order
@@ -3930,8 +3928,7 @@ paths:
         - description: Сортируемый столбец
           required: false
           schema:
-            allOf:
-              - $ref: '#/components/schemas/StudentSortBy'
+            $ref: '#/components/schemas/StudentSortBy'
             description: Сортируемый столбец
             default: last_name
           name: sort_by
@@ -3939,8 +3936,7 @@ paths:
         - description: Параметр сортировки
           required: false
           schema:
-            allOf:
-              - $ref: '#/components/schemas/SortOrder'
+            $ref: '#/components/schemas/SortOrder'
             description: Параметр сортировки
             default: asc
           name: sort_order
@@ -5021,8 +5017,7 @@ paths:
       parameters:
         - required: false
           schema:
-            allOf:
-              - $ref: '#/components/schemas/GetLessonHeader'
+            $ref: '#/components/schemas/GetLessonHeader'
             default: groups
           name: header
           in: query
@@ -5229,16 +5224,14 @@ paths:
         - description: Статус занятия
           required: false
           schema:
-            allOf:
-              - $ref: '#/components/schemas/LessonStatus'
+            $ref: '#/components/schemas/LessonStatus'
             description: Статус занятия
           name: status
           in: query
         - description: Сортируемый столбец
           required: false
           schema:
-            allOf:
-              - $ref: '#/components/schemas/LessonSortBy'
+            $ref: '#/components/schemas/LessonSortBy'
             description: Сортируемый столбец
             default: number
           name: sort_by
@@ -5246,8 +5239,7 @@ paths:
         - description: Параметр сортировки
           required: false
           schema:
-            allOf:
-              - $ref: '#/components/schemas/SortOrder'
+            $ref: '#/components/schemas/SortOrder'
             description: Параметр сортировки
             default: asc
           name: sort_order
@@ -5265,6 +5257,9 @@ paths:
             application/json:
               schema:
                 title: Response Get Lessons Api Lessons Get
+                type: array
+                items:
+                  $ref: '#/components/schemas/LessonFullNamesInDb'
                 anyOf:
                   - type: array
                     items:
@@ -5751,8 +5746,7 @@ paths:
       parameters:
         - required: false
           schema:
-            allOf:
-              - $ref: '#/components/schemas/GetLessonHeader'
+            $ref: '#/components/schemas/GetLessonHeader'
             default: groups
           name: header
           in: query
@@ -7557,6 +7551,7 @@ components:
           type: string
     DegreeStudy:
       title: DegreeStudy
+      type: string
       enum:
         - Бакалавриат
         - Магистратура
@@ -8887,8 +8882,7 @@ components:
             type: integer
         extra:
           title: Extra
-          allOf:
-            - $ref: '#/components/schemas/ExportExtraInfo'
+          $ref: '#/components/schemas/ExportExtraInfo'
           default:
             vice_rector_name: Фамилия И.О.
             head_of_umu_name: Фамилия И.О.
@@ -10250,8 +10244,7 @@ components:
             type: integer
         extra:
           title: Extra
-          allOf:
-            - $ref: '#/components/schemas/ExportExtraInfo'
+          $ref: '#/components/schemas/ExportExtraInfo'
           default:
             vice_rector_name: Фамилия И.О.
             head_of_umu_name: Фамилия И.О.
@@ -10589,6 +10582,7 @@ components:
           type: integer
     TeacherAcademicTitle:
       title: TeacherAcademicTitle
+      type: integer
       enum:
         - 1
         - 2
@@ -10601,7 +10595,6 @@ components:
         - 9
         - 10
         - 11
-      type: integer
       description: Список констант для 'Teacher.academic_title'
     TeacherCreate:
       title: TeacherCreate
