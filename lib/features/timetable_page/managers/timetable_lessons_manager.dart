@@ -110,7 +110,25 @@ class TimetableLessonsManager {
 
   Future<void> updateCurrentTimetable() async {
     await Future(() {});
+
     final date = selectedDate.state;
+
+    final dayOffset = date.weekday - 1;
+    final weekStart = date.add(Duration(days: -dayOffset));
+    final weekEnd = date.add(Duration(days: 6 - dayOffset));
+
+    final startDate = weekStart.add(const Duration(days: -7));
+    final endDate = weekEnd.add(const Duration(days: 7));
+
+    // if (selectedTimetable.state == null) {
+    //   eventManager.setNotSelectedEvents(
+    //     startDate: startDate,
+    //     endDate: endDate,
+    //   );
+    //   return;
+    // }
+
+    eventManager.setLoadingEvents(startDate: startDate, endDate: endDate);
 
     final request = await api.apiLessonsAutocompleteGet(q: "36/2");
     final group = request.body!.groups.first;
@@ -120,15 +138,6 @@ class TimetableLessonsManager {
       label: group.name,
       type: TimetableType.group,
     );
-
-    final dayOffset = date.weekday - 1;
-    final weekStart = date.add(Duration(days: -dayOffset));
-    final weekEnd = date.add(Duration(days: 6 - dayOffset));
-
-    final startDate = weekStart.add(const Duration(days: -7));
-    final endDate = weekEnd.add(const Duration(days: 7));
-
-    eventManager.setLoadingEvents(startDate: startDate, endDate: endDate);
 
     try {
       final lessons = await _getLessons(startDate: startDate, endDate: endDate);

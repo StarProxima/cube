@@ -1,12 +1,12 @@
 import 'package:cube_system/features/timetable_page/features/week_timeline/state_holders/week_timeline_shown_week_date.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/timetable_page/state_holders/current_date_time_state_holders.dart';
+import 'package:cube_system/features/timetable_page/state_holders/selected_timetable.dart';
 import 'package:cube_system/source/extensions.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/features/timetable_page/state_holders/timetable_page_title.dart';
 import 'package:intl/intl.dart';
 
 import 'package:cube_system/features/timetable_page/features/week_timeline/state_holders/week_timeline_offset_back_button_direction.dart';
@@ -18,7 +18,9 @@ class TimetablePageHeader extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final manager = ref.watch(timetablePageManager);
 
-    final timetableTile = ref.watch(timetablePageTitle);
+    final timetableLabel =
+        ref.watch(selectedTimetable.select((value) => value?.label)) ?? '';
+
     final date = ref.watch(currentDate);
     final weekDate = ref.watch(weekTimelineShownWeekDate);
 
@@ -41,7 +43,7 @@ class TimetablePageHeader extends ConsumerWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(99)),
                 child: Center(
                   child: Text(
-                    timetableTile,
+                    timetableLabel,
                     style: context.textStyles.largeTitle,
                     textAlign: TextAlign.center,
                   ),

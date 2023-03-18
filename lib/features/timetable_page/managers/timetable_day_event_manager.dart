@@ -24,6 +24,25 @@ class TimetableDayEventManager {
     required this.events,
   });
 
+  void setNotSelectedEvents({
+    required DateTime startDate,
+    required DateTime endDate,
+  }) {
+    Map<DateTime, TimetableDayEvent> eventMap = {};
+
+    for (int day = 0; day < endDate.difference(startDate).inDays; day++) {
+      final date = startDate.add(Duration(days: day));
+      eventMap[date] = TimetableDayEvent(type: TimetableDayType.notSelected);
+    }
+
+    events.state = eventMap;
+  }
+
+  static final _shouldLoadingEvents = [
+    TimetableDayType.error,
+    TimetableDayType.notSelected
+  ];
+
   void setLoadingEvents({
     required DateTime startDate,
     required DateTime endDate,
@@ -33,7 +52,7 @@ class TimetableDayEventManager {
     for (int day = 0; day < endDate.difference(startDate).inDays; day++) {
       final date = startDate.add(Duration(days: day));
       final shouldLoading = !eventMap.containsKey(date) ||
-          eventMap[date]?.type == TimetableDayType.error;
+          _shouldLoadingEvents.contains(eventMap[date]?.type);
       if (shouldLoading) {
         eventMap[date] = TimetableDayEvent(type: TimetableDayType.loading);
       }

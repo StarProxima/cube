@@ -11,6 +11,10 @@ import 'package:cube_system/features/timetable_page/state_holders/timetable_page
 
 import 'package:cube_system/widgets/event_pages/ksrs_event_page.dart';
 
+import 'package:cube_system/widgets/event_pages/something_went_wrong_event_page.dart';
+
+import 'package:cube_system/widgets/event_pages/not_selected_event_page.dart';
+
 class TimetablePageDay extends ConsumerWidget {
   final DateTime date;
 
@@ -31,6 +35,14 @@ class TimetablePageDay extends ConsumerWidget {
       );
     }
 
+    if (event.type == TimetableDayType.notSelected) {
+      return const NotSelectedEventPage();
+    }
+
+    if (event.type == TimetableDayType.error) {
+      return const NoConnectionEventPage();
+    }
+
     final isKSRS =
         lessons?.where((element) => element.isEvent).isNotEmpty ?? false;
 
@@ -42,8 +54,8 @@ class TimetablePageDay extends ConsumerWidget {
       return const WeekendEventPage();
     }
 
-    if (event.type == TimetableDayType.error || lessons == null) {
-      return const NoConnectionEventPage();
+    if (lessons == null) {
+      return const SomethingWentWrongEventPage();
     }
 
     return ListView.separated(

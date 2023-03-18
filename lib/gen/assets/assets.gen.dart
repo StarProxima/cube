@@ -14,6 +14,10 @@ import 'package:flutter/services.dart';
 class $AssetsBrooklynGen {
   const $AssetsBrooklynGen();
 
+  /// File path: assets/brooklyn/asking-question-3.svg
+  SvgGenImage get askingQuestion3 =>
+      const SvgGenImage('assets/brooklyn/asking-question-3.svg');
+
   /// File path: assets/brooklyn/being-productive-3.svg
   SvgGenImage get beingProductive3 =>
       const SvgGenImage('assets/brooklyn/being-productive-3.svg');
@@ -25,8 +29,23 @@ class $AssetsBrooklynGen {
   /// File path: assets/brooklyn/rest-3.svg
   SvgGenImage get rest3 => const SvgGenImage('assets/brooklyn/rest-3.svg');
 
+  /// File path: assets/brooklyn/something-went-wrong-2.svg
+  SvgGenImage get somethingWentWrong2 =>
+      const SvgGenImage('assets/brooklyn/something-went-wrong-2.svg');
+
+  /// File path: assets/brooklyn/welcome-3.svg
+  SvgGenImage get welcome3 =>
+      const SvgGenImage('assets/brooklyn/welcome-3.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [beingProductive3, noConnection4, rest3];
+  List<SvgGenImage> get values => [
+        askingQuestion3,
+        beingProductive3,
+        noConnection4,
+        rest3,
+        somethingWentWrong2,
+        welcome3
+      ];
 }
 
 class Assets {
