@@ -1,6 +1,7 @@
 import 'package:cube_system/features/timetable_search_page/managers/timetable_search_page_manager.dart';
 import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_timetables.dart';
 import 'package:cube_system/features/timetable_search_page/ui/widgets/timetable_card.dart';
+import 'package:cube_system/features/timetable_search_page/ui/widgets/timetable_search_page_header.dart';
 import 'package:cube_system/features/timetable_search_page/ui/widgets/timetable_search_page_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -29,31 +30,11 @@ class _TimetableSearchPage extends ConsumerStatefulWidget {
 class _TimetableSearchPageState extends ConsumerState<_TimetableSearchPage> {
   @override
   Widget build(BuildContext context) {
+    final manager = ref.watch(timetableSearchPageManager);
     final timetables = ref.watch(timetableSearchPageTimetables);
 
-    final manager = ref.watch(timetableSearchPageManager);
-
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(50),
-        child: Column(
-          children: [
-            Padding(
-              padding:
-                  const EdgeInsets.only(left: 8, top: 8, bottom: 8, right: 4),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: const [
-                  AppBackButton(),
-                  SizedBox(width: 6),
-                  Flexible(child: TimetableSearchPageTextField()),
-                ],
-              ),
-            ),
-            const Divider(),
-          ],
-        ),
-      ),
+      appBar: const TimetableSearchPageHeader(),
       body: ListView.separated(
         itemCount: timetables.length,
         physics: const BouncingScrollPhysics(
