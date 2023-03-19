@@ -1,3 +1,4 @@
+import 'package:cube_system/features/timetable_search_page/state_holders/timetable_searsh_timetables.dart';
 import 'package:cube_system/features/timetable_search_page/ui/widgets/timetable_card.dart';
 import 'package:cube_system/features/timetable_search_page/ui/widgets/timetable_search_page_text_field.dart';
 import 'package:cube_system/models/timetable/timetable_info.dart';
@@ -30,7 +31,7 @@ class _TimetableSearchPage extends ConsumerStatefulWidget {
 class _TimetableSearchPageState extends ConsumerState<_TimetableSearchPage> {
   @override
   Widget build(BuildContext context) {
-    final timetables = [
+    final testTimetables = [
       TimetableInfo(
         id: 10,
         label: '36/2',
@@ -57,6 +58,9 @@ class _TimetableSearchPageState extends ConsumerState<_TimetableSearchPage> {
         type: TimetableType.place,
       ),
     ];
+
+    final timetables = ref.watch(timetableSearshTimetables);
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50),
@@ -79,14 +83,14 @@ class _TimetableSearchPageState extends ConsumerState<_TimetableSearchPage> {
         ),
       ),
       body: ListView.separated(
-        itemCount: 100,
+        itemCount: timetables.length,
         physics: const BouncingScrollPhysics(
           parent: AlwaysScrollableScrollPhysics(),
         ),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         itemBuilder: (context, index) {
           return TimetableCard(
-            timetable: timetables[index % timetables.length],
+            timetable: timetables[index],
           );
         },
         separatorBuilder: (context, index) {
