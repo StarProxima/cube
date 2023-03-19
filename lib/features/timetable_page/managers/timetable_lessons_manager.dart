@@ -120,13 +120,13 @@ class TimetableLessonsManager {
     final startDate = weekStart.add(const Duration(days: -7));
     final endDate = weekEnd.add(const Duration(days: 7));
 
-    // if (selectedTimetable.state == null) {
-    //   eventManager.setNotSelectedEvents(
-    //     startDate: startDate,
-    //     endDate: endDate,
-    //   );
-    //   return;
-    // }
+    if (selectedTimetable.state == null) {
+      eventManager.setNotSelectedEvents(
+        startDate: startDate,
+        endDate: endDate,
+      );
+      return;
+    }
 
     eventManager.setLoadingEvents(startDate: startDate, endDate: endDate);
 

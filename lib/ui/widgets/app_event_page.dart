@@ -1,46 +1,27 @@
-import 'package:cube_system/models/timetable_day/timetable_day_event.dart';
-import 'package:cube_system/models/timetable_day/timetable_day_type.dart';
+
 import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/gen/assets/assets.gen.dart';
+import 'package:cube_system/ui/widgets/app_button.dart';
 
 class AppEventPage extends ConsumerWidget {
   final Widget? picture;
   final String? title;
   final String? subTitle;
   final String? description;
+  final String? buttonText;
+  final VoidCallback? onTap;
 
   const AppEventPage({
     this.picture,
     this.title,
     this.subTitle,
     this.description,
+    this.buttonText,
+    this.onTap,
     super.key,
   });
-
-  factory AppEventPage.fromEvent(TimetableDayEvent event) {
-    return AppEventPage(
-      picture: _getPictureByType(event.type),
-      title: event.title,
-      subTitle: event.subTitle,
-      description: event.description,
-    );
-  }
-
-  static Widget? _getPictureByType(TimetableDayType type) {
-    switch (type) {
-      case TimetableDayType.holiday:
-        return Assets.brooklyn.beingProductive3.svg();
-      case TimetableDayType.error:
-        return Assets.brooklyn.noConnection4.svg();
-      case TimetableDayType.weekend:
-        return Assets.brooklyn.rest3.svg();
-      default:
-        return null;
-    }
-  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -62,16 +43,34 @@ class AppEventPage extends ConsumerWidget {
               style: context.textStyles.largeTitle,
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 8),
-            Text(
-              subTitle ?? '',
-              style: context.textStyles.subTitle,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              description ?? '',
-              style: context.textStyles.subTitle,
-            ),
+            if (subTitle != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: Text(
+                  subTitle ?? '',
+                  style: context.textStyles.subTitle,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            if (description != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: Text(
+                  description ?? '',
+                  style: context.textStyles.subTitle.copyWith(
+                    color: context.colors.subduedText,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            if (buttonText != null || onTap != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: AppButton(
+                  text: buttonText,
+                  onTap: onTap,
+                ),
+              )
           ],
         ),
       ),

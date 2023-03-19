@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/gen/assets/assets.gen.dart';
 
-import 'package:cube_system/widgets/event_pages/app_event_page.dart';
+import 'package:cube_system/ui/widgets/app_event_page.dart';
 
 class WeekendEventPage extends ConsumerWidget {
   const WeekendEventPage({super.key});
@@ -14,6 +14,7 @@ class WeekendEventPage extends ConsumerWidget {
       picture: Assets.brooklyn.rest3.svg(),
       title: 'В этот день пар нет',
       subTitle: 'Можно отдохнуть',
+      // description: 'Длинное описание эвента ' * 10,
     );
   }
 }

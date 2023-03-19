@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/gen/assets/assets.gen.dart';
-import 'package:cube_system/widgets/event_pages/app_event_page.dart';
+import 'package:cube_system/ui/widgets/app_event_page.dart';
 
 class KsrsEventPage extends ConsumerWidget {
   const KsrsEventPage({super.key});

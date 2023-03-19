@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/gen/assets/assets.gen.dart';
-import 'package:cube_system/widgets/event_pages/app_event_page.dart';
+import 'package:cube_system/ui/widgets/app_event_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class NoConnectionEventPage extends ConsumerWidget {
   const NoConnectionEventPage({super.key});
@@ -13,6 +13,8 @@ class NoConnectionEventPage extends ConsumerWidget {
       picture: Assets.brooklyn.noConnection4.svg(),
       title: 'Ошибка соединения',
       subTitle: 'Не удалось подключиться к серверу',
+      buttonText: 'Попробовать ещё раз',
+      onTap: () {},
     );
   }
 }
