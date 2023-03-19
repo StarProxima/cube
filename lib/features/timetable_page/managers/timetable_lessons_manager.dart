@@ -131,13 +131,13 @@ class TimetableLessonsManager {
     eventManager.setLoadingEvents(startDate: startDate, endDate: endDate);
 
     try {
-      final request = await api.apiLessonsAutocompleteGet(q: "Вишняк");
-      final group = request.body!.teachers.first;
+      final request = await api.apiLessonsAutocompleteGet(q: "305");
+      final group = request.body!.places.first;
 
       selectedTimetable.state = TimetableInfo(
         id: group.id,
         label: group.name,
-        type: TimetableType.teacher,
+        type: TimetableType.place,
       );
 
       final lessons = await _getLessons(startDate: startDate, endDate: endDate);

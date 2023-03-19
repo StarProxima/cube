@@ -11,7 +11,7 @@ class NoConnectionEventPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return AppEventPage(
       picture: Assets.brooklyn.noConnection4.svg(),
-      title: 'Ошибка',
+      title: 'Ошибка соединения',
       subTitle: 'Не удалось подключиться к серверу',
     );
   }
