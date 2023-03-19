@@ -1,10 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/features/timetable_page/state_holders/current_date_time_state_holders.dart';
+import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
 import 'package:cube_system/features/timetable_page/state_holders/lessons/last_lesson.dart';
 import 'package:cube_system/features/timetable_page/state_holders/lessons/next_lesson.dart';
 
-final nextLessonTimeToStartProgressValue = StateProvider<double>((ref) {
+final nextLessonTimeToStartProgressValueProvider = Provider<double>((ref) {
   final lessonNext = ref.watch(nextLesson);
   final lessonLast = ref.watch(lastLesson);
 

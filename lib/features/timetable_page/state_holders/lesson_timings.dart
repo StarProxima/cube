@@ -2,7 +2,7 @@ import 'package:cube_system/models/lesson_timings/lesson_timings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final pairsTimings = StateProvider<Map<int, LessonTimings>>((ref) {
+final lessonTimings = StateProvider<Map<int, LessonTimings>>((ref) {
   return {
     0: LessonTimings(
       start: const TimeOfDay(hour: 8, minute: 0),
@@ -35,6 +35,14 @@ final pairsTimings = StateProvider<Map<int, LessonTimings>>((ref) {
     7: LessonTimings(
       start: const TimeOfDay(hour: 17, minute: 10),
       end: const TimeOfDay(hour: 18, minute: 30),
+    ),
+    8: LessonTimings(
+      start: const TimeOfDay(hour: 18, minute: 40),
+      end: const TimeOfDay(hour: 20, minute: 00),
+    ),
+    9: LessonTimings(
+      start: const TimeOfDay(hour: 20, minute: 10),
+      end: const TimeOfDay(hour: 21, minute: 30),
     ),
   };
 });

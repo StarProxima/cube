@@ -1,7 +1,8 @@
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_events.dart';
+import 'package:cube_system/features/timetable_page/ui/event_pages/not_selected_event_page.dart';
 import 'package:cube_system/models/timetable_day/timetable_day_type.dart';
-import 'package:cube_system/widgets/event_pages/no_connection_event_page.dart';
-import 'package:cube_system/widgets/event_pages/weekend_event_page.dart';
+import 'package:cube_system/features/timetable_page/ui/event_pages/no_connection_event_page.dart';
+import 'package:cube_system/features/timetable_page/ui/event_pages/weekend_event_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -9,11 +10,9 @@ import 'package:cube_system/features/timetable_page/features/lesson_card/ui/less
 
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_lessons.dart';
 
-import 'package:cube_system/widgets/event_pages/ksrs_event_page.dart';
+import 'package:cube_system/features/timetable_page/ui/event_pages/ksrs_event_page.dart';
 
-import 'package:cube_system/widgets/event_pages/something_went_wrong_event_page.dart';
-
-import 'package:cube_system/widgets/event_pages/not_selected_event_page.dart';
+import 'package:cube_system/features/timetable_page/ui/event_pages/something_went_wrong_event_page.dart';
 
 class TimetablePageDay extends ConsumerWidget {
   final DateTime date;

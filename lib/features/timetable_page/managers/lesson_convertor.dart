@@ -9,11 +9,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cube_system/models/lesson/lesson.dart';
 
 import 'package:cube_system/models/lesson_timings/lesson_timings.dart';
-import 'package:cube_system/features/timetable_page/state_holders/pairs_timings.dart';
+import 'package:cube_system/features/timetable_page/state_holders/lesson_timings.dart';
 
 final lessonConvertor = Provider<LessonConvertor>((ref) {
   return LessonConvertor(
-    lessonTimings: ref.watch(pairsTimings.notifier),
+    lessonTimings: ref.watch(lessonTimings.notifier),
     lessonColors: ref.watch(appLessonColors.notifier),
   );
 });

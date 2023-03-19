@@ -1,18 +1,18 @@
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
-import 'package:cube_system/features/timetable_page/state_holders/current_date_time_state_holders.dart';
+import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_day.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/features/timetable_page/managers/timetable_date_time_manager.dart';
+import 'package:cube_system/features/date_time_contol/managers/date_time_manager.dart';
 
 import 'package:cube_system/features/timetable_page/features/week_timeline/ui/week_timeline.dart';
 import 'package:cube_system/features/timetable_page/state_holders/selected_date.dart';
 
 import 'package:cube_system/features/timetable_page/state_holders/current_picked_date_in_page_view.dart';
 
-import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/last_current_next_lesson_listener.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/providers/last_current_next_lesson_listener.dart';
 
 class TimetablePage extends ConsumerWidget {
   const TimetablePage({
@@ -21,7 +21,7 @@ class TimetablePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final timeManager = ref.watch(timetableDateTimeManager);
+    final timeManager = ref.watch(dateTimeManager);
     timeManager.setTimers();
 
     final manager = ref.read(timetablePageManager);

@@ -6,7 +6,7 @@ import 'package:cube_system/api/cube_api.dart';
 import 'package:cube_system/gen/api/cube_api.swagger.dart';
 import 'package:cube_system/models/lesson/lesson.dart';
 import 'package:cube_system/models/timetable_day/timetable_day_event.dart';
-import 'package:cube_system/features/timetable_page/state_holders/current_date_time_state_holders.dart';
+import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
 import 'package:cube_system/features/timetable_page/state_holders/lessons/current_lesson.dart';
 import 'package:cube_system/features/timetable_page/state_holders/lessons/last_lesson.dart';
 import 'package:cube_system/features/timetable_page/state_holders/lessons/next_lesson.dart';
@@ -120,26 +120,26 @@ class TimetableLessonsManager {
     final startDate = weekStart.add(const Duration(days: -7));
     final endDate = weekEnd.add(const Duration(days: 7));
 
-    // if (selectedTimetable.state == null) {
-    //   eventManager.setNotSelectedEvents(
-    //     startDate: startDate,
-    //     endDate: endDate,
-    //   );
-    //   return;
-    // }
+    if (selectedTimetable.state == null) {
+      eventManager.setNotSelectedEvents(
+        startDate: startDate,
+        endDate: endDate,
+      );
+      return;
+    }
 
     eventManager.setLoadingEvents(startDate: startDate, endDate: endDate);
 
-    final request = await api.apiLessonsAutocompleteGet(q: "36/2");
-    final group = request.body!.groups.first;
-
-    selectedTimetable.state = TimetableInfo(
-      id: group.id,
-      label: group.name,
-      type: TimetableType.group,
-    );
-
     try {
+      final request = await api.apiLessonsAutocompleteGet(q: "305");
+      final group = request.body!.places.first;
+
+      selectedTimetable.state = TimetableInfo(
+        id: group.id,
+        label: group.name,
+        type: TimetableType.place,
+      );
+
       final lessons = await _getLessons(startDate: startDate, endDate: endDate);
 
       _setLessons(lessons);

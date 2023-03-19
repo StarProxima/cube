@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
+import 'package:cube_system/features/timetable_page/state_holders/selected_timetable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,11 +11,13 @@ import 'package:cube_system/models/lesson/lesson.dart';
 import 'package:cube_system/source/extensions.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
 
-import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/current_lesson_time_to_end.dart';
-import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/next_lesson_time_to_start.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/providers/current_lesson_time_to_end_provider.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/providers/next_lesson_time_to_start_provider.dart';
 
-import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/lesson_time_to_start_progress_value.dart';
-import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/next_lesson_time_to_start_progress_value.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/providers/lesson_time_to_start_progress_value_provider.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/providers/next_lesson_time_to_start_progress_value_provider.dart';
+
+import 'package:cube_system/models/timetable/timetable_type.dart';
 
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_body.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_footer.dart';

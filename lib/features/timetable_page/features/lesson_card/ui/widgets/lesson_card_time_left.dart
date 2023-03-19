@@ -12,7 +12,7 @@ class LessonCardTimeLeft extends ConsumerWidget {
 
     return Consumer(
       builder: (context, ref, _) {
-        final timeToEnd = ref.watch(currentLessonTimeToEnd);
+        final timeToEnd = ref.watch(currentLessonTimeToEndProvider);
         final timeToEndStr = timeToEnd?.format() ?? '00:00';
         return Text(
           timeToEndStr,

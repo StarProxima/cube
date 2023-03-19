@@ -1,21 +1,24 @@
+
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/features/timetable_page/state_holders/current_date_time_state_holders.dart';
+import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
 
-final timetableDateTimeManager = Provider<TimetableDatetimeManager>((ref) {
-  return TimetableDatetimeManager(
+import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_timer_state_holders.dart';
+
+final dateTimeManager = Provider<DateTimeManager>((ref) {
+  return DateTimeManager(
     dateTimeLazy: ref.watch(currentDateTimeLazy.notifier),
     dateTimeLazyTimer: ref.watch(currentDateTimeLazyTimer.notifier),
-    dateTimeLazyDelay: ref.watch(currentDateTimeLazyDelay.notifier),
+    dateTimeLazyDelay: ref.watch(currentDateTimeLazyTimerDelay.notifier),
     dateTimeQuick: ref.watch(currentDateTimeQuick.notifier),
     dateTimeQuickTimer: ref.watch(currentDateTimeQuickTimer.notifier),
-    dateTimeQuickDelay: ref.watch(currentDateTimeQuickDelay.notifier),
+    dateTimeQuickDelay: ref.watch(currentDateTimeQuickTimerDelay.notifier),
   );
 });
 
-class TimetableDatetimeManager {
+class DateTimeManager {
   final StateController<DateTime> dateTimeLazy;
   final StateController<Timer?> dateTimeLazyTimer;
   final StateController<Duration> dateTimeLazyDelay;
@@ -23,7 +26,7 @@ class TimetableDatetimeManager {
   final StateController<Timer?> dateTimeQuickTimer;
   final StateController<Duration> dateTimeQuickDelay;
 
-  TimetableDatetimeManager({
+  DateTimeManager({
     required this.dateTimeLazy,
     required this.dateTimeLazyTimer,
     required this.dateTimeLazyDelay,
