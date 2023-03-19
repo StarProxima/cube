@@ -1,8 +1,12 @@
+import 'package:cube_system/features/timetable_search_page/ui/widgets/timetable_card.dart';
 import 'package:cube_system/features/timetable_search_page/ui/widgets/timetable_search_page_text_field.dart';
+import 'package:cube_system/models/timetable/timetable_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/ui/widgets/app_back_button.dart';
+
+import 'package:cube_system/models/timetable/timetable_type.dart';
 
 class TimetableSearchPage extends ConsumerWidget {
   const TimetableSearchPage({
@@ -26,9 +30,36 @@ class _TimetableSearchPage extends ConsumerStatefulWidget {
 class _TimetableSearchPageState extends ConsumerState<_TimetableSearchPage> {
   @override
   Widget build(BuildContext context) {
+    final timetables = [
+      TimetableInfo(
+        id: 10,
+        label: '36/2',
+        type: TimetableType.group,
+      ),
+      TimetableInfo(
+        id: 10,
+        label: '36/2',
+        type: TimetableType.group,
+      ),
+      TimetableInfo(
+        id: 10,
+        label: '36/2',
+        type: TimetableType.teacher,
+      ),
+      TimetableInfo(
+        id: 10,
+        label: '36/2',
+        type: TimetableType.teacher,
+      ),
+      TimetableInfo(
+        id: 10,
+        label: '36/2',
+        type: TimetableType.place,
+      ),
+    ];
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(90),
+        preferredSize: const Size.fromHeight(50),
         child: Column(
           children: [
             Padding(
@@ -47,9 +78,19 @@ class _TimetableSearchPageState extends ConsumerState<_TimetableSearchPage> {
           ],
         ),
       ),
-      body: ListView.builder(
+      body: ListView.separated(
+        itemCount: 100,
+        physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         itemBuilder: (context, index) {
-          return null;
+          return TimetableCard(
+            timetable: timetables[index % timetables.length],
+          );
+        },
+        separatorBuilder: (context, index) {
+          return const SizedBox(height: 16);
         },
       ),
     );
