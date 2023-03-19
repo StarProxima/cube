@@ -9,7 +9,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:intl/intl.dart';
 
-import 'package:cube_system/features/timetable_page/features/week_timeline/state_holders/week_timeline_offset_back_button_direction.dart';
+import 'package:cube_system/features/timetable_page/features/week_timeline/providers/week_timeline_offset_back_button_direction_provider.dart';
+
+import 'package:cube_system/features/timetable_page/features/week_timeline/models/week_timeline_offset_back_button_direction.dart';
 
 class TimetablePageHeader extends ConsumerWidget {
   const TimetablePageHeader({super.key});
@@ -28,7 +30,8 @@ class TimetablePageHeader extends ConsumerWidget {
         ? DateFormat('MMMM', 'ru')
         : DateFormat('MMMM', 'ru').addPattern('yyyy');
 
-    final weekOffsetButton = ref.watch(weekTimelineOffsetBackButtonDirection);
+    final weekOffsetButton =
+        ref.watch(weekTimelineOffsetBackButtonDirectionProvider);
 
     return SizedBox(
       height: 53,

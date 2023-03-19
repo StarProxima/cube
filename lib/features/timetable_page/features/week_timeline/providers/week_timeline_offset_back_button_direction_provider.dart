@@ -3,13 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cube_system/features/timetable_page/features/week_timeline/state_holders/week_timeline_shown_week_date.dart';
 import 'package:cube_system/features/timetable_page/state_holders/current_date_time_state_holders.dart';
 
-enum WeekTimelineOffsetBackButtonDirection {
-  stay,
-  back,
-  forward,
-}
+import 'package:cube_system/features/timetable_page/features/week_timeline/models/week_timeline_offset_back_button_direction.dart';
 
-final weekTimelineOffsetBackButtonDirection =
+final weekTimelineOffsetBackButtonDirectionProvider =
     Provider<WeekTimelineOffsetBackButtonDirection>((ref) {
   final date = ref.watch(currentDate);
   final weekDate = ref.watch(weekTimelineShownWeekDate);
