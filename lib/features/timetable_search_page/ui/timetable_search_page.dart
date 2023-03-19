@@ -1,13 +1,11 @@
-import 'package:cube_system/features/timetable_search_page/state_holders/timetable_searsh_timetables.dart';
+import 'package:cube_system/features/timetable_search_page/managers/timetable_search_page_manager.dart';
+import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_timetables.dart';
 import 'package:cube_system/features/timetable_search_page/ui/widgets/timetable_card.dart';
 import 'package:cube_system/features/timetable_search_page/ui/widgets/timetable_search_page_text_field.dart';
-import 'package:cube_system/models/timetable/timetable_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/ui/widgets/app_back_button.dart';
-
-import 'package:cube_system/models/timetable/timetable_type.dart';
 
 class TimetableSearchPage extends ConsumerWidget {
   const TimetableSearchPage({
@@ -31,35 +29,9 @@ class _TimetableSearchPage extends ConsumerStatefulWidget {
 class _TimetableSearchPageState extends ConsumerState<_TimetableSearchPage> {
   @override
   Widget build(BuildContext context) {
-    final testTimetables = [
-      TimetableInfo(
-        id: 10,
-        label: '36/2',
-        type: TimetableType.group,
-      ),
-      TimetableInfo(
-        id: 10,
-        label: '36/2',
-        type: TimetableType.group,
-      ),
-      TimetableInfo(
-        id: 10,
-        label: '36/2',
-        type: TimetableType.teacher,
-      ),
-      TimetableInfo(
-        id: 10,
-        label: '36/2',
-        type: TimetableType.teacher,
-      ),
-      TimetableInfo(
-        id: 10,
-        label: '36/2',
-        type: TimetableType.place,
-      ),
-    ];
+    final timetables = ref.watch(timetableSearchPageTimetables);
 
-    final timetables = ref.watch(timetableSearshTimetables);
+    final manager = ref.watch(timetableSearchPageManager);
 
     return Scaffold(
       appBar: PreferredSize(
@@ -89,8 +61,13 @@ class _TimetableSearchPageState extends ConsumerState<_TimetableSearchPage> {
         ),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         itemBuilder: (context, index) {
+          final timetable = timetables[index];
           return TimetableCard(
-            timetable: timetables[index],
+            timetable: timetable,
+            onTap: () {
+              manager.selectTimetable(timetable);
+              Navigator.of(context).pop();
+            },
           );
         },
         separatorBuilder: (context, index) {

@@ -91,7 +91,7 @@ class TimetablePageHeader extends ConsumerWidget {
                         WeekTimelineOffsetBackButtonDirection.stay
                     ? InkWell(
                         onTap: () =>
-                            manager.pickSelectedDate(date.add(Duration.zero)),
+                            manager.selectDate(date.add(Duration.zero)),
                         borderRadius:
                             const BorderRadius.all(Radius.circular(99)),
                         child: Container(

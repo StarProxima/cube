@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/models/lesson/lesson.dart';
@@ -16,8 +18,8 @@ final timetableDayEventManager = Provider<TimetableDayEventManager>((ref) {
 });
 
 class TimetableDayEventManager {
-  final StateController<Map<DateTime, List<Lesson>>> timetable;
-  final StateController<Map<DateTime, TimetableDayEvent>> events;
+  final StateController<SplayTreeMap<DateTime, List<Lesson>>> timetable;
+  final StateController<SplayTreeMap<DateTime, TimetableDayEvent>> events;
 
   TimetableDayEventManager({
     required this.timetable,
@@ -28,7 +30,7 @@ class TimetableDayEventManager {
     required DateTime startDate,
     required DateTime endDate,
   }) {
-    Map<DateTime, TimetableDayEvent> eventMap = {};
+    SplayTreeMap<DateTime, TimetableDayEvent> eventMap = SplayTreeMap();
 
     for (int day = 0; day < endDate.difference(startDate).inDays; day++) {
       final date = startDate.add(Duration(days: day));
@@ -47,7 +49,8 @@ class TimetableDayEventManager {
     required DateTime startDate,
     required DateTime endDate,
   }) {
-    Map<DateTime, TimetableDayEvent> eventMap = events.state.cast();
+    SplayTreeMap<DateTime, TimetableDayEvent> eventMap =
+        SplayTreeMap.of(events.state.cast());
 
     for (int day = 0; day < endDate.difference(startDate).inDays; day++) {
       final date = startDate.add(Duration(days: day));
@@ -62,7 +65,8 @@ class TimetableDayEventManager {
   }
 
   void setLessonsAfterLoading() {
-    Map<DateTime, TimetableDayEvent> eventMap = events.state.cast();
+    SplayTreeMap<DateTime, TimetableDayEvent> eventMap =
+        SplayTreeMap.of(events.state.cast());
     final timetableMap = timetable.state;
 
     for (final entry in eventMap.entries) {
@@ -79,7 +83,8 @@ class TimetableDayEventManager {
   }
 
   void setErrorsAfterLoading() {
-    Map<DateTime, TimetableDayEvent> eventMap = events.state.cast();
+    SplayTreeMap<DateTime, TimetableDayEvent> eventMap =
+        SplayTreeMap.of(events.state.cast());
 
     for (final entry in eventMap.entries) {
       if (entry.value.type == TimetableDayType.loading) {

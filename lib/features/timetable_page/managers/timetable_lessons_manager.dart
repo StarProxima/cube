@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:cube_system/features/timetable_page/managers/timetable_day_event_manager.dart';
 import 'package:cube_system/models/timetable/timetable_type.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -44,8 +46,8 @@ class TimetableLessonsManager {
   final TimetableDayEventManager eventManager;
 
   final StateController<TimetableInfo?> selectedTimetable;
-  final StateController<Map<DateTime, List<Lesson>>> timetable;
-  final StateController<Map<DateTime, TimetableDayEvent>> events;
+  final StateController<SplayTreeMap<DateTime, List<Lesson>>> timetable;
+  final StateController<SplayTreeMap<DateTime, TimetableDayEvent>> events;
   final StateController<DateTime> currentDateTime;
   final StateController<DateTime> selectedDate;
   final StateController<String> timetablePageTitle;
@@ -68,8 +70,14 @@ class TimetableLessonsManager {
     required this.lastLesson,
   });
 
+  void clear() {
+    timetable.state = SplayTreeMap();
+    events.state = SplayTreeMap();
+  }
+
   void _setLessons(List<LessonFullNamesInDb> lessons) {
-    Map<DateTime, List<Lesson>> timetableMap = timetable.state.cast();
+    SplayTreeMap<DateTime, List<Lesson>> timetableMap =
+        SplayTreeMap.of(timetable.state.cast());
 
     for (final lesson in lessons) {
       if (timetableMap.containsKey(lesson.date)) {
@@ -131,15 +139,6 @@ class TimetableLessonsManager {
     eventManager.setLoadingEvents(startDate: startDate, endDate: endDate);
 
     try {
-      final request = await api.apiLessonsAutocompleteGet(q: "305");
-      final group = request.body!.places.first;
-
-      selectedTimetable.state = TimetableInfo(
-        id: group.id,
-        label: group.name,
-        type: TimetableType.place,
-      );
-
       final lessons = await _getLessons(startDate: startDate, endDate: endDate);
 
       _setLessons(lessons);
@@ -159,7 +158,9 @@ class TimetableLessonsManager {
     Lesson? lessonCurrent;
     Lesson? lessonLast;
 
-    for (final date in timetable.state.keys) {
+    final dates = timetable.state.keys;
+
+    for (final date in dates) {
       final lessons = timetable.state[date]!;
 
       for (final lesson in lessons) {

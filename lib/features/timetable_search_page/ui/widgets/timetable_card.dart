@@ -8,7 +8,13 @@ import 'package:cube_system/models/timetable/timetable_type.dart';
 class TimetableCard extends ConsumerWidget {
   final TimetableInfo timetable;
 
-  const TimetableCard({required this.timetable, super.key});
+  final VoidCallback onTap;
+
+  const TimetableCard({
+    required this.timetable,
+    required this.onTap,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -61,7 +67,7 @@ class TimetableCard extends ConsumerWidget {
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
-          onTap: () {},
+          onTap: onTap,
           child: Padding(
             padding: const EdgeInsets.all(8),
             child: Row(
