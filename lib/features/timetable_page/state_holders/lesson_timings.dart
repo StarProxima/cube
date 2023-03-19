@@ -36,5 +36,13 @@ final lessonTimings = StateProvider<Map<int, LessonTimings>>((ref) {
       start: const TimeOfDay(hour: 17, minute: 10),
       end: const TimeOfDay(hour: 18, minute: 30),
     ),
+    8: LessonTimings(
+      start: const TimeOfDay(hour: 18, minute: 40),
+      end: const TimeOfDay(hour: 20, minute: 00),
+    ),
+    9: LessonTimings(
+      start: const TimeOfDay(hour: 20, minute: 10),
+      end: const TimeOfDay(hour: 21, minute: 30),
+    ),
   };
 });
