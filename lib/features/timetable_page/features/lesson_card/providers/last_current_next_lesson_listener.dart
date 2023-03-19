@@ -2,9 +2,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/timetable_page/state_holders/current_date_time_state_holders.dart';
 
-import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/current_lesson_time_to_end.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/providers/current_lesson_time_to_end_provider.dart';
 
-import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/next_lesson_time_to_start.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/providers/next_lesson_time_to_start_provider.dart';
 
 // На этот провайдер нужно подписаться для обновления прошлой, текущей и следующей пары
 //TODO: Найти способ получше
@@ -13,11 +13,13 @@ final lastCurrentNextLessonListener =
   ref.watch(currentDateTimeLazy);
 
   ref.watch(
-    currentLessonTimeToEnd.select((value) => value?.duration.inSeconds == 0),
+    currentLessonTimeToEndProvider
+        .select((value) => value?.duration.inSeconds == 0),
   );
 
   ref.watch(
-    nextLessonTimeToStart.select((value) => value?.duration.inSeconds == 0),
+    nextLessonTimeToStartProvider
+        .select((value) => value?.duration.inSeconds == 0),
   );
 
   return LastCurrentNextLessonListenerNotifier(true);

@@ -2,7 +2,7 @@ import 'package:cube_system/models/lesson/lesson.dart';
 import 'package:cube_system/features/timetable_page/state_holders/current_date_time_state_holders.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final lessonTimeToEndProgressValue =
+final lessonTimeToEndProgressValueProvider =
     Provider.family.autoDispose<double, Lesson>((ref, lesson) {
   final currentDateTime = ref.watch(currentDateTimeLazy);
 

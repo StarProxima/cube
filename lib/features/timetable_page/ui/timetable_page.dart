@@ -12,7 +12,7 @@ import 'package:cube_system/features/timetable_page/state_holders/selected_date.
 
 import 'package:cube_system/features/timetable_page/state_holders/current_picked_date_in_page_view.dart';
 
-import 'package:cube_system/features/timetable_page/features/lesson_card/state_holders/last_current_next_lesson_listener.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/providers/last_current_next_lesson_listener.dart';
 
 class TimetablePage extends ConsumerWidget {
   const TimetablePage({

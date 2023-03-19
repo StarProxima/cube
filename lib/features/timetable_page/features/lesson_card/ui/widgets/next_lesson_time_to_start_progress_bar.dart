@@ -6,8 +6,8 @@ class NextLessonTimeToStartProgressBar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final lesson = ref.watch(_lessonInLessonCard);
-    final timeToStart = ref.watch(nextLessonTimeToStart);
-    final value = ref.watch(nextLessonTimeToStartProgressValue);
+    final timeToStart = ref.watch(nextLessonTimeToStartProvider);
+    final value = ref.watch(nextLessonTimeToStartProgressValueProvider);
     final timeToStartStr = timeToStart?.format() ?? '00:00';
 
     return SizedBox(
