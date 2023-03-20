@@ -1,11 +1,12 @@
-import 'package:cube_system/features/timetable_page/ui/timetable_page.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
-import 'package:cube_system/ui/widgets/app_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/gen/assets/assets.gen.dart';
+
+import 'package:cube_system/ui/widgets/app_button.dart';
+import 'package:cube_system/features/timetable_page/ui/timetable_page.dart';
 
 class LandingPage extends ConsumerWidget {
   const LandingPage({
@@ -29,103 +30,89 @@ class _LandingPageState extends ConsumerState<_LandingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          // Positioned(
-          //   left: 100,
-          //   top: 10,
-          //   child: Assets.images.spline.image(
-          //     height: 200,
-          //   ),
-          // ),
-          // Positioned.fill(
-          //   child: BackdropFilter(
-          //     filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-          //     child: const SizedBox(),
-          //   ),
-          // ),
-
-          // // Assets.brooklyn.askingQuestion3.svg(),
-          // Assets.rive.shapes.rive(),
-
-          // Positioned.fill(
-          //   child: BackdropFilter(
-          //     filter: ImageFilter.blur(sigmaX: 100, sigmaY: 100),
-          //     child: const SizedBox(),
-          //   ),
-          // ),
-
-          AnimatedPositioned(
-            top: 0,
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            duration: const Duration(milliseconds: 260),
-            child: SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Spacer(
-                      flex: 2,
-                    ),
-                    SizedBox(
-                      width: 300,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Куб.\nРасписание",
-                            style: context.textStyles.largeTitle.copyWith(
-                              fontSize: 50,
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: constraints.maxHeight,
+            ),
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(
+                parent: AlwaysScrollableScrollPhysics(),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const SizedBox(height: 64),
+                  FittedBox(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              "КУБ",
+                              style: context.textStyles.largeTitle.copyWith(
+                                fontSize: 56,
+                                color: context.colors.primary,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 16),
-                          const Text(
-                            "Организуйте свою академическую жизнь c современным электронным расписанием: легкий доступ, приятный дизайн и заметки для студентов и преподавателей.",
-                          ),
-                        ],
-                      ),
-                    ),
-                    const Spacer(flex: 2),
-                    Center(
-                      child: Assets.brooklyn.smartPeople2.svg(
-                        height: 280,
-                        width: 280,
-                      ),
-                    ),
-                    const Spacer(flex: 3),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 24, top: 8),
-                      child: AppButton(
-                        text: 'Вперед',
-                        onTap: () {
-                          Navigator.of(context).push(
-                            CupertinoPageRoute(
-                              builder: (context) {
-                                return const TimetablePage();
-                              },
+                            Text(
+                              ".",
+                              style: context.textStyles.largeTitle.copyWith(
+                                fontSize: 56,
+                                color: context.colors.text,
+                              ),
                             ),
-                          );
-                        },
-                      ),
-                    ),
-                    Column(
-                      children: const [
-                        // const Padding(
-                        //   padding: EdgeInsets.only(bottom: 24, top: 8),
-                        //   child: Text(
-                        //     "Получайте подробную информацию о каждом занятии: просматривайте расписание занятий, узнавайте о преподавателях и аудиториях, получайте доступ к материалам для занятий и многое другое.",
-                        //   ),
-                        // ),
+                          ],
+                        ),
+                        Text(
+                          "Расписание",
+                          style: context.textStyles.largeTitle.copyWith(
+                            fontSize: 56,
+                            color: context.colors.primary,
+                          ),
+                        ),
                       ],
-                    )
-                  ],
-                ),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  Text(
+                    "Организуйте свою академическую жизнь c современным электронным расписанием: легкий доступ, приятный дизайн и заметки для студентов и преподавателей.",
+                    style: context.textStyles.subTitle.copyWith(),
+                  ),
+                  const SizedBox(height: 64),
+                  Center(
+                    child: Assets.brooklyn.smartPeople2.svg(
+                      height: 280,
+                      width: 280,
+                    ),
+                  ),
+                  const SizedBox(height: 32),
+                ],
               ),
             ),
-          ),
-        ],
+          );
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        child: AppButton(
+          text: 'Вперед',
+          isExpanded: true,
+          onTap: () {
+            Navigator.of(context).push(
+              CupertinoPageRoute(
+                builder: (context) {
+                  return const TimetablePage();
+                },
+              ),
+            );
+          },
+        ),
       ),
     );
   }

@@ -63,21 +63,21 @@ class $AssetsBrooklynGen {
       ];
 }
 
-class $AssetsImagesGen {
-  const $AssetsImagesGen();
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
 
-  /// File path: assets/images/spline.png
-  AssetGenImage get spline => const AssetGenImage('assets/images/spline.png');
+  /// File path: assets/icons/cube_logo.svg
+  SvgGenImage get cubeLogo => const SvgGenImage('assets/icons/cube_logo.svg');
 
   /// List of all assets
-  List<AssetGenImage> get values => [spline];
+  List<SvgGenImage> get values => [cubeLogo];
 }
 
 class Assets {
   Assets._();
 
   static const $AssetsBrooklynGen brooklyn = $AssetsBrooklynGen();
-  static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
 }
 
 class AssetGenImage {

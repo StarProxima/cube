@@ -17,7 +17,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     setWindowTitle('Куб.Расписание');
-    setWindowMinSize(const Size(440, 380));
+    setWindowMinSize(const Size(460, 380));
   }
   runApp(const MainApp());
 }
@@ -31,7 +31,7 @@ class MainApp extends StatelessWidget {
     final appTextStyles = AppTextStyles.light;
 
     return DevicePreview(
-      enabled: false,
+      enabled: true,
       builder: (context) => ProviderScope(
         child: MaterialApp(
           useInheritedMediaQuery: true,

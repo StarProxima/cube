@@ -69,7 +69,7 @@ class AppEventPage extends ConsumerWidget {
               ),
             if (buttonText != null || onTap != null)
               Padding(
-                padding: const EdgeInsets.only(top: 8),
+                padding: const EdgeInsets.only(top: 12),
                 child: AppButton(
                   text: buttonText,
                   onTap: onTap,
