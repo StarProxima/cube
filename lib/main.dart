@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/features/timetable_page/ui/timetable_page.dart';
 import 'package:window_size/window_size.dart';
 import 'package:device_preview/device_preview.dart';
 

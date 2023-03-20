@@ -1,4 +1,3 @@
-import 'package:cube_system/features/landing_page/ui/landing_page.dart';
 import 'package:cube_system/features/timetable_page/features/week_timeline/state_holders/week_timeline_shown_week_date.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
@@ -93,13 +92,13 @@ class TimetablePageHeader extends ConsumerWidget {
               padding: const EdgeInsets.only(left: 4, top: 4, right: 4),
               child: InkWell(
                 onTap: () {
-                  Navigator.of(context).push(
-                    CupertinoPageRoute(
-                      builder: (context) {
-                        return const LandingPage();
-                      },
-                    ),
-                  );
+                  // Navigator.of(context).push(
+                  //   CupertinoPageRoute(
+                  //     builder: (context) {
+                  //       return const LandingPage();
+                  //     },
+                  //   ),
+                  // );
                 },
                 borderRadius: const BorderRadius.all(Radius.circular(12)),
                 child: Column(
@@ -110,15 +109,15 @@ class TimetablePageHeader extends ConsumerWidget {
                       style: context.textStyles.label,
                       textAlign: TextAlign.center,
                     ),
-                    const SizedBox(height: 2),
-                    Text(
-                      weekLabel,
-                      style: context.textStyles.smallSubTitle.copyWith(
-                        fontSize: 10,
-                        color: context.colors.subduedText,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
+                    // const SizedBox(height: 2),
+                    // Text(
+                    //   weekLabel,
+                    //   style: context.textStyles.smallSubTitle.copyWith(
+                    //     fontSize: 10,
+                    //     color: context.colors.subduedText,
+                    //   ),
+                    //   textAlign: TextAlign.center,
+                    // ),
                   ],
                 ),
               ),

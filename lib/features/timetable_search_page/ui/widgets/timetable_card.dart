@@ -59,7 +59,7 @@ class TimetableCard extends ConsumerWidget {
           BoxShadow(
             color: context.colors.shadow,
             blurRadius: 12,
-            offset: const Offset(0, 1),
+            offset: const Offset(0, 2),
           )
         ],
       ),

@@ -8,5 +8,5 @@ final appThemeMode = StateProvider<ThemeMode>((ref) {
 });
 
 final appLessonColorsMode = StateProvider<AppLessonColorsMode>((ref) {
-  return AppLessonColorsMode.custom;
+  return AppLessonColorsMode.cube;
 });
