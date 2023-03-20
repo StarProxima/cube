@@ -34,15 +34,16 @@ class TimetableDayEventManager {
 
     for (int day = 0; day < endDate.difference(startDate).inDays; day++) {
       final date = startDate.add(Duration(days: day));
-      eventMap[date] = TimetableDayEvent(type: TimetableDayType.notSelected);
+      eventMap[date] =
+          TimetableDayEvent(type: TimetableDayEventType.notSelected);
     }
 
     events.state = eventMap;
   }
 
   static final _shouldLoadingEvents = [
-    TimetableDayType.error,
-    TimetableDayType.notSelected
+    TimetableDayEventType.error,
+    TimetableDayEventType.notSelected
   ];
 
   void setLoadingEvents({
@@ -57,7 +58,7 @@ class TimetableDayEventManager {
       final shouldLoading = !eventMap.containsKey(date) ||
           _shouldLoadingEvents.contains(eventMap[date]?.type);
       if (shouldLoading) {
-        eventMap[date] = TimetableDayEvent(type: TimetableDayType.loading);
+        eventMap[date] = TimetableDayEvent(type: TimetableDayEventType.loading);
       }
     }
 
@@ -70,11 +71,11 @@ class TimetableDayEventManager {
     final timetableMap = timetable.state;
 
     for (final entry in eventMap.entries) {
-      if (entry.value.type == TimetableDayType.loading) {
+      if (entry.value.type == TimetableDayEventType.loading) {
         eventMap[entry.key] = TimetableDayEvent(
           type: timetableMap[entry.key]?.isEmpty ?? true
-              ? TimetableDayType.weekend
-              : TimetableDayType.lessons,
+              ? TimetableDayEventType.weekend
+              : TimetableDayEventType.lessons,
         );
       }
     }
@@ -87,8 +88,9 @@ class TimetableDayEventManager {
         SplayTreeMap.of(events.state.cast());
 
     for (final entry in eventMap.entries) {
-      if (entry.value.type == TimetableDayType.loading) {
-        eventMap[entry.key] = TimetableDayEvent(type: TimetableDayType.error);
+      if (entry.value.type == TimetableDayEventType.loading) {
+        eventMap[entry.key] =
+            TimetableDayEvent(type: TimetableDayEventType.error);
       }
     }
 

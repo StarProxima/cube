@@ -28,7 +28,7 @@ class _TimetableSearchPageState extends ConsumerState<_TimetableSearchPage> {
   @override
   Widget build(BuildContext context) {
     final manager = ref.watch(timetableSearchPageManager);
-    manager.requestFocusToSearch();
+    manager.handleWelcome();
 
     return Scaffold(
       body: SafeArea(

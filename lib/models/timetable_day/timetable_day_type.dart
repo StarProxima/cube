@@ -1,4 +1,4 @@
-enum TimetableDayType {
+enum TimetableDayEventType {
   notSelected,
   welcome,
   lessons,

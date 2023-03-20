@@ -1,6 +1,7 @@
 import 'package:chopper/chopper.dart';
 import 'package:cube_system/api/cube_api.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
+import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_search_controller.dart';
 import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_search_focus.dart';
 import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_timetables.dart';
 import 'package:cube_system/gen/api/cube_api.swagger.dart';
@@ -9,12 +10,19 @@ import 'package:cube_system/models/timetable/timetable_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_event.dart';
+
+import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_querry_in_progress.dart';
+
 final timetableSearchPageManager = Provider<TimetableSearchPageManager>((ref) {
   return TimetableSearchPageManager(
     api: ref.watch(cubeApi),
     timetablePageManager: ref.watch(timetablePageManager),
     timetables: ref.watch(timetableSearchPageTimetables.notifier),
+    searchContoller: ref.watch(timetableSearchPageSearchController.notifier),
     searchFocus: ref.watch(timetableSearchPageSearchFocus.notifier),
+    event: ref.watch(timetableSearchPageEventType.notifier),
+    querryInProgress: ref.watch(timetableSearchPageQuerryInProgress.notifier),
   );
 });
 
@@ -23,17 +31,25 @@ class TimetableSearchPageManager {
 
   final TimetablePageManager timetablePageManager;
   final StateController<List<TimetableInfo>> timetables;
-
+  final StateController<TextEditingController> searchContoller;
   final StateController<FocusNode> searchFocus;
+  final StateController<TimetableSearchEventType> event;
+  final TimetableSearchPageQuerryInProgressNotifier querryInProgress;
 
   TimetableSearchPageManager({
     required this.api,
     required this.timetablePageManager,
     required this.timetables,
+    required this.searchContoller,
     required this.searchFocus,
+    required this.event,
+    required this.querryInProgress,
   });
 
-  void requestFocusToSearch() {
+  void handleWelcome() async {
+    await Future(() {});
+    event.state = TimetableSearchEventType.welcome;
+    searchContoller.state.clear();
     Future.delayed(const Duration(milliseconds: 500), () {
       if (searchFocus.state.canRequestFocus) {
         searchFocus.state.requestFocus();
@@ -52,12 +68,22 @@ class TimetableSearchPageManager {
   void search(String querry) async {
     await Future(() {});
 
+    event.state = TimetableSearchEventType.loading;
+
+    querryInProgress.add();
+
+    await Future.delayed(const Duration(milliseconds: 300));
+
     if (querry.strip().isEmpty) {
-      timetables.state = [];
+      querryInProgress.sub();
+      event.state = TimetableSearchEventType.welcome;
       return;
     }
 
     final response = await api.apiLessonsAutocompleteGet(q: querry);
+    querryInProgress.sub();
+
+    if (querryInProgress.state >= 1) return;
 
     final res = response.body!;
 
@@ -91,6 +117,12 @@ class TimetableSearchPageManager {
           type: TimetableType.place,
         ),
       );
+    }
+
+    if (timetablesList.isEmpty) {
+      event.state = TimetableSearchEventType.noFound;
+    } else {
+      event.state = TimetableSearchEventType.results;
     }
 
     timetables.state = timetablesList;

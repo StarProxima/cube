@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TimetableDayEvent {
-  TimetableDayType get type => throw _privateConstructorUsedError;
+  TimetableDayEventType get type => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get subTitle => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
@@ -33,7 +33,7 @@ abstract class $TimetableDayEventCopyWith<$Res> {
       _$TimetableDayEventCopyWithImpl<$Res, TimetableDayEvent>;
   @useResult
   $Res call(
-      {TimetableDayType type,
+      {TimetableDayEventType type,
       String? title,
       String? subTitle,
       String? description});
@@ -61,7 +61,7 @@ class _$TimetableDayEventCopyWithImpl<$Res, $Val extends TimetableDayEvent>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as TimetableDayType,
+              as TimetableDayEventType,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -87,7 +87,7 @@ abstract class _$$_TimetableDayEventCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {TimetableDayType type,
+      {TimetableDayEventType type,
       String? title,
       String? subTitle,
       String? description});
@@ -113,7 +113,7 @@ class __$$_TimetableDayEventCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as TimetableDayType,
+              as TimetableDayEventType,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -137,7 +137,7 @@ class _$_TimetableDayEvent implements _TimetableDayEvent {
       {required this.type, this.title, this.subTitle, this.description});
 
   @override
-  final TimetableDayType type;
+  final TimetableDayEventType type;
   @override
   final String? title;
   @override
@@ -177,13 +177,13 @@ class _$_TimetableDayEvent implements _TimetableDayEvent {
 
 abstract class _TimetableDayEvent implements TimetableDayEvent {
   factory _TimetableDayEvent(
-      {required final TimetableDayType type,
+      {required final TimetableDayEventType type,
       final String? title,
       final String? subTitle,
       final String? description}) = _$_TimetableDayEvent;
 
   @override
-  TimetableDayType get type;
+  TimetableDayEventType get type;
   @override
   String? get title;
   @override
