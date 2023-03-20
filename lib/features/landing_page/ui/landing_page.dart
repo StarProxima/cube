@@ -1,4 +1,4 @@
-import 'package:cube_system/features/landing_page/ui/widgets/landing_cube_system_page.dart';
+import 'package:cube_system/features/landing_page/ui/widgets/landing_availability_page.dart';
 import 'package:cube_system/features/landing_page/ui/widgets/landing_welcome_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +26,8 @@ class _LandingPage extends ConsumerStatefulWidget {
 }
 
 class _LandingPageState extends ConsumerState<_LandingPage> {
+  final pageController = PageController();
+  bool isLastPage = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,9 +38,13 @@ class _LandingPageState extends ConsumerState<_LandingPage> {
               minHeight: constraints.maxHeight,
             ),
             child: PageView(
+              controller: pageController,
+              onPageChanged: (index) {
+                isLastPage = index == 1;
+              },
               children: const [
                 LandingWelcomePage(),
-                LandingCubeSystemPage(),
+                LandingAvailabilityPage(),
               ],
             ),
           );
@@ -51,13 +57,20 @@ class _LandingPageState extends ConsumerState<_LandingPage> {
           text: 'Вперед',
           isExpanded: true,
           onTap: () {
-            Navigator.of(context).push(
-              CupertinoPageRoute(
-                builder: (context) {
-                  return const TimetablePage();
-                },
-              ),
-            );
+            if (isLastPage) {
+              Navigator.of(context).push(
+                CupertinoPageRoute(
+                  builder: (context) {
+                    return const TimetablePage();
+                  },
+                ),
+              );
+            } else {
+              pageController.nextPage(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+              );
+            }
           },
         ),
       ),

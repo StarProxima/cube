@@ -26,6 +26,10 @@ class $AssetsBrooklynGen {
   SvgGenImage get findAWay3 =>
       const SvgGenImage('assets/brooklyn/find-a-way-3.svg');
 
+  /// File path: assets/brooklyn/manager-desk-2.svg
+  SvgGenImage get managerDesk2 =>
+      const SvgGenImage('assets/brooklyn/manager-desk-2.svg');
+
   /// File path: assets/brooklyn/no-connection-4.svg
   SvgGenImage get noConnection4 =>
       const SvgGenImage('assets/brooklyn/no-connection-4.svg');
@@ -54,6 +58,7 @@ class $AssetsBrooklynGen {
         askingQuestion3,
         beingProductive3,
         findAWay3,
+        managerDesk2,
         noConnection4,
         pageNotFound1,
         rest3,

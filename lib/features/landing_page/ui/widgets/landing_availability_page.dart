@@ -1,13 +1,12 @@
+import 'package:cube_system/gen/assets/assets.gen.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/gen/assets/assets.gen.dart';
-
 import 'package:cube_system/features/landing_page/ui/widgets/landing_platform_card.dart';
 
-class LandingCubeSystemPage extends ConsumerWidget {
-  const LandingCubeSystemPage({super.key});
+class LandingAvailabilityPage extends ConsumerWidget {
+  const LandingAvailabilityPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,10 +19,32 @@ class LandingCubeSystemPage extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 16),
+            // Center(
+            //   child: Assets.brooklyn.beingProductive3.svg(
+            //     height: 280,
+            //     width: 280,
+            //   ),
+            // ),
+            // const SizedBox(height: 24),
+            Center(
+              child: Column(
+                children: [
+                  Assets.brooklyn.managerDesk2.svg(),
+                  Text(
+                    'Доступно с любого устройства',
+                    style: context.textStyles.smallSubTitle.copyWith(
+                      fontSize: 16,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 24),
             LandingPlatformCard(
               title: 'Web Site',
-              description: 'Web версия с конструктором расписания',
+              description:
+                  'Основная платформа, просмотр расписания и удобный онлайн конструктор',
               linkName: 'cube.nlabs.su',
               uri: Uri.parse('https://cube.nlabs.su/welcome'),
             ),
@@ -67,14 +88,6 @@ class LandingCubeSystemPage extends ConsumerWidget {
               uri: Uri.parse('https://starproxima.dev/cube'),
             ),
             const SizedBox(height: 24),
-            const SizedBox(height: 64),
-            Center(
-              child: Assets.brooklyn.smartPeople2.svg(
-                height: 280,
-                width: 280,
-              ),
-            ),
-            const SizedBox(height: 32),
           ],
         ),
       ),
