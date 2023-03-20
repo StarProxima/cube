@@ -12,7 +12,7 @@ class WelcomeSearchEventPage extends ConsumerWidget {
     return AppEventPage(
       picture: Assets.brooklyn.findAWay3.svg(),
       pictureMargin: const EdgeInsets.only(bottom: 16),
-      title: 'Начните поиск расписания',
+      title: 'Начните поиск',
       subTitle: 'Введите группу, преподователя или аудиторию',
     );
   }

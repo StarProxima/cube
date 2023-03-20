@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:chopper/chopper.dart';
 import 'package:cube_system/api/cube_api.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
@@ -14,6 +16,8 @@ import 'package:cube_system/features/timetable_search_page/state_holders/timetab
 
 import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_querry_in_progress.dart';
 
+import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_timer.dart';
+
 final timetableSearchPageManager = Provider<TimetableSearchPageManager>((ref) {
   return TimetableSearchPageManager(
     api: ref.watch(cubeApi),
@@ -23,6 +27,7 @@ final timetableSearchPageManager = Provider<TimetableSearchPageManager>((ref) {
     searchFocus: ref.watch(timetableSearchPageSearchFocus.notifier),
     event: ref.watch(timetableSearchPageEventType.notifier),
     querryInProgress: ref.watch(timetableSearchPageQuerryInProgress.notifier),
+    timer: ref.watch(timetableSearchPageTimer.notifier),
   );
 });
 
@@ -35,6 +40,7 @@ class TimetableSearchPageManager {
   final StateController<FocusNode> searchFocus;
   final StateController<TimetableSearchEventType> event;
   final TimetableSearchPageQuerryInProgressNotifier querryInProgress;
+  final StateController<Timer> timer;
 
   TimetableSearchPageManager({
     required this.api,
@@ -44,6 +50,7 @@ class TimetableSearchPageManager {
     required this.searchFocus,
     required this.event,
     required this.querryInProgress,
+    required this.timer,
   });
 
   void handleWelcome() async {
@@ -67,12 +74,17 @@ class TimetableSearchPageManager {
 
   void search(String querry) async {
     await Future(() {});
-
+    timer.state.cancel();
     event.state = TimetableSearchEventType.loading;
+    timer.state = Timer(const Duration(milliseconds: 700), () {
+      _search(querry);
+    });
+  }
+
+  void _search(String querry) async {
+    await Future(() {});
 
     querryInProgress.add();
-
-    await Future.delayed(const Duration(milliseconds: 300));
 
     if (querry.strip().isEmpty) {
       querryInProgress.sub();
