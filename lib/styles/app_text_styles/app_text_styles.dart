@@ -37,6 +37,14 @@ class _$AppTextStyles {
     ),
   ];
 
+  static List<TextStyle> smallSubTitle = [
+    GoogleFonts.inter(
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+      color: _textColor,
+    ),
+  ];
+
   static List<TextStyle> label = [
     GoogleFonts.inter(
       fontSize: 14,

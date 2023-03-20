@@ -94,8 +94,7 @@ class TimetableCard extends ConsumerWidget {
                       const SizedBox(height: 1),
                       Text(
                         timetable.type.label,
-                        style: context.textStyles.subTitle.copyWith(
-                          fontSize: 12,
+                        style: context.textStyles.smallSubTitle.copyWith(
                           color: context.colors.subduedText,
                         ),
                       ),

@@ -139,6 +139,8 @@ class TimetableLessonsManager {
     eventManager.setLoadingEvents(startDate: startDate, endDate: endDate);
 
     try {
+      await Future.delayed(const Duration(milliseconds: 350));
+
       final lessons = await _getLessons(startDate: startDate, endDate: endDate);
 
       _setLessons(lessons);

@@ -23,8 +23,7 @@ class TimetablePageHeader extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final manager = ref.watch(timetablePageManager);
 
-    final timetableLabel =
-        ref.watch(selectedTimetable.select((value) => value?.label)) ?? '';
+    final timetable = ref.watch(selectedTimetable);
 
     final date = ref.watch(currentDate);
     final weekDate = ref.watch(weekTimelineShownWeekDate);
@@ -36,14 +35,23 @@ class TimetablePageHeader extends ConsumerWidget {
     final weekOffsetButton =
         ref.watch(weekTimelineOffsetBackButtonDirectionProvider);
 
+    final String weekLabel;
+
+    if (weekDate.weekNumber % 2 == 0) {
+      weekLabel = 'Числитель';
+    } else {
+      weekLabel = 'Знаменатель';
+    }
+
     return SizedBox(
-      height: 53,
+      height: 62,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
+            flex: 10,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+              padding: const EdgeInsets.only(left: 4, top: 4),
               child: InkWell(
                 onTap: () {
                   Navigator.of(context).push(
@@ -54,35 +62,61 @@ class TimetablePageHeader extends ConsumerWidget {
                     ),
                   );
                 },
-                borderRadius: const BorderRadius.all(Radius.circular(99)),
-                child: Center(
-                  child: Text(
-                    timetableLabel,
-                    style: context.textStyles.largeTitle,
-                    textAlign: TextAlign.center,
+                borderRadius: const BorderRadius.all(Radius.circular(12)),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        timetable?.label ?? 'Расписание',
+                        style: context.textStyles.largeTitle,
+                      ),
+                      const SizedBox(height: 1),
+                      Text(
+                        timetable?.type.label ?? 'Не выбрано',
+                        style: context.textStyles.smallSubTitle.copyWith(
+                          color: context.colors.subduedText,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
             ),
           ),
           Expanded(
+            flex: 8,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+              padding: const EdgeInsets.only(left: 4, top: 4, right: 4),
               child: InkWell(
                 onTap: () {},
-                borderRadius: const BorderRadius.all(Radius.circular(99)),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    dateFormat.format(weekDate).capitalize(),
-                    style: context.textStyles.label,
-                    textAlign: TextAlign.center,
-                  ),
+                borderRadius: const BorderRadius.all(Radius.circular(12)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      dateFormat.format(weekDate).capitalize(),
+                      style: context.textStyles.label,
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      weekLabel,
+                      style: context.textStyles.smallSubTitle.copyWith(
+                        fontSize: 10,
+                        color: context.colors.subduedText,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
           Expanded(
+            flex: 10,
             child: Align(
               alignment: Alignment.centerRight,
               child: Padding(
