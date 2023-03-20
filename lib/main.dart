@@ -31,7 +31,7 @@ class MainApp extends StatelessWidget {
     final appTextStyles = AppTextStyles.light;
 
     return DevicePreview(
-      enabled: true,
+      enabled: false,
       builder: (context) => ProviderScope(
         child: MaterialApp(
           useInheritedMediaQuery: true,
