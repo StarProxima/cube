@@ -13,6 +13,11 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  window_size:
+    git:
+      url: https://github.com/google/flutter-desktop-embedding
+      path: plugins/window_size
+
   json_annotation: ^4.8.0
   freezed_annotation: ^2.2.0
   theme_tailor_annotation: ^1.0.3
@@ -29,10 +34,7 @@ dependencies:
 
   device_preview: ^1.1.0
   
-  window_size:
-    git:
-      url: https://github.com/google/flutter-desktop-embedding
-      path: plugins/window_size
+  rive: ^0.10.3
 
 
 
@@ -58,6 +60,7 @@ flutter_gen:
   output: lib/gen/assets
   integrations:
     flutter_svg: true
+    rive: true
 
 
 flutter:
@@ -66,3 +69,7 @@ flutter:
   assets:
     - assets/
     - assets/brooklyn/
+    - assets/rive/
+    - assets/rive/shapes.riv
+    - assets/images/
+    - assets/images/spline.png

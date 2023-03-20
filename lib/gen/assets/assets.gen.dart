@@ -10,6 +10,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
+import 'package:rive/rive.dart';
 
 class $AssetsBrooklynGen {
   const $AssetsBrooklynGen();
@@ -37,6 +38,10 @@ class $AssetsBrooklynGen {
   /// File path: assets/brooklyn/rest-3.svg
   SvgGenImage get rest3 => const SvgGenImage('assets/brooklyn/rest-3.svg');
 
+  /// File path: assets/brooklyn/smart-people-2.svg
+  SvgGenImage get smartPeople2 =>
+      const SvgGenImage('assets/brooklyn/smart-people-2.svg');
+
   /// File path: assets/brooklyn/something-went-wrong-2.svg
   SvgGenImage get somethingWentWrong2 =>
       const SvgGenImage('assets/brooklyn/something-went-wrong-2.svg');
@@ -53,15 +58,38 @@ class $AssetsBrooklynGen {
         noConnection4,
         pageNotFound1,
         rest3,
+        smartPeople2,
         somethingWentWrong2,
         welcome3
       ];
+}
+
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
+
+  /// File path: assets/images/spline.png
+  AssetGenImage get spline => const AssetGenImage('assets/images/spline.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [spline];
+}
+
+class $AssetsRiveGen {
+  const $AssetsRiveGen();
+
+  /// File path: assets/rive/shapes.riv
+  RiveGenImage get shapes => const RiveGenImage('assets/rive/shapes.riv');
+
+  /// List of all assets
+  List<RiveGenImage> get values => [shapes];
 }
 
 class Assets {
   Assets._();
 
   static const $AssetsBrooklynGen brooklyn = $AssetsBrooklynGen();
+  static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsRiveGen rive = $AssetsRiveGen();
 }
 
 class AssetGenImage {
@@ -174,6 +202,41 @@ class SvgGenImage {
       colorBlendMode: colorBlendMode,
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
+    );
+  }
+
+  String get path => _assetName;
+
+  String get keyName => _assetName;
+}
+
+class RiveGenImage {
+  const RiveGenImage(this._assetName);
+
+  final String _assetName;
+
+  RiveAnimation rive({
+    String? artboard,
+    List<String> animations = const [],
+    List<String> stateMachines = const [],
+    BoxFit? fit,
+    Alignment? alignment,
+    Widget? placeHolder,
+    bool antialiasing = true,
+    List<RiveAnimationController> controllers = const [],
+    OnInitCallback? onInit,
+  }) {
+    return RiveAnimation.asset(
+      _assetName,
+      artboard: artboard,
+      animations: animations,
+      stateMachines: stateMachines,
+      fit: fit,
+      alignment: alignment,
+      placeHolder: placeHolder,
+      antialiasing: antialiasing,
+      controllers: controllers,
+      onInit: onInit,
     );
   }
 

@@ -17,6 +17,7 @@ class AppButton extends StatelessWidget {
       onPressed: onTap,
       style: OutlinedButton.styleFrom(
         foregroundColor: context.colors.text,
+        minimumSize: const Size(double.infinity, 36),
       ),
       child: Text(
         text ?? '',

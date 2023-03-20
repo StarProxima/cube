@@ -12,6 +12,8 @@ import 'package:cube_system/features/timetable_page/ui/timetable_page.dart';
 import 'package:window_size/window_size.dart';
 import 'package:device_preview/device_preview.dart';
 
+import 'package:cube_system/features/landing_page/ui/landing_page.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
@@ -51,7 +53,7 @@ class MainApp extends StatelessWidget {
             colors: appColors,
             textStyles: appTextStyles,
           ),
-          home: const TimetablePage(),
+          home: const LandingPage(),
         ),
       ),
     );

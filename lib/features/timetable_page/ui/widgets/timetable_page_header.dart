@@ -1,3 +1,4 @@
+import 'package:cube_system/features/landing_page/ui/landing_page.dart';
 import 'package:cube_system/features/timetable_page/features/week_timeline/state_holders/week_timeline_shown_week_date.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
@@ -51,7 +52,7 @@ class TimetablePageHeader extends ConsumerWidget {
           Expanded(
             flex: 10,
             child: Padding(
-              padding: const EdgeInsets.only(left: 4, top: 4),
+              padding: const EdgeInsets.only(left: 8, top: 4),
               child: InkWell(
                 onTap: () {
                   Navigator.of(context).push(
@@ -91,7 +92,15 @@ class TimetablePageHeader extends ConsumerWidget {
             child: Padding(
               padding: const EdgeInsets.only(left: 4, top: 4, right: 4),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(
+                    CupertinoPageRoute(
+                      builder: (context) {
+                        return const LandingPage();
+                      },
+                    ),
+                  );
+                },
                 borderRadius: const BorderRadius.all(Radius.circular(12)),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
