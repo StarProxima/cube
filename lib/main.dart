@@ -10,6 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/timetable_page/ui/timetable_page.dart';
 import 'package:window_size/window_size.dart';
+import 'package:device_preview/device_preview.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,24 +29,30 @@ class MainApp extends StatelessWidget {
     final appColors = AppColors.light;
     final appTextStyles = AppTextStyles.light;
 
-    return ProviderScope(
-      child: MaterialApp(
-        scrollBehavior: AppScrollBehavior(),
-        title: 'Куб.Расписание',
-        localizationsDelegates: const [
-          GlobalCupertinoLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-        ],
-        supportedLocales: const [
-          Locale('ru'),
-          Locale('en'),
-        ],
-        themeMode: ThemeMode.light,
-        theme: AppTheme.themeByStyles(
-          colors: appColors,
-          textStyles: appTextStyles,
+    return DevicePreview(
+      enabled: false,
+      builder: (context) => ProviderScope(
+        child: MaterialApp(
+          useInheritedMediaQuery: true,
+          locale: DevicePreview.locale(context),
+          builder: DevicePreview.appBuilder,
+          scrollBehavior: AppScrollBehavior(),
+          title: 'Куб.Расписание',
+          localizationsDelegates: const [
+            GlobalCupertinoLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('ru'),
+            Locale('en'),
+          ],
+          themeMode: ThemeMode.light,
+          theme: AppTheme.themeByStyles(
+            colors: appColors,
+            textStyles: appTextStyles,
+          ),
+          home: const TimetablePage(),
         ),
-        home: const TimetablePage(),
       ),
     );
   }

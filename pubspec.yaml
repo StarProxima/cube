@@ -26,6 +26,8 @@ dependencies:
   flutter_riverpod: ^2.3.0
 
   chopper: ^6.1.1
+
+  device_preview: ^1.1.0
   
   window_size:
     git:
