@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:cube_system/models/lesson/lesson.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -7,6 +9,6 @@ final timetablePageDayLessons =
 });
 
 final timetablePageTimetable =
-    StateProvider<Map<DateTime, List<Lesson>>>((ref) {
-  return {};
+    StateProvider<SplayTreeMap<DateTime, List<Lesson>>>((ref) {
+  return SplayTreeMap();
 });

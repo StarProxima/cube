@@ -10,6 +10,7 @@ part of 'app_text_styles.dart';
 
 class AppTextStyles extends ThemeExtension<AppTextStyles> {
   const AppTextStyles({
+    required this.appBarTitle,
     required this.largeTitle,
     required this.subTitle,
     required this.label,
@@ -17,6 +18,7 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
     required this.chipLabel,
   });
 
+  final TextStyle appBarTitle;
   final TextStyle largeTitle;
   final TextStyle subTitle;
   final TextStyle label;
@@ -24,6 +26,7 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
   final TextStyle chipLabel;
 
   static final AppTextStyles light = AppTextStyles(
+    appBarTitle: _$AppTextStyles.appBarTitle[0],
     largeTitle: _$AppTextStyles.largeTitle[0],
     subTitle: _$AppTextStyles.subTitle[0],
     label: _$AppTextStyles.label[0],
@@ -37,6 +40,7 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
 
   @override
   AppTextStyles copyWith({
+    TextStyle? appBarTitle,
     TextStyle? largeTitle,
     TextStyle? subTitle,
     TextStyle? label,
@@ -44,6 +48,7 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
     TextStyle? chipLabel,
   }) {
     return AppTextStyles(
+      appBarTitle: appBarTitle ?? this.appBarTitle,
       largeTitle: largeTitle ?? this.largeTitle,
       subTitle: subTitle ?? this.subTitle,
       label: label ?? this.label,
@@ -56,6 +61,7 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
   AppTextStyles lerp(ThemeExtension<AppTextStyles>? other, double t) {
     if (other is! AppTextStyles) return this;
     return AppTextStyles(
+      appBarTitle: TextStyle.lerp(appBarTitle, other.appBarTitle, t)!,
       largeTitle: TextStyle.lerp(largeTitle, other.largeTitle, t)!,
       subTitle: TextStyle.lerp(subTitle, other.subTitle, t)!,
       label: TextStyle.lerp(label, other.label, t)!,
@@ -70,6 +76,8 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
         (other.runtimeType == runtimeType &&
             other is AppTextStyles &&
             const DeepCollectionEquality()
+                .equals(appBarTitle, other.appBarTitle) &&
+            const DeepCollectionEquality()
                 .equals(largeTitle, other.largeTitle) &&
             const DeepCollectionEquality().equals(subTitle, other.subTitle) &&
             const DeepCollectionEquality().equals(label, other.label) &&
@@ -82,6 +90,7 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
   int get hashCode {
     return Object.hash(
         runtimeType,
+        const DeepCollectionEquality().hash(appBarTitle),
         const DeepCollectionEquality().hash(largeTitle),
         const DeepCollectionEquality().hash(subTitle),
         const DeepCollectionEquality().hash(label),

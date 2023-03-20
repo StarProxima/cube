@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/models/lesson/lesson.dart';
@@ -16,8 +18,8 @@ final timetableDayEventManager = Provider<TimetableDayEventManager>((ref) {
 });
 
 class TimetableDayEventManager {
-  final StateController<Map<DateTime, List<Lesson>>> timetable;
-  final StateController<Map<DateTime, TimetableDayEvent>> events;
+  final StateController<SplayTreeMap<DateTime, List<Lesson>>> timetable;
+  final StateController<SplayTreeMap<DateTime, TimetableDayEvent>> events;
 
   TimetableDayEventManager({
     required this.timetable,
@@ -28,33 +30,35 @@ class TimetableDayEventManager {
     required DateTime startDate,
     required DateTime endDate,
   }) {
-    Map<DateTime, TimetableDayEvent> eventMap = {};
+    SplayTreeMap<DateTime, TimetableDayEvent> eventMap = SplayTreeMap();
 
     for (int day = 0; day < endDate.difference(startDate).inDays; day++) {
       final date = startDate.add(Duration(days: day));
-      eventMap[date] = TimetableDayEvent(type: TimetableDayType.notSelected);
+      eventMap[date] =
+          TimetableDayEvent(type: TimetableDayEventType.notSelected);
     }
 
     events.state = eventMap;
   }
 
   static final _shouldLoadingEvents = [
-    TimetableDayType.error,
-    TimetableDayType.notSelected
+    TimetableDayEventType.error,
+    TimetableDayEventType.notSelected
   ];
 
   void setLoadingEvents({
     required DateTime startDate,
     required DateTime endDate,
   }) {
-    Map<DateTime, TimetableDayEvent> eventMap = events.state.cast();
+    SplayTreeMap<DateTime, TimetableDayEvent> eventMap =
+        SplayTreeMap.of(events.state.cast());
 
     for (int day = 0; day < endDate.difference(startDate).inDays; day++) {
       final date = startDate.add(Duration(days: day));
       final shouldLoading = !eventMap.containsKey(date) ||
           _shouldLoadingEvents.contains(eventMap[date]?.type);
       if (shouldLoading) {
-        eventMap[date] = TimetableDayEvent(type: TimetableDayType.loading);
+        eventMap[date] = TimetableDayEvent(type: TimetableDayEventType.loading);
       }
     }
 
@@ -62,15 +66,16 @@ class TimetableDayEventManager {
   }
 
   void setLessonsAfterLoading() {
-    Map<DateTime, TimetableDayEvent> eventMap = events.state.cast();
+    SplayTreeMap<DateTime, TimetableDayEvent> eventMap =
+        SplayTreeMap.of(events.state.cast());
     final timetableMap = timetable.state;
 
     for (final entry in eventMap.entries) {
-      if (entry.value.type == TimetableDayType.loading) {
+      if (entry.value.type == TimetableDayEventType.loading) {
         eventMap[entry.key] = TimetableDayEvent(
           type: timetableMap[entry.key]?.isEmpty ?? true
-              ? TimetableDayType.weekend
-              : TimetableDayType.lessons,
+              ? TimetableDayEventType.weekend
+              : TimetableDayEventType.lessons,
         );
       }
     }
@@ -79,11 +84,13 @@ class TimetableDayEventManager {
   }
 
   void setErrorsAfterLoading() {
-    Map<DateTime, TimetableDayEvent> eventMap = events.state.cast();
+    SplayTreeMap<DateTime, TimetableDayEvent> eventMap =
+        SplayTreeMap.of(events.state.cast());
 
     for (final entry in eventMap.entries) {
-      if (entry.value.type == TimetableDayType.loading) {
-        eventMap[entry.key] = TimetableDayEvent(type: TimetableDayType.error);
+      if (entry.value.type == TimetableDayEventType.loading) {
+        eventMap[entry.key] =
+            TimetableDayEvent(type: TimetableDayEventType.error);
       }
     }
 

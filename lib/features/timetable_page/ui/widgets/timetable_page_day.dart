@@ -25,7 +25,7 @@ class TimetablePageDay extends ConsumerWidget {
 
     final event = ref.watch(timetablePageDayLessonEvent(date));
 
-    if (event == null || event.type == TimetableDayType.loading) {
+    if (event == null || event.type == TimetableDayEventType.loading) {
       return const Center(
         child: Padding(
           padding: EdgeInsets.only(bottom: 36),
@@ -34,11 +34,11 @@ class TimetablePageDay extends ConsumerWidget {
       );
     }
 
-    if (event.type == TimetableDayType.notSelected) {
+    if (event.type == TimetableDayEventType.notSelected) {
       return const NotSelectedEventPage();
     }
 
-    if (event.type == TimetableDayType.error) {
+    if (event.type == TimetableDayEventType.error) {
       return const NoConnectionEventPage();
     }
 
@@ -49,7 +49,7 @@ class TimetablePageDay extends ConsumerWidget {
       return const KsrsEventPage();
     }
 
-    if (event.type == TimetableDayType.weekend) {
+    if (event.type == TimetableDayEventType.weekend) {
       return const WeekendEventPage();
     }
 

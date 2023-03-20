@@ -40,12 +40,18 @@ class TimetablePageManager {
     required this.timetablePageTitle,
   });
 
+  void selectTimetable(TimetableInfo timetable) {
+    selectedTimetable.state = timetable;
+    lessonsManager.clear();
+    lessonsManager.updateCurrentTimetable();
+  }
+
   void updateCurrentTimetable() => lessonsManager.updateCurrentTimetable();
 
   void findLastCurrentNextLesson() =>
       lessonsManager.findLastCurrentNextLesson();
 
-  void pickSelectedDate(DateTime newDate) {
+  void selectDate(DateTime newDate) {
     final date = selectedDate.state;
     selectedDate.state = newDate;
 
@@ -65,7 +71,7 @@ class TimetablePageManager {
     //Если предыщая дата является выбранной, то мы меняем страницу с помощью свайпа,
     //поэтому нужно обновить выбранную дату, иначе дата выбирается виджетом WeekTime
     if (lastDate == selectedDate.state) {
-      pickSelectedDate(newDate);
+      selectDate(newDate);
     }
   }
 }

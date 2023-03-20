@@ -13,6 +13,14 @@ class _$AppTextStyles {
   static const _textColor = Color(0xFF2B2B2B);
   static const _textColorBlue = Color(0xFF47A4F2);
 
+  static List<TextStyle> appBarTitle = [
+    GoogleFonts.inter(
+      fontSize: 20,
+      fontWeight: FontWeight.w700,
+      color: _textColor,
+    ),
+  ];
+
   static List<TextStyle> largeTitle = [
     GoogleFonts.inter(
       fontSize: 16,

@@ -7,7 +7,7 @@ part 'timetable_day_event.freezed.dart';
 @freezed
 class TimetableDayEvent with _$TimetableDayEvent {
   factory TimetableDayEvent({
-    required TimetableDayType type,
+    required TimetableDayEventType type,
     String? title,
     String? subTitle,
     String? description,

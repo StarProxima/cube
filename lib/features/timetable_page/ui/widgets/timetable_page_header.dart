@@ -4,6 +4,7 @@ import 'package:cube_system/features/date_time_contol/state_holders/current_date
 import 'package:cube_system/features/timetable_page/state_holders/selected_timetable.dart';
 import 'package:cube_system/source/extensions.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,6 +13,8 @@ import 'package:intl/intl.dart';
 import 'package:cube_system/features/timetable_page/features/week_timeline/providers/week_timeline_offset_back_button_direction_provider.dart';
 
 import 'package:cube_system/features/timetable_page/features/week_timeline/models/week_timeline_offset_back_button_direction.dart';
+
+import 'package:cube_system/features/timetable_search_page/ui/timetable_search_page.dart';
 
 class TimetablePageHeader extends ConsumerWidget {
   const TimetablePageHeader({super.key});
@@ -42,7 +45,15 @@ class TimetablePageHeader extends ConsumerWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(
+                    CupertinoPageRoute(
+                      builder: (context) {
+                        return const TimetableSearchPage();
+                      },
+                    ),
+                  );
+                },
                 borderRadius: const BorderRadius.all(Radius.circular(99)),
                 child: Center(
                   child: Text(
@@ -80,7 +91,7 @@ class TimetablePageHeader extends ConsumerWidget {
                         WeekTimelineOffsetBackButtonDirection.stay
                     ? InkWell(
                         onTap: () =>
-                            manager.pickSelectedDate(date.add(Duration.zero)),
+                            manager.selectDate(date.add(Duration.zero)),
                         borderRadius:
                             const BorderRadius.all(Radius.circular(99)),
                         child: Container(

@@ -24,7 +24,7 @@ class WeekTimelineManager {
   });
 
   void pickSelectedDate(DateTime date) {
-    timetableManager.pickSelectedDate(date);
+    timetableManager.selectDate(date);
   }
 
   Future<void> setShownWeekDate(DateTime weekDate) async {

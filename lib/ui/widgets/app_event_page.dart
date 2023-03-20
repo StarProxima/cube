@@ -1,4 +1,3 @@
-
 import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,6 +12,8 @@ class AppEventPage extends ConsumerWidget {
   final String? buttonText;
   final VoidCallback? onTap;
 
+  final EdgeInsets? pictureMargin;
+
   const AppEventPage({
     this.picture,
     this.title,
@@ -20,11 +21,13 @@ class AppEventPage extends ConsumerWidget {
     this.description,
     this.buttonText,
     this.onTap,
+    this.pictureMargin,
     super.key,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    const margin = EdgeInsets.only(top: 24);
     return SingleChildScrollView(
       physics:
           const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
@@ -33,7 +36,8 @@ class AppEventPage extends ConsumerWidget {
         child: Column(
           children: [
             Container(
-              margin: const EdgeInsets.only(top: 24),
+              margin:
+                  pictureMargin != null ? margin.add(pictureMargin!) : margin,
               height: 300,
               width: 300,
               child: picture,
