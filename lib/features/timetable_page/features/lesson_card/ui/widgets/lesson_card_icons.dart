@@ -7,19 +7,19 @@ class LessonCardIcons extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final isRemotely = ref
-    //     .watch(_lessonInLessonCard.select((value) => value.lesson.isRemotely));
+    final isRemotely = ref
+        .watch(_lessonInLessonCard.select((value) => value.lesson.isRemotely));
 
     final isActiveLessons =
         ref.watch(_lessonInLessonCard) == ref.watch(currentLesson);
 
     final color = ref.watch(_lessonInLessonCard.select((value) => value.color));
 
-    final isRemotely = _random.nextInt(100) < 15;
+    // final isRemotely = _random.nextInt(100) < 0;
 
-    final presentImportantNote = _random.nextInt(100) < 40;
+    final presentImportantNote = _random.nextInt(100) < 0;
 
-    final numberOfNotes = _random.nextInt(100) < 60 ? _random.nextInt(7) : 0;
+    final numberOfNotes = _random.nextInt(100) < 0 ? _random.nextInt(7) : 0;
 
     return Row(
       children: [

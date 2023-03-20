@@ -1,8 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/gen/assets/assets.gen.dart';
 import 'package:cube_system/ui/widgets/app_event_page.dart';
+
+import 'package:cube_system/features/timetable_search_page/ui/timetable_search_page.dart';
 
 class WelcomeEventPage extends ConsumerWidget {
   const WelcomeEventPage({super.key});
@@ -14,7 +16,15 @@ class WelcomeEventPage extends ConsumerWidget {
       title: 'Вы почти у цели',
       subTitle: 'Осталось только выбрать расписание',
       buttonText: 'Выбрать',
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).push(
+          CupertinoPageRoute(
+            builder: (context) {
+              return const TimetableSearchPage();
+            },
+          ),
+        );
+      },
     );
   }
 }

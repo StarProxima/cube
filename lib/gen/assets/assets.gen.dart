@@ -26,6 +26,10 @@ class $AssetsBrooklynGen {
   SvgGenImage get findAWay3 =>
       const SvgGenImage('assets/brooklyn/find-a-way-3.svg');
 
+  /// File path: assets/brooklyn/manager-desk-2.svg
+  SvgGenImage get managerDesk2 =>
+      const SvgGenImage('assets/brooklyn/manager-desk-2.svg');
+
   /// File path: assets/brooklyn/no-connection-4.svg
   SvgGenImage get noConnection4 =>
       const SvgGenImage('assets/brooklyn/no-connection-4.svg');
@@ -36,6 +40,10 @@ class $AssetsBrooklynGen {
 
   /// File path: assets/brooklyn/rest-3.svg
   SvgGenImage get rest3 => const SvgGenImage('assets/brooklyn/rest-3.svg');
+
+  /// File path: assets/brooklyn/smart-people-2.svg
+  SvgGenImage get smartPeople2 =>
+      const SvgGenImage('assets/brooklyn/smart-people-2.svg');
 
   /// File path: assets/brooklyn/something-went-wrong-2.svg
   SvgGenImage get somethingWentWrong2 =>
@@ -50,18 +58,31 @@ class $AssetsBrooklynGen {
         askingQuestion3,
         beingProductive3,
         findAWay3,
+        managerDesk2,
         noConnection4,
         pageNotFound1,
         rest3,
+        smartPeople2,
         somethingWentWrong2,
         welcome3
       ];
+}
+
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/cube_logo.svg
+  SvgGenImage get cubeLogo => const SvgGenImage('assets/icons/cube_logo.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [cubeLogo];
 }
 
 class Assets {
   Assets._();
 
   static const $AssetsBrooklynGen brooklyn = $AssetsBrooklynGen();
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
 }
 
 class AssetGenImage {

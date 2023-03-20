@@ -14,6 +14,8 @@ import 'package:cube_system/features/timetable_page/ui/event_pages/ksrs_event_pa
 
 import 'package:cube_system/features/timetable_page/ui/event_pages/something_went_wrong_event_page.dart';
 
+import 'package:cube_system/features/timetable_page/ui/event_pages/welcome_event_page.dart';
+
 class TimetablePageDay extends ConsumerWidget {
   final DateTime date;
 
@@ -35,7 +37,7 @@ class TimetablePageDay extends ConsumerWidget {
     }
 
     if (event.type == TimetableDayEventType.notSelected) {
-      return const NotSelectedEventPage();
+      return const WelcomeEventPage();
     }
 
     if (event.type == TimetableDayEventType.error) {

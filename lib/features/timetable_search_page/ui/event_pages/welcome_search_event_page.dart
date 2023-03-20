@@ -13,7 +13,7 @@ class WelcomeSearchEventPage extends ConsumerWidget {
       picture: Assets.brooklyn.findAWay3.svg(),
       pictureMargin: const EdgeInsets.only(bottom: 16),
       title: 'Начните поиск',
-      subTitle: 'Введите группу, преподователя или аудиторию',
+      subTitle: 'Введите группу, преподавателя или аудиторию',
     );
   }
 }

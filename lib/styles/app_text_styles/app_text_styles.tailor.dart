@@ -13,6 +13,7 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
     required this.appBarTitle,
     required this.largeTitle,
     required this.subTitle,
+    required this.smallSubTitle,
     required this.label,
     required this.smallLabel,
     required this.chipLabel,
@@ -21,6 +22,7 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
   final TextStyle appBarTitle;
   final TextStyle largeTitle;
   final TextStyle subTitle;
+  final TextStyle smallSubTitle;
   final TextStyle label;
   final TextStyle smallLabel;
   final TextStyle chipLabel;
@@ -29,6 +31,7 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
     appBarTitle: _$AppTextStyles.appBarTitle[0],
     largeTitle: _$AppTextStyles.largeTitle[0],
     subTitle: _$AppTextStyles.subTitle[0],
+    smallSubTitle: _$AppTextStyles.smallSubTitle[0],
     label: _$AppTextStyles.label[0],
     smallLabel: _$AppTextStyles.smallLabel[0],
     chipLabel: _$AppTextStyles.chipLabel[0],
@@ -43,6 +46,7 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
     TextStyle? appBarTitle,
     TextStyle? largeTitle,
     TextStyle? subTitle,
+    TextStyle? smallSubTitle,
     TextStyle? label,
     TextStyle? smallLabel,
     TextStyle? chipLabel,
@@ -51,6 +55,7 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
       appBarTitle: appBarTitle ?? this.appBarTitle,
       largeTitle: largeTitle ?? this.largeTitle,
       subTitle: subTitle ?? this.subTitle,
+      smallSubTitle: smallSubTitle ?? this.smallSubTitle,
       label: label ?? this.label,
       smallLabel: smallLabel ?? this.smallLabel,
       chipLabel: chipLabel ?? this.chipLabel,
@@ -64,6 +69,7 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
       appBarTitle: TextStyle.lerp(appBarTitle, other.appBarTitle, t)!,
       largeTitle: TextStyle.lerp(largeTitle, other.largeTitle, t)!,
       subTitle: TextStyle.lerp(subTitle, other.subTitle, t)!,
+      smallSubTitle: TextStyle.lerp(smallSubTitle, other.smallSubTitle, t)!,
       label: TextStyle.lerp(label, other.label, t)!,
       smallLabel: TextStyle.lerp(smallLabel, other.smallLabel, t)!,
       chipLabel: TextStyle.lerp(chipLabel, other.chipLabel, t)!,
@@ -80,6 +86,8 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
             const DeepCollectionEquality()
                 .equals(largeTitle, other.largeTitle) &&
             const DeepCollectionEquality().equals(subTitle, other.subTitle) &&
+            const DeepCollectionEquality()
+                .equals(smallSubTitle, other.smallSubTitle) &&
             const DeepCollectionEquality().equals(label, other.label) &&
             const DeepCollectionEquality()
                 .equals(smallLabel, other.smallLabel) &&
@@ -93,6 +101,7 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
         const DeepCollectionEquality().hash(appBarTitle),
         const DeepCollectionEquality().hash(largeTitle),
         const DeepCollectionEquality().hash(subTitle),
+        const DeepCollectionEquality().hash(smallSubTitle),
         const DeepCollectionEquality().hash(label),
         const DeepCollectionEquality().hash(smallLabel),
         const DeepCollectionEquality().hash(chipLabel));
