@@ -3,6 +3,8 @@ import 'package:cube_system/features/timetable_search_page/ui/widgets/timetable_
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:cube_system/features/timetable_search_page/managers/timetable_search_page_manager.dart';
+
 class TimetableSearchPage extends ConsumerWidget {
   const TimetableSearchPage({
     super.key,
@@ -25,9 +27,24 @@ class _TimetableSearchPage extends ConsumerStatefulWidget {
 class _TimetableSearchPageState extends ConsumerState<_TimetableSearchPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: TimetableSearchPageHeader(),
-      body: TimetableSearchPageBody(),
+    final manager = ref.watch(timetableSearchPageManager);
+    manager.requestFocusToSearch();
+
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: [
+            const TimetableSearchPageHeader(),
+            Expanded(
+              child: Listener(
+                behavior: HitTestBehavior.opaque,
+                onPointerDown: (_) => manager.unfocusSearch(),
+                child: const TimetableSearchPageBody(),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

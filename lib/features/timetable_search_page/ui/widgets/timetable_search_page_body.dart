@@ -5,6 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cube_system/features/timetable_search_page/managers/timetable_search_page_manager.dart';
 import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_timetables.dart';
 
+import 'package:cube_system/features/timetable_search_page/ui/event_pages/welcome_search_event_page.dart';
+
 class TimetableSearchPageBody extends ConsumerWidget {
   const TimetableSearchPageBody({super.key});
 
@@ -12,6 +14,10 @@ class TimetableSearchPageBody extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final manager = ref.watch(timetableSearchPageManager);
     final timetables = ref.watch(timetableSearchPageTimetables);
+
+    if (timetables.isEmpty) {
+      return const WelcomeSearchEventPage();
+    }
 
     return ListView.separated(
       itemCount: timetables.length,
@@ -30,7 +36,7 @@ class TimetableSearchPageBody extends ConsumerWidget {
         );
       },
       separatorBuilder: (context, index) {
-        return const SizedBox(height: 16);
+        return const SizedBox(height: 12);
       },
     );
   }

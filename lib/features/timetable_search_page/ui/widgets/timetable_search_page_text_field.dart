@@ -3,14 +3,22 @@ import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_search_controller.dart';
+
+import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_search_focus.dart';
+
 class TimetableSearchPageTextField extends ConsumerWidget {
   const TimetableSearchPageTextField({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final manager = ref.watch(timetableSearchPageManager);
+    final contoller = ref.watch(timetableSearchPageSearchController);
+    final focus = ref.watch(timetableSearchPageSearchFocus);
 
     return TextField(
+      controller: contoller,
+      focusNode: focus,
       onChanged: manager.search,
       style: context.textStyles.smallLabel.copyWith(
         fontSize: 14,

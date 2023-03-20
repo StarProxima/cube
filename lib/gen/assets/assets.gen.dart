@@ -22,6 +22,10 @@ class $AssetsBrooklynGen {
   SvgGenImage get beingProductive3 =>
       const SvgGenImage('assets/brooklyn/being-productive-3.svg');
 
+  /// File path: assets/brooklyn/find-a-way-3.svg
+  SvgGenImage get findAWay3 =>
+      const SvgGenImage('assets/brooklyn/find-a-way-3.svg');
+
   /// File path: assets/brooklyn/no-connection-4.svg
   SvgGenImage get noConnection4 =>
       const SvgGenImage('assets/brooklyn/no-connection-4.svg');
@@ -45,6 +49,7 @@ class $AssetsBrooklynGen {
   List<SvgGenImage> get values => [
         askingQuestion3,
         beingProductive3,
+        findAWay3,
         noConnection4,
         pageNotFound1,
         rest3,

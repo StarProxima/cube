@@ -1,30 +1,49 @@
+import 'package:chopper/chopper.dart';
 import 'package:cube_system/api/cube_api.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
+import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_search_focus.dart';
 import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_timetables.dart';
 import 'package:cube_system/gen/api/cube_api.swagger.dart';
 import 'package:cube_system/models/timetable/timetable_info.dart';
 import 'package:cube_system/models/timetable/timetable_type.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final timetableSearchPageManager = Provider<TimetableSearchPageManager>((ref) {
   return TimetableSearchPageManager(
     api: ref.watch(cubeApi),
-    timetables: ref.watch(timetableSearchPageTimetables.notifier),
     timetablePageManager: ref.watch(timetablePageManager),
+    timetables: ref.watch(timetableSearchPageTimetables.notifier),
+    searchFocus: ref.watch(timetableSearchPageSearchFocus.notifier),
   );
 });
 
 class TimetableSearchPageManager {
   final CubeApi api;
 
-  final StateController<List<TimetableInfo>> timetables;
   final TimetablePageManager timetablePageManager;
+  final StateController<List<TimetableInfo>> timetables;
+
+  final StateController<FocusNode> searchFocus;
 
   TimetableSearchPageManager({
     required this.api,
-    required this.timetables,
     required this.timetablePageManager,
+    required this.timetables,
+    required this.searchFocus,
   });
+
+  void requestFocusToSearch() {
+    Future.delayed(const Duration(milliseconds: 500), () {
+      if (searchFocus.state.canRequestFocus) {
+        searchFocus.state.requestFocus();
+      }
+    });
+  }
+
+  void unfocusSearch() {
+    searchFocus.state.unfocus();
+  }
 
   void selectTimetable(TimetableInfo timetable) {
     timetablePageManager.selectTimetable(timetable);
@@ -32,6 +51,11 @@ class TimetableSearchPageManager {
 
   void search(String querry) async {
     await Future(() {});
+
+    if (querry.strip().isEmpty) {
+      timetables.state = [];
+      return;
+    }
 
     final response = await api.apiLessonsAutocompleteGet(q: querry);
 
