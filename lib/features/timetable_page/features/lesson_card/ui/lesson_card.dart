@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/empty_lesson_card.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/free_time_lessons_window_card.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/timetable_page/state_holders/selected_timetable.dart';
 import 'package:flutter/material.dart';
@@ -47,15 +47,12 @@ class LessonCard extends ConsumerWidget {
       child: Column(
         children: [
           if (lesson.emptyLessonsBefore != 0)
-            ListView.builder(
-              shrinkWrap: true,
-              primary: false,
-              itemCount: lesson.emptyLessonsBefore,
-              itemBuilder: (context, index) {
-                final number =
-                    lesson.lesson.number - lesson.emptyLessonsBefore + index;
-                return EmptyLessonCard(number: number);
-              },
+            Padding(
+              padding: const EdgeInsets.only(bottom: 16, top: 8),
+              child: FreeTimeLessonsWindowCard(
+                numberStart: lesson.lesson.number - lesson.emptyLessonsBefore,
+                numberEnd: lesson.lesson.number - 1,
+              ),
             ),
           Consumer(
             builder: (context, ref, _) {

@@ -6,23 +6,32 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/timetable_page/state_holders/lesson_timings.dart';
 
-class EmptyLessonCard extends ConsumerWidget {
-  final int number;
-  const EmptyLessonCard({required this.number, super.key});
+class FreeTimeLessonsWindowCard extends ConsumerWidget {
+  final int numberStart;
+  final int numberEnd;
+
+  const FreeTimeLessonsWindowCard({
+    required this.numberStart,
+    required this.numberEnd,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final timings = ref.read(lessonTimings)[number]!;
-
-    final timingsStr =
-        '${timings.start.format(context)} - ${timings.end.format(context)}';
-
-    final color = ref.watch(appLessonColors).ksrs;
+    final color = ref.watch(appLessonColors).practice;
     final fadedColor = color?.withOpacity(0.5);
 
+    final timingsStart = ref.watch(lessonTimings)[numberStart]!;
+    final timingsEnd = ref.watch(lessonTimings)[numberEnd]!;
+
+    final timingsStr =
+        '${timingsStart.start.format(context)} - ${timingsEnd.end.format(context)}';
+
+    final numberStr =
+        numberStart != numberEnd ? '$numberStart - $numberEnd' : '$numberStart';
+
     return Container(
-      height: 36,
-      margin: const EdgeInsets.only(bottom: 12),
+      height: 40,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(7),
         color: context.colors.card,
@@ -58,21 +67,18 @@ class EmptyLessonCard extends ConsumerWidget {
           const SizedBox(width: 12),
           Container(
             height: 22,
-            width: 22,
             padding: const EdgeInsets.only(
               left: 0.75,
-              bottom: 0.75,
-            ),
+              top: 0.75,
+            ).add(const EdgeInsets.symmetric(horizontal: 8, vertical: 1)),
             decoration: BoxDecoration(
               color: color,
-              shape: BoxShape.circle,
+              borderRadius: BorderRadius.circular(99),
             ),
-            child: Center(
-              child: Text(
-                number.toString(),
-                style: context.textStyles.label.copyWith(
-                  color: Colors.white,
-                ),
+            child: Text(
+              numberStr,
+              style: context.textStyles.label.copyWith(
+                color: Colors.white,
               ),
             ),
           ),
