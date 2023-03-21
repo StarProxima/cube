@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Lesson {
   LessonFullNamesInDb get lesson => throw _privateConstructorUsedError;
+  int get emptyLessonsBefore => throw _privateConstructorUsedError;
   LessonFullTimings get timings => throw _privateConstructorUsedError;
   Color get color => throw _privateConstructorUsedError;
   Color get fadedColor => throw _privateConstructorUsedError;
@@ -33,6 +34,7 @@ abstract class $LessonCopyWith<$Res> {
   @useResult
   $Res call(
       {LessonFullNamesInDb lesson,
+      int emptyLessonsBefore,
       LessonFullTimings timings,
       Color color,
       Color fadedColor,
@@ -55,6 +57,7 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
   @override
   $Res call({
     Object? lesson = null,
+    Object? emptyLessonsBefore = null,
     Object? timings = null,
     Object? color = null,
     Object? fadedColor = null,
@@ -65,6 +68,10 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
           ? _value.lesson
           : lesson // ignore: cast_nullable_to_non_nullable
               as LessonFullNamesInDb,
+      emptyLessonsBefore: null == emptyLessonsBefore
+          ? _value.emptyLessonsBefore
+          : emptyLessonsBefore // ignore: cast_nullable_to_non_nullable
+              as int,
       timings: null == timings
           ? _value.timings
           : timings // ignore: cast_nullable_to_non_nullable
@@ -101,6 +108,7 @@ abstract class _$$_LessonCopyWith<$Res> implements $LessonCopyWith<$Res> {
   @useResult
   $Res call(
       {LessonFullNamesInDb lesson,
+      int emptyLessonsBefore,
       LessonFullTimings timings,
       Color color,
       Color fadedColor,
@@ -121,6 +129,7 @@ class __$$_LessonCopyWithImpl<$Res>
   @override
   $Res call({
     Object? lesson = null,
+    Object? emptyLessonsBefore = null,
     Object? timings = null,
     Object? color = null,
     Object? fadedColor = null,
@@ -131,6 +140,10 @@ class __$$_LessonCopyWithImpl<$Res>
           ? _value.lesson
           : lesson // ignore: cast_nullable_to_non_nullable
               as LessonFullNamesInDb,
+      emptyLessonsBefore: null == emptyLessonsBefore
+          ? _value.emptyLessonsBefore
+          : emptyLessonsBefore // ignore: cast_nullable_to_non_nullable
+              as int,
       timings: null == timings
           ? _value.timings
           : timings // ignore: cast_nullable_to_non_nullable
@@ -156,6 +169,7 @@ class __$$_LessonCopyWithImpl<$Res>
 class _$_Lesson implements _Lesson {
   _$_Lesson(
       {required this.lesson,
+      required this.emptyLessonsBefore,
       required this.timings,
       required this.color,
       required this.fadedColor,
@@ -163,6 +177,8 @@ class _$_Lesson implements _Lesson {
 
   @override
   final LessonFullNamesInDb lesson;
+  @override
+  final int emptyLessonsBefore;
   @override
   final LessonFullTimings timings;
   @override
@@ -174,7 +190,7 @@ class _$_Lesson implements _Lesson {
 
   @override
   String toString() {
-    return 'Lesson(lesson: $lesson, timings: $timings, color: $color, fadedColor: $fadedColor, isEvent: $isEvent)';
+    return 'Lesson(lesson: $lesson, emptyLessonsBefore: $emptyLessonsBefore, timings: $timings, color: $color, fadedColor: $fadedColor, isEvent: $isEvent)';
   }
 
   @override
@@ -183,6 +199,8 @@ class _$_Lesson implements _Lesson {
         (other.runtimeType == runtimeType &&
             other is _$_Lesson &&
             (identical(other.lesson, lesson) || other.lesson == lesson) &&
+            (identical(other.emptyLessonsBefore, emptyLessonsBefore) ||
+                other.emptyLessonsBefore == emptyLessonsBefore) &&
             (identical(other.timings, timings) || other.timings == timings) &&
             (identical(other.color, color) || other.color == color) &&
             (identical(other.fadedColor, fadedColor) ||
@@ -191,8 +209,8 @@ class _$_Lesson implements _Lesson {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, lesson, timings, color, fadedColor, isEvent);
+  int get hashCode => Object.hash(runtimeType, lesson, emptyLessonsBefore,
+      timings, color, fadedColor, isEvent);
 
   @JsonKey(ignore: true)
   @override
@@ -204,6 +222,7 @@ class _$_Lesson implements _Lesson {
 abstract class _Lesson implements Lesson {
   factory _Lesson(
       {required final LessonFullNamesInDb lesson,
+      required final int emptyLessonsBefore,
       required final LessonFullTimings timings,
       required final Color color,
       required final Color fadedColor,
@@ -211,6 +230,8 @@ abstract class _Lesson implements Lesson {
 
   @override
   LessonFullNamesInDb get lesson;
+  @override
+  int get emptyLessonsBefore;
   @override
   LessonFullTimings get timings;
   @override

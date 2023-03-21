@@ -71,25 +71,6 @@ class TimetableLessonsManager {
     events.state = SplayTreeMap();
   }
 
-  void _setLessons(List<LessonFullNamesInDb> lessons) {
-    SplayTreeMap<DateTime, List<Lesson>> timetableMap =
-        SplayTreeMap.of(timetable.state.cast());
-
-    for (final lesson in lessons) {
-      if (timetableMap.containsKey(lesson.date)) {
-        timetableMap[lesson.date] = [];
-      }
-    }
-
-    for (final lesson in lessons) {
-      timetableMap[lesson.date] = (timetableMap[lesson.date] ?? []);
-      final l = lessonConvertor.lessonByLessonFullNamesInDb(lesson: lesson);
-      timetableMap[lesson.date]!.add(l);
-    }
-
-    timetable.state = timetableMap;
-  }
-
   Future<List<LessonFullNamesInDb>> _getLessons({
     required DateTime startDate,
     required DateTime endDate,
@@ -110,6 +91,31 @@ class TimetableLessonsManager {
     );
 
     return lessonResponse.body!;
+  }
+
+  void _setLessons(List<LessonFullNamesInDb> lessons) {
+    SplayTreeMap<DateTime, List<Lesson>> timetableMap =
+        SplayTreeMap.of(timetable.state.cast());
+
+    for (final lesson in lessons) {
+      timetableMap[lesson.date] = [];
+    }
+
+    for (int i = 0; i < lessons.length; i++) {
+      final lesson = lessons[i];
+      int emptyLessonsBefore = 0;
+      if (i > 0 && lessons[i - 1].date == lesson.date) {
+        emptyLessonsBefore = lesson.number - lessons[i - 1].number - 1;
+      }
+      final l = lessonConvertor.lessonByLessonFullNamesInDb(
+        lesson: lesson,
+        emptyLessonsBefore: emptyLessonsBefore,
+      );
+
+      timetableMap[lesson.date]!.add(l);
+    }
+
+    timetable.state = timetableMap;
   }
 
   Future<void> updateCurrentTimetable() async {

@@ -82,10 +82,7 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
             ),
             const WeekTimeline(),
             const SizedBox(height: 10),
-            const Divider(
-              thickness: 1,
-              height: 1,
-            ),
+            const Divider(),
             Expanded(
               child: PageView.builder(
                 controller: pageController,
@@ -93,8 +90,6 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
                 onPageChanged: (index) =>
                     manager.handlePageViewChange(getDateByPageIndex(index)),
                 itemBuilder: (context, index) {
-                  final c = pageController;
-
                   return TimetablePageDay(
                     date: getDateByPageIndex(index),
                   );

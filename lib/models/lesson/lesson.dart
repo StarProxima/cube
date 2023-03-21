@@ -11,6 +11,7 @@ part 'lesson.freezed.dart';
 class Lesson with _$Lesson {
   factory Lesson({
     required LessonFullNamesInDb lesson,
+    required int emptyLessonsBefore,
     required LessonFullTimings timings,
     required Color color,
     required Color fadedColor,
