@@ -43,8 +43,12 @@ class _TimetablePage extends ConsumerStatefulWidget {
 }
 
 class _TimetablePageState extends ConsumerState<_TimetablePage> {
-  final initialPage = 1000;
-  late final pageController = PageController(initialPage: initialPage);
+  static const _initialPage = 1000;
+
+  late final pageController = PageController(
+    initialPage: _initialPage -
+        ref.read(currentDate).difference(ref.read(selectedDate)).inDays,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +59,7 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
     // Обрабатывается изменение выбранной даты из WeekTimeline.
     ref.listen(selectedDate, (prev, next) {
       if (ref.read(currentPickedDateInPageView) == next) return;
-      final targetPage = initialPage - date.difference(next).inDays;
+      final targetPage = _initialPage - date.difference(next).inDays;
 
       pageController.animateToPage(
         targetPage,
@@ -65,7 +69,7 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
     });
 
     DateTime getDateByPageIndex(int index) =>
-        date.add(Duration(days: index - initialPage));
+        date.add(Duration(days: index - _initialPage));
 
     return Scaffold(
       body: SafeArea(
@@ -85,10 +89,12 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
             Expanded(
               child: PageView.builder(
                 controller: pageController,
-                itemCount: initialPage * 2,
+                itemCount: _initialPage * 2,
                 onPageChanged: (index) =>
                     manager.handlePageViewChange(getDateByPageIndex(index)),
                 itemBuilder: (context, index) {
+                  final c = pageController;
+
                   return TimetablePageDay(
                     date: getDateByPageIndex(index),
                   );
