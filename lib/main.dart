@@ -34,7 +34,6 @@ class MainApp extends StatelessWidget {
       // enabled: false,
       builder: (context) => ProviderScope(
         child: MaterialApp(
-          useInheritedMediaQuery: true,
           locale: DevicePreview.locale(context),
           builder: DevicePreview.appBuilder,
           scrollBehavior: AppScrollBehavior(),

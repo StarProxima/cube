@@ -15,23 +15,22 @@ class TimetableSearchPageHeader extends ConsumerWidget
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return PreferredSize(
+    return const PreferredSize(
       preferredSize: _size,
       child: Column(
         children: [
           Padding(
-            padding:
-                const EdgeInsets.only(left: 8, top: 8, bottom: 8, right: 4),
+            padding: EdgeInsets.only(left: 8, top: 8, bottom: 8, right: 4),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
+              children: [
                 AppBackButton(),
                 SizedBox(width: 6),
                 Flexible(child: TimetableSearchPageTextField()),
               ],
             ),
           ),
-          const Divider(),
+          Divider(),
         ],
       ),
     );

@@ -1,5 +1,9 @@
 include: package:flutter_lints/flutter.yaml
 
+
+analyzer:
+  exclude: [lib/gen/**, lib/**.freezed.dart, lib/**.g.dart, lib/**.tailor.dart]
+
 linter:
   rules:
     - require_trailing_commas
