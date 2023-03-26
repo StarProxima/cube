@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 import 'package:cube_system/gen/assets/assets.gen.dart';
 import 'package:cube_system/ui/widgets/app_event_page.dart';

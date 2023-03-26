@@ -29,6 +29,7 @@ class LessonConvertor {
 
   Lesson lessonByLessonFullNamesInDb({
     required LessonFullNamesInDb lesson,
+    int emptyLessonsBefore = 0,
   }) {
     final number = lesson.number;
 
@@ -81,6 +82,7 @@ class LessonConvertor {
 
     final newLesson = Lesson(
       lesson: lesson,
+      emptyLessonsBefore: emptyLessonsBefore,
       timings: fullTiminigs,
       color: color,
       fadedColor: color.withOpacity(0.6),

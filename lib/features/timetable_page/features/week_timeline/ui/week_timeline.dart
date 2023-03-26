@@ -54,7 +54,7 @@ class _WeekTimelineState extends ConsumerState<WeekTimeline> {
             manager.setShownWeekDate(getDateByDayAndWeek(weekDay, weekIndex)),
         itemBuilder: (BuildContext context, int pageNumber) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Row(
               children: [
                 for (int dayNumber = 0; dayNumber < 7; dayNumber++)

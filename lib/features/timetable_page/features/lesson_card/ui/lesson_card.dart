@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/free_time_window_lesson_card.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/timetable_page/state_holders/selected_timetable.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +46,14 @@ class LessonCard extends ConsumerWidget {
       ],
       child: Column(
         children: [
+          if (lesson.emptyLessonsBefore != 0)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 16, top: 8),
+              child: FreeTimeWindowLessonCard(
+                numberStart: lesson.lesson.number - lesson.emptyLessonsBefore,
+                numberEnd: lesson.lesson.number - 1,
+              ),
+            ),
           Consumer(
             builder: (context, ref, _) {
               final lessonNext = ref.watch(nextLesson);
@@ -84,10 +93,10 @@ class LessonCard extends ConsumerWidget {
                         Expanded(
                           child: InkWell(
                             onTap: manager.findLastCurrentNextLesson,
-                            child: Column(
+                            child: const Column(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(
+                                  padding: EdgeInsets.only(
                                     left: 12,
                                     right: 12,
                                     top: 8,
@@ -96,7 +105,7 @@ class LessonCard extends ConsumerWidget {
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                    children: const [
+                                    children: [
                                       LessonCardHeader(),
                                       SizedBox(height: 8),
                                       LessonCardBody(),
@@ -104,13 +113,13 @@ class LessonCard extends ConsumerWidget {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(
+                                  padding: EdgeInsets.only(
                                     left: 4,
                                     right: 4,
                                     bottom: 4,
                                   ),
                                   child: Column(
-                                    children: const [
+                                    children: [
                                       LessonCardFooter(),
                                     ],
                                   ),

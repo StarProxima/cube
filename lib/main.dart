@@ -31,10 +31,9 @@ class MainApp extends StatelessWidget {
     final appTextStyles = AppTextStyles.light;
 
     return DevicePreview(
-      // enabled: false,
+      enabled: false,
       builder: (context) => ProviderScope(
         child: MaterialApp(
-          useInheritedMediaQuery: true,
           locale: DevicePreview.locale(context),
           builder: DevicePreview.appBuilder,
           scrollBehavior: AppScrollBehavior(),
