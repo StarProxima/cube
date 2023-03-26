@@ -57,7 +57,7 @@ class TimetableSearchPageManager {
     await Future(() {});
     event.state = TimetableSearchEventType.welcome;
     searchContoller.state.clear();
-    Future.delayed(const Duration(milliseconds: 500), () {
+    Future.delayed(const Duration(milliseconds: 250), () {
       if (searchFocus.state.canRequestFocus) {
         searchFocus.state.requestFocus();
       }
