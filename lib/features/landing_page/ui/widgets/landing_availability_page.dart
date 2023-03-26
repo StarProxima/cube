@@ -62,7 +62,16 @@ class LandingAvailabilityPage extends ConsumerWidget {
                 TextSpan(
                   children: [
                     const TextSpan(
-                      text: 'Android / iOS / ',
+                      text: 'Android / ',
+                    ),
+                    TextSpan(
+                      text: 'iOS',
+                      style: context.textStyles.smallSubTitle.copyWith(
+                        color: context.colors.subduedText.withOpacity(0.65),
+                      ),
+                    ),
+                    const TextSpan(
+                      text: ' / ',
                     ),
                     TextSpan(
                       text: 'Web',
