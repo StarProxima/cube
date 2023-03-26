@@ -26,7 +26,7 @@ class LandingWelcomePage extends ConsumerWidget {
                   Row(
                     children: [
                       Text(
-                        "КУБ",
+                        "Куб",
                         style: context.textStyles.largeTitle.copyWith(
                           fontSize: 56,
                           color: context.colors.primary,

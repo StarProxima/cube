@@ -2,7 +2,7 @@
     package="com.example.cube_system">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="cube_system"
+        android:label="Куб.Расписание"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
