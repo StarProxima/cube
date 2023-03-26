@@ -37,7 +37,7 @@ abstract class CubeApi extends ChopperService {
 
   ///Login
   Future<chopper.Response<AccessToken>> apiAuthLoginPost(
-      {required BodyLoginApiAuthLoginPost? body}) {
+      {required BodyLoginApiAuthLoginPost body}) {
     generatedMapping.putIfAbsent(
         AccessToken, () => AccessToken.fromJsonFactory);
 
@@ -49,8 +49,9 @@ abstract class CubeApi extends ChopperService {
     path: '/api/auth/login',
     optionalBody: true,
   )
+  @Multipart()
   Future<chopper.Response<AccessToken>> _apiAuthLoginPost(
-      {@Body() required BodyLoginApiAuthLoginPost? body});
+      {@Part() required BodyLoginApiAuthLoginPost body});
 
   ///Logout
   Future<chopper.Response<Status>> apiAuthLogoutPost() {
@@ -385,8 +386,8 @@ abstract class CubeApi extends ChopperService {
   Future<chopper.Response<PageUserFullInDb>> apiUsersGet({
     String? search,
     List<int>? roleIds,
-    UserSortBy? sortBy,
-    SortOrder? sortOrder,
+    enums.UserSortBy? sortBy,
+    enums.SortOrder? sortOrder,
     int? page,
     int? size,
     String? clientName,
@@ -397,8 +398,8 @@ abstract class CubeApi extends ChopperService {
     return _apiUsersGet(
         search: search,
         roleIds: roleIds,
-        sortBy: sortBy,
-        sortOrder: sortOrder,
+        sortBy: sortBy?.value?.toString(),
+        sortOrder: sortOrder?.value?.toString(),
         page: page,
         size: size,
         clientName: clientName);
@@ -416,8 +417,8 @@ abstract class CubeApi extends ChopperService {
   Future<chopper.Response<PageUserFullInDb>> _apiUsersGet({
     @Query('search') String? search,
     @Query('role_ids') List<int>? roleIds,
-    @Query('sort_by') UserSortBy? sortBy,
-    @Query('sort_order') SortOrder? sortOrder,
+    @Query('sort_by') String? sortBy,
+    @Query('sort_order') String? sortOrder,
     @Query('page') int? page,
     @Query('size') int? size,
     @Header('Client_name') String? clientName,
@@ -1050,6 +1051,7 @@ abstract class CubeApi extends ChopperService {
     path: '/api/bells/import',
     optionalBody: true,
   )
+  @Multipart()
   Future<chopper.Response<List<BellInDb>>> _apiBellsImportPost({
     @Header('Client_name') String? clientName,
     @Part() required BodyImportBellsApiBellsImportPost body,
@@ -1211,6 +1213,7 @@ abstract class CubeApi extends ChopperService {
     path: '/api/faculties/import',
     optionalBody: true,
   )
+  @Multipart()
   Future<chopper.Response<List<FacultyInDb>>> _apiFacultiesImportPost({
     @Header('Client_name') String? clientName,
     @Part() required BodyImportFacultiesApiFacultiesImportPost body,
@@ -1252,7 +1255,7 @@ abstract class CubeApi extends ChopperService {
     @Query('faculty_id') int? facultyId,
     @Query('name') String? name,
     @Query('cipher') String? cipher,
-    @Query('degree_study') List<String?>? degreeStudy,
+    @Query('degree_study') List<Object?>? degreeStudy,
   });
 
   ///Create Direction
@@ -1342,12 +1345,12 @@ abstract class CubeApi extends ChopperService {
 
   ///Import Directions
   ///@param Client_name
-  Future<chopper.Response<List<DirectionInDb>>> apiDirectionsImportPost({
+  Future<chopper.Response<List<DirectionShortInDb>>> apiDirectionsImportPost({
     String? clientName,
     required BodyImportDirectionsApiDirectionsImportPost body,
   }) {
     generatedMapping.putIfAbsent(
-        DirectionInDb, () => DirectionInDb.fromJsonFactory);
+        DirectionShortInDb, () => DirectionShortInDb.fromJsonFactory);
 
     return _apiDirectionsImportPost(clientName: clientName, body: body);
   }
@@ -1358,7 +1361,8 @@ abstract class CubeApi extends ChopperService {
     path: '/api/directions/import',
     optionalBody: true,
   )
-  Future<chopper.Response<List<DirectionInDb>>> _apiDirectionsImportPost({
+  @Multipart()
+  Future<chopper.Response<List<DirectionShortInDb>>> _apiDirectionsImportPost({
     @Header('Client_name') String? clientName,
     @Part() required BodyImportDirectionsApiDirectionsImportPost body,
   });
@@ -1488,6 +1492,7 @@ abstract class CubeApi extends ChopperService {
     path: '/api/profiles/import',
     optionalBody: true,
   )
+  @Multipart()
   Future<chopper.Response<List<ProfileInDb>>> _apiProfilesImportPost({
     @Header('Client_name') String? clientName,
     @Part() required BodyImportProfilesApiProfilesImportPost body,
@@ -1574,114 +1579,377 @@ abstract class CubeApi extends ChopperService {
     @Header('Client_name') String? clientName,
   });
 
-  ///Get Semester Directions
+  ///Get Week Types
+  Future<chopper.Response<Object>> apiSemesterFacultiesWeekTypesGet() {
+    return _apiSemesterFacultiesWeekTypesGet();
+  }
+
+  ///Get Week Types
+  @Get(path: '/api/semester_faculties/week_types')
+  Future<chopper.Response<Object>> _apiSemesterFacultiesWeekTypesGet();
+
+  ///Semester Faculties
   ///@param semester_id Идентификатор семестра
-  ///@param directions Список идентификаторов направлений
-  ///@param courses Список курсов
+  ///@param faculty_id Идентификатор факультета
   ///@param current_semester Для текущего семестра
-  Future<chopper.Response<List<SemesterDirectionInDb>>>
-      apiSemesterDirectionsGet({
+  Future<chopper.Response<List<SemesterFacultyInDb>>> apiSemesterFacultiesGet({
     int? semesterId,
-    List<int>? directions,
-    List<int>? courses,
+    int? facultyId,
     bool? currentSemester,
   }) {
     generatedMapping.putIfAbsent(
-        SemesterDirectionInDb, () => SemesterDirectionInDb.fromJsonFactory);
+        SemesterFacultyInDb, () => SemesterFacultyInDb.fromJsonFactory);
 
-    return _apiSemesterDirectionsGet(
+    return _apiSemesterFacultiesGet(
         semesterId: semesterId,
-        directions: directions,
-        courses: courses,
+        facultyId: facultyId,
         currentSemester: currentSemester);
   }
 
-  ///Get Semester Directions
+  ///Semester Faculties
   ///@param semester_id Идентификатор семестра
-  ///@param directions Список идентификаторов направлений
-  ///@param courses Список курсов
+  ///@param faculty_id Идентификатор факультета
   ///@param current_semester Для текущего семестра
-  @Get(path: '/api/semester_directions')
-  Future<chopper.Response<List<SemesterDirectionInDb>>>
-      _apiSemesterDirectionsGet({
+  @Get(path: '/api/semester_faculties')
+  Future<chopper.Response<List<SemesterFacultyInDb>>> _apiSemesterFacultiesGet({
     @Query('semester_id') int? semesterId,
-    @Query('directions') List<int>? directions,
-    @Query('courses') List<int>? courses,
+    @Query('faculty_id') int? facultyId,
     @Query('current_semester') bool? currentSemester,
   });
 
-  ///Create Semester Direction
+  ///Create Semester Faculty
   ///@param Client_name
-  Future<chopper.Response<int>> apiSemesterDirectionsPost({
+  Future<chopper.Response<int>> apiSemesterFacultiesPost({
     String? clientName,
-    required SemesterDirectionCreate? body,
+    required SemesterFacultyCreate? body,
   }) {
-    return _apiSemesterDirectionsPost(clientName: clientName, body: body);
+    return _apiSemesterFacultiesPost(clientName: clientName, body: body);
   }
 
-  ///Create Semester Direction
+  ///Create Semester Faculty
   ///@param Client_name
   @Post(
-    path: '/api/semester_directions',
+    path: '/api/semester_faculties',
     optionalBody: true,
   )
-  Future<chopper.Response<int>> _apiSemesterDirectionsPost({
+  Future<chopper.Response<int>> _apiSemesterFacultiesPost({
     @Header('Client_name') String? clientName,
-    @Body() required SemesterDirectionCreate? body,
+    @Body() required SemesterFacultyCreate? body,
   });
 
-  ///Update Semester Direction
-  ///@param semester_direction_id
+  ///Update Semester Faculty
+  ///@param semester_faculty_id
   ///@param Client_name
-  Future<chopper.Response<Status>> apiSemesterDirectionsSemesterDirectionIdPut({
-    required int? semesterDirectionId,
+  Future<chopper.Response<Status>> apiSemesterFacultiesSemesterFacultyIdPut({
+    required int? semesterFacultyId,
     String? clientName,
-    required SemesterDirectionUpdate? body,
+    required SemesterFacultyUpdate? body,
   }) {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
-    return _apiSemesterDirectionsSemesterDirectionIdPut(
-        semesterDirectionId: semesterDirectionId,
+    return _apiSemesterFacultiesSemesterFacultyIdPut(
+        semesterFacultyId: semesterFacultyId,
         clientName: clientName,
         body: body);
   }
 
-  ///Update Semester Direction
-  ///@param semester_direction_id
+  ///Update Semester Faculty
+  ///@param semester_faculty_id
   ///@param Client_name
   @Put(
-    path: '/api/semester_directions/{semester_direction_id}',
+    path: '/api/semester_faculties/{semester_faculty_id}',
     optionalBody: true,
   )
-  Future<chopper.Response<Status>>
-      _apiSemesterDirectionsSemesterDirectionIdPut({
-    @Path('semester_direction_id') required int? semesterDirectionId,
+  Future<chopper.Response<Status>> _apiSemesterFacultiesSemesterFacultyIdPut({
+    @Path('semester_faculty_id') required int? semesterFacultyId,
     @Header('Client_name') String? clientName,
-    @Body() required SemesterDirectionUpdate? body,
+    @Body() required SemesterFacultyUpdate? body,
   });
 
-  ///Delete Semester Direction
-  ///@param semester_direction_id
+  ///Delete Semester Faculty
+  ///@param semester_faculty_id
   ///@param Client_name
-  Future<chopper.Response<Status>>
-      apiSemesterDirectionsSemesterDirectionIdDelete({
-    required int? semesterDirectionId,
+  Future<chopper.Response<Status>> apiSemesterFacultiesSemesterFacultyIdDelete({
+    required int? semesterFacultyId,
     String? clientName,
   }) {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
-    return _apiSemesterDirectionsSemesterDirectionIdDelete(
-        semesterDirectionId: semesterDirectionId, clientName: clientName);
+    return _apiSemesterFacultiesSemesterFacultyIdDelete(
+        semesterFacultyId: semesterFacultyId, clientName: clientName);
   }
 
-  ///Delete Semester Direction
-  ///@param semester_direction_id
+  ///Delete Semester Faculty
+  ///@param semester_faculty_id
   ///@param Client_name
-  @Delete(path: '/api/semester_directions/{semester_direction_id}')
+  @Delete(path: '/api/semester_faculties/{semester_faculty_id}')
   Future<chopper.Response<Status>>
-      _apiSemesterDirectionsSemesterDirectionIdDelete({
-    @Path('semester_direction_id') required int? semesterDirectionId,
+      _apiSemesterFacultiesSemesterFacultyIdDelete({
+    @Path('semester_faculty_id') required int? semesterFacultyId,
     @Header('Client_name') String? clientName,
+  });
+
+  ///Semester Lessons Directions
+  ///@param semester_faculty_id Идентификатор семестра факультета
+  ///@param semester_id Идентификатор семестра
+  ///@param faculty_id Идентификатор факультета
+  ///@param part Номер периода
+  ///@param directions Список идентификаторов направлений
+  ///@param courses Список курсов
+  ///@param groups Список групп
+  ///@param current_semester Для текущего семестра
+  Future<chopper.Response<List<SemesterLessonsDirectionInDb>>>
+      apiSemesterLessonsDirectionsGet({
+    int? semesterFacultyId,
+    int? semesterId,
+    int? facultyId,
+    int? $part,
+    List<int>? directions,
+    List<int>? courses,
+    List<int>? groups,
+    bool? currentSemester,
+  }) {
+    generatedMapping.putIfAbsent(SemesterLessonsDirectionInDb,
+        () => SemesterLessonsDirectionInDb.fromJsonFactory);
+
+    return _apiSemesterLessonsDirectionsGet(
+        semesterFacultyId: semesterFacultyId,
+        semesterId: semesterId,
+        facultyId: facultyId,
+        $part: $part,
+        directions: directions,
+        courses: courses,
+        groups: groups,
+        currentSemester: currentSemester);
+  }
+
+  ///Semester Lessons Directions
+  ///@param semester_faculty_id Идентификатор семестра факультета
+  ///@param semester_id Идентификатор семестра
+  ///@param faculty_id Идентификатор факультета
+  ///@param part Номер периода
+  ///@param directions Список идентификаторов направлений
+  ///@param courses Список курсов
+  ///@param groups Список групп
+  ///@param current_semester Для текущего семестра
+  @Get(path: '/api/semester_lessons_directions')
+  Future<chopper.Response<List<SemesterLessonsDirectionInDb>>>
+      _apiSemesterLessonsDirectionsGet({
+    @Query('semester_faculty_id') int? semesterFacultyId,
+    @Query('semester_id') int? semesterId,
+    @Query('faculty_id') int? facultyId,
+    @Query('part') int? $part,
+    @Query('directions') List<int>? directions,
+    @Query('courses') List<int>? courses,
+    @Query('groups') List<int>? groups,
+    @Query('current_semester') bool? currentSemester,
+  });
+
+  ///Create Semester Lessons Direction
+  ///@param Client_name
+  Future<chopper.Response<int>> apiSemesterLessonsDirectionsPost({
+    String? clientName,
+    required SemesterLessonsDirectionCreate? body,
+  }) {
+    return _apiSemesterLessonsDirectionsPost(
+        clientName: clientName, body: body);
+  }
+
+  ///Create Semester Lessons Direction
+  ///@param Client_name
+  @Post(
+    path: '/api/semester_lessons_directions',
+    optionalBody: true,
+  )
+  Future<chopper.Response<int>> _apiSemesterLessonsDirectionsPost({
+    @Header('Client_name') String? clientName,
+    @Body() required SemesterLessonsDirectionCreate? body,
+  });
+
+  ///Update Semester Lessons Direction
+  ///@param semester_lessons_direction_id
+  ///@param Client_name
+  Future<chopper.Response<Status>>
+      apiSemesterLessonsDirectionsSemesterLessonsDirectionIdPut({
+    required int? semesterLessonsDirectionId,
+    String? clientName,
+    required SemesterLessonsDirectionUpdate? body,
+  }) {
+    generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
+
+    return _apiSemesterLessonsDirectionsSemesterLessonsDirectionIdPut(
+        semesterLessonsDirectionId: semesterLessonsDirectionId,
+        clientName: clientName,
+        body: body);
+  }
+
+  ///Update Semester Lessons Direction
+  ///@param semester_lessons_direction_id
+  ///@param Client_name
+  @Put(
+    path: '/api/semester_lessons_directions/{semester_lessons_direction_id}',
+    optionalBody: true,
+  )
+  Future<chopper.Response<Status>>
+      _apiSemesterLessonsDirectionsSemesterLessonsDirectionIdPut({
+    @Path('semester_lessons_direction_id')
+        required int? semesterLessonsDirectionId,
+    @Header('Client_name')
+        String? clientName,
+    @Body()
+        required SemesterLessonsDirectionUpdate? body,
+  });
+
+  ///Delete Semester Lessons Direction
+  ///@param semester_lessons_direction_id
+  ///@param Client_name
+  Future<chopper.Response<Status>>
+      apiSemesterLessonsDirectionsSemesterLessonsDirectionIdDelete({
+    required int? semesterLessonsDirectionId,
+    String? clientName,
+  }) {
+    generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
+
+    return _apiSemesterLessonsDirectionsSemesterLessonsDirectionIdDelete(
+        semesterLessonsDirectionId: semesterLessonsDirectionId,
+        clientName: clientName);
+  }
+
+  ///Delete Semester Lessons Direction
+  ///@param semester_lessons_direction_id
+  ///@param Client_name
+  @Delete(
+      path: '/api/semester_lessons_directions/{semester_lessons_direction_id}')
+  Future<chopper.Response<Status>>
+      _apiSemesterLessonsDirectionsSemesterLessonsDirectionIdDelete({
+    @Path('semester_lessons_direction_id')
+        required int? semesterLessonsDirectionId,
+    @Header('Client_name')
+        String? clientName,
+  });
+
+  ///Semester Session Directions
+  ///@param semester_id Идентификатор семестра
+  ///@param directions Список идентификаторов направлений
+  ///@param courses Список курсов
+  ///@param groups Список групп
+  ///@param current_semester Для текущего семестра
+  Future<chopper.Response<List<SemesterSessionDirectionInDb>>>
+      apiSemesterSessionDirectionsGet({
+    int? semesterId,
+    List<int>? directions,
+    List<int>? courses,
+    List<int>? groups,
+    bool? currentSemester,
+  }) {
+    generatedMapping.putIfAbsent(SemesterSessionDirectionInDb,
+        () => SemesterSessionDirectionInDb.fromJsonFactory);
+
+    return _apiSemesterSessionDirectionsGet(
+        semesterId: semesterId,
+        directions: directions,
+        courses: courses,
+        groups: groups,
+        currentSemester: currentSemester);
+  }
+
+  ///Semester Session Directions
+  ///@param semester_id Идентификатор семестра
+  ///@param directions Список идентификаторов направлений
+  ///@param courses Список курсов
+  ///@param groups Список групп
+  ///@param current_semester Для текущего семестра
+  @Get(path: '/api/semester_session_directions')
+  Future<chopper.Response<List<SemesterSessionDirectionInDb>>>
+      _apiSemesterSessionDirectionsGet({
+    @Query('semester_id') int? semesterId,
+    @Query('directions') List<int>? directions,
+    @Query('courses') List<int>? courses,
+    @Query('groups') List<int>? groups,
+    @Query('current_semester') bool? currentSemester,
+  });
+
+  ///Create Semester Session Direction
+  ///@param Client_name
+  Future<chopper.Response<int>> apiSemesterSessionDirectionsPost({
+    String? clientName,
+    required SemesterSessionDirectionCreate? body,
+  }) {
+    return _apiSemesterSessionDirectionsPost(
+        clientName: clientName, body: body);
+  }
+
+  ///Create Semester Session Direction
+  ///@param Client_name
+  @Post(
+    path: '/api/semester_session_directions',
+    optionalBody: true,
+  )
+  Future<chopper.Response<int>> _apiSemesterSessionDirectionsPost({
+    @Header('Client_name') String? clientName,
+    @Body() required SemesterSessionDirectionCreate? body,
+  });
+
+  ///Update Semester Lessons Direction
+  ///@param semester_session_direction_id
+  ///@param Client_name
+  Future<chopper.Response<Status>>
+      apiSemesterSessionDirectionsSemesterSessionDirectionIdPut({
+    required int? semesterSessionDirectionId,
+    String? clientName,
+    required SemesterSessionDirectionUpdate? body,
+  }) {
+    generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
+
+    return _apiSemesterSessionDirectionsSemesterSessionDirectionIdPut(
+        semesterSessionDirectionId: semesterSessionDirectionId,
+        clientName: clientName,
+        body: body);
+  }
+
+  ///Update Semester Lessons Direction
+  ///@param semester_session_direction_id
+  ///@param Client_name
+  @Put(
+    path: '/api/semester_session_directions/{semester_session_direction_id}',
+    optionalBody: true,
+  )
+  Future<chopper.Response<Status>>
+      _apiSemesterSessionDirectionsSemesterSessionDirectionIdPut({
+    @Path('semester_session_direction_id')
+        required int? semesterSessionDirectionId,
+    @Header('Client_name')
+        String? clientName,
+    @Body()
+        required SemesterSessionDirectionUpdate? body,
+  });
+
+  ///Delete Semester Lessons Direction
+  ///@param semester_session_direction_id
+  ///@param Client_name
+  Future<chopper.Response<Status>>
+      apiSemesterSessionDirectionsSemesterSessionDirectionIdDelete({
+    required int? semesterSessionDirectionId,
+    String? clientName,
+  }) {
+    generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
+
+    return _apiSemesterSessionDirectionsSemesterSessionDirectionIdDelete(
+        semesterSessionDirectionId: semesterSessionDirectionId,
+        clientName: clientName);
+  }
+
+  ///Delete Semester Lessons Direction
+  ///@param semester_session_direction_id
+  ///@param Client_name
+  @Delete(
+      path: '/api/semester_session_directions/{semester_session_direction_id}')
+  Future<chopper.Response<Status>>
+      _apiSemesterSessionDirectionsSemesterSessionDirectionIdDelete({
+    @Path('semester_session_direction_id')
+        required int? semesterSessionDirectionId,
+    @Header('Client_name')
+        String? clientName,
   });
 
   ///Get View Modes
@@ -1695,28 +1963,24 @@ abstract class CubeApi extends ChopperService {
 
   ///Get Timetable View
   ///@param semester_id Идентификатор семестра
-  ///@param faculty_id Идентификатор факультета
   ///@param Client_name
   Future<chopper.Response<List<TimetableViewInDb>>> apiTimetableViewsGet({
     int? semesterId,
-    int? facultyId,
     String? clientName,
   }) {
     generatedMapping.putIfAbsent(
         TimetableViewInDb, () => TimetableViewInDb.fromJsonFactory);
 
     return _apiTimetableViewsGet(
-        semesterId: semesterId, facultyId: facultyId, clientName: clientName);
+        semesterId: semesterId, clientName: clientName);
   }
 
   ///Get Timetable View
   ///@param semester_id Идентификатор семестра
-  ///@param faculty_id Идентификатор факультета
   ///@param Client_name
   @Get(path: '/api/timetable_views')
   Future<chopper.Response<List<TimetableViewInDb>>> _apiTimetableViewsGet({
     @Query('semester_id') int? semesterId,
-    @Query('faculty_id') int? facultyId,
     @Header('Client_name') String? clientName,
   });
 
@@ -1740,6 +2004,55 @@ abstract class CubeApi extends ChopperService {
   Future<chopper.Response<Status>> _apiTimetableViewsPost({
     @Header('Client_name') String? clientName,
     @Body() required TimetableViewUpdate? body,
+  });
+
+  ///Get Session View
+  ///@param semester_id Идентификатор семестра
+  ///@param faculty_id Идентификатор факультета
+  ///@param Client_name
+  Future<chopper.Response<List<SessionViewInDb>>> apiSessionViewsGet({
+    int? semesterId,
+    int? facultyId,
+    String? clientName,
+  }) {
+    generatedMapping.putIfAbsent(
+        SessionViewInDb, () => SessionViewInDb.fromJsonFactory);
+
+    return _apiSessionViewsGet(
+        semesterId: semesterId, facultyId: facultyId, clientName: clientName);
+  }
+
+  ///Get Session View
+  ///@param semester_id Идентификатор семестра
+  ///@param faculty_id Идентификатор факультета
+  ///@param Client_name
+  @Get(path: '/api/session_views')
+  Future<chopper.Response<List<SessionViewInDb>>> _apiSessionViewsGet({
+    @Query('semester_id') int? semesterId,
+    @Query('faculty_id') int? facultyId,
+    @Header('Client_name') String? clientName,
+  });
+
+  ///Update Session View
+  ///@param Client_name
+  Future<chopper.Response<Status>> apiSessionViewsPost({
+    String? clientName,
+    required SessionViewUpdate? body,
+  }) {
+    generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
+
+    return _apiSessionViewsPost(clientName: clientName, body: body);
+  }
+
+  ///Update Session View
+  ///@param Client_name
+  @Post(
+    path: '/api/session_views',
+    optionalBody: true,
+  )
+  Future<chopper.Response<Status>> _apiSessionViewsPost({
+    @Header('Client_name') String? clientName,
+    @Body() required SessionViewUpdate? body,
   });
 
   ///Get Groups
@@ -1892,6 +2205,7 @@ abstract class CubeApi extends ChopperService {
     path: '/api/groups/import',
     optionalBody: true,
   )
+  @Multipart()
   Future<chopper.Response<List<GroupInDb>>> _apiGroupsImportPost({
     @Header('Client_name') String? clientName,
     @Part() required BodyImportGroupsApiGroupsImportPost body,
@@ -2044,6 +2358,7 @@ abstract class CubeApi extends ChopperService {
     path: '/api/disciplines/import',
     optionalBody: true,
   )
+  @Multipart()
   Future<chopper.Response<List<DisciplineInDb>>> _apiDisciplinesImportPost({
     @Header('Client_name') String? clientName,
     @Part() required BodyImportDisciplinesApiDisciplinesImportPost body,
@@ -2055,7 +2370,7 @@ abstract class CubeApi extends ChopperService {
   ///@param academic_degrees Список идентификаторов ученых степеней
   Future<chopper.Response<List<TeacherInDb>>> apiTeachersGet({
     String? search,
-    List<TeacherAcademicTitle>? academicTitles,
+    List<enums.TeacherAcademicTitle>? academicTitles,
     List<int>? academicDegrees,
   }) {
     generatedMapping.putIfAbsent(
@@ -2063,7 +2378,7 @@ abstract class CubeApi extends ChopperService {
 
     return _apiTeachersGet(
         search: search,
-        academicTitles: academicTitles,
+        academicTitles: teacherAcademicTitleListToJson(academicTitles),
         academicDegrees: academicDegrees);
   }
 
@@ -2074,7 +2389,7 @@ abstract class CubeApi extends ChopperService {
   @Get(path: '/api/teachers')
   Future<chopper.Response<List<TeacherInDb>>> _apiTeachersGet({
     @Query('search') String? search,
-    @Query('academic_titles') List<TeacherAcademicTitle>? academicTitles,
+    @Query('academic_titles') List<Object?>? academicTitles,
     @Query('academic_degrees') List<int>? academicDegrees,
   });
 
@@ -2269,6 +2584,7 @@ abstract class CubeApi extends ChopperService {
     path: '/api/teachers/import',
     optionalBody: true,
   )
+  @Multipart()
   Future<chopper.Response> _apiTeachersImportPost({
     @Header('Client_name') String? clientName,
     @Part() required BodyImportTeachersApiTeachersImportPost body,
@@ -2289,8 +2605,8 @@ abstract class CubeApi extends ChopperService {
     List<int>? groups,
     bool? isMain,
     bool? isDeputyMain,
-    StudentSortBy? sortBy,
-    SortOrder? sortOrder,
+    enums.StudentSortBy? sortBy,
+    enums.SortOrder? sortOrder,
     int? page,
     int? size,
     String? clientName,
@@ -2303,8 +2619,8 @@ abstract class CubeApi extends ChopperService {
         groups: groups,
         isMain: isMain,
         isDeputyMain: isDeputyMain,
-        sortBy: sortBy,
-        sortOrder: sortOrder,
+        sortBy: sortBy?.value?.toString(),
+        sortOrder: sortOrder?.value?.toString(),
         page: page,
         size: size,
         clientName: clientName);
@@ -2326,8 +2642,8 @@ abstract class CubeApi extends ChopperService {
     @Query('groups') List<int>? groups,
     @Query('is_main') bool? isMain,
     @Query('is_deputy_main') bool? isDeputyMain,
-    @Query('sort_by') StudentSortBy? sortBy,
-    @Query('sort_order') SortOrder? sortOrder,
+    @Query('sort_by') String? sortBy,
+    @Query('sort_order') String? sortOrder,
     @Query('page') int? page,
     @Query('size') int? size,
     @Header('Client_name') String? clientName,
@@ -2437,6 +2753,7 @@ abstract class CubeApi extends ChopperService {
     path: '/api/students/import',
     optionalBody: true,
   )
+  @Multipart()
   Future<chopper.Response> _apiStudentsImportPost({
     @Header('Client_name') String? clientName,
     @Part() required BodyImportStudentsApiStudentsImportPost body,
@@ -2584,6 +2901,7 @@ abstract class CubeApi extends ChopperService {
     path: '/api/places/import',
     optionalBody: true,
   )
+  @Multipart()
   Future<chopper.Response<List<PlaceInDb>>> _apiPlacesImportPost({
     @Header('Client_name') String? clientName,
     @Part() required BodyImportPlacesApiPlacesImportPost body,
@@ -2704,6 +3022,7 @@ abstract class CubeApi extends ChopperService {
     path: '/api/equipments/import',
     optionalBody: true,
   )
+  @Multipart()
   Future<chopper.Response<List<EquipmentInDb>>> _apiEquipmentsImportPost({
     @Header('Client_name') String? clientName,
     @Part() required BodyImportEquipmentsApiEquipmentsImportPost body,
@@ -2712,7 +3031,7 @@ abstract class CubeApi extends ChopperService {
   ///Get Collisions
   ///@param date Дата
   ///@param number Номер пары
-  ///@param semester_id Идентификатор семестра
+  ///@param semester_faculty_id Идентификатор семестра факультета
   ///@param type_id Тип пары
   ///@param discipline_id Идентификатор дисциплины
   ///@param place_id Идентификатор места
@@ -2724,7 +3043,7 @@ abstract class CubeApi extends ChopperService {
   Future<chopper.Response<List<LessonCollision>>> apiLessonsCollisionGet({
     required String? date,
     required int? number,
-    int? semesterId,
+    int? semesterFacultyId,
     int? typeId,
     int? disciplineId,
     int? placeId,
@@ -2740,7 +3059,7 @@ abstract class CubeApi extends ChopperService {
     return _apiLessonsCollisionGet(
         date: date,
         number: number,
-        semesterId: semesterId,
+        semesterFacultyId: semesterFacultyId,
         typeId: typeId,
         disciplineId: disciplineId,
         placeId: placeId,
@@ -2754,7 +3073,7 @@ abstract class CubeApi extends ChopperService {
   ///Get Collisions
   ///@param date Дата
   ///@param number Номер пары
-  ///@param semester_id Идентификатор семестра
+  ///@param semester_faculty_id Идентификатор семестра факультета
   ///@param type_id Тип пары
   ///@param discipline_id Идентификатор дисциплины
   ///@param place_id Идентификатор места
@@ -2767,7 +3086,7 @@ abstract class CubeApi extends ChopperService {
   Future<chopper.Response<List<LessonCollision>>> _apiLessonsCollisionGet({
     @Query('date') required String? date,
     @Query('number') required int? number,
-    @Query('semester_id') int? semesterId,
+    @Query('semester_faculty_id') int? semesterFacultyId,
     @Query('type_id') int? typeId,
     @Query('discipline_id') int? disciplineId,
     @Query('place_id') int? placeId,
@@ -2931,6 +3250,7 @@ abstract class CubeApi extends ChopperService {
   ///@param end_date Дата окончания
   ///@param numbers Список номеров занятий
   ///@param semester_id Идентификатор семестра
+  ///@param semester_faculty_id Идентификатор семестра факультета
   ///@param faculty_id Идентификатор факультета
   ///@param degree_studies Список степеней обучения
   ///@param directions Список идентификаторов направлений
@@ -2947,13 +3267,14 @@ abstract class CubeApi extends ChopperService {
   ///@param sort_order Параметр сортировки
   ///@param Client_name
   Future<chopper.Response<List<LessonFullNamesInDb>>> apiLessonsGet({
-    GetLessonHeader? header,
+    enums.GetLessonHeader? header,
     bool? fullData,
     String? search,
     required String? startDate,
     required String? endDate,
     List<int>? numbers,
     int? semesterId,
+    int? semesterFacultyId,
     int? facultyId,
     List<enums.DegreeStudy>? degreeStudies,
     List<int>? directions,
@@ -2966,21 +3287,22 @@ abstract class CubeApi extends ChopperService {
     List<int>? types,
     bool? themeIsNull,
     enums.LessonStatus? status,
-    LessonSortBy? sortBy,
-    SortOrder? sortOrder,
+    enums.LessonSortBy? sortBy,
+    enums.SortOrder? sortOrder,
     String? clientName,
   }) {
     generatedMapping.putIfAbsent(
         LessonFullNamesInDb, () => LessonFullNamesInDb.fromJsonFactory);
 
     return _apiLessonsGet(
-        header: header,
+        header: header?.value?.toString(),
         fullData: fullData,
         search: search,
         startDate: startDate,
         endDate: endDate,
         numbers: numbers,
         semesterId: semesterId,
+        semesterFacultyId: semesterFacultyId,
         facultyId: facultyId,
         degreeStudies: degreeStudyListToJson(degreeStudies),
         directions: directions,
@@ -2993,8 +3315,8 @@ abstract class CubeApi extends ChopperService {
         types: types,
         themeIsNull: themeIsNull,
         status: status?.value?.toString(),
-        sortBy: sortBy,
-        sortOrder: sortOrder,
+        sortBy: sortBy?.value?.toString(),
+        sortOrder: sortOrder?.value?.toString(),
         clientName: clientName);
   }
 
@@ -3006,6 +3328,7 @@ abstract class CubeApi extends ChopperService {
   ///@param end_date Дата окончания
   ///@param numbers Список номеров занятий
   ///@param semester_id Идентификатор семестра
+  ///@param semester_faculty_id Идентификатор семестра факультета
   ///@param faculty_id Идентификатор факультета
   ///@param degree_studies Список степеней обучения
   ///@param directions Список идентификаторов направлений
@@ -3023,15 +3346,16 @@ abstract class CubeApi extends ChopperService {
   ///@param Client_name
   @Get(path: '/api/lessons')
   Future<chopper.Response<List<LessonFullNamesInDb>>> _apiLessonsGet({
-    @Query('header') GetLessonHeader? header,
+    @Query('header') String? header,
     @Query('full_data') bool? fullData,
     @Query('search') String? search,
     @Query('start_date') required String? startDate,
     @Query('end_date') required String? endDate,
     @Query('numbers') List<int>? numbers,
     @Query('semester_id') int? semesterId,
+    @Query('semester_faculty_id') int? semesterFacultyId,
     @Query('faculty_id') int? facultyId,
-    @Query('degree_studies') List<String?>? degreeStudies,
+    @Query('degree_studies') List<Object?>? degreeStudies,
     @Query('directions') List<int>? directions,
     @Query('profiles') List<int>? profiles,
     @Query('courses') List<int>? courses,
@@ -3042,8 +3366,8 @@ abstract class CubeApi extends ChopperService {
     @Query('types') List<int>? types,
     @Query('theme_is_null') bool? themeIsNull,
     @Query('status') String? status,
-    @Query('sort_by') LessonSortBy? sortBy,
-    @Query('sort_order') SortOrder? sortOrder,
+    @Query('sort_by') String? sortBy,
+    @Query('sort_order') String? sortOrder,
     @Header('Client_name') String? clientName,
   });
 
@@ -3216,7 +3540,7 @@ abstract class CubeApi extends ChopperService {
   ///@param weekday День недели
   ///@param parity Четность недели
   ///@param number Номер пары
-  ///@param semester_id Идентификатор семестра
+  ///@param semester_faculty_id Идентификатор семестра факультета
   ///@param type_id Тип пары
   ///@param discipline_id Идентификатор дисциплины
   ///@param place_id Идентификатор места
@@ -3230,7 +3554,7 @@ abstract class CubeApi extends ChopperService {
     required int? weekday,
     int? parity,
     required int? number,
-    int? semesterId,
+    int? semesterFacultyId,
     int? typeId,
     int? disciplineId,
     int? placeId,
@@ -3247,7 +3571,7 @@ abstract class CubeApi extends ChopperService {
         weekday: weekday,
         parity: parity,
         number: number,
-        semesterId: semesterId,
+        semesterFacultyId: semesterFacultyId,
         typeId: typeId,
         disciplineId: disciplineId,
         placeId: placeId,
@@ -3262,7 +3586,7 @@ abstract class CubeApi extends ChopperService {
   ///@param weekday День недели
   ///@param parity Четность недели
   ///@param number Номер пары
-  ///@param semester_id Идентификатор семестра
+  ///@param semester_faculty_id Идентификатор семестра факультета
   ///@param type_id Тип пары
   ///@param discipline_id Идентификатор дисциплины
   ///@param place_id Идентификатор места
@@ -3277,7 +3601,7 @@ abstract class CubeApi extends ChopperService {
     @Query('weekday') required int? weekday,
     @Query('parity') int? parity,
     @Query('number') required int? number,
-    @Query('semester_id') int? semesterId,
+    @Query('semester_faculty_id') int? semesterFacultyId,
     @Query('type_id') int? typeId,
     @Query('discipline_id') int? disciplineId,
     @Query('place_id') int? placeId,
@@ -3313,6 +3637,7 @@ abstract class CubeApi extends ChopperService {
   ///@param search Значение для поиска
   ///@param faculty_id Идентификатор факультета
   ///@param semester_id Идентификатор семестра
+  ///@param semester_faculty_id Идентификатор семестра факультета
   ///@param numbers Список номеров занятий
   ///@param degree_studies Список степеней обучения
   ///@param directions Список идентификаторов направлений
@@ -3325,10 +3650,11 @@ abstract class CubeApi extends ChopperService {
   ///@param types Список идентификаторов типов занятий
   ///@param Client_name
   Future<chopper.Response<MainLessonResults>> apiMainLessonsGet({
-    GetLessonHeader? header,
+    enums.GetLessonHeader? header,
     String? search,
     int? facultyId,
     int? semesterId,
+    int? semesterFacultyId,
     List<int>? numbers,
     List<enums.DegreeStudy>? degreeStudies,
     List<int>? directions,
@@ -3345,10 +3671,11 @@ abstract class CubeApi extends ChopperService {
         MainLessonResults, () => MainLessonResults.fromJsonFactory);
 
     return _apiMainLessonsGet(
-        header: header,
+        header: header?.value?.toString(),
         search: search,
         facultyId: facultyId,
         semesterId: semesterId,
+        semesterFacultyId: semesterFacultyId,
         numbers: numbers,
         degreeStudies: degreeStudyListToJson(degreeStudies),
         directions: directions,
@@ -3367,6 +3694,7 @@ abstract class CubeApi extends ChopperService {
   ///@param search Значение для поиска
   ///@param faculty_id Идентификатор факультета
   ///@param semester_id Идентификатор семестра
+  ///@param semester_faculty_id Идентификатор семестра факультета
   ///@param numbers Список номеров занятий
   ///@param degree_studies Список степеней обучения
   ///@param directions Список идентификаторов направлений
@@ -3380,12 +3708,13 @@ abstract class CubeApi extends ChopperService {
   ///@param Client_name
   @Get(path: '/api/main_lessons')
   Future<chopper.Response<MainLessonResults>> _apiMainLessonsGet({
-    @Query('header') GetLessonHeader? header,
+    @Query('header') String? header,
     @Query('search') String? search,
     @Query('faculty_id') int? facultyId,
     @Query('semester_id') int? semesterId,
+    @Query('semester_faculty_id') int? semesterFacultyId,
     @Query('numbers') List<int>? numbers,
-    @Query('degree_studies') List<String?>? degreeStudies,
+    @Query('degree_studies') List<Object?>? degreeStudies,
     @Query('directions') List<int>? directions,
     @Query('profiles') List<int>? profiles,
     @Query('courses') List<int>? courses,
@@ -3596,6 +3925,19 @@ abstract class CubeApi extends ChopperService {
     @Path('discipline_id') required int? disciplineId,
     @Query('lesson_type_id') int? lessonTypeId,
   });
+
+  ///Get Lesson Statistic
+  ///@param lesson_id
+  Future<chopper.Response<Object>> apiJournalLessonsLessonIdGet(
+      {required int? lessonId}) {
+    return _apiJournalLessonsLessonIdGet(lessonId: lessonId);
+  }
+
+  ///Get Lesson Statistic
+  ///@param lesson_id
+  @Get(path: '/api/journal/lessons/{lesson_id}')
+  Future<chopper.Response<Object>> _apiJournalLessonsLessonIdGet(
+      {@Path('lesson_id') required int? lessonId});
 
   ///Get Production Calendar
   ///@param year Год
@@ -4105,7 +4447,7 @@ abstract class CubeApi extends ChopperService {
     int? entityId,
     int? actionId,
     int? userId,
-    List<LogStatusAttr>? status,
+    List<enums.LogStatusAttr>? status,
     String? startDate,
     String? endDate,
     int? page,
@@ -4119,7 +4461,7 @@ abstract class CubeApi extends ChopperService {
         entityId: entityId,
         actionId: actionId,
         userId: userId,
-        status: status,
+        status: logStatusAttrListToJson(status),
         startDate: startDate,
         endDate: endDate,
         page: page,
@@ -4144,7 +4486,7 @@ abstract class CubeApi extends ChopperService {
     @Query('entity_id') int? entityId,
     @Query('action_id') int? actionId,
     @Query('user_id') int? userId,
-    @Query('status') List<LogStatusAttr>? status,
+    @Query('status') List<Object?>? status,
     @Query('start_date') String? startDate,
     @Query('end_date') String? endDate,
     @Query('page') int? page,

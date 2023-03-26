@@ -18,13 +18,14 @@ class AccessToken {
   factory AccessToken.fromJson(Map<String, dynamic> json) =>
       _$AccessTokenFromJson(json);
 
+  static const toJsonFactory = _$AccessTokenToJson;
+  Map<String, dynamic> toJson() => _$AccessTokenToJson(this);
+
   @JsonKey(name: 'access_token')
   final String accessToken;
   @JsonKey(name: 'token_type')
   final String tokenType;
   static const fromJsonFactory = _$AccessTokenFromJson;
-  static const toJsonFactory = _$AccessTokenToJson;
-  Map<String, dynamic> toJson() => _$AccessTokenToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -74,13 +75,14 @@ class AttendanceSettingsUpdate {
   factory AttendanceSettingsUpdate.fromJson(Map<String, dynamic> json) =>
       _$AttendanceSettingsUpdateFromJson(json);
 
+  static const toJsonFactory = _$AttendanceSettingsUpdateToJson;
+  Map<String, dynamic> toJson() => _$AttendanceSettingsUpdateToJson(this);
+
   @JsonKey(name: 'attendance_lecture_time')
   final String? attendanceLectureTime;
   @JsonKey(name: 'attendance_practice_time')
   final String? attendancePracticeTime;
   static const fromJsonFactory = _$AttendanceSettingsUpdateFromJson;
-  static const toJsonFactory = _$AttendanceSettingsUpdateToJson;
-  Map<String, dynamic> toJson() => _$AttendanceSettingsUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -139,6 +141,9 @@ class AuthSettings {
   factory AuthSettings.fromJson(Map<String, dynamic> json) =>
       _$AuthSettingsFromJson(json);
 
+  static const toJsonFactory = _$AuthSettingsToJson;
+  Map<String, dynamic> toJson() => _$AuthSettingsToJson(this);
+
   @JsonKey(name: 'web_access_token_expire_minutes')
   final int webAccessTokenExpireMinutes;
   @JsonKey(name: 'bot_access_token_expire_minutes')
@@ -148,8 +153,6 @@ class AuthSettings {
   @JsonKey(name: 'refresh_token_expire_minutes')
   final int refreshTokenExpireMinutes;
   static const fromJsonFactory = _$AuthSettingsFromJson;
-  static const toJsonFactory = _$AuthSettingsToJson;
-  Map<String, dynamic> toJson() => _$AuthSettingsToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -237,13 +240,14 @@ class BellCreate {
   factory BellCreate.fromJson(Map<String, dynamic> json) =>
       _$BellCreateFromJson(json);
 
+  static const toJsonFactory = _$BellCreateToJson;
+  Map<String, dynamic> toJson() => _$BellCreateToJson(this);
+
   @JsonKey(name: 'number')
   final int number;
   @JsonKey(name: 'time')
   final String time;
   static const fromJsonFactory = _$BellCreateFromJson;
-  static const toJsonFactory = _$BellCreateToJson;
-  Map<String, dynamic> toJson() => _$BellCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -288,6 +292,9 @@ class BellInDb {
   factory BellInDb.fromJson(Map<String, dynamic> json) =>
       _$BellInDbFromJson(json);
 
+  static const toJsonFactory = _$BellInDbToJson;
+  Map<String, dynamic> toJson() => _$BellInDbToJson(this);
+
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'number')
@@ -295,8 +302,6 @@ class BellInDb {
   @JsonKey(name: 'time')
   final String time;
   static const fromJsonFactory = _$BellInDbFromJson;
-  static const toJsonFactory = _$BellInDbToJson;
-  Map<String, dynamic> toJson() => _$BellInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -348,13 +353,14 @@ class BellUpdate {
   factory BellUpdate.fromJson(Map<String, dynamic> json) =>
       _$BellUpdateFromJson(json);
 
+  static const toJsonFactory = _$BellUpdateToJson;
+  Map<String, dynamic> toJson() => _$BellUpdateToJson(this);
+
   @JsonKey(name: 'number')
   final int number;
   @JsonKey(name: 'time')
   final String time;
   static const fromJsonFactory = _$BellUpdateFromJson;
-  static const toJsonFactory = _$BellUpdateToJson;
-  Map<String, dynamic> toJson() => _$BellUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -398,12 +404,13 @@ class BodyImportBellsApiBellsImportPost {
           Map<String, dynamic> json) =>
       _$BodyImportBellsApiBellsImportPostFromJson(json);
 
-  @JsonKey(name: 'file')
-  final String file;
-  static const fromJsonFactory = _$BodyImportBellsApiBellsImportPostFromJson;
   static const toJsonFactory = _$BodyImportBellsApiBellsImportPostToJson;
   Map<String, dynamic> toJson() =>
       _$BodyImportBellsApiBellsImportPostToJson(this);
+
+  @JsonKey(name: 'file')
+  final String file;
+  static const fromJsonFactory = _$BodyImportBellsApiBellsImportPostFromJson;
 
   @override
   bool operator ==(dynamic other) {
@@ -443,14 +450,15 @@ class BodyImportDirectionsApiDirectionsImportPost {
           Map<String, dynamic> json) =>
       _$BodyImportDirectionsApiDirectionsImportPostFromJson(json);
 
-  @JsonKey(name: 'file')
-  final String file;
-  static const fromJsonFactory =
-      _$BodyImportDirectionsApiDirectionsImportPostFromJson;
   static const toJsonFactory =
       _$BodyImportDirectionsApiDirectionsImportPostToJson;
   Map<String, dynamic> toJson() =>
       _$BodyImportDirectionsApiDirectionsImportPostToJson(this);
+
+  @JsonKey(name: 'file')
+  final String file;
+  static const fromJsonFactory =
+      _$BodyImportDirectionsApiDirectionsImportPostFromJson;
 
   @override
   bool operator ==(dynamic other) {
@@ -491,14 +499,15 @@ class BodyImportDisciplinesApiDisciplinesImportPost {
           Map<String, dynamic> json) =>
       _$BodyImportDisciplinesApiDisciplinesImportPostFromJson(json);
 
-  @JsonKey(name: 'file')
-  final String file;
-  static const fromJsonFactory =
-      _$BodyImportDisciplinesApiDisciplinesImportPostFromJson;
   static const toJsonFactory =
       _$BodyImportDisciplinesApiDisciplinesImportPostToJson;
   Map<String, dynamic> toJson() =>
       _$BodyImportDisciplinesApiDisciplinesImportPostToJson(this);
+
+  @JsonKey(name: 'file')
+  final String file;
+  static const fromJsonFactory =
+      _$BodyImportDisciplinesApiDisciplinesImportPostFromJson;
 
   @override
   bool operator ==(dynamic other) {
@@ -540,14 +549,15 @@ class BodyImportEquipmentsApiEquipmentsImportPost {
           Map<String, dynamic> json) =>
       _$BodyImportEquipmentsApiEquipmentsImportPostFromJson(json);
 
-  @JsonKey(name: 'file')
-  final String file;
-  static const fromJsonFactory =
-      _$BodyImportEquipmentsApiEquipmentsImportPostFromJson;
   static const toJsonFactory =
       _$BodyImportEquipmentsApiEquipmentsImportPostToJson;
   Map<String, dynamic> toJson() =>
       _$BodyImportEquipmentsApiEquipmentsImportPostToJson(this);
+
+  @JsonKey(name: 'file')
+  final String file;
+  static const fromJsonFactory =
+      _$BodyImportEquipmentsApiEquipmentsImportPostFromJson;
 
   @override
   bool operator ==(dynamic other) {
@@ -588,14 +598,15 @@ class BodyImportFacultiesApiFacultiesImportPost {
           Map<String, dynamic> json) =>
       _$BodyImportFacultiesApiFacultiesImportPostFromJson(json);
 
-  @JsonKey(name: 'file')
-  final String file;
-  static const fromJsonFactory =
-      _$BodyImportFacultiesApiFacultiesImportPostFromJson;
   static const toJsonFactory =
       _$BodyImportFacultiesApiFacultiesImportPostToJson;
   Map<String, dynamic> toJson() =>
       _$BodyImportFacultiesApiFacultiesImportPostToJson(this);
+
+  @JsonKey(name: 'file')
+  final String file;
+  static const fromJsonFactory =
+      _$BodyImportFacultiesApiFacultiesImportPostFromJson;
 
   @override
   bool operator ==(dynamic other) {
@@ -636,12 +647,13 @@ class BodyImportGroupsApiGroupsImportPost {
           Map<String, dynamic> json) =>
       _$BodyImportGroupsApiGroupsImportPostFromJson(json);
 
-  @JsonKey(name: 'file')
-  final String file;
-  static const fromJsonFactory = _$BodyImportGroupsApiGroupsImportPostFromJson;
   static const toJsonFactory = _$BodyImportGroupsApiGroupsImportPostToJson;
   Map<String, dynamic> toJson() =>
       _$BodyImportGroupsApiGroupsImportPostToJson(this);
+
+  @JsonKey(name: 'file')
+  final String file;
+  static const fromJsonFactory = _$BodyImportGroupsApiGroupsImportPostFromJson;
 
   @override
   bool operator ==(dynamic other) {
@@ -681,12 +693,13 @@ class BodyImportPlacesApiPlacesImportPost {
           Map<String, dynamic> json) =>
       _$BodyImportPlacesApiPlacesImportPostFromJson(json);
 
-  @JsonKey(name: 'file')
-  final String file;
-  static const fromJsonFactory = _$BodyImportPlacesApiPlacesImportPostFromJson;
   static const toJsonFactory = _$BodyImportPlacesApiPlacesImportPostToJson;
   Map<String, dynamic> toJson() =>
       _$BodyImportPlacesApiPlacesImportPostToJson(this);
+
+  @JsonKey(name: 'file')
+  final String file;
+  static const fromJsonFactory = _$BodyImportPlacesApiPlacesImportPostFromJson;
 
   @override
   bool operator ==(dynamic other) {
@@ -726,13 +739,14 @@ class BodyImportProfilesApiProfilesImportPost {
           Map<String, dynamic> json) =>
       _$BodyImportProfilesApiProfilesImportPostFromJson(json);
 
+  static const toJsonFactory = _$BodyImportProfilesApiProfilesImportPostToJson;
+  Map<String, dynamic> toJson() =>
+      _$BodyImportProfilesApiProfilesImportPostToJson(this);
+
   @JsonKey(name: 'file')
   final String file;
   static const fromJsonFactory =
       _$BodyImportProfilesApiProfilesImportPostFromJson;
-  static const toJsonFactory = _$BodyImportProfilesApiProfilesImportPostToJson;
-  Map<String, dynamic> toJson() =>
-      _$BodyImportProfilesApiProfilesImportPostToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -773,13 +787,14 @@ class BodyImportStudentsApiStudentsImportPost {
           Map<String, dynamic> json) =>
       _$BodyImportStudentsApiStudentsImportPostFromJson(json);
 
+  static const toJsonFactory = _$BodyImportStudentsApiStudentsImportPostToJson;
+  Map<String, dynamic> toJson() =>
+      _$BodyImportStudentsApiStudentsImportPostToJson(this);
+
   @JsonKey(name: 'file')
   final String file;
   static const fromJsonFactory =
       _$BodyImportStudentsApiStudentsImportPostFromJson;
-  static const toJsonFactory = _$BodyImportStudentsApiStudentsImportPostToJson;
-  Map<String, dynamic> toJson() =>
-      _$BodyImportStudentsApiStudentsImportPostToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -820,13 +835,14 @@ class BodyImportTeachersApiTeachersImportPost {
           Map<String, dynamic> json) =>
       _$BodyImportTeachersApiTeachersImportPostFromJson(json);
 
+  static const toJsonFactory = _$BodyImportTeachersApiTeachersImportPostToJson;
+  Map<String, dynamic> toJson() =>
+      _$BodyImportTeachersApiTeachersImportPostToJson(this);
+
   @JsonKey(name: 'file')
   final String file;
   static const fromJsonFactory =
       _$BodyImportTeachersApiTeachersImportPostFromJson;
-  static const toJsonFactory = _$BodyImportTeachersApiTeachersImportPostToJson;
-  Map<String, dynamic> toJson() =>
-      _$BodyImportTeachersApiTeachersImportPostToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -871,6 +887,9 @@ class BodyLoginApiAuthLoginPost {
   factory BodyLoginApiAuthLoginPost.fromJson(Map<String, dynamic> json) =>
       _$BodyLoginApiAuthLoginPostFromJson(json);
 
+  static const toJsonFactory = _$BodyLoginApiAuthLoginPostToJson;
+  Map<String, dynamic> toJson() => _$BodyLoginApiAuthLoginPostToJson(this);
+
   @JsonKey(name: 'grant_type')
   final String? grantType;
   @JsonKey(name: 'username')
@@ -884,8 +903,6 @@ class BodyLoginApiAuthLoginPost {
   @JsonKey(name: 'client_secret')
   final String? clientSecret;
   static const fromJsonFactory = _$BodyLoginApiAuthLoginPostFromJson;
-  static const toJsonFactory = _$BodyLoginApiAuthLoginPostToJson;
-  Map<String, dynamic> toJson() => _$BodyLoginApiAuthLoginPostToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -973,6 +990,9 @@ class DirectionCreate {
   factory DirectionCreate.fromJson(Map<String, dynamic> json) =>
       _$DirectionCreateFromJson(json);
 
+  static const toJsonFactory = _$DirectionCreateToJson;
+  Map<String, dynamic> toJson() => _$DirectionCreateToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(name: 'short_name')
@@ -990,8 +1010,6 @@ class DirectionCreate {
   @JsonKey(name: 'place_loads', defaultValue: <DirectionPlaceLoadInfo>[])
   final List<DirectionPlaceLoadInfo>? placeLoads;
   static const fromJsonFactory = _$DirectionCreateFromJson;
-  static const toJsonFactory = _$DirectionCreateToJson;
-  Map<String, dynamic> toJson() => _$DirectionCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -1079,6 +1097,9 @@ class DirectionInDb {
   factory DirectionInDb.fromJson(Map<String, dynamic> json) =>
       _$DirectionInDbFromJson(json);
 
+  static const toJsonFactory = _$DirectionInDbToJson;
+  Map<String, dynamic> toJson() => _$DirectionInDbToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(name: 'short_name')
@@ -1098,8 +1119,6 @@ class DirectionInDb {
   @JsonKey(name: 'id')
   final int id;
   static const fromJsonFactory = _$DirectionInDbFromJson;
-  static const toJsonFactory = _$DirectionInDbToJson;
-  Map<String, dynamic> toJson() => _$DirectionInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -1190,6 +1209,9 @@ class DirectionPlaceLoadInfo {
   factory DirectionPlaceLoadInfo.fromJson(Map<String, dynamic> json) =>
       _$DirectionPlaceLoadInfoFromJson(json);
 
+  static const toJsonFactory = _$DirectionPlaceLoadInfoToJson;
+  Map<String, dynamic> toJson() => _$DirectionPlaceLoadInfoToJson(this);
+
   @JsonKey(name: 'course')
   final int course;
   @JsonKey(name: 'min_load')
@@ -1197,8 +1219,6 @@ class DirectionPlaceLoadInfo {
   @JsonKey(name: 'max_load')
   final int maxLoad;
   static const fromJsonFactory = _$DirectionPlaceLoadInfoFromJson;
-  static const toJsonFactory = _$DirectionPlaceLoadInfoToJson;
-  Map<String, dynamic> toJson() => _$DirectionPlaceLoadInfoToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -1242,6 +1262,111 @@ extension $DirectionPlaceLoadInfoExtension on DirectionPlaceLoadInfo {
 }
 
 @JsonSerializable(explicitToJson: true)
+class DirectionShortInDb {
+  DirectionShortInDb({
+    required this.name,
+    this.shortName,
+    this.cipher,
+    required this.degreeStudy,
+    required this.facultyId,
+    required this.id,
+  });
+
+  factory DirectionShortInDb.fromJson(Map<String, dynamic> json) =>
+      _$DirectionShortInDbFromJson(json);
+
+  static const toJsonFactory = _$DirectionShortInDbToJson;
+  Map<String, dynamic> toJson() => _$DirectionShortInDbToJson(this);
+
+  @JsonKey(name: 'name')
+  final String name;
+  @JsonKey(name: 'short_name')
+  final String? shortName;
+  @JsonKey(name: 'cipher')
+  final String? cipher;
+  @JsonKey(
+    name: 'degree_study',
+    toJson: degreeStudyToJson,
+    fromJson: degreeStudyFromJson,
+  )
+  final enums.DegreeStudy degreeStudy;
+  @JsonKey(name: 'faculty_id')
+  final int facultyId;
+  @JsonKey(name: 'id')
+  final int id;
+  static const fromJsonFactory = _$DirectionShortInDbFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is DirectionShortInDb &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.shortName, shortName) ||
+                const DeepCollectionEquality()
+                    .equals(other.shortName, shortName)) &&
+            (identical(other.cipher, cipher) ||
+                const DeepCollectionEquality().equals(other.cipher, cipher)) &&
+            (identical(other.degreeStudy, degreeStudy) ||
+                const DeepCollectionEquality()
+                    .equals(other.degreeStudy, degreeStudy)) &&
+            (identical(other.facultyId, facultyId) ||
+                const DeepCollectionEquality()
+                    .equals(other.facultyId, facultyId)) &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(shortName) ^
+      const DeepCollectionEquality().hash(cipher) ^
+      const DeepCollectionEquality().hash(degreeStudy) ^
+      const DeepCollectionEquality().hash(facultyId) ^
+      const DeepCollectionEquality().hash(id) ^
+      runtimeType.hashCode;
+}
+
+extension $DirectionShortInDbExtension on DirectionShortInDb {
+  DirectionShortInDb copyWith(
+      {String? name,
+      String? shortName,
+      String? cipher,
+      enums.DegreeStudy? degreeStudy,
+      int? facultyId,
+      int? id}) {
+    return DirectionShortInDb(
+        name: name ?? this.name,
+        shortName: shortName ?? this.shortName,
+        cipher: cipher ?? this.cipher,
+        degreeStudy: degreeStudy ?? this.degreeStudy,
+        facultyId: facultyId ?? this.facultyId,
+        id: id ?? this.id);
+  }
+
+  DirectionShortInDb copyWithWrapped(
+      {Wrapped<String>? name,
+      Wrapped<String?>? shortName,
+      Wrapped<String?>? cipher,
+      Wrapped<enums.DegreeStudy>? degreeStudy,
+      Wrapped<int>? facultyId,
+      Wrapped<int>? id}) {
+    return DirectionShortInDb(
+        name: (name != null ? name.value : this.name),
+        shortName: (shortName != null ? shortName.value : this.shortName),
+        cipher: (cipher != null ? cipher.value : this.cipher),
+        degreeStudy:
+            (degreeStudy != null ? degreeStudy.value : this.degreeStudy),
+        facultyId: (facultyId != null ? facultyId.value : this.facultyId),
+        id: (id != null ? id.value : this.id));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class DirectionUpdate {
   DirectionUpdate({
     required this.name,
@@ -1254,6 +1379,9 @@ class DirectionUpdate {
 
   factory DirectionUpdate.fromJson(Map<String, dynamic> json) =>
       _$DirectionUpdateFromJson(json);
+
+  static const toJsonFactory = _$DirectionUpdateToJson;
+  Map<String, dynamic> toJson() => _$DirectionUpdateToJson(this);
 
   @JsonKey(name: 'name')
   final String name;
@@ -1272,8 +1400,6 @@ class DirectionUpdate {
   @JsonKey(name: 'place_loads', defaultValue: <DirectionPlaceLoadInfo>[])
   final List<DirectionPlaceLoadInfo>? placeLoads;
   static const fromJsonFactory = _$DirectionUpdateFromJson;
-  static const toJsonFactory = _$DirectionUpdateToJson;
-  Map<String, dynamic> toJson() => _$DirectionUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -1357,6 +1483,9 @@ class DisciplineCreate {
   factory DisciplineCreate.fromJson(Map<String, dynamic> json) =>
       _$DisciplineCreateFromJson(json);
 
+  static const toJsonFactory = _$DisciplineCreateToJson;
+  Map<String, dynamic> toJson() => _$DisciplineCreateToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(name: 'short_name')
@@ -1364,8 +1493,6 @@ class DisciplineCreate {
   @JsonKey(name: 'faculties_ids', defaultValue: <int>[])
   final List<int>? facultiesIds;
   static const fromJsonFactory = _$DisciplineCreateFromJson;
-  static const toJsonFactory = _$DisciplineCreateToJson;
-  Map<String, dynamic> toJson() => _$DisciplineCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -1425,6 +1552,9 @@ class DisciplineInDb {
   factory DisciplineInDb.fromJson(Map<String, dynamic> json) =>
       _$DisciplineInDbFromJson(json);
 
+  static const toJsonFactory = _$DisciplineInDbToJson;
+  Map<String, dynamic> toJson() => _$DisciplineInDbToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(name: 'short_name')
@@ -1434,8 +1564,6 @@ class DisciplineInDb {
   @JsonKey(name: 'faculties_ids', defaultValue: <int>[])
   final List<int>? facultiesIds;
   static const fromJsonFactory = _$DisciplineInDbFromJson;
-  static const toJsonFactory = _$DisciplineInDbToJson;
-  Map<String, dynamic> toJson() => _$DisciplineInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -1500,6 +1628,9 @@ class DisciplineUpdate {
   factory DisciplineUpdate.fromJson(Map<String, dynamic> json) =>
       _$DisciplineUpdateFromJson(json);
 
+  static const toJsonFactory = _$DisciplineUpdateToJson;
+  Map<String, dynamic> toJson() => _$DisciplineUpdateToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(name: 'short_name')
@@ -1507,8 +1638,6 @@ class DisciplineUpdate {
   @JsonKey(name: 'faculties_ids', defaultValue: <int>[])
   final List<int>? facultiesIds;
   static const fromJsonFactory = _$DisciplineUpdateFromJson;
-  static const toJsonFactory = _$DisciplineUpdateToJson;
-  Map<String, dynamic> toJson() => _$DisciplineUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -1565,11 +1694,12 @@ class EquipmentCreate {
   factory EquipmentCreate.fromJson(Map<String, dynamic> json) =>
       _$EquipmentCreateFromJson(json);
 
+  static const toJsonFactory = _$EquipmentCreateToJson;
+  Map<String, dynamic> toJson() => _$EquipmentCreateToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   static const fromJsonFactory = _$EquipmentCreateFromJson;
-  static const toJsonFactory = _$EquipmentCreateToJson;
-  Map<String, dynamic> toJson() => _$EquipmentCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -1607,13 +1737,14 @@ class EquipmentInDb {
   factory EquipmentInDb.fromJson(Map<String, dynamic> json) =>
       _$EquipmentInDbFromJson(json);
 
+  static const toJsonFactory = _$EquipmentInDbToJson;
+  Map<String, dynamic> toJson() => _$EquipmentInDbToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(name: 'id')
   final int id;
   static const fromJsonFactory = _$EquipmentInDbFromJson;
-  static const toJsonFactory = _$EquipmentInDbToJson;
-  Map<String, dynamic> toJson() => _$EquipmentInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -1656,11 +1787,12 @@ class EquipmentUpdate {
   factory EquipmentUpdate.fromJson(Map<String, dynamic> json) =>
       _$EquipmentUpdateFromJson(json);
 
+  static const toJsonFactory = _$EquipmentUpdateToJson;
+  Map<String, dynamic> toJson() => _$EquipmentUpdateToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   static const fromJsonFactory = _$EquipmentUpdateFromJson;
-  static const toJsonFactory = _$EquipmentUpdateToJson;
-  Map<String, dynamic> toJson() => _$EquipmentUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -1699,6 +1831,9 @@ class ExportExtraInfo {
   factory ExportExtraInfo.fromJson(Map<String, dynamic> json) =>
       _$ExportExtraInfoFromJson(json);
 
+  static const toJsonFactory = _$ExportExtraInfoToJson;
+  Map<String, dynamic> toJson() => _$ExportExtraInfoToJson(this);
+
   @JsonKey(name: 'vice_rector_name')
   final String? viceRectorName;
   @JsonKey(name: 'head_of_umu_name')
@@ -1706,8 +1841,6 @@ class ExportExtraInfo {
   @JsonKey(name: 'dean_name')
   final String? deanName;
   static const fromJsonFactory = _$ExportExtraInfoFromJson;
-  static const toJsonFactory = _$ExportExtraInfoToJson;
-  Map<String, dynamic> toJson() => _$ExportExtraInfoToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -1761,7 +1894,7 @@ extension $ExportExtraInfoExtension on ExportExtraInfo {
 @JsonSerializable(explicitToJson: true)
 class ExportIcal {
   ExportIcal({
-    this.semesterId,
+    this.semesterFacultyId,
     this.groupId,
     this.teacherId,
   });
@@ -1769,23 +1902,24 @@ class ExportIcal {
   factory ExportIcal.fromJson(Map<String, dynamic> json) =>
       _$ExportIcalFromJson(json);
 
-  @JsonKey(name: 'semester_id')
-  final int? semesterId;
+  static const toJsonFactory = _$ExportIcalToJson;
+  Map<String, dynamic> toJson() => _$ExportIcalToJson(this);
+
+  @JsonKey(name: 'semester_faculty_id')
+  final int? semesterFacultyId;
   @JsonKey(name: 'group_id')
   final int? groupId;
   @JsonKey(name: 'teacher_id')
   final int? teacherId;
   static const fromJsonFactory = _$ExportIcalFromJson;
-  static const toJsonFactory = _$ExportIcalToJson;
-  Map<String, dynamic> toJson() => _$ExportIcalToJson(this);
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is ExportIcal &&
-            (identical(other.semesterId, semesterId) ||
+            (identical(other.semesterFacultyId, semesterFacultyId) ||
                 const DeepCollectionEquality()
-                    .equals(other.semesterId, semesterId)) &&
+                    .equals(other.semesterFacultyId, semesterFacultyId)) &&
             (identical(other.groupId, groupId) ||
                 const DeepCollectionEquality()
                     .equals(other.groupId, groupId)) &&
@@ -1799,26 +1933,28 @@ class ExportIcal {
 
   @override
   int get hashCode =>
-      const DeepCollectionEquality().hash(semesterId) ^
+      const DeepCollectionEquality().hash(semesterFacultyId) ^
       const DeepCollectionEquality().hash(groupId) ^
       const DeepCollectionEquality().hash(teacherId) ^
       runtimeType.hashCode;
 }
 
 extension $ExportIcalExtension on ExportIcal {
-  ExportIcal copyWith({int? semesterId, int? groupId, int? teacherId}) {
+  ExportIcal copyWith({int? semesterFacultyId, int? groupId, int? teacherId}) {
     return ExportIcal(
-        semesterId: semesterId ?? this.semesterId,
+        semesterFacultyId: semesterFacultyId ?? this.semesterFacultyId,
         groupId: groupId ?? this.groupId,
         teacherId: teacherId ?? this.teacherId);
   }
 
   ExportIcal copyWithWrapped(
-      {Wrapped<int?>? semesterId,
+      {Wrapped<int?>? semesterFacultyId,
       Wrapped<int?>? groupId,
       Wrapped<int?>? teacherId}) {
     return ExportIcal(
-        semesterId: (semesterId != null ? semesterId.value : this.semesterId),
+        semesterFacultyId: (semesterFacultyId != null
+            ? semesterFacultyId.value
+            : this.semesterFacultyId),
         groupId: (groupId != null ? groupId.value : this.groupId),
         teacherId: (teacherId != null ? teacherId.value : this.teacherId));
   }
@@ -1829,18 +1965,22 @@ class FacultyCreate {
   FacultyCreate({
     required this.name,
     required this.shortName,
+    this.linkSourceTimetable,
   });
 
   factory FacultyCreate.fromJson(Map<String, dynamic> json) =>
       _$FacultyCreateFromJson(json);
 
+  static const toJsonFactory = _$FacultyCreateToJson;
+  Map<String, dynamic> toJson() => _$FacultyCreateToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(name: 'short_name')
   final String shortName;
+  @JsonKey(name: 'link_source_timetable')
+  final String? linkSourceTimetable;
   static const fromJsonFactory = _$FacultyCreateFromJson;
-  static const toJsonFactory = _$FacultyCreateToJson;
-  Map<String, dynamic> toJson() => _$FacultyCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -1850,7 +1990,10 @@ class FacultyCreate {
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.shortName, shortName) ||
                 const DeepCollectionEquality()
-                    .equals(other.shortName, shortName)));
+                    .equals(other.shortName, shortName)) &&
+            (identical(other.linkSourceTimetable, linkSourceTimetable) ||
+                const DeepCollectionEquality()
+                    .equals(other.linkSourceTimetable, linkSourceTimetable)));
   }
 
   @override
@@ -1860,20 +2003,29 @@ class FacultyCreate {
   int get hashCode =>
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(shortName) ^
+      const DeepCollectionEquality().hash(linkSourceTimetable) ^
       runtimeType.hashCode;
 }
 
 extension $FacultyCreateExtension on FacultyCreate {
-  FacultyCreate copyWith({String? name, String? shortName}) {
+  FacultyCreate copyWith(
+      {String? name, String? shortName, String? linkSourceTimetable}) {
     return FacultyCreate(
-        name: name ?? this.name, shortName: shortName ?? this.shortName);
+        name: name ?? this.name,
+        shortName: shortName ?? this.shortName,
+        linkSourceTimetable: linkSourceTimetable ?? this.linkSourceTimetable);
   }
 
   FacultyCreate copyWithWrapped(
-      {Wrapped<String>? name, Wrapped<String>? shortName}) {
+      {Wrapped<String>? name,
+      Wrapped<String>? shortName,
+      Wrapped<String?>? linkSourceTimetable}) {
     return FacultyCreate(
         name: (name != null ? name.value : this.name),
-        shortName: (shortName != null ? shortName.value : this.shortName));
+        shortName: (shortName != null ? shortName.value : this.shortName),
+        linkSourceTimetable: (linkSourceTimetable != null
+            ? linkSourceTimetable.value
+            : this.linkSourceTimetable));
   }
 }
 
@@ -1886,11 +2038,12 @@ class FacultyForbidden {
   factory FacultyForbidden.fromJson(Map<String, dynamic> json) =>
       _$FacultyForbiddenFromJson(json);
 
+  static const toJsonFactory = _$FacultyForbiddenToJson;
+  Map<String, dynamic> toJson() => _$FacultyForbiddenToJson(this);
+
   @JsonKey(name: 'faculties_forbidden', defaultValue: <int>[])
   final List<int>? facultiesForbidden;
   static const fromJsonFactory = _$FacultyForbiddenFromJson;
-  static const toJsonFactory = _$FacultyForbiddenToJson;
-  Map<String, dynamic> toJson() => _$FacultyForbiddenToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -1929,21 +2082,28 @@ class FacultyInDb {
   FacultyInDb({
     required this.name,
     required this.shortName,
+    this.linkSourceTimetable,
+    required this.inactive,
     required this.id,
   });
 
   factory FacultyInDb.fromJson(Map<String, dynamic> json) =>
       _$FacultyInDbFromJson(json);
 
+  static const toJsonFactory = _$FacultyInDbToJson;
+  Map<String, dynamic> toJson() => _$FacultyInDbToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(name: 'short_name')
   final String shortName;
+  @JsonKey(name: 'link_source_timetable')
+  final String? linkSourceTimetable;
+  @JsonKey(name: 'inactive')
+  final bool inactive;
   @JsonKey(name: 'id')
   final int id;
   static const fromJsonFactory = _$FacultyInDbFromJson;
-  static const toJsonFactory = _$FacultyInDbToJson;
-  Map<String, dynamic> toJson() => _$FacultyInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -1954,6 +2114,12 @@ class FacultyInDb {
             (identical(other.shortName, shortName) ||
                 const DeepCollectionEquality()
                     .equals(other.shortName, shortName)) &&
+            (identical(other.linkSourceTimetable, linkSourceTimetable) ||
+                const DeepCollectionEquality()
+                    .equals(other.linkSourceTimetable, linkSourceTimetable)) &&
+            (identical(other.inactive, inactive) ||
+                const DeepCollectionEquality()
+                    .equals(other.inactive, inactive)) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)));
   }
@@ -1965,23 +2131,40 @@ class FacultyInDb {
   int get hashCode =>
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(shortName) ^
+      const DeepCollectionEquality().hash(linkSourceTimetable) ^
+      const DeepCollectionEquality().hash(inactive) ^
       const DeepCollectionEquality().hash(id) ^
       runtimeType.hashCode;
 }
 
 extension $FacultyInDbExtension on FacultyInDb {
-  FacultyInDb copyWith({String? name, String? shortName, int? id}) {
+  FacultyInDb copyWith(
+      {String? name,
+      String? shortName,
+      String? linkSourceTimetable,
+      bool? inactive,
+      int? id}) {
     return FacultyInDb(
         name: name ?? this.name,
         shortName: shortName ?? this.shortName,
+        linkSourceTimetable: linkSourceTimetable ?? this.linkSourceTimetable,
+        inactive: inactive ?? this.inactive,
         id: id ?? this.id);
   }
 
   FacultyInDb copyWithWrapped(
-      {Wrapped<String>? name, Wrapped<String>? shortName, Wrapped<int>? id}) {
+      {Wrapped<String>? name,
+      Wrapped<String>? shortName,
+      Wrapped<String?>? linkSourceTimetable,
+      Wrapped<bool>? inactive,
+      Wrapped<int>? id}) {
     return FacultyInDb(
         name: (name != null ? name.value : this.name),
         shortName: (shortName != null ? shortName.value : this.shortName),
+        linkSourceTimetable: (linkSourceTimetable != null
+            ? linkSourceTimetable.value
+            : this.linkSourceTimetable),
+        inactive: (inactive != null ? inactive.value : this.inactive),
         id: (id != null ? id.value : this.id));
   }
 }
@@ -1991,18 +2174,25 @@ class FacultyUpdate {
   FacultyUpdate({
     required this.name,
     required this.shortName,
+    this.linkSourceTimetable,
+    this.inactive,
   });
 
   factory FacultyUpdate.fromJson(Map<String, dynamic> json) =>
       _$FacultyUpdateFromJson(json);
 
+  static const toJsonFactory = _$FacultyUpdateToJson;
+  Map<String, dynamic> toJson() => _$FacultyUpdateToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(name: 'short_name')
   final String shortName;
+  @JsonKey(name: 'link_source_timetable')
+  final String? linkSourceTimetable;
+  @JsonKey(name: 'inactive')
+  final bool? inactive;
   static const fromJsonFactory = _$FacultyUpdateFromJson;
-  static const toJsonFactory = _$FacultyUpdateToJson;
-  Map<String, dynamic> toJson() => _$FacultyUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -2012,7 +2202,13 @@ class FacultyUpdate {
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.shortName, shortName) ||
                 const DeepCollectionEquality()
-                    .equals(other.shortName, shortName)));
+                    .equals(other.shortName, shortName)) &&
+            (identical(other.linkSourceTimetable, linkSourceTimetable) ||
+                const DeepCollectionEquality()
+                    .equals(other.linkSourceTimetable, linkSourceTimetable)) &&
+            (identical(other.inactive, inactive) ||
+                const DeepCollectionEquality()
+                    .equals(other.inactive, inactive)));
   }
 
   @override
@@ -2022,20 +2218,36 @@ class FacultyUpdate {
   int get hashCode =>
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(shortName) ^
+      const DeepCollectionEquality().hash(linkSourceTimetable) ^
+      const DeepCollectionEquality().hash(inactive) ^
       runtimeType.hashCode;
 }
 
 extension $FacultyUpdateExtension on FacultyUpdate {
-  FacultyUpdate copyWith({String? name, String? shortName}) {
+  FacultyUpdate copyWith(
+      {String? name,
+      String? shortName,
+      String? linkSourceTimetable,
+      bool? inactive}) {
     return FacultyUpdate(
-        name: name ?? this.name, shortName: shortName ?? this.shortName);
+        name: name ?? this.name,
+        shortName: shortName ?? this.shortName,
+        linkSourceTimetable: linkSourceTimetable ?? this.linkSourceTimetable,
+        inactive: inactive ?? this.inactive);
   }
 
   FacultyUpdate copyWithWrapped(
-      {Wrapped<String>? name, Wrapped<String>? shortName}) {
+      {Wrapped<String>? name,
+      Wrapped<String>? shortName,
+      Wrapped<String?>? linkSourceTimetable,
+      Wrapped<bool?>? inactive}) {
     return FacultyUpdate(
         name: (name != null ? name.value : this.name),
-        shortName: (shortName != null ? shortName.value : this.shortName));
+        shortName: (shortName != null ? shortName.value : this.shortName),
+        linkSourceTimetable: (linkSourceTimetable != null
+            ? linkSourceTimetable.value
+            : this.linkSourceTimetable),
+        inactive: (inactive != null ? inactive.value : this.inactive));
   }
 }
 
@@ -2052,6 +2264,9 @@ class GroupCreate {
   factory GroupCreate.fromJson(Map<String, dynamic> json) =>
       _$GroupCreateFromJson(json);
 
+  static const toJsonFactory = _$GroupCreateToJson;
+  Map<String, dynamic> toJson() => _$GroupCreateToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(name: 'course')
@@ -2063,8 +2278,6 @@ class GroupCreate {
   @JsonKey(name: 'profile_id')
   final int? profileId;
   static const fromJsonFactory = _$GroupCreateFromJson;
-  static const toJsonFactory = _$GroupCreateToJson;
-  Map<String, dynamic> toJson() => _$GroupCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -2144,6 +2357,9 @@ class GroupFullInDb {
   factory GroupFullInDb.fromJson(Map<String, dynamic> json) =>
       _$GroupFullInDbFromJson(json);
 
+  static const toJsonFactory = _$GroupFullInDbToJson;
+  Map<String, dynamic> toJson() => _$GroupFullInDbToJson(this);
+
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'name')
@@ -2159,8 +2375,6 @@ class GroupFullInDb {
   @JsonKey(name: 'size')
   final int size;
   static const fromJsonFactory = _$GroupFullInDbFromJson;
-  static const toJsonFactory = _$GroupFullInDbToJson;
-  Map<String, dynamic> toJson() => _$GroupFullInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -2253,6 +2467,9 @@ class GroupInDb {
   factory GroupInDb.fromJson(Map<String, dynamic> json) =>
       _$GroupInDbFromJson(json);
 
+  static const toJsonFactory = _$GroupInDbToJson;
+  Map<String, dynamic> toJson() => _$GroupInDbToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(name: 'course')
@@ -2268,8 +2485,6 @@ class GroupInDb {
   @JsonKey(name: 'id')
   final int id;
   static const fromJsonFactory = _$GroupInDbFromJson;
-  static const toJsonFactory = _$GroupInDbToJson;
-  Map<String, dynamic> toJson() => _$GroupInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -2358,13 +2573,14 @@ class GroupShortInDb {
   factory GroupShortInDb.fromJson(Map<String, dynamic> json) =>
       _$GroupShortInDbFromJson(json);
 
+  static const toJsonFactory = _$GroupShortInDbToJson;
+  Map<String, dynamic> toJson() => _$GroupShortInDbToJson(this);
+
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'name')
   final String name;
   static const fromJsonFactory = _$GroupShortInDbFromJson;
-  static const toJsonFactory = _$GroupShortInDbToJson;
-  Map<String, dynamic> toJson() => _$GroupShortInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -2407,11 +2623,12 @@ class HTTPValidationError {
   factory HTTPValidationError.fromJson(Map<String, dynamic> json) =>
       _$HTTPValidationErrorFromJson(json);
 
+  static const toJsonFactory = _$HTTPValidationErrorToJson;
+  Map<String, dynamic> toJson() => _$HTTPValidationErrorToJson(this);
+
   @JsonKey(name: 'detail', defaultValue: <ValidationError>[])
   final List<ValidationError>? detail;
   static const fromJsonFactory = _$HTTPValidationErrorFromJson;
-  static const toJsonFactory = _$HTTPValidationErrorToJson;
-  Map<String, dynamic> toJson() => _$HTTPValidationErrorToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -2450,11 +2667,12 @@ class HourlyReportSettingsUpdate {
   factory HourlyReportSettingsUpdate.fromJson(Map<String, dynamic> json) =>
       _$HourlyReportSettingsUpdateFromJson(json);
 
+  static const toJsonFactory = _$HourlyReportSettingsUpdateToJson;
+  Map<String, dynamic> toJson() => _$HourlyReportSettingsUpdateToJson(this);
+
   @JsonKey(name: 'set_theme_time')
   final String? setThemeTime;
   static const fromJsonFactory = _$HourlyReportSettingsUpdateFromJson;
-  static const toJsonFactory = _$HourlyReportSettingsUpdateToJson;
-  Map<String, dynamic> toJson() => _$HourlyReportSettingsUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -2498,6 +2716,9 @@ class JournalCreate {
   factory JournalCreate.fromJson(Map<String, dynamic> json) =>
       _$JournalCreateFromJson(json);
 
+  static const toJsonFactory = _$JournalCreateToJson;
+  Map<String, dynamic> toJson() => _$JournalCreateToJson(this);
+
   @JsonKey(name: 'data', defaultValue: <JournalStudentReason>[])
   final List<JournalStudentReason> data;
   @JsonKey(name: 'group_id')
@@ -2507,8 +2728,6 @@ class JournalCreate {
   @JsonKey(name: 'main_student_id')
   final int mainStudentId;
   static const fromJsonFactory = _$JournalCreateFromJson;
-  static const toJsonFactory = _$JournalCreateToJson;
-  Map<String, dynamic> toJson() => _$JournalCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -2576,13 +2795,14 @@ class JournalStudentReason {
   factory JournalStudentReason.fromJson(Map<String, dynamic> json) =>
       _$JournalStudentReasonFromJson(json);
 
+  static const toJsonFactory = _$JournalStudentReasonToJson;
+  Map<String, dynamic> toJson() => _$JournalStudentReasonToJson(this);
+
   @JsonKey(name: 'student_id')
   final int studentId;
   @JsonKey(name: 'is_serious_reason')
   final bool isSeriousReason;
   static const fromJsonFactory = _$JournalStudentReasonFromJson;
-  static const toJsonFactory = _$JournalStudentReasonToJson;
-  Map<String, dynamic> toJson() => _$JournalStudentReasonToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -2633,13 +2853,14 @@ class LastChange {
   factory LastChange.fromJson(Map<String, dynamic> json) =>
       _$LastChangeFromJson(json);
 
+  static const toJsonFactory = _$LastChangeToJson;
+  Map<String, dynamic> toJson() => _$LastChangeToJson(this);
+
   @JsonKey(name: 'timestamp')
   final DateTime timestamp;
   @JsonKey(name: 'user')
   final AppSchemasUserUserFullNameInDb user;
   static const fromJsonFactory = _$LastChangeFromJson;
-  static const toJsonFactory = _$LastChangeToJson;
-  Map<String, dynamic> toJson() => _$LastChangeToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -2689,6 +2910,9 @@ class LessonAutocomplete {
   factory LessonAutocomplete.fromJson(Map<String, dynamic> json) =>
       _$LessonAutocompleteFromJson(json);
 
+  static const toJsonFactory = _$LessonAutocompleteToJson;
+  Map<String, dynamic> toJson() => _$LessonAutocompleteToJson(this);
+
   @JsonKey(name: 'teachers', defaultValue: <TeacherShortInDb>[])
   final List<TeacherShortInDb> teachers;
   @JsonKey(name: 'places', defaultValue: <PlaceNameInDb>[])
@@ -2696,8 +2920,6 @@ class LessonAutocomplete {
   @JsonKey(name: 'groups', defaultValue: <GroupShortInDb>[])
   final List<GroupShortInDb> groups;
   static const fromJsonFactory = _$LessonAutocompleteFromJson;
-  static const toJsonFactory = _$LessonAutocompleteToJson;
-  Map<String, dynamic> toJson() => _$LessonAutocompleteToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -2756,6 +2978,9 @@ class LessonCancelReason {
   factory LessonCancelReason.fromJson(Map<String, dynamic> json) =>
       _$LessonCancelReasonFromJson(json);
 
+  static const toJsonFactory = _$LessonCancelReasonToJson;
+  Map<String, dynamic> toJson() => _$LessonCancelReasonToJson(this);
+
   @JsonKey(name: 'notify', defaultValue: false)
   final bool? notify;
   @JsonKey(name: 'reason')
@@ -2763,8 +2988,6 @@ class LessonCancelReason {
   @JsonKey(name: 'show_reason_students')
   final bool? showReasonStudents;
   static const fromJsonFactory = _$LessonCancelReasonFromJson;
-  static const toJsonFactory = _$LessonCancelReasonToJson;
-  Map<String, dynamic> toJson() => _$LessonCancelReasonToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -2822,13 +3045,14 @@ class LessonCollision {
   factory LessonCollision.fromJson(Map<String, dynamic> json) =>
       _$LessonCollisionFromJson(json);
 
+  static const toJsonFactory = _$LessonCollisionToJson;
+  Map<String, dynamic> toJson() => _$LessonCollisionToJson(this);
+
   @JsonKey(name: 'field')
   final String field;
   @JsonKey(name: 'data')
   final LessonCollisionInfo data;
   static const fromJsonFactory = _$LessonCollisionFromJson;
-  static const toJsonFactory = _$LessonCollisionToJson;
-  Map<String, dynamic> toJson() => _$LessonCollisionToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -2881,6 +3105,9 @@ class LessonCollisionInfo {
   factory LessonCollisionInfo.fromJson(Map<String, dynamic> json) =>
       _$LessonCollisionInfoFromJson(json);
 
+  static const toJsonFactory = _$LessonCollisionInfoToJson;
+  Map<String, dynamic> toJson() => _$LessonCollisionInfoToJson(this);
+
   @JsonKey(name: 'number')
   final int number;
   @JsonKey(name: 'is_remotely')
@@ -2902,8 +3129,6 @@ class LessonCollisionInfo {
   @JsonKey(name: 'teacher_names', defaultValue: <String>[])
   final List<String>? teacherNames;
   static const fromJsonFactory = _$LessonCollisionInfoFromJson;
-  static const toJsonFactory = _$LessonCollisionInfoToJson;
-  Map<String, dynamic> toJson() => _$LessonCollisionInfoToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -3016,12 +3241,15 @@ class LessonCreate {
     required this.groups,
     this.teachers,
     this.placeId,
-    required this.semesterId,
+    required this.semesterFacultyId,
     required this.date,
   });
 
   factory LessonCreate.fromJson(Map<String, dynamic> json) =>
       _$LessonCreateFromJson(json);
+
+  static const toJsonFactory = _$LessonCreateToJson;
+  Map<String, dynamic> toJson() => _$LessonCreateToJson(this);
 
   @JsonKey(name: 'number')
   final int number;
@@ -3039,13 +3267,11 @@ class LessonCreate {
   final List<int>? teachers;
   @JsonKey(name: 'place_id')
   final int? placeId;
-  @JsonKey(name: 'semester_id')
-  final int semesterId;
+  @JsonKey(name: 'semester_faculty_id')
+  final int semesterFacultyId;
   @JsonKey(name: 'date')
   final String date;
   static const fromJsonFactory = _$LessonCreateFromJson;
-  static const toJsonFactory = _$LessonCreateToJson;
-  Map<String, dynamic> toJson() => _$LessonCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -3072,9 +3298,9 @@ class LessonCreate {
             (identical(other.placeId, placeId) ||
                 const DeepCollectionEquality()
                     .equals(other.placeId, placeId)) &&
-            (identical(other.semesterId, semesterId) ||
+            (identical(other.semesterFacultyId, semesterFacultyId) ||
                 const DeepCollectionEquality()
-                    .equals(other.semesterId, semesterId)) &&
+                    .equals(other.semesterFacultyId, semesterFacultyId)) &&
             (identical(other.date, date) ||
                 const DeepCollectionEquality().equals(other.date, date)));
   }
@@ -3092,7 +3318,7 @@ class LessonCreate {
       const DeepCollectionEquality().hash(groups) ^
       const DeepCollectionEquality().hash(teachers) ^
       const DeepCollectionEquality().hash(placeId) ^
-      const DeepCollectionEquality().hash(semesterId) ^
+      const DeepCollectionEquality().hash(semesterFacultyId) ^
       const DeepCollectionEquality().hash(date) ^
       runtimeType.hashCode;
 }
@@ -3107,7 +3333,7 @@ extension $LessonCreateExtension on LessonCreate {
       List<int>? groups,
       List<int>? teachers,
       int? placeId,
-      int? semesterId,
+      int? semesterFacultyId,
       String? date}) {
     return LessonCreate(
         number: number ?? this.number,
@@ -3118,7 +3344,7 @@ extension $LessonCreateExtension on LessonCreate {
         groups: groups ?? this.groups,
         teachers: teachers ?? this.teachers,
         placeId: placeId ?? this.placeId,
-        semesterId: semesterId ?? this.semesterId,
+        semesterFacultyId: semesterFacultyId ?? this.semesterFacultyId,
         date: date ?? this.date);
   }
 
@@ -3131,7 +3357,7 @@ extension $LessonCreateExtension on LessonCreate {
       Wrapped<List<int>>? groups,
       Wrapped<List<int>?>? teachers,
       Wrapped<int?>? placeId,
-      Wrapped<int>? semesterId,
+      Wrapped<int>? semesterFacultyId,
       Wrapped<String>? date}) {
     return LessonCreate(
         number: (number != null ? number.value : this.number),
@@ -3143,7 +3369,9 @@ extension $LessonCreateExtension on LessonCreate {
         groups: (groups != null ? groups.value : this.groups),
         teachers: (teachers != null ? teachers.value : this.teachers),
         placeId: (placeId != null ? placeId.value : this.placeId),
-        semesterId: (semesterId != null ? semesterId.value : this.semesterId),
+        semesterFacultyId: (semesterFacultyId != null
+            ? semesterFacultyId.value
+            : this.semesterFacultyId),
         date: (date != null ? date.value : this.date));
   }
 }
@@ -3159,6 +3387,9 @@ class LessonCreateWithParams {
   factory LessonCreateWithParams.fromJson(Map<String, dynamic> json) =>
       _$LessonCreateWithParamsFromJson(json);
 
+  static const toJsonFactory = _$LessonCreateWithParamsToJson;
+  Map<String, dynamic> toJson() => _$LessonCreateWithParamsToJson(this);
+
   @JsonKey(name: 'ignore_collisions', defaultValue: false)
   final bool? ignoreCollisions;
   @JsonKey(name: 'notify', defaultValue: false)
@@ -3166,8 +3397,6 @@ class LessonCreateWithParams {
   @JsonKey(name: 'lesson')
   final LessonCreate lesson;
   static const fromJsonFactory = _$LessonCreateWithParamsFromJson;
-  static const toJsonFactory = _$LessonCreateWithParamsToJson;
-  Map<String, dynamic> toJson() => _$LessonCreateWithParamsToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -3235,6 +3464,9 @@ class LessonFullInDb {
   factory LessonFullInDb.fromJson(Map<String, dynamic> json) =>
       _$LessonFullInDbFromJson(json);
 
+  static const toJsonFactory = _$LessonFullInDbToJson;
+  Map<String, dynamic> toJson() => _$LessonFullInDbToJson(this);
+
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'theme')
@@ -3264,8 +3496,6 @@ class LessonFullInDb {
   @JsonKey(name: 'date', toJson: _dateToJson)
   final DateTime date;
   static const fromJsonFactory = _$LessonFullInDbFromJson;
-  static const toJsonFactory = _$LessonFullInDbToJson;
-  Map<String, dynamic> toJson() => _$LessonFullInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -3399,6 +3629,9 @@ class LessonFullNamesInDb {
   factory LessonFullNamesInDb.fromJson(Map<String, dynamic> json) =>
       _$LessonFullNamesInDbFromJson(json);
 
+  static const toJsonFactory = _$LessonFullNamesInDbToJson;
+  Map<String, dynamic> toJson() => _$LessonFullNamesInDbToJson(this);
+
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'theme')
@@ -3428,8 +3661,6 @@ class LessonFullNamesInDb {
   @JsonKey(name: 'date', toJson: _dateToJson)
   final DateTime date;
   static const fromJsonFactory = _$LessonFullNamesInDbFromJson;
-  static const toJsonFactory = _$LessonFullNamesInDbToJson;
-  Map<String, dynamic> toJson() => _$LessonFullNamesInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -3557,6 +3788,9 @@ class LessonHistory {
   factory LessonHistory.fromJson(Map<String, dynamic> json) =>
       _$LessonHistoryFromJson(json);
 
+  static const toJsonFactory = _$LessonHistoryToJson;
+  Map<String, dynamic> toJson() => _$LessonHistoryToJson(this);
+
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'user')
@@ -3566,8 +3800,6 @@ class LessonHistory {
   @JsonKey(name: 'timestamp')
   final DateTime timestamp;
   static const fromJsonFactory = _$LessonHistoryFromJson;
-  static const toJsonFactory = _$LessonHistoryToJson;
-  Map<String, dynamic> toJson() => _$LessonHistoryToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -3634,6 +3866,9 @@ class LessonHistoryField {
   factory LessonHistoryField.fromJson(Map<String, dynamic> json) =>
       _$LessonHistoryFieldFromJson(json);
 
+  static const toJsonFactory = _$LessonHistoryFieldToJson;
+  Map<String, dynamic> toJson() => _$LessonHistoryFieldToJson(this);
+
   @JsonKey(
     name: 'field',
     toJson: historyFieldToJson,
@@ -3645,8 +3880,6 @@ class LessonHistoryField {
   @JsonKey(name: 'old_value')
   final String? oldValue;
   static const fromJsonFactory = _$LessonHistoryFieldFromJson;
-  static const toJsonFactory = _$LessonHistoryFieldToJson;
-  Map<String, dynamic> toJson() => _$LessonHistoryFieldToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -3713,6 +3946,9 @@ class LessonInDb {
   factory LessonInDb.fromJson(Map<String, dynamic> json) =>
       _$LessonInDbFromJson(json);
 
+  static const toJsonFactory = _$LessonInDbToJson;
+  Map<String, dynamic> toJson() => _$LessonInDbToJson(this);
+
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'theme')
@@ -3742,8 +3978,6 @@ class LessonInDb {
   @JsonKey(name: 'date', toJson: _dateToJson)
   final DateTime date;
   static const fromJsonFactory = _$LessonInDbFromJson;
-  static const toJsonFactory = _$LessonInDbToJson;
-  Map<String, dynamic> toJson() => _$LessonInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -3869,13 +4103,14 @@ class LessonRelated {
   factory LessonRelated.fromJson(Map<String, dynamic> json) =>
       _$LessonRelatedFromJson(json);
 
+  static const toJsonFactory = _$LessonRelatedToJson;
+  Map<String, dynamic> toJson() => _$LessonRelatedToJson(this);
+
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'date', toJson: _dateToJson)
   final DateTime date;
   static const fromJsonFactory = _$LessonRelatedFromJson;
-  static const toJsonFactory = _$LessonRelatedToJson;
-  Map<String, dynamic> toJson() => _$LessonRelatedToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -3914,28 +4149,29 @@ class LessonResults {
   LessonResults({
     required this.headerIds,
     required this.lessons,
-    this.mode,
     this.lastChange,
+    this.mode,
   });
 
   factory LessonResults.fromJson(Map<String, dynamic> json) =>
       _$LessonResultsFromJson(json);
 
+  static const toJsonFactory = _$LessonResultsToJson;
+  Map<String, dynamic> toJson() => _$LessonResultsToJson(this);
+
   @JsonKey(name: 'header_ids', defaultValue: <int>[])
   final List<int> headerIds;
   @JsonKey(name: 'lessons', defaultValue: <LessonInDb>[])
   final List<LessonInDb> lessons;
+  @JsonKey(name: 'last_change')
+  final LastChange? lastChange;
   @JsonKey(
     name: 'mode',
     toJson: viewModeToJson,
     fromJson: viewModeFromJson,
   )
   final enums.ViewMode? mode;
-  @JsonKey(name: 'last_change')
-  final LastChange? lastChange;
   static const fromJsonFactory = _$LessonResultsFromJson;
-  static const toJsonFactory = _$LessonResultsToJson;
-  Map<String, dynamic> toJson() => _$LessonResultsToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -3947,11 +4183,11 @@ class LessonResults {
             (identical(other.lessons, lessons) ||
                 const DeepCollectionEquality()
                     .equals(other.lessons, lessons)) &&
-            (identical(other.mode, mode) ||
-                const DeepCollectionEquality().equals(other.mode, mode)) &&
             (identical(other.lastChange, lastChange) ||
                 const DeepCollectionEquality()
-                    .equals(other.lastChange, lastChange)));
+                    .equals(other.lastChange, lastChange)) &&
+            (identical(other.mode, mode) ||
+                const DeepCollectionEquality().equals(other.mode, mode)));
   }
 
   @override
@@ -3961,8 +4197,8 @@ class LessonResults {
   int get hashCode =>
       const DeepCollectionEquality().hash(headerIds) ^
       const DeepCollectionEquality().hash(lessons) ^
-      const DeepCollectionEquality().hash(mode) ^
       const DeepCollectionEquality().hash(lastChange) ^
+      const DeepCollectionEquality().hash(mode) ^
       runtimeType.hashCode;
 }
 
@@ -3970,25 +4206,25 @@ extension $LessonResultsExtension on LessonResults {
   LessonResults copyWith(
       {List<int>? headerIds,
       List<LessonInDb>? lessons,
-      enums.ViewMode? mode,
-      LastChange? lastChange}) {
+      LastChange? lastChange,
+      enums.ViewMode? mode}) {
     return LessonResults(
         headerIds: headerIds ?? this.headerIds,
         lessons: lessons ?? this.lessons,
-        mode: mode ?? this.mode,
-        lastChange: lastChange ?? this.lastChange);
+        lastChange: lastChange ?? this.lastChange,
+        mode: mode ?? this.mode);
   }
 
   LessonResults copyWithWrapped(
       {Wrapped<List<int>>? headerIds,
       Wrapped<List<LessonInDb>>? lessons,
-      Wrapped<enums.ViewMode?>? mode,
-      Wrapped<LastChange?>? lastChange}) {
+      Wrapped<LastChange?>? lastChange,
+      Wrapped<enums.ViewMode?>? mode}) {
     return LessonResults(
         headerIds: (headerIds != null ? headerIds.value : this.headerIds),
         lessons: (lessons != null ? lessons.value : this.lessons),
-        mode: (mode != null ? mode.value : this.mode),
-        lastChange: (lastChange != null ? lastChange.value : this.lastChange));
+        lastChange: (lastChange != null ? lastChange.value : this.lastChange),
+        mode: (mode != null ? mode.value : this.mode));
   }
 }
 
@@ -4004,6 +4240,9 @@ class LessonTypeInDb {
   factory LessonTypeInDb.fromJson(Map<String, dynamic> json) =>
       _$LessonTypeInDbFromJson(json);
 
+  static const toJsonFactory = _$LessonTypeInDbToJson;
+  Map<String, dynamic> toJson() => _$LessonTypeInDbToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(name: 'short_name')
@@ -4013,8 +4252,6 @@ class LessonTypeInDb {
   @JsonKey(name: 'id')
   final int id;
   static const fromJsonFactory = _$LessonTypeInDbFromJson;
-  static const toJsonFactory = _$LessonTypeInDbToJson;
-  Map<String, dynamic> toJson() => _$LessonTypeInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -4083,6 +4320,9 @@ class LessonUpdate {
   factory LessonUpdate.fromJson(Map<String, dynamic> json) =>
       _$LessonUpdateFromJson(json);
 
+  static const toJsonFactory = _$LessonUpdateToJson;
+  Map<String, dynamic> toJson() => _$LessonUpdateToJson(this);
+
   @JsonKey(name: 'discipline_id')
   final int? disciplineId;
   @JsonKey(name: 'number')
@@ -4102,8 +4342,6 @@ class LessonUpdate {
   @JsonKey(name: 'date')
   final String? date;
   static const fromJsonFactory = _$LessonUpdateFromJson;
-  static const toJsonFactory = _$LessonUpdateToJson;
-  Map<String, dynamic> toJson() => _$LessonUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -4209,6 +4447,9 @@ class LessonUpdateWithParams {
   factory LessonUpdateWithParams.fromJson(Map<String, dynamic> json) =>
       _$LessonUpdateWithParamsFromJson(json);
 
+  static const toJsonFactory = _$LessonUpdateWithParamsToJson;
+  Map<String, dynamic> toJson() => _$LessonUpdateWithParamsToJson(this);
+
   @JsonKey(name: 'ignore_collisions', defaultValue: false)
   final bool? ignoreCollisions;
   @JsonKey(name: 'notify', defaultValue: false)
@@ -4216,8 +4457,6 @@ class LessonUpdateWithParams {
   @JsonKey(name: 'lesson')
   final LessonUpdate lesson;
   static const fromJsonFactory = _$LessonUpdateWithParamsFromJson;
-  static const toJsonFactory = _$LessonUpdateWithParamsToJson;
-  Map<String, dynamic> toJson() => _$LessonUpdateWithParamsToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -4274,11 +4513,12 @@ class LessonsSettings {
   factory LessonsSettings.fromJson(Map<String, dynamic> json) =>
       _$LessonsSettingsFromJson(json);
 
+  static const toJsonFactory = _$LessonsSettingsToJson;
+  Map<String, dynamic> toJson() => _$LessonsSettingsToJson(this);
+
   @JsonKey(name: 'duration_minutes')
   final int durationMinutes;
   static const fromJsonFactory = _$LessonsSettingsFromJson;
-  static const toJsonFactory = _$LessonsSettingsToJson;
-  Map<String, dynamic> toJson() => _$LessonsSettingsToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -4329,6 +4569,9 @@ class Log {
 
   factory Log.fromJson(Map<String, dynamic> json) => _$LogFromJson(json);
 
+  static const toJsonFactory = _$LogToJson;
+  Map<String, dynamic> toJson() => _$LogToJson(this);
+
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'message')
@@ -4354,8 +4597,6 @@ class Log {
   @JsonKey(name: 'user')
   final AppSchemasUserUserFullNameInDb? user;
   static const fromJsonFactory = _$LogFromJson;
-  static const toJsonFactory = _$LogToJson;
-  Map<String, dynamic> toJson() => _$LogToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -4462,13 +4703,14 @@ class LogAction {
   factory LogAction.fromJson(Map<String, dynamic> json) =>
       _$LogActionFromJson(json);
 
+  static const toJsonFactory = _$LogActionToJson;
+  Map<String, dynamic> toJson() => _$LogActionToJson(this);
+
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'name')
   final String name;
   static const fromJsonFactory = _$LogActionFromJson;
-  static const toJsonFactory = _$LogActionToJson;
-  Map<String, dynamic> toJson() => _$LogActionToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -4512,13 +4754,14 @@ class LogEntity {
   factory LogEntity.fromJson(Map<String, dynamic> json) =>
       _$LogEntityFromJson(json);
 
+  static const toJsonFactory = _$LogEntityToJson;
+  Map<String, dynamic> toJson() => _$LogEntityToJson(this);
+
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'name')
   final String name;
   static const fromJsonFactory = _$LogEntityFromJson;
-  static const toJsonFactory = _$LogEntityToJson;
-  Map<String, dynamic> toJson() => _$LogEntityToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -4562,13 +4805,14 @@ class LogModule {
   factory LogModule.fromJson(Map<String, dynamic> json) =>
       _$LogModuleFromJson(json);
 
+  static const toJsonFactory = _$LogModuleToJson;
+  Map<String, dynamic> toJson() => _$LogModuleToJson(this);
+
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'name')
   final String name;
   static const fromJsonFactory = _$LogModuleFromJson;
-  static const toJsonFactory = _$LogModuleToJson;
-  Map<String, dynamic> toJson() => _$LogModuleToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -4612,13 +4856,14 @@ class MainLessonCollision {
   factory MainLessonCollision.fromJson(Map<String, dynamic> json) =>
       _$MainLessonCollisionFromJson(json);
 
+  static const toJsonFactory = _$MainLessonCollisionToJson;
+  Map<String, dynamic> toJson() => _$MainLessonCollisionToJson(this);
+
   @JsonKey(name: 'field')
   final String field;
   @JsonKey(name: 'data')
   final MainLessonCollisionInfo data;
   static const fromJsonFactory = _$MainLessonCollisionFromJson;
-  static const toJsonFactory = _$MainLessonCollisionToJson;
-  Map<String, dynamic> toJson() => _$MainLessonCollisionToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -4673,6 +4918,9 @@ class MainLessonCollisionInfo {
   factory MainLessonCollisionInfo.fromJson(Map<String, dynamic> json) =>
       _$MainLessonCollisionInfoFromJson(json);
 
+  static const toJsonFactory = _$MainLessonCollisionInfoToJson;
+  Map<String, dynamic> toJson() => _$MainLessonCollisionInfoToJson(this);
+
   @JsonKey(name: 'number')
   final int number;
   @JsonKey(name: 'is_remotely')
@@ -4696,8 +4944,6 @@ class MainLessonCollisionInfo {
   @JsonKey(name: 'teacher_names', defaultValue: <String>[])
   final List<String>? teacherNames;
   static const fromJsonFactory = _$MainLessonCollisionInfoFromJson;
-  static const toJsonFactory = _$MainLessonCollisionInfoToJson;
-  Map<String, dynamic> toJson() => _$MainLessonCollisionInfoToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -4818,7 +5064,7 @@ class MainLessonCreate {
     required this.groups,
     this.teachers,
     this.placeId,
-    required this.semesterId,
+    required this.semesterFacultyId,
     required this.weekday,
     this.parity,
     this.startDate,
@@ -4827,6 +5073,9 @@ class MainLessonCreate {
 
   factory MainLessonCreate.fromJson(Map<String, dynamic> json) =>
       _$MainLessonCreateFromJson(json);
+
+  static const toJsonFactory = _$MainLessonCreateToJson;
+  Map<String, dynamic> toJson() => _$MainLessonCreateToJson(this);
 
   @JsonKey(name: 'number')
   final int number;
@@ -4844,8 +5093,8 @@ class MainLessonCreate {
   final List<int>? teachers;
   @JsonKey(name: 'place_id')
   final int? placeId;
-  @JsonKey(name: 'semester_id')
-  final int semesterId;
+  @JsonKey(name: 'semester_faculty_id')
+  final int semesterFacultyId;
   @JsonKey(name: 'weekday')
   final int weekday;
   @JsonKey(name: 'parity')
@@ -4855,8 +5104,6 @@ class MainLessonCreate {
   @JsonKey(name: 'end_date', toJson: _dateToJson)
   final DateTime? endDate;
   static const fromJsonFactory = _$MainLessonCreateFromJson;
-  static const toJsonFactory = _$MainLessonCreateToJson;
-  Map<String, dynamic> toJson() => _$MainLessonCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -4883,9 +5130,9 @@ class MainLessonCreate {
             (identical(other.placeId, placeId) ||
                 const DeepCollectionEquality()
                     .equals(other.placeId, placeId)) &&
-            (identical(other.semesterId, semesterId) ||
+            (identical(other.semesterFacultyId, semesterFacultyId) ||
                 const DeepCollectionEquality()
-                    .equals(other.semesterId, semesterId)) &&
+                    .equals(other.semesterFacultyId, semesterFacultyId)) &&
             (identical(other.weekday, weekday) ||
                 const DeepCollectionEquality()
                     .equals(other.weekday, weekday)) &&
@@ -4911,7 +5158,7 @@ class MainLessonCreate {
       const DeepCollectionEquality().hash(groups) ^
       const DeepCollectionEquality().hash(teachers) ^
       const DeepCollectionEquality().hash(placeId) ^
-      const DeepCollectionEquality().hash(semesterId) ^
+      const DeepCollectionEquality().hash(semesterFacultyId) ^
       const DeepCollectionEquality().hash(weekday) ^
       const DeepCollectionEquality().hash(parity) ^
       const DeepCollectionEquality().hash(startDate) ^
@@ -4929,7 +5176,7 @@ extension $MainLessonCreateExtension on MainLessonCreate {
       List<int>? groups,
       List<int>? teachers,
       int? placeId,
-      int? semesterId,
+      int? semesterFacultyId,
       int? weekday,
       int? parity,
       DateTime? startDate,
@@ -4943,7 +5190,7 @@ extension $MainLessonCreateExtension on MainLessonCreate {
         groups: groups ?? this.groups,
         teachers: teachers ?? this.teachers,
         placeId: placeId ?? this.placeId,
-        semesterId: semesterId ?? this.semesterId,
+        semesterFacultyId: semesterFacultyId ?? this.semesterFacultyId,
         weekday: weekday ?? this.weekday,
         parity: parity ?? this.parity,
         startDate: startDate ?? this.startDate,
@@ -4959,7 +5206,7 @@ extension $MainLessonCreateExtension on MainLessonCreate {
       Wrapped<List<int>>? groups,
       Wrapped<List<int>?>? teachers,
       Wrapped<int?>? placeId,
-      Wrapped<int>? semesterId,
+      Wrapped<int>? semesterFacultyId,
       Wrapped<int>? weekday,
       Wrapped<int?>? parity,
       Wrapped<DateTime?>? startDate,
@@ -4974,7 +5221,9 @@ extension $MainLessonCreateExtension on MainLessonCreate {
         groups: (groups != null ? groups.value : this.groups),
         teachers: (teachers != null ? teachers.value : this.teachers),
         placeId: (placeId != null ? placeId.value : this.placeId),
-        semesterId: (semesterId != null ? semesterId.value : this.semesterId),
+        semesterFacultyId: (semesterFacultyId != null
+            ? semesterFacultyId.value
+            : this.semesterFacultyId),
         weekday: (weekday != null ? weekday.value : this.weekday),
         parity: (parity != null ? parity.value : this.parity),
         startDate: (startDate != null ? startDate.value : this.startDate),
@@ -4993,6 +5242,9 @@ class MainLessonCreateWithParams {
   factory MainLessonCreateWithParams.fromJson(Map<String, dynamic> json) =>
       _$MainLessonCreateWithParamsFromJson(json);
 
+  static const toJsonFactory = _$MainLessonCreateWithParamsToJson;
+  Map<String, dynamic> toJson() => _$MainLessonCreateWithParamsToJson(this);
+
   @JsonKey(name: 'ignore_collisions', defaultValue: false)
   final bool? ignoreCollisions;
   @JsonKey(name: 'notify', defaultValue: false)
@@ -5000,8 +5252,6 @@ class MainLessonCreateWithParams {
   @JsonKey(name: 'lesson')
   final MainLessonCreate lesson;
   static const fromJsonFactory = _$MainLessonCreateWithParamsFromJson;
-  static const toJsonFactory = _$MainLessonCreateWithParamsToJson;
-  Map<String, dynamic> toJson() => _$MainLessonCreateWithParamsToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -5053,7 +5303,7 @@ extension $MainLessonCreateWithParamsExtension on MainLessonCreateWithParams {
 class MainLessonExport {
   MainLessonExport({
     required this.facultyId,
-    this.semesterId,
+    this.semesterFacultyId,
     this.directions,
     this.profiles,
     this.courses,
@@ -5064,10 +5314,13 @@ class MainLessonExport {
   factory MainLessonExport.fromJson(Map<String, dynamic> json) =>
       _$MainLessonExportFromJson(json);
 
+  static const toJsonFactory = _$MainLessonExportToJson;
+  Map<String, dynamic> toJson() => _$MainLessonExportToJson(this);
+
   @JsonKey(name: 'faculty_id')
   final int facultyId;
-  @JsonKey(name: 'semester_id')
-  final int? semesterId;
+  @JsonKey(name: 'semester_faculty_id')
+  final int? semesterFacultyId;
   @JsonKey(name: 'directions', defaultValue: <int>[])
   final List<int>? directions;
   @JsonKey(name: 'profiles', defaultValue: <int>[])
@@ -5079,8 +5332,6 @@ class MainLessonExport {
   @JsonKey(name: 'extra')
   final ExportExtraInfo? extra;
   static const fromJsonFactory = _$MainLessonExportFromJson;
-  static const toJsonFactory = _$MainLessonExportToJson;
-  Map<String, dynamic> toJson() => _$MainLessonExportToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -5089,9 +5340,9 @@ class MainLessonExport {
             (identical(other.facultyId, facultyId) ||
                 const DeepCollectionEquality()
                     .equals(other.facultyId, facultyId)) &&
-            (identical(other.semesterId, semesterId) ||
+            (identical(other.semesterFacultyId, semesterFacultyId) ||
                 const DeepCollectionEquality()
-                    .equals(other.semesterId, semesterId)) &&
+                    .equals(other.semesterFacultyId, semesterFacultyId)) &&
             (identical(other.directions, directions) ||
                 const DeepCollectionEquality()
                     .equals(other.directions, directions)) &&
@@ -5113,7 +5364,7 @@ class MainLessonExport {
   @override
   int get hashCode =>
       const DeepCollectionEquality().hash(facultyId) ^
-      const DeepCollectionEquality().hash(semesterId) ^
+      const DeepCollectionEquality().hash(semesterFacultyId) ^
       const DeepCollectionEquality().hash(directions) ^
       const DeepCollectionEquality().hash(profiles) ^
       const DeepCollectionEquality().hash(courses) ^
@@ -5125,7 +5376,7 @@ class MainLessonExport {
 extension $MainLessonExportExtension on MainLessonExport {
   MainLessonExport copyWith(
       {int? facultyId,
-      int? semesterId,
+      int? semesterFacultyId,
       List<int>? directions,
       List<int>? profiles,
       List<int>? courses,
@@ -5133,7 +5384,7 @@ extension $MainLessonExportExtension on MainLessonExport {
       ExportExtraInfo? extra}) {
     return MainLessonExport(
         facultyId: facultyId ?? this.facultyId,
-        semesterId: semesterId ?? this.semesterId,
+        semesterFacultyId: semesterFacultyId ?? this.semesterFacultyId,
         directions: directions ?? this.directions,
         profiles: profiles ?? this.profiles,
         courses: courses ?? this.courses,
@@ -5143,7 +5394,7 @@ extension $MainLessonExportExtension on MainLessonExport {
 
   MainLessonExport copyWithWrapped(
       {Wrapped<int>? facultyId,
-      Wrapped<int?>? semesterId,
+      Wrapped<int?>? semesterFacultyId,
       Wrapped<List<int>?>? directions,
       Wrapped<List<int>?>? profiles,
       Wrapped<List<int>?>? courses,
@@ -5151,7 +5402,9 @@ extension $MainLessonExportExtension on MainLessonExport {
       Wrapped<ExportExtraInfo?>? extra}) {
     return MainLessonExport(
         facultyId: (facultyId != null ? facultyId.value : this.facultyId),
-        semesterId: (semesterId != null ? semesterId.value : this.semesterId),
+        semesterFacultyId: (semesterFacultyId != null
+            ? semesterFacultyId.value
+            : this.semesterFacultyId),
         directions: (directions != null ? directions.value : this.directions),
         profiles: (profiles != null ? profiles.value : this.profiles),
         courses: (courses != null ? courses.value : this.courses),
@@ -5182,6 +5435,9 @@ class MainLessonFullWithRelated {
   factory MainLessonFullWithRelated.fromJson(Map<String, dynamic> json) =>
       _$MainLessonFullWithRelatedFromJson(json);
 
+  static const toJsonFactory = _$MainLessonFullWithRelatedToJson;
+  Map<String, dynamic> toJson() => _$MainLessonFullWithRelatedToJson(this);
+
   @JsonKey(name: 'number')
   final int number;
   @JsonKey(name: 'is_remotely')
@@ -5211,8 +5467,6 @@ class MainLessonFullWithRelated {
   @JsonKey(name: 'related_lessons', defaultValue: <LessonRelated>[])
   final List<LessonRelated>? relatedLessons;
   static const fromJsonFactory = _$MainLessonFullWithRelatedFromJson;
-  static const toJsonFactory = _$MainLessonFullWithRelatedToJson;
-  Map<String, dynamic> toJson() => _$MainLessonFullWithRelatedToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -5358,6 +5612,9 @@ class MainLessonHistory {
   factory MainLessonHistory.fromJson(Map<String, dynamic> json) =>
       _$MainLessonHistoryFromJson(json);
 
+  static const toJsonFactory = _$MainLessonHistoryToJson;
+  Map<String, dynamic> toJson() => _$MainLessonHistoryToJson(this);
+
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'user')
@@ -5367,8 +5624,6 @@ class MainLessonHistory {
   @JsonKey(name: 'timestamp')
   final DateTime timestamp;
   static const fromJsonFactory = _$MainLessonHistoryFromJson;
-  static const toJsonFactory = _$MainLessonHistoryToJson;
-  Map<String, dynamic> toJson() => _$MainLessonHistoryToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -5435,6 +5690,9 @@ class MainLessonHistoryField {
   factory MainLessonHistoryField.fromJson(Map<String, dynamic> json) =>
       _$MainLessonHistoryFieldFromJson(json);
 
+  static const toJsonFactory = _$MainLessonHistoryFieldToJson;
+  Map<String, dynamic> toJson() => _$MainLessonHistoryFieldToJson(this);
+
   @JsonKey(
     name: 'field',
     toJson: historyFieldToJson,
@@ -5446,8 +5704,6 @@ class MainLessonHistoryField {
   @JsonKey(name: 'old_value')
   final String? oldValue;
   static const fromJsonFactory = _$MainLessonHistoryFieldFromJson;
-  static const toJsonFactory = _$MainLessonHistoryFieldToJson;
-  Map<String, dynamic> toJson() => _$MainLessonHistoryFieldToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -5515,6 +5771,9 @@ class MainLessonInfo {
   factory MainLessonInfo.fromJson(Map<String, dynamic> json) =>
       _$MainLessonInfoFromJson(json);
 
+  static const toJsonFactory = _$MainLessonInfoToJson;
+  Map<String, dynamic> toJson() => _$MainLessonInfoToJson(this);
+
   @JsonKey(name: 'number')
   final int number;
   @JsonKey(name: 'is_remotely')
@@ -5542,8 +5801,6 @@ class MainLessonInfo {
   @JsonKey(name: 'teachers', defaultValue: <int>[])
   final List<int>? teachers;
   static const fromJsonFactory = _$MainLessonInfoFromJson;
-  static const toJsonFactory = _$MainLessonInfoToJson;
-  Map<String, dynamic> toJson() => _$MainLessonInfoToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -5681,6 +5938,9 @@ class MainLessonResults {
   factory MainLessonResults.fromJson(Map<String, dynamic> json) =>
       _$MainLessonResultsFromJson(json);
 
+  static const toJsonFactory = _$MainLessonResultsToJson;
+  Map<String, dynamic> toJson() => _$MainLessonResultsToJson(this);
+
   @JsonKey(name: 'header_ids', defaultValue: <int>[])
   final List<int> headerIds;
   @JsonKey(name: 'lessons', defaultValue: <MainLessonInfo>[])
@@ -5694,8 +5954,6 @@ class MainLessonResults {
   )
   final enums.ViewMode? mode;
   static const fromJsonFactory = _$MainLessonResultsFromJson;
-  static const toJsonFactory = _$MainLessonResultsToJson;
-  Map<String, dynamic> toJson() => _$MainLessonResultsToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -5772,6 +6030,9 @@ class MainLessonUpdate {
   factory MainLessonUpdate.fromJson(Map<String, dynamic> json) =>
       _$MainLessonUpdateFromJson(json);
 
+  static const toJsonFactory = _$MainLessonUpdateToJson;
+  Map<String, dynamic> toJson() => _$MainLessonUpdateToJson(this);
+
   @JsonKey(name: 'discipline_id')
   final int? disciplineId;
   @JsonKey(name: 'number')
@@ -5797,8 +6058,6 @@ class MainLessonUpdate {
   @JsonKey(name: 'end_date', toJson: _dateToJson)
   final DateTime? endDate;
   static const fromJsonFactory = _$MainLessonUpdateFromJson;
-  static const toJsonFactory = _$MainLessonUpdateToJson;
-  Map<String, dynamic> toJson() => _$MainLessonUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -5927,6 +6186,9 @@ class MainLessonUpdateWithParams {
   factory MainLessonUpdateWithParams.fromJson(Map<String, dynamic> json) =>
       _$MainLessonUpdateWithParamsFromJson(json);
 
+  static const toJsonFactory = _$MainLessonUpdateWithParamsToJson;
+  Map<String, dynamic> toJson() => _$MainLessonUpdateWithParamsToJson(this);
+
   @JsonKey(name: 'ignore_collisions', defaultValue: false)
   final bool? ignoreCollisions;
   @JsonKey(name: 'notify', defaultValue: false)
@@ -5934,8 +6196,6 @@ class MainLessonUpdateWithParams {
   @JsonKey(name: 'lesson')
   final MainLessonUpdate lesson;
   static const fromJsonFactory = _$MainLessonUpdateWithParamsFromJson;
-  static const toJsonFactory = _$MainLessonUpdateWithParamsToJson;
-  Map<String, dynamic> toJson() => _$MainLessonUpdateWithParamsToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -6005,6 +6265,9 @@ class MainLessonWithRelated {
   factory MainLessonWithRelated.fromJson(Map<String, dynamic> json) =>
       _$MainLessonWithRelatedFromJson(json);
 
+  static const toJsonFactory = _$MainLessonWithRelatedToJson;
+  Map<String, dynamic> toJson() => _$MainLessonWithRelatedToJson(this);
+
   @JsonKey(name: 'number')
   final int number;
   @JsonKey(name: 'is_remotely')
@@ -6034,8 +6297,6 @@ class MainLessonWithRelated {
   @JsonKey(name: 'related_lessons', defaultValue: <LessonRelated>[])
   final List<LessonRelated>? relatedLessons;
   static const fromJsonFactory = _$MainLessonWithRelatedFromJson;
-  static const toJsonFactory = _$MainLessonWithRelatedToJson;
-  Map<String, dynamic> toJson() => _$MainLessonWithRelatedToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -6183,6 +6444,9 @@ class PageLog {
   factory PageLog.fromJson(Map<String, dynamic> json) =>
       _$PageLogFromJson(json);
 
+  static const toJsonFactory = _$PageLogToJson;
+  Map<String, dynamic> toJson() => _$PageLogToJson(this);
+
   @JsonKey(name: 'items', defaultValue: <Log>[])
   final List<Log> items;
   @JsonKey(name: 'total')
@@ -6192,8 +6456,6 @@ class PageLog {
   @JsonKey(name: 'size')
   final int size;
   static const fromJsonFactory = _$PageLogFromJson;
-  static const toJsonFactory = _$PageLogToJson;
-  Map<String, dynamic> toJson() => _$PageLogToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -6255,6 +6517,9 @@ class PageStudentShortInDb {
   factory PageStudentShortInDb.fromJson(Map<String, dynamic> json) =>
       _$PageStudentShortInDbFromJson(json);
 
+  static const toJsonFactory = _$PageStudentShortInDbToJson;
+  Map<String, dynamic> toJson() => _$PageStudentShortInDbToJson(this);
+
   @JsonKey(name: 'items', defaultValue: <StudentShortInDb>[])
   final List<StudentShortInDb> items;
   @JsonKey(name: 'total')
@@ -6264,8 +6529,6 @@ class PageStudentShortInDb {
   @JsonKey(name: 'size')
   final int size;
   static const fromJsonFactory = _$PageStudentShortInDbFromJson;
-  static const toJsonFactory = _$PageStudentShortInDbToJson;
-  Map<String, dynamic> toJson() => _$PageStudentShortInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -6328,6 +6591,9 @@ class PageUserFullInDb {
   factory PageUserFullInDb.fromJson(Map<String, dynamic> json) =>
       _$PageUserFullInDbFromJson(json);
 
+  static const toJsonFactory = _$PageUserFullInDbToJson;
+  Map<String, dynamic> toJson() => _$PageUserFullInDbToJson(this);
+
   @JsonKey(name: 'items', defaultValue: <UserFullInDb>[])
   final List<UserFullInDb> items;
   @JsonKey(name: 'total')
@@ -6337,8 +6603,6 @@ class PageUserFullInDb {
   @JsonKey(name: 'size')
   final int size;
   static const fromJsonFactory = _$PageUserFullInDbFromJson;
-  static const toJsonFactory = _$PageUserFullInDbToJson;
-  Map<String, dynamic> toJson() => _$PageUserFullInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -6402,6 +6666,9 @@ class PersonCreate {
   factory PersonCreate.fromJson(Map<String, dynamic> json) =>
       _$PersonCreateFromJson(json);
 
+  static const toJsonFactory = _$PersonCreateToJson;
+  Map<String, dynamic> toJson() => _$PersonCreateToJson(this);
+
   @JsonKey(name: 'middle_name')
   final String? middleName;
   @JsonKey(name: 'gender')
@@ -6413,8 +6680,6 @@ class PersonCreate {
   @JsonKey(name: 'last_name')
   final String lastName;
   static const fromJsonFactory = _$PersonCreateFromJson;
-  static const toJsonFactory = _$PersonCreateToJson;
-  Map<String, dynamic> toJson() => _$PersonCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -6488,11 +6753,12 @@ class PersonFullName {
   factory PersonFullName.fromJson(Map<String, dynamic> json) =>
       _$PersonFullNameFromJson(json);
 
+  static const toJsonFactory = _$PersonFullNameToJson;
+  Map<String, dynamic> toJson() => _$PersonFullNameToJson(this);
+
   @JsonKey(name: 'full_name')
   final String fullName;
   static const fromJsonFactory = _$PersonFullNameFromJson;
-  static const toJsonFactory = _$PersonFullNameToJson;
-  Map<String, dynamic> toJson() => _$PersonFullNameToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -6538,6 +6804,9 @@ class PersonInDb {
   factory PersonInDb.fromJson(Map<String, dynamic> json) =>
       _$PersonInDbFromJson(json);
 
+  static const toJsonFactory = _$PersonInDbToJson;
+  Map<String, dynamic> toJson() => _$PersonInDbToJson(this);
+
   @JsonKey(name: 'full_name')
   final String fullName;
   @JsonKey(name: 'first_name')
@@ -6559,8 +6828,6 @@ class PersonInDb {
   @JsonKey(name: 'id')
   final int id;
   static const fromJsonFactory = _$PersonInDbFromJson;
-  static const toJsonFactory = _$PersonInDbToJson;
-  Map<String, dynamic> toJson() => _$PersonInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -6659,6 +6926,9 @@ class PersonShortInDb {
   factory PersonShortInDb.fromJson(Map<String, dynamic> json) =>
       _$PersonShortInDbFromJson(json);
 
+  static const toJsonFactory = _$PersonShortInDbToJson;
+  Map<String, dynamic> toJson() => _$PersonShortInDbToJson(this);
+
   @JsonKey(name: 'first_name')
   final String firstName;
   @JsonKey(name: 'last_name')
@@ -6668,8 +6938,6 @@ class PersonShortInDb {
   @JsonKey(name: 'id')
   final int id;
   static const fromJsonFactory = _$PersonShortInDbFromJson;
-  static const toJsonFactory = _$PersonShortInDbToJson;
-  Map<String, dynamic> toJson() => _$PersonShortInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -6736,6 +7004,9 @@ class PersonUpdate {
   factory PersonUpdate.fromJson(Map<String, dynamic> json) =>
       _$PersonUpdateFromJson(json);
 
+  static const toJsonFactory = _$PersonUpdateToJson;
+  Map<String, dynamic> toJson() => _$PersonUpdateToJson(this);
+
   @JsonKey(name: 'middle_name')
   final String? middleName;
   @JsonKey(name: 'gender')
@@ -6747,8 +7018,6 @@ class PersonUpdate {
   @JsonKey(name: 'last_name')
   final String? lastName;
   static const fromJsonFactory = _$PersonUpdateFromJson;
-  static const toJsonFactory = _$PersonUpdateToJson;
-  Map<String, dynamic> toJson() => _$PersonUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -6826,6 +7095,9 @@ class PlaceCreate {
   factory PlaceCreate.fromJson(Map<String, dynamic> json) =>
       _$PlaceCreateFromJson(json);
 
+  static const toJsonFactory = _$PlaceCreateToJson;
+  Map<String, dynamic> toJson() => _$PlaceCreateToJson(this);
+
   @JsonKey(name: 'address')
   final String address;
   @JsonKey(name: 'name')
@@ -6837,8 +7109,6 @@ class PlaceCreate {
   @JsonKey(name: 'equipments', defaultValue: <PlaceEquipmentShortInfo>[])
   final List<PlaceEquipmentShortInfo>? equipments;
   static const fromJsonFactory = _$PlaceCreateFromJson;
-  static const toJsonFactory = _$PlaceCreateToJson;
-  Map<String, dynamic> toJson() => _$PlaceCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -6912,13 +7182,14 @@ class PlaceEquipmentInfo {
   factory PlaceEquipmentInfo.fromJson(Map<String, dynamic> json) =>
       _$PlaceEquipmentInfoFromJson(json);
 
+  static const toJsonFactory = _$PlaceEquipmentInfoToJson;
+  Map<String, dynamic> toJson() => _$PlaceEquipmentInfoToJson(this);
+
   @JsonKey(name: 'equipment')
   final EquipmentInDb equipment;
   @JsonKey(name: 'amount')
   final int? amount;
   static const fromJsonFactory = _$PlaceEquipmentInfoFromJson;
-  static const toJsonFactory = _$PlaceEquipmentInfoToJson;
-  Map<String, dynamic> toJson() => _$PlaceEquipmentInfoToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -6965,13 +7236,14 @@ class PlaceEquipmentShortInfo {
   factory PlaceEquipmentShortInfo.fromJson(Map<String, dynamic> json) =>
       _$PlaceEquipmentShortInfoFromJson(json);
 
+  static const toJsonFactory = _$PlaceEquipmentShortInfoToJson;
+  Map<String, dynamic> toJson() => _$PlaceEquipmentShortInfoToJson(this);
+
   @JsonKey(name: 'equipment_id')
   final int equipmentId;
   @JsonKey(name: 'amount')
   final int? amount;
   static const fromJsonFactory = _$PlaceEquipmentShortInfoFromJson;
-  static const toJsonFactory = _$PlaceEquipmentShortInfoToJson;
-  Map<String, dynamic> toJson() => _$PlaceEquipmentShortInfoToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -7019,11 +7291,12 @@ class PlaceExport {
   factory PlaceExport.fromJson(Map<String, dynamic> json) =>
       _$PlaceExportFromJson(json);
 
+  static const toJsonFactory = _$PlaceExportToJson;
+  Map<String, dynamic> toJson() => _$PlaceExportToJson(this);
+
   @JsonKey(name: 'faculty_id')
   final int? facultyId;
   static const fromJsonFactory = _$PlaceExportFromJson;
-  static const toJsonFactory = _$PlaceExportToJson;
-  Map<String, dynamic> toJson() => _$PlaceExportToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -7067,6 +7340,9 @@ class PlaceInDb {
   factory PlaceInDb.fromJson(Map<String, dynamic> json) =>
       _$PlaceInDbFromJson(json);
 
+  static const toJsonFactory = _$PlaceInDbToJson;
+  Map<String, dynamic> toJson() => _$PlaceInDbToJson(this);
+
   @JsonKey(name: 'address')
   final String address;
   @JsonKey(name: 'name')
@@ -7080,8 +7356,6 @@ class PlaceInDb {
   @JsonKey(name: 'id')
   final int id;
   static const fromJsonFactory = _$PlaceInDbFromJson;
-  static const toJsonFactory = _$PlaceInDbToJson;
-  Map<String, dynamic> toJson() => _$PlaceInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -7164,13 +7438,14 @@ class PlaceNameInDb {
   factory PlaceNameInDb.fromJson(Map<String, dynamic> json) =>
       _$PlaceNameInDbFromJson(json);
 
+  static const toJsonFactory = _$PlaceNameInDbToJson;
+  Map<String, dynamic> toJson() => _$PlaceNameInDbToJson(this);
+
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'name')
   final String name;
   static const fromJsonFactory = _$PlaceNameInDbFromJson;
-  static const toJsonFactory = _$PlaceNameInDbToJson;
-  Map<String, dynamic> toJson() => _$PlaceNameInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -7218,6 +7493,9 @@ class PlaceShortInDb {
   factory PlaceShortInDb.fromJson(Map<String, dynamic> json) =>
       _$PlaceShortInDbFromJson(json);
 
+  static const toJsonFactory = _$PlaceShortInDbToJson;
+  Map<String, dynamic> toJson() => _$PlaceShortInDbToJson(this);
+
   @JsonKey(name: 'address')
   final String address;
   @JsonKey(name: 'name')
@@ -7231,8 +7509,6 @@ class PlaceShortInDb {
   @JsonKey(name: 'equipments', defaultValue: <PlaceEquipmentShortInfo>[])
   final List<PlaceEquipmentShortInfo>? equipments;
   static const fromJsonFactory = _$PlaceShortInDbFromJson;
-  static const toJsonFactory = _$PlaceShortInDbToJson;
-  Map<String, dynamic> toJson() => _$PlaceShortInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -7316,6 +7592,9 @@ class PlaceUpdate {
   factory PlaceUpdate.fromJson(Map<String, dynamic> json) =>
       _$PlaceUpdateFromJson(json);
 
+  static const toJsonFactory = _$PlaceUpdateToJson;
+  Map<String, dynamic> toJson() => _$PlaceUpdateToJson(this);
+
   @JsonKey(name: 'address')
   final String address;
   @JsonKey(name: 'name')
@@ -7327,8 +7606,6 @@ class PlaceUpdate {
   @JsonKey(name: 'equipments', defaultValue: <PlaceEquipmentShortInfo>[])
   final List<PlaceEquipmentShortInfo>? equipments;
   static const fromJsonFactory = _$PlaceUpdateFromJson;
-  static const toJsonFactory = _$PlaceUpdateToJson;
-  Map<String, dynamic> toJson() => _$PlaceUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -7402,13 +7679,14 @@ class ProductionCalendarDayCreate {
   factory ProductionCalendarDayCreate.fromJson(Map<String, dynamic> json) =>
       _$ProductionCalendarDayCreateFromJson(json);
 
+  static const toJsonFactory = _$ProductionCalendarDayCreateToJson;
+  Map<String, dynamic> toJson() => _$ProductionCalendarDayCreateToJson(this);
+
   @JsonKey(name: 'date')
   final String date;
   @JsonKey(name: 'is_holiday')
   final bool isHoliday;
   static const fromJsonFactory = _$ProductionCalendarDayCreateFromJson;
-  static const toJsonFactory = _$ProductionCalendarDayCreateToJson;
-  Map<String, dynamic> toJson() => _$ProductionCalendarDayCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -7456,6 +7734,9 @@ class ProductionCalendarDayInDb {
   factory ProductionCalendarDayInDb.fromJson(Map<String, dynamic> json) =>
       _$ProductionCalendarDayInDbFromJson(json);
 
+  static const toJsonFactory = _$ProductionCalendarDayInDbToJson;
+  Map<String, dynamic> toJson() => _$ProductionCalendarDayInDbToJson(this);
+
   @JsonKey(name: 'date', toJson: _dateToJson)
   final DateTime date;
   @JsonKey(name: 'is_holiday')
@@ -7463,8 +7744,6 @@ class ProductionCalendarDayInDb {
   @JsonKey(name: 'id')
   final int id;
   static const fromJsonFactory = _$ProductionCalendarDayInDbFromJson;
-  static const toJsonFactory = _$ProductionCalendarDayInDbToJson;
-  Map<String, dynamic> toJson() => _$ProductionCalendarDayInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -7517,11 +7796,12 @@ class ProductionCalendarDayUpdate {
   factory ProductionCalendarDayUpdate.fromJson(Map<String, dynamic> json) =>
       _$ProductionCalendarDayUpdateFromJson(json);
 
+  static const toJsonFactory = _$ProductionCalendarDayUpdateToJson;
+  Map<String, dynamic> toJson() => _$ProductionCalendarDayUpdateToJson(this);
+
   @JsonKey(name: 'is_holiday')
   final bool isHoliday;
   static const fromJsonFactory = _$ProductionCalendarDayUpdateFromJson;
-  static const toJsonFactory = _$ProductionCalendarDayUpdateToJson;
-  Map<String, dynamic> toJson() => _$ProductionCalendarDayUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -7562,6 +7842,9 @@ class ProfileCreate {
   factory ProfileCreate.fromJson(Map<String, dynamic> json) =>
       _$ProfileCreateFromJson(json);
 
+  static const toJsonFactory = _$ProfileCreateToJson;
+  Map<String, dynamic> toJson() => _$ProfileCreateToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(name: 'short_name')
@@ -7569,8 +7852,6 @@ class ProfileCreate {
   @JsonKey(name: 'direction_id')
   final int directionId;
   static const fromJsonFactory = _$ProfileCreateFromJson;
-  static const toJsonFactory = _$ProfileCreateToJson;
-  Map<String, dynamic> toJson() => _$ProfileCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -7629,6 +7910,9 @@ class ProfileInDb {
   factory ProfileInDb.fromJson(Map<String, dynamic> json) =>
       _$ProfileInDbFromJson(json);
 
+  static const toJsonFactory = _$ProfileInDbToJson;
+  Map<String, dynamic> toJson() => _$ProfileInDbToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(name: 'short_name')
@@ -7638,8 +7922,6 @@ class ProfileInDb {
   @JsonKey(name: 'id')
   final int id;
   static const fromJsonFactory = _$ProfileInDbFromJson;
-  static const toJsonFactory = _$ProfileInDbToJson;
-  Map<String, dynamic> toJson() => _$ProfileInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -7704,6 +7986,9 @@ class ProfileUpdate {
   factory ProfileUpdate.fromJson(Map<String, dynamic> json) =>
       _$ProfileUpdateFromJson(json);
 
+  static const toJsonFactory = _$ProfileUpdateToJson;
+  Map<String, dynamic> toJson() => _$ProfileUpdateToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(name: 'short_name')
@@ -7711,8 +7996,6 @@ class ProfileUpdate {
   @JsonKey(name: 'direction_id')
   final int directionId;
   static const fromJsonFactory = _$ProfileUpdateFromJson;
-  static const toJsonFactory = _$ProfileUpdateToJson;
-  Map<String, dynamic> toJson() => _$ProfileUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -7769,6 +8052,9 @@ class RoleCreate {
   factory RoleCreate.fromJson(Map<String, dynamic> json) =>
       _$RoleCreateFromJson(json);
 
+  static const toJsonFactory = _$RoleCreateToJson;
+  Map<String, dynamic> toJson() => _$RoleCreateToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(
@@ -7778,8 +8064,6 @@ class RoleCreate {
   )
   final List<enums.Permissions>? permissionNames;
   static const fromJsonFactory = _$RoleCreateFromJson;
-  static const toJsonFactory = _$RoleCreateToJson;
-  Map<String, dynamic> toJson() => _$RoleCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -7831,13 +8115,14 @@ class RoleInDb {
   factory RoleInDb.fromJson(Map<String, dynamic> json) =>
       _$RoleInDbFromJson(json);
 
+  static const toJsonFactory = _$RoleInDbToJson;
+  Map<String, dynamic> toJson() => _$RoleInDbToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(name: 'id')
   final int id;
   static const fromJsonFactory = _$RoleInDbFromJson;
-  static const toJsonFactory = _$RoleInDbToJson;
-  Map<String, dynamic> toJson() => _$RoleInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -7882,6 +8167,9 @@ class RolePermissionsInDb {
   factory RolePermissionsInDb.fromJson(Map<String, dynamic> json) =>
       _$RolePermissionsInDbFromJson(json);
 
+  static const toJsonFactory = _$RolePermissionsInDbToJson;
+  Map<String, dynamic> toJson() => _$RolePermissionsInDbToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(name: 'id')
@@ -7893,8 +8181,6 @@ class RolePermissionsInDb {
   )
   final List<enums.Permissions> permissionsNames;
   static const fromJsonFactory = _$RolePermissionsInDbFromJson;
-  static const toJsonFactory = _$RolePermissionsInDbToJson;
-  Map<String, dynamic> toJson() => _$RolePermissionsInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -7952,6 +8238,9 @@ class RoleUpdate {
   factory RoleUpdate.fromJson(Map<String, dynamic> json) =>
       _$RoleUpdateFromJson(json);
 
+  static const toJsonFactory = _$RoleUpdateToJson;
+  Map<String, dynamic> toJson() => _$RoleUpdateToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(
@@ -7961,8 +8250,6 @@ class RoleUpdate {
   )
   final List<enums.Permissions>? permissionNames;
   static const fromJsonFactory = _$RoleUpdateFromJson;
-  static const toJsonFactory = _$RoleUpdateToJson;
-  Map<String, dynamic> toJson() => _$RoleUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -8014,6 +8301,9 @@ class SemesterCreate {
   factory SemesterCreate.fromJson(Map<String, dynamic> json) =>
       _$SemesterCreateFromJson(json);
 
+  static const toJsonFactory = _$SemesterCreateToJson;
+  Map<String, dynamic> toJson() => _$SemesterCreateToJson(this);
+
   @JsonKey(
     name: 'type',
     toJson: semesterTypeToJson,
@@ -8023,8 +8313,6 @@ class SemesterCreate {
   @JsonKey(name: 'study_year')
   final String studyYear;
   static const fromJsonFactory = _$SemesterCreateFromJson;
-  static const toJsonFactory = _$SemesterCreateToJson;
-  Map<String, dynamic> toJson() => _$SemesterCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -8062,62 +8350,44 @@ extension $SemesterCreateExtension on SemesterCreate {
 }
 
 @JsonSerializable(explicitToJson: true)
-class SemesterDirectionCreate {
-  SemesterDirectionCreate({
-    this.directionId,
-    required this.course,
-    required this.startDateSemester,
-    required this.endDateSemester,
-    required this.startDateSession,
-    required this.endDateSession,
+class SemesterFacultyCreate {
+  SemesterFacultyCreate({
     required this.semesterId,
+    required this.facultyId,
+    this.$part,
+    this.week,
   });
 
-  factory SemesterDirectionCreate.fromJson(Map<String, dynamic> json) =>
-      _$SemesterDirectionCreateFromJson(json);
+  factory SemesterFacultyCreate.fromJson(Map<String, dynamic> json) =>
+      _$SemesterFacultyCreateFromJson(json);
 
-  @JsonKey(name: 'direction_id')
-  final int? directionId;
-  @JsonKey(name: 'course')
-  final int course;
-  @JsonKey(name: 'start_date_semester', toJson: _dateToJson)
-  final DateTime startDateSemester;
-  @JsonKey(name: 'end_date_semester', toJson: _dateToJson)
-  final DateTime endDateSemester;
-  @JsonKey(name: 'start_date_session', toJson: _dateToJson)
-  final DateTime startDateSession;
-  @JsonKey(name: 'end_date_session', toJson: _dateToJson)
-  final DateTime endDateSession;
+  static const toJsonFactory = _$SemesterFacultyCreateToJson;
+  Map<String, dynamic> toJson() => _$SemesterFacultyCreateToJson(this);
+
   @JsonKey(name: 'semester_id')
   final int semesterId;
-  static const fromJsonFactory = _$SemesterDirectionCreateFromJson;
-  static const toJsonFactory = _$SemesterDirectionCreateToJson;
-  Map<String, dynamic> toJson() => _$SemesterDirectionCreateToJson(this);
+  @JsonKey(name: 'faculty_id')
+  final int facultyId;
+  @JsonKey(name: 'part')
+  final int? $part;
+  @JsonKey(name: 'week')
+  final SemesterFacultyWeekCreate? week;
+  static const fromJsonFactory = _$SemesterFacultyCreateFromJson;
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is SemesterDirectionCreate &&
-            (identical(other.directionId, directionId) ||
-                const DeepCollectionEquality()
-                    .equals(other.directionId, directionId)) &&
-            (identical(other.course, course) ||
-                const DeepCollectionEquality().equals(other.course, course)) &&
-            (identical(other.startDateSemester, startDateSemester) ||
-                const DeepCollectionEquality()
-                    .equals(other.startDateSemester, startDateSemester)) &&
-            (identical(other.endDateSemester, endDateSemester) ||
-                const DeepCollectionEquality()
-                    .equals(other.endDateSemester, endDateSemester)) &&
-            (identical(other.startDateSession, startDateSession) ||
-                const DeepCollectionEquality()
-                    .equals(other.startDateSession, startDateSession)) &&
-            (identical(other.endDateSession, endDateSession) ||
-                const DeepCollectionEquality()
-                    .equals(other.endDateSession, endDateSession)) &&
+        (other is SemesterFacultyCreate &&
             (identical(other.semesterId, semesterId) ||
                 const DeepCollectionEquality()
-                    .equals(other.semesterId, semesterId)));
+                    .equals(other.semesterId, semesterId)) &&
+            (identical(other.facultyId, facultyId) ||
+                const DeepCollectionEquality()
+                    .equals(other.facultyId, facultyId)) &&
+            (identical(other.$part, $part) ||
+                const DeepCollectionEquality().equals(other.$part, $part)) &&
+            (identical(other.week, week) ||
+                const DeepCollectionEquality().equals(other.week, week)));
   }
 
   @override
@@ -8125,125 +8395,110 @@ class SemesterDirectionCreate {
 
   @override
   int get hashCode =>
-      const DeepCollectionEquality().hash(directionId) ^
-      const DeepCollectionEquality().hash(course) ^
-      const DeepCollectionEquality().hash(startDateSemester) ^
-      const DeepCollectionEquality().hash(endDateSemester) ^
-      const DeepCollectionEquality().hash(startDateSession) ^
-      const DeepCollectionEquality().hash(endDateSession) ^
       const DeepCollectionEquality().hash(semesterId) ^
+      const DeepCollectionEquality().hash(facultyId) ^
+      const DeepCollectionEquality().hash($part) ^
+      const DeepCollectionEquality().hash(week) ^
       runtimeType.hashCode;
 }
 
-extension $SemesterDirectionCreateExtension on SemesterDirectionCreate {
-  SemesterDirectionCreate copyWith(
-      {int? directionId,
-      int? course,
-      DateTime? startDateSemester,
-      DateTime? endDateSemester,
-      DateTime? startDateSession,
-      DateTime? endDateSession,
-      int? semesterId}) {
-    return SemesterDirectionCreate(
-        directionId: directionId ?? this.directionId,
-        course: course ?? this.course,
-        startDateSemester: startDateSemester ?? this.startDateSemester,
-        endDateSemester: endDateSemester ?? this.endDateSemester,
-        startDateSession: startDateSession ?? this.startDateSession,
-        endDateSession: endDateSession ?? this.endDateSession,
-        semesterId: semesterId ?? this.semesterId);
+extension $SemesterFacultyCreateExtension on SemesterFacultyCreate {
+  SemesterFacultyCreate copyWith(
+      {int? semesterId,
+      int? facultyId,
+      int? $part,
+      SemesterFacultyWeekCreate? week}) {
+    return SemesterFacultyCreate(
+        semesterId: semesterId ?? this.semesterId,
+        facultyId: facultyId ?? this.facultyId,
+        $part: $part ?? this.$part,
+        week: week ?? this.week);
   }
 
-  SemesterDirectionCreate copyWithWrapped(
-      {Wrapped<int?>? directionId,
-      Wrapped<int>? course,
-      Wrapped<DateTime>? startDateSemester,
-      Wrapped<DateTime>? endDateSemester,
-      Wrapped<DateTime>? startDateSession,
-      Wrapped<DateTime>? endDateSession,
-      Wrapped<int>? semesterId}) {
-    return SemesterDirectionCreate(
-        directionId:
-            (directionId != null ? directionId.value : this.directionId),
-        course: (course != null ? course.value : this.course),
-        startDateSemester: (startDateSemester != null
-            ? startDateSemester.value
-            : this.startDateSemester),
-        endDateSemester: (endDateSemester != null
-            ? endDateSemester.value
-            : this.endDateSemester),
-        startDateSession: (startDateSession != null
-            ? startDateSession.value
-            : this.startDateSession),
-        endDateSession: (endDateSession != null
-            ? endDateSession.value
-            : this.endDateSession),
-        semesterId: (semesterId != null ? semesterId.value : this.semesterId));
+  SemesterFacultyCreate copyWithWrapped(
+      {Wrapped<int>? semesterId,
+      Wrapped<int>? facultyId,
+      Wrapped<int?>? $part,
+      Wrapped<SemesterFacultyWeekCreate?>? week}) {
+    return SemesterFacultyCreate(
+        semesterId: (semesterId != null ? semesterId.value : this.semesterId),
+        facultyId: (facultyId != null ? facultyId.value : this.facultyId),
+        $part: ($part != null ? $part.value : this.$part),
+        week: (week != null ? week.value : this.week));
   }
 }
 
 @JsonSerializable(explicitToJson: true)
-class SemesterDirectionInDb {
-  SemesterDirectionInDb({
+class SemesterFacultyInDb {
+  SemesterFacultyInDb({
     required this.id,
-    required this.directionId,
-    required this.course,
-    required this.startDateSemester,
-    required this.endDateSemester,
-    required this.startDateSession,
-    required this.endDateSession,
+    this.startDate,
+    this.endDate,
+    this.$part,
     required this.semesterId,
+    required this.facultyId,
+    required this.isCurrent,
+    this.mode,
+    this.week,
   });
 
-  factory SemesterDirectionInDb.fromJson(Map<String, dynamic> json) =>
-      _$SemesterDirectionInDbFromJson(json);
+  factory SemesterFacultyInDb.fromJson(Map<String, dynamic> json) =>
+      _$SemesterFacultyInDbFromJson(json);
+
+  static const toJsonFactory = _$SemesterFacultyInDbToJson;
+  Map<String, dynamic> toJson() => _$SemesterFacultyInDbToJson(this);
 
   @JsonKey(name: 'id')
   final int id;
-  @JsonKey(name: 'direction_id')
-  final int directionId;
-  @JsonKey(name: 'course')
-  final int course;
-  @JsonKey(name: 'start_date_semester', toJson: _dateToJson)
-  final DateTime startDateSemester;
-  @JsonKey(name: 'end_date_semester', toJson: _dateToJson)
-  final DateTime endDateSemester;
-  @JsonKey(name: 'start_date_session', toJson: _dateToJson)
-  final DateTime startDateSession;
-  @JsonKey(name: 'end_date_session', toJson: _dateToJson)
-  final DateTime endDateSession;
+  @JsonKey(name: 'start_date', toJson: _dateToJson)
+  final DateTime? startDate;
+  @JsonKey(name: 'end_date', toJson: _dateToJson)
+  final DateTime? endDate;
+  @JsonKey(name: 'part')
+  final int? $part;
   @JsonKey(name: 'semester_id')
   final int semesterId;
-  static const fromJsonFactory = _$SemesterDirectionInDbFromJson;
-  static const toJsonFactory = _$SemesterDirectionInDbToJson;
-  Map<String, dynamic> toJson() => _$SemesterDirectionInDbToJson(this);
+  @JsonKey(name: 'faculty_id')
+  final int facultyId;
+  @JsonKey(name: 'is_current')
+  final bool isCurrent;
+  @JsonKey(
+    name: 'mode',
+    toJson: viewModeToJson,
+    fromJson: viewModeFromJson,
+  )
+  final enums.ViewMode? mode;
+  @JsonKey(name: 'week')
+  final SemesterFacultyWeek? week;
+  static const fromJsonFactory = _$SemesterFacultyInDbFromJson;
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is SemesterDirectionInDb &&
+        (other is SemesterFacultyInDb &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.directionId, directionId) ||
+            (identical(other.startDate, startDate) ||
                 const DeepCollectionEquality()
-                    .equals(other.directionId, directionId)) &&
-            (identical(other.course, course) ||
-                const DeepCollectionEquality().equals(other.course, course)) &&
-            (identical(other.startDateSemester, startDateSemester) ||
+                    .equals(other.startDate, startDate)) &&
+            (identical(other.endDate, endDate) ||
                 const DeepCollectionEquality()
-                    .equals(other.startDateSemester, startDateSemester)) &&
-            (identical(other.endDateSemester, endDateSemester) ||
-                const DeepCollectionEquality()
-                    .equals(other.endDateSemester, endDateSemester)) &&
-            (identical(other.startDateSession, startDateSession) ||
-                const DeepCollectionEquality()
-                    .equals(other.startDateSession, startDateSession)) &&
-            (identical(other.endDateSession, endDateSession) ||
-                const DeepCollectionEquality()
-                    .equals(other.endDateSession, endDateSession)) &&
+                    .equals(other.endDate, endDate)) &&
+            (identical(other.$part, $part) ||
+                const DeepCollectionEquality().equals(other.$part, $part)) &&
             (identical(other.semesterId, semesterId) ||
                 const DeepCollectionEquality()
-                    .equals(other.semesterId, semesterId)));
+                    .equals(other.semesterId, semesterId)) &&
+            (identical(other.facultyId, facultyId) ||
+                const DeepCollectionEquality()
+                    .equals(other.facultyId, facultyId)) &&
+            (identical(other.isCurrent, isCurrent) ||
+                const DeepCollectionEquality()
+                    .equals(other.isCurrent, isCurrent)) &&
+            (identical(other.mode, mode) ||
+                const DeepCollectionEquality().equals(other.mode, mode)) &&
+            (identical(other.week, week) ||
+                const DeepCollectionEquality().equals(other.week, week)));
   }
 
   @override
@@ -8252,124 +8507,109 @@ class SemesterDirectionInDb {
   @override
   int get hashCode =>
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(directionId) ^
-      const DeepCollectionEquality().hash(course) ^
-      const DeepCollectionEquality().hash(startDateSemester) ^
-      const DeepCollectionEquality().hash(endDateSemester) ^
-      const DeepCollectionEquality().hash(startDateSession) ^
-      const DeepCollectionEquality().hash(endDateSession) ^
+      const DeepCollectionEquality().hash(startDate) ^
+      const DeepCollectionEquality().hash(endDate) ^
+      const DeepCollectionEquality().hash($part) ^
       const DeepCollectionEquality().hash(semesterId) ^
+      const DeepCollectionEquality().hash(facultyId) ^
+      const DeepCollectionEquality().hash(isCurrent) ^
+      const DeepCollectionEquality().hash(mode) ^
+      const DeepCollectionEquality().hash(week) ^
       runtimeType.hashCode;
 }
 
-extension $SemesterDirectionInDbExtension on SemesterDirectionInDb {
-  SemesterDirectionInDb copyWith(
+extension $SemesterFacultyInDbExtension on SemesterFacultyInDb {
+  SemesterFacultyInDb copyWith(
       {int? id,
-      int? directionId,
-      int? course,
-      DateTime? startDateSemester,
-      DateTime? endDateSemester,
-      DateTime? startDateSession,
-      DateTime? endDateSession,
-      int? semesterId}) {
-    return SemesterDirectionInDb(
+      DateTime? startDate,
+      DateTime? endDate,
+      int? $part,
+      int? semesterId,
+      int? facultyId,
+      bool? isCurrent,
+      enums.ViewMode? mode,
+      SemesterFacultyWeek? week}) {
+    return SemesterFacultyInDb(
         id: id ?? this.id,
-        directionId: directionId ?? this.directionId,
-        course: course ?? this.course,
-        startDateSemester: startDateSemester ?? this.startDateSemester,
-        endDateSemester: endDateSemester ?? this.endDateSemester,
-        startDateSession: startDateSession ?? this.startDateSession,
-        endDateSession: endDateSession ?? this.endDateSession,
-        semesterId: semesterId ?? this.semesterId);
+        startDate: startDate ?? this.startDate,
+        endDate: endDate ?? this.endDate,
+        $part: $part ?? this.$part,
+        semesterId: semesterId ?? this.semesterId,
+        facultyId: facultyId ?? this.facultyId,
+        isCurrent: isCurrent ?? this.isCurrent,
+        mode: mode ?? this.mode,
+        week: week ?? this.week);
   }
 
-  SemesterDirectionInDb copyWithWrapped(
+  SemesterFacultyInDb copyWithWrapped(
       {Wrapped<int>? id,
-      Wrapped<int>? directionId,
-      Wrapped<int>? course,
-      Wrapped<DateTime>? startDateSemester,
-      Wrapped<DateTime>? endDateSemester,
-      Wrapped<DateTime>? startDateSession,
-      Wrapped<DateTime>? endDateSession,
-      Wrapped<int>? semesterId}) {
-    return SemesterDirectionInDb(
+      Wrapped<DateTime?>? startDate,
+      Wrapped<DateTime?>? endDate,
+      Wrapped<int?>? $part,
+      Wrapped<int>? semesterId,
+      Wrapped<int>? facultyId,
+      Wrapped<bool>? isCurrent,
+      Wrapped<enums.ViewMode?>? mode,
+      Wrapped<SemesterFacultyWeek?>? week}) {
+    return SemesterFacultyInDb(
         id: (id != null ? id.value : this.id),
-        directionId:
-            (directionId != null ? directionId.value : this.directionId),
-        course: (course != null ? course.value : this.course),
-        startDateSemester: (startDateSemester != null
-            ? startDateSemester.value
-            : this.startDateSemester),
-        endDateSemester: (endDateSemester != null
-            ? endDateSemester.value
-            : this.endDateSemester),
-        startDateSession: (startDateSession != null
-            ? startDateSession.value
-            : this.startDateSession),
-        endDateSession: (endDateSession != null
-            ? endDateSession.value
-            : this.endDateSession),
-        semesterId: (semesterId != null ? semesterId.value : this.semesterId));
+        startDate: (startDate != null ? startDate.value : this.startDate),
+        endDate: (endDate != null ? endDate.value : this.endDate),
+        $part: ($part != null ? $part.value : this.$part),
+        semesterId: (semesterId != null ? semesterId.value : this.semesterId),
+        facultyId: (facultyId != null ? facultyId.value : this.facultyId),
+        isCurrent: (isCurrent != null ? isCurrent.value : this.isCurrent),
+        mode: (mode != null ? mode.value : this.mode),
+        week: (week != null ? week.value : this.week));
   }
 }
 
 @JsonSerializable(explicitToJson: true)
-class SemesterDirectionUpdate {
-  SemesterDirectionUpdate({
-    this.directionId,
-    required this.course,
-    required this.startDateSemester,
-    required this.endDateSemester,
-    required this.startDateSession,
-    required this.endDateSession,
-    required this.semesterId,
+class SemesterFacultyUpdate {
+  SemesterFacultyUpdate({
+    this.type,
+    this.revert,
+    this.changeWeekOnStartDay,
+    this.mode,
   });
 
-  factory SemesterDirectionUpdate.fromJson(Map<String, dynamic> json) =>
-      _$SemesterDirectionUpdateFromJson(json);
+  factory SemesterFacultyUpdate.fromJson(Map<String, dynamic> json) =>
+      _$SemesterFacultyUpdateFromJson(json);
 
-  @JsonKey(name: 'direction_id')
-  final int? directionId;
-  @JsonKey(name: 'course')
-  final int course;
-  @JsonKey(name: 'start_date_semester', toJson: _dateToJson)
-  final DateTime startDateSemester;
-  @JsonKey(name: 'end_date_semester', toJson: _dateToJson)
-  final DateTime endDateSemester;
-  @JsonKey(name: 'start_date_session', toJson: _dateToJson)
-  final DateTime startDateSession;
-  @JsonKey(name: 'end_date_session', toJson: _dateToJson)
-  final DateTime endDateSession;
-  @JsonKey(name: 'semester_id')
-  final int semesterId;
-  static const fromJsonFactory = _$SemesterDirectionUpdateFromJson;
-  static const toJsonFactory = _$SemesterDirectionUpdateToJson;
-  Map<String, dynamic> toJson() => _$SemesterDirectionUpdateToJson(this);
+  static const toJsonFactory = _$SemesterFacultyUpdateToJson;
+  Map<String, dynamic> toJson() => _$SemesterFacultyUpdateToJson(this);
+
+  @JsonKey(
+    name: 'type',
+    toJson: weekTypeToJson,
+    fromJson: weekTypeFromJson,
+  )
+  final enums.WeekType? type;
+  @JsonKey(name: 'revert')
+  final bool? revert;
+  @JsonKey(name: 'change_week_on_start_day')
+  final bool? changeWeekOnStartDay;
+  @JsonKey(
+    name: 'mode',
+    toJson: viewModeToJson,
+    fromJson: viewModeFromJson,
+  )
+  final enums.ViewMode? mode;
+  static const fromJsonFactory = _$SemesterFacultyUpdateFromJson;
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is SemesterDirectionUpdate &&
-            (identical(other.directionId, directionId) ||
-                const DeepCollectionEquality()
-                    .equals(other.directionId, directionId)) &&
-            (identical(other.course, course) ||
-                const DeepCollectionEquality().equals(other.course, course)) &&
-            (identical(other.startDateSemester, startDateSemester) ||
-                const DeepCollectionEquality()
-                    .equals(other.startDateSemester, startDateSemester)) &&
-            (identical(other.endDateSemester, endDateSemester) ||
-                const DeepCollectionEquality()
-                    .equals(other.endDateSemester, endDateSemester)) &&
-            (identical(other.startDateSession, startDateSession) ||
-                const DeepCollectionEquality()
-                    .equals(other.startDateSession, startDateSession)) &&
-            (identical(other.endDateSession, endDateSession) ||
-                const DeepCollectionEquality()
-                    .equals(other.endDateSession, endDateSession)) &&
-            (identical(other.semesterId, semesterId) ||
-                const DeepCollectionEquality()
-                    .equals(other.semesterId, semesterId)));
+        (other is SemesterFacultyUpdate &&
+            (identical(other.type, type) ||
+                const DeepCollectionEquality().equals(other.type, type)) &&
+            (identical(other.revert, revert) ||
+                const DeepCollectionEquality().equals(other.revert, revert)) &&
+            (identical(other.changeWeekOnStartDay, changeWeekOnStartDay) ||
+                const DeepCollectionEquality().equals(
+                    other.changeWeekOnStartDay, changeWeekOnStartDay)) &&
+            (identical(other.mode, mode) ||
+                const DeepCollectionEquality().equals(other.mode, mode)));
   }
 
   @override
@@ -8377,60 +8617,184 @@ class SemesterDirectionUpdate {
 
   @override
   int get hashCode =>
-      const DeepCollectionEquality().hash(directionId) ^
-      const DeepCollectionEquality().hash(course) ^
-      const DeepCollectionEquality().hash(startDateSemester) ^
-      const DeepCollectionEquality().hash(endDateSemester) ^
-      const DeepCollectionEquality().hash(startDateSession) ^
-      const DeepCollectionEquality().hash(endDateSession) ^
-      const DeepCollectionEquality().hash(semesterId) ^
+      const DeepCollectionEquality().hash(type) ^
+      const DeepCollectionEquality().hash(revert) ^
+      const DeepCollectionEquality().hash(changeWeekOnStartDay) ^
+      const DeepCollectionEquality().hash(mode) ^
       runtimeType.hashCode;
 }
 
-extension $SemesterDirectionUpdateExtension on SemesterDirectionUpdate {
-  SemesterDirectionUpdate copyWith(
-      {int? directionId,
-      int? course,
-      DateTime? startDateSemester,
-      DateTime? endDateSemester,
-      DateTime? startDateSession,
-      DateTime? endDateSession,
-      int? semesterId}) {
-    return SemesterDirectionUpdate(
-        directionId: directionId ?? this.directionId,
-        course: course ?? this.course,
-        startDateSemester: startDateSemester ?? this.startDateSemester,
-        endDateSemester: endDateSemester ?? this.endDateSemester,
-        startDateSession: startDateSession ?? this.startDateSession,
-        endDateSession: endDateSession ?? this.endDateSession,
-        semesterId: semesterId ?? this.semesterId);
+extension $SemesterFacultyUpdateExtension on SemesterFacultyUpdate {
+  SemesterFacultyUpdate copyWith(
+      {enums.WeekType? type,
+      bool? revert,
+      bool? changeWeekOnStartDay,
+      enums.ViewMode? mode}) {
+    return SemesterFacultyUpdate(
+        type: type ?? this.type,
+        revert: revert ?? this.revert,
+        changeWeekOnStartDay: changeWeekOnStartDay ?? this.changeWeekOnStartDay,
+        mode: mode ?? this.mode);
   }
 
-  SemesterDirectionUpdate copyWithWrapped(
-      {Wrapped<int?>? directionId,
-      Wrapped<int>? course,
-      Wrapped<DateTime>? startDateSemester,
-      Wrapped<DateTime>? endDateSemester,
-      Wrapped<DateTime>? startDateSession,
-      Wrapped<DateTime>? endDateSession,
-      Wrapped<int>? semesterId}) {
-    return SemesterDirectionUpdate(
-        directionId:
-            (directionId != null ? directionId.value : this.directionId),
-        course: (course != null ? course.value : this.course),
-        startDateSemester: (startDateSemester != null
-            ? startDateSemester.value
-            : this.startDateSemester),
-        endDateSemester: (endDateSemester != null
-            ? endDateSemester.value
-            : this.endDateSemester),
-        startDateSession: (startDateSession != null
-            ? startDateSession.value
-            : this.startDateSession),
-        endDateSession: (endDateSession != null
-            ? endDateSession.value
-            : this.endDateSession),
-        semesterId: (semesterId != null ? semesterId.value : this.semesterId));
+  SemesterFacultyUpdate copyWithWrapped(
+      {Wrapped<enums.WeekType?>? type,
+      Wrapped<bool?>? revert,
+      Wrapped<bool?>? changeWeekOnStartDay,
+      Wrapped<enums.ViewMode?>? mode}) {
+    return SemesterFacultyUpdate(
+        type: (type != null ? type.value : this.type),
+        revert: (revert != null ? revert.value : this.revert),
+        changeWeekOnStartDay: (changeWeekOnStartDay != null
+            ? changeWeekOnStartDay.value
+            : this.changeWeekOnStartDay),
+        mode: (mode != null ? mode.value : this.mode));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class SemesterFacultyWeek {
+  SemesterFacultyWeek({
+    this.type,
+    this.revert,
+    this.changeWeekOnStartDay,
+  });
+
+  factory SemesterFacultyWeek.fromJson(Map<String, dynamic> json) =>
+      _$SemesterFacultyWeekFromJson(json);
+
+  static const toJsonFactory = _$SemesterFacultyWeekToJson;
+  Map<String, dynamic> toJson() => _$SemesterFacultyWeekToJson(this);
+
+  @JsonKey(
+    name: 'type',
+    toJson: weekTypeToJson,
+    fromJson: weekTypeFromJson,
+  )
+  final enums.WeekType? type;
+  @JsonKey(name: 'revert')
+  final bool? revert;
+  @JsonKey(name: 'change_week_on_start_day')
+  final bool? changeWeekOnStartDay;
+  static const fromJsonFactory = _$SemesterFacultyWeekFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is SemesterFacultyWeek &&
+            (identical(other.type, type) ||
+                const DeepCollectionEquality().equals(other.type, type)) &&
+            (identical(other.revert, revert) ||
+                const DeepCollectionEquality().equals(other.revert, revert)) &&
+            (identical(other.changeWeekOnStartDay, changeWeekOnStartDay) ||
+                const DeepCollectionEquality()
+                    .equals(other.changeWeekOnStartDay, changeWeekOnStartDay)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(type) ^
+      const DeepCollectionEquality().hash(revert) ^
+      const DeepCollectionEquality().hash(changeWeekOnStartDay) ^
+      runtimeType.hashCode;
+}
+
+extension $SemesterFacultyWeekExtension on SemesterFacultyWeek {
+  SemesterFacultyWeek copyWith(
+      {enums.WeekType? type, bool? revert, bool? changeWeekOnStartDay}) {
+    return SemesterFacultyWeek(
+        type: type ?? this.type,
+        revert: revert ?? this.revert,
+        changeWeekOnStartDay:
+            changeWeekOnStartDay ?? this.changeWeekOnStartDay);
+  }
+
+  SemesterFacultyWeek copyWithWrapped(
+      {Wrapped<enums.WeekType?>? type,
+      Wrapped<bool?>? revert,
+      Wrapped<bool?>? changeWeekOnStartDay}) {
+    return SemesterFacultyWeek(
+        type: (type != null ? type.value : this.type),
+        revert: (revert != null ? revert.value : this.revert),
+        changeWeekOnStartDay: (changeWeekOnStartDay != null
+            ? changeWeekOnStartDay.value
+            : this.changeWeekOnStartDay));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class SemesterFacultyWeekCreate {
+  SemesterFacultyWeekCreate({
+    this.type,
+    this.revert,
+    this.changeWeekOnStartDay,
+  });
+
+  factory SemesterFacultyWeekCreate.fromJson(Map<String, dynamic> json) =>
+      _$SemesterFacultyWeekCreateFromJson(json);
+
+  static const toJsonFactory = _$SemesterFacultyWeekCreateToJson;
+  Map<String, dynamic> toJson() => _$SemesterFacultyWeekCreateToJson(this);
+
+  @JsonKey(
+    name: 'type',
+    toJson: weekTypeToJson,
+    fromJson: weekTypeFromJson,
+  )
+  final enums.WeekType? type;
+  @JsonKey(name: 'revert')
+  final bool? revert;
+  @JsonKey(name: 'change_week_on_start_day')
+  final bool? changeWeekOnStartDay;
+  static const fromJsonFactory = _$SemesterFacultyWeekCreateFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is SemesterFacultyWeekCreate &&
+            (identical(other.type, type) ||
+                const DeepCollectionEquality().equals(other.type, type)) &&
+            (identical(other.revert, revert) ||
+                const DeepCollectionEquality().equals(other.revert, revert)) &&
+            (identical(other.changeWeekOnStartDay, changeWeekOnStartDay) ||
+                const DeepCollectionEquality()
+                    .equals(other.changeWeekOnStartDay, changeWeekOnStartDay)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(type) ^
+      const DeepCollectionEquality().hash(revert) ^
+      const DeepCollectionEquality().hash(changeWeekOnStartDay) ^
+      runtimeType.hashCode;
+}
+
+extension $SemesterFacultyWeekCreateExtension on SemesterFacultyWeekCreate {
+  SemesterFacultyWeekCreate copyWith(
+      {enums.WeekType? type, bool? revert, bool? changeWeekOnStartDay}) {
+    return SemesterFacultyWeekCreate(
+        type: type ?? this.type,
+        revert: revert ?? this.revert,
+        changeWeekOnStartDay:
+            changeWeekOnStartDay ?? this.changeWeekOnStartDay);
+  }
+
+  SemesterFacultyWeekCreate copyWithWrapped(
+      {Wrapped<enums.WeekType?>? type,
+      Wrapped<bool?>? revert,
+      Wrapped<bool?>? changeWeekOnStartDay}) {
+    return SemesterFacultyWeekCreate(
+        type: (type != null ? type.value : this.type),
+        revert: (revert != null ? revert.value : this.revert),
+        changeWeekOnStartDay: (changeWeekOnStartDay != null
+            ? changeWeekOnStartDay.value
+            : this.changeWeekOnStartDay));
   }
 }
 
@@ -8447,6 +8811,9 @@ class SemesterInDb {
   factory SemesterInDb.fromJson(Map<String, dynamic> json) =>
       _$SemesterInDbFromJson(json);
 
+  static const toJsonFactory = _$SemesterInDbToJson;
+  Map<String, dynamic> toJson() => _$SemesterInDbToJson(this);
+
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(
@@ -8462,8 +8829,6 @@ class SemesterInDb {
   @JsonKey(name: 'is_current_session')
   final bool isCurrentSession;
   static const fromJsonFactory = _$SemesterInDbFromJson;
-  static const toJsonFactory = _$SemesterInDbToJson;
-  Map<String, dynamic> toJson() => _$SemesterInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -8532,6 +8897,638 @@ extension $SemesterInDbExtension on SemesterInDb {
 }
 
 @JsonSerializable(explicitToJson: true)
+class SemesterLessonsDirectionCreate {
+  SemesterLessonsDirectionCreate({
+    required this.directionId,
+    required this.course,
+    this.groupId,
+    required this.startDate,
+    required this.endDate,
+    required this.semesterFacultyId,
+  });
+
+  factory SemesterLessonsDirectionCreate.fromJson(Map<String, dynamic> json) =>
+      _$SemesterLessonsDirectionCreateFromJson(json);
+
+  static const toJsonFactory = _$SemesterLessonsDirectionCreateToJson;
+  Map<String, dynamic> toJson() => _$SemesterLessonsDirectionCreateToJson(this);
+
+  @JsonKey(name: 'direction_id')
+  final int directionId;
+  @JsonKey(name: 'course')
+  final int course;
+  @JsonKey(name: 'group_id')
+  final int? groupId;
+  @JsonKey(name: 'start_date')
+  final String startDate;
+  @JsonKey(name: 'end_date')
+  final String endDate;
+  @JsonKey(name: 'semester_faculty_id')
+  final int semesterFacultyId;
+  static const fromJsonFactory = _$SemesterLessonsDirectionCreateFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is SemesterLessonsDirectionCreate &&
+            (identical(other.directionId, directionId) ||
+                const DeepCollectionEquality()
+                    .equals(other.directionId, directionId)) &&
+            (identical(other.course, course) ||
+                const DeepCollectionEquality().equals(other.course, course)) &&
+            (identical(other.groupId, groupId) ||
+                const DeepCollectionEquality()
+                    .equals(other.groupId, groupId)) &&
+            (identical(other.startDate, startDate) ||
+                const DeepCollectionEquality()
+                    .equals(other.startDate, startDate)) &&
+            (identical(other.endDate, endDate) ||
+                const DeepCollectionEquality()
+                    .equals(other.endDate, endDate)) &&
+            (identical(other.semesterFacultyId, semesterFacultyId) ||
+                const DeepCollectionEquality()
+                    .equals(other.semesterFacultyId, semesterFacultyId)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(directionId) ^
+      const DeepCollectionEquality().hash(course) ^
+      const DeepCollectionEquality().hash(groupId) ^
+      const DeepCollectionEquality().hash(startDate) ^
+      const DeepCollectionEquality().hash(endDate) ^
+      const DeepCollectionEquality().hash(semesterFacultyId) ^
+      runtimeType.hashCode;
+}
+
+extension $SemesterLessonsDirectionCreateExtension
+    on SemesterLessonsDirectionCreate {
+  SemesterLessonsDirectionCreate copyWith(
+      {int? directionId,
+      int? course,
+      int? groupId,
+      String? startDate,
+      String? endDate,
+      int? semesterFacultyId}) {
+    return SemesterLessonsDirectionCreate(
+        directionId: directionId ?? this.directionId,
+        course: course ?? this.course,
+        groupId: groupId ?? this.groupId,
+        startDate: startDate ?? this.startDate,
+        endDate: endDate ?? this.endDate,
+        semesterFacultyId: semesterFacultyId ?? this.semesterFacultyId);
+  }
+
+  SemesterLessonsDirectionCreate copyWithWrapped(
+      {Wrapped<int>? directionId,
+      Wrapped<int>? course,
+      Wrapped<int?>? groupId,
+      Wrapped<String>? startDate,
+      Wrapped<String>? endDate,
+      Wrapped<int>? semesterFacultyId}) {
+    return SemesterLessonsDirectionCreate(
+        directionId:
+            (directionId != null ? directionId.value : this.directionId),
+        course: (course != null ? course.value : this.course),
+        groupId: (groupId != null ? groupId.value : this.groupId),
+        startDate: (startDate != null ? startDate.value : this.startDate),
+        endDate: (endDate != null ? endDate.value : this.endDate),
+        semesterFacultyId: (semesterFacultyId != null
+            ? semesterFacultyId.value
+            : this.semesterFacultyId));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class SemesterLessonsDirectionInDb {
+  SemesterLessonsDirectionInDb({
+    required this.id,
+    required this.semesterFacultyId,
+    required this.directionId,
+    required this.course,
+    this.groupId,
+    required this.startDate,
+    required this.endDate,
+  });
+
+  factory SemesterLessonsDirectionInDb.fromJson(Map<String, dynamic> json) =>
+      _$SemesterLessonsDirectionInDbFromJson(json);
+
+  static const toJsonFactory = _$SemesterLessonsDirectionInDbToJson;
+  Map<String, dynamic> toJson() => _$SemesterLessonsDirectionInDbToJson(this);
+
+  @JsonKey(name: 'id')
+  final int id;
+  @JsonKey(name: 'semester_faculty_id')
+  final int semesterFacultyId;
+  @JsonKey(name: 'direction_id')
+  final int directionId;
+  @JsonKey(name: 'course')
+  final int course;
+  @JsonKey(name: 'group_id')
+  final int? groupId;
+  @JsonKey(name: 'start_date', toJson: _dateToJson)
+  final DateTime startDate;
+  @JsonKey(name: 'end_date', toJson: _dateToJson)
+  final DateTime endDate;
+  static const fromJsonFactory = _$SemesterLessonsDirectionInDbFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is SemesterLessonsDirectionInDb &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.semesterFacultyId, semesterFacultyId) ||
+                const DeepCollectionEquality()
+                    .equals(other.semesterFacultyId, semesterFacultyId)) &&
+            (identical(other.directionId, directionId) ||
+                const DeepCollectionEquality()
+                    .equals(other.directionId, directionId)) &&
+            (identical(other.course, course) ||
+                const DeepCollectionEquality().equals(other.course, course)) &&
+            (identical(other.groupId, groupId) ||
+                const DeepCollectionEquality()
+                    .equals(other.groupId, groupId)) &&
+            (identical(other.startDate, startDate) ||
+                const DeepCollectionEquality()
+                    .equals(other.startDate, startDate)) &&
+            (identical(other.endDate, endDate) ||
+                const DeepCollectionEquality().equals(other.endDate, endDate)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(semesterFacultyId) ^
+      const DeepCollectionEquality().hash(directionId) ^
+      const DeepCollectionEquality().hash(course) ^
+      const DeepCollectionEquality().hash(groupId) ^
+      const DeepCollectionEquality().hash(startDate) ^
+      const DeepCollectionEquality().hash(endDate) ^
+      runtimeType.hashCode;
+}
+
+extension $SemesterLessonsDirectionInDbExtension
+    on SemesterLessonsDirectionInDb {
+  SemesterLessonsDirectionInDb copyWith(
+      {int? id,
+      int? semesterFacultyId,
+      int? directionId,
+      int? course,
+      int? groupId,
+      DateTime? startDate,
+      DateTime? endDate}) {
+    return SemesterLessonsDirectionInDb(
+        id: id ?? this.id,
+        semesterFacultyId: semesterFacultyId ?? this.semesterFacultyId,
+        directionId: directionId ?? this.directionId,
+        course: course ?? this.course,
+        groupId: groupId ?? this.groupId,
+        startDate: startDate ?? this.startDate,
+        endDate: endDate ?? this.endDate);
+  }
+
+  SemesterLessonsDirectionInDb copyWithWrapped(
+      {Wrapped<int>? id,
+      Wrapped<int>? semesterFacultyId,
+      Wrapped<int>? directionId,
+      Wrapped<int>? course,
+      Wrapped<int?>? groupId,
+      Wrapped<DateTime>? startDate,
+      Wrapped<DateTime>? endDate}) {
+    return SemesterLessonsDirectionInDb(
+        id: (id != null ? id.value : this.id),
+        semesterFacultyId: (semesterFacultyId != null
+            ? semesterFacultyId.value
+            : this.semesterFacultyId),
+        directionId:
+            (directionId != null ? directionId.value : this.directionId),
+        course: (course != null ? course.value : this.course),
+        groupId: (groupId != null ? groupId.value : this.groupId),
+        startDate: (startDate != null ? startDate.value : this.startDate),
+        endDate: (endDate != null ? endDate.value : this.endDate));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class SemesterLessonsDirectionUpdate {
+  SemesterLessonsDirectionUpdate({
+    required this.directionId,
+    required this.course,
+    this.groupId,
+    required this.startDate,
+    required this.endDate,
+  });
+
+  factory SemesterLessonsDirectionUpdate.fromJson(Map<String, dynamic> json) =>
+      _$SemesterLessonsDirectionUpdateFromJson(json);
+
+  static const toJsonFactory = _$SemesterLessonsDirectionUpdateToJson;
+  Map<String, dynamic> toJson() => _$SemesterLessonsDirectionUpdateToJson(this);
+
+  @JsonKey(name: 'direction_id')
+  final int directionId;
+  @JsonKey(name: 'course')
+  final int course;
+  @JsonKey(name: 'group_id')
+  final int? groupId;
+  @JsonKey(name: 'start_date')
+  final String startDate;
+  @JsonKey(name: 'end_date')
+  final String endDate;
+  static const fromJsonFactory = _$SemesterLessonsDirectionUpdateFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is SemesterLessonsDirectionUpdate &&
+            (identical(other.directionId, directionId) ||
+                const DeepCollectionEquality()
+                    .equals(other.directionId, directionId)) &&
+            (identical(other.course, course) ||
+                const DeepCollectionEquality().equals(other.course, course)) &&
+            (identical(other.groupId, groupId) ||
+                const DeepCollectionEquality()
+                    .equals(other.groupId, groupId)) &&
+            (identical(other.startDate, startDate) ||
+                const DeepCollectionEquality()
+                    .equals(other.startDate, startDate)) &&
+            (identical(other.endDate, endDate) ||
+                const DeepCollectionEquality().equals(other.endDate, endDate)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(directionId) ^
+      const DeepCollectionEquality().hash(course) ^
+      const DeepCollectionEquality().hash(groupId) ^
+      const DeepCollectionEquality().hash(startDate) ^
+      const DeepCollectionEquality().hash(endDate) ^
+      runtimeType.hashCode;
+}
+
+extension $SemesterLessonsDirectionUpdateExtension
+    on SemesterLessonsDirectionUpdate {
+  SemesterLessonsDirectionUpdate copyWith(
+      {int? directionId,
+      int? course,
+      int? groupId,
+      String? startDate,
+      String? endDate}) {
+    return SemesterLessonsDirectionUpdate(
+        directionId: directionId ?? this.directionId,
+        course: course ?? this.course,
+        groupId: groupId ?? this.groupId,
+        startDate: startDate ?? this.startDate,
+        endDate: endDate ?? this.endDate);
+  }
+
+  SemesterLessonsDirectionUpdate copyWithWrapped(
+      {Wrapped<int>? directionId,
+      Wrapped<int>? course,
+      Wrapped<int?>? groupId,
+      Wrapped<String>? startDate,
+      Wrapped<String>? endDate}) {
+    return SemesterLessonsDirectionUpdate(
+        directionId:
+            (directionId != null ? directionId.value : this.directionId),
+        course: (course != null ? course.value : this.course),
+        groupId: (groupId != null ? groupId.value : this.groupId),
+        startDate: (startDate != null ? startDate.value : this.startDate),
+        endDate: (endDate != null ? endDate.value : this.endDate));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class SemesterSessionDirectionCreate {
+  SemesterSessionDirectionCreate({
+    required this.semesterId,
+    required this.directionId,
+    this.groupId,
+    required this.course,
+    required this.startDate,
+    required this.endDate,
+  });
+
+  factory SemesterSessionDirectionCreate.fromJson(Map<String, dynamic> json) =>
+      _$SemesterSessionDirectionCreateFromJson(json);
+
+  static const toJsonFactory = _$SemesterSessionDirectionCreateToJson;
+  Map<String, dynamic> toJson() => _$SemesterSessionDirectionCreateToJson(this);
+
+  @JsonKey(name: 'semester_id')
+  final int semesterId;
+  @JsonKey(name: 'direction_id')
+  final int directionId;
+  @JsonKey(name: 'group_id')
+  final int? groupId;
+  @JsonKey(name: 'course')
+  final int course;
+  @JsonKey(name: 'start_date')
+  final String startDate;
+  @JsonKey(name: 'end_date')
+  final String endDate;
+  static const fromJsonFactory = _$SemesterSessionDirectionCreateFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is SemesterSessionDirectionCreate &&
+            (identical(other.semesterId, semesterId) ||
+                const DeepCollectionEquality()
+                    .equals(other.semesterId, semesterId)) &&
+            (identical(other.directionId, directionId) ||
+                const DeepCollectionEquality()
+                    .equals(other.directionId, directionId)) &&
+            (identical(other.groupId, groupId) ||
+                const DeepCollectionEquality()
+                    .equals(other.groupId, groupId)) &&
+            (identical(other.course, course) ||
+                const DeepCollectionEquality().equals(other.course, course)) &&
+            (identical(other.startDate, startDate) ||
+                const DeepCollectionEquality()
+                    .equals(other.startDate, startDate)) &&
+            (identical(other.endDate, endDate) ||
+                const DeepCollectionEquality().equals(other.endDate, endDate)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(semesterId) ^
+      const DeepCollectionEquality().hash(directionId) ^
+      const DeepCollectionEquality().hash(groupId) ^
+      const DeepCollectionEquality().hash(course) ^
+      const DeepCollectionEquality().hash(startDate) ^
+      const DeepCollectionEquality().hash(endDate) ^
+      runtimeType.hashCode;
+}
+
+extension $SemesterSessionDirectionCreateExtension
+    on SemesterSessionDirectionCreate {
+  SemesterSessionDirectionCreate copyWith(
+      {int? semesterId,
+      int? directionId,
+      int? groupId,
+      int? course,
+      String? startDate,
+      String? endDate}) {
+    return SemesterSessionDirectionCreate(
+        semesterId: semesterId ?? this.semesterId,
+        directionId: directionId ?? this.directionId,
+        groupId: groupId ?? this.groupId,
+        course: course ?? this.course,
+        startDate: startDate ?? this.startDate,
+        endDate: endDate ?? this.endDate);
+  }
+
+  SemesterSessionDirectionCreate copyWithWrapped(
+      {Wrapped<int>? semesterId,
+      Wrapped<int>? directionId,
+      Wrapped<int?>? groupId,
+      Wrapped<int>? course,
+      Wrapped<String>? startDate,
+      Wrapped<String>? endDate}) {
+    return SemesterSessionDirectionCreate(
+        semesterId: (semesterId != null ? semesterId.value : this.semesterId),
+        directionId:
+            (directionId != null ? directionId.value : this.directionId),
+        groupId: (groupId != null ? groupId.value : this.groupId),
+        course: (course != null ? course.value : this.course),
+        startDate: (startDate != null ? startDate.value : this.startDate),
+        endDate: (endDate != null ? endDate.value : this.endDate));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class SemesterSessionDirectionInDb {
+  SemesterSessionDirectionInDb({
+    required this.id,
+    required this.semesterId,
+    required this.directionId,
+    this.groupId,
+    required this.course,
+    required this.startDate,
+    required this.endDate,
+  });
+
+  factory SemesterSessionDirectionInDb.fromJson(Map<String, dynamic> json) =>
+      _$SemesterSessionDirectionInDbFromJson(json);
+
+  static const toJsonFactory = _$SemesterSessionDirectionInDbToJson;
+  Map<String, dynamic> toJson() => _$SemesterSessionDirectionInDbToJson(this);
+
+  @JsonKey(name: 'id')
+  final int id;
+  @JsonKey(name: 'semester_id')
+  final int semesterId;
+  @JsonKey(name: 'direction_id')
+  final int directionId;
+  @JsonKey(name: 'group_id')
+  final int? groupId;
+  @JsonKey(name: 'course')
+  final int course;
+  @JsonKey(name: 'start_date', toJson: _dateToJson)
+  final DateTime startDate;
+  @JsonKey(name: 'end_date', toJson: _dateToJson)
+  final DateTime endDate;
+  static const fromJsonFactory = _$SemesterSessionDirectionInDbFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is SemesterSessionDirectionInDb &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.semesterId, semesterId) ||
+                const DeepCollectionEquality()
+                    .equals(other.semesterId, semesterId)) &&
+            (identical(other.directionId, directionId) ||
+                const DeepCollectionEquality()
+                    .equals(other.directionId, directionId)) &&
+            (identical(other.groupId, groupId) ||
+                const DeepCollectionEquality()
+                    .equals(other.groupId, groupId)) &&
+            (identical(other.course, course) ||
+                const DeepCollectionEquality().equals(other.course, course)) &&
+            (identical(other.startDate, startDate) ||
+                const DeepCollectionEquality()
+                    .equals(other.startDate, startDate)) &&
+            (identical(other.endDate, endDate) ||
+                const DeepCollectionEquality().equals(other.endDate, endDate)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(semesterId) ^
+      const DeepCollectionEquality().hash(directionId) ^
+      const DeepCollectionEquality().hash(groupId) ^
+      const DeepCollectionEquality().hash(course) ^
+      const DeepCollectionEquality().hash(startDate) ^
+      const DeepCollectionEquality().hash(endDate) ^
+      runtimeType.hashCode;
+}
+
+extension $SemesterSessionDirectionInDbExtension
+    on SemesterSessionDirectionInDb {
+  SemesterSessionDirectionInDb copyWith(
+      {int? id,
+      int? semesterId,
+      int? directionId,
+      int? groupId,
+      int? course,
+      DateTime? startDate,
+      DateTime? endDate}) {
+    return SemesterSessionDirectionInDb(
+        id: id ?? this.id,
+        semesterId: semesterId ?? this.semesterId,
+        directionId: directionId ?? this.directionId,
+        groupId: groupId ?? this.groupId,
+        course: course ?? this.course,
+        startDate: startDate ?? this.startDate,
+        endDate: endDate ?? this.endDate);
+  }
+
+  SemesterSessionDirectionInDb copyWithWrapped(
+      {Wrapped<int>? id,
+      Wrapped<int>? semesterId,
+      Wrapped<int>? directionId,
+      Wrapped<int?>? groupId,
+      Wrapped<int>? course,
+      Wrapped<DateTime>? startDate,
+      Wrapped<DateTime>? endDate}) {
+    return SemesterSessionDirectionInDb(
+        id: (id != null ? id.value : this.id),
+        semesterId: (semesterId != null ? semesterId.value : this.semesterId),
+        directionId:
+            (directionId != null ? directionId.value : this.directionId),
+        groupId: (groupId != null ? groupId.value : this.groupId),
+        course: (course != null ? course.value : this.course),
+        startDate: (startDate != null ? startDate.value : this.startDate),
+        endDate: (endDate != null ? endDate.value : this.endDate));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class SemesterSessionDirectionUpdate {
+  SemesterSessionDirectionUpdate({
+    required this.semesterId,
+    required this.directionId,
+    this.groupId,
+    required this.course,
+    this.startDate,
+    this.endDate,
+  });
+
+  factory SemesterSessionDirectionUpdate.fromJson(Map<String, dynamic> json) =>
+      _$SemesterSessionDirectionUpdateFromJson(json);
+
+  static const toJsonFactory = _$SemesterSessionDirectionUpdateToJson;
+  Map<String, dynamic> toJson() => _$SemesterSessionDirectionUpdateToJson(this);
+
+  @JsonKey(name: 'semester_id')
+  final int semesterId;
+  @JsonKey(name: 'direction_id')
+  final int directionId;
+  @JsonKey(name: 'group_id')
+  final int? groupId;
+  @JsonKey(name: 'course')
+  final int course;
+  @JsonKey(name: 'start_date')
+  final String? startDate;
+  @JsonKey(name: 'end_date')
+  final String? endDate;
+  static const fromJsonFactory = _$SemesterSessionDirectionUpdateFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is SemesterSessionDirectionUpdate &&
+            (identical(other.semesterId, semesterId) ||
+                const DeepCollectionEquality()
+                    .equals(other.semesterId, semesterId)) &&
+            (identical(other.directionId, directionId) ||
+                const DeepCollectionEquality()
+                    .equals(other.directionId, directionId)) &&
+            (identical(other.groupId, groupId) ||
+                const DeepCollectionEquality()
+                    .equals(other.groupId, groupId)) &&
+            (identical(other.course, course) ||
+                const DeepCollectionEquality().equals(other.course, course)) &&
+            (identical(other.startDate, startDate) ||
+                const DeepCollectionEquality()
+                    .equals(other.startDate, startDate)) &&
+            (identical(other.endDate, endDate) ||
+                const DeepCollectionEquality().equals(other.endDate, endDate)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(semesterId) ^
+      const DeepCollectionEquality().hash(directionId) ^
+      const DeepCollectionEquality().hash(groupId) ^
+      const DeepCollectionEquality().hash(course) ^
+      const DeepCollectionEquality().hash(startDate) ^
+      const DeepCollectionEquality().hash(endDate) ^
+      runtimeType.hashCode;
+}
+
+extension $SemesterSessionDirectionUpdateExtension
+    on SemesterSessionDirectionUpdate {
+  SemesterSessionDirectionUpdate copyWith(
+      {int? semesterId,
+      int? directionId,
+      int? groupId,
+      int? course,
+      String? startDate,
+      String? endDate}) {
+    return SemesterSessionDirectionUpdate(
+        semesterId: semesterId ?? this.semesterId,
+        directionId: directionId ?? this.directionId,
+        groupId: groupId ?? this.groupId,
+        course: course ?? this.course,
+        startDate: startDate ?? this.startDate,
+        endDate: endDate ?? this.endDate);
+  }
+
+  SemesterSessionDirectionUpdate copyWithWrapped(
+      {Wrapped<int>? semesterId,
+      Wrapped<int>? directionId,
+      Wrapped<int?>? groupId,
+      Wrapped<int>? course,
+      Wrapped<String?>? startDate,
+      Wrapped<String?>? endDate}) {
+    return SemesterSessionDirectionUpdate(
+        semesterId: (semesterId != null ? semesterId.value : this.semesterId),
+        directionId:
+            (directionId != null ? directionId.value : this.directionId),
+        groupId: (groupId != null ? groupId.value : this.groupId),
+        course: (course != null ? course.value : this.course),
+        startDate: (startDate != null ? startDate.value : this.startDate),
+        endDate: (endDate != null ? endDate.value : this.endDate));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class SemesterUpdate {
   SemesterUpdate({
     required this.type,
@@ -8540,6 +9537,9 @@ class SemesterUpdate {
 
   factory SemesterUpdate.fromJson(Map<String, dynamic> json) =>
       _$SemesterUpdateFromJson(json);
+
+  static const toJsonFactory = _$SemesterUpdateToJson;
+  Map<String, dynamic> toJson() => _$SemesterUpdateToJson(this);
 
   @JsonKey(
     name: 'type',
@@ -8550,8 +9550,6 @@ class SemesterUpdate {
   @JsonKey(name: 'study_year')
   final String studyYear;
   static const fromJsonFactory = _$SemesterUpdateFromJson;
-  static const toJsonFactory = _$SemesterUpdateToJson;
-  Map<String, dynamic> toJson() => _$SemesterUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -8598,13 +9596,14 @@ class SessionEventCollision {
   factory SessionEventCollision.fromJson(Map<String, dynamic> json) =>
       _$SessionEventCollisionFromJson(json);
 
+  static const toJsonFactory = _$SessionEventCollisionToJson;
+  Map<String, dynamic> toJson() => _$SessionEventCollisionToJson(this);
+
   @JsonKey(name: 'field')
   final String field;
   @JsonKey(name: 'data')
   final SessionEventCollisionInfo data;
   static const fromJsonFactory = _$SessionEventCollisionFromJson;
-  static const toJsonFactory = _$SessionEventCollisionToJson;
-  Map<String, dynamic> toJson() => _$SessionEventCollisionToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -8660,6 +9659,9 @@ class SessionEventCollisionInfo {
   factory SessionEventCollisionInfo.fromJson(Map<String, dynamic> json) =>
       _$SessionEventCollisionInfoFromJson(json);
 
+  static const toJsonFactory = _$SessionEventCollisionInfoToJson;
+  Map<String, dynamic> toJson() => _$SessionEventCollisionInfoToJson(this);
+
   @JsonKey(
     name: 'event_type_id',
     toJson: sessionEventTypeToJson,
@@ -8687,8 +9689,6 @@ class SessionEventCollisionInfo {
   @JsonKey(name: 'teacher_names', defaultValue: <String>[])
   final List<String>? teacherNames;
   static const fromJsonFactory = _$SessionEventCollisionInfoFromJson;
-  static const toJsonFactory = _$SessionEventCollisionInfoToJson;
-  Map<String, dynamic> toJson() => _$SessionEventCollisionInfoToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -8818,6 +9818,9 @@ class SessionEventCreate {
   factory SessionEventCreate.fromJson(Map<String, dynamic> json) =>
       _$SessionEventCreateFromJson(json);
 
+  static const toJsonFactory = _$SessionEventCreateToJson;
+  Map<String, dynamic> toJson() => _$SessionEventCreateToJson(this);
+
   @JsonKey(
     name: 'event_type_id',
     toJson: sessionEventTypeToJson,
@@ -8841,8 +9844,6 @@ class SessionEventCreate {
   @JsonKey(name: 'semester_id')
   final int semesterId;
   static const fromJsonFactory = _$SessionEventCreateFromJson;
-  static const toJsonFactory = _$SessionEventCreateToJson;
-  Map<String, dynamic> toJson() => _$SessionEventCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -8950,6 +9951,9 @@ class SessionEventCreateWithParams {
   factory SessionEventCreateWithParams.fromJson(Map<String, dynamic> json) =>
       _$SessionEventCreateWithParamsFromJson(json);
 
+  static const toJsonFactory = _$SessionEventCreateWithParamsToJson;
+  Map<String, dynamic> toJson() => _$SessionEventCreateWithParamsToJson(this);
+
   @JsonKey(name: 'ignore_collisions', defaultValue: false)
   final bool? ignoreCollisions;
   @JsonKey(name: 'notify', defaultValue: false)
@@ -8957,8 +9961,6 @@ class SessionEventCreateWithParams {
   @JsonKey(name: 'session_event')
   final SessionEventCreate sessionEvent;
   static const fromJsonFactory = _$SessionEventCreateWithParamsFromJson;
-  static const toJsonFactory = _$SessionEventCreateWithParamsToJson;
-  Map<String, dynamic> toJson() => _$SessionEventCreateWithParamsToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -9023,6 +10025,9 @@ class SessionEventData {
   factory SessionEventData.fromJson(Map<String, dynamic> json) =>
       _$SessionEventDataFromJson(json);
 
+  static const toJsonFactory = _$SessionEventDataToJson;
+  Map<String, dynamic> toJson() => _$SessionEventDataToJson(this);
+
   @JsonKey(name: 'data', defaultValue: <SessionEventInDb>[])
   final List<SessionEventInDb> data;
   @JsonKey(name: 'start_date', toJson: _dateToJson)
@@ -9036,8 +10041,6 @@ class SessionEventData {
   )
   final enums.ViewMode? mode;
   static const fromJsonFactory = _$SessionEventDataFromJson;
-  static const toJsonFactory = _$SessionEventDataToJson;
-  Map<String, dynamic> toJson() => _$SessionEventDataToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -9108,6 +10111,9 @@ class SessionEventExport {
   factory SessionEventExport.fromJson(Map<String, dynamic> json) =>
       _$SessionEventExportFromJson(json);
 
+  static const toJsonFactory = _$SessionEventExportToJson;
+  Map<String, dynamic> toJson() => _$SessionEventExportToJson(this);
+
   @JsonKey(name: 'faculty_id')
   final int facultyId;
   @JsonKey(name: 'semester_id')
@@ -9123,8 +10129,6 @@ class SessionEventExport {
   @JsonKey(name: 'extra')
   final ExportExtraInfo? extra;
   static const fromJsonFactory = _$SessionEventExportFromJson;
-  static const toJsonFactory = _$SessionEventExportToJson;
-  Map<String, dynamic> toJson() => _$SessionEventExportToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -9223,6 +10227,9 @@ class SessionEventInDb {
   factory SessionEventInDb.fromJson(Map<String, dynamic> json) =>
       _$SessionEventInDbFromJson(json);
 
+  static const toJsonFactory = _$SessionEventInDbToJson;
+  Map<String, dynamic> toJson() => _$SessionEventInDbToJson(this);
+
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(
@@ -9250,8 +10257,6 @@ class SessionEventInDb {
   @JsonKey(name: 'created_user_id')
   final int createdUserId;
   static const fromJsonFactory = _$SessionEventInDbFromJson;
-  static const toJsonFactory = _$SessionEventInDbToJson;
-  Map<String, dynamic> toJson() => _$SessionEventInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -9380,6 +10385,9 @@ class SessionEventUpdate {
   factory SessionEventUpdate.fromJson(Map<String, dynamic> json) =>
       _$SessionEventUpdateFromJson(json);
 
+  static const toJsonFactory = _$SessionEventUpdateToJson;
+  Map<String, dynamic> toJson() => _$SessionEventUpdateToJson(this);
+
   @JsonKey(
     name: 'event_type_id',
     toJson: sessionEventTypeToJson,
@@ -9401,8 +10409,6 @@ class SessionEventUpdate {
   @JsonKey(name: 'teachers', defaultValue: <int>[])
   final List<int> teachers;
   static const fromJsonFactory = _$SessionEventUpdateFromJson;
-  static const toJsonFactory = _$SessionEventUpdateToJson;
-  Map<String, dynamic> toJson() => _$SessionEventUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -9502,6 +10508,9 @@ class SessionEventUpdateWithParams {
   factory SessionEventUpdateWithParams.fromJson(Map<String, dynamic> json) =>
       _$SessionEventUpdateWithParamsFromJson(json);
 
+  static const toJsonFactory = _$SessionEventUpdateWithParamsToJson;
+  Map<String, dynamic> toJson() => _$SessionEventUpdateWithParamsToJson(this);
+
   @JsonKey(name: 'ignore_collisions', defaultValue: false)
   final bool? ignoreCollisions;
   @JsonKey(name: 'notify', defaultValue: false)
@@ -9509,8 +10518,6 @@ class SessionEventUpdateWithParams {
   @JsonKey(name: 'session_event')
   final SessionEventUpdate sessionEvent;
   static const fromJsonFactory = _$SessionEventUpdateWithParamsFromJson;
-  static const toJsonFactory = _$SessionEventUpdateWithParamsToJson;
-  Map<String, dynamic> toJson() => _$SessionEventUpdateWithParamsToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -9574,6 +10581,9 @@ class SessionSettingsUpdate {
   factory SessionSettingsUpdate.fromJson(Map<String, dynamic> json) =>
       _$SessionSettingsUpdateFromJson(json);
 
+  static const toJsonFactory = _$SessionSettingsUpdateToJson;
+  Map<String, dynamic> toJson() => _$SessionSettingsUpdateToJson(this);
+
   @JsonKey(name: 'session_event_before_days')
   final int? sessionEventBeforeDays;
   @JsonKey(name: 'session_event_before_days_time')
@@ -9581,8 +10591,6 @@ class SessionSettingsUpdate {
   @JsonKey(name: 'session_event_tomorrow_time')
   final String? sessionEventTomorrowTime;
   static const fromJsonFactory = _$SessionSettingsUpdateFromJson;
-  static const toJsonFactory = _$SessionSettingsUpdateToJson;
-  Map<String, dynamic> toJson() => _$SessionSettingsUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -9645,6 +10653,158 @@ extension $SessionSettingsUpdateExtension on SessionSettingsUpdate {
 }
 
 @JsonSerializable(explicitToJson: true)
+class SessionViewInDb {
+  SessionViewInDb({
+    required this.facultyId,
+    required this.semesterId,
+    required this.mode,
+  });
+
+  factory SessionViewInDb.fromJson(Map<String, dynamic> json) =>
+      _$SessionViewInDbFromJson(json);
+
+  static const toJsonFactory = _$SessionViewInDbToJson;
+  Map<String, dynamic> toJson() => _$SessionViewInDbToJson(this);
+
+  @JsonKey(name: 'faculty_id')
+  final int facultyId;
+  @JsonKey(name: 'semester_id')
+  final int semesterId;
+  @JsonKey(
+    name: 'mode',
+    toJson: viewModeToJson,
+    fromJson: viewModeFromJson,
+  )
+  final enums.ViewMode mode;
+  static const fromJsonFactory = _$SessionViewInDbFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is SessionViewInDb &&
+            (identical(other.facultyId, facultyId) ||
+                const DeepCollectionEquality()
+                    .equals(other.facultyId, facultyId)) &&
+            (identical(other.semesterId, semesterId) ||
+                const DeepCollectionEquality()
+                    .equals(other.semesterId, semesterId)) &&
+            (identical(other.mode, mode) ||
+                const DeepCollectionEquality().equals(other.mode, mode)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(facultyId) ^
+      const DeepCollectionEquality().hash(semesterId) ^
+      const DeepCollectionEquality().hash(mode) ^
+      runtimeType.hashCode;
+}
+
+extension $SessionViewInDbExtension on SessionViewInDb {
+  SessionViewInDb copyWith(
+      {int? facultyId, int? semesterId, enums.ViewMode? mode}) {
+    return SessionViewInDb(
+        facultyId: facultyId ?? this.facultyId,
+        semesterId: semesterId ?? this.semesterId,
+        mode: mode ?? this.mode);
+  }
+
+  SessionViewInDb copyWithWrapped(
+      {Wrapped<int>? facultyId,
+      Wrapped<int>? semesterId,
+      Wrapped<enums.ViewMode>? mode}) {
+    return SessionViewInDb(
+        facultyId: (facultyId != null ? facultyId.value : this.facultyId),
+        semesterId: (semesterId != null ? semesterId.value : this.semesterId),
+        mode: (mode != null ? mode.value : this.mode));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class SessionViewUpdate {
+  SessionViewUpdate({
+    required this.facultyId,
+    required this.semesterId,
+    required this.mode,
+    this.isNotify,
+  });
+
+  factory SessionViewUpdate.fromJson(Map<String, dynamic> json) =>
+      _$SessionViewUpdateFromJson(json);
+
+  static const toJsonFactory = _$SessionViewUpdateToJson;
+  Map<String, dynamic> toJson() => _$SessionViewUpdateToJson(this);
+
+  @JsonKey(name: 'faculty_id')
+  final int facultyId;
+  @JsonKey(name: 'semester_id')
+  final int semesterId;
+  @JsonKey(
+    name: 'mode',
+    toJson: viewModeToJson,
+    fromJson: viewModeFromJson,
+  )
+  final enums.ViewMode mode;
+  @JsonKey(name: 'is_notify', defaultValue: false)
+  final bool? isNotify;
+  static const fromJsonFactory = _$SessionViewUpdateFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is SessionViewUpdate &&
+            (identical(other.facultyId, facultyId) ||
+                const DeepCollectionEquality()
+                    .equals(other.facultyId, facultyId)) &&
+            (identical(other.semesterId, semesterId) ||
+                const DeepCollectionEquality()
+                    .equals(other.semesterId, semesterId)) &&
+            (identical(other.mode, mode) ||
+                const DeepCollectionEquality().equals(other.mode, mode)) &&
+            (identical(other.isNotify, isNotify) ||
+                const DeepCollectionEquality()
+                    .equals(other.isNotify, isNotify)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(facultyId) ^
+      const DeepCollectionEquality().hash(semesterId) ^
+      const DeepCollectionEquality().hash(mode) ^
+      const DeepCollectionEquality().hash(isNotify) ^
+      runtimeType.hashCode;
+}
+
+extension $SessionViewUpdateExtension on SessionViewUpdate {
+  SessionViewUpdate copyWith(
+      {int? facultyId, int? semesterId, enums.ViewMode? mode, bool? isNotify}) {
+    return SessionViewUpdate(
+        facultyId: facultyId ?? this.facultyId,
+        semesterId: semesterId ?? this.semesterId,
+        mode: mode ?? this.mode,
+        isNotify: isNotify ?? this.isNotify);
+  }
+
+  SessionViewUpdate copyWithWrapped(
+      {Wrapped<int>? facultyId,
+      Wrapped<int>? semesterId,
+      Wrapped<enums.ViewMode>? mode,
+      Wrapped<bool?>? isNotify}) {
+    return SessionViewUpdate(
+        facultyId: (facultyId != null ? facultyId.value : this.facultyId),
+        semesterId: (semesterId != null ? semesterId.value : this.semesterId),
+        mode: (mode != null ? mode.value : this.mode),
+        isNotify: (isNotify != null ? isNotify.value : this.isNotify));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class Statistic {
   Statistic({
     this.lastActivityBot,
@@ -9654,13 +10814,14 @@ class Statistic {
   factory Statistic.fromJson(Map<String, dynamic> json) =>
       _$StatisticFromJson(json);
 
+  static const toJsonFactory = _$StatisticToJson;
+  Map<String, dynamic> toJson() => _$StatisticToJson(this);
+
   @JsonKey(name: 'last_activity_bot')
   final DateTime? lastActivityBot;
   @JsonKey(name: 'last_activity_web')
   final DateTime? lastActivityWeb;
   static const fromJsonFactory = _$StatisticFromJson;
-  static const toJsonFactory = _$StatisticToJson;
-  Map<String, dynamic> toJson() => _$StatisticToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -9712,11 +10873,12 @@ class Status {
 
   factory Status.fromJson(Map<String, dynamic> json) => _$StatusFromJson(json);
 
+  static const toJsonFactory = _$StatusToJson;
+  Map<String, dynamic> toJson() => _$StatusToJson(this);
+
   @JsonKey(name: 'status')
   final String status;
   static const fromJsonFactory = _$StatusFromJson;
-  static const toJsonFactory = _$StatusToJson;
-  Map<String, dynamic> toJson() => _$StatusToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -9757,6 +10919,9 @@ class StudentCreate {
   factory StudentCreate.fromJson(Map<String, dynamic> json) =>
       _$StudentCreateFromJson(json);
 
+  static const toJsonFactory = _$StudentCreateToJson;
+  Map<String, dynamic> toJson() => _$StudentCreateToJson(this);
+
   @JsonKey(name: 'group_id')
   final int groupId;
   @JsonKey(name: 'is_main', defaultValue: false)
@@ -9768,8 +10933,6 @@ class StudentCreate {
   @JsonKey(name: 'person')
   final PersonCreate person;
   static const fromJsonFactory = _$StudentCreateFromJson;
-  static const toJsonFactory = _$StudentCreateToJson;
-  Map<String, dynamic> toJson() => _$StudentCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -9852,6 +11015,9 @@ class StudentInDb {
   factory StudentInDb.fromJson(Map<String, dynamic> json) =>
       _$StudentInDbFromJson(json);
 
+  static const toJsonFactory = _$StudentInDbToJson;
+  Map<String, dynamic> toJson() => _$StudentInDbToJson(this);
+
   @JsonKey(name: 'full_name')
   final String fullName;
   @JsonKey(name: 'first_name')
@@ -9879,8 +11045,6 @@ class StudentInDb {
   @JsonKey(name: 'is_deputy_main')
   final bool isDeputyMain;
   static const fromJsonFactory = _$StudentInDbFromJson;
-  static const toJsonFactory = _$StudentInDbToJson;
-  Map<String, dynamic> toJson() => _$StudentInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -10009,6 +11173,9 @@ class StudentShortInDb {
   factory StudentShortInDb.fromJson(Map<String, dynamic> json) =>
       _$StudentShortInDbFromJson(json);
 
+  static const toJsonFactory = _$StudentShortInDbToJson;
+  Map<String, dynamic> toJson() => _$StudentShortInDbToJson(this);
+
   @JsonKey(name: 'full_name')
   final String fullName;
   @JsonKey(name: 'first_name')
@@ -10036,8 +11203,6 @@ class StudentShortInDb {
   @JsonKey(name: 'id')
   final int id;
   static const fromJsonFactory = _$StudentShortInDbFromJson;
-  static const toJsonFactory = _$StudentShortInDbToJson;
-  Map<String, dynamic> toJson() => _$StudentShortInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -10160,6 +11325,9 @@ class StudentUpdate {
   factory StudentUpdate.fromJson(Map<String, dynamic> json) =>
       _$StudentUpdateFromJson(json);
 
+  static const toJsonFactory = _$StudentUpdateToJson;
+  Map<String, dynamic> toJson() => _$StudentUpdateToJson(this);
+
   @JsonKey(name: 'group_id')
   final int groupId;
   @JsonKey(name: 'is_main', defaultValue: false)
@@ -10169,8 +11337,6 @@ class StudentUpdate {
   @JsonKey(name: 'person')
   final PersonUpdate person;
   static const fromJsonFactory = _$StudentUpdateFromJson;
-  static const toJsonFactory = _$StudentUpdateToJson;
-  Map<String, dynamic> toJson() => _$StudentUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -10235,6 +11401,9 @@ class TeacherAcademicDegreeInDb {
   factory TeacherAcademicDegreeInDb.fromJson(Map<String, dynamic> json) =>
       _$TeacherAcademicDegreeInDbFromJson(json);
 
+  static const toJsonFactory = _$TeacherAcademicDegreeInDbToJson;
+  Map<String, dynamic> toJson() => _$TeacherAcademicDegreeInDbToJson(this);
+
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(name: 'short_name')
@@ -10242,8 +11411,6 @@ class TeacherAcademicDegreeInDb {
   @JsonKey(name: 'id')
   final int id;
   static const fromJsonFactory = _$TeacherAcademicDegreeInDbFromJson;
-  static const toJsonFactory = _$TeacherAcademicDegreeInDbToJson;
-  Map<String, dynamic> toJson() => _$TeacherAcademicDegreeInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -10299,6 +11466,9 @@ class TeacherCreate {
   factory TeacherCreate.fromJson(Map<String, dynamic> json) =>
       _$TeacherCreateFromJson(json);
 
+  static const toJsonFactory = _$TeacherCreateToJson;
+  Map<String, dynamic> toJson() => _$TeacherCreateToJson(this);
+
   @JsonKey(
     name: 'academic_title',
     toJson: teacherAcademicTitleToJson,
@@ -10312,8 +11482,6 @@ class TeacherCreate {
   @JsonKey(name: 'person')
   final PersonCreate person;
   static const fromJsonFactory = _$TeacherCreateFromJson;
-  static const toJsonFactory = _$TeacherCreateToJson;
-  Map<String, dynamic> toJson() => _$TeacherCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -10391,6 +11559,9 @@ class TeacherFullInDb {
   factory TeacherFullInDb.fromJson(Map<String, dynamic> json) =>
       _$TeacherFullInDbFromJson(json);
 
+  static const toJsonFactory = _$TeacherFullInDbToJson;
+  Map<String, dynamic> toJson() => _$TeacherFullInDbToJson(this);
+
   @JsonKey(name: 'full_name')
   final String fullName;
   @JsonKey(name: 'first_name')
@@ -10422,8 +11593,6 @@ class TeacherFullInDb {
   @JsonKey(name: 'faculties_ids', defaultValue: <int>[])
   final List<int>? facultiesIds;
   static const fromJsonFactory = _$TeacherFullInDbFromJson;
-  static const toJsonFactory = _$TeacherFullInDbToJson;
-  Map<String, dynamic> toJson() => _$TeacherFullInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -10557,6 +11726,9 @@ class TeacherInDb {
   factory TeacherInDb.fromJson(Map<String, dynamic> json) =>
       _$TeacherInDbFromJson(json);
 
+  static const toJsonFactory = _$TeacherInDbToJson;
+  Map<String, dynamic> toJson() => _$TeacherInDbToJson(this);
+
   @JsonKey(
     name: 'academic_title',
     toJson: teacherAcademicTitleToJson,
@@ -10588,8 +11760,6 @@ class TeacherInDb {
   @JsonKey(name: 'faculties_ids', defaultValue: <int>[])
   final List<int>? facultiesIds;
   static const fromJsonFactory = _$TeacherInDbFromJson;
-  static const toJsonFactory = _$TeacherInDbToJson;
-  Map<String, dynamic> toJson() => _$TeacherInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -10714,13 +11884,14 @@ class TeacherShortInDb {
   factory TeacherShortInDb.fromJson(Map<String, dynamic> json) =>
       _$TeacherShortInDbFromJson(json);
 
+  static const toJsonFactory = _$TeacherShortInDbToJson;
+  Map<String, dynamic> toJson() => _$TeacherShortInDbToJson(this);
+
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'name')
   final String name;
   static const fromJsonFactory = _$TeacherShortInDbFromJson;
-  static const toJsonFactory = _$TeacherShortInDbToJson;
-  Map<String, dynamic> toJson() => _$TeacherShortInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -10765,6 +11936,9 @@ class TeacherUpdate {
   factory TeacherUpdate.fromJson(Map<String, dynamic> json) =>
       _$TeacherUpdateFromJson(json);
 
+  static const toJsonFactory = _$TeacherUpdateToJson;
+  Map<String, dynamic> toJson() => _$TeacherUpdateToJson(this);
+
   @JsonKey(
     name: 'academic_title',
     toJson: teacherAcademicTitleToJson,
@@ -10776,8 +11950,6 @@ class TeacherUpdate {
   @JsonKey(name: 'person')
   final PersonUpdate person;
   static const fromJsonFactory = _$TeacherUpdateFromJson;
-  static const toJsonFactory = _$TeacherUpdateToJson;
-  Map<String, dynamic> toJson() => _$TeacherUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -10850,6 +12022,9 @@ class Telegram {
   factory Telegram.fromJson(Map<String, dynamic> json) =>
       _$TelegramFromJson(json);
 
+  static const toJsonFactory = _$TelegramToJson;
+  Map<String, dynamic> toJson() => _$TelegramToJson(this);
+
   @JsonKey(name: 'timetable_today_lessons')
   final String? timetableTodayLessons;
   @JsonKey(name: 'timetable_tomorrow_lessons')
@@ -10877,8 +12052,6 @@ class Telegram {
   @JsonKey(name: 'set_theme_time')
   final String? setThemeTime;
   static const fromJsonFactory = _$TelegramFromJson;
-  static const toJsonFactory = _$TelegramToJson;
-  Map<String, dynamic> toJson() => _$TelegramToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -11047,11 +12220,12 @@ class TelegramId {
   factory TelegramId.fromJson(Map<String, dynamic> json) =>
       _$TelegramIdFromJson(json);
 
+  static const toJsonFactory = _$TelegramIdToJson;
+  Map<String, dynamic> toJson() => _$TelegramIdToJson(this);
+
   @JsonKey(name: 'telegram_id')
   final String telegramId;
   static const fromJsonFactory = _$TelegramIdFromJson;
-  static const toJsonFactory = _$TelegramIdToJson;
-  Map<String, dynamic> toJson() => _$TelegramIdToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -11092,6 +12266,9 @@ class TimetableSettingsUpdate {
   factory TimetableSettingsUpdate.fromJson(Map<String, dynamic> json) =>
       _$TimetableSettingsUpdateFromJson(json);
 
+  static const toJsonFactory = _$TimetableSettingsUpdateToJson;
+  Map<String, dynamic> toJson() => _$TimetableSettingsUpdateToJson(this);
+
   @JsonKey(name: 'timetable_today_lessons')
   final String? timetableTodayLessons;
   @JsonKey(name: 'timetable_tomorrow_lessons')
@@ -11099,8 +12276,6 @@ class TimetableSettingsUpdate {
   @JsonKey(name: 'timetable_is_before_lesson')
   final String? timetableIsBeforeLesson;
   static const fromJsonFactory = _$TimetableSettingsUpdateFromJson;
-  static const toJsonFactory = _$TimetableSettingsUpdateToJson;
-  Map<String, dynamic> toJson() => _$TimetableSettingsUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -11165,51 +12340,35 @@ extension $TimetableSettingsUpdateExtension on TimetableSettingsUpdate {
 @JsonSerializable(explicitToJson: true)
 class TimetableViewInDb {
   TimetableViewInDb({
-    required this.facultyId,
-    required this.semesterId,
-    required this.lessonsMode,
-    required this.sessionMode,
+    required this.semesterFacultyId,
+    required this.mode,
   });
 
   factory TimetableViewInDb.fromJson(Map<String, dynamic> json) =>
       _$TimetableViewInDbFromJson(json);
 
-  @JsonKey(name: 'faculty_id')
-  final int facultyId;
-  @JsonKey(name: 'semester_id')
-  final int semesterId;
-  @JsonKey(
-    name: 'lessons_mode',
-    toJson: viewModeToJson,
-    fromJson: viewModeFromJson,
-  )
-  final enums.ViewMode lessonsMode;
-  @JsonKey(
-    name: 'session_mode',
-    toJson: viewModeToJson,
-    fromJson: viewModeFromJson,
-  )
-  final enums.ViewMode sessionMode;
-  static const fromJsonFactory = _$TimetableViewInDbFromJson;
   static const toJsonFactory = _$TimetableViewInDbToJson;
   Map<String, dynamic> toJson() => _$TimetableViewInDbToJson(this);
+
+  @JsonKey(name: 'semester_faculty_id')
+  final int semesterFacultyId;
+  @JsonKey(
+    name: 'mode',
+    toJson: viewModeToJson,
+    fromJson: viewModeFromJson,
+  )
+  final enums.ViewMode mode;
+  static const fromJsonFactory = _$TimetableViewInDbFromJson;
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is TimetableViewInDb &&
-            (identical(other.facultyId, facultyId) ||
+            (identical(other.semesterFacultyId, semesterFacultyId) ||
                 const DeepCollectionEquality()
-                    .equals(other.facultyId, facultyId)) &&
-            (identical(other.semesterId, semesterId) ||
-                const DeepCollectionEquality()
-                    .equals(other.semesterId, semesterId)) &&
-            (identical(other.lessonsMode, lessonsMode) ||
-                const DeepCollectionEquality()
-                    .equals(other.lessonsMode, lessonsMode)) &&
-            (identical(other.sessionMode, sessionMode) ||
-                const DeepCollectionEquality()
-                    .equals(other.sessionMode, sessionMode)));
+                    .equals(other.semesterFacultyId, semesterFacultyId)) &&
+            (identical(other.mode, mode) ||
+                const DeepCollectionEquality().equals(other.mode, mode)));
   }
 
   @override
@@ -11217,92 +12376,63 @@ class TimetableViewInDb {
 
   @override
   int get hashCode =>
-      const DeepCollectionEquality().hash(facultyId) ^
-      const DeepCollectionEquality().hash(semesterId) ^
-      const DeepCollectionEquality().hash(lessonsMode) ^
-      const DeepCollectionEquality().hash(sessionMode) ^
+      const DeepCollectionEquality().hash(semesterFacultyId) ^
+      const DeepCollectionEquality().hash(mode) ^
       runtimeType.hashCode;
 }
 
 extension $TimetableViewInDbExtension on TimetableViewInDb {
-  TimetableViewInDb copyWith(
-      {int? facultyId,
-      int? semesterId,
-      enums.ViewMode? lessonsMode,
-      enums.ViewMode? sessionMode}) {
+  TimetableViewInDb copyWith({int? semesterFacultyId, enums.ViewMode? mode}) {
     return TimetableViewInDb(
-        facultyId: facultyId ?? this.facultyId,
-        semesterId: semesterId ?? this.semesterId,
-        lessonsMode: lessonsMode ?? this.lessonsMode,
-        sessionMode: sessionMode ?? this.sessionMode);
+        semesterFacultyId: semesterFacultyId ?? this.semesterFacultyId,
+        mode: mode ?? this.mode);
   }
 
   TimetableViewInDb copyWithWrapped(
-      {Wrapped<int>? facultyId,
-      Wrapped<int>? semesterId,
-      Wrapped<enums.ViewMode>? lessonsMode,
-      Wrapped<enums.ViewMode>? sessionMode}) {
+      {Wrapped<int>? semesterFacultyId, Wrapped<enums.ViewMode>? mode}) {
     return TimetableViewInDb(
-        facultyId: (facultyId != null ? facultyId.value : this.facultyId),
-        semesterId: (semesterId != null ? semesterId.value : this.semesterId),
-        lessonsMode:
-            (lessonsMode != null ? lessonsMode.value : this.lessonsMode),
-        sessionMode:
-            (sessionMode != null ? sessionMode.value : this.sessionMode));
+        semesterFacultyId: (semesterFacultyId != null
+            ? semesterFacultyId.value
+            : this.semesterFacultyId),
+        mode: (mode != null ? mode.value : this.mode));
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class TimetableViewUpdate {
   TimetableViewUpdate({
-    required this.facultyId,
-    required this.semesterId,
-    this.lessonsMode,
-    this.sessionMode,
+    required this.semesterFacultyId,
+    required this.mode,
     this.isNotify,
   });
 
   factory TimetableViewUpdate.fromJson(Map<String, dynamic> json) =>
       _$TimetableViewUpdateFromJson(json);
 
-  @JsonKey(name: 'faculty_id')
-  final int facultyId;
-  @JsonKey(name: 'semester_id')
-  final int semesterId;
+  static const toJsonFactory = _$TimetableViewUpdateToJson;
+  Map<String, dynamic> toJson() => _$TimetableViewUpdateToJson(this);
+
+  @JsonKey(name: 'semester_faculty_id')
+  final int semesterFacultyId;
   @JsonKey(
-    name: 'lessons_mode',
+    name: 'mode',
     toJson: viewModeToJson,
     fromJson: viewModeFromJson,
   )
-  final enums.ViewMode? lessonsMode;
-  @JsonKey(
-    name: 'session_mode',
-    toJson: viewModeToJson,
-    fromJson: viewModeFromJson,
-  )
-  final enums.ViewMode? sessionMode;
+  final enums.ViewMode mode;
   @JsonKey(name: 'is_notify', defaultValue: false)
   final bool? isNotify;
   static const fromJsonFactory = _$TimetableViewUpdateFromJson;
-  static const toJsonFactory = _$TimetableViewUpdateToJson;
-  Map<String, dynamic> toJson() => _$TimetableViewUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is TimetableViewUpdate &&
-            (identical(other.facultyId, facultyId) ||
+            (identical(other.semesterFacultyId, semesterFacultyId) ||
                 const DeepCollectionEquality()
-                    .equals(other.facultyId, facultyId)) &&
-            (identical(other.semesterId, semesterId) ||
-                const DeepCollectionEquality()
-                    .equals(other.semesterId, semesterId)) &&
-            (identical(other.lessonsMode, lessonsMode) ||
-                const DeepCollectionEquality()
-                    .equals(other.lessonsMode, lessonsMode)) &&
-            (identical(other.sessionMode, sessionMode) ||
-                const DeepCollectionEquality()
-                    .equals(other.sessionMode, sessionMode)) &&
+                    .equals(other.semesterFacultyId, semesterFacultyId)) &&
+            (identical(other.mode, mode) ||
+                const DeepCollectionEquality().equals(other.mode, mode)) &&
             (identical(other.isNotify, isNotify) ||
                 const DeepCollectionEquality()
                     .equals(other.isNotify, isNotify)));
@@ -11313,42 +12443,30 @@ class TimetableViewUpdate {
 
   @override
   int get hashCode =>
-      const DeepCollectionEquality().hash(facultyId) ^
-      const DeepCollectionEquality().hash(semesterId) ^
-      const DeepCollectionEquality().hash(lessonsMode) ^
-      const DeepCollectionEquality().hash(sessionMode) ^
+      const DeepCollectionEquality().hash(semesterFacultyId) ^
+      const DeepCollectionEquality().hash(mode) ^
       const DeepCollectionEquality().hash(isNotify) ^
       runtimeType.hashCode;
 }
 
 extension $TimetableViewUpdateExtension on TimetableViewUpdate {
   TimetableViewUpdate copyWith(
-      {int? facultyId,
-      int? semesterId,
-      enums.ViewMode? lessonsMode,
-      enums.ViewMode? sessionMode,
-      bool? isNotify}) {
+      {int? semesterFacultyId, enums.ViewMode? mode, bool? isNotify}) {
     return TimetableViewUpdate(
-        facultyId: facultyId ?? this.facultyId,
-        semesterId: semesterId ?? this.semesterId,
-        lessonsMode: lessonsMode ?? this.lessonsMode,
-        sessionMode: sessionMode ?? this.sessionMode,
+        semesterFacultyId: semesterFacultyId ?? this.semesterFacultyId,
+        mode: mode ?? this.mode,
         isNotify: isNotify ?? this.isNotify);
   }
 
   TimetableViewUpdate copyWithWrapped(
-      {Wrapped<int>? facultyId,
-      Wrapped<int>? semesterId,
-      Wrapped<enums.ViewMode?>? lessonsMode,
-      Wrapped<enums.ViewMode?>? sessionMode,
+      {Wrapped<int>? semesterFacultyId,
+      Wrapped<enums.ViewMode>? mode,
       Wrapped<bool?>? isNotify}) {
     return TimetableViewUpdate(
-        facultyId: (facultyId != null ? facultyId.value : this.facultyId),
-        semesterId: (semesterId != null ? semesterId.value : this.semesterId),
-        lessonsMode:
-            (lessonsMode != null ? lessonsMode.value : this.lessonsMode),
-        sessionMode:
-            (sessionMode != null ? sessionMode.value : this.sessionMode),
+        semesterFacultyId: (semesterFacultyId != null
+            ? semesterFacultyId.value
+            : this.semesterFacultyId),
+        mode: (mode != null ? mode.value : this.mode),
         isNotify: (isNotify != null ? isNotify.value : this.isNotify));
   }
 }
@@ -11365,6 +12483,9 @@ class UserBaseCreate {
   factory UserBaseCreate.fromJson(Map<String, dynamic> json) =>
       _$UserBaseCreateFromJson(json);
 
+  static const toJsonFactory = _$UserBaseCreateToJson;
+  Map<String, dynamic> toJson() => _$UserBaseCreateToJson(this);
+
   @JsonKey(name: 'password')
   final String password;
   @JsonKey(name: 'confirm_password')
@@ -11374,8 +12495,6 @@ class UserBaseCreate {
   @JsonKey(name: 'role_id')
   final int roleId;
   static const fromJsonFactory = _$UserBaseCreateFromJson;
-  static const toJsonFactory = _$UserBaseCreateToJson;
-  Map<String, dynamic> toJson() => _$UserBaseCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -11441,6 +12560,9 @@ class UserChangePassword {
   factory UserChangePassword.fromJson(Map<String, dynamic> json) =>
       _$UserChangePasswordFromJson(json);
 
+  static const toJsonFactory = _$UserChangePasswordToJson;
+  Map<String, dynamic> toJson() => _$UserChangePasswordToJson(this);
+
   @JsonKey(name: 'password')
   final String password;
   @JsonKey(name: 'confirm_password')
@@ -11448,8 +12570,6 @@ class UserChangePassword {
   @JsonKey(name: 'current_password')
   final String currentPassword;
   static const fromJsonFactory = _$UserChangePasswordFromJson;
-  static const toJsonFactory = _$UserChangePasswordToJson;
-  Map<String, dynamic> toJson() => _$UserChangePasswordToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -11514,6 +12634,9 @@ class UserCreate {
   factory UserCreate.fromJson(Map<String, dynamic> json) =>
       _$UserCreateFromJson(json);
 
+  static const toJsonFactory = _$UserCreateToJson;
+  Map<String, dynamic> toJson() => _$UserCreateToJson(this);
+
   @JsonKey(name: 'password')
   final String password;
   @JsonKey(name: 'confirm_password')
@@ -11525,8 +12648,6 @@ class UserCreate {
   @JsonKey(name: 'person')
   final PersonCreate person;
   static const fromJsonFactory = _$UserCreateFromJson;
-  static const toJsonFactory = _$UserCreateToJson;
-  Map<String, dynamic> toJson() => _$UserCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -11604,6 +12725,9 @@ class UserCreateFromPerson {
   factory UserCreateFromPerson.fromJson(Map<String, dynamic> json) =>
       _$UserCreateFromPersonFromJson(json);
 
+  static const toJsonFactory = _$UserCreateFromPersonToJson;
+  Map<String, dynamic> toJson() => _$UserCreateFromPersonToJson(this);
+
   @JsonKey(name: 'password')
   final String password;
   @JsonKey(name: 'confirm_password')
@@ -11615,8 +12739,6 @@ class UserCreateFromPerson {
   @JsonKey(name: 'person_id')
   final int personId;
   static const fromJsonFactory = _$UserCreateFromPersonFromJson;
-  static const toJsonFactory = _$UserCreateFromPersonToJson;
-  Map<String, dynamic> toJson() => _$UserCreateFromPersonToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -11692,13 +12814,14 @@ class UserFacultyForbiddenCreate {
   factory UserFacultyForbiddenCreate.fromJson(Map<String, dynamic> json) =>
       _$UserFacultyForbiddenCreateFromJson(json);
 
+  static const toJsonFactory = _$UserFacultyForbiddenCreateToJson;
+  Map<String, dynamic> toJson() => _$UserFacultyForbiddenCreateToJson(this);
+
   @JsonKey(name: 'faculty_id')
   final int facultyId;
   @JsonKey(name: 'user_id')
   final int userId;
   static const fromJsonFactory = _$UserFacultyForbiddenCreateFromJson;
-  static const toJsonFactory = _$UserFacultyForbiddenCreateToJson;
-  Map<String, dynamic> toJson() => _$UserFacultyForbiddenCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -11747,6 +12870,9 @@ class UserFacultyForbiddenInDb {
   factory UserFacultyForbiddenInDb.fromJson(Map<String, dynamic> json) =>
       _$UserFacultyForbiddenInDbFromJson(json);
 
+  static const toJsonFactory = _$UserFacultyForbiddenInDbToJson;
+  Map<String, dynamic> toJson() => _$UserFacultyForbiddenInDbToJson(this);
+
   @JsonKey(name: 'faculty_id')
   final int facultyId;
   @JsonKey(name: 'user_id')
@@ -11756,8 +12882,6 @@ class UserFacultyForbiddenInDb {
   @JsonKey(name: 'user')
   final AppSchemasOtherPermissionUserFullNameInDb user;
   static const fromJsonFactory = _$UserFacultyForbiddenInDbFromJson;
-  static const toJsonFactory = _$UserFacultyForbiddenInDbToJson;
-  Map<String, dynamic> toJson() => _$UserFacultyForbiddenInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -11822,11 +12946,12 @@ class UserFacultyForbiddenUpdate {
   factory UserFacultyForbiddenUpdate.fromJson(Map<String, dynamic> json) =>
       _$UserFacultyForbiddenUpdateFromJson(json);
 
+  static const toJsonFactory = _$UserFacultyForbiddenUpdateToJson;
+  Map<String, dynamic> toJson() => _$UserFacultyForbiddenUpdateToJson(this);
+
   @JsonKey(name: 'users', defaultValue: <int>[])
   final List<int> users;
   static const fromJsonFactory = _$UserFacultyForbiddenUpdateFromJson;
-  static const toJsonFactory = _$UserFacultyForbiddenUpdateToJson;
-  Map<String, dynamic> toJson() => _$UserFacultyForbiddenUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -11868,6 +12993,9 @@ class UserFullInDb {
   factory UserFullInDb.fromJson(Map<String, dynamic> json) =>
       _$UserFullInDbFromJson(json);
 
+  static const toJsonFactory = _$UserFullInDbToJson;
+  Map<String, dynamic> toJson() => _$UserFullInDbToJson(this);
+
   @JsonKey(name: 'login')
   final String login;
   @JsonKey(name: 'id')
@@ -11879,8 +13007,6 @@ class UserFullInDb {
   @JsonKey(name: 'telegram')
   final TelegramId? telegram;
   static const fromJsonFactory = _$UserFullInDbFromJson;
-  static const toJsonFactory = _$UserFullInDbToJson;
-  Map<String, dynamic> toJson() => _$UserFullInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -11956,6 +13082,9 @@ class UserFullWithStatisticInDb {
   factory UserFullWithStatisticInDb.fromJson(Map<String, dynamic> json) =>
       _$UserFullWithStatisticInDbFromJson(json);
 
+  static const toJsonFactory = _$UserFullWithStatisticInDbToJson;
+  Map<String, dynamic> toJson() => _$UserFullWithStatisticInDbToJson(this);
+
   @JsonKey(name: 'login')
   final String login;
   @JsonKey(name: 'id')
@@ -11969,8 +13098,6 @@ class UserFullWithStatisticInDb {
   @JsonKey(name: 'telegram')
   final TelegramId? telegram;
   static const fromJsonFactory = _$UserFullWithStatisticInDbFromJson;
-  static const toJsonFactory = _$UserFullWithStatisticInDbToJson;
-  Map<String, dynamic> toJson() => _$UserFullWithStatisticInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -12055,6 +13182,9 @@ class UserMeInDb {
   factory UserMeInDb.fromJson(Map<String, dynamic> json) =>
       _$UserMeInDbFromJson(json);
 
+  static const toJsonFactory = _$UserMeInDbToJson;
+  Map<String, dynamic> toJson() => _$UserMeInDbToJson(this);
+
   @JsonKey(name: 'login')
   final String login;
   @JsonKey(name: 'id')
@@ -12074,8 +13204,6 @@ class UserMeInDb {
   )
   final List<enums.Permissions> userPermissions;
   static const fromJsonFactory = _$UserMeInDbFromJson;
-  static const toJsonFactory = _$UserMeInDbToJson;
-  Map<String, dynamic> toJson() => _$UserMeInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -12166,13 +13294,14 @@ class UserPassword {
   factory UserPassword.fromJson(Map<String, dynamic> json) =>
       _$UserPasswordFromJson(json);
 
+  static const toJsonFactory = _$UserPasswordToJson;
+  Map<String, dynamic> toJson() => _$UserPasswordToJson(this);
+
   @JsonKey(name: 'password')
   final String password;
   @JsonKey(name: 'confirm_password')
   final String confirmPassword;
   static const fromJsonFactory = _$UserPasswordFromJson;
-  static const toJsonFactory = _$UserPasswordToJson;
-  Map<String, dynamic> toJson() => _$UserPasswordToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -12222,6 +13351,9 @@ class UserPermissionBase {
   factory UserPermissionBase.fromJson(Map<String, dynamic> json) =>
       _$UserPermissionBaseFromJson(json);
 
+  static const toJsonFactory = _$UserPermissionBaseToJson;
+  Map<String, dynamic> toJson() => _$UserPermissionBaseToJson(this);
+
   @JsonKey(
     name: 'user_permissions',
     toJson: permissionsListToJson,
@@ -12229,8 +13361,6 @@ class UserPermissionBase {
   )
   final List<enums.Permissions>? userPermissions;
   static const fromJsonFactory = _$UserPermissionBaseFromJson;
-  static const toJsonFactory = _$UserPermissionBaseToJson;
-  Map<String, dynamic> toJson() => _$UserPermissionBaseToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -12274,6 +13404,9 @@ class UserPermissionCreate {
   factory UserPermissionCreate.fromJson(Map<String, dynamic> json) =>
       _$UserPermissionCreateFromJson(json);
 
+  static const toJsonFactory = _$UserPermissionCreateToJson;
+  Map<String, dynamic> toJson() => _$UserPermissionCreateToJson(this);
+
   @JsonKey(
     name: 'user_permissions',
     toJson: permissionsListToJson,
@@ -12281,8 +13414,6 @@ class UserPermissionCreate {
   )
   final List<enums.Permissions>? userPermissions;
   static const fromJsonFactory = _$UserPermissionCreateFromJson;
-  static const toJsonFactory = _$UserPermissionCreateToJson;
-  Map<String, dynamic> toJson() => _$UserPermissionCreateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -12326,6 +13457,9 @@ class UserPermissionUpdate {
   factory UserPermissionUpdate.fromJson(Map<String, dynamic> json) =>
       _$UserPermissionUpdateFromJson(json);
 
+  static const toJsonFactory = _$UserPermissionUpdateToJson;
+  Map<String, dynamic> toJson() => _$UserPermissionUpdateToJson(this);
+
   @JsonKey(
     name: 'user_permissions',
     toJson: permissionsListToJson,
@@ -12333,8 +13467,6 @@ class UserPermissionUpdate {
   )
   final List<enums.Permissions>? userPermissions;
   static const fromJsonFactory = _$UserPermissionUpdateFromJson;
-  static const toJsonFactory = _$UserPermissionUpdateToJson;
-  Map<String, dynamic> toJson() => _$UserPermissionUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -12379,13 +13511,14 @@ class UserShortTelegram {
   factory UserShortTelegram.fromJson(Map<String, dynamic> json) =>
       _$UserShortTelegramFromJson(json);
 
+  static const toJsonFactory = _$UserShortTelegramToJson;
+  Map<String, dynamic> toJson() => _$UserShortTelegramToJson(this);
+
   @JsonKey(name: 'person')
   final PersonShortInDb person;
   @JsonKey(name: 'telegram')
   final TelegramId? telegram;
   static const fromJsonFactory = _$UserShortTelegramFromJson;
-  static const toJsonFactory = _$UserShortTelegramToJson;
-  Map<String, dynamic> toJson() => _$UserShortTelegramToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -12434,6 +13567,9 @@ class UserUpdate {
   factory UserUpdate.fromJson(Map<String, dynamic> json) =>
       _$UserUpdateFromJson(json);
 
+  static const toJsonFactory = _$UserUpdateToJson;
+  Map<String, dynamic> toJson() => _$UserUpdateToJson(this);
+
   @JsonKey(name: 'telegram_id')
   final String? telegramId;
   @JsonKey(name: 'login')
@@ -12443,8 +13579,6 @@ class UserUpdate {
   @JsonKey(name: 'person')
   final PersonUpdate person;
   static const fromJsonFactory = _$UserUpdateFromJson;
-  static const toJsonFactory = _$UserUpdateToJson;
-  Map<String, dynamic> toJson() => _$UserUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -12505,11 +13639,12 @@ class UsersSettings {
   factory UsersSettings.fromJson(Map<String, dynamic> json) =>
       _$UsersSettingsFromJson(json);
 
+  static const toJsonFactory = _$UsersSettingsToJson;
+  Map<String, dynamic> toJson() => _$UsersSettingsToJson(this);
+
   @JsonKey(name: 'auth')
   final AuthSettings auth;
   static const fromJsonFactory = _$UsersSettingsFromJson;
-  static const toJsonFactory = _$UsersSettingsToJson;
-  Map<String, dynamic> toJson() => _$UsersSettingsToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -12548,6 +13683,9 @@ class ValidationError {
   factory ValidationError.fromJson(Map<String, dynamic> json) =>
       _$ValidationErrorFromJson(json);
 
+  static const toJsonFactory = _$ValidationErrorToJson;
+  Map<String, dynamic> toJson() => _$ValidationErrorToJson(this);
+
   @JsonKey(name: 'loc', defaultValue: <String>[])
   final List<String> loc;
   @JsonKey(name: 'msg')
@@ -12555,8 +13693,6 @@ class ValidationError {
   @JsonKey(name: 'type')
   final String type;
   static const fromJsonFactory = _$ValidationErrorFromJson;
-  static const toJsonFactory = _$ValidationErrorToJson;
-  Map<String, dynamic> toJson() => _$ValidationErrorToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -12610,6 +13746,9 @@ class WeatherSettingsUpdate {
   factory WeatherSettingsUpdate.fromJson(Map<String, dynamic> json) =>
       _$WeatherSettingsUpdateFromJson(json);
 
+  static const toJsonFactory = _$WeatherSettingsUpdateToJson;
+  Map<String, dynamic> toJson() => _$WeatherSettingsUpdateToJson(this);
+
   @JsonKey(name: 'weather_send_time')
   final String? weatherSendTime;
   @JsonKey(name: 'weather_send_daily')
@@ -12619,8 +13758,6 @@ class WeatherSettingsUpdate {
   @JsonKey(name: 'weather_send_is_weekend')
   final bool? weatherSendIsWeekend;
   static const fromJsonFactory = _$WeatherSettingsUpdateFromJson;
-  static const toJsonFactory = _$WeatherSettingsUpdateToJson;
-  Map<String, dynamic> toJson() => _$WeatherSettingsUpdateToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -12698,16 +13835,17 @@ class AppSchemasOtherPermissionUserFullNameInDb {
           Map<String, dynamic> json) =>
       _$AppSchemasOtherPermissionUserFullNameInDbFromJson(json);
 
+  static const toJsonFactory =
+      _$AppSchemasOtherPermissionUserFullNameInDbToJson;
+  Map<String, dynamic> toJson() =>
+      _$AppSchemasOtherPermissionUserFullNameInDbToJson(this);
+
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'person')
   final PersonFullName person;
   static const fromJsonFactory =
       _$AppSchemasOtherPermissionUserFullNameInDbFromJson;
-  static const toJsonFactory =
-      _$AppSchemasOtherPermissionUserFullNameInDbToJson;
-  Map<String, dynamic> toJson() =>
-      _$AppSchemasOtherPermissionUserFullNameInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -12755,13 +13893,14 @@ class AppSchemasUserUserFullNameInDb {
   factory AppSchemasUserUserFullNameInDb.fromJson(Map<String, dynamic> json) =>
       _$AppSchemasUserUserFullNameInDbFromJson(json);
 
+  static const toJsonFactory = _$AppSchemasUserUserFullNameInDbToJson;
+  Map<String, dynamic> toJson() => _$AppSchemasUserUserFullNameInDbToJson(this);
+
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'person')
   final PersonFullName person;
   static const fromJsonFactory = _$AppSchemasUserUserFullNameInDbFromJson;
-  static const toJsonFactory = _$AppSchemasUserUserFullNameInDbToJson;
-  Map<String, dynamic> toJson() => _$AppSchemasUserUserFullNameInDbToJson(this);
 
   @override
   bool operator ==(dynamic other) {
@@ -13470,6 +14609,49 @@ List<enums.ViewMode>? viewModeNullableListFromJson(
   }
 
   return viewMode.map((e) => viewModeFromJson(e.toString())).toList();
+}
+
+int? weekTypeToJson(enums.WeekType? weekType) {
+  return weekType?.value;
+}
+
+enums.WeekType weekTypeFromJson(
+  Object? weekType, [
+  enums.WeekType? defaultValue,
+]) {
+  return enums.WeekType.values.firstWhereOrNull((e) => e.value == weekType) ??
+      defaultValue ??
+      enums.WeekType.swaggerGeneratedUnknown;
+}
+
+List<int> weekTypeListToJson(List<enums.WeekType>? weekType) {
+  if (weekType == null) {
+    return [];
+  }
+
+  return weekType.map((e) => e.value!).toList();
+}
+
+List<enums.WeekType> weekTypeListFromJson(
+  List? weekType, [
+  List<enums.WeekType>? defaultValue,
+]) {
+  if (weekType == null) {
+    return defaultValue ?? [];
+  }
+
+  return weekType.map((e) => weekTypeFromJson(e.toString())).toList();
+}
+
+List<enums.WeekType>? weekTypeNullableListFromJson(
+  List? weekType, [
+  List<enums.WeekType>? defaultValue,
+]) {
+  if (weekType == null) {
+    return defaultValue;
+  }
+
+  return weekType.map((e) => weekTypeFromJson(e.toString())).toList();
 }
 
 // ignore: unused_element

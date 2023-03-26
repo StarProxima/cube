@@ -18,14 +18,20 @@ class _$CubeApi extends CubeApi {
 
   @override
   Future<Response<AccessToken>> _apiAuthLoginPost(
-      {required BodyLoginApiAuthLoginPost? body}) {
+      {required BodyLoginApiAuthLoginPost body}) {
     final Uri $url = Uri.parse('/api/auth/login');
-    final $body = body;
+    final List<PartValue> $parts = <PartValue>[
+      PartValue<BodyLoginApiAuthLoginPost>(
+        'body',
+        body,
+      )
+    ];
     final Request $request = Request(
       'POST',
       $url,
       client.baseUrl,
-      body: $body,
+      parts: $parts,
+      multipart: true,
     );
     return client.send<AccessToken, AccessToken>($request);
   }
@@ -329,8 +335,8 @@ class _$CubeApi extends CubeApi {
   Future<Response<PageUserFullInDb>> _apiUsersGet({
     String? search,
     List<int>? roleIds,
-    dynamic sortBy,
-    dynamic sortOrder,
+    String? sortBy,
+    String? sortOrder,
     int? page,
     int? size,
     String? clientName,
@@ -914,10 +920,18 @@ class _$CubeApi extends CubeApi {
     final Map<String, String> $headers = {
       if (clientName != null) 'Client_name': clientName,
     };
+    final List<PartValue> $parts = <PartValue>[
+      PartValue<BodyImportBellsApiBellsImportPost>(
+        'body',
+        body,
+      )
+    ];
     final Request $request = Request(
       'POST',
       $url,
       client.baseUrl,
+      parts: $parts,
+      multipart: true,
       headers: $headers,
     );
     return client.send<List<BellInDb>, BellInDb>($request);
@@ -1044,10 +1058,18 @@ class _$CubeApi extends CubeApi {
     final Map<String, String> $headers = {
       if (clientName != null) 'Client_name': clientName,
     };
+    final List<PartValue> $parts = <PartValue>[
+      PartValue<BodyImportFacultiesApiFacultiesImportPost>(
+        'body',
+        body,
+      )
+    ];
     final Request $request = Request(
       'POST',
       $url,
       client.baseUrl,
+      parts: $parts,
+      multipart: true,
       headers: $headers,
     );
     return client.send<List<FacultyInDb>, FacultyInDb>($request);
@@ -1059,7 +1081,7 @@ class _$CubeApi extends CubeApi {
     int? facultyId,
     String? name,
     String? cipher,
-    List<String?>? degreeStudy,
+    List<Object?>? degreeStudy,
   }) {
     final Uri $url = Uri.parse('/api/directions');
     final Map<String, dynamic> $params = <String, dynamic>{
@@ -1150,7 +1172,7 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<List<DirectionInDb>>> _apiDirectionsImportPost({
+  Future<Response<List<DirectionShortInDb>>> _apiDirectionsImportPost({
     String? clientName,
     required BodyImportDirectionsApiDirectionsImportPost body,
   }) {
@@ -1158,13 +1180,21 @@ class _$CubeApi extends CubeApi {
     final Map<String, String> $headers = {
       if (clientName != null) 'Client_name': clientName,
     };
+    final List<PartValue> $parts = <PartValue>[
+      PartValue<BodyImportDirectionsApiDirectionsImportPost>(
+        'body',
+        body,
+      )
+    ];
     final Request $request = Request(
       'POST',
       $url,
       client.baseUrl,
+      parts: $parts,
+      multipart: true,
       headers: $headers,
     );
-    return client.send<List<DirectionInDb>, DirectionInDb>($request);
+    return client.send<List<DirectionShortInDb>, DirectionShortInDb>($request);
   }
 
   @override
@@ -1266,10 +1296,18 @@ class _$CubeApi extends CubeApi {
     final Map<String, String> $headers = {
       if (clientName != null) 'Client_name': clientName,
     };
+    final List<PartValue> $parts = <PartValue>[
+      PartValue<BodyImportProfilesApiProfilesImportPost>(
+        'body',
+        body,
+      )
+    ];
     final Request $request = Request(
       'POST',
       $url,
       client.baseUrl,
+      parts: $parts,
+      multipart: true,
       headers: $headers,
     );
     return client.send<List<ProfileInDb>, ProfileInDb>($request);
@@ -1346,17 +1384,26 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<List<SemesterDirectionInDb>>> _apiSemesterDirectionsGet({
+  Future<Response<Object>> _apiSemesterFacultiesWeekTypesGet() {
+    final Uri $url = Uri.parse('/api/semester_faculties/week_types');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<Object, Object>($request);
+  }
+
+  @override
+  Future<Response<List<SemesterFacultyInDb>>> _apiSemesterFacultiesGet({
     int? semesterId,
-    List<int>? directions,
-    List<int>? courses,
+    int? facultyId,
     bool? currentSemester,
   }) {
-    final Uri $url = Uri.parse('/api/semester_directions');
+    final Uri $url = Uri.parse('/api/semester_faculties');
     final Map<String, dynamic> $params = <String, dynamic>{
       'semester_id': semesterId,
-      'directions': directions,
-      'courses': courses,
+      'faculty_id': facultyId,
       'current_semester': currentSemester,
     };
     final Request $request = Request(
@@ -1366,15 +1413,15 @@ class _$CubeApi extends CubeApi {
       parameters: $params,
     );
     return client
-        .send<List<SemesterDirectionInDb>, SemesterDirectionInDb>($request);
+        .send<List<SemesterFacultyInDb>, SemesterFacultyInDb>($request);
   }
 
   @override
-  Future<Response<int>> _apiSemesterDirectionsPost({
+  Future<Response<int>> _apiSemesterFacultiesPost({
     String? clientName,
-    required SemesterDirectionCreate? body,
+    required SemesterFacultyCreate? body,
   }) {
-    final Uri $url = Uri.parse('/api/semester_directions');
+    final Uri $url = Uri.parse('/api/semester_faculties');
     final Map<String, String> $headers = {
       if (clientName != null) 'Client_name': clientName,
     };
@@ -1390,13 +1437,12 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<Status>> _apiSemesterDirectionsSemesterDirectionIdPut({
-    required int? semesterDirectionId,
+  Future<Response<Status>> _apiSemesterFacultiesSemesterFacultyIdPut({
+    required int? semesterFacultyId,
     String? clientName,
-    required SemesterDirectionUpdate? body,
+    required SemesterFacultyUpdate? body,
   }) {
-    final Uri $url =
-        Uri.parse('/api/semester_directions/${semesterDirectionId}');
+    final Uri $url = Uri.parse('/api/semester_faculties/${semesterFacultyId}');
     final Map<String, String> $headers = {
       if (clientName != null) 'Client_name': clientName,
     };
@@ -1412,12 +1458,197 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<Status>> _apiSemesterDirectionsSemesterDirectionIdDelete({
-    required int? semesterDirectionId,
+  Future<Response<Status>> _apiSemesterFacultiesSemesterFacultyIdDelete({
+    required int? semesterFacultyId,
     String? clientName,
   }) {
-    final Uri $url =
-        Uri.parse('/api/semester_directions/${semesterDirectionId}');
+    final Uri $url = Uri.parse('/api/semester_faculties/${semesterFacultyId}');
+    final Map<String, String> $headers = {
+      if (clientName != null) 'Client_name': clientName,
+    };
+    final Request $request = Request(
+      'DELETE',
+      $url,
+      client.baseUrl,
+      headers: $headers,
+    );
+    return client.send<Status, Status>($request);
+  }
+
+  @override
+  Future<Response<List<SemesterLessonsDirectionInDb>>>
+      _apiSemesterLessonsDirectionsGet({
+    int? semesterFacultyId,
+    int? semesterId,
+    int? facultyId,
+    int? $part,
+    List<int>? directions,
+    List<int>? courses,
+    List<int>? groups,
+    bool? currentSemester,
+  }) {
+    final Uri $url = Uri.parse('/api/semester_lessons_directions');
+    final Map<String, dynamic> $params = <String, dynamic>{
+      'semester_faculty_id': semesterFacultyId,
+      'semester_id': semesterId,
+      'faculty_id': facultyId,
+      'part': $part,
+      'directions': directions,
+      'courses': courses,
+      'groups': groups,
+      'current_semester': currentSemester,
+    };
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+      parameters: $params,
+    );
+    return client.send<List<SemesterLessonsDirectionInDb>,
+        SemesterLessonsDirectionInDb>($request);
+  }
+
+  @override
+  Future<Response<int>> _apiSemesterLessonsDirectionsPost({
+    String? clientName,
+    required SemesterLessonsDirectionCreate? body,
+  }) {
+    final Uri $url = Uri.parse('/api/semester_lessons_directions');
+    final Map<String, String> $headers = {
+      if (clientName != null) 'Client_name': clientName,
+    };
+    final $body = body;
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+      headers: $headers,
+    );
+    return client.send<int, int>($request);
+  }
+
+  @override
+  Future<Response<Status>>
+      _apiSemesterLessonsDirectionsSemesterLessonsDirectionIdPut({
+    required int? semesterLessonsDirectionId,
+    String? clientName,
+    required SemesterLessonsDirectionUpdate? body,
+  }) {
+    final Uri $url = Uri.parse(
+        '/api/semester_lessons_directions/${semesterLessonsDirectionId}');
+    final Map<String, String> $headers = {
+      if (clientName != null) 'Client_name': clientName,
+    };
+    final $body = body;
+    final Request $request = Request(
+      'PUT',
+      $url,
+      client.baseUrl,
+      body: $body,
+      headers: $headers,
+    );
+    return client.send<Status, Status>($request);
+  }
+
+  @override
+  Future<Response<Status>>
+      _apiSemesterLessonsDirectionsSemesterLessonsDirectionIdDelete({
+    required int? semesterLessonsDirectionId,
+    String? clientName,
+  }) {
+    final Uri $url = Uri.parse(
+        '/api/semester_lessons_directions/${semesterLessonsDirectionId}');
+    final Map<String, String> $headers = {
+      if (clientName != null) 'Client_name': clientName,
+    };
+    final Request $request = Request(
+      'DELETE',
+      $url,
+      client.baseUrl,
+      headers: $headers,
+    );
+    return client.send<Status, Status>($request);
+  }
+
+  @override
+  Future<Response<List<SemesterSessionDirectionInDb>>>
+      _apiSemesterSessionDirectionsGet({
+    int? semesterId,
+    List<int>? directions,
+    List<int>? courses,
+    List<int>? groups,
+    bool? currentSemester,
+  }) {
+    final Uri $url = Uri.parse('/api/semester_session_directions');
+    final Map<String, dynamic> $params = <String, dynamic>{
+      'semester_id': semesterId,
+      'directions': directions,
+      'courses': courses,
+      'groups': groups,
+      'current_semester': currentSemester,
+    };
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+      parameters: $params,
+    );
+    return client.send<List<SemesterSessionDirectionInDb>,
+        SemesterSessionDirectionInDb>($request);
+  }
+
+  @override
+  Future<Response<int>> _apiSemesterSessionDirectionsPost({
+    String? clientName,
+    required SemesterSessionDirectionCreate? body,
+  }) {
+    final Uri $url = Uri.parse('/api/semester_session_directions');
+    final Map<String, String> $headers = {
+      if (clientName != null) 'Client_name': clientName,
+    };
+    final $body = body;
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+      headers: $headers,
+    );
+    return client.send<int, int>($request);
+  }
+
+  @override
+  Future<Response<Status>>
+      _apiSemesterSessionDirectionsSemesterSessionDirectionIdPut({
+    required int? semesterSessionDirectionId,
+    String? clientName,
+    required SemesterSessionDirectionUpdate? body,
+  }) {
+    final Uri $url = Uri.parse(
+        '/api/semester_session_directions/${semesterSessionDirectionId}');
+    final Map<String, String> $headers = {
+      if (clientName != null) 'Client_name': clientName,
+    };
+    final $body = body;
+    final Request $request = Request(
+      'PUT',
+      $url,
+      client.baseUrl,
+      body: $body,
+      headers: $headers,
+    );
+    return client.send<Status, Status>($request);
+  }
+
+  @override
+  Future<Response<Status>>
+      _apiSemesterSessionDirectionsSemesterSessionDirectionIdDelete({
+    required int? semesterSessionDirectionId,
+    String? clientName,
+  }) {
+    final Uri $url = Uri.parse(
+        '/api/semester_session_directions/${semesterSessionDirectionId}');
     final Map<String, String> $headers = {
       if (clientName != null) 'Client_name': clientName,
     };
@@ -1444,13 +1675,11 @@ class _$CubeApi extends CubeApi {
   @override
   Future<Response<List<TimetableViewInDb>>> _apiTimetableViewsGet({
     int? semesterId,
-    int? facultyId,
     String? clientName,
   }) {
     final Uri $url = Uri.parse('/api/timetable_views');
     final Map<String, dynamic> $params = <String, dynamic>{
-      'semester_id': semesterId,
-      'faculty_id': facultyId,
+      'semester_id': semesterId
     };
     final Map<String, String> $headers = {
       if (clientName != null) 'Client_name': clientName,
@@ -1471,6 +1700,50 @@ class _$CubeApi extends CubeApi {
     required TimetableViewUpdate? body,
   }) {
     final Uri $url = Uri.parse('/api/timetable_views');
+    final Map<String, String> $headers = {
+      if (clientName != null) 'Client_name': clientName,
+    };
+    final $body = body;
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+      headers: $headers,
+    );
+    return client.send<Status, Status>($request);
+  }
+
+  @override
+  Future<Response<List<SessionViewInDb>>> _apiSessionViewsGet({
+    int? semesterId,
+    int? facultyId,
+    String? clientName,
+  }) {
+    final Uri $url = Uri.parse('/api/session_views');
+    final Map<String, dynamic> $params = <String, dynamic>{
+      'semester_id': semesterId,
+      'faculty_id': facultyId,
+    };
+    final Map<String, String> $headers = {
+      if (clientName != null) 'Client_name': clientName,
+    };
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+      parameters: $params,
+      headers: $headers,
+    );
+    return client.send<List<SessionViewInDb>, SessionViewInDb>($request);
+  }
+
+  @override
+  Future<Response<Status>> _apiSessionViewsPost({
+    String? clientName,
+    required SessionViewUpdate? body,
+  }) {
+    final Uri $url = Uri.parse('/api/session_views');
     final Map<String, String> $headers = {
       if (clientName != null) 'Client_name': clientName,
     };
@@ -1606,10 +1879,18 @@ class _$CubeApi extends CubeApi {
     final Map<String, String> $headers = {
       if (clientName != null) 'Client_name': clientName,
     };
+    final List<PartValue> $parts = <PartValue>[
+      PartValue<BodyImportGroupsApiGroupsImportPost>(
+        'body',
+        body,
+      )
+    ];
     final Request $request = Request(
       'POST',
       $url,
       client.baseUrl,
+      parts: $parts,
+      multipart: true,
       headers: $headers,
     );
     return client.send<List<GroupInDb>, GroupInDb>($request);
@@ -1729,10 +2010,18 @@ class _$CubeApi extends CubeApi {
     final Map<String, String> $headers = {
       if (clientName != null) 'Client_name': clientName,
     };
+    final List<PartValue> $parts = <PartValue>[
+      PartValue<BodyImportDisciplinesApiDisciplinesImportPost>(
+        'body',
+        body,
+      )
+    ];
     final Request $request = Request(
       'POST',
       $url,
       client.baseUrl,
+      parts: $parts,
+      multipart: true,
       headers: $headers,
     );
     return client.send<List<DisciplineInDb>, DisciplineInDb>($request);
@@ -1741,7 +2030,7 @@ class _$CubeApi extends CubeApi {
   @override
   Future<Response<List<TeacherInDb>>> _apiTeachersGet({
     String? search,
-    List<dynamic>? academicTitles,
+    List<Object?>? academicTitles,
     List<int>? academicDegrees,
   }) {
     final Uri $url = Uri.parse('/api/teachers');
@@ -1915,10 +2204,18 @@ class _$CubeApi extends CubeApi {
     final Map<String, String> $headers = {
       if (clientName != null) 'Client_name': clientName,
     };
+    final List<PartValue> $parts = <PartValue>[
+      PartValue<BodyImportTeachersApiTeachersImportPost>(
+        'body',
+        body,
+      )
+    ];
     final Request $request = Request(
       'POST',
       $url,
       client.baseUrl,
+      parts: $parts,
+      multipart: true,
       headers: $headers,
     );
     return client.send<dynamic, dynamic>($request);
@@ -1930,8 +2227,8 @@ class _$CubeApi extends CubeApi {
     List<int>? groups,
     bool? isMain,
     bool? isDeputyMain,
-    dynamic sortBy,
-    dynamic sortOrder,
+    String? sortBy,
+    String? sortOrder,
     int? page,
     int? size,
     String? clientName,
@@ -2045,10 +2342,18 @@ class _$CubeApi extends CubeApi {
     final Map<String, String> $headers = {
       if (clientName != null) 'Client_name': clientName,
     };
+    final List<PartValue> $parts = <PartValue>[
+      PartValue<BodyImportStudentsApiStudentsImportPost>(
+        'body',
+        body,
+      )
+    ];
     final Request $request = Request(
       'POST',
       $url,
       client.baseUrl,
+      parts: $parts,
+      multipart: true,
       headers: $headers,
     );
     return client.send<dynamic, dynamic>($request);
@@ -2172,10 +2477,18 @@ class _$CubeApi extends CubeApi {
     final Map<String, String> $headers = {
       if (clientName != null) 'Client_name': clientName,
     };
+    final List<PartValue> $parts = <PartValue>[
+      PartValue<BodyImportPlacesApiPlacesImportPost>(
+        'body',
+        body,
+      )
+    ];
     final Request $request = Request(
       'POST',
       $url,
       client.baseUrl,
+      parts: $parts,
+      multipart: true,
       headers: $headers,
     );
     return client.send<List<PlaceInDb>, PlaceInDb>($request);
@@ -2272,10 +2585,18 @@ class _$CubeApi extends CubeApi {
     final Map<String, String> $headers = {
       if (clientName != null) 'Client_name': clientName,
     };
+    final List<PartValue> $parts = <PartValue>[
+      PartValue<BodyImportEquipmentsApiEquipmentsImportPost>(
+        'body',
+        body,
+      )
+    ];
     final Request $request = Request(
       'POST',
       $url,
       client.baseUrl,
+      parts: $parts,
+      multipart: true,
       headers: $headers,
     );
     return client.send<List<EquipmentInDb>, EquipmentInDb>($request);
@@ -2285,7 +2606,7 @@ class _$CubeApi extends CubeApi {
   Future<Response<List<LessonCollision>>> _apiLessonsCollisionGet({
     required String? date,
     required int? number,
-    int? semesterId,
+    int? semesterFacultyId,
     int? typeId,
     int? disciplineId,
     int? placeId,
@@ -2299,7 +2620,7 @@ class _$CubeApi extends CubeApi {
     final Map<String, dynamic> $params = <String, dynamic>{
       'date': date,
       'number': number,
-      'semester_id': semesterId,
+      'semester_faculty_id': semesterFacultyId,
       'type_id': typeId,
       'discipline_id': disciplineId,
       'place_id': placeId,
@@ -2462,15 +2783,16 @@ class _$CubeApi extends CubeApi {
 
   @override
   Future<Response<List<LessonFullNamesInDb>>> _apiLessonsGet({
-    dynamic header,
+    String? header,
     bool? fullData,
     String? search,
     required String? startDate,
     required String? endDate,
     List<int>? numbers,
     int? semesterId,
+    int? semesterFacultyId,
     int? facultyId,
-    List<String?>? degreeStudies,
+    List<Object?>? degreeStudies,
     List<int>? directions,
     List<int>? profiles,
     List<int>? courses,
@@ -2481,8 +2803,8 @@ class _$CubeApi extends CubeApi {
     List<int>? types,
     bool? themeIsNull,
     String? status,
-    dynamic sortBy,
-    dynamic sortOrder,
+    String? sortBy,
+    String? sortOrder,
     String? clientName,
   }) {
     final Uri $url = Uri.parse('/api/lessons');
@@ -2494,6 +2816,7 @@ class _$CubeApi extends CubeApi {
       'end_date': endDate,
       'numbers': numbers,
       'semester_id': semesterId,
+      'semester_faculty_id': semesterFacultyId,
       'faculty_id': facultyId,
       'degree_studies': degreeStudies,
       'directions': directions,
@@ -2662,7 +2985,7 @@ class _$CubeApi extends CubeApi {
     required int? weekday,
     int? parity,
     required int? number,
-    int? semesterId,
+    int? semesterFacultyId,
     int? typeId,
     int? disciplineId,
     int? placeId,
@@ -2677,7 +3000,7 @@ class _$CubeApi extends CubeApi {
       'weekday': weekday,
       'parity': parity,
       'number': number,
-      'semester_id': semesterId,
+      'semester_faculty_id': semesterFacultyId,
       'type_id': typeId,
       'discipline_id': disciplineId,
       'place_id': placeId,
@@ -2722,12 +3045,13 @@ class _$CubeApi extends CubeApi {
 
   @override
   Future<Response<MainLessonResults>> _apiMainLessonsGet({
-    dynamic header,
+    String? header,
     String? search,
     int? facultyId,
     int? semesterId,
+    int? semesterFacultyId,
     List<int>? numbers,
-    List<String?>? degreeStudies,
+    List<Object?>? degreeStudies,
     List<int>? directions,
     List<int>? profiles,
     List<int>? courses,
@@ -2744,6 +3068,7 @@ class _$CubeApi extends CubeApi {
       'search': search,
       'faculty_id': facultyId,
       'semester_id': semesterId,
+      'semester_faculty_id': semesterFacultyId,
       'numbers': numbers,
       'degree_studies': degreeStudies,
       'directions': directions,
@@ -2930,6 +3255,18 @@ class _$CubeApi extends CubeApi {
       $url,
       client.baseUrl,
       parameters: $params,
+    );
+    return client.send<Object, Object>($request);
+  }
+
+  @override
+  Future<Response<Object>> _apiJournalLessonsLessonIdGet(
+      {required int? lessonId}) {
+    final Uri $url = Uri.parse('/api/journal/lessons/${lessonId}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
     );
     return client.send<Object, Object>($request);
   }
@@ -3350,7 +3687,7 @@ class _$CubeApi extends CubeApi {
     int? entityId,
     int? actionId,
     int? userId,
-    List<dynamic>? status,
+    List<Object?>? status,
     String? startDate,
     String? endDate,
     int? page,
