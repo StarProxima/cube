@@ -59,7 +59,7 @@ class LandingPlatformCard extends ConsumerWidget {
                           children: [
                             Row(
                               children: [
-                                Assets.icons.cubeLogo.svg(
+                                Assets.icons.roundedCubeLogo.svg(
                                   height: 36,
                                 ),
                                 const SizedBox(width: 8),

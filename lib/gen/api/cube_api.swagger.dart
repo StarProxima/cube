@@ -1,11 +1,10 @@
-import 'package:cube_system/gen/api/cube_api.enums.swagger.dart';
-import 'package:cube_system/gen/api/cube_api.models.swagger.dart';
+import 'cube_api.models.swagger.dart';
 import 'package:chopper/chopper.dart';
 
-import 'package:cube_system/gen/api/client_mapping.dart';
+import 'client_mapping.dart';
 import 'dart:async';
 import 'package:chopper/chopper.dart' as chopper;
-import 'package:cube_system/gen/api/cube_api.enums.swagger.dart' as enums;
+import 'cube_api.enums.swagger.dart' as enums;
 export 'cube_api.enums.swagger.dart';
 export 'cube_api.models.swagger.dart';
 
@@ -28,23 +27,19 @@ abstract class CubeApi extends ChopperService {
     }
 
     final newClient = ChopperClient(
-      services: [_$CubeApi()],
-      converter: $JsonSerializableConverter(),
-      interceptors: interceptors ?? [],
-      authenticator: authenticator,
-      baseUrl: baseUrl ?? Uri.parse('http://'),
-    );
+        services: [_$CubeApi()],
+        converter: $JsonSerializableConverter(),
+        interceptors: interceptors ?? [],
+        authenticator: authenticator,
+        baseUrl: baseUrl ?? Uri.parse('http://'));
     return _$CubeApi(newClient);
   }
 
   ///Login
-  Future<chopper.Response<AccessToken>> apiAuthLoginPost({
-    required BodyLoginApiAuthLoginPost? body,
-  }) {
+  Future<chopper.Response<AccessToken>> apiAuthLoginPost(
+      {required BodyLoginApiAuthLoginPost? body}) {
     generatedMapping.putIfAbsent(
-      AccessToken,
-      () => AccessToken.fromJsonFactory,
-    );
+        AccessToken, () => AccessToken.fromJsonFactory);
 
     return _apiAuthLoginPost(body: body);
   }
@@ -54,9 +49,8 @@ abstract class CubeApi extends ChopperService {
     path: '/api/auth/login',
     optionalBody: true,
   )
-  Future<chopper.Response<AccessToken>> _apiAuthLoginPost({
-    @Body() required BodyLoginApiAuthLoginPost? body,
-  });
+  Future<chopper.Response<AccessToken>> _apiAuthLoginPost(
+      {@Body() required BodyLoginApiAuthLoginPost? body});
 
   ///Logout
   Future<chopper.Response<Status>> apiAuthLogoutPost() {
@@ -97,9 +91,7 @@ abstract class CubeApi extends ChopperService {
   ///Update Access Token
   Future<chopper.Response<AccessToken>> apiAuthTokenGet() {
     generatedMapping.putIfAbsent(
-      AccessToken,
-      () => AccessToken.fromJsonFactory,
-    );
+        AccessToken, () => AccessToken.fromJsonFactory);
 
     return _apiAuthTokenGet();
   }
@@ -140,11 +132,10 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(PersonInDb, () => PersonInDb.fromJsonFactory);
 
     return _apiPersonsGet(
-      search: search,
-      students: students,
-      teachers: teachers,
-      clientName: clientName,
-    );
+        search: search,
+        students: students,
+        teachers: teachers,
+        clientName: clientName);
   }
 
   ///Get Persons
@@ -162,18 +153,16 @@ abstract class CubeApi extends ChopperService {
 
   ///Get Permissions
   ///@param Client_name
-  Future<chopper.Response<Object>> apiRolesPermissionsGet({
-    String? clientName,
-  }) {
+  Future<chopper.Response<Object>> apiRolesPermissionsGet(
+      {String? clientName}) {
     return _apiRolesPermissionsGet(clientName: clientName);
   }
 
   ///Get Permissions
   ///@param Client_name
   @Get(path: '/api/roles/permissions')
-  Future<chopper.Response<Object>> _apiRolesPermissionsGet({
-    @Header('Client_name') String? clientName,
-  });
+  Future<chopper.Response<Object>> _apiRolesPermissionsGet(
+      {@Header('Client_name') String? clientName});
 
   ///Get Roles
   ///@param name Название роли
@@ -224,9 +213,7 @@ abstract class CubeApi extends ChopperService {
     String? clientName,
   }) {
     generatedMapping.putIfAbsent(
-      RolePermissionsInDb,
-      () => RolePermissionsInDb.fromJsonFactory,
-    );
+        RolePermissionsInDb, () => RolePermissionsInDb.fromJsonFactory);
 
     return _apiRolesRoleIdGet(roleId: roleId, clientName: clientName);
   }
@@ -251,10 +238,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiRolesRoleIdPut(
-      roleId: roleId,
-      clientName: clientName,
-      body: body,
-    );
+        roleId: roleId, clientName: clientName, body: body);
   }
 
   ///Update Role
@@ -295,10 +279,8 @@ abstract class CubeApi extends ChopperService {
   ///@param Client_name
   Future<chopper.Response<List<UserFacultyForbiddenInDb>>>
       apiOtherPermissionGet({String? clientName}) {
-    generatedMapping.putIfAbsent(
-      UserFacultyForbiddenInDb,
-      () => UserFacultyForbiddenInDb.fromJsonFactory,
-    );
+    generatedMapping.putIfAbsent(UserFacultyForbiddenInDb,
+        () => UserFacultyForbiddenInDb.fromJsonFactory);
 
     return _apiOtherPermissionGet(clientName: clientName);
   }
@@ -342,10 +324,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiOtherPermissionFacultyIdPut(
-      facultyId: facultyId,
-      clientName: clientName,
-      body: body,
-    );
+        facultyId: facultyId, clientName: clientName, body: body);
   }
 
   ///Update Users Faculties Forbidden
@@ -370,9 +349,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Users Settings
   ///@param Client_name
   @Get(path: '/api/users/settings')
-  Future<chopper.Response<Object>> _apiUsersSettingsGet({
-    @Header('Client_name') String? clientName,
-  });
+  Future<chopper.Response<Object>> _apiUsersSettingsGet(
+      {@Header('Client_name') String? clientName});
 
   ///Update Users Settings
   ///@param Client_name
@@ -414,19 +392,16 @@ abstract class CubeApi extends ChopperService {
     String? clientName,
   }) {
     generatedMapping.putIfAbsent(
-      PageUserFullInDb,
-      () => PageUserFullInDb.fromJsonFactory,
-    );
+        PageUserFullInDb, () => PageUserFullInDb.fromJsonFactory);
 
     return _apiUsersGet(
-      search: search,
-      roleIds: roleIds,
-      sortBy: sortBy,
-      sortOrder: sortOrder,
-      page: page,
-      size: size,
-      clientName: clientName,
-    );
+        search: search,
+        roleIds: roleIds,
+        sortBy: sortBy,
+        sortOrder: sortOrder,
+        page: page,
+        size: size,
+        clientName: clientName);
   }
 
   ///Get Users
@@ -496,14 +471,10 @@ abstract class CubeApi extends ChopperService {
     String? clientName,
   }) {
     generatedMapping.putIfAbsent(
-      UserPermissionBase,
-      () => UserPermissionBase.fromJsonFactory,
-    );
+        UserPermissionBase, () => UserPermissionBase.fromJsonFactory);
 
     return _apiUsersUserIdPermissionsGet(
-      userId: userId,
-      clientName: clientName,
-    );
+        userId: userId, clientName: clientName);
   }
 
   ///Get User Permissions
@@ -526,10 +497,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiUsersUserIdPermissionsPut(
-      userId: userId,
-      clientName: clientName,
-      body: body,
-    );
+        userId: userId, clientName: clientName, body: body);
   }
 
   ///Update User Permission
@@ -556,10 +524,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiUsersUserIdPermissionsPost(
-      userId: userId,
-      clientName: clientName,
-      body: body,
-    );
+        userId: userId, clientName: clientName, body: body);
   }
 
   ///Create User Permission
@@ -585,9 +550,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiUsersUserIdPermissionsDelete(
-      userId: userId,
-      clientName: clientName,
-    );
+        userId: userId, clientName: clientName);
   }
 
   ///Delete User Permission
@@ -610,16 +573,13 @@ abstract class CubeApi extends ChopperService {
   ///Get User Me
   ///@param Client_name
   @Get(path: '/api/users/me')
-  Future<chopper.Response<UserMeInDb>> _apiUsersMeGet({
-    @Header('Client_name') String? clientName,
-  });
+  Future<chopper.Response<UserMeInDb>> _apiUsersMeGet(
+      {@Header('Client_name') String? clientName});
 
   ///Get Users Teachers
   Future<chopper.Response<List<UserShortTelegram>>> apiUsersTeachersGet() {
     generatedMapping.putIfAbsent(
-      UserShortTelegram,
-      () => UserShortTelegram.fromJsonFactory,
-    );
+        UserShortTelegram, () => UserShortTelegram.fromJsonFactory);
 
     return _apiUsersTeachersGet();
   }
@@ -630,13 +590,10 @@ abstract class CubeApi extends ChopperService {
 
   ///Get Users Main Students
   ///@param groups Список идентификаторов групп
-  Future<chopper.Response<List<UserShortTelegram>>> apiUsersMainStudentsGet({
-    List<int>? groups,
-  }) {
+  Future<chopper.Response<List<UserShortTelegram>>> apiUsersMainStudentsGet(
+      {List<int>? groups}) {
     generatedMapping.putIfAbsent(
-      UserShortTelegram,
-      () => UserShortTelegram.fromJsonFactory,
-    );
+        UserShortTelegram, () => UserShortTelegram.fromJsonFactory);
 
     return _apiUsersMainStudentsGet(groups: groups);
   }
@@ -644,9 +601,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Users Main Students
   ///@param groups Список идентификаторов групп
   @Get(path: '/api/users/main_students')
-  Future<chopper.Response<List<UserShortTelegram>>> _apiUsersMainStudentsGet({
-    @Query('groups') List<int>? groups,
-  });
+  Future<chopper.Response<List<UserShortTelegram>>> _apiUsersMainStudentsGet(
+      {@Query('groups') List<int>? groups});
 
   ///Get Users Persons
   ///@param search Значение для поиска
@@ -656,10 +612,8 @@ abstract class CubeApi extends ChopperService {
     String? search,
     String? clientName,
   }) {
-    generatedMapping.putIfAbsent(
-      AppSchemasUserUserFullNameInDb,
-      () => AppSchemasUserUserFullNameInDb.fromJsonFactory,
-    );
+    generatedMapping.putIfAbsent(AppSchemasUserUserFullNameInDb,
+        () => AppSchemasUserUserFullNameInDb.fromJsonFactory);
 
     return _apiUsersPersonsGet(search: search, clientName: clientName);
   }
@@ -681,10 +635,8 @@ abstract class CubeApi extends ChopperService {
     required int? userId,
     String? clientName,
   }) {
-    generatedMapping.putIfAbsent(
-      UserFullWithStatisticInDb,
-      () => UserFullWithStatisticInDb.fromJsonFactory,
-    );
+    generatedMapping.putIfAbsent(UserFullWithStatisticInDb,
+        () => UserFullWithStatisticInDb.fromJsonFactory);
 
     return _apiUsersUserIdGet(userId: userId, clientName: clientName);
   }
@@ -709,10 +661,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiUsersUserIdPut(
-      userId: userId,
-      clientName: clientName,
-      body: body,
-    );
+        userId: userId, clientName: clientName, body: body);
   }
 
   ///Update User
@@ -782,10 +731,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiUsersUserIdPasswordPut(
-      userId: userId,
-      clientName: clientName,
-      body: body,
-    );
+        userId: userId, clientName: clientName, body: body);
   }
 
   ///Update User Password
@@ -803,9 +749,8 @@ abstract class CubeApi extends ChopperService {
 
   ///Add Telegram Without Auth
   ///@param telegram_id
-  Future<chopper.Response<Status>> apiBotGuestPost({
-    required String? telegramId,
-  }) {
+  Future<chopper.Response<Status>> apiBotGuestPost(
+      {required String? telegramId}) {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiBotGuestPost(telegramId: telegramId);
@@ -817,9 +762,8 @@ abstract class CubeApi extends ChopperService {
     path: '/api/bot/guest',
     optionalBody: true,
   )
-  Future<chopper.Response<Status>> _apiBotGuestPost({
-    @Query('telegram_id') required String? telegramId,
-  });
+  Future<chopper.Response<Status>> _apiBotGuestPost(
+      {@Query('telegram_id') required String? telegramId});
 
   ///Add Telegram
   ///@param telegram_id
@@ -856,9 +800,8 @@ abstract class CubeApi extends ChopperService {
   ///Delete Telegram
   ///@param Client_name
   @Delete(path: '/api/bot/user')
-  Future<chopper.Response<Status>> _apiBotUserDelete({
-    @Header('Client_name') String? clientName,
-  });
+  Future<chopper.Response<Status>> _apiBotUserDelete(
+      {@Header('Client_name') String? clientName});
 
   ///Get Settings
   ///@param Client_name
@@ -871,9 +814,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Settings
   ///@param Client_name
   @Get(path: '/api/bot/settings')
-  Future<chopper.Response<Telegram>> _apiBotSettingsGet({
-    @Header('Client_name') String? clientName,
-  });
+  Future<chopper.Response<Telegram>> _apiBotSettingsGet(
+      {@Header('Client_name') String? clientName});
 
   ///Get Notification Times
   Future<chopper.Response<Object>> apiBotNotificationTimesGet() {
@@ -895,9 +837,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Telegram Id
   ///@param user_id
   @Get(path: '/api/bot/{user_id}')
-  Future<chopper.Response<TelegramId>> _apiBotUserIdGet({
-    @Path('user_id') required int? userId,
-  });
+  Future<chopper.Response<TelegramId>> _apiBotUserIdGet(
+      {@Path('user_id') required int? userId});
 
   ///Update Timetable Settings
   ///@param Client_name
@@ -1041,9 +982,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Bell
   ///@param bell_id
   @Get(path: '/api/bells/{bell_id}')
-  Future<chopper.Response<BellInDb>> _apiBellsBellIdGet({
-    @Path('bell_id') required int? bellId,
-  });
+  Future<chopper.Response<BellInDb>> _apiBellsBellIdGet(
+      {@Path('bell_id') required int? bellId});
 
   ///Update Bell
   ///@param bell_id
@@ -1056,10 +996,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiBellsBellIdPut(
-      bellId: bellId,
-      clientName: clientName,
-      body: body,
-    );
+        bellId: bellId, clientName: clientName, body: body);
   }
 
   ///Update Bell
@@ -1126,9 +1063,7 @@ abstract class CubeApi extends ChopperService {
     String? name,
   }) {
     generatedMapping.putIfAbsent(
-      FacultyInDb,
-      () => FacultyInDb.fromJsonFactory,
-    );
+        FacultyInDb, () => FacultyInDb.fromJsonFactory);
 
     return _apiFacultiesGet(search: search, name: name);
   }
@@ -1174,11 +1109,10 @@ abstract class CubeApi extends ChopperService {
     int? lessonTypeId,
   }) {
     return _apiFacultiesFacultyIdGroupsIdsGet(
-      facultyId: facultyId,
-      disciplineId: disciplineId,
-      teacherId: teacherId,
-      lessonTypeId: lessonTypeId,
-    );
+        facultyId: facultyId,
+        disciplineId: disciplineId,
+        teacherId: teacherId,
+        lessonTypeId: lessonTypeId);
   }
 
   ///Get Faculty Groups
@@ -1196,13 +1130,10 @@ abstract class CubeApi extends ChopperService {
 
   ///Get Faculty
   ///@param faculty_id
-  Future<chopper.Response<FacultyInDb>> apiFacultiesFacultyIdGet({
-    required int? facultyId,
-  }) {
+  Future<chopper.Response<FacultyInDb>> apiFacultiesFacultyIdGet(
+      {required int? facultyId}) {
     generatedMapping.putIfAbsent(
-      FacultyInDb,
-      () => FacultyInDb.fromJsonFactory,
-    );
+        FacultyInDb, () => FacultyInDb.fromJsonFactory);
 
     return _apiFacultiesFacultyIdGet(facultyId: facultyId);
   }
@@ -1210,9 +1141,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Faculty
   ///@param faculty_id
   @Get(path: '/api/faculties/{faculty_id}')
-  Future<chopper.Response<FacultyInDb>> _apiFacultiesFacultyIdGet({
-    @Path('faculty_id') required int? facultyId,
-  });
+  Future<chopper.Response<FacultyInDb>> _apiFacultiesFacultyIdGet(
+      {@Path('faculty_id') required int? facultyId});
 
   ///Update Faculty
   ///@param faculty_id
@@ -1225,10 +1155,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiFacultiesFacultyIdPut(
-      facultyId: facultyId,
-      clientName: clientName,
-      body: body,
-    );
+        facultyId: facultyId, clientName: clientName, body: body);
   }
 
   ///Update Faculty
@@ -1254,9 +1181,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiFacultiesFacultyIdDelete(
-      facultyId: facultyId,
-      clientName: clientName,
-    );
+        facultyId: facultyId, clientName: clientName);
   }
 
   ///Delete Faculty
@@ -1275,9 +1200,7 @@ abstract class CubeApi extends ChopperService {
     required BodyImportFacultiesApiFacultiesImportPost body,
   }) {
     generatedMapping.putIfAbsent(
-      FacultyInDb,
-      () => FacultyInDb.fromJsonFactory,
-    );
+        FacultyInDb, () => FacultyInDb.fromJsonFactory);
 
     return _apiFacultiesImportPost(clientName: clientName, body: body);
   }
@@ -1307,17 +1230,14 @@ abstract class CubeApi extends ChopperService {
     List<enums.DegreeStudy>? degreeStudy,
   }) {
     generatedMapping.putIfAbsent(
-      DirectionInDb,
-      () => DirectionInDb.fromJsonFactory,
-    );
+        DirectionInDb, () => DirectionInDb.fromJsonFactory);
 
     return _apiDirectionsGet(
-      search: search,
-      facultyId: facultyId,
-      name: name,
-      cipher: cipher,
-      degreeStudy: degreeStudyListToJson(degreeStudy),
-    );
+        search: search,
+        facultyId: facultyId,
+        name: name,
+        cipher: cipher,
+        degreeStudy: degreeStudyListToJson(degreeStudy));
   }
 
   ///Get Directions
@@ -1357,13 +1277,10 @@ abstract class CubeApi extends ChopperService {
 
   ///Get Direction
   ///@param direction_id
-  Future<chopper.Response<DirectionInDb>> apiDirectionsDirectionIdGet({
-    required int? directionId,
-  }) {
+  Future<chopper.Response<DirectionInDb>> apiDirectionsDirectionIdGet(
+      {required int? directionId}) {
     generatedMapping.putIfAbsent(
-      DirectionInDb,
-      () => DirectionInDb.fromJsonFactory,
-    );
+        DirectionInDb, () => DirectionInDb.fromJsonFactory);
 
     return _apiDirectionsDirectionIdGet(directionId: directionId);
   }
@@ -1371,9 +1288,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Direction
   ///@param direction_id
   @Get(path: '/api/directions/{direction_id}')
-  Future<chopper.Response<DirectionInDb>> _apiDirectionsDirectionIdGet({
-    @Path('direction_id') required int? directionId,
-  });
+  Future<chopper.Response<DirectionInDb>> _apiDirectionsDirectionIdGet(
+      {@Path('direction_id') required int? directionId});
 
   ///Update Direction
   ///@param direction_id
@@ -1386,10 +1302,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiDirectionsDirectionIdPut(
-      directionId: directionId,
-      clientName: clientName,
-      body: body,
-    );
+        directionId: directionId, clientName: clientName, body: body);
   }
 
   ///Update Direction
@@ -1415,9 +1328,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiDirectionsDirectionIdDelete(
-      directionId: directionId,
-      clientName: clientName,
-    );
+        directionId: directionId, clientName: clientName);
   }
 
   ///Delete Direction
@@ -1436,9 +1347,7 @@ abstract class CubeApi extends ChopperService {
     required BodyImportDirectionsApiDirectionsImportPost body,
   }) {
     generatedMapping.putIfAbsent(
-      DirectionInDb,
-      () => DirectionInDb.fromJsonFactory,
-    );
+        DirectionInDb, () => DirectionInDb.fromJsonFactory);
 
     return _apiDirectionsImportPost(clientName: clientName, body: body);
   }
@@ -1462,9 +1371,7 @@ abstract class CubeApi extends ChopperService {
     List<int>? directions,
   }) {
     generatedMapping.putIfAbsent(
-      ProfileInDb,
-      () => ProfileInDb.fromJsonFactory,
-    );
+        ProfileInDb, () => ProfileInDb.fromJsonFactory);
 
     return _apiProfilesGet(search: search, directions: directions);
   }
@@ -1500,13 +1407,10 @@ abstract class CubeApi extends ChopperService {
 
   ///Get Profile
   ///@param profile_id
-  Future<chopper.Response<ProfileInDb>> apiProfilesProfileIdGet({
-    required int? profileId,
-  }) {
+  Future<chopper.Response<ProfileInDb>> apiProfilesProfileIdGet(
+      {required int? profileId}) {
     generatedMapping.putIfAbsent(
-      ProfileInDb,
-      () => ProfileInDb.fromJsonFactory,
-    );
+        ProfileInDb, () => ProfileInDb.fromJsonFactory);
 
     return _apiProfilesProfileIdGet(profileId: profileId);
   }
@@ -1514,9 +1418,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Profile
   ///@param profile_id
   @Get(path: '/api/profiles/{profile_id}')
-  Future<chopper.Response<ProfileInDb>> _apiProfilesProfileIdGet({
-    @Path('profile_id') required int? profileId,
-  });
+  Future<chopper.Response<ProfileInDb>> _apiProfilesProfileIdGet(
+      {@Path('profile_id') required int? profileId});
 
   ///Update Profile
   ///@param profile_id
@@ -1529,10 +1432,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiProfilesProfileIdPut(
-      profileId: profileId,
-      clientName: clientName,
-      body: body,
-    );
+        profileId: profileId, clientName: clientName, body: body);
   }
 
   ///Update Profile
@@ -1558,9 +1458,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiProfilesProfileIdDelete(
-      profileId: profileId,
-      clientName: clientName,
-    );
+        profileId: profileId, clientName: clientName);
   }
 
   ///Delete Profile
@@ -1579,9 +1477,7 @@ abstract class CubeApi extends ChopperService {
     required BodyImportProfilesApiProfilesImportPost body,
   }) {
     generatedMapping.putIfAbsent(
-      ProfileInDb,
-      () => ProfileInDb.fromJsonFactory,
-    );
+        ProfileInDb, () => ProfileInDb.fromJsonFactory);
 
     return _apiProfilesImportPost(clientName: clientName, body: body);
   }
@@ -1600,9 +1496,7 @@ abstract class CubeApi extends ChopperService {
   ///Get Semesters
   Future<chopper.Response<List<SemesterInDb>>> apiSemestersGet() {
     generatedMapping.putIfAbsent(
-      SemesterInDb,
-      () => SemesterInDb.fromJsonFactory,
-    );
+        SemesterInDb, () => SemesterInDb.fromJsonFactory);
 
     return _apiSemestersGet();
   }
@@ -1642,10 +1536,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiSemestersSemesterIdPut(
-      semesterId: semesterId,
-      clientName: clientName,
-      body: body,
-    );
+        semesterId: semesterId, clientName: clientName, body: body);
   }
 
   ///Update Semester
@@ -1671,9 +1562,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiSemestersSemesterIdDelete(
-      semesterId: semesterId,
-      clientName: clientName,
-    );
+        semesterId: semesterId, clientName: clientName);
   }
 
   ///Delete Semester
@@ -1698,16 +1587,13 @@ abstract class CubeApi extends ChopperService {
     bool? currentSemester,
   }) {
     generatedMapping.putIfAbsent(
-      SemesterDirectionInDb,
-      () => SemesterDirectionInDb.fromJsonFactory,
-    );
+        SemesterDirectionInDb, () => SemesterDirectionInDb.fromJsonFactory);
 
     return _apiSemesterDirectionsGet(
-      semesterId: semesterId,
-      directions: directions,
-      courses: courses,
-      currentSemester: currentSemester,
-    );
+        semesterId: semesterId,
+        directions: directions,
+        courses: courses,
+        currentSemester: currentSemester);
   }
 
   ///Get Semester Directions
@@ -1755,10 +1641,9 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiSemesterDirectionsSemesterDirectionIdPut(
-      semesterDirectionId: semesterDirectionId,
-      clientName: clientName,
-      body: body,
-    );
+        semesterDirectionId: semesterDirectionId,
+        clientName: clientName,
+        body: body);
   }
 
   ///Update Semester Direction
@@ -1786,9 +1671,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiSemesterDirectionsSemesterDirectionIdDelete(
-      semesterDirectionId: semesterDirectionId,
-      clientName: clientName,
-    );
+        semesterDirectionId: semesterDirectionId, clientName: clientName);
   }
 
   ///Delete Semester Direction
@@ -1820,15 +1703,10 @@ abstract class CubeApi extends ChopperService {
     String? clientName,
   }) {
     generatedMapping.putIfAbsent(
-      TimetableViewInDb,
-      () => TimetableViewInDb.fromJsonFactory,
-    );
+        TimetableViewInDb, () => TimetableViewInDb.fromJsonFactory);
 
     return _apiTimetableViewsGet(
-      semesterId: semesterId,
-      facultyId: facultyId,
-      clientName: clientName,
-    );
+        semesterId: semesterId, facultyId: facultyId, clientName: clientName);
   }
 
   ///Get Timetable View
@@ -1875,9 +1753,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Groups
   ///@param search Значение для поиска
   @Get(path: '/api/groups')
-  Future<chopper.Response<List<GroupInDb>>> _apiGroupsGet({
-    @Query('search') String? search,
-  });
+  Future<chopper.Response<List<GroupInDb>>> _apiGroupsGet(
+      {@Query('search') String? search});
 
   ///Create Group
   ///@param Client_name
@@ -1901,18 +1778,16 @@ abstract class CubeApi extends ChopperService {
 
   ///Get Group Disciplines
   ///@param group_id
-  Future<chopper.Response<List<int>>> apiGroupsGroupIdDisciplinesIdsGet({
-    required int? groupId,
-  }) {
+  Future<chopper.Response<List<int>>> apiGroupsGroupIdDisciplinesIdsGet(
+      {required int? groupId}) {
     return _apiGroupsGroupIdDisciplinesIdsGet(groupId: groupId);
   }
 
   ///Get Group Disciplines
   ///@param group_id
   @Get(path: '/api/groups/{group_id}/disciplines_ids')
-  Future<chopper.Response<List<int>>> _apiGroupsGroupIdDisciplinesIdsGet({
-    @Path('group_id') required int? groupId,
-  });
+  Future<chopper.Response<List<int>>> _apiGroupsGroupIdDisciplinesIdsGet(
+      {@Path('group_id') required int? groupId});
 
   ///Get Group Discipline Types
   ///@param group_id
@@ -1923,9 +1798,7 @@ abstract class CubeApi extends ChopperService {
     required int? disciplineId,
   }) {
     return _apiGroupsGroupIdDisciplinesDisciplineIdTypesIdsGet(
-      groupId: groupId,
-      disciplineId: disciplineId,
-    );
+        groupId: groupId, disciplineId: disciplineId);
   }
 
   ///Get Group Discipline Types
@@ -1940,13 +1813,10 @@ abstract class CubeApi extends ChopperService {
 
   ///Get Group
   ///@param group_id
-  Future<chopper.Response<GroupFullInDb>> apiGroupsGroupIdGet({
-    required int? groupId,
-  }) {
+  Future<chopper.Response<GroupFullInDb>> apiGroupsGroupIdGet(
+      {required int? groupId}) {
     generatedMapping.putIfAbsent(
-      GroupFullInDb,
-      () => GroupFullInDb.fromJsonFactory,
-    );
+        GroupFullInDb, () => GroupFullInDb.fromJsonFactory);
 
     return _apiGroupsGroupIdGet(groupId: groupId);
   }
@@ -1954,9 +1824,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Group
   ///@param group_id
   @Get(path: '/api/groups/{group_id}')
-  Future<chopper.Response<GroupFullInDb>> _apiGroupsGroupIdGet({
-    @Path('group_id') required int? groupId,
-  });
+  Future<chopper.Response<GroupFullInDb>> _apiGroupsGroupIdGet(
+      {@Path('group_id') required int? groupId});
 
   ///Update Group
   ///@param group_id
@@ -1969,10 +1838,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiGroupsGroupIdPut(
-      groupId: groupId,
-      clientName: clientName,
-      body: body,
-    );
+        groupId: groupId, clientName: clientName, body: body);
   }
 
   ///Update Group
@@ -2033,13 +1899,10 @@ abstract class CubeApi extends ChopperService {
 
   ///Get Disciplines
   ///@param search Значение для поиска
-  Future<chopper.Response<List<DisciplineInDb>>> apiDisciplinesGet({
-    String? search,
-  }) {
+  Future<chopper.Response<List<DisciplineInDb>>> apiDisciplinesGet(
+      {String? search}) {
     generatedMapping.putIfAbsent(
-      DisciplineInDb,
-      () => DisciplineInDb.fromJsonFactory,
-    );
+        DisciplineInDb, () => DisciplineInDb.fromJsonFactory);
 
     return _apiDisciplinesGet(search: search);
   }
@@ -2047,9 +1910,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Disciplines
   ///@param search Значение для поиска
   @Get(path: '/api/disciplines')
-  Future<chopper.Response<List<DisciplineInDb>>> _apiDisciplinesGet({
-    @Query('search') String? search,
-  });
+  Future<chopper.Response<List<DisciplineInDb>>> _apiDisciplinesGet(
+      {@Query('search') String? search});
 
   ///Create Discipline
   ///@param Client_name
@@ -2082,10 +1944,9 @@ abstract class CubeApi extends ChopperService {
     int? lessonTypeId,
   }) {
     return _apiDisciplinesDisciplineIdFacultiesIdsGet(
-      disciplineId: disciplineId,
-      teacherId: teacherId,
-      lessonTypeId: lessonTypeId,
-    );
+        disciplineId: disciplineId,
+        teacherId: teacherId,
+        lessonTypeId: lessonTypeId);
   }
 
   ///Get Discipline Faculties
@@ -2102,13 +1963,10 @@ abstract class CubeApi extends ChopperService {
 
   ///Get Discipline
   ///@param discipline_id
-  Future<chopper.Response<DisciplineInDb>> apiDisciplinesDisciplineIdGet({
-    required int? disciplineId,
-  }) {
+  Future<chopper.Response<DisciplineInDb>> apiDisciplinesDisciplineIdGet(
+      {required int? disciplineId}) {
     generatedMapping.putIfAbsent(
-      DisciplineInDb,
-      () => DisciplineInDb.fromJsonFactory,
-    );
+        DisciplineInDb, () => DisciplineInDb.fromJsonFactory);
 
     return _apiDisciplinesDisciplineIdGet(disciplineId: disciplineId);
   }
@@ -2116,9 +1974,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Discipline
   ///@param discipline_id
   @Get(path: '/api/disciplines/{discipline_id}')
-  Future<chopper.Response<DisciplineInDb>> _apiDisciplinesDisciplineIdGet({
-    @Path('discipline_id') required int? disciplineId,
-  });
+  Future<chopper.Response<DisciplineInDb>> _apiDisciplinesDisciplineIdGet(
+      {@Path('discipline_id') required int? disciplineId});
 
   ///Update Discipline
   ///@param discipline_id
@@ -2131,10 +1988,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiDisciplinesDisciplineIdPut(
-      disciplineId: disciplineId,
-      clientName: clientName,
-      body: body,
-    );
+        disciplineId: disciplineId, clientName: clientName, body: body);
   }
 
   ///Update Discipline
@@ -2160,9 +2014,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiDisciplinesDisciplineIdDelete(
-      disciplineId: disciplineId,
-      clientName: clientName,
-    );
+        disciplineId: disciplineId, clientName: clientName);
   }
 
   ///Delete Discipline
@@ -2181,9 +2033,7 @@ abstract class CubeApi extends ChopperService {
     required BodyImportDisciplinesApiDisciplinesImportPost body,
   }) {
     generatedMapping.putIfAbsent(
-      DisciplineInDb,
-      () => DisciplineInDb.fromJsonFactory,
-    );
+        DisciplineInDb, () => DisciplineInDb.fromJsonFactory);
 
     return _apiDisciplinesImportPost(clientName: clientName, body: body);
   }
@@ -2209,15 +2059,12 @@ abstract class CubeApi extends ChopperService {
     List<int>? academicDegrees,
   }) {
     generatedMapping.putIfAbsent(
-      TeacherInDb,
-      () => TeacherInDb.fromJsonFactory,
-    );
+        TeacherInDb, () => TeacherInDb.fromJsonFactory);
 
     return _apiTeachersGet(
-      search: search,
-      academicTitles: academicTitles,
-      academicDegrees: academicDegrees,
-    );
+        search: search,
+        academicTitles: academicTitles,
+        academicDegrees: academicDegrees);
   }
 
   ///Get Teachers
@@ -2263,10 +2110,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Academic Degrees
   Future<chopper.Response<List<TeacherAcademicDegreeInDb>>>
       apiTeachersAcademicDegreesGet() {
-    generatedMapping.putIfAbsent(
-      TeacherAcademicDegreeInDb,
-      () => TeacherAcademicDegreeInDb.fromJsonFactory,
-    );
+    generatedMapping.putIfAbsent(TeacherAcademicDegreeInDb,
+        () => TeacherAcademicDegreeInDb.fromJsonFactory);
 
     return _apiTeachersAcademicDegreesGet();
   }
@@ -2278,33 +2123,29 @@ abstract class CubeApi extends ChopperService {
 
   ///Get Teacher Groups
   ///@param teacher_id
-  Future<chopper.Response<List<int>>> apiTeachersTeacherIdGroupsIdsGet({
-    required int? teacherId,
-  }) {
+  Future<chopper.Response<List<int>>> apiTeachersTeacherIdGroupsIdsGet(
+      {required int? teacherId}) {
     return _apiTeachersTeacherIdGroupsIdsGet(teacherId: teacherId);
   }
 
   ///Get Teacher Groups
   ///@param teacher_id
   @Get(path: '/api/teachers/{teacher_id}/groups_ids')
-  Future<chopper.Response<List<int>>> _apiTeachersTeacherIdGroupsIdsGet({
-    @Path('teacher_id') required int? teacherId,
-  });
+  Future<chopper.Response<List<int>>> _apiTeachersTeacherIdGroupsIdsGet(
+      {@Path('teacher_id') required int? teacherId});
 
   ///Get Teacher Disciplines
   ///@param teacher_id
-  Future<chopper.Response<List<int>>> apiTeachersTeacherIdDisciplinesIdsGet({
-    required int? teacherId,
-  }) {
+  Future<chopper.Response<List<int>>> apiTeachersTeacherIdDisciplinesIdsGet(
+      {required int? teacherId}) {
     return _apiTeachersTeacherIdDisciplinesIdsGet(teacherId: teacherId);
   }
 
   ///Get Teacher Disciplines
   ///@param teacher_id
   @Get(path: '/api/teachers/{teacher_id}/disciplines_ids')
-  Future<chopper.Response<List<int>>> _apiTeachersTeacherIdDisciplinesIdsGet({
-    @Path('teacher_id') required int? teacherId,
-  });
+  Future<chopper.Response<List<int>>> _apiTeachersTeacherIdDisciplinesIdsGet(
+      {@Path('teacher_id') required int? teacherId});
 
   ///Get Teacher Discipline Types
   ///@param teacher_id
@@ -2317,10 +2158,7 @@ abstract class CubeApi extends ChopperService {
     int? groupId,
   }) {
     return _apiTeachersTeacherIdDisciplinesDisciplineIdTypesIdsGet(
-      teacherId: teacherId,
-      disciplineId: disciplineId,
-      groupId: groupId,
-    );
+        teacherId: teacherId, disciplineId: disciplineId, groupId: groupId);
   }
 
   ///Get Teacher Discipline Types
@@ -2337,13 +2175,10 @@ abstract class CubeApi extends ChopperService {
 
   ///Get Teacher
   ///@param teacher_id
-  Future<chopper.Response<TeacherFullInDb>> apiTeachersTeacherIdGet({
-    required int? teacherId,
-  }) {
+  Future<chopper.Response<TeacherFullInDb>> apiTeachersTeacherIdGet(
+      {required int? teacherId}) {
     generatedMapping.putIfAbsent(
-      TeacherFullInDb,
-      () => TeacherFullInDb.fromJsonFactory,
-    );
+        TeacherFullInDb, () => TeacherFullInDb.fromJsonFactory);
 
     return _apiTeachersTeacherIdGet(teacherId: teacherId);
   }
@@ -2351,9 +2186,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Teacher
   ///@param teacher_id
   @Get(path: '/api/teachers/{teacher_id}')
-  Future<chopper.Response<TeacherFullInDb>> _apiTeachersTeacherIdGet({
-    @Path('teacher_id') required int? teacherId,
-  });
+  Future<chopper.Response<TeacherFullInDb>> _apiTeachersTeacherIdGet(
+      {@Path('teacher_id') required int? teacherId});
 
   ///Update Teacher
   ///@param teacher_id
@@ -2366,10 +2200,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiTeachersTeacherIdPut(
-      teacherId: teacherId,
-      clientName: clientName,
-      body: body,
-    );
+        teacherId: teacherId, clientName: clientName, body: body);
   }
 
   ///Update Teacher
@@ -2401,12 +2232,11 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiTeachersTeacherIdDelete(
-      teacherId: teacherId,
-      withUser: withUser,
-      withLessons: withLessons,
-      newLessonsTeacherId: newLessonsTeacherId,
-      clientName: clientName,
-    );
+        teacherId: teacherId,
+        withUser: withUser,
+        withLessons: withLessons,
+        newLessonsTeacherId: newLessonsTeacherId,
+        clientName: clientName);
   }
 
   ///Delete Teacher
@@ -2466,21 +2296,18 @@ abstract class CubeApi extends ChopperService {
     String? clientName,
   }) {
     generatedMapping.putIfAbsent(
-      PageStudentShortInDb,
-      () => PageStudentShortInDb.fromJsonFactory,
-    );
+        PageStudentShortInDb, () => PageStudentShortInDb.fromJsonFactory);
 
     return _apiStudentsGet(
-      search: search,
-      groups: groups,
-      isMain: isMain,
-      isDeputyMain: isDeputyMain,
-      sortBy: sortBy,
-      sortOrder: sortOrder,
-      page: page,
-      size: size,
-      clientName: clientName,
-    );
+        search: search,
+        groups: groups,
+        isMain: isMain,
+        isDeputyMain: isDeputyMain,
+        sortBy: sortBy,
+        sortOrder: sortOrder,
+        page: page,
+        size: size,
+        clientName: clientName);
   }
 
   ///Get Students
@@ -2528,13 +2355,10 @@ abstract class CubeApi extends ChopperService {
 
   ///Get Student
   ///@param student_id
-  Future<chopper.Response<StudentInDb>> apiStudentsStudentIdGet({
-    required int? studentId,
-  }) {
+  Future<chopper.Response<StudentInDb>> apiStudentsStudentIdGet(
+      {required int? studentId}) {
     generatedMapping.putIfAbsent(
-      StudentInDb,
-      () => StudentInDb.fromJsonFactory,
-    );
+        StudentInDb, () => StudentInDb.fromJsonFactory);
 
     return _apiStudentsStudentIdGet(studentId: studentId);
   }
@@ -2542,9 +2366,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Student
   ///@param student_id
   @Get(path: '/api/students/{student_id}')
-  Future<chopper.Response<StudentInDb>> _apiStudentsStudentIdGet({
-    @Path('student_id') required int? studentId,
-  });
+  Future<chopper.Response<StudentInDb>> _apiStudentsStudentIdGet(
+      {@Path('student_id') required int? studentId});
 
   ///Update Student
   ///@param student_id
@@ -2557,10 +2380,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiStudentsStudentIdPut(
-      studentId: studentId,
-      clientName: clientName,
-      body: body,
-    );
+        studentId: studentId, clientName: clientName, body: body);
   }
 
   ///Update Student
@@ -2588,10 +2408,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiStudentsStudentIdDelete(
-      studentId: studentId,
-      withUser: withUser,
-      clientName: clientName,
-    );
+        studentId: studentId, withUser: withUser, clientName: clientName);
   }
 
   ///Delete Student
@@ -2653,9 +2470,7 @@ abstract class CubeApi extends ChopperService {
     List<int>? equipments,
   }) {
     generatedMapping.putIfAbsent(
-      PlaceShortInDb,
-      () => PlaceShortInDb.fromJsonFactory,
-    );
+        PlaceShortInDb, () => PlaceShortInDb.fromJsonFactory);
 
     return _apiPlacesGet(search: search, equipments: equipments);
   }
@@ -2691,9 +2506,8 @@ abstract class CubeApi extends ChopperService {
 
   ///Get Place
   ///@param place_id
-  Future<chopper.Response<PlaceInDb>> apiPlacesPlaceIdGet({
-    required int? placeId,
-  }) {
+  Future<chopper.Response<PlaceInDb>> apiPlacesPlaceIdGet(
+      {required int? placeId}) {
     generatedMapping.putIfAbsent(PlaceInDb, () => PlaceInDb.fromJsonFactory);
 
     return _apiPlacesPlaceIdGet(placeId: placeId);
@@ -2702,9 +2516,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Place
   ///@param place_id
   @Get(path: '/api/places/{place_id}')
-  Future<chopper.Response<PlaceInDb>> _apiPlacesPlaceIdGet({
-    @Path('place_id') required int? placeId,
-  });
+  Future<chopper.Response<PlaceInDb>> _apiPlacesPlaceIdGet(
+      {@Path('place_id') required int? placeId});
 
   ///Update Place
   ///@param place_id
@@ -2717,10 +2530,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiPlacesPlaceIdPut(
-      placeId: placeId,
-      clientName: clientName,
-      body: body,
-    );
+        placeId: placeId, clientName: clientName, body: body);
   }
 
   ///Update Place
@@ -2782,9 +2592,7 @@ abstract class CubeApi extends ChopperService {
   ///Get Equipments
   Future<chopper.Response<List<EquipmentInDb>>> apiEquipmentsGet() {
     generatedMapping.putIfAbsent(
-      EquipmentInDb,
-      () => EquipmentInDb.fromJsonFactory,
-    );
+        EquipmentInDb, () => EquipmentInDb.fromJsonFactory);
 
     return _apiEquipmentsGet();
   }
@@ -2815,13 +2623,10 @@ abstract class CubeApi extends ChopperService {
 
   ///Get Equipment
   ///@param equipment_id
-  Future<chopper.Response<EquipmentInDb>> apiEquipmentsEquipmentIdGet({
-    required int? equipmentId,
-  }) {
+  Future<chopper.Response<EquipmentInDb>> apiEquipmentsEquipmentIdGet(
+      {required int? equipmentId}) {
     generatedMapping.putIfAbsent(
-      EquipmentInDb,
-      () => EquipmentInDb.fromJsonFactory,
-    );
+        EquipmentInDb, () => EquipmentInDb.fromJsonFactory);
 
     return _apiEquipmentsEquipmentIdGet(equipmentId: equipmentId);
   }
@@ -2829,9 +2634,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Equipment
   ///@param equipment_id
   @Get(path: '/api/equipments/{equipment_id}')
-  Future<chopper.Response<EquipmentInDb>> _apiEquipmentsEquipmentIdGet({
-    @Path('equipment_id') required int? equipmentId,
-  });
+  Future<chopper.Response<EquipmentInDb>> _apiEquipmentsEquipmentIdGet(
+      {@Path('equipment_id') required int? equipmentId});
 
   ///Update Equipment
   ///@param equipment_id
@@ -2844,10 +2648,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiEquipmentsEquipmentIdPut(
-      equipmentId: equipmentId,
-      clientName: clientName,
-      body: body,
-    );
+        equipmentId: equipmentId, clientName: clientName, body: body);
   }
 
   ///Update Equipment
@@ -2873,9 +2674,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiEquipmentsEquipmentIdDelete(
-      equipmentId: equipmentId,
-      clientName: clientName,
-    );
+        equipmentId: equipmentId, clientName: clientName);
   }
 
   ///Delete Equipment
@@ -2894,9 +2693,7 @@ abstract class CubeApi extends ChopperService {
     required BodyImportEquipmentsApiEquipmentsImportPost body,
   }) {
     generatedMapping.putIfAbsent(
-      EquipmentInDb,
-      () => EquipmentInDb.fromJsonFactory,
-    );
+        EquipmentInDb, () => EquipmentInDb.fromJsonFactory);
 
     return _apiEquipmentsImportPost(clientName: clientName, body: body);
   }
@@ -2938,23 +2735,20 @@ abstract class CubeApi extends ChopperService {
     String? clientName,
   }) {
     generatedMapping.putIfAbsent(
-      LessonCollision,
-      () => LessonCollision.fromJsonFactory,
-    );
+        LessonCollision, () => LessonCollision.fromJsonFactory);
 
     return _apiLessonsCollisionGet(
-      date: date,
-      number: number,
-      semesterId: semesterId,
-      typeId: typeId,
-      disciplineId: disciplineId,
-      placeId: placeId,
-      groups: groups,
-      teachers: teachers,
-      isRemotely: isRemotely,
-      lessonId: lessonId,
-      clientName: clientName,
-    );
+        date: date,
+        number: number,
+        semesterId: semesterId,
+        typeId: typeId,
+        disciplineId: disciplineId,
+        placeId: placeId,
+        groups: groups,
+        teachers: teachers,
+        isRemotely: isRemotely,
+        lessonId: lessonId,
+        clientName: clientName);
   }
 
   ///Get Collisions
@@ -2986,13 +2780,10 @@ abstract class CubeApi extends ChopperService {
 
   ///Search Autocomplete
   ///@param q Значение для поиска
-  Future<chopper.Response<LessonAutocomplete>> apiLessonsAutocompleteGet({
-    required String? q,
-  }) {
+  Future<chopper.Response<LessonAutocomplete>> apiLessonsAutocompleteGet(
+      {required String? q}) {
     generatedMapping.putIfAbsent(
-      LessonAutocomplete,
-      () => LessonAutocomplete.fromJsonFactory,
-    );
+        LessonAutocomplete, () => LessonAutocomplete.fromJsonFactory);
 
     return _apiLessonsAutocompleteGet(q: q);
   }
@@ -3000,9 +2791,8 @@ abstract class CubeApi extends ChopperService {
   ///Search Autocomplete
   ///@param q Значение для поиска
   @Get(path: '/api/lessons/autocomplete')
-  Future<chopper.Response<LessonAutocomplete>> _apiLessonsAutocompleteGet({
-    @Query('q') required String? q,
-  });
+  Future<chopper.Response<LessonAutocomplete>> _apiLessonsAutocompleteGet(
+      {@Query('q') required String? q});
 
   ///Get Lessons Settings
   Future<chopper.Response<Object>> apiLessonsSettingsGet() {
@@ -3047,9 +2837,7 @@ abstract class CubeApi extends ChopperService {
   ///Get Types
   Future<chopper.Response<List<LessonTypeInDb>>> apiLessonsTypesGet() {
     generatedMapping.putIfAbsent(
-      LessonTypeInDb,
-      () => LessonTypeInDb.fromJsonFactory,
-    );
+        LessonTypeInDb, () => LessonTypeInDb.fromJsonFactory);
 
     return _apiLessonsTypesGet();
   }
@@ -3060,13 +2848,10 @@ abstract class CubeApi extends ChopperService {
 
   ///Get Type
   ///@param type_id
-  Future<chopper.Response<LessonTypeInDb>> apiLessonsTypesTypeIdGet({
-    required int? typeId,
-  }) {
+  Future<chopper.Response<LessonTypeInDb>> apiLessonsTypesTypeIdGet(
+      {required int? typeId}) {
     generatedMapping.putIfAbsent(
-      LessonTypeInDb,
-      () => LessonTypeInDb.fromJsonFactory,
-    );
+        LessonTypeInDb, () => LessonTypeInDb.fromJsonFactory);
 
     return _apiLessonsTypesTypeIdGet(typeId: typeId);
   }
@@ -3074,9 +2859,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Type
   ///@param type_id
   @Get(path: '/api/lessons/types/{type_id}')
-  Future<chopper.Response<LessonTypeInDb>> _apiLessonsTypesTypeIdGet({
-    @Path('type_id') required int? typeId,
-  });
+  Future<chopper.Response<LessonTypeInDb>> _apiLessonsTypesTypeIdGet(
+      {@Path('type_id') required int? typeId});
 
   ///Get Statuses
   Future<chopper.Response<Object>> apiLessonsStatusesGet() {
@@ -3104,14 +2888,10 @@ abstract class CubeApi extends ChopperService {
     String? clientName,
   }) {
     generatedMapping.putIfAbsent(
-      LessonHistory,
-      () => LessonHistory.fromJsonFactory,
-    );
+        LessonHistory, () => LessonHistory.fromJsonFactory);
 
     return _apiLessonsLessonIdHistoryGet(
-      lessonId: lessonId,
-      clientName: clientName,
-    );
+        lessonId: lessonId, clientName: clientName);
   }
 
   ///Get Lesson History
@@ -3191,34 +2971,31 @@ abstract class CubeApi extends ChopperService {
     String? clientName,
   }) {
     generatedMapping.putIfAbsent(
-      LessonFullNamesInDb,
-      () => LessonFullNamesInDb.fromJsonFactory,
-    );
+        LessonFullNamesInDb, () => LessonFullNamesInDb.fromJsonFactory);
 
     return _apiLessonsGet(
-      header: header,
-      fullData: fullData,
-      search: search,
-      startDate: startDate,
-      endDate: endDate,
-      numbers: numbers,
-      semesterId: semesterId,
-      facultyId: facultyId,
-      degreeStudies: degreeStudyListToJson(degreeStudies),
-      directions: directions,
-      profiles: profiles,
-      courses: courses,
-      groups: groups,
-      teachers: teachers,
-      disciplines: disciplines,
-      places: places,
-      types: types,
-      themeIsNull: themeIsNull,
-      status: status?.value?.toString(),
-      sortBy: sortBy,
-      sortOrder: sortOrder,
-      clientName: clientName,
-    );
+        header: header,
+        fullData: fullData,
+        search: search,
+        startDate: startDate,
+        endDate: endDate,
+        numbers: numbers,
+        semesterId: semesterId,
+        facultyId: facultyId,
+        degreeStudies: degreeStudyListToJson(degreeStudies),
+        directions: directions,
+        profiles: profiles,
+        courses: courses,
+        groups: groups,
+        teachers: teachers,
+        disciplines: disciplines,
+        places: places,
+        types: types,
+        themeIsNull: themeIsNull,
+        status: status?.value?.toString(),
+        sortBy: sortBy,
+        sortOrder: sortOrder,
+        clientName: clientName);
   }
 
   ///Get Lessons
@@ -3292,9 +3069,8 @@ abstract class CubeApi extends ChopperService {
 
   ///Get Lesson Short
   ///@param lesson_id
-  Future<chopper.Response<LessonInDb>> apiLessonsLessonIdGet({
-    required int? lessonId,
-  }) {
+  Future<chopper.Response<LessonInDb>> apiLessonsLessonIdGet(
+      {required int? lessonId}) {
     generatedMapping.putIfAbsent(LessonInDb, () => LessonInDb.fromJsonFactory);
 
     return _apiLessonsLessonIdGet(lessonId: lessonId);
@@ -3303,9 +3079,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Lesson Short
   ///@param lesson_id
   @Get(path: '/api/lessons/{lesson_id}')
-  Future<chopper.Response<LessonInDb>> _apiLessonsLessonIdGet({
-    @Path('lesson_id') required int? lessonId,
-  });
+  Future<chopper.Response<LessonInDb>> _apiLessonsLessonIdGet(
+      {@Path('lesson_id') required int? lessonId});
 
   ///Update Lesson
   ///@param lesson_id
@@ -3318,10 +3093,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiLessonsLessonIdPut(
-      lessonId: lessonId,
-      clientName: clientName,
-      body: body,
-    );
+        lessonId: lessonId, clientName: clientName, body: body);
   }
 
   ///Update Lesson
@@ -3349,10 +3121,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiLessonsLessonIdDelete(
-      lessonId: lessonId,
-      notify: notify,
-      clientName: clientName,
-    );
+        lessonId: lessonId, notify: notify, clientName: clientName);
   }
 
   ///Delete Lesson
@@ -3374,14 +3143,10 @@ abstract class CubeApi extends ChopperService {
     String? clientName,
   }) {
     generatedMapping.putIfAbsent(
-      LessonFullInDb,
-      () => LessonFullInDb.fromJsonFactory,
-    );
+        LessonFullInDb, () => LessonFullInDb.fromJsonFactory);
 
     return _apiLessonsLessonIdFullGet(
-      lessonId: lessonId,
-      clientName: clientName,
-    );
+        lessonId: lessonId, clientName: clientName);
   }
 
   ///Get Lesson Full
@@ -3404,10 +3169,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiLessonsLessonIdCancelPut(
-      lessonId: lessonId,
-      clientName: clientName,
-      body: body,
-    );
+        lessonId: lessonId, clientName: clientName, body: body);
   }
 
   ///Update Lesson Status Cancel
@@ -3433,10 +3195,7 @@ abstract class CubeApi extends ChopperService {
     String? clientName,
   }) {
     return _apiLessonsLessonIdThemePut(
-      lessonId: lessonId,
-      theme: theme,
-      clientName: clientName,
-    );
+        lessonId: lessonId, theme: theme, clientName: clientName);
   }
 
   ///Update Theme
@@ -3482,24 +3241,21 @@ abstract class CubeApi extends ChopperService {
     String? clientName,
   }) {
     generatedMapping.putIfAbsent(
-      MainLessonCollision,
-      () => MainLessonCollision.fromJsonFactory,
-    );
+        MainLessonCollision, () => MainLessonCollision.fromJsonFactory);
 
     return _apiMainLessonsCollisionGet(
-      weekday: weekday,
-      parity: parity,
-      number: number,
-      semesterId: semesterId,
-      typeId: typeId,
-      disciplineId: disciplineId,
-      placeId: placeId,
-      groups: groups,
-      teachers: teachers,
-      isRemotely: isRemotely,
-      mainLessonId: mainLessonId,
-      clientName: clientName,
-    );
+        weekday: weekday,
+        parity: parity,
+        number: number,
+        semesterId: semesterId,
+        typeId: typeId,
+        disciplineId: disciplineId,
+        placeId: placeId,
+        groups: groups,
+        teachers: teachers,
+        isRemotely: isRemotely,
+        mainLessonId: mainLessonId,
+        clientName: clientName);
   }
 
   ///Get Collisions
@@ -3586,27 +3342,24 @@ abstract class CubeApi extends ChopperService {
     String? clientName,
   }) {
     generatedMapping.putIfAbsent(
-      MainLessonResults,
-      () => MainLessonResults.fromJsonFactory,
-    );
+        MainLessonResults, () => MainLessonResults.fromJsonFactory);
 
     return _apiMainLessonsGet(
-      header: header,
-      search: search,
-      facultyId: facultyId,
-      semesterId: semesterId,
-      numbers: numbers,
-      degreeStudies: degreeStudyListToJson(degreeStudies),
-      directions: directions,
-      profiles: profiles,
-      courses: courses,
-      groups: groups,
-      teachers: teachers,
-      disciplines: disciplines,
-      places: places,
-      types: types,
-      clientName: clientName,
-    );
+        header: header,
+        search: search,
+        facultyId: facultyId,
+        semesterId: semesterId,
+        numbers: numbers,
+        degreeStudies: degreeStudyListToJson(degreeStudies),
+        directions: directions,
+        profiles: profiles,
+        courses: courses,
+        groups: groups,
+        teachers: teachers,
+        disciplines: disciplines,
+        places: places,
+        types: types,
+        clientName: clientName);
   }
 
   ///Get Main Lessons
@@ -3674,10 +3427,7 @@ abstract class CubeApi extends ChopperService {
     String? clientName,
   }) {
     return _apiMainLessonsMainLessonIdGet(
-      mainLessonId: mainLessonId,
-      fullInfo: fullInfo,
-      clientName: clientName,
-    );
+        mainLessonId: mainLessonId, fullInfo: fullInfo, clientName: clientName);
   }
 
   ///Get Main Lesson
@@ -3702,10 +3452,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiMainLessonsMainLessonIdPut(
-      mainLessonId: mainLessonId,
-      clientName: clientName,
-      body: body,
-    );
+        mainLessonId: mainLessonId, clientName: clientName, body: body);
   }
 
   ///Update Main Lesson
@@ -3735,11 +3482,10 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiMainLessonsMainLessonIdDelete(
-      mainLessonId: mainLessonId,
-      withCompleted: withCompleted,
-      notify: notify,
-      clientName: clientName,
-    );
+        mainLessonId: mainLessonId,
+        withCompleted: withCompleted,
+        notify: notify,
+        clientName: clientName);
   }
 
   ///Delete Main Lesson
@@ -3764,14 +3510,10 @@ abstract class CubeApi extends ChopperService {
     String? clientName,
   }) {
     generatedMapping.putIfAbsent(
-      MainLessonHistory,
-      () => MainLessonHistory.fromJsonFactory,
-    );
+        MainLessonHistory, () => MainLessonHistory.fromJsonFactory);
 
     return _apiMainLessonsMainLessonIdHistoryGet(
-      mainLessonId: mainLessonId,
-      clientName: clientName,
-    );
+        mainLessonId: mainLessonId, clientName: clientName);
   }
 
   ///Get Main Lesson History
@@ -3792,9 +3534,7 @@ abstract class CubeApi extends ChopperService {
     String? clientName,
   }) {
     return _apiMainLessonsMainLessonIdDividePost(
-      mainLessonId: mainLessonId,
-      clientName: clientName,
-    );
+        mainLessonId: mainLessonId, clientName: clientName);
   }
 
   ///Divide Main Lesson
@@ -3840,10 +3580,9 @@ abstract class CubeApi extends ChopperService {
     int? lessonTypeId,
   }) {
     return _apiJournalGroupsGroupIdDisciplinesDisciplineIdGet(
-      groupId: groupId,
-      disciplineId: disciplineId,
-      lessonTypeId: lessonTypeId,
-    );
+        groupId: groupId,
+        disciplineId: disciplineId,
+        lessonTypeId: lessonTypeId);
   }
 
   ///Get Journal
@@ -3862,10 +3601,8 @@ abstract class CubeApi extends ChopperService {
   ///@param year Год
   Future<chopper.Response<List<ProductionCalendarDayInDb>>>
       apiProductionCalendarGet({required int? year}) {
-    generatedMapping.putIfAbsent(
-      ProductionCalendarDayInDb,
-      () => ProductionCalendarDayInDb.fromJsonFactory,
-    );
+    generatedMapping.putIfAbsent(ProductionCalendarDayInDb,
+        () => ProductionCalendarDayInDb.fromJsonFactory);
 
     return _apiProductionCalendarGet(year: year);
   }
@@ -3884,10 +3621,8 @@ abstract class CubeApi extends ChopperService {
     required int? year,
     String? clientName,
   }) {
-    generatedMapping.putIfAbsent(
-      ProductionCalendarDayInDb,
-      () => ProductionCalendarDayInDb.fromJsonFactory,
-    );
+    generatedMapping.putIfAbsent(ProductionCalendarDayInDb,
+        () => ProductionCalendarDayInDb.fromJsonFactory);
 
     return _apiProductionCalendarPut(year: year, clientName: clientName);
   }
@@ -3912,10 +3647,8 @@ abstract class CubeApi extends ChopperService {
     String? clientName,
     required ProductionCalendarDayCreate? body,
   }) {
-    generatedMapping.putIfAbsent(
-      ProductionCalendarDayInDb,
-      () => ProductionCalendarDayInDb.fromJsonFactory,
-    );
+    generatedMapping.putIfAbsent(ProductionCalendarDayInDb,
+        () => ProductionCalendarDayInDb.fromJsonFactory);
 
     return _apiProductionCalendarPost(clientName: clientName, body: body);
   }
@@ -3955,18 +3688,16 @@ abstract class CubeApi extends ChopperService {
 
   ///Get Production Calendar Day
   ///@param date Дата
-  Future<chopper.Response<int>> apiProductionCalendarDayGet({
-    required String? date,
-  }) {
+  Future<chopper.Response<int>> apiProductionCalendarDayGet(
+      {required String? date}) {
     return _apiProductionCalendarDayGet(date: date);
   }
 
   ///Get Production Calendar Day
   ///@param date Дата
   @Get(path: '/api/production_calendar/day')
-  Future<chopper.Response<int>> _apiProductionCalendarDayGet({
-    @Query('date') required String? date,
-  });
+  Future<chopper.Response<int>> _apiProductionCalendarDayGet(
+      {@Query('date') required String? date});
 
   ///Update Production Calendar Day
   ///@param production_calendar_day_id
@@ -3980,10 +3711,9 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiProductionCalendarProductionCalendarDayIdPut(
-      productionCalendarDayId: productionCalendarDayId,
-      clientName: clientName,
-      body: body,
-    );
+        productionCalendarDayId: productionCalendarDayId,
+        clientName: clientName,
+        body: body);
   }
 
   ///Update Production Calendar Day
@@ -4011,9 +3741,8 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiProductionCalendarProductionCalendarDayIdDelete(
-      productionCalendarDayId: productionCalendarDayId,
-      clientName: clientName,
-    );
+        productionCalendarDayId: productionCalendarDayId,
+        clientName: clientName);
   }
 
   ///Delete Production Calendar Day
@@ -4035,9 +3764,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Statistics
   ///@param Client_name
   @Get(path: '/api/statistics')
-  Future<chopper.Response<Object>> _apiStatisticsGet({
-    @Header('Client_name') String? clientName,
-  });
+  Future<chopper.Response<Object>> _apiStatisticsGet(
+      {@Header('Client_name') String? clientName});
 
   ///Get Collisions
   ///@param date Дата
@@ -4066,23 +3794,20 @@ abstract class CubeApi extends ChopperService {
     String? clientName,
   }) {
     generatedMapping.putIfAbsent(
-      SessionEventCollision,
-      () => SessionEventCollision.fromJsonFactory,
-    );
+        SessionEventCollision, () => SessionEventCollision.fromJsonFactory);
 
     return _apiSessionEventsCollisionGet(
-      date: date,
-      time: time,
-      isRemotely: isRemotely,
-      eventTypeId: eventTypeId,
-      disciplineId: disciplineId,
-      placeId: placeId,
-      groups: groups,
-      teachers: teachers,
-      semesterId: semesterId,
-      sessionEventId: sessionEventId,
-      clientName: clientName,
-    );
+        date: date,
+        time: time,
+        isRemotely: isRemotely,
+        eventTypeId: eventTypeId,
+        disciplineId: disciplineId,
+        placeId: placeId,
+        groups: groups,
+        teachers: teachers,
+        semesterId: semesterId,
+        sessionEventId: sessionEventId,
+        clientName: clientName);
   }
 
   ///Get Collisions
@@ -4175,21 +3900,18 @@ abstract class CubeApi extends ChopperService {
     String? clientName,
   }) {
     generatedMapping.putIfAbsent(
-      SessionEventData,
-      () => SessionEventData.fromJsonFactory,
-    );
+        SessionEventData, () => SessionEventData.fromJsonFactory);
 
     return _apiSessionEventsGet(
-      facultyId: facultyId,
-      semesterId: semesterId,
-      date: date,
-      directions: directions,
-      courses: courses,
-      places: places,
-      groups: groups,
-      teachers: teachers,
-      clientName: clientName,
-    );
+        facultyId: facultyId,
+        semesterId: semesterId,
+        date: date,
+        directions: directions,
+        courses: courses,
+        places: places,
+        groups: groups,
+        teachers: teachers,
+        clientName: clientName);
   }
 
   ///Get Session Events
@@ -4246,10 +3968,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiSessionEventsSessionEventIdPut(
-      sessionEventId: sessionEventId,
-      clientName: clientName,
-      body: body,
-    );
+        sessionEventId: sessionEventId, clientName: clientName, body: body);
   }
 
   ///Update Session Event
@@ -4277,10 +3996,7 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(Status, () => Status.fromJsonFactory);
 
     return _apiSessionEventsSessionEventIdDelete(
-      sessionEventId: sessionEventId,
-      notify: notify,
-      clientName: clientName,
-    );
+        sessionEventId: sessionEventId, notify: notify, clientName: clientName);
   }
 
   ///Delete Session Event
@@ -4305,18 +4021,16 @@ abstract class CubeApi extends ChopperService {
 
   ///Get Students Telegram Ids
   ///@param groups Список идентификаторов групп
-  Future<chopper.Response<List<String>>> apiTelegramStudentsIdGet({
-    List<int>? groups,
-  }) {
+  Future<chopper.Response<List<String>>> apiTelegramStudentsIdGet(
+      {List<int>? groups}) {
     return _apiTelegramStudentsIdGet(groups: groups);
   }
 
   ///Get Students Telegram Ids
   ///@param groups Список идентификаторов групп
   @Get(path: '/api/telegram/students/id')
-  Future<chopper.Response<List<String>>> _apiTelegramStudentsIdGet({
-    @Query('groups') List<int>? groups,
-  });
+  Future<chopper.Response<List<String>>> _apiTelegramStudentsIdGet(
+      {@Query('groups') List<int>? groups});
 
   ///Get Log Statuses
   ///@param Client_name
@@ -4327,15 +4041,13 @@ abstract class CubeApi extends ChopperService {
   ///Get Log Statuses
   ///@param Client_name
   @Get(path: '/api/logs/statuses')
-  Future<chopper.Response<Object>> _apiLogsStatusesGet({
-    @Header('Client_name') String? clientName,
-  });
+  Future<chopper.Response<Object>> _apiLogsStatusesGet(
+      {@Header('Client_name') String? clientName});
 
   ///Get Log Modules
   ///@param Client_name
-  Future<chopper.Response<List<LogModule>>> apiLogsModulesGet({
-    String? clientName,
-  }) {
+  Future<chopper.Response<List<LogModule>>> apiLogsModulesGet(
+      {String? clientName}) {
     generatedMapping.putIfAbsent(LogModule, () => LogModule.fromJsonFactory);
 
     return _apiLogsModulesGet(clientName: clientName);
@@ -4344,15 +4056,13 @@ abstract class CubeApi extends ChopperService {
   ///Get Log Modules
   ///@param Client_name
   @Get(path: '/api/logs/modules')
-  Future<chopper.Response<List<LogModule>>> _apiLogsModulesGet({
-    @Header('Client_name') String? clientName,
-  });
+  Future<chopper.Response<List<LogModule>>> _apiLogsModulesGet(
+      {@Header('Client_name') String? clientName});
 
   ///Get Log Entities
   ///@param Client_name
-  Future<chopper.Response<List<LogEntity>>> apiLogsEntitiesGet({
-    String? clientName,
-  }) {
+  Future<chopper.Response<List<LogEntity>>> apiLogsEntitiesGet(
+      {String? clientName}) {
     generatedMapping.putIfAbsent(LogEntity, () => LogEntity.fromJsonFactory);
 
     return _apiLogsEntitiesGet(clientName: clientName);
@@ -4361,15 +4071,13 @@ abstract class CubeApi extends ChopperService {
   ///Get Log Entities
   ///@param Client_name
   @Get(path: '/api/logs/entities')
-  Future<chopper.Response<List<LogEntity>>> _apiLogsEntitiesGet({
-    @Header('Client_name') String? clientName,
-  });
+  Future<chopper.Response<List<LogEntity>>> _apiLogsEntitiesGet(
+      {@Header('Client_name') String? clientName});
 
   ///Get Log Actions
   ///@param Client_name
-  Future<chopper.Response<List<LogAction>>> apiLogsActionsGet({
-    String? clientName,
-  }) {
+  Future<chopper.Response<List<LogAction>>> apiLogsActionsGet(
+      {String? clientName}) {
     generatedMapping.putIfAbsent(LogAction, () => LogAction.fromJsonFactory);
 
     return _apiLogsActionsGet(clientName: clientName);
@@ -4378,9 +4086,8 @@ abstract class CubeApi extends ChopperService {
   ///Get Log Actions
   ///@param Client_name
   @Get(path: '/api/logs/actions')
-  Future<chopper.Response<List<LogAction>>> _apiLogsActionsGet({
-    @Header('Client_name') String? clientName,
-  });
+  Future<chopper.Response<List<LogAction>>> _apiLogsActionsGet(
+      {@Header('Client_name') String? clientName});
 
   ///Get Logs
   ///@param module_id Идентификатор модуля
@@ -4408,17 +4115,16 @@ abstract class CubeApi extends ChopperService {
     generatedMapping.putIfAbsent(PageLog, () => PageLog.fromJsonFactory);
 
     return _apiLogsGet(
-      moduleId: moduleId,
-      entityId: entityId,
-      actionId: actionId,
-      userId: userId,
-      status: status,
-      startDate: startDate,
-      endDate: endDate,
-      page: page,
-      size: size,
-      clientName: clientName,
-    );
+        moduleId: moduleId,
+        entityId: entityId,
+        actionId: actionId,
+        userId: userId,
+        status: status,
+        startDate: startDate,
+        endDate: endDate,
+        page: page,
+        size: size,
+        clientName: clientName);
   }
 
   ///Get Logs
@@ -4494,8 +4200,7 @@ class $CustomJsonDecoder {
 class $JsonSerializableConverter extends chopper.JsonConverter {
   @override
   FutureOr<chopper.Response<ResultType>> convertResponse<ResultType, Item>(
-    chopper.Response response,
-  ) async {
+      chopper.Response response) async {
     if (response.bodyString.isEmpty) {
       // In rare cases, when let's say 204 (no content) is returned -
       // we cannot decode the missing json with the result type specified
@@ -4504,8 +4209,7 @@ class $JsonSerializableConverter extends chopper.JsonConverter {
 
     final jsonRes = await super.convertResponse(response);
     return jsonRes.copyWith<ResultType>(
-      body: $jsonDecoder.decode<Item>(jsonRes.body) as ResultType,
-    );
+        body: $jsonDecoder.decode<Item>(jsonRes.body) as ResultType);
   }
 }
 

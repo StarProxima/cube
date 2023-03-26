@@ -17,9 +17,8 @@ class _$CubeApi extends CubeApi {
   final definitionType = CubeApi;
 
   @override
-  Future<Response<AccessToken>> _apiAuthLoginPost({
-    required BodyLoginApiAuthLoginPost? body,
-  }) {
+  Future<Response<AccessToken>> _apiAuthLoginPost(
+      {required BodyLoginApiAuthLoginPost? body}) {
     final Uri $url = Uri.parse('/api/auth/login');
     final $body = body;
     final Request $request = Request(
@@ -234,9 +233,8 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<List<UserFacultyForbiddenInDb>>> _apiOtherPermissionGet({
-    String? clientName,
-  }) {
+  Future<Response<List<UserFacultyForbiddenInDb>>> _apiOtherPermissionGet(
+      {String? clientName}) {
     final Uri $url = Uri.parse('/api/other_permission');
     final Map<String, String> $headers = {
       if (clientName != null) 'Client_name': clientName,
@@ -504,9 +502,8 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<List<UserShortTelegram>>> _apiUsersMainStudentsGet({
-    List<int>? groups,
-  }) {
+  Future<Response<List<UserShortTelegram>>> _apiUsersMainStudentsGet(
+      {List<int>? groups}) {
     final Uri $url = Uri.parse('/api/users/main_students');
     final Map<String, dynamic> $params = <String, dynamic>{'groups': groups};
     final Request $request = Request(
@@ -988,9 +985,8 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<FacultyInDb>> _apiFacultiesFacultyIdGet({
-    required int? facultyId,
-  }) {
+  Future<Response<FacultyInDb>> _apiFacultiesFacultyIdGet(
+      {required int? facultyId}) {
     final Uri $url = Uri.parse('/api/faculties/${facultyId}');
     final Request $request = Request(
       'GET',
@@ -1103,9 +1099,8 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<DirectionInDb>> _apiDirectionsDirectionIdGet({
-    required int? directionId,
-  }) {
+  Future<Response<DirectionInDb>> _apiDirectionsDirectionIdGet(
+      {required int? directionId}) {
     final Uri $url = Uri.parse('/api/directions/${directionId}');
     final Request $request = Request(
       'GET',
@@ -1212,9 +1207,8 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<ProfileInDb>> _apiProfilesProfileIdGet({
-    required int? profileId,
-  }) {
+  Future<Response<ProfileInDb>> _apiProfilesProfileIdGet(
+      {required int? profileId}) {
     final Uri $url = Uri.parse('/api/profiles/${profileId}');
     final Request $request = Request(
       'GET',
@@ -1525,9 +1519,8 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<List<int>>> _apiGroupsGroupIdDisciplinesIdsGet({
-    required int? groupId,
-  }) {
+  Future<Response<List<int>>> _apiGroupsGroupIdDisciplinesIdsGet(
+      {required int? groupId}) {
     final Uri $url = Uri.parse('/api/groups/${groupId}/disciplines_ids');
     final Request $request = Request(
       'GET',
@@ -1544,8 +1537,7 @@ class _$CubeApi extends CubeApi {
     required int? disciplineId,
   }) {
     final Uri $url = Uri.parse(
-      '/api/groups/${groupId}/disciplines/${disciplineId}/types_ids',
-    );
+        '/api/groups/${groupId}/disciplines/${disciplineId}/types_ids');
     final Request $request = Request(
       'GET',
       $url,
@@ -1555,9 +1547,8 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<GroupFullInDb>> _apiGroupsGroupIdGet({
-    required int? groupId,
-  }) {
+  Future<Response<GroupFullInDb>> _apiGroupsGroupIdGet(
+      {required int? groupId}) {
     final Uri $url = Uri.parse('/api/groups/${groupId}');
     final Request $request = Request(
       'GET',
@@ -1679,9 +1670,8 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<DisciplineInDb>> _apiDisciplinesDisciplineIdGet({
-    required int? disciplineId,
-  }) {
+  Future<Response<DisciplineInDb>> _apiDisciplinesDisciplineIdGet(
+      {required int? disciplineId}) {
     final Uri $url = Uri.parse('/api/disciplines/${disciplineId}');
     final Request $request = Request(
       'GET',
@@ -1814,9 +1804,8 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<List<int>>> _apiTeachersTeacherIdGroupsIdsGet({
-    required int? teacherId,
-  }) {
+  Future<Response<List<int>>> _apiTeachersTeacherIdGroupsIdsGet(
+      {required int? teacherId}) {
     final Uri $url = Uri.parse('/api/teachers/${teacherId}/groups_ids');
     final Request $request = Request(
       'GET',
@@ -1827,9 +1816,8 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<List<int>>> _apiTeachersTeacherIdDisciplinesIdsGet({
-    required int? teacherId,
-  }) {
+  Future<Response<List<int>>> _apiTeachersTeacherIdDisciplinesIdsGet(
+      {required int? teacherId}) {
     final Uri $url = Uri.parse('/api/teachers/${teacherId}/disciplines_ids');
     final Request $request = Request(
       'GET',
@@ -1847,8 +1835,7 @@ class _$CubeApi extends CubeApi {
     int? groupId,
   }) {
     final Uri $url = Uri.parse(
-      '/api/teachers/${teacherId}/disciplines/${disciplineId}/types_ids',
-    );
+        '/api/teachers/${teacherId}/disciplines/${disciplineId}/types_ids');
     final Map<String, dynamic> $params = <String, dynamic>{'group_id': groupId};
     final Request $request = Request(
       'GET',
@@ -1860,9 +1847,8 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<TeacherFullInDb>> _apiTeachersTeacherIdGet({
-    required int? teacherId,
-  }) {
+  Future<Response<TeacherFullInDb>> _apiTeachersTeacherIdGet(
+      {required int? teacherId}) {
     final Uri $url = Uri.parse('/api/teachers/${teacherId}');
     final Request $request = Request(
       'GET',
@@ -1995,9 +1981,8 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<StudentInDb>> _apiStudentsStudentIdGet({
-    required int? studentId,
-  }) {
+  Future<Response<StudentInDb>> _apiStudentsStudentIdGet(
+      {required int? studentId}) {
     final Uri $url = Uri.parse('/api/students/${studentId}');
     final Request $request = Request(
       'GET',
@@ -2228,9 +2213,8 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<EquipmentInDb>> _apiEquipmentsEquipmentIdGet({
-    required int? equipmentId,
-  }) {
+  Future<Response<EquipmentInDb>> _apiEquipmentsEquipmentIdGet(
+      {required int? equipmentId}) {
     final Uri $url = Uri.parse('/api/equipments/${equipmentId}');
     final Request $request = Request(
       'GET',
@@ -2338,9 +2322,8 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<LessonAutocomplete>> _apiLessonsAutocompleteGet({
-    required String? q,
-  }) {
+  Future<Response<LessonAutocomplete>> _apiLessonsAutocompleteGet(
+      {required String? q}) {
     final Uri $url = Uri.parse('/api/lessons/autocomplete');
     final Map<String, dynamic> $params = <String, dynamic>{'q': q};
     final Request $request = Request(
@@ -2406,9 +2389,8 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<LessonTypeInDb>> _apiLessonsTypesTypeIdGet({
-    required int? typeId,
-  }) {
+  Future<Response<LessonTypeInDb>> _apiLessonsTypesTypeIdGet(
+      {required int? typeId}) {
     final Uri $url = Uri.parse('/api/lessons/types/${typeId}');
     final Request $request = Request(
       'GET',
@@ -2562,9 +2544,8 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<LessonInDb>> _apiLessonsLessonIdGet({
-    required int? lessonId,
-  }) {
+  Future<Response<LessonInDb>> _apiLessonsLessonIdGet(
+      {required int? lessonId}) {
     final Uri $url = Uri.parse('/api/lessons/${lessonId}');
     final Request $request = Request(
       'GET',
@@ -2954,9 +2935,8 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<List<ProductionCalendarDayInDb>>> _apiProductionCalendarGet({
-    required int? year,
-  }) {
+  Future<Response<List<ProductionCalendarDayInDb>>> _apiProductionCalendarGet(
+      {required int? year}) {
     final Uri $url = Uri.parse('/api/production_calendar');
     final Map<String, dynamic> $params = <String, dynamic>{'year': year};
     final Request $request = Request(
@@ -3291,9 +3271,8 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<List<String>>> _apiTelegramStudentsIdGet({
-    List<int>? groups,
-  }) {
+  Future<Response<List<String>>> _apiTelegramStudentsIdGet(
+      {List<int>? groups}) {
     final Uri $url = Uri.parse('/api/telegram/students/id');
     final Map<String, dynamic> $params = <String, dynamic>{'groups': groups};
     final Request $request = Request(
