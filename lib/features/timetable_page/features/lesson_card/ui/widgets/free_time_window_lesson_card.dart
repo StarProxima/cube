@@ -6,11 +6,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/timetable_page/state_holders/lesson_timings.dart';
 
-class FreeTimeLessonsWindowCard extends ConsumerWidget {
+class FreeTimeWindowLessonCard extends ConsumerWidget {
   final int numberStart;
   final int numberEnd;
 
-  const FreeTimeLessonsWindowCard({
+  const FreeTimeWindowLessonCard({
     required this.numberStart,
     required this.numberEnd,
     super.key,
