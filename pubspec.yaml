@@ -1,19 +1,82 @@
 name: cube_system
 description: A new Flutter project.
 publish_to: 'none'
-version: 0.1.0
+version: 0.5.0
 
 environment:
-  sdk: '>=3.0.0-233.0.dev <4.0.0'
+  sdk: '>=2.19.2 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
 
+  flutter_localizations:
+    sdk: flutter
+
+  window_size:
+    git:
+      url: https://github.com/google/flutter-desktop-embedding
+      path: plugins/window_size
+
+  json_annotation: ^4.8.0
+  freezed_annotation: ^2.2.0
+  theme_tailor_annotation: ^1.0.3
+
+  proxima_logger: ^0.6.3
+  intl: ^0.18.0
+  google_fonts: ^4.0.3
+  flutter_svg: ^2.0.2
+  easy_splash_screen: ^1.0.4
+
+  flutter_riverpod: ^2.3.0
+
+  chopper: ^6.1.1
+
+  device_preview: ^1.1.0
+  url_launcher: ^6.1.10
+  
+  # rive: ^0.10.3
+
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  
+  swagger_dart_code_generator:
+    git:
+      url: https://github.com/epam-cross-platform-lab/swagger-dart-code-generator
+
+  flutter_lints: ^2.0.1
+  lints: ^2.0.1
+
+  freezed: ^2.3.2
+  json_serializable: ^6.6.1
+  theme_tailor: ^1.0.8
+
+  build_runner: ^2.3.3
+  flutter_gen_runner: ^5.2.0
+  chopper_generator: ^6.0.0
+  flutter_launcher_icons: ^0.12.0
+
+
+flutter_gen:
+  output: lib/gen/assets
+  integrations:
+    flutter_svg: true
+    # rive: true
+
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/brooklyn/
+    - assets/icons/
+    - assets/icons/cube_logo.svg
+    # - assets/rive/
+    # - assets/rive/shapes.riv
+    # - assets/images/
+    # - assets/images/spline.png

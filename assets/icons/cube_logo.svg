@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1"
+	 id="svg642" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:export-filename="favicon.svg" sodipodi:docname="logo.svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 245.8 245.8"
+	 style="enable-background:new 0 0 245.8 245.8;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#rect12804_00000028304999496293463990000005249705777218554800_);}
+	.st1{fill:#FFFFFF;}
+</style>
+<sodipodi:namedview  bordercolor="#000000" borderopacity="0.25" id="namedview644" inkscape:current-layer="svg642" inkscape:cx="4.9497473" inkscape:cy="211.77848" inkscape:deskcolor="#d1d1d1" inkscape:document-units="in" inkscape:pagecheckerboard="0" inkscape:pageopacity="0.0" inkscape:showpageshadow="2" inkscape:window-height="1001" inkscape:window-maximized="1" inkscape:window-width="1920" inkscape:window-x="-9" inkscape:window-y="-9" inkscape:zoom="1.4142136" pagecolor="#ffffff" showgrid="false" showguides="false">
+	<sodipodi:guide  id="guide5173" inkscape:locked="false" orientation="1,0" position="512,1023.9774"></sodipodi:guide>
+	<sodipodi:guide  id="guide5175" inkscape:locked="false" orientation="1,0" position="481.76797,407.96548"></sodipodi:guide>
+	<sodipodi:guide  id="guide5177" inkscape:locked="false" orientation="1,0" position="542.23202,267.38018"></sodipodi:guide>
+	<sodipodi:guide  id="guide242" inkscape:locked="false" orientation="0,-1" position="481.76797,407.96548"></sodipodi:guide>
+</sodipodi:namedview>
+<linearGradient id="rect12804_00000059286396536690555570000017577555180349571216_" gradientUnits="userSpaceOnUse" x1="2589.7639" y1="-2148.8794" x2="3733.3298" y2="-1009.4232" gradientTransform="matrix(0.24 0 0 -0.24 -635.3644 -256.6404)">
+	<stop  offset="0" style="stop-color:#198CC8"/>
+	<stop  offset="1" style="stop-color:#50BED2"/>
+</linearGradient>
+<rect id="rect12804" x="0" y="0" inkscape:label="Background Gradient" style="fill:url(#rect12804_00000059286396536690555570000017577555180349571216_);" width="245.8" height="245.7">
+</rect>
+<path id="path880" inkscape:label="Logo" sodipodi:nodetypes="ccccccccccccccccccccccccccccccccc" class="st1" d="M122.9,21.8
+	L42.7,66.5l0,87.8l72.9,40.6l-2.1,29.1h18.7l-2.1-29.1l72.9-40.6V66.5L122.9,21.8z M122.9,35.1l68.9,37.8v74.9l-61.6,33.7v-33.7
+	l48.4-27.1V110l-48.4,27.1l0-30.6l29.1-16.3V79.4l-36.4,20.4L86.5,79.4v10.8l29.1,16.3v30.6L67.2,110v10.8l48.4,27.1v33.7L54,147.8
+	V72.9L122.9,35.1z"/>
+</svg>

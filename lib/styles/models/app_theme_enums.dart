@@ -1,0 +1,4 @@
+enum AppLessonColorsMode {
+  cube,
+  custom,
+}
