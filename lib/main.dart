@@ -34,6 +34,7 @@ class MainApp extends StatelessWidget {
       enabled: false,
       builder: (context) => ProviderScope(
         child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           locale: DevicePreview.locale(context),
           builder: DevicePreview.appBuilder,
           scrollBehavior: AppScrollBehavior(),

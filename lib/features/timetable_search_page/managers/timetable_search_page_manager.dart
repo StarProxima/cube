@@ -57,7 +57,7 @@ class TimetableSearchPageManager {
     await Future(() {});
     event.state = TimetableSearchEventType.welcome;
     searchContoller.state.clear();
-    Future.delayed(const Duration(milliseconds: 500), () {
+    Future.delayed(const Duration(milliseconds: 250), () {
       if (searchFocus.state.canRequestFocus) {
         searchFocus.state.requestFocus();
       }
@@ -92,8 +92,16 @@ class TimetableSearchPageManager {
       return;
     }
 
-    final response = await api.apiLessonsAutocompleteGet(q: querry);
-    querryInProgress.sub();
+    final Response<LessonAutocomplete> response;
+
+    try {
+      response = await api.apiLessonsAutocompleteGet(q: querry);
+      querryInProgress.sub();
+    } catch (e) {
+      querryInProgress.sub();
+      event.state = TimetableSearchEventType.error;
+      return;
+    }
 
     if (querryInProgress.state >= 1) return;
 

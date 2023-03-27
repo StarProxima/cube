@@ -14,7 +14,9 @@ class NoConnectionEventPage extends ConsumerWidget {
       title: 'Ошибка соединения',
       subTitle: 'Не удалось подключиться к серверу',
       buttonText: 'Попробовать ещё раз',
-      onTap: () {},
+      onTap: () {
+        //TODO: implement this
+      },
     );
   }
 }

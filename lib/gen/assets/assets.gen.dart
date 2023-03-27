@@ -71,11 +71,19 @@ class $AssetsBrooklynGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/cube_icon.png
+  AssetGenImage get cubeIcon =>
+      const AssetGenImage('assets/icons/cube_icon.png');
+
   /// File path: assets/icons/cube_logo.svg
   SvgGenImage get cubeLogo => const SvgGenImage('assets/icons/cube_logo.svg');
 
+  /// File path: assets/icons/rounded_cube_logo.svg
+  SvgGenImage get roundedCubeLogo =>
+      const SvgGenImage('assets/icons/rounded_cube_logo.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [cubeLogo];
+  List<dynamic> get values => [cubeIcon, cubeLogo, roundedCubeLogo];
 }
 
 class Assets {

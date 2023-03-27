@@ -299,6 +299,26 @@ Map<String, dynamic> _$DirectionPlaceLoadInfoToJson(
       'max_load': instance.maxLoad,
     };
 
+DirectionShortInDb _$DirectionShortInDbFromJson(Map<String, dynamic> json) =>
+    DirectionShortInDb(
+      name: json['name'] as String,
+      shortName: json['short_name'] as String?,
+      cipher: json['cipher'] as String?,
+      degreeStudy: degreeStudyFromJson(json['degree_study']),
+      facultyId: json['faculty_id'] as int,
+      id: json['id'] as int,
+    );
+
+Map<String, dynamic> _$DirectionShortInDbToJson(DirectionShortInDb instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'short_name': instance.shortName,
+      'cipher': instance.cipher,
+      'degree_study': degreeStudyToJson(instance.degreeStudy),
+      'faculty_id': instance.facultyId,
+      'id': instance.id,
+    };
+
 DirectionUpdate _$DirectionUpdateFromJson(Map<String, dynamic> json) =>
     DirectionUpdate(
       name: json['name'] as String,
@@ -423,14 +443,14 @@ Map<String, dynamic> _$ExportExtraInfoToJson(ExportExtraInfo instance) =>
     };
 
 ExportIcal _$ExportIcalFromJson(Map<String, dynamic> json) => ExportIcal(
-      semesterId: json['semester_id'] as int?,
+      semesterFacultyId: json['semester_faculty_id'] as int?,
       groupId: json['group_id'] as int?,
       teacherId: json['teacher_id'] as int?,
     );
 
 Map<String, dynamic> _$ExportIcalToJson(ExportIcal instance) =>
     <String, dynamic>{
-      'semester_id': instance.semesterId,
+      'semester_faculty_id': instance.semesterFacultyId,
       'group_id': instance.groupId,
       'teacher_id': instance.teacherId,
     };
@@ -439,12 +459,14 @@ FacultyCreate _$FacultyCreateFromJson(Map<String, dynamic> json) =>
     FacultyCreate(
       name: json['name'] as String,
       shortName: json['short_name'] as String,
+      linkSourceTimetable: json['link_source_timetable'] as String?,
     );
 
 Map<String, dynamic> _$FacultyCreateToJson(FacultyCreate instance) =>
     <String, dynamic>{
       'name': instance.name,
       'short_name': instance.shortName,
+      'link_source_timetable': instance.linkSourceTimetable,
     };
 
 FacultyForbidden _$FacultyForbiddenFromJson(Map<String, dynamic> json) =>
@@ -463,6 +485,8 @@ Map<String, dynamic> _$FacultyForbiddenToJson(FacultyForbidden instance) =>
 FacultyInDb _$FacultyInDbFromJson(Map<String, dynamic> json) => FacultyInDb(
       name: json['name'] as String,
       shortName: json['short_name'] as String,
+      linkSourceTimetable: json['link_source_timetable'] as String?,
+      inactive: json['inactive'] as bool,
       id: json['id'] as int,
     );
 
@@ -470,6 +494,8 @@ Map<String, dynamic> _$FacultyInDbToJson(FacultyInDb instance) =>
     <String, dynamic>{
       'name': instance.name,
       'short_name': instance.shortName,
+      'link_source_timetable': instance.linkSourceTimetable,
+      'inactive': instance.inactive,
       'id': instance.id,
     };
 
@@ -477,12 +503,16 @@ FacultyUpdate _$FacultyUpdateFromJson(Map<String, dynamic> json) =>
     FacultyUpdate(
       name: json['name'] as String,
       shortName: json['short_name'] as String,
+      linkSourceTimetable: json['link_source_timetable'] as String?,
+      inactive: json['inactive'] as bool?,
     );
 
 Map<String, dynamic> _$FacultyUpdateToJson(FacultyUpdate instance) =>
     <String, dynamic>{
       'name': instance.name,
       'short_name': instance.shortName,
+      'link_source_timetable': instance.linkSourceTimetable,
+      'inactive': instance.inactive,
     };
 
 GroupCreate _$GroupCreateFromJson(Map<String, dynamic> json) => GroupCreate(
@@ -732,7 +762,7 @@ LessonCreate _$LessonCreateFromJson(Map<String, dynamic> json) => LessonCreate(
           (json['teachers'] as List<dynamic>?)?.map((e) => e as int).toList() ??
               [],
       placeId: json['place_id'] as int?,
-      semesterId: json['semester_id'] as int,
+      semesterFacultyId: json['semester_faculty_id'] as int,
       date: json['date'] as String,
     );
 
@@ -746,7 +776,7 @@ Map<String, dynamic> _$LessonCreateToJson(LessonCreate instance) =>
       'groups': instance.groups,
       'teachers': instance.teachers,
       'place_id': instance.placeId,
-      'semester_id': instance.semesterId,
+      'semester_faculty_id': instance.semesterFacultyId,
       'date': instance.date,
     };
 
@@ -941,18 +971,18 @@ LessonResults _$LessonResultsFromJson(Map<String, dynamic> json) =>
               ?.map((e) => LessonInDb.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
-      mode: viewModeFromJson(json['mode']),
       lastChange: json['last_change'] == null
           ? null
           : LastChange.fromJson(json['last_change'] as Map<String, dynamic>),
+      mode: viewModeFromJson(json['mode']),
     );
 
 Map<String, dynamic> _$LessonResultsToJson(LessonResults instance) =>
     <String, dynamic>{
       'header_ids': instance.headerIds,
       'lessons': instance.lessons.map((e) => e.toJson()).toList(),
-      'mode': viewModeToJson(instance.mode),
       'last_change': instance.lastChange?.toJson(),
+      'mode': viewModeToJson(instance.mode),
     };
 
 LessonTypeInDb _$LessonTypeInDbFromJson(Map<String, dynamic> json) =>
@@ -1157,7 +1187,7 @@ MainLessonCreate _$MainLessonCreateFromJson(Map<String, dynamic> json) =>
           (json['teachers'] as List<dynamic>?)?.map((e) => e as int).toList() ??
               [],
       placeId: json['place_id'] as int?,
-      semesterId: json['semester_id'] as int,
+      semesterFacultyId: json['semester_faculty_id'] as int,
       weekday: json['weekday'] as int,
       parity: json['parity'] as int?,
       startDate: json['start_date'] == null
@@ -1178,7 +1208,7 @@ Map<String, dynamic> _$MainLessonCreateToJson(MainLessonCreate instance) =>
       'groups': instance.groups,
       'teachers': instance.teachers,
       'place_id': instance.placeId,
-      'semester_id': instance.semesterId,
+      'semester_faculty_id': instance.semesterFacultyId,
       'weekday': instance.weekday,
       'parity': instance.parity,
       'start_date': _dateToJson(instance.startDate),
@@ -1204,7 +1234,7 @@ Map<String, dynamic> _$MainLessonCreateWithParamsToJson(
 MainLessonExport _$MainLessonExportFromJson(Map<String, dynamic> json) =>
     MainLessonExport(
       facultyId: json['faculty_id'] as int,
-      semesterId: json['semester_id'] as int?,
+      semesterFacultyId: json['semester_faculty_id'] as int?,
       directions: (json['directions'] as List<dynamic>?)
               ?.map((e) => e as int)
               .toList() ??
@@ -1226,7 +1256,7 @@ MainLessonExport _$MainLessonExportFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$MainLessonExportToJson(MainLessonExport instance) =>
     <String, dynamic>{
       'faculty_id': instance.facultyId,
-      'semester_id': instance.semesterId,
+      'semester_faculty_id': instance.semesterFacultyId,
       'directions': instance.directions,
       'profiles': instance.profiles,
       'courses': instance.courses,
@@ -1927,78 +1957,107 @@ Map<String, dynamic> _$SemesterCreateToJson(SemesterCreate instance) =>
       'study_year': instance.studyYear,
     };
 
-SemesterDirectionCreate _$SemesterDirectionCreateFromJson(
+SemesterFacultyCreate _$SemesterFacultyCreateFromJson(
         Map<String, dynamic> json) =>
-    SemesterDirectionCreate(
-      directionId: json['direction_id'] as int?,
-      course: json['course'] as int,
-      startDateSemester: DateTime.parse(json['start_date_semester'] as String),
-      endDateSemester: DateTime.parse(json['end_date_semester'] as String),
-      startDateSession: DateTime.parse(json['start_date_session'] as String),
-      endDateSession: DateTime.parse(json['end_date_session'] as String),
+    SemesterFacultyCreate(
       semesterId: json['semester_id'] as int,
+      facultyId: json['faculty_id'] as int,
+      $part: json['part'] as int?,
+      week: json['week'] == null
+          ? null
+          : SemesterFacultyWeekCreate.fromJson(
+              json['week'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$SemesterDirectionCreateToJson(
-        SemesterDirectionCreate instance) =>
+Map<String, dynamic> _$SemesterFacultyCreateToJson(
+        SemesterFacultyCreate instance) =>
     <String, dynamic>{
-      'direction_id': instance.directionId,
-      'course': instance.course,
-      'start_date_semester': _dateToJson(instance.startDateSemester),
-      'end_date_semester': _dateToJson(instance.endDateSemester),
-      'start_date_session': _dateToJson(instance.startDateSession),
-      'end_date_session': _dateToJson(instance.endDateSession),
       'semester_id': instance.semesterId,
+      'faculty_id': instance.facultyId,
+      'part': instance.$part,
+      'week': instance.week?.toJson(),
     };
 
-SemesterDirectionInDb _$SemesterDirectionInDbFromJson(
-        Map<String, dynamic> json) =>
-    SemesterDirectionInDb(
+SemesterFacultyInDb _$SemesterFacultyInDbFromJson(Map<String, dynamic> json) =>
+    SemesterFacultyInDb(
       id: json['id'] as int,
-      directionId: json['direction_id'] as int,
-      course: json['course'] as int,
-      startDateSemester: DateTime.parse(json['start_date_semester'] as String),
-      endDateSemester: DateTime.parse(json['end_date_semester'] as String),
-      startDateSession: DateTime.parse(json['start_date_session'] as String),
-      endDateSession: DateTime.parse(json['end_date_session'] as String),
+      startDate: json['start_date'] == null
+          ? null
+          : DateTime.parse(json['start_date'] as String),
+      endDate: json['end_date'] == null
+          ? null
+          : DateTime.parse(json['end_date'] as String),
+      $part: json['part'] as int?,
       semesterId: json['semester_id'] as int,
+      facultyId: json['faculty_id'] as int,
+      isCurrent: json['is_current'] as bool,
+      mode: viewModeFromJson(json['mode']),
+      week: json['week'] == null
+          ? null
+          : SemesterFacultyWeek.fromJson(json['week'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$SemesterDirectionInDbToJson(
-        SemesterDirectionInDb instance) =>
+Map<String, dynamic> _$SemesterFacultyInDbToJson(
+        SemesterFacultyInDb instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'direction_id': instance.directionId,
-      'course': instance.course,
-      'start_date_semester': _dateToJson(instance.startDateSemester),
-      'end_date_semester': _dateToJson(instance.endDateSemester),
-      'start_date_session': _dateToJson(instance.startDateSession),
-      'end_date_session': _dateToJson(instance.endDateSession),
+      'start_date': _dateToJson(instance.startDate),
+      'end_date': _dateToJson(instance.endDate),
+      'part': instance.$part,
       'semester_id': instance.semesterId,
+      'faculty_id': instance.facultyId,
+      'is_current': instance.isCurrent,
+      'mode': viewModeToJson(instance.mode),
+      'week': instance.week?.toJson(),
     };
 
-SemesterDirectionUpdate _$SemesterDirectionUpdateFromJson(
+SemesterFacultyUpdate _$SemesterFacultyUpdateFromJson(
         Map<String, dynamic> json) =>
-    SemesterDirectionUpdate(
-      directionId: json['direction_id'] as int?,
-      course: json['course'] as int,
-      startDateSemester: DateTime.parse(json['start_date_semester'] as String),
-      endDateSemester: DateTime.parse(json['end_date_semester'] as String),
-      startDateSession: DateTime.parse(json['start_date_session'] as String),
-      endDateSession: DateTime.parse(json['end_date_session'] as String),
-      semesterId: json['semester_id'] as int,
+    SemesterFacultyUpdate(
+      type: weekTypeFromJson(json['type']),
+      revert: json['revert'] as bool?,
+      changeWeekOnStartDay: json['change_week_on_start_day'] as bool?,
+      mode: viewModeFromJson(json['mode']),
     );
 
-Map<String, dynamic> _$SemesterDirectionUpdateToJson(
-        SemesterDirectionUpdate instance) =>
+Map<String, dynamic> _$SemesterFacultyUpdateToJson(
+        SemesterFacultyUpdate instance) =>
     <String, dynamic>{
-      'direction_id': instance.directionId,
-      'course': instance.course,
-      'start_date_semester': _dateToJson(instance.startDateSemester),
-      'end_date_semester': _dateToJson(instance.endDateSemester),
-      'start_date_session': _dateToJson(instance.startDateSession),
-      'end_date_session': _dateToJson(instance.endDateSession),
-      'semester_id': instance.semesterId,
+      'type': weekTypeToJson(instance.type),
+      'revert': instance.revert,
+      'change_week_on_start_day': instance.changeWeekOnStartDay,
+      'mode': viewModeToJson(instance.mode),
+    };
+
+SemesterFacultyWeek _$SemesterFacultyWeekFromJson(Map<String, dynamic> json) =>
+    SemesterFacultyWeek(
+      type: weekTypeFromJson(json['type']),
+      revert: json['revert'] as bool?,
+      changeWeekOnStartDay: json['change_week_on_start_day'] as bool?,
+    );
+
+Map<String, dynamic> _$SemesterFacultyWeekToJson(
+        SemesterFacultyWeek instance) =>
+    <String, dynamic>{
+      'type': weekTypeToJson(instance.type),
+      'revert': instance.revert,
+      'change_week_on_start_day': instance.changeWeekOnStartDay,
+    };
+
+SemesterFacultyWeekCreate _$SemesterFacultyWeekCreateFromJson(
+        Map<String, dynamic> json) =>
+    SemesterFacultyWeekCreate(
+      type: weekTypeFromJson(json['type']),
+      revert: json['revert'] as bool?,
+      changeWeekOnStartDay: json['change_week_on_start_day'] as bool?,
+    );
+
+Map<String, dynamic> _$SemesterFacultyWeekCreateToJson(
+        SemesterFacultyWeekCreate instance) =>
+    <String, dynamic>{
+      'type': weekTypeToJson(instance.type),
+      'revert': instance.revert,
+      'change_week_on_start_day': instance.changeWeekOnStartDay,
     };
 
 SemesterInDb _$SemesterInDbFromJson(Map<String, dynamic> json) => SemesterInDb(
@@ -2016,6 +2075,140 @@ Map<String, dynamic> _$SemesterInDbToJson(SemesterInDb instance) =>
       'study_year': instance.studyYear,
       'is_current_lessons': instance.isCurrentLessons,
       'is_current_session': instance.isCurrentSession,
+    };
+
+SemesterLessonsDirectionCreate _$SemesterLessonsDirectionCreateFromJson(
+        Map<String, dynamic> json) =>
+    SemesterLessonsDirectionCreate(
+      directionId: json['direction_id'] as int,
+      course: json['course'] as int,
+      groupId: json['group_id'] as int?,
+      startDate: json['start_date'] as String,
+      endDate: json['end_date'] as String,
+      semesterFacultyId: json['semester_faculty_id'] as int,
+    );
+
+Map<String, dynamic> _$SemesterLessonsDirectionCreateToJson(
+        SemesterLessonsDirectionCreate instance) =>
+    <String, dynamic>{
+      'direction_id': instance.directionId,
+      'course': instance.course,
+      'group_id': instance.groupId,
+      'start_date': instance.startDate,
+      'end_date': instance.endDate,
+      'semester_faculty_id': instance.semesterFacultyId,
+    };
+
+SemesterLessonsDirectionInDb _$SemesterLessonsDirectionInDbFromJson(
+        Map<String, dynamic> json) =>
+    SemesterLessonsDirectionInDb(
+      id: json['id'] as int,
+      semesterFacultyId: json['semester_faculty_id'] as int,
+      directionId: json['direction_id'] as int,
+      course: json['course'] as int,
+      groupId: json['group_id'] as int?,
+      startDate: DateTime.parse(json['start_date'] as String),
+      endDate: DateTime.parse(json['end_date'] as String),
+    );
+
+Map<String, dynamic> _$SemesterLessonsDirectionInDbToJson(
+        SemesterLessonsDirectionInDb instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'semester_faculty_id': instance.semesterFacultyId,
+      'direction_id': instance.directionId,
+      'course': instance.course,
+      'group_id': instance.groupId,
+      'start_date': _dateToJson(instance.startDate),
+      'end_date': _dateToJson(instance.endDate),
+    };
+
+SemesterLessonsDirectionUpdate _$SemesterLessonsDirectionUpdateFromJson(
+        Map<String, dynamic> json) =>
+    SemesterLessonsDirectionUpdate(
+      directionId: json['direction_id'] as int,
+      course: json['course'] as int,
+      groupId: json['group_id'] as int?,
+      startDate: json['start_date'] as String,
+      endDate: json['end_date'] as String,
+    );
+
+Map<String, dynamic> _$SemesterLessonsDirectionUpdateToJson(
+        SemesterLessonsDirectionUpdate instance) =>
+    <String, dynamic>{
+      'direction_id': instance.directionId,
+      'course': instance.course,
+      'group_id': instance.groupId,
+      'start_date': instance.startDate,
+      'end_date': instance.endDate,
+    };
+
+SemesterSessionDirectionCreate _$SemesterSessionDirectionCreateFromJson(
+        Map<String, dynamic> json) =>
+    SemesterSessionDirectionCreate(
+      semesterId: json['semester_id'] as int,
+      directionId: json['direction_id'] as int,
+      groupId: json['group_id'] as int?,
+      course: json['course'] as int,
+      startDate: json['start_date'] as String,
+      endDate: json['end_date'] as String,
+    );
+
+Map<String, dynamic> _$SemesterSessionDirectionCreateToJson(
+        SemesterSessionDirectionCreate instance) =>
+    <String, dynamic>{
+      'semester_id': instance.semesterId,
+      'direction_id': instance.directionId,
+      'group_id': instance.groupId,
+      'course': instance.course,
+      'start_date': instance.startDate,
+      'end_date': instance.endDate,
+    };
+
+SemesterSessionDirectionInDb _$SemesterSessionDirectionInDbFromJson(
+        Map<String, dynamic> json) =>
+    SemesterSessionDirectionInDb(
+      id: json['id'] as int,
+      semesterId: json['semester_id'] as int,
+      directionId: json['direction_id'] as int,
+      groupId: json['group_id'] as int?,
+      course: json['course'] as int,
+      startDate: DateTime.parse(json['start_date'] as String),
+      endDate: DateTime.parse(json['end_date'] as String),
+    );
+
+Map<String, dynamic> _$SemesterSessionDirectionInDbToJson(
+        SemesterSessionDirectionInDb instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'semester_id': instance.semesterId,
+      'direction_id': instance.directionId,
+      'group_id': instance.groupId,
+      'course': instance.course,
+      'start_date': _dateToJson(instance.startDate),
+      'end_date': _dateToJson(instance.endDate),
+    };
+
+SemesterSessionDirectionUpdate _$SemesterSessionDirectionUpdateFromJson(
+        Map<String, dynamic> json) =>
+    SemesterSessionDirectionUpdate(
+      semesterId: json['semester_id'] as int,
+      directionId: json['direction_id'] as int,
+      groupId: json['group_id'] as int?,
+      course: json['course'] as int,
+      startDate: json['start_date'] as String?,
+      endDate: json['end_date'] as String?,
+    );
+
+Map<String, dynamic> _$SemesterSessionDirectionUpdateToJson(
+        SemesterSessionDirectionUpdate instance) =>
+    <String, dynamic>{
+      'semester_id': instance.semesterId,
+      'direction_id': instance.directionId,
+      'group_id': instance.groupId,
+      'course': instance.course,
+      'start_date': instance.startDate,
+      'end_date': instance.endDate,
     };
 
 SemesterUpdate _$SemesterUpdateFromJson(Map<String, dynamic> json) =>
@@ -2283,6 +2476,36 @@ Map<String, dynamic> _$SessionSettingsUpdateToJson(
       'session_event_before_days': instance.sessionEventBeforeDays,
       'session_event_before_days_time': instance.sessionEventBeforeDaysTime,
       'session_event_tomorrow_time': instance.sessionEventTomorrowTime,
+    };
+
+SessionViewInDb _$SessionViewInDbFromJson(Map<String, dynamic> json) =>
+    SessionViewInDb(
+      facultyId: json['faculty_id'] as int,
+      semesterId: json['semester_id'] as int,
+      mode: viewModeFromJson(json['mode']),
+    );
+
+Map<String, dynamic> _$SessionViewInDbToJson(SessionViewInDb instance) =>
+    <String, dynamic>{
+      'faculty_id': instance.facultyId,
+      'semester_id': instance.semesterId,
+      'mode': viewModeToJson(instance.mode),
+    };
+
+SessionViewUpdate _$SessionViewUpdateFromJson(Map<String, dynamic> json) =>
+    SessionViewUpdate(
+      facultyId: json['faculty_id'] as int,
+      semesterId: json['semester_id'] as int,
+      mode: viewModeFromJson(json['mode']),
+      isNotify: json['is_notify'] as bool? ?? false,
+    );
+
+Map<String, dynamic> _$SessionViewUpdateToJson(SessionViewUpdate instance) =>
+    <String, dynamic>{
+      'faculty_id': instance.facultyId,
+      'semester_id': instance.semesterId,
+      'mode': viewModeToJson(instance.mode),
+      'is_notify': instance.isNotify,
     };
 
 Statistic _$StatisticFromJson(Map<String, dynamic> json) => Statistic(
@@ -2598,36 +2821,28 @@ Map<String, dynamic> _$TimetableSettingsUpdateToJson(
 
 TimetableViewInDb _$TimetableViewInDbFromJson(Map<String, dynamic> json) =>
     TimetableViewInDb(
-      facultyId: json['faculty_id'] as int,
-      semesterId: json['semester_id'] as int,
-      lessonsMode: viewModeFromJson(json['lessons_mode']),
-      sessionMode: viewModeFromJson(json['session_mode']),
+      semesterFacultyId: json['semester_faculty_id'] as int,
+      mode: viewModeFromJson(json['mode']),
     );
 
 Map<String, dynamic> _$TimetableViewInDbToJson(TimetableViewInDb instance) =>
     <String, dynamic>{
-      'faculty_id': instance.facultyId,
-      'semester_id': instance.semesterId,
-      'lessons_mode': viewModeToJson(instance.lessonsMode),
-      'session_mode': viewModeToJson(instance.sessionMode),
+      'semester_faculty_id': instance.semesterFacultyId,
+      'mode': viewModeToJson(instance.mode),
     };
 
 TimetableViewUpdate _$TimetableViewUpdateFromJson(Map<String, dynamic> json) =>
     TimetableViewUpdate(
-      facultyId: json['faculty_id'] as int,
-      semesterId: json['semester_id'] as int,
-      lessonsMode: viewModeFromJson(json['lessons_mode']),
-      sessionMode: viewModeFromJson(json['session_mode']),
+      semesterFacultyId: json['semester_faculty_id'] as int,
+      mode: viewModeFromJson(json['mode']),
       isNotify: json['is_notify'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$TimetableViewUpdateToJson(
         TimetableViewUpdate instance) =>
     <String, dynamic>{
-      'faculty_id': instance.facultyId,
-      'semester_id': instance.semesterId,
-      'lessons_mode': viewModeToJson(instance.lessonsMode),
-      'session_mode': viewModeToJson(instance.sessionMode),
+      'semester_faculty_id': instance.semesterFacultyId,
+      'mode': viewModeToJson(instance.mode),
       'is_notify': instance.isNotify,
     };
 

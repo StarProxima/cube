@@ -2257,7 +2257,7 @@ paths:
                 title: Response Import Directions Api Directions Import Post
                 type: array
                 items:
-                  $ref: '#/components/schemas/DirectionInDb'
+                  $ref: '#/components/schemas/DirectionShortInDb'
         '422':
           description: Validation Error
           content:
@@ -2623,13 +2623,424 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
       security:
         - OAuth2PasswordBearer: []
-  /api/semester_directions:
+  /api/semester_faculties/week_types:
     get:
       tags:
-        - semester_direction
-      summary: Get Semester Directions
-      description: API получения сроков семестра.
-      operationId: get_semester_directions_api_semester_directions_get
+        - semester_faculty
+      summary: Get Week Types
+      description: API получения типов недель.
+      operationId: get_week_types_api_semester_faculties_week_types_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Get Week Types Api Semester Faculties Week Types Get
+                type: object
+  /api/semester_faculties:
+    get:
+      tags:
+        - semester_faculty
+      summary: Semester Faculties
+      description: API получения частей семестров факультета.
+      operationId: semester_faculties_api_semester_faculties_get
+      parameters:
+        - description: Идентификатор семестра
+          required: false
+          schema:
+            title: Semester Id
+            maximum: 2147483647
+            minimum: 1
+            type: integer
+            description: Идентификатор семестра
+          name: semester_id
+          in: query
+        - description: Идентификатор факультета
+          required: false
+          schema:
+            title: Faculty Id
+            maximum: 2147483647
+            minimum: 1
+            type: integer
+            description: Идентификатор факультета
+          name: faculty_id
+          in: query
+        - description: Для текущего семестра
+          required: false
+          schema:
+            title: Current Semester
+            type: boolean
+            description: Для текущего семестра
+            default: false
+          name: current_semester
+          in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Semester Faculties Api Semester Faculties Get
+                type: array
+                items:
+                  $ref: '#/components/schemas/SemesterFacultyInDb'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+        - semester_faculty
+      summary: Create Semester Faculty
+      description: API добавления части семестра.
+      operationId: create_semester_faculty_api_semester_faculties_post
+      parameters:
+        - required: false
+          schema:
+            title: Client Name
+            type: string
+          name: Client_name
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SemesterFacultyCreate'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Create Semester Faculty Api Semester Faculties Post
+                type: integer
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - OAuth2PasswordBearer: []
+  /api/semester_faculties/{semester_faculty_id}:
+    put:
+      tags:
+        - semester_faculty
+      summary: Update Semester Faculty
+      description: API изменения настроек недели части семестра факультета.
+      operationId: update_semester_faculty_api_semester_faculties__semester_faculty_id__put
+      parameters:
+        - required: true
+          schema:
+            title: Semester Faculty Id
+            maximum: 2147483647
+            minimum: 1
+            type: integer
+          name: semester_faculty_id
+          in: path
+        - required: false
+          schema:
+            title: Client Name
+            type: string
+          name: Client_name
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SemesterFacultyUpdate'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - OAuth2PasswordBearer: []
+    delete:
+      tags:
+        - semester_faculty
+      summary: Delete Semester Faculty
+      description: API удаления последней части семестра факультета.
+      operationId: delete_semester_faculty_api_semester_faculties__semester_faculty_id__delete
+      parameters:
+        - required: true
+          schema:
+            title: Semester Faculty Id
+            maximum: 2147483647
+            minimum: 1
+            type: integer
+          name: semester_faculty_id
+          in: path
+        - required: false
+          schema:
+            title: Client Name
+            type: string
+          name: Client_name
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - OAuth2PasswordBearer: []
+  /api/semester_lessons_directions:
+    get:
+      tags:
+        - semester_lessons_direction
+      summary: Semester Lessons Directions
+      description: API получения сроков семестра направления.
+      operationId: semester_lessons_directions_api_semester_lessons_directions_get
+      parameters:
+        - description: Идентификатор семестра факультета
+          required: false
+          schema:
+            title: Semester Faculty Id
+            maximum: 2147483647
+            minimum: 1
+            type: integer
+            description: Идентификатор семестра факультета
+          name: semester_faculty_id
+          in: query
+        - description: Идентификатор семестра
+          required: false
+          schema:
+            title: Semester Id
+            maximum: 2147483647
+            minimum: 1
+            type: integer
+            description: Идентификатор семестра
+          name: semester_id
+          in: query
+        - description: Идентификатор факультета
+          required: false
+          schema:
+            title: Faculty Id
+            maximum: 2147483647
+            minimum: 1
+            type: integer
+            description: Идентификатор факультета
+          name: faculty_id
+          in: query
+        - description: Номер периода
+          required: false
+          schema:
+            title: Part
+            maximum: 4
+            minimum: 1
+            type: integer
+            description: Номер периода
+          name: part
+          in: query
+        - description: Список идентификаторов направлений
+          required: false
+          schema:
+            title: Directions
+            maximum: 2147483647
+            minimum: 1
+            type: array
+            items:
+              maximum: 2147483647
+              minimum: 1
+              type: integer
+            description: Список идентификаторов направлений
+          name: directions
+          in: query
+        - description: Список курсов
+          required: false
+          schema:
+            title: Courses
+            maximum: 6
+            minimum: 1
+            type: array
+            items:
+              maximum: 6
+              minimum: 1
+              type: integer
+            description: Список курсов
+          name: courses
+          in: query
+        - description: Список групп
+          required: false
+          schema:
+            title: Groups
+            maximum: 2147483647
+            minimum: 1
+            type: array
+            items:
+              maximum: 2147483647
+              minimum: 1
+              type: integer
+            description: Список групп
+          name: groups
+          in: query
+        - description: Для текущего семестра
+          required: false
+          schema:
+            title: Current Semester
+            type: boolean
+            description: Для текущего семестра
+            default: false
+          name: current_semester
+          in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Semester Lessons Directions Api Semester Lessons Directions Get
+                type: array
+                items:
+                  $ref: '#/components/schemas/SemesterLessonsDirectionInDb'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+        - semester_lessons_direction
+      summary: Create Semester Lessons Direction
+      description: API добавления сроков семестра направления.
+      operationId: create_semester_lessons_direction_api_semester_lessons_directions_post
+      parameters:
+        - required: false
+          schema:
+            title: Client Name
+            type: string
+          name: Client_name
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SemesterLessonsDirectionCreate'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Create Semester Lessons Direction Api Semester Lessons Directions Post
+                type: integer
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - OAuth2PasswordBearer: []
+  /api/semester_lessons_directions/{semester_lessons_direction_id}:
+    put:
+      tags:
+        - semester_lessons_direction
+      summary: Update Semester Lessons Direction
+      description: API изменения сроков семестра направления.
+      operationId: update_semester_lessons_direction_api_semester_lessons_directions__semester_lessons_direction_id__put
+      parameters:
+        - required: true
+          schema:
+            title: Semester Lessons Direction Id
+            maximum: 2147483647
+            minimum: 1
+            type: integer
+          name: semester_lessons_direction_id
+          in: path
+        - required: false
+          schema:
+            title: Client Name
+            type: string
+          name: Client_name
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SemesterLessonsDirectionUpdate'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - OAuth2PasswordBearer: []
+    delete:
+      tags:
+        - semester_lessons_direction
+      summary: Delete Semester Lessons Direction
+      description: API удаления сроков семестра направления.
+      operationId: delete_semester_lessons_direction_api_semester_lessons_directions__semester_lessons_direction_id__delete
+      parameters:
+        - required: true
+          schema:
+            title: Semester Lessons Direction Id
+            maximum: 2147483647
+            minimum: 1
+            type: integer
+          name: semester_lessons_direction_id
+          in: path
+        - required: false
+          schema:
+            title: Client Name
+            type: string
+          name: Client_name
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - OAuth2PasswordBearer: []
+  /api/semester_session_directions:
+    get:
+      tags:
+        - semester_session_direction
+      summary: Semester Session Directions
+      description: API получения сроков сессии направления.
+      operationId: semester_session_directions_api_semester_session_directions_get
       parameters:
         - description: Идентификатор семестра
           required: false
@@ -2669,6 +3080,20 @@ paths:
             description: Список курсов
           name: courses
           in: query
+        - description: Список групп
+          required: false
+          schema:
+            title: Groups
+            maximum: 2147483647
+            minimum: 1
+            type: array
+            items:
+              maximum: 2147483647
+              minimum: 1
+              type: integer
+            description: Список групп
+          name: groups
+          in: query
         - description: Для текущего семестра
           required: false
           schema:
@@ -2684,10 +3109,10 @@ paths:
           content:
             application/json:
               schema:
-                title: Response Get Semester Directions Api Semester Directions Get
+                title: Response Semester Session Directions Api Semester Session Directions Get
                 type: array
                 items:
-                  $ref: '#/components/schemas/SemesterDirectionInDb'
+                  $ref: '#/components/schemas/SemesterSessionDirectionInDb'
         '422':
           description: Validation Error
           content:
@@ -2696,10 +3121,10 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     post:
       tags:
-        - semester_direction
-      summary: Create Semester Direction
-      description: API добавления сроков семестра.
-      operationId: create_semester_direction_api_semester_directions_post
+        - semester_session_direction
+      summary: Create Semester Session Direction
+      description: API добавления сроков сессии направления.
+      operationId: create_semester_session_direction_api_semester_session_directions_post
       parameters:
         - required: false
           schema:
@@ -2711,7 +3136,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SemesterDirectionCreate'
+              $ref: '#/components/schemas/SemesterSessionDirectionCreate'
         required: true
       responses:
         '200':
@@ -2719,7 +3144,7 @@ paths:
           content:
             application/json:
               schema:
-                title: Response Create Semester Direction Api Semester Directions Post
+                title: Response Create Semester Session Direction Api Semester Session Directions Post
                 type: integer
         '422':
           description: Validation Error
@@ -2729,21 +3154,21 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
       security:
         - OAuth2PasswordBearer: []
-  /api/semester_directions/{semester_direction_id}:
+  /api/semester_session_directions/{semester_session_direction_id}:
     put:
       tags:
-        - semester_direction
-      summary: Update Semester Direction
-      description: API изменения сроков семестра.
-      operationId: update_semester_direction_api_semester_directions__semester_direction_id__put
+        - semester_session_direction
+      summary: Update Semester Lessons Direction
+      description: API изменения сроков сессии направления.
+      operationId: update_semester_lessons_direction_api_semester_session_directions__semester_session_direction_id__put
       parameters:
         - required: true
           schema:
-            title: Semester Direction Id
+            title: Semester Session Direction Id
             maximum: 2147483647
             minimum: 1
             type: integer
-          name: semester_direction_id
+          name: semester_session_direction_id
           in: path
         - required: false
           schema:
@@ -2755,7 +3180,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SemesterDirectionUpdate'
+              $ref: '#/components/schemas/SemesterSessionDirectionUpdate'
         required: true
       responses:
         '200':
@@ -2774,18 +3199,18 @@ paths:
         - OAuth2PasswordBearer: []
     delete:
       tags:
-        - semester_direction
-      summary: Delete Semester Direction
-      description: API удаления сроков семестра.
-      operationId: delete_semester_direction_api_semester_directions__semester_direction_id__delete
+        - semester_session_direction
+      summary: Delete Semester Lessons Direction
+      description: API удаления сроков сессии направления.
+      operationId: delete_semester_lessons_direction_api_semester_session_directions__semester_session_direction_id__delete
       parameters:
         - required: true
           schema:
-            title: Semester Direction Id
+            title: Semester Session Direction Id
             maximum: 2147483647
             minimum: 1
             type: integer
-          name: semester_direction_id
+          name: semester_session_direction_id
           in: path
         - required: false
           schema:
@@ -2828,7 +3253,7 @@ paths:
       tags:
         - timetable_view
       summary: Get Timetable View
-      description: API получения режимов просмотра расписания по факультетам.
+      description: API получения режимов просмотра расписания семестра по факультетам.
       operationId: get_timetable_view_api_timetable_views_get
       parameters:
         - description: Идентификатор семестра
@@ -2840,16 +3265,6 @@ paths:
             type: integer
             description: Идентификатор семестра
           name: semester_id
-          in: query
-        - description: Идентификатор факультета
-          required: false
-          schema:
-            title: Faculty Id
-            maximum: 2147483647
-            minimum: 1
-            type: integer
-            description: Идентификатор факультета
-          name: faculty_id
           in: query
         - required: false
           schema:
@@ -2893,6 +3308,92 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/TimetableViewUpdate'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - OAuth2PasswordBearer: []
+  /api/session_views:
+    get:
+      tags:
+        - session_view
+      summary: Get Session View
+      description: API получения режимов просмотра расписания сессии по факультетам.
+      operationId: get_session_view_api_session_views_get
+      parameters:
+        - description: Идентификатор семестра
+          required: false
+          schema:
+            title: Semester Id
+            maximum: 2147483647
+            minimum: 1
+            type: integer
+            description: Идентификатор семестра
+          name: semester_id
+          in: query
+        - description: Идентификатор факультета
+          required: false
+          schema:
+            title: Faculty Id
+            maximum: 2147483647
+            minimum: 1
+            type: integer
+            description: Идентификатор факультета
+          name: faculty_id
+          in: query
+        - required: false
+          schema:
+            title: Client Name
+            type: string
+          name: Client_name
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Get Session View Api Session Views Get
+                type: array
+                items:
+                  $ref: '#/components/schemas/SessionViewInDb'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - OAuth2PasswordBearer: []
+    post:
+      tags:
+        - session_view
+      summary: Update Session View
+      description: API изменения режима просмотра расписания сессии факультета.
+      operationId: update_session_view_api_session_views_post
+      parameters:
+        - required: false
+          schema:
+            title: Client Name
+            type: string
+          name: Client_name
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionViewUpdate'
         required: true
       responses:
         '200':
@@ -4649,15 +5150,15 @@ paths:
             description: Номер пары
           name: number
           in: query
-        - description: Идентификатор семестра
+        - description: Идентификатор семестра факультета
           required: false
           schema:
-            title: Semester Id
+            title: Semester Faculty Id
             maximum: 2147483647
             minimum: 1
             type: integer
-            description: Идентификатор семестра
-          name: semester_id
+            description: Идентификатор семестра факультета
+          name: semester_faculty_id
           in: query
         - description: Тип пары
           required: false
@@ -5081,6 +5582,16 @@ paths:
             type: integer
             description: Идентификатор семестра
           name: semester_id
+          in: query
+        - description: Идентификатор семестра факультета
+          required: false
+          schema:
+            title: Semester Faculty Id
+            maximum: 2147483647
+            minimum: 1
+            type: integer
+            description: Идентификатор семестра факультета
+          name: semester_faculty_id
           in: query
         - description: Идентификатор факультета
           required: false
@@ -5590,15 +6101,15 @@ paths:
             description: Номер пары
           name: number
           in: query
-        - description: Идентификатор семестра
+        - description: Идентификатор семестра факультета
           required: false
           schema:
-            title: Semester Id
+            title: Semester Faculty Id
             maximum: 2147483647
             minimum: 1
             type: integer
-            description: Идентификатор семестра
-          name: semester_id
+            description: Идентификатор семестра факультета
+          name: semester_faculty_id
           in: query
         - description: Тип пары
           required: false
@@ -5777,6 +6288,16 @@ paths:
             type: integer
             description: Идентификатор семестра
           name: semester_id
+          in: query
+        - description: Идентификатор семестра факультета
+          required: false
+          schema:
+            title: Semester Faculty Id
+            maximum: 2147483647
+            minimum: 1
+            type: integer
+            description: Идентификатор семестра факультета
+          name: semester_faculty_id
           in: query
         - description: Список номеров занятий
           required: false
@@ -6265,6 +6786,36 @@ paths:
             application/json:
               schema:
                 title: Response Get Journal Api Journal Groups  Group Id  Disciplines  Discipline Id  Get
+                type: object
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/journal/lessons/{lesson_id}:
+    get:
+      tags:
+        - journal
+      summary: Get Lesson Statistic
+      description: API получения статистики данного занятия.
+      operationId: get_lesson_statistic_api_journal_lessons__lesson_id__get
+      parameters:
+        - required: true
+          schema:
+            title: Lesson Id
+            maximum: 2147483647
+            minimum: 1
+            type: integer
+          name: lesson_id
+          in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Get Lesson Statistic Api Journal Lessons  Lesson Id  Get
                 type: object
         '422':
           description: Validation Error
@@ -7551,12 +8102,12 @@ components:
           type: string
     DegreeStudy:
       title: DegreeStudy
-      type: string
       enum:
         - Бакалавриат
         - Магистратура
         - Специалитет
         - СПО
+      type: string
       description: Список констант для `Direction.degree_study`
     DirectionCreate:
       title: DirectionCreate
@@ -7645,6 +8196,32 @@ components:
           title: Max Load
           maximum: 48
           minimum: 0
+          type: integer
+    DirectionShortInDb:
+      title: DirectionShortInDb
+      required:
+        - name
+        - degree_study
+        - faculty_id
+        - id
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+        short_name:
+          title: Short Name
+          type: string
+        cipher:
+          title: Cipher
+          type: string
+        degree_study:
+          $ref: '#/components/schemas/DegreeStudy'
+        faculty_id:
+          title: Faculty Id
+          type: integer
+        id:
+          title: Id
           type: integer
     DirectionUpdate:
       title: DirectionUpdate
@@ -7800,8 +8377,8 @@ components:
       title: ExportIcal
       type: object
       properties:
-        semester_id:
-          title: Semester Id
+        semester_faculty_id:
+          title: Semester Faculty Id
           maximum: 2147483647
           minimum: 1
           type: integer
@@ -7830,6 +8407,10 @@ components:
           title: Short Name
           maxLength: 10
           type: string
+        link_source_timetable:
+          title: Link Source Timetable
+          maxLength: 250
+          type: string
     FacultyForbidden:
       title: FacultyForbidden
       type: object
@@ -7844,6 +8425,7 @@ components:
       required:
         - name
         - short_name
+        - inactive
         - id
       type: object
       properties:
@@ -7853,6 +8435,12 @@ components:
         short_name:
           title: Short Name
           type: string
+        link_source_timetable:
+          title: Link Source Timetable
+          type: string
+        inactive:
+          title: Inactive
+          type: boolean
         id:
           title: Id
           type: integer
@@ -7871,12 +8459,20 @@ components:
           title: Short Name
           maxLength: 10
           type: string
+        link_source_timetable:
+          title: Link Source Timetable
+          maxLength: 250
+          type: string
+        inactive:
+          title: Inactive
+          type: boolean
     GetLessonHeader:
       title: GetLessonHeader
       enum:
         - groups
         - teachers
         - places
+      type: string
       description: An enumeration.
     GroupCreate:
       title: GroupCreate
@@ -8012,6 +8608,7 @@ components:
         - 13
         - 14
         - 15
+      type: integer
       description: Список констант для истории`
     HourlyReportSettingsUpdate:
       title: HourlyReportSettingsUpdate
@@ -8168,7 +8765,7 @@ components:
         - number
         - type_id
         - groups
-        - semester_id
+        - semester_faculty_id
         - date
       type: object
       properties:
@@ -8219,8 +8816,8 @@ components:
           maximum: 2147483647
           minimum: 1
           type: integer
-        semester_id:
-          title: Semester Id
+        semester_faculty_id:
+          title: Semester Faculty Id
           maximum: 2147483647
           minimum: 1
           type: integer
@@ -8465,10 +9062,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LessonInDb'
-        mode:
-          $ref: '#/components/schemas/ViewMode'
         last_change:
           $ref: '#/components/schemas/LastChange'
+        mode:
+          $ref: '#/components/schemas/ViewMode'
     LessonSortBy:
       title: LessonSortBy
       enum:
@@ -8480,6 +9077,7 @@ components:
         - discipline
         - place
         - type
+      type: string
       description: An enumeration.
     LessonStatus:
       title: LessonStatus
@@ -8674,6 +9272,7 @@ components:
         - SUCCESS
         - WARNING
         - ERROR
+      type: string
       description: Список констант статусов для 'Log'
     MainLessonCollision:
       title: MainLessonCollision
@@ -8738,7 +9337,7 @@ components:
         - number
         - type_id
         - groups
-        - semester_id
+        - semester_faculty_id
         - weekday
       type: object
       properties:
@@ -8789,8 +9388,8 @@ components:
           maximum: 2147483647
           minimum: 1
           type: integer
-        semester_id:
-          title: Semester Id
+        semester_faculty_id:
+          title: Semester Faculty Id
           maximum: 2147483647
           minimum: 1
           type: integer
@@ -8839,8 +9438,8 @@ components:
           maximum: 2147483647
           minimum: 1
           type: integer
-        semester_id:
-          title: Semester Id
+        semester_faculty_id:
+          title: Semester Faculty Id
           maximum: 2147483647
           minimum: 1
           type: integer
@@ -9363,16 +9962,26 @@ components:
         - semester_delete
         - semester_import
         - semester_export
+        - semester_faculty_create
+        - semester_faculty_read
+        - semester_faculty_update
+        - semester_faculty_delete
+        - semester_lessons_direction_create
+        - semester_lessons_direction_read
+        - semester_lessons_direction_update
+        - semester_lessons_direction_delete
+        - semester_lessons_direction_import
+        - semester_session_direction_create
+        - semester_session_direction_read
+        - semester_session_direction_update
+        - semester_session_direction_delete
+        - semester_session_direction_import
         - session_event_create
         - session_event_read
         - session_event_update
         - session_event_delete
         - session_event_import
         - session_event_export
-        - session_event_date_create
-        - session_event_date_read
-        - session_event_date_update
-        - session_event_date_delete
         - user_create
         - user_read
         - user_update
@@ -9413,6 +10022,7 @@ components:
         - log_read
         - log_export
         - bot_broadcast
+      type: string
       description: Список констант для `RolePermission.permission_name`
     PersonCreate:
       title: PersonCreate
@@ -9509,6 +10119,7 @@ components:
         - 1
         - 2
         - 3
+      type: integer
       description: Список констант для 'Person.type'
     PersonUpdate:
       title: PersonUpdate
@@ -9870,127 +10481,100 @@ components:
         study_year:
           title: Study Year
           type: string
-    SemesterDirectionCreate:
-      title: SemesterDirectionCreate
+    SemesterFacultyCreate:
+      title: SemesterFacultyCreate
       required:
-        - course
-        - start_date_semester
-        - end_date_semester
-        - start_date_session
-        - end_date_session
         - semester_id
+        - faculty_id
       type: object
       properties:
-        direction_id:
-          title: Direction Id
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-        course:
-          title: Course
-          type: integer
-        start_date_semester:
-          title: Start Date Semester
-          type: string
-          format: date
-        end_date_semester:
-          title: End Date Semester
-          type: string
-          format: date
-        start_date_session:
-          title: Start Date Session
-          type: string
-          format: date
-        end_date_session:
-          title: End Date Session
-          type: string
-          format: date
         semester_id:
           title: Semester Id
-          maximum: 2147483647
+          type: integer
+        faculty_id:
+          title: Faculty Id
+          type: integer
+        part:
+          title: Part
+          maximum: 4
           minimum: 1
           type: integer
-    SemesterDirectionInDb:
-      title: SemesterDirectionInDb
+        week:
+          $ref: '#/components/schemas/SemesterFacultyWeekCreate'
+    SemesterFacultyInDb:
+      title: SemesterFacultyInDb
       required:
         - id
-        - direction_id
-        - course
-        - start_date_semester
-        - end_date_semester
-        - start_date_session
-        - end_date_session
         - semester_id
+        - faculty_id
+        - is_current
       type: object
       properties:
         id:
           title: Id
           type: integer
-        direction_id:
-          title: Direction Id
+        start_date:
+          title: Start Date
+          type: string
+          format: date
+        end_date:
+          title: End Date
+          type: string
+          format: date
+        part:
+          title: Part
           type: integer
-        course:
-          title: Course
-          type: integer
-        start_date_semester:
-          title: Start Date Semester
-          type: string
-          format: date
-        end_date_semester:
-          title: End Date Semester
-          type: string
-          format: date
-        start_date_session:
-          title: Start Date Session
-          type: string
-          format: date
-        end_date_session:
-          title: End Date Session
-          type: string
-          format: date
         semester_id:
           title: Semester Id
           type: integer
-    SemesterDirectionUpdate:
-      title: SemesterDirectionUpdate
-      required:
-        - course
-        - start_date_semester
-        - end_date_semester
-        - start_date_session
-        - end_date_session
-        - semester_id
+        faculty_id:
+          title: Faculty Id
+          type: integer
+        is_current:
+          title: Is Current
+          type: boolean
+        mode:
+          $ref: '#/components/schemas/ViewMode'
+        week:
+          $ref: '#/components/schemas/SemesterFacultyWeek'
+    SemesterFacultyUpdate:
+      title: SemesterFacultyUpdate
       type: object
       properties:
-        direction_id:
-          title: Direction Id
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-        course:
-          title: Course
-          type: integer
-        start_date_semester:
-          title: Start Date Semester
-          type: string
-          format: date
-        end_date_semester:
-          title: End Date Semester
-          type: string
-          format: date
-        start_date_session:
-          title: Start Date Session
-          type: string
-          format: date
-        end_date_session:
-          title: End Date Session
-          type: string
-          format: date
-        semester_id:
-          title: Semester Id
-          maximum: 2147483647
-          minimum: 1
-          type: integer
+        type:
+          $ref: '#/components/schemas/WeekType'
+        revert:
+          title: Revert
+          type: boolean
+        change_week_on_start_day:
+          title: Change Week On Start Day
+          type: boolean
+        mode:
+          $ref: '#/components/schemas/ViewMode'
+    SemesterFacultyWeek:
+      title: SemesterFacultyWeek
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/WeekType'
+        revert:
+          title: Revert
+          type: boolean
+        change_week_on_start_day:
+          title: Change Week On Start Day
+          type: boolean
+    SemesterFacultyWeekCreate:
+      title: SemesterFacultyWeekCreate
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/WeekType'
+        revert:
+          title: Revert
+          type: boolean
+        change_week_on_start_day:
+          title: Change Week On Start Day
+          type: boolean
     SemesterInDb:
       title: SemesterInDb
       required:
@@ -10015,11 +10599,216 @@ components:
         is_current_session:
           title: Is Current Session
           type: boolean
+    SemesterLessonsDirectionCreate:
+      title: SemesterLessonsDirectionCreate
+      required:
+        - direction_id
+        - course
+        - start_date
+        - end_date
+        - semester_faculty_id
+      type: object
+      properties:
+        direction_id:
+          title: Direction Id
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        course:
+          title: Course
+          maximum: 6
+          minimum: 1
+          type: integer
+        group_id:
+          title: Group Id
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        start_date:
+          title: Start Date
+          type: string
+        end_date:
+          title: End Date
+          type: string
+        semester_faculty_id:
+          title: Semester Faculty Id
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+    SemesterLessonsDirectionInDb:
+      title: SemesterLessonsDirectionInDb
+      required:
+        - id
+        - semester_faculty_id
+        - direction_id
+        - course
+        - start_date
+        - end_date
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+        semester_faculty_id:
+          title: Semester Faculty Id
+          type: integer
+        direction_id:
+          title: Direction Id
+          type: integer
+        course:
+          title: Course
+          type: integer
+        group_id:
+          title: Group Id
+          type: integer
+        start_date:
+          title: Start Date
+          type: string
+          format: date
+        end_date:
+          title: End Date
+          type: string
+          format: date
+    SemesterLessonsDirectionUpdate:
+      title: SemesterLessonsDirectionUpdate
+      required:
+        - direction_id
+        - course
+        - start_date
+        - end_date
+      type: object
+      properties:
+        direction_id:
+          title: Direction Id
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        course:
+          title: Course
+          maximum: 6
+          minimum: 1
+          type: integer
+        group_id:
+          title: Group Id
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        start_date:
+          title: Start Date
+          type: string
+        end_date:
+          title: End Date
+          type: string
+    SemesterSessionDirectionCreate:
+      title: SemesterSessionDirectionCreate
+      required:
+        - semester_id
+        - direction_id
+        - course
+        - start_date
+        - end_date
+      type: object
+      properties:
+        semester_id:
+          title: Semester Id
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        direction_id:
+          title: Direction Id
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        group_id:
+          title: Group Id
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        course:
+          title: Course
+          maximum: 6
+          minimum: 1
+          type: integer
+        start_date:
+          title: Start Date
+          type: string
+        end_date:
+          title: End Date
+          type: string
+    SemesterSessionDirectionInDb:
+      title: SemesterSessionDirectionInDb
+      required:
+        - id
+        - semester_id
+        - direction_id
+        - course
+        - start_date
+        - end_date
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+        semester_id:
+          title: Semester Id
+          type: integer
+        direction_id:
+          title: Direction Id
+          type: integer
+        group_id:
+          title: Group Id
+          type: integer
+        course:
+          title: Course
+          type: integer
+        start_date:
+          title: Start Date
+          type: string
+          format: date
+        end_date:
+          title: End Date
+          type: string
+          format: date
+    SemesterSessionDirectionUpdate:
+      title: SemesterSessionDirectionUpdate
+      required:
+        - semester_id
+        - direction_id
+        - course
+      type: object
+      properties:
+        semester_id:
+          title: Semester Id
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        direction_id:
+          title: Direction Id
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        group_id:
+          title: Group Id
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        course:
+          title: Course
+          maximum: 6
+          minimum: 1
+          type: integer
+        start_date:
+          title: Start Date
+          type: string
+        end_date:
+          title: End Date
+          type: string
     SemesterType:
       title: SemesterType
       enum:
         - Осенний
         - Весенний
+      type: string
       description: Список констант для `Semester.type`
     SemesterUpdate:
       title: SemesterUpdate
@@ -10311,6 +11100,7 @@ components:
       enum:
         - 1
         - 2
+      type: integer
       description: Список констант для `SessionSchedule`
     SessionEventUpdate:
       title: SessionEventUpdate
@@ -10387,11 +11177,52 @@ components:
         session_event_tomorrow_time:
           title: Session Event Tomorrow Time
           type: string
+    SessionViewInDb:
+      title: SessionViewInDb
+      required:
+        - faculty_id
+        - semester_id
+        - mode
+      type: object
+      properties:
+        faculty_id:
+          title: Faculty Id
+          type: integer
+        semester_id:
+          title: Semester Id
+          type: integer
+        mode:
+          $ref: '#/components/schemas/ViewMode'
+    SessionViewUpdate:
+      title: SessionViewUpdate
+      required:
+        - faculty_id
+        - semester_id
+        - mode
+      type: object
+      properties:
+        faculty_id:
+          title: Faculty Id
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        semester_id:
+          title: Semester Id
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        mode:
+          $ref: '#/components/schemas/ViewMode'
+        is_notify:
+          title: Is Notify
+          type: boolean
+          default: false
     SortOrder:
       title: SortOrder
       enum:
         - asc
         - desc
+      type: string
       description: An enumeration.
     Statistic:
       title: Statistic
@@ -10540,6 +11371,7 @@ components:
         - middle_name
         - birthday
         - gender
+      type: string
       description: An enumeration.
     StudentUpdate:
       title: StudentUpdate
@@ -10582,7 +11414,6 @@ components:
           type: integer
     TeacherAcademicTitle:
       title: TeacherAcademicTitle
-      type: integer
       enum:
         - 1
         - 2
@@ -10595,6 +11426,7 @@ components:
         - 9
         - 10
         - 11
+      type: integer
       description: Список констант для 'Teacher.academic_title'
     TeacherCreate:
       title: TeacherCreate
@@ -10804,42 +11636,28 @@ components:
     TimetableViewInDb:
       title: TimetableViewInDb
       required:
-        - faculty_id
-        - semester_id
-        - lessons_mode
-        - session_mode
+        - semester_faculty_id
+        - mode
       type: object
       properties:
-        faculty_id:
-          title: Faculty Id
+        semester_faculty_id:
+          title: Semester Faculty Id
           type: integer
-        semester_id:
-          title: Semester Id
-          type: integer
-        lessons_mode:
-          $ref: '#/components/schemas/ViewMode'
-        session_mode:
+        mode:
           $ref: '#/components/schemas/ViewMode'
     TimetableViewUpdate:
       title: TimetableViewUpdate
       required:
-        - faculty_id
-        - semester_id
+        - semester_faculty_id
+        - mode
       type: object
       properties:
-        faculty_id:
-          title: Faculty Id
+        semester_faculty_id:
+          title: Semester Faculty Id
           maximum: 2147483647
           minimum: 1
           type: integer
-        semester_id:
-          title: Semester Id
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-        lessons_mode:
-          $ref: '#/components/schemas/ViewMode'
-        session_mode:
+        mode:
           $ref: '#/components/schemas/ViewMode'
         is_notify:
           title: Is Notify
@@ -11123,6 +11941,7 @@ components:
         - middle_name
         - birthday
         - gender
+      type: string
       description: An enumeration.
     UserUpdate:
       title: UserUpdate
@@ -11177,7 +11996,8 @@ components:
         - 1
         - 2
         - 3
-      description: Список констант для `TimetableView`
+      type: integer
+      description: Список констант для `TimetableView.mode` и `SessionView.mode`
     WeatherSettingsUpdate:
       title: WeatherSettingsUpdate
       type: object
@@ -11194,6 +12014,15 @@ components:
         weather_send_is_weekend:
           title: Weather Send Is Weekend
           type: boolean
+    WeekType:
+      title: WeekType
+      enum:
+        - 1
+        - 2
+        - 3
+        - 4
+      type: integer
+      description: Список констант для `SemesterFacultyWeek.type`
     app__schemas__other_permission__UserFullNameInDb:
       title: UserFullNameInDb
       required:

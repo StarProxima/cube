@@ -9,6 +9,8 @@ import 'package:cube_system/features/timetable_search_page/state_holders/timetab
 
 import 'package:cube_system/features/timetable_search_page/ui/event_pages/welcome_search_event_page.dart';
 
+import 'package:cube_system/features/timetable_search_page/ui/event_pages/no_connection_search_event_page.dart';
+
 class TimetableSearchPageBody extends ConsumerWidget {
   const TimetableSearchPageBody({super.key});
 
@@ -34,8 +36,7 @@ class TimetableSearchPageBody extends ConsumerWidget {
         return const NoFoundSearchEventPage();
 
       case TimetableSearchEventType.error:
-        // TODO: Handle this case.
-        break;
+        return const NoConnectionSearchEventPage();
 
       default:
     }

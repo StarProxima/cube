@@ -60,22 +60,6 @@ class LessonCardFooter extends ConsumerWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Container(
-                margin: const EdgeInsets.only(
-                  bottom: 4,
-                  left: 8,
-                ),
-                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                decoration: BoxDecoration(
-                  color: color,
-                  borderRadius: BorderRadius.circular(2),
-                ),
-                child: Text(
-                  type,
-                  style: context.textStyles.chipLabel
-                      .copyWith(color: Colors.white),
-                ),
-              ),
               if (teachersIsNotEmpty)
                 Flexible(
                   child: Padding(
@@ -92,6 +76,22 @@ class LessonCardFooter extends ConsumerWidget {
                     ),
                   ),
                 ),
+              Container(
+                margin: const EdgeInsets.only(
+                  bottom: 4,
+                  left: 8,
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                decoration: BoxDecoration(
+                  color: color,
+                  borderRadius: BorderRadius.circular(2),
+                ),
+                child: Text(
+                  type,
+                  style: context.textStyles.chipLabel
+                      .copyWith(color: Colors.white),
+                ),
+              ),
             ],
           ),
         ),
