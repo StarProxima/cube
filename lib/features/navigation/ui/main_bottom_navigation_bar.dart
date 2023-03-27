@@ -6,6 +6,8 @@ import 'package:cube_system/features/navigation/state_holders/navigation_page_se
 
 import 'package:cube_system/features/navigation/state_holders/navigation_page_items.dart';
 
+import 'package:cube_system/features/navigation/managers/main_bottom_navigation_bar_manager.dart';
+
 class MainBottomNavigationBar extends ConsumerStatefulWidget {
   const MainBottomNavigationBar({super.key});
 
@@ -20,6 +22,7 @@ class _MainBottomNavigationBarState
   Widget build(BuildContext context) {
     final items = ref.watch(navigationPageItems);
     final type = ref.watch(navigationPageSelectedItemType);
+    final manager = ref.watch(mainBottomNavigationBarManager);
     return BottomNavigationBar(
       // showSelectedLabels: false,
       showUnselectedLabels: false,
@@ -27,9 +30,7 @@ class _MainBottomNavigationBarState
       type: BottomNavigationBarType.shifting,
       backgroundColor: context.colors.text,
       currentIndex: type.index,
-      onTap: (index) => ref
-          .read(navigationPageSelectedItemType.notifier)
-          .state = items[index].type,
+      onTap: (index) => manager.selectItem(items[index].type),
       items: items,
     );
   }

@@ -1,15 +1,44 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 enum AppBottomNavigationBarItemType {
-  notes('Заметки'),
-  search('Поиск'),
-  timetable('Расписание'),
-  tasks('Задачи'),
-  account('Профиль');
+  notes(
+    'Заметки',
+    'CHAT',
+    'CHAT_Interactivity',
+  ),
+  search(
+    'Поиск',
+    'SEARCH',
+    'SEARCH_Interactivity',
+  ),
+  timetable(
+    'Расписание',
+    'TIMER',
+    'TIMER_Interactivity',
+  ),
+  tasks(
+    'Задачи',
+    'BELL',
+    'BELL_Interactivity',
+  ),
+  account(
+    'Профиль',
+    'USER',
+    'USER_Interactivity',
+  );
 
   final String label;
 
-  const AppBottomNavigationBarItemType(this.label);
+  final String iconArtboard;
+  final String iconStateMachine;
+
+  List<String> get iconStateMachines => [iconStateMachine];
+
+  const AppBottomNavigationBarItemType(
+    this.label,
+    this.iconArtboard,
+    this.iconStateMachine,
+  );
 }
 
 final navigationPageSelectedItemType =
