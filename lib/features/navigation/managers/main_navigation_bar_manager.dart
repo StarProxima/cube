@@ -2,29 +2,27 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rive/rive.dart';
 
 import 'package:cube_system/features/navigation/state_holders/navigation_page_selected_item_type.dart';
-import 'package:cube_system/features/navigation/managers/navigation_bar_smi_bools.dart';
+import 'package:cube_system/features/navigation/managers/main_navigation_bar_smi_bools.dart';
 
-import 'package:cube_system/gen/assets/assets.gen.dart';
-import 'package:cube_system/features/navigation/state_holders/navigation_page_items.dart';
-
-final mainBottomNavigationBarManager =
-    Provider<MainBottomNavigationBarManager>((ref) {
-  return MainBottomNavigationBarManager(
-    smiBools: ref.watch(navigationBarSmiBools.notifier),
+final mainNavigationBarManager = Provider<MainNavigationBarManager>((ref) {
+  return MainNavigationBarManager(
+    smiBools: ref.watch(mainNavigationBarSmiBools.notifier),
     selectedItemType: ref.watch(navigationPageSelectedItemType.notifier),
   );
 });
 
-class MainBottomNavigationBarManager {
+class MainNavigationBarManager {
   final StateController<Map<AppBottomNavigationBarItemType, SMIBool>> smiBools;
   final StateController<AppBottomNavigationBarItemType> selectedItemType;
 
-  MainBottomNavigationBarManager({
+  MainNavigationBarManager({
     required this.smiBools,
     required this.selectedItemType,
   });
 
-  void selectItem(AppBottomNavigationBarItemType type) async {
+  Future<void> selectItem(AppBottomNavigationBarItemType type) async {
+    await Future(() {});
+
     selectedItemType.state = type;
 
     // Delay before icon animation
@@ -59,19 +57,5 @@ class MainBottomNavigationBarManager {
       artboard,
       stateMachineName: type.iconStateMachine,
     );
-  }
-
-  List<AppBottomNavigationBarItem> generateAppBottomNavigationBarItems() {
-    return [
-      for (final type in AppBottomNavigationBarItemType.values)
-        AppBottomNavigationBarItem(
-          type: type,
-          rive: Assets.rive.icons.rive(
-            artboard: type.iconArtboard,
-            stateMachines: type.iconStateMachines,
-            onInit: (art) => handleRiveOnInit(art, type),
-          ),
-        ),
-    ];
   }
 }

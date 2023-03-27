@@ -1,15 +1,15 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 enum AppBottomNavigationBarItemType {
-  notes(
-    'Заметки',
-    'CHAT',
-    'CHAT_Interactivity',
-  ),
   search(
     'Поиск',
     'SEARCH',
     'SEARCH_Interactivity',
+  ),
+  notes(
+    'Заметки',
+    'CHAT',
+    'CHAT_Interactivity',
   ),
   timetable(
     'Расписание',
