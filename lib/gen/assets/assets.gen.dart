@@ -10,6 +10,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
+import 'package:rive/rive.dart';
 
 class $AssetsBrooklynGen {
   const $AssetsBrooklynGen();
@@ -86,11 +87,25 @@ class $AssetsIconsGen {
   List<dynamic> get values => [cubeIcon, cubeLogo, roundedCubeLogo];
 }
 
+class $AssetsRiveGen {
+  const $AssetsRiveGen();
+
+  /// File path: assets/rive/icons.riv
+  RiveGenImage get icons => const RiveGenImage('assets/rive/icons.riv');
+
+  /// File path: assets/rive/shapes.riv
+  RiveGenImage get shapes => const RiveGenImage('assets/rive/shapes.riv');
+
+  /// List of all assets
+  List<RiveGenImage> get values => [icons, shapes];
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsBrooklynGen brooklyn = $AssetsBrooklynGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const $AssetsRiveGen rive = $AssetsRiveGen();
 }
 
 class AssetGenImage {
@@ -203,6 +218,41 @@ class SvgGenImage {
       colorBlendMode: colorBlendMode,
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
+    );
+  }
+
+  String get path => _assetName;
+
+  String get keyName => _assetName;
+}
+
+class RiveGenImage {
+  const RiveGenImage(this._assetName);
+
+  final String _assetName;
+
+  RiveAnimation rive({
+    String? artboard,
+    List<String> animations = const [],
+    List<String> stateMachines = const [],
+    BoxFit? fit,
+    Alignment? alignment,
+    Widget? placeHolder,
+    bool antialiasing = true,
+    List<RiveAnimationController> controllers = const [],
+    OnInitCallback? onInit,
+  }) {
+    return RiveAnimation.asset(
+      _assetName,
+      artboard: artboard,
+      animations: animations,
+      stateMachines: stateMachines,
+      fit: fit,
+      alignment: alignment,
+      placeHolder: placeHolder,
+      antialiasing: antialiasing,
+      controllers: controllers,
+      onInit: onInit,
     );
   }
 

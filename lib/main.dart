@@ -19,7 +19,7 @@ void main() {
     setWindowTitle('Куб.Расписание');
     setWindowMinSize(const Size(460, 380));
   }
-  runApp(const MainApp());
+  runApp(const ProviderScope(child: MainApp()));
 }
 
 class MainApp extends StatelessWidget {
@@ -32,28 +32,26 @@ class MainApp extends StatelessWidget {
 
     return DevicePreview(
       enabled: false,
-      builder: (context) => ProviderScope(
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          locale: DevicePreview.locale(context),
-          builder: DevicePreview.appBuilder,
-          scrollBehavior: AppScrollBehavior(),
-          title: 'Куб.Расписание',
-          localizationsDelegates: const [
-            GlobalCupertinoLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('ru'),
-            Locale('en'),
-          ],
-          themeMode: ThemeMode.light,
-          theme: AppTheme.themeByStyles(
-            colors: appColors,
-            textStyles: appTextStyles,
-          ),
-          home: const LandingPage(),
+      builder: (context) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
+        scrollBehavior: AppScrollBehavior(),
+        title: 'Куб.Расписание',
+        localizationsDelegates: const [
+          GlobalCupertinoLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('ru'),
+          Locale('en'),
+        ],
+        themeMode: ThemeMode.light,
+        theme: AppTheme.themeByStyles(
+          colors: appColors,
+          textStyles: appTextStyles,
         ),
+        home: const LandingPage(),
       ),
     );
   }

@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/ui/widgets/app_button.dart';
-import 'package:cube_system/features/timetable_page/ui/timetable_page.dart';
+
+import 'package:cube_system/features/navigation/ui/navigation_page.dart';
 
 class LandingPage extends ConsumerWidget {
   const LandingPage({
@@ -61,7 +62,7 @@ class _LandingPageState extends ConsumerState<_LandingPage> {
               Navigator.of(context).push(
                 CupertinoPageRoute(
                   builder: (context) {
-                    return const TimetablePage();
+                    return const NavigationPage();
                   },
                 ),
               );
