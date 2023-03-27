@@ -1,26 +1,28 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rive/rive.dart';
 
-import 'package:cube_system/features/navigation/state_holders/navigation_page_selected_item_type.dart';
-import 'package:cube_system/features/navigation/managers/main_navigation_bar_smi_bools.dart';
+import 'package:cube_system/features/navigation/state_holders/main_navigation_bar_selected_item_type.dart';
+import 'package:cube_system/features/navigation/state_holders/main_navigation_bar_smi_bools.dart';
+
+import 'package:cube_system/features/navigation/models/main_navigation_bar_item_type.dart';
 
 final mainNavigationBarManager = Provider<MainNavigationBarManager>((ref) {
   return MainNavigationBarManager(
     smiBools: ref.watch(mainNavigationBarSmiBools.notifier),
-    selectedItemType: ref.watch(navigationPageSelectedItemType.notifier),
+    selectedItemType: ref.watch(mainNavigationBarSelectedItemType.notifier),
   );
 });
 
 class MainNavigationBarManager {
-  final StateController<Map<AppBottomNavigationBarItemType, SMIBool>> smiBools;
-  final StateController<AppBottomNavigationBarItemType> selectedItemType;
+  final StateController<Map<MainNavigationBarItemType, SMIBool>> smiBools;
+  final StateController<MainNavigationBarItemType> selectedItemType;
 
   MainNavigationBarManager({
     required this.smiBools,
     required this.selectedItemType,
   });
 
-  Future<void> selectItem(AppBottomNavigationBarItemType type) async {
+  Future<void> selectItem(MainNavigationBarItemType type) async {
     await Future(() {});
 
     selectedItemType.state = type;
@@ -50,9 +52,9 @@ class MainNavigationBarManager {
 
   void handleRiveOnInit(
     Artboard artboard,
-    AppBottomNavigationBarItemType type,
+    MainNavigationBarItemType type,
   ) {
-    // Провайдер не уведомляет слушателей
+    // Провайдер не уведомляет слушателей, т.к. это не нужно
     smiBools.state[type] = _getRiveInput(
       artboard,
       stateMachineName: type.iconStateMachine,

@@ -1,6 +1,4 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-enum AppBottomNavigationBarItemType {
+enum MainNavigationBarItemType {
   search(
     'Поиск',
     'SEARCH',
@@ -34,14 +32,9 @@ enum AppBottomNavigationBarItemType {
 
   List<String> get iconStateMachines => [iconStateMachine];
 
-  const AppBottomNavigationBarItemType(
+  const MainNavigationBarItemType(
     this.label,
     this.iconArtboard,
     this.iconStateMachine,
   );
 }
-
-final navigationPageSelectedItemType =
-    StateProvider<AppBottomNavigationBarItemType>((ref) {
-  return AppBottomNavigationBarItemType.timetable;
-});

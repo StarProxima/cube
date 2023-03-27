@@ -1,5 +1,5 @@
 import 'package:cube_system/features/navigation/managers/main_navigation_bar_manager.dart';
-import 'package:cube_system/features/navigation/state_holders/navigation_page_selected_item_type.dart';
+import 'package:cube_system/features/navigation/state_holders/main_navigation_bar_selected_item_type.dart';
 import 'package:cube_system/features/timetable_page/ui/timetable_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,7 +12,7 @@ class NavigationPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final navigationBarManager = ref.watch(mainNavigationBarManager);
-    final selectedType = ref.read(navigationPageSelectedItemType);
+    final selectedType = ref.read(mainNavigationBarSelectedItemType);
     navigationBarManager.selectItem(selectedType);
     return const Scaffold(
       body: TimetablePage(),
