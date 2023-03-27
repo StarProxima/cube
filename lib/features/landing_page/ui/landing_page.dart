@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/ui/widgets/app_button.dart';
 
-import 'package:cube_system/features/navigation/ui/navigation_page.dart';
+import 'package:cube_system/features/navigation/ui/navigation_screen.dart';
 
 class LandingPage extends ConsumerWidget {
   const LandingPage({
@@ -62,7 +62,7 @@ class _LandingPageState extends ConsumerState<_LandingPage> {
               Navigator.of(context).push(
                 CupertinoPageRoute(
                   builder: (context) {
-                    return const NavigationPage();
+                    return const NavigationScreen();
                   },
                 ),
               );
