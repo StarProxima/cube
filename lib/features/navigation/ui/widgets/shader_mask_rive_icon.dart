@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rive/rive.dart' as riv;
+
+import 'package:cube_system/gen/assets/assets.gen.dart';
+import 'package:cube_system/features/navigation/managers/main_navigation_bar_manager.dart';
+import 'package:cube_system/features/navigation/models/main_navigation_bar_item_type.dart';
 
 class ShaderMaskRiveIcon extends ConsumerWidget {
-  final riv.RiveAnimation rive;
+  final MainNavigationBarItemType type;
 
-  const ShaderMaskRiveIcon(this.rive, {super.key});
+  const ShaderMaskRiveIcon(this.type, {super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final manager = ref.watch(mainNavigationBarManager);
     final theme = IconTheme.of(context);
     final color = theme.color!;
+
     return ShaderMask(
       shaderCallback: (bounds) {
         return LinearGradient(
@@ -25,7 +30,11 @@ class ShaderMaskRiveIcon extends ConsumerWidget {
       child: SizedBox(
         width: 32,
         height: 32,
-        child: rive,
+        child: Assets.rive.icons.rive(
+          artboard: type.iconArtboard,
+          stateMachines: type.iconStateMachines,
+          onInit: (art) => manager.handleRiveOnInit(art, type),
+        ),
       ),
     );
   }
