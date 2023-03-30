@@ -11,7 +11,7 @@ final navigationScreenPages =
     MainNavigationBarItemType.notes: const LicensePage(),
     MainNavigationBarItemType.timetable: const TimetablePage(),
     // MainNavigationBarItemType.tasks: const LicensePage(),
-    MainNavigationBarItemType.account: const LicensePage(),
+    MainNavigationBarItemType.profile: const LicensePage(),
     MainNavigationBarItemType.settings: const LicensePage(),
   };
 });

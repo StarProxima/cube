@@ -7,6 +7,7 @@ import 'package:cube_system/features/navigation/state_holders/main_navigation_ba
 import 'package:cube_system/features/navigation/providers/main_navigation_bar_items.dart';
 
 import 'package:cube_system/features/navigation/managers/main_navigation_bar_manager.dart';
+import 'package:go_router/go_router.dart';
 
 class MainNavigationBar extends ConsumerStatefulWidget {
   const MainNavigationBar({super.key});
@@ -44,7 +45,10 @@ class _MainBottomNavigationBarState extends ConsumerState<MainNavigationBar> {
           unselectedLabelStyle: context.textStyles.smallSubTitle,
           type: BottomNavigationBarType.shifting,
           currentIndex: type.index,
-          onTap: (index) => manager.selectItem(items[index].type),
+          onTap: (index) {
+            manager.selectItem(items[index].type);
+            context.go('/${items[index].type.name}');
+          },
           items: items,
         ),
       ),

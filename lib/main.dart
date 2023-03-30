@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cube_system/features/navigation/router/app_router.dart';
 import 'package:cube_system/source/app_scroll_behavior.dart';
 import 'package:cube_system/styles/app_colors/app_colors.dart';
 import 'package:cube_system/styles/app_text_styles/app_text_styles.dart';
@@ -10,8 +11,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:window_size/window_size.dart';
 import 'package:device_preview/device_preview.dart';
-
-import 'package:cube_system/features/landing_page/ui/landing_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +31,7 @@ class MainApp extends StatelessWidget {
 
     return DevicePreview(
       enabled: false,
-      builder: (context) => MaterialApp(
+      builder: (context) => MaterialApp.router(
         debugShowCheckedModeBanner: false,
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
@@ -51,7 +50,7 @@ class MainApp extends StatelessWidget {
           colors: appColors,
           textStyles: appTextStyles,
         ),
-        home: const LandingPage(),
+        routerConfig: appRouter,
       ),
     );
   }

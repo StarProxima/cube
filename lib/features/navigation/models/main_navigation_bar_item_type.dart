@@ -19,7 +19,7 @@ enum MainNavigationBarItemType {
   //   'BELL',
   //   'BELL_Interactivity',
   // ),
-  account(
+  profile(
     'Профиль',
     'USER',
     'USER_Interactivity',
