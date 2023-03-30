@@ -14,15 +14,20 @@ enum MainNavigationBarItemType {
     'TIMER',
     'TIMER_Interactivity',
   ),
-  tasks(
-    'Задачи',
-    'BELL',
-    'BELL_Interactivity',
-  ),
+  // tasks(
+  //   'Задачи',
+  //   'BELL',
+  //   'BELL_Interactivity',
+  // ),
   account(
     'Профиль',
     'USER',
     'USER_Interactivity',
+  ),
+  settings(
+    'Настройки',
+    'SETTINGS',
+    'SETTINGS_Interactivity',
   );
 
   final String label;
