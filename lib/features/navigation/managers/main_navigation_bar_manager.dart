@@ -30,12 +30,12 @@ class MainNavigationBarManager {
     // Delay before icon animation
     await Future.delayed(const Duration(milliseconds: 150));
 
-    smiBools.state[type]?.change(true);
+    smiBools.state[type]!.change(true);
 
     // Delay before the animation state resets (not always equal to the set time due to the peculiarities of animation)
     await Future.delayed(const Duration(milliseconds: 1000));
 
-    smiBools.state[type]?.change(false);
+    smiBools.state[type]!.change(false);
   }
 
   SMIBool _getRiveInput(

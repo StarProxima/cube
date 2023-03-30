@@ -8,10 +8,10 @@ import 'package:cube_system/features/navigation/models/main_navigation_bar_item_
 final navigationScreenPages =
     Provider<Map<MainNavigationBarItemType, Widget>>((ref) {
   return {
-    MainNavigationBarItemType.profile: const TimetableSearchPage(),
+    MainNavigationBarItemType.search: const TimetableSearchPage(),
     MainNavigationBarItemType.notes: const LicensePage(),
     MainNavigationBarItemType.timetable: const TimetablePage(),
     MainNavigationBarItemType.tasks: const LicensePage(),
-    MainNavigationBarItemType.settings: const LicensePage(),
+    MainNavigationBarItemType.account: const LicensePage(),
   };
 });

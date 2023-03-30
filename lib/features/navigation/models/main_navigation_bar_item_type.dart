@@ -1,8 +1,8 @@
 enum MainNavigationBarItemType {
-  profile(
-    'Профиль',
-    'USER',
-    'USER_Interactivity',
+  search(
+    'Поиск',
+    'SEARCH',
+    'SEARCH_Interactivity',
   ),
   notes(
     'Заметки',
@@ -19,10 +19,10 @@ enum MainNavigationBarItemType {
     'BELL',
     'BELL_Interactivity',
   ),
-  settings(
-    'Настройки',
-    'SETTINGS',
-    'SETTINGS_Interactivity',
+  account(
+    'Профиль',
+    'USER',
+    'USER_Interactivity',
   );
 
   final String label;
