@@ -4,10 +4,10 @@ import 'package:go_router/go_router.dart';
 
 import 'package:cube_system/features/navigation/ui/navigation_bar_wrapper.dart';
 
-final GlobalKey<NavigatorState> _rootNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'root');
-final GlobalKey<NavigatorState> _shellNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'shell');
+import 'package:cube_system/features/navigation/router/app_custom_transition_page.dart';
+
+final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
+final _shellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'shell');
 
 final GoRouter appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
@@ -21,33 +21,38 @@ final GoRouter appRouter = GoRouter(
       routes: [
         GoRoute(
           path: '/search',
-          builder: (BuildContext context, GoRouterState state) {
-            return const LicensePage();
-          },
+          pageBuilder: (context, state) => AppCustomTransitionPage(
+            key: state.pageKey,
+            child: const LicensePage(),
+          ),
         ),
         GoRoute(
           path: '/notes',
-          builder: (BuildContext context, GoRouterState state) {
-            return const LicensePage();
-          },
+          pageBuilder: (context, state) => AppCustomTransitionPage(
+            key: state.pageKey,
+            child: const LicensePage(),
+          ),
         ),
         GoRoute(
           path: '/timetable',
-          builder: (BuildContext context, GoRouterState state) {
-            return const TimetablePage();
-          },
+          pageBuilder: (context, state) => AppCustomTransitionPage(
+            key: state.pageKey,
+            child: const TimetablePage(),
+          ),
         ),
         GoRoute(
           path: '/profile',
-          builder: (BuildContext context, GoRouterState state) {
-            return const LicensePage();
-          },
+          pageBuilder: (context, state) => AppCustomTransitionPage(
+            key: state.pageKey,
+            child: const LicensePage(),
+          ),
         ),
         GoRoute(
           path: '/settings',
-          builder: (BuildContext context, GoRouterState state) {
-            return const LicensePage();
-          },
+          pageBuilder: (context, state) => AppCustomTransitionPage(
+            key: state.pageKey,
+            child: const LicensePage(),
+          ),
         ),
       ],
     ),

@@ -32,7 +32,7 @@ class MainApp extends StatelessWidget {
     return DevicePreview(
       enabled: false,
       builder: (context) => MaterialApp.router(
-        debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: true,
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
         scrollBehavior: AppScrollBehavior(),

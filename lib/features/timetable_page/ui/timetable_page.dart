@@ -15,9 +15,7 @@ import 'package:cube_system/features/timetable_page/state_holders/current_picked
 import 'package:cube_system/features/timetable_page/features/lesson_card/providers/last_current_next_lesson_listener.dart';
 
 class TimetablePage extends ConsumerWidget {
-  const TimetablePage({
-    super.key,
-  });
+  const TimetablePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -49,6 +47,12 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
     initialPage: _initialPage -
         ref.read(currentDate).difference(ref.read(selectedDate)).inDays,
   );
+
+  @override
+  void initState() {
+    print('initstate - $hashCode');
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
