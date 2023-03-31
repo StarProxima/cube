@@ -6,6 +6,8 @@ import 'package:cube_system/features/navigation/ui/navigation_bar_wrapper.dart';
 
 import 'package:cube_system/features/navigation/router/app_custom_transition_page.dart';
 
+import 'package:cube_system/ui/widgets/event_pages/unimplemented_feature_event_page.dart';
+
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 final _shellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'shell');
 
@@ -23,14 +25,18 @@ final GoRouter appRouter = GoRouter(
           path: '/search',
           pageBuilder: (context, state) => AppCustomTransitionPage(
             key: state.pageKey,
-            child: const LicensePage(),
+            child: const UnimplementedFeatureEventPage(
+              title: '',
+            ),
           ),
         ),
         GoRoute(
           path: '/notes',
           pageBuilder: (context, state) => AppCustomTransitionPage(
             key: state.pageKey,
-            child: const LicensePage(),
+            child: const UnimplementedFeatureEventPage(
+              title: '',
+            ),
           ),
         ),
         GoRoute(
@@ -44,14 +50,18 @@ final GoRouter appRouter = GoRouter(
           path: '/profile',
           pageBuilder: (context, state) => AppCustomTransitionPage(
             key: state.pageKey,
-            child: const LicensePage(),
+            child: const UnimplementedFeatureEventPage(
+              title: '',
+            ),
           ),
         ),
         GoRoute(
           path: '/settings',
           pageBuilder: (context, state) => AppCustomTransitionPage(
             key: state.pageKey,
-            child: const LicensePage(),
+            child: const UnimplementedFeatureEventPage(
+              title: '',
+            ),
           ),
         ),
       ],

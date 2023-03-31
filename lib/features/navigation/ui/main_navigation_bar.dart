@@ -2,7 +2,7 @@ import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/features/navigation/state_holders/main_navigation_bar_selected_item_type.dart';
+import 'package:cube_system/features/navigation/ui/state_holders/main_navigation_bar_selected_item_type.dart';
 
 import 'package:cube_system/features/navigation/providers/main_navigation_bar_items.dart';
 
@@ -23,11 +23,12 @@ class _MainBottomNavigationBarState extends ConsumerState<MainNavigationBar> {
     final manager = ref.watch(mainNavigationBarManager);
     final items = ref.watch(mainNavigationBarItems);
     final type = ref.watch(mainNavigationBarSelectedItemType);
+
     return Theme(
       data: Theme.of(context).copyWith(
         canvasColor: context.colors.background,
       ),
-      // TODO: DecoratedBox is not working. Why?
+      // TODO: DecoratedBox is not working here. Why?
       child: Container(
         decoration: BoxDecoration(
           color: Colors.red,
