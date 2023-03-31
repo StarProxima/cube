@@ -8,9 +8,18 @@ class AppCustomTransitionPage extends CustomTransitionPage {
     Animation<double> secondaryAnimation,
     Widget child,
   ) {
-    return FadeTransition(
-      opacity: CurveTween(curve: Curves.easeInOut).animate(animation),
-      child: child,
+    final fadeTween = Tween<double>(begin: 0.1, end: 1)
+        .chain(CurveTween(curve: Curves.easeInOut));
+
+    final scaleTween = Tween<double>(begin: 0.95, end: 1)
+        .chain(CurveTween(curve: Curves.easeInOut));
+
+    return ScaleTransition(
+      scale: animation.drive(scaleTween),
+      child: FadeTransition(
+        opacity: animation.drive(fadeTween),
+        child: child,
+      ),
     );
   }
 
@@ -18,6 +27,7 @@ class AppCustomTransitionPage extends CustomTransitionPage {
     super.key,
     required super.child,
     super.transitionDuration = const Duration(milliseconds: 150),
+    super.reverseTransitionDuration = const Duration(milliseconds: 150),
     super.transitionsBuilder = _defaultTransitionsBuilder,
   });
 }
