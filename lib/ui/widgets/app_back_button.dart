@@ -1,5 +1,6 @@
 import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class AppBackButton extends StatelessWidget {
   const AppBackButton({super.key});
@@ -15,7 +16,7 @@ class AppBackButton extends StatelessWidget {
       ),
       padding: EdgeInsets.zero,
       visualDensity: VisualDensity.compact,
-      onPressed: Navigator.of(context).pop,
+      onPressed: context.pop,
       icon: Icon(
         Icons.arrow_back_rounded,
         color: context.colors.text,

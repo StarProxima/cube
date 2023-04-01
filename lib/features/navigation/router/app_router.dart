@@ -1,5 +1,7 @@
+import 'package:cube_system/features/landing_page/ui/landing_page.dart';
 import 'package:cube_system/features/timetable_page/ui/timetable_page.dart';
-import 'package:flutter/material.dart';
+import 'package:cube_system/features/timetable_search_page/ui/timetable_search_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:cube_system/features/navigation/ui/navigation_bar_wrapper.dart';
@@ -13,10 +15,26 @@ final _shellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'shell');
 
 final GoRouter appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: '/timetable',
+  initialLocation: '/landing',
   routes: [
+    GoRoute(
+      path: '/landing',
+      redirect: (context, state) {
+        return null;
+
+        // return '/timetable';
+      },
+      pageBuilder: (context, state) => CupertinoPage(
+        key: state.pageKey,
+        child: const LandingPage(),
+      ),
+    ),
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
+      // builder: (BuildContext context, GoRouterState state, Widget child) {
+      //   final length = '/'.allMatches(state.fullpath!).length;
+      //   return length < 2 ? NavigationBarWrapper(child) : child;
+      // },
       builder: (BuildContext context, GoRouterState state, Widget child) {
         return NavigationBarWrapper(child);
       },
@@ -50,6 +68,15 @@ final GoRouter appRouter = GoRouter(
             key: state.pageKey,
             child: const TimetablePage(),
           ),
+          routes: [
+            GoRoute(
+              path: 'search',
+              pageBuilder: (context, state) => CupertinoPage(
+                key: state.pageKey,
+                child: const TimetableSearchPage(),
+              ),
+            ),
+          ],
         ),
         GoRoute(
           path: '/profile',

@@ -10,6 +10,7 @@ import 'package:cube_system/features/timetable_search_page/state_holders/timetab
 import 'package:cube_system/features/timetable_search_page/ui/event_pages/welcome_search_event_page.dart';
 
 import 'package:cube_system/features/timetable_search_page/ui/event_pages/no_connection_search_event_page.dart';
+import 'package:go_router/go_router.dart';
 
 class TimetableSearchPageBody extends ConsumerWidget {
   const TimetableSearchPageBody({super.key});
@@ -53,7 +54,7 @@ class TimetableSearchPageBody extends ConsumerWidget {
           timetable: timetable,
           onTap: () {
             manager.selectTimetable(timetable);
-            Navigator.of(context).pop();
+            context.pop();
           },
         );
       },

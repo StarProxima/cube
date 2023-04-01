@@ -5,19 +5,15 @@ import 'package:cube_system/features/timetable_page/state_holders/selected_timet
 import 'package:cube_system/models/timetable/timetable_type.dart';
 import 'package:cube_system/source/extensions.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:intl/intl.dart';
 
 import 'package:cube_system/features/timetable_page/features/week_timeline/providers/week_timeline_offset_back_button_direction_provider.dart';
 
 import 'package:cube_system/features/timetable_page/features/week_timeline/models/week_timeline_offset_back_button_direction.dart';
-
-import 'package:cube_system/features/timetable_search_page/ui/timetable_search_page.dart';
-
-import 'package:cube_system/features/landing_page/ui/landing_page.dart';
 
 class TimetablePageHeader extends ConsumerWidget {
   const TimetablePageHeader({super.key});
@@ -58,13 +54,7 @@ class TimetablePageHeader extends ConsumerWidget {
               padding: const EdgeInsets.only(left: 8, top: 4),
               child: InkWell(
                 onTap: () {
-                  Navigator.of(context).push(
-                    CupertinoPageRoute(
-                      builder: (context) {
-                        return const TimetableSearchPage();
-                      },
-                    ),
-                  );
+                  context.go('/timetable/search');
                 },
                 borderRadius: const BorderRadius.all(Radius.circular(12)),
                 child: Padding(
@@ -96,13 +86,7 @@ class TimetablePageHeader extends ConsumerWidget {
               padding: const EdgeInsets.only(left: 4, top: 4, right: 4),
               child: InkWell(
                 onTap: () {
-                  Navigator.of(context).push(
-                    CupertinoPageRoute(
-                      builder: (context) {
-                        return const LandingPage();
-                      },
-                    ),
-                  );
+                  context.go('/landing');
                 },
                 borderRadius: const BorderRadius.all(Radius.circular(12)),
                 child: Column(
