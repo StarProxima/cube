@@ -2,6 +2,7 @@ import 'package:cube_system/features/timetable_page/managers/timetable_page_mana
 import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_day.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_header.dart';
+import 'package:cube_system/models/timetable/timetable_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,7 +16,9 @@ import 'package:cube_system/features/timetable_page/state_holders/current_picked
 import 'package:cube_system/features/timetable_page/features/lesson_card/providers/last_current_next_lesson_listener.dart';
 
 class TimetablePage extends ConsumerWidget {
-  const TimetablePage({super.key});
+  final TimetableInfo? timetable;
+
+  const TimetablePage({super.key, this.timetable});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,6 +27,10 @@ class TimetablePage extends ConsumerWidget {
 
     final manager = ref.read(timetablePageManager);
     manager.updateCurrentTimetable();
+
+    if (timetable != null) {
+      manager.selectTimetable(timetable!);
+    }
 
     ref.listen(lastCurrentNextLessonListener, (_, __) {
       manager.findLastCurrentNextLesson();

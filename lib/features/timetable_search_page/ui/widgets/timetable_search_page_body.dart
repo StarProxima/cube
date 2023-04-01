@@ -52,9 +52,10 @@ class TimetableSearchPageBody extends ConsumerWidget {
         final timetable = timetables[index];
         return TimetableCard(
           timetable: timetable,
-          onTap: () {
-            manager.selectTimetable(timetable);
-            context.pop();
+          onTap: () async {
+            await manager.selectTimetable(timetable);
+
+            context.go('/timetable');
           },
         );
       },

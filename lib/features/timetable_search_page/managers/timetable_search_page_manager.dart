@@ -68,11 +68,11 @@ class TimetableSearchPageManager {
     searchFocus.state.unfocus();
   }
 
-  void selectTimetable(TimetableInfo timetable) {
-    timetablePageManager.selectTimetable(timetable);
+  Future<void> selectTimetable(TimetableInfo timetable) async {
+    await timetablePageManager.selectTimetable(timetable);
   }
 
-  void search(String querry) async {
+  Future<void> search(String querry) async {
     await Future(() {});
     timer.state.cancel();
     event.state = TimetableSearchEventType.loading;
@@ -81,7 +81,7 @@ class TimetableSearchPageManager {
     });
   }
 
-  void _search(String querry) async {
+  Future<void> _search(String querry) async {
     await Future(() {});
 
     querryInProgress.add();

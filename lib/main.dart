@@ -22,11 +22,11 @@ void main() {
   runApp(const ProviderScope(child: MainApp()));
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends ConsumerWidget {
   const MainApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final appColors = AppColors.light;
     final appTextStyles = AppTextStyles.light;
 
@@ -51,7 +51,7 @@ class MainApp extends StatelessWidget {
           colors: appColors,
           textStyles: appTextStyles,
         ),
-        routerConfig: appRouter,
+        routerConfig: ref.watch(routerProvider),
       ),
     );
   }
