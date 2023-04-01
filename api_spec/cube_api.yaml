@@ -4099,6 +4099,38 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/TeacherAcademicDegreeInDb'
+  /api/teachers/{teacher_id}/faculties_ids:
+    get:
+      tags:
+        - teacher
+      summary: Get Teacher Faculties
+      description: API получения списка идентификаторов факультетов, на которых преподаватель проводит занятия в текущем семестре.
+      operationId: get_teacher_faculties_api_teachers__teacher_id__faculties_ids_get
+      parameters:
+        - required: true
+          schema:
+            title: Teacher Id
+            maximum: 2147483647
+            minimum: 1
+            type: integer
+          name: teacher_id
+          in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Get Teacher Faculties Api Teachers  Teacher Id  Faculties Ids Get
+                type: array
+                items:
+                  type: integer
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
   /api/teachers/{teacher_id}/groups_ids:
     get:
       tags:
@@ -4115,6 +4147,14 @@ paths:
             type: integer
           name: teacher_id
           in: path
+        - required: false
+          schema:
+            title: Faculty Id
+            maximum: 2147483647
+            minimum: 1
+            type: integer
+          name: faculty_id
+          in: query
       responses:
         '200':
           description: Successful Response
@@ -8725,6 +8765,8 @@ components:
         - type
         - date
         - id
+        - group_names
+        - teacher_names
       type: object
       properties:
         number:
@@ -8896,6 +8938,8 @@ components:
       required:
         - id
         - status
+        - group_names
+        - teacher_names
         - number
         - is_remotely
         - is_elective
@@ -9295,6 +9339,8 @@ components:
         - type
         - id
         - weekday
+        - group_names
+        - teacher_names
       type: object
       properties:
         number:
@@ -10845,6 +10891,8 @@ components:
         - semester_id
         - created_user_id
         - id
+        - group_names
+        - teacher_names
       type: object
       properties:
         event_type_id:
@@ -11047,8 +11095,6 @@ components:
         - time
         - is_remotely
         - discipline_id
-        - groups
-        - teachers
         - semester_id
         - created_user_id
       type: object
@@ -11483,11 +11529,11 @@ components:
         id:
           title: Id
           type: integer
-        faculties_ids:
-          title: Faculties Ids
+        faculties:
+          title: Faculties
           type: array
           items:
-            type: integer
+            $ref: '#/components/schemas/FacultyInDb'
     TeacherInDb:
       title: TeacherInDb
       required:
@@ -11496,6 +11542,7 @@ components:
         - last_name
         - type
         - id
+        - faculties_ids
       type: object
       properties:
         academic_title:
@@ -11538,14 +11585,14 @@ components:
       title: TeacherShortInDb
       required:
         - id
-        - name
+        - full_name
       type: object
       properties:
         id:
           title: Id
           type: integer
-        name:
-          title: Name
+        full_name:
+          title: Full Name
           type: string
     TeacherUpdate:
       title: TeacherUpdate

@@ -55,8 +55,8 @@ dev_dependencies:
   json_serializable: ^6.6.1
   theme_tailor: ^1.0.8
 
-  build_runner: ^2.3.3
-  flutter_gen_runner: ^5.2.0
+  build_runner:
+  flutter_gen_runner:
   chopper_generator: ^6.0.0
   flutter_launcher_icons: ^0.12.0
 

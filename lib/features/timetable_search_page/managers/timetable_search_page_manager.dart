@@ -123,7 +123,7 @@ class TimetableSearchPageManager {
       timetablesList.add(
         TimetableInfo(
           id: teacher.id,
-          label: teacher.name,
+          label: teacher.fullName,
           type: TimetableType.teacher,
         ),
       );

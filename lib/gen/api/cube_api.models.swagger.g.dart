@@ -2680,8 +2680,8 @@ TeacherFullInDb _$TeacherFullInDbFromJson(Map<String, dynamic> json) =>
           : TeacherAcademicDegreeInDb.fromJson(
               json['academic_degree'] as Map<String, dynamic>),
       id: json['id'] as int,
-      facultiesIds: (json['faculties_ids'] as List<dynamic>?)
-              ?.map((e) => e as int)
+      faculties: (json['faculties'] as List<dynamic>?)
+              ?.map((e) => FacultyInDb.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
     );
@@ -2698,7 +2698,7 @@ Map<String, dynamic> _$TeacherFullInDbToJson(TeacherFullInDb instance) =>
       'academic_title': teacherAcademicTitleToJson(instance.academicTitle),
       'academic_degree': instance.academicDegree?.toJson(),
       'id': instance.id,
-      'faculties_ids': instance.facultiesIds,
+      'faculties': instance.faculties?.map((e) => e.toJson()).toList(),
     };
 
 TeacherInDb _$TeacherInDbFromJson(Map<String, dynamic> json) => TeacherInDb(
@@ -2738,13 +2738,13 @@ Map<String, dynamic> _$TeacherInDbToJson(TeacherInDb instance) =>
 TeacherShortInDb _$TeacherShortInDbFromJson(Map<String, dynamic> json) =>
     TeacherShortInDb(
       id: json['id'] as int,
-      name: json['name'] as String,
+      fullName: json['full_name'] as String,
     );
 
 Map<String, dynamic> _$TeacherShortInDbToJson(TeacherShortInDb instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'name': instance.name,
+      'full_name': instance.fullName,
     };
 
 TeacherUpdate _$TeacherUpdateFromJson(Map<String, dynamic> json) =>

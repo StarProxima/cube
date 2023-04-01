@@ -2093,13 +2093,31 @@ class _$CubeApi extends CubeApi {
   }
 
   @override
-  Future<Response<List<int>>> _apiTeachersTeacherIdGroupsIdsGet(
+  Future<Response<List<int>>> _apiTeachersTeacherIdFacultiesIdsGet(
       {required int? teacherId}) {
-    final Uri $url = Uri.parse('/api/teachers/${teacherId}/groups_ids');
+    final Uri $url = Uri.parse('/api/teachers/${teacherId}/faculties_ids');
     final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
+    );
+    return client.send<List<int>, int>($request);
+  }
+
+  @override
+  Future<Response<List<int>>> _apiTeachersTeacherIdGroupsIdsGet({
+    required int? teacherId,
+    int? facultyId,
+  }) {
+    final Uri $url = Uri.parse('/api/teachers/${teacherId}/groups_ids');
+    final Map<String, dynamic> $params = <String, dynamic>{
+      'faculty_id': facultyId
+    };
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+      parameters: $params,
     );
     return client.send<List<int>, int>($request);
   }
