@@ -39,6 +39,14 @@ class $AssetsBrooklynGen {
   SvgGenImage get pageNotFound1 =>
       const SvgGenImage('assets/brooklyn/page-not-found-1.svg');
 
+  /// File path: assets/brooklyn/page-under-construction-3.svg
+  SvgGenImage get pageUnderConstruction3 =>
+      const SvgGenImage('assets/brooklyn/page-under-construction-3.svg');
+
+  /// File path: assets/brooklyn/product-development-1.svg
+  SvgGenImage get productDevelopment1 =>
+      const SvgGenImage('assets/brooklyn/product-development-1.svg');
+
   /// File path: assets/brooklyn/rest-3.svg
   SvgGenImage get rest3 => const SvgGenImage('assets/brooklyn/rest-3.svg');
 
@@ -62,6 +70,8 @@ class $AssetsBrooklynGen {
         managerDesk2,
         noConnection4,
         pageNotFound1,
+        pageUnderConstruction3,
+        productDevelopment1,
         rest3,
         smartPeople2,
         somethingWentWrong2,
