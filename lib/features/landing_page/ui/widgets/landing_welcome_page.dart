@@ -6,11 +6,31 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/gen/assets/assets.gen.dart';
 
-class LandingWelcomePage extends ConsumerWidget {
+class LandingWelcomePage extends ConsumerStatefulWidget {
   const LandingWelcomePage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<LandingWelcomePage> createState() => _LandingWelcomePageState();
+}
+
+class _LandingWelcomePageState extends ConsumerState<LandingWelcomePage>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 700),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    _controller.reset();
+    _controller.forward();
+
     return LayoutBuilder(
       builder: (context, constraints) {
         return Stack(
@@ -36,16 +56,23 @@ class LandingWelcomePage extends ConsumerWidget {
 
             Transform.translate(
               offset: const Offset(-0, -150),
-              child: SizedBox(
-                child: Assets.rive.shapes.rive(
-                  fit: BoxFit.cover,
+              child: FadeTransition(
+                opacity: CurvedAnimation(
+                  parent: _controller,
+                  curve: Curves.easeInOut,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(64),
+                  child: Assets.rive.shapes.rive(
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
 
             Positioned.fill(
               child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 130, sigmaY: 130),
+                filter: ImageFilter.blur(sigmaX: 120, sigmaY: 120),
                 child: const SizedBox(),
               ),
             ),
@@ -58,54 +85,71 @@ class LandingWelcomePage extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 196),
-                      FittedBox(
-                        child: Row(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(16),
-                              child: Assets.icons.cubeIcon.image(
-                                height: 96,
+                      Row(
+                        children: [
+                          FadeTransition(
+                            opacity: CurvedAnimation(
+                              parent: _controller,
+                              curve: Curves.easeInOut,
+                            ),
+                            child: SlideTransition(
+                              position: Tween<Offset>(
+                                begin: const Offset(-1, 0),
+                                end: const Offset(0, 0),
+                              ).animate(
+                                CurvedAnimation(
+                                  parent: _controller,
+                                  curve: Curves.easeInOutBack,
+                                ),
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(16),
+                                child: SizedBox(
+                                  height: 96,
+                                  width: 96,
+                                  child: Assets.icons.cubeIcon.image(),
+                                ),
                               ),
                             ),
-                            const SizedBox(width: 20),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                      "Куб",
-                                      style: context.textStyles.largeTitle
-                                          .copyWith(
-                                        fontSize: 36,
-                                        color: context.colors.text,
-                                      ),
+                          ),
+                          const SizedBox(width: 20),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    "Куб",
+                                    style:
+                                        context.textStyles.largeTitle.copyWith(
+                                      fontSize: 32,
+                                      color: context.colors.text,
                                     ),
-                                    Text(
-                                      ".",
-                                      style: context.textStyles.largeTitle
-                                          .copyWith(
-                                        fontSize: 36,
-                                        color: context.colors.primary,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Text(
-                                  "Расписание",
-                                  style: context.textStyles.largeTitle.copyWith(
-                                    fontSize: 36,
-                                    color: context.colors.text,
                                   ),
+                                  Text(
+                                    ".",
+                                    style:
+                                        context.textStyles.largeTitle.copyWith(
+                                      fontSize: 32,
+                                      color: context.colors.primary,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Text(
+                                "Расписание",
+                                style: context.textStyles.largeTitle.copyWith(
+                                  fontSize: 32,
+                                  color: context.colors.text,
                                 ),
-                              ],
-                            ),
-                          ],
-                        ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 48),
                       Text(
-                        "Организуйте свою академическую жизнь c современным электронным расписанием: удобнылегкий доступ, приятный дизайн и заметки для студентов и преподавателей.",
+                        "Организуйте свою академическую жизнь c современным электронным расписанием: актуальность, легкий доступ и приятный дизайн для студентов и преподавателей.",
                         style: context.textStyles.subTitle.copyWith(
                           fontSize: 16,
                         ),
