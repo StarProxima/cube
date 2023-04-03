@@ -57,7 +57,7 @@ class TimetableSearchPageManager {
     await Future(() {});
     event.state = TimetableSearchEventType.welcome;
     searchContoller.state.clear();
-    Future.delayed(const Duration(milliseconds: 500), () {
+    Future.delayed(const Duration(milliseconds: 250), () {
       if (searchFocus.state.canRequestFocus) {
         searchFocus.state.requestFocus();
       }
@@ -68,11 +68,11 @@ class TimetableSearchPageManager {
     searchFocus.state.unfocus();
   }
 
-  void selectTimetable(TimetableInfo timetable) {
-    timetablePageManager.selectTimetable(timetable);
+  Future<void> selectTimetable(TimetableInfo timetable) async {
+    await timetablePageManager.selectTimetable(timetable);
   }
 
-  void search(String querry) async {
+  Future<void> search(String querry) async {
     await Future(() {});
     timer.state.cancel();
     event.state = TimetableSearchEventType.loading;
@@ -81,7 +81,7 @@ class TimetableSearchPageManager {
     });
   }
 
-  void _search(String querry) async {
+  Future<void> _search(String querry) async {
     await Future(() {});
 
     querryInProgress.add();
@@ -92,8 +92,16 @@ class TimetableSearchPageManager {
       return;
     }
 
-    final response = await api.apiLessonsAutocompleteGet(q: querry);
-    querryInProgress.sub();
+    final Response<LessonAutocomplete> response;
+
+    try {
+      response = await api.apiLessonsAutocompleteGet(q: querry);
+      querryInProgress.sub();
+    } catch (e) {
+      querryInProgress.sub();
+      event.state = TimetableSearchEventType.error;
+      return;
+    }
 
     if (querryInProgress.state >= 1) return;
 
@@ -115,7 +123,7 @@ class TimetableSearchPageManager {
       timetablesList.add(
         TimetableInfo(
           id: teacher.id,
-          label: teacher.name,
+          label: teacher.fullName,
           type: TimetableType.teacher,
         ),
       );

@@ -1,5 +1,4 @@
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_events.dart';
-import 'package:cube_system/features/timetable_page/ui/event_pages/not_selected_event_page.dart';
 import 'package:cube_system/models/timetable_day/timetable_day_type.dart';
 import 'package:cube_system/features/timetable_page/ui/event_pages/no_connection_event_page.dart';
 import 'package:cube_system/features/timetable_page/ui/event_pages/weekend_event_page.dart';

@@ -2,6 +2,7 @@ import 'package:cube_system/features/timetable_page/managers/timetable_page_mana
 import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_day.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_header.dart';
+import 'package:cube_system/models/timetable/timetable_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,9 +16,9 @@ import 'package:cube_system/features/timetable_page/state_holders/current_picked
 import 'package:cube_system/features/timetable_page/features/lesson_card/providers/last_current_next_lesson_listener.dart';
 
 class TimetablePage extends ConsumerWidget {
-  const TimetablePage({
-    super.key,
-  });
+  final TimetableInfo? timetable;
+
+  const TimetablePage({super.key, this.timetable});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -26,6 +27,10 @@ class TimetablePage extends ConsumerWidget {
 
     final manager = ref.read(timetablePageManager);
     manager.updateCurrentTimetable();
+
+    if (timetable != null) {
+      manager.selectTimetable(timetable!);
+    }
 
     ref.listen(lastCurrentNextLessonListener, (_, __) {
       manager.findLastCurrentNextLesson();
@@ -43,8 +48,18 @@ class _TimetablePage extends ConsumerStatefulWidget {
 }
 
 class _TimetablePageState extends ConsumerState<_TimetablePage> {
-  final initialPage = 1000;
-  late final pageController = PageController(initialPage: initialPage);
+  static const _initialPage = 1000;
+
+  late final pageController = PageController(
+    initialPage: _initialPage -
+        ref.read(currentDate).difference(ref.read(selectedDate)).inDays,
+  );
+
+  // @override
+  // void initState() {
+  //   print('initstate - $hashCode');
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +70,7 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
     // Обрабатывается изменение выбранной даты из WeekTimeline.
     ref.listen(selectedDate, (prev, next) {
       if (ref.read(currentPickedDateInPageView) == next) return;
-      final targetPage = initialPage - date.difference(next).inDays;
+      final targetPage = _initialPage - date.difference(next).inDays;
 
       pageController.animateToPage(
         targetPage,
@@ -65,7 +80,7 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
     });
 
     DateTime getDateByPageIndex(int index) =>
-        date.add(Duration(days: index - initialPage));
+        date.add(Duration(days: index - _initialPage));
 
     return Scaffold(
       body: SafeArea(
@@ -78,14 +93,11 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
             ),
             const WeekTimeline(),
             const SizedBox(height: 10),
-            const Divider(
-              thickness: 1,
-              height: 1,
-            ),
+            const Divider(),
             Expanded(
               child: PageView.builder(
                 controller: pageController,
-                itemCount: initialPage * 2,
+                itemCount: _initialPage * 2,
                 onPageChanged: (index) =>
                     manager.handlePageViewChange(getDateByPageIndex(index)),
                 itemBuilder: (context, index) {

@@ -25,6 +25,8 @@ class AppButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         backgroundColor: context.colors.primary,
         foregroundColor: context.colors.white,
+        disabledBackgroundColor: context.colors.border,
+        disabledForegroundColor: context.colors.white,
         textStyle: context.textStyles.smallLabel.copyWith(fontSize: 15),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),

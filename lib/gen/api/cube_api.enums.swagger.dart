@@ -1,5 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:collection/collection.dart';
 
 enum DegreeStudy {
   @JsonValue(null)
@@ -287,6 +286,34 @@ enum Permissions {
   semesterImport('semester_import'),
   @JsonValue('semester_export')
   semesterExport('semester_export'),
+  @JsonValue('semester_faculty_create')
+  semesterFacultyCreate('semester_faculty_create'),
+  @JsonValue('semester_faculty_read')
+  semesterFacultyRead('semester_faculty_read'),
+  @JsonValue('semester_faculty_update')
+  semesterFacultyUpdate('semester_faculty_update'),
+  @JsonValue('semester_faculty_delete')
+  semesterFacultyDelete('semester_faculty_delete'),
+  @JsonValue('semester_lessons_direction_create')
+  semesterLessonsDirectionCreate('semester_lessons_direction_create'),
+  @JsonValue('semester_lessons_direction_read')
+  semesterLessonsDirectionRead('semester_lessons_direction_read'),
+  @JsonValue('semester_lessons_direction_update')
+  semesterLessonsDirectionUpdate('semester_lessons_direction_update'),
+  @JsonValue('semester_lessons_direction_delete')
+  semesterLessonsDirectionDelete('semester_lessons_direction_delete'),
+  @JsonValue('semester_lessons_direction_import')
+  semesterLessonsDirectionImport('semester_lessons_direction_import'),
+  @JsonValue('semester_session_direction_create')
+  semesterSessionDirectionCreate('semester_session_direction_create'),
+  @JsonValue('semester_session_direction_read')
+  semesterSessionDirectionRead('semester_session_direction_read'),
+  @JsonValue('semester_session_direction_update')
+  semesterSessionDirectionUpdate('semester_session_direction_update'),
+  @JsonValue('semester_session_direction_delete')
+  semesterSessionDirectionDelete('semester_session_direction_delete'),
+  @JsonValue('semester_session_direction_import')
+  semesterSessionDirectionImport('semester_session_direction_import'),
   @JsonValue('session_event_create')
   sessionEventCreate('session_event_create'),
   @JsonValue('session_event_read')
@@ -299,14 +326,6 @@ enum Permissions {
   sessionEventImport('session_event_import'),
   @JsonValue('session_event_export')
   sessionEventExport('session_event_export'),
-  @JsonValue('session_event_date_create')
-  sessionEventDateCreate('session_event_date_create'),
-  @JsonValue('session_event_date_read')
-  sessionEventDateRead('session_event_date_read'),
-  @JsonValue('session_event_date_update')
-  sessionEventDateUpdate('session_event_date_update'),
-  @JsonValue('session_event_date_delete')
-  sessionEventDateDelete('session_event_date_delete'),
   @JsonValue('user_create')
   userCreate('user_create'),
   @JsonValue('user_read')
@@ -543,4 +562,22 @@ enum ViewMode {
   final int? value;
 
   const ViewMode(this.value);
+}
+
+enum WeekType {
+  @JsonValue(null)
+  swaggerGeneratedUnknown(null),
+
+  @JsonValue(1)
+  value_1(1),
+  @JsonValue(2)
+  value_2(2),
+  @JsonValue(3)
+  value_3(3),
+  @JsonValue(4)
+  value_4(4);
+
+  final int? value;
+
+  const WeekType(this.value);
 }

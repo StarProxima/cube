@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/gen/assets/assets.gen.dart';
-import 'package:url_launcher/url_launcher.dart';
+
+import 'package:cube_system/features/landing_page/managers/landing_page_manager.dart';
 
 class LandingPlatformCard extends ConsumerWidget {
   final String title;
@@ -23,6 +24,7 @@ class LandingPlatformCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final manager = ref.watch(landingPageManager);
     return Container(
       decoration: BoxDecoration(
         color: context.colors.card,
@@ -39,9 +41,7 @@ class LandingPlatformCard extends ConsumerWidget {
         type: MaterialType.transparency,
         child: InkWell(
           borderRadius: BorderRadius.circular(12),
-          onTap: () {
-            launchUrl(uri);
-          },
+          onTap: () => manager.launchUri(uri),
           child: Padding(
             padding: const EdgeInsets.all(12),
             child: Row(
@@ -59,7 +59,7 @@ class LandingPlatformCard extends ConsumerWidget {
                           children: [
                             Row(
                               children: [
-                                Assets.icons.cubeLogo.svg(
+                                Assets.icons.roundedCubeLogo.svg(
                                   height: 36,
                                 ),
                                 const SizedBox(width: 8),

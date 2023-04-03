@@ -39,6 +39,14 @@ class $AssetsBrooklynGen {
   SvgGenImage get pageNotFound1 =>
       const SvgGenImage('assets/brooklyn/page-not-found-1.svg');
 
+  /// File path: assets/brooklyn/page-under-construction-3.svg
+  SvgGenImage get pageUnderConstruction3 =>
+      const SvgGenImage('assets/brooklyn/page-under-construction-3.svg');
+
+  /// File path: assets/brooklyn/product-development-1.svg
+  SvgGenImage get productDevelopment1 =>
+      const SvgGenImage('assets/brooklyn/product-development-1.svg');
+
   /// File path: assets/brooklyn/rest-3.svg
   SvgGenImage get rest3 => const SvgGenImage('assets/brooklyn/rest-3.svg');
 
@@ -62,6 +70,8 @@ class $AssetsBrooklynGen {
         managerDesk2,
         noConnection4,
         pageNotFound1,
+        pageUnderConstruction3,
+        productDevelopment1,
         rest3,
         smartPeople2,
         somethingWentWrong2,
@@ -72,11 +82,19 @@ class $AssetsBrooklynGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/cube_icon.png
+  AssetGenImage get cubeIcon =>
+      const AssetGenImage('assets/icons/cube_icon.png');
+
   /// File path: assets/icons/cube_logo.svg
   SvgGenImage get cubeLogo => const SvgGenImage('assets/icons/cube_logo.svg');
 
+  /// File path: assets/icons/rounded_cube_logo.svg
+  SvgGenImage get roundedCubeLogo =>
+      const SvgGenImage('assets/icons/rounded_cube_logo.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [cubeLogo];
+  List<dynamic> get values => [cubeIcon, cubeLogo, roundedCubeLogo];
 }
 
 class $AssetsImagesGen {
@@ -92,11 +110,14 @@ class $AssetsImagesGen {
 class $AssetsRiveGen {
   const $AssetsRiveGen();
 
+  /// File path: assets/rive/icons.riv
+  RiveGenImage get icons => const RiveGenImage('assets/rive/icons.riv');
+
   /// File path: assets/rive/shapes.riv
   RiveGenImage get shapes => const RiveGenImage('assets/rive/shapes.riv');
 
   /// List of all assets
-  List<RiveGenImage> get values => [shapes];
+  List<RiveGenImage> get values => [icons, shapes];
 }
 
 class Assets {

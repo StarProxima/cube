@@ -15,7 +15,6 @@ import 'package:cube_system/features/timetable_page/state_holders/lessons/next_l
 import 'package:cube_system/features/timetable_page/state_holders/selected_date.dart';
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_events.dart';
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_lessons.dart';
-import 'package:cube_system/features/timetable_page/state_holders/timetable_page_title.dart';
 import 'package:cube_system/features/timetable_page/managers/lesson_convertor.dart';
 import 'package:intl/intl.dart';
 
@@ -33,7 +32,6 @@ final timetableLessonsManager = Provider<TimetableLessonsManager>((ref) {
     events: ref.watch(timetablePageLessonEvents.notifier),
     currentDateTime: ref.watch(currentDateTimeQuick.notifier),
     selectedDate: ref.watch(selectedDate.notifier),
-    timetablePageTitle: ref.watch(timetablePageTitle.notifier),
     currentLesson: ref.watch(currentLesson.notifier),
     nextLesson: ref.watch(nextLesson.notifier),
     lastLesson: ref.watch(lastLesson.notifier),
@@ -50,7 +48,6 @@ class TimetableLessonsManager {
   final StateController<SplayTreeMap<DateTime, TimetableDayEvent>> events;
   final StateController<DateTime> currentDateTime;
   final StateController<DateTime> selectedDate;
-  final StateController<String> timetablePageTitle;
   final StateController<Lesson?> currentLesson;
   final StateController<Lesson?> nextLesson;
   final StateController<Lesson?> lastLesson;
@@ -64,7 +61,6 @@ class TimetableLessonsManager {
     required this.events,
     required this.currentDateTime,
     required this.selectedDate,
-    required this.timetablePageTitle,
     required this.currentLesson,
     required this.nextLesson,
     required this.lastLesson,
@@ -73,25 +69,6 @@ class TimetableLessonsManager {
   void clear() {
     timetable.state = SplayTreeMap();
     events.state = SplayTreeMap();
-  }
-
-  void _setLessons(List<LessonFullNamesInDb> lessons) {
-    SplayTreeMap<DateTime, List<Lesson>> timetableMap =
-        SplayTreeMap.of(timetable.state.cast());
-
-    for (final lesson in lessons) {
-      if (timetableMap.containsKey(lesson.date)) {
-        timetableMap[lesson.date] = [];
-      }
-    }
-
-    for (final lesson in lessons) {
-      timetableMap[lesson.date] = (timetableMap[lesson.date] ?? []);
-      final l = lessonConvertor.lessonByLessonFullNamesInDb(lesson: lesson);
-      timetableMap[lesson.date]!.add(l);
-    }
-
-    timetable.state = timetableMap;
   }
 
   Future<List<LessonFullNamesInDb>> _getLessons({
@@ -114,6 +91,31 @@ class TimetableLessonsManager {
     );
 
     return lessonResponse.body!;
+  }
+
+  void _setLessons(List<LessonFullNamesInDb> lessons) {
+    SplayTreeMap<DateTime, List<Lesson>> timetableMap =
+        SplayTreeMap.of(timetable.state.cast());
+
+    for (final lesson in lessons) {
+      timetableMap[lesson.date] = [];
+    }
+
+    for (int i = 0; i < lessons.length; i++) {
+      final lesson = lessons[i];
+      int emptyLessonsBefore = 0;
+      if (i > 0 && lessons[i - 1].date == lesson.date) {
+        emptyLessonsBefore = lesson.number - lessons[i - 1].number - 1;
+      }
+      final l = lessonConvertor.lessonByLessonFullNamesInDb(
+        lesson: lesson,
+        emptyLessonsBefore: emptyLessonsBefore,
+      );
+
+      timetableMap[lesson.date]!.add(l);
+    }
+
+    timetable.state = timetableMap;
   }
 
   Future<void> updateCurrentTimetable() async {

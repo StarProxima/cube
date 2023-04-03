@@ -63,7 +63,7 @@ class LandingWelcomePage extends ConsumerWidget {
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(16),
-                              child: Assets.icons.cubeLogo.svg(
+                              child: Assets.icons.cubeIcon.image(
                                 height: 96,
                               ),
                             ),

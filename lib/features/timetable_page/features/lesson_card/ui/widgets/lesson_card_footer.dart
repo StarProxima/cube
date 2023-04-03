@@ -6,18 +6,16 @@ class LessonCardFooter extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final groups = ref
-            .watch(
-              _lessonInLessonCard.select((value) => value.lesson.groupNames),
-            )
-            ?.join(", ") ??
-        "null";
+        .watch(
+          _lessonInLessonCard.select((value) => value.lesson.groupNames),
+        )
+        .join(", ");
 
     final teachers = ref
-            .watch(
-              _lessonInLessonCard.select((value) => value.lesson.teacherNames),
-            )
-            ?.join(", ") ??
-        "null";
+        .watch(
+          _lessonInLessonCard.select((value) => value.lesson.teacherNames),
+        )
+        .join(", ");
 
     final place = ref.watch(
           _lessonInLessonCard.select((value) => value.lesson.place?.name),
@@ -62,27 +60,24 @@ class LessonCardFooter extends ConsumerWidget {
             children: [
               if (teachersIsNotEmpty)
                 Flexible(
-                  child: InkWell(
-                    onTap: () {},
-                    borderRadius: BorderRadius.circular(8),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 4,
-                        horizontal: 8,
-                      ),
-                      child: Text(
-                        leftText,
-                        style: context.textStyles.smallLabel.copyWith(
-                          color: context.colors.subduedText,
-                        ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      top: 4,
+                      bottom: 4,
+                      left: 8,
+                    ),
+                    child: Text(
+                      leftText,
+                      style: context.textStyles.smallLabel.copyWith(
+                        color: context.colors.subduedText,
                       ),
                     ),
                   ),
                 ),
               Container(
-                margin: EdgeInsets.only(
+                margin: const EdgeInsets.only(
                   bottom: 4,
-                  left: teachersIsNotEmpty ? 2 : 8,
+                  left: 8,
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
                 decoration: BoxDecoration(
@@ -98,21 +93,17 @@ class LessonCardFooter extends ConsumerWidget {
             ],
           ),
         ),
-        InkWell(
-          onTap: () {},
-          borderRadius: BorderRadius.circular(8),
-          child: Container(
-            constraints: const BoxConstraints(
-              maxWidth: 160,
+        Container(
+          constraints: const BoxConstraints(
+            maxWidth: 160,
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+          child: Text(
+            rigthText,
+            style: context.textStyles.smallLabel.copyWith(
+              color: context.colors.subduedText,
             ),
-            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-            child: Text(
-              rigthText,
-              style: context.textStyles.smallLabel.copyWith(
-                color: context.colors.subduedText,
-              ),
-              textAlign: TextAlign.right,
-            ),
+            textAlign: TextAlign.right,
           ),
         ),
       ],

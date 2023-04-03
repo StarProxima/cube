@@ -9,6 +9,9 @@ import 'package:cube_system/features/timetable_search_page/state_holders/timetab
 
 import 'package:cube_system/features/timetable_search_page/ui/event_pages/welcome_search_event_page.dart';
 
+import 'package:cube_system/features/timetable_search_page/ui/event_pages/no_connection_search_event_page.dart';
+import 'package:go_router/go_router.dart';
+
 class TimetableSearchPageBody extends ConsumerWidget {
   const TimetableSearchPageBody({super.key});
 
@@ -34,8 +37,7 @@ class TimetableSearchPageBody extends ConsumerWidget {
         return const NoFoundSearchEventPage();
 
       case TimetableSearchEventType.error:
-        // TODO: Handle this case.
-        break;
+        return const NoConnectionSearchEventPage();
 
       default:
     }
@@ -50,9 +52,10 @@ class TimetableSearchPageBody extends ConsumerWidget {
         final timetable = timetables[index];
         return TimetableCard(
           timetable: timetable,
-          onTap: () {
-            manager.selectTimetable(timetable);
-            Navigator.of(context).pop();
+          onTap: () async {
+            await manager.selectTimetable(timetable);
+
+            context.go('/timetable');
           },
         );
       },

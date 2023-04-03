@@ -11,7 +11,7 @@ part 'app_text_styles.tailor.dart';
 )
 class _$AppTextStyles {
   static const _textColor = Color(0xFF2B2B2B);
-  static const _textColorBlue = Color(0xFF47A4F2);
+  // static const _textColorBlue = Color(0xFF47A4F2);
 
   static List<TextStyle> appBarTitle = [
     GoogleFonts.inter(
