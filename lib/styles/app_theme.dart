@@ -12,6 +12,9 @@ class AppTheme {
       scaffoldBackgroundColor: colors.card,
       dividerColor: colors.subduedBorder,
       primaryColor: colors.primary,
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: colors.background,
+      ),
       dividerTheme: DividerThemeData(
         color: colors.subduedBorder,
         thickness: 1,

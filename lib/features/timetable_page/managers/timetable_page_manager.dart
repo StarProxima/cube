@@ -35,7 +35,8 @@ class TimetablePageManager {
     required this.currentPickedDateInPageView,
   });
 
-  void selectTimetable(TimetableInfo timetable) {
+  Future<void> selectTimetable(TimetableInfo timetable) async {
+    await Future(() {});
     selectedTimetable.state = timetable;
     lessonsManager.clear();
     lessonsManager.updateCurrentTimetable();

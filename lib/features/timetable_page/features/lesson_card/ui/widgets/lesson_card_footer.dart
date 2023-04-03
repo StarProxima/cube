@@ -6,18 +6,16 @@ class LessonCardFooter extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final groups = ref
-            .watch(
-              _lessonInLessonCard.select((value) => value.lesson.groupNames),
-            )
-            ?.join(", ") ??
-        "null";
+        .watch(
+          _lessonInLessonCard.select((value) => value.lesson.groupNames),
+        )
+        .join(", ");
 
     final teachers = ref
-            .watch(
-              _lessonInLessonCard.select((value) => value.lesson.teacherNames),
-            )
-            ?.join(", ") ??
-        "null";
+        .watch(
+          _lessonInLessonCard.select((value) => value.lesson.teacherNames),
+        )
+        .join(", ");
 
     final place = ref.watch(
           _lessonInLessonCard.select((value) => value.lesson.place?.name),
