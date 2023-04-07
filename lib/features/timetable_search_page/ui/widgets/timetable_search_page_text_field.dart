@@ -21,13 +21,14 @@ class TimetableSearchPageTextField extends ConsumerWidget {
       focusNode: focus,
       onChanged: manager.search,
       style: context.textStyles.smallLabel.copyWith(
-        fontSize: 14,
+        fontSize: 16,
       ),
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
         isDense: true,
         hintText: 'Найти расписание',
         hintStyle: context.textStyles.subTitle.copyWith(
+          fontSize: 16,
           color: context.colors.hintText,
         ),
         border: InputBorder.none,

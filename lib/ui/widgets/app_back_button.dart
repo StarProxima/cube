@@ -8,8 +8,7 @@ class AppBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      iconSize: 20,
-      splashRadius: 18,
+      splashRadius: 22,
       constraints: const BoxConstraints(
         minWidth: 36,
         minHeight: 36,
@@ -19,6 +18,7 @@ class AppBackButton extends StatelessWidget {
       onPressed: context.pop,
       icon: Icon(
         Icons.arrow_back_rounded,
+        size: 24,
         color: context.colors.text,
       ),
     );
