@@ -1,5 +1,4 @@
 import 'package:cube_system/features/landing_page/ui/landing_page.dart';
-import 'package:cube_system/features/timetable_page/state_holders/selected_timetable.dart';
 import 'package:cube_system/features/timetable_page/ui/timetable_page.dart';
 import 'package:cube_system/features/timetable_search_page/ui/timetable_search_page.dart';
 import 'package:cube_system/models/timetable/timetable_info.dart';
@@ -88,10 +87,12 @@ final routerProvider = Provider<GoRouter>((ref) {
             path: '/timetable',
             redirect: (context, state) {
               //TODO: refactor
-              final timetable = ref.read(selectedTimetable);
-              if (timetable != null) {
-                return '/timetable/${timetable.type.name}-${timetable.id}';
-              }
+              // if (state.fullpath == '/timetable') {
+              //   final timetable = ref.read(selectedTimetable);
+              //   if (timetable != null) {
+              //     return '/timetable/${timetable.type.name}-${timetable.id}';
+              //   }
+              // }
               return null;
             },
             pageBuilder: (context, state) => AppCustomTransitionPage(
