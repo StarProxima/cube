@@ -72,6 +72,9 @@ class TimetableSearchPageManager {
     await timetablePageManager.selectTimetable(timetable);
   }
 
+  Future<void> instantSearch(String querry) =>
+      search(querry, delayBeforeRequest: false);
+
   Future<void> search(String querry, {bool delayBeforeRequest = true}) async {
     await Future(() {});
     timer.state.cancel();

@@ -20,9 +20,8 @@ class TimetableSearchPageTextField extends ConsumerWidget {
       controller: contoller,
       focusNode: focus,
       onChanged: manager.search,
-      onSubmitted: (value) => manager.search(value, delayBeforeRequest: false),
-      onEditingComplete: () =>
-          manager.search(contoller.text, delayBeforeRequest: false),
+      onSubmitted: (value) => manager.instantSearch,
+      onEditingComplete: () => manager.instantSearch(contoller.text),
       style: context.textStyles.smallLabel.copyWith(
         fontSize: 16,
       ),
