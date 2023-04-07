@@ -67,8 +67,12 @@ class _LandingWelcomePageState extends ConsumerState<LandingWelcomePage>
                   parent: _controller,
                   curve: Curves.easeInOut,
                 ),
-                child: Assets.rive.shapes.rive(
-                  fit: BoxFit.contain,
+                child: Padding(
+                  padding: const EdgeInsets.all(32),
+                  child: Assets.rive.shapes.rive(
+                    antialiasing: false,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
