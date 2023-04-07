@@ -12,13 +12,25 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:window_size/window_size.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
   if (!kIsWeb && (Platform.isWindows || Platform.isLinux || Platform.isMacOS)) {
     setWindowTitle('Куб.Расписание');
     setWindowMinSize(const Size(460, 380));
   }
+
+  // TODO: iOS support
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarBrightness: Brightness.light,
+      statusBarIconBrightness: Brightness.dark,
+    ),
+  );
+
   runApp(const ProviderScope(child: MainApp()));
 }
 

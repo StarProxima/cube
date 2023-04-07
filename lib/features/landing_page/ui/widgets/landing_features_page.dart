@@ -24,9 +24,9 @@ class LandingFeaturesPage extends ConsumerWidget {
             Center(
               child: Column(
                 children: [
-                  const SizedBox(height: 5),
+                  const SizedBox(height: 10),
                   ShortFadeAnimatedWidget(
-                    size: 190,
+                    size: 185,
                     child: Assets.brooklyn.virtualReality4.svg(),
                   ),
                   const SizedBox(height: 5),
@@ -43,10 +43,10 @@ class LandingFeaturesPage extends ConsumerWidget {
             const SizedBox(height: 24),
             LandingFeatureCard(
               icon: const Icon(Icons.calendar_today_outlined),
-              color: const Color(0xFF488aff).withOpacity(0.65),
-              title: 'Расписание по неделям',
+              color: const Color(0xFF1aaf5c).withOpacity(0.5),
+              title: 'Расписание по дням',
               description:
-                  'Переключайтесь между неделями от начала и до конца семестра',
+                  'Переключайтесь между днями или неделями от начала и до конца семестра',
             ),
             const SizedBox(height: 16),
             LandingFeatureCard(
@@ -67,7 +67,7 @@ class LandingFeaturesPage extends ConsumerWidget {
             const SizedBox(height: 16),
             LandingFeatureCard(
               icon: const Icon(Icons.devices_rounded),
-              color: const Color(0xFF1aaf5c).withOpacity(0.5),
+              color: const Color(0xFF488aff).withOpacity(0.65),
               title: 'Мобильность',
               description: 'Просматривайте расписание с различных устройств',
             ),

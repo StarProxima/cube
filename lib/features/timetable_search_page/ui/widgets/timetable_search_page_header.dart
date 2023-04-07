@@ -20,14 +20,18 @@ class TimetableSearchPageHeader extends ConsumerWidget
       child: Column(
         children: [
           Padding(
-            padding:
-                const EdgeInsets.only(left: 8, top: 8, bottom: 8, right: 4),
+            padding: const EdgeInsets.symmetric(
+              vertical: 12,
+              horizontal: 16,
+            ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: const [
                 AppBackButton(),
-                SizedBox(width: 6),
-                Flexible(child: TimetableSearchPageTextField()),
+                SizedBox(width: 12),
+                Flexible(
+                  child: TimetableSearchPageTextField(),
+                ),
               ],
             ),
           ),

@@ -19,7 +19,7 @@ class _ShortFadeAnimatedWidgetState extends State<ShortFadeAnimatedWidget>
     super.initState();
     animatedController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 400),
     );
   }
 
