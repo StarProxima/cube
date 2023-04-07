@@ -58,6 +58,10 @@ class $AssetsBrooklynGen {
   SvgGenImage get somethingWentWrong2 =>
       const SvgGenImage('assets/brooklyn/something-went-wrong-2.svg');
 
+  /// File path: assets/brooklyn/virtual-reality-4.svg
+  SvgGenImage get virtualReality4 =>
+      const SvgGenImage('assets/brooklyn/virtual-reality-4.svg');
+
   /// File path: assets/brooklyn/welcome-3.svg
   SvgGenImage get welcome3 =>
       const SvgGenImage('assets/brooklyn/welcome-3.svg');
@@ -75,6 +79,7 @@ class $AssetsBrooklynGen {
         rest3,
         smartPeople2,
         somethingWentWrong2,
+        virtualReality4,
         welcome3
       ];
 }
@@ -97,6 +102,16 @@ class $AssetsIconsGen {
   List<dynamic> get values => [cubeIcon, cubeLogo, roundedCubeLogo];
 }
 
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
+
+  /// File path: assets/images/spline.png
+  AssetGenImage get spline => const AssetGenImage('assets/images/spline.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [spline];
+}
+
 class $AssetsRiveGen {
   const $AssetsRiveGen();
 
@@ -115,6 +130,7 @@ class Assets {
 
   static const $AssetsBrooklynGen brooklyn = $AssetsBrooklynGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsRiveGen rive = $AssetsRiveGen();
 }
 

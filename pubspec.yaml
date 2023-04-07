@@ -35,11 +35,8 @@ dependencies:
   device_preview: ^1.1.0
   url_launcher: ^6.1.10
   rive: ^0.10.3
+
   
-
-
-
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -78,7 +75,8 @@ flutter:
     - assets/
     - assets/brooklyn/
     - assets/icons/
+    - assets/icons/cube_logo.svg
     - assets/rive/
-    # - assets/rive/shapes.riv
-    # - assets/images/
-    # - assets/images/spline.png
+    - assets/rive/shapes.riv
+    - assets/images/
+    - assets/images/spline.png
