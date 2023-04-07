@@ -5,6 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/gen/assets/assets.gen.dart';
 
+import 'package:cube_system/ui/widgets/short_fade_animated_widget.dart';
+
 class LandingFeaturesPage extends ConsumerWidget {
   const LandingFeaturesPage({super.key});
 
@@ -23,8 +25,9 @@ class LandingFeaturesPage extends ConsumerWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 5),
-                  Assets.brooklyn.virtualReality4.svg(
-                    width: 190,
+                  ShortFadeAnimatedWidget(
+                    size: 190,
+                    child: Assets.brooklyn.virtualReality4.svg(),
                   ),
                   const SizedBox(height: 5),
                   Text(

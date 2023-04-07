@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/ui/widgets/app_button.dart';
 
+import 'package:cube_system/ui/widgets/short_fade_animated_widget.dart';
+
 class AppEventPage extends ConsumerWidget {
   final Widget? picture;
   final String? title;
@@ -45,9 +47,10 @@ class AppEventPage extends ConsumerWidget {
                       margin: pictureMargin != null
                           ? margin.add(pictureMargin!)
                           : margin,
-                      height: 300,
-                      width: 300,
-                      child: picture,
+                      child: ShortFadeAnimatedWidget(
+                        size: 300,
+                        child: picture,
+                      ),
                     ),
                     Text(
                       title ?? '',

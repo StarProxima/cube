@@ -5,6 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/landing_page/ui/widgets/landing_service_card.dart';
 
+import 'package:cube_system/ui/widgets/short_fade_animated_widget.dart';
+
 class LandingServicesPage extends ConsumerWidget {
   const LandingServicesPage({super.key});
 
@@ -29,7 +31,9 @@ class LandingServicesPage extends ConsumerWidget {
             Center(
               child: Column(
                 children: [
-                  Assets.brooklyn.managerDesk2.svg(),
+                  ShortFadeAnimatedWidget(
+                    child: Assets.brooklyn.managerDesk2.svg(),
+                  ),
                   Text(
                     'Доступно с любого устройства',
                     style: context.textStyles.smallSubTitle.copyWith(
