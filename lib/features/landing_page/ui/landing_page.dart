@@ -1,4 +1,5 @@
-import 'package:cube_system/features/landing_page/ui/widgets/landing_availability_page.dart';
+import 'package:cube_system/features/landing_page/ui/widgets/landing_services_page.dart';
+import 'package:cube_system/features/landing_page/ui/widgets/landing_features_page.dart';
 import 'package:cube_system/features/landing_page/ui/widgets/landing_welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -40,10 +41,11 @@ class _LandingPageState extends ConsumerState<_LandingPage> {
             child: PageView(
               controller: pageController,
               onPageChanged: (index) {
-                isLastPage = index == 1;
+                isLastPage = index == 2;
               },
               children: const [
                 LandingWelcomePage(),
+                LandingFeaturesPage(),
                 LandingServicesPage(),
               ],
             ),
