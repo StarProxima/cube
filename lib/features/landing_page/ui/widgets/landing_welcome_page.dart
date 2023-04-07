@@ -79,7 +79,7 @@ class _LandingWelcomePageState extends ConsumerState<LandingWelcomePage>
 
             Positioned.fill(
               child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 100, sigmaY: 100),
+                filter: ImageFilter.blur(sigmaX: 110, sigmaY: 110),
                 child: const SizedBox(),
               ),
             ),

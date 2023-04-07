@@ -80,8 +80,8 @@ class TimetablePageHeader extends ConsumerWidget {
                                     Icons.arrow_drop_down_rounded.fontFamily,
                                 package:
                                     Icons.arrow_drop_down_rounded.fontPackage,
-                                fontSize: 22,
-                                height: 0.85,
+                                fontSize: 20,
+                                height: 0.95,
                               ),
                             ),
                           ),
