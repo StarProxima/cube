@@ -4,14 +4,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/landing_page/managers/landing_page_manager.dart';
 
-class LandingPlatformCard extends ConsumerWidget {
+class LandingServiceCard extends ConsumerWidget {
   final String title;
   final Text? subTitle;
   final String? description;
   final String linkName;
   final Uri uri;
 
-  const LandingPlatformCard({
+  const LandingServiceCard({
     required this.title,
     this.subTitle,
     this.description,

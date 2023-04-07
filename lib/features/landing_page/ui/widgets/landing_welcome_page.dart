@@ -28,8 +28,8 @@ class _LandingWelcomePageState extends ConsumerState<LandingWelcomePage>
 
   @override
   void dispose() {
-    super.dispose();
     _controller.dispose();
+    super.dispose();
   }
 
   @override

@@ -3,10 +3,10 @@ import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/features/landing_page/ui/widgets/landing_platform_card.dart';
+import 'package:cube_system/features/landing_page/ui/widgets/landing_service_card.dart';
 
-class LandingAvailabilityPage extends ConsumerWidget {
-  const LandingAvailabilityPage({super.key});
+class LandingServicesPage extends ConsumerWidget {
+  const LandingServicesPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -41,7 +41,7 @@ class LandingAvailabilityPage extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 24),
-            LandingPlatformCard(
+            LandingServiceCard(
               title: 'Сайт',
               description:
                   'Основная платформа, просмотр расписания и удобный онлайн конструктор',
@@ -49,14 +49,14 @@ class LandingAvailabilityPage extends ConsumerWidget {
               uri: Uri.parse('https://cube.nlabs.su/welcome'),
             ),
             const SizedBox(height: 16),
-            LandingPlatformCard(
+            LandingServiceCard(
               title: 'Telegram Бот',
               description: 'Простой, удобный и функциональный бот в Telegram',
               linkName: 't.me/cubeservicebot',
               uri: Uri.parse('https://t.me/CubeServiceBot'),
             ),
             const SizedBox(height: 16),
-            LandingPlatformCard(
+            LandingServiceCard(
               title: 'Приложение',
               subTitle: Text.rich(
                 TextSpan(

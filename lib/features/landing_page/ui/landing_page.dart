@@ -44,7 +44,7 @@ class _LandingPageState extends ConsumerState<_LandingPage> {
               },
               children: const [
                 LandingWelcomePage(),
-                LandingAvailabilityPage(),
+                LandingServicesPage(),
               ],
             ),
           );
