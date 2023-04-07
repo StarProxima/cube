@@ -27,6 +27,12 @@ class _LandingWelcomePageState extends ConsumerState<LandingWelcomePage>
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     _controller.reset();
     _controller.forward();
@@ -61,18 +67,15 @@ class _LandingWelcomePageState extends ConsumerState<LandingWelcomePage>
                   parent: _controller,
                   curve: Curves.easeInOut,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(64),
-                  child: Assets.rive.shapes.rive(
-                    fit: BoxFit.cover,
-                  ),
+                child: Assets.rive.shapes.rive(
+                  fit: BoxFit.contain,
                 ),
               ),
             ),
 
             Positioned.fill(
               child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 120, sigmaY: 120),
+                filter: ImageFilter.blur(sigmaX: 100, sigmaY: 100),
                 child: const SizedBox(),
               ),
             ),
@@ -131,7 +134,7 @@ class _LandingWelcomePageState extends ConsumerState<LandingWelcomePage>
                                     style:
                                         context.textStyles.largeTitle.copyWith(
                                       fontSize: 32,
-                                      color: context.colors.primary,
+                                      color: context.colors.text,
                                     ),
                                   ),
                                 ],

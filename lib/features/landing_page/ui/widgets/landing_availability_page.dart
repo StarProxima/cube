@@ -42,7 +42,7 @@ class LandingAvailabilityPage extends ConsumerWidget {
             ),
             const SizedBox(height: 24),
             LandingPlatformCard(
-              title: 'Web Site',
+              title: 'Сайт',
               description:
                   'Основная платформа, просмотр расписания и удобный онлайн конструктор',
               linkName: 'cube.nlabs.su',
@@ -50,19 +50,22 @@ class LandingAvailabilityPage extends ConsumerWidget {
             ),
             const SizedBox(height: 16),
             LandingPlatformCard(
-              title: 'Telegram Bot',
+              title: 'Telegram Бот',
               description: 'Простой, удобный и функциональный бот в Telegram',
               linkName: 't.me/cubeservicebot',
               uri: Uri.parse('https://t.me/CubeServiceBot'),
             ),
             const SizedBox(height: 16),
             LandingPlatformCard(
-              title: 'Cube App',
+              title: 'Приложение',
               subTitle: Text.rich(
                 TextSpan(
                   children: [
                     const TextSpan(
-                      text: 'Android / ',
+                      text: 'Android',
+                    ),
+                    const TextSpan(
+                      text: ' / ',
                     ),
                     TextSpan(
                       text: 'iOS',
@@ -92,9 +95,9 @@ class LandingAvailabilityPage extends ConsumerWidget {
                 ),
               ),
               description:
-                  'Многофункциональное приложение для различных платформ',
-              linkName: 'starproxima.dev/cube',
-              uri: Uri.parse('https://starproxima.dev/cube'),
+                  'Многофункциональное приложение для различных платформ (пока не доступно)',
+              linkName: 'github.com/StarProxima/cube',
+              uri: Uri.parse('https://github.com/StarProxima/cube'),
             ),
             const SizedBox(height: 24),
           ],
