@@ -71,6 +71,7 @@ class TimetablePageHeader extends ConsumerWidget {
                       Text(
                         timetable?.type.label ?? 'Не выбрано',
                         style: context.textStyles.smallSubTitle.copyWith(
+                          fontSize: 10,
                           color: context.colors.subduedText,
                         ),
                       ),
