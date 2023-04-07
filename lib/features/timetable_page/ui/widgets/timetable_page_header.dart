@@ -63,9 +63,29 @@ class TimetablePageHeader extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        timetable?.label ?? 'Расписание',
-                        style: labelTextStyle,
+                      Row(
+                        children: [
+                          Text(
+                            timetable?.label ?? 'Расписание',
+                            style: labelTextStyle,
+                          ),
+                          SizedBox(
+                            height: 16,
+                            child: Text(
+                              String.fromCharCode(
+                                Icons.arrow_drop_down_rounded.codePoint,
+                              ),
+                              style: labelTextStyle.copyWith(
+                                fontFamily:
+                                    Icons.arrow_drop_down_rounded.fontFamily,
+                                package:
+                                    Icons.arrow_drop_down_rounded.fontPackage,
+                                fontSize: 22,
+                                height: 0.85,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 1),
                       Text(
