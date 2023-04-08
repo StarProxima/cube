@@ -35,12 +35,22 @@ class TimetablePageDay extends ConsumerWidget {
       );
     }
 
-    if (event.type == TimetableDayEventType.notSelected) {
-      return const WelcomeEventPage();
-    }
+    switch (event.type) {
+      case TimetableDayEventType.loading:
+        break;
 
-    if (event.type == TimetableDayEventType.error) {
-      return const NoConnectionEventPage();
+      case TimetableDayEventType.welcome:
+      case TimetableDayEventType.notSelected:
+        return const WelcomeEventPage();
+
+      case TimetableDayEventType.holiday:
+      case TimetableDayEventType.weekend:
+        return const WeekendEventPage();
+
+      case TimetableDayEventType.error:
+        return const NoConnectionEventPage();
+
+      case TimetableDayEventType.lessons:
     }
 
     final isKSRS =
@@ -48,10 +58,6 @@ class TimetablePageDay extends ConsumerWidget {
 
     if (isKSRS) {
       return const KsrsEventPage();
-    }
-
-    if (event.type == TimetableDayEventType.weekend) {
-      return const WeekendEventPage();
     }
 
     if (lessons == null) {
