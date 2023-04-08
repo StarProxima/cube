@@ -11,7 +11,6 @@ part 'app_colors.tailor.dart';
 class _$AppColors {
   static List<Color> primary = [const Color(0xFF38a1ff)];
   static List<Color> background = [Colors.blueGrey[50]!];
-  static List<Color> card = [Colors.blueGrey[50]!];
 
   static List<Color> text = [const Color(0xFF2B2B2B)];
   static List<Color> hintText = [const Color.fromARGB(255, 161, 161, 161)];

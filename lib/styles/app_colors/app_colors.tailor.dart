@@ -12,7 +12,6 @@ class AppColors extends ThemeExtension<AppColors> {
   const AppColors({
     required this.primary,
     required this.background,
-    required this.card,
     required this.text,
     required this.hintText,
     required this.subduedText,
@@ -25,7 +24,6 @@ class AppColors extends ThemeExtension<AppColors> {
 
   final Color primary;
   final Color background;
-  final Color card;
   final Color text;
   final Color hintText;
   final Color subduedText;
@@ -38,7 +36,6 @@ class AppColors extends ThemeExtension<AppColors> {
   static final AppColors light = AppColors(
     primary: _$AppColors.primary[0],
     background: _$AppColors.background[0],
-    card: _$AppColors.card[0],
     text: _$AppColors.text[0],
     hintText: _$AppColors.hintText[0],
     subduedText: _$AppColors.subduedText[0],
@@ -57,7 +54,6 @@ class AppColors extends ThemeExtension<AppColors> {
   AppColors copyWith({
     Color? primary,
     Color? background,
-    Color? card,
     Color? text,
     Color? hintText,
     Color? subduedText,
@@ -70,7 +66,6 @@ class AppColors extends ThemeExtension<AppColors> {
     return AppColors(
       primary: primary ?? this.primary,
       background: background ?? this.background,
-      card: card ?? this.card,
       text: text ?? this.text,
       hintText: hintText ?? this.hintText,
       subduedText: subduedText ?? this.subduedText,
@@ -88,7 +83,6 @@ class AppColors extends ThemeExtension<AppColors> {
     return AppColors(
       primary: Color.lerp(primary, other.primary, t)!,
       background: Color.lerp(background, other.background, t)!,
-      card: Color.lerp(card, other.card, t)!,
       text: Color.lerp(text, other.text, t)!,
       hintText: Color.lerp(hintText, other.hintText, t)!,
       subduedText: Color.lerp(subduedText, other.subduedText, t)!,
@@ -108,7 +102,6 @@ class AppColors extends ThemeExtension<AppColors> {
             const DeepCollectionEquality().equals(primary, other.primary) &&
             const DeepCollectionEquality()
                 .equals(background, other.background) &&
-            const DeepCollectionEquality().equals(card, other.card) &&
             const DeepCollectionEquality().equals(text, other.text) &&
             const DeepCollectionEquality().equals(hintText, other.hintText) &&
             const DeepCollectionEquality()
@@ -128,7 +121,6 @@ class AppColors extends ThemeExtension<AppColors> {
         runtimeType,
         const DeepCollectionEquality().hash(primary),
         const DeepCollectionEquality().hash(background),
-        const DeepCollectionEquality().hash(card),
         const DeepCollectionEquality().hash(text),
         const DeepCollectionEquality().hash(hintText),
         const DeepCollectionEquality().hash(subduedText),
