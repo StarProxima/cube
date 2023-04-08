@@ -33,14 +33,14 @@ class MainApp extends ConsumerWidget {
     final appColors = AppColors.light;
     final appTextStyles = AppTextStyles.light;
 
-    return AnnotatedRegion<SystemUiOverlayStyle>(
+    return AnnotatedRegion(
       value: SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        statusBarBrightness: Brightness.light,
         statusBarIconBrightness: Brightness.dark,
         systemNavigationBarIconBrightness: Brightness.dark,
-        systemNavigationBarColor: appColors.background,
         systemNavigationBarDividerColor: appColors.background,
+        // iOS only
+        statusBarBrightness: Brightness.light,
       ),
       child: DevicePreview(
         enabled: false,
