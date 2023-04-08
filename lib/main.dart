@@ -22,15 +22,6 @@ void main() {
     setWindowMinSize(const Size(460, 380));
   }
 
-  // TODO: iOS support
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarBrightness: Brightness.light,
-      statusBarIconBrightness: Brightness.dark,
-    ),
-  );
-
   runApp(const ProviderScope(child: MainApp()));
 }
 
@@ -42,28 +33,38 @@ class MainApp extends ConsumerWidget {
     final appColors = AppColors.light;
     final appTextStyles = AppTextStyles.light;
 
-    return DevicePreview(
-      enabled: false,
-      builder: (context) => MaterialApp.router(
-        debugShowCheckedModeBanner: true,
-        locale: DevicePreview.locale(context),
-        builder: DevicePreview.appBuilder,
-        scrollBehavior: AppScrollBehavior(),
-        title: 'Куб.Расписание',
-        localizationsDelegates: const [
-          GlobalCupertinoLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-        ],
-        supportedLocales: const [
-          Locale('ru'),
-          Locale('en'),
-        ],
-        themeMode: ThemeMode.light,
-        theme: AppTheme.themeByStyles(
-          colors: appColors,
-          textStyles: appTextStyles,
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: appColors.background,
+        systemNavigationBarDividerColor: appColors.background,
+      ),
+      child: DevicePreview(
+        enabled: false,
+        builder: (context) => MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          locale: DevicePreview.locale(context),
+          builder: DevicePreview.appBuilder,
+          scrollBehavior: AppScrollBehavior(),
+          title: 'Куб.Расписание',
+          localizationsDelegates: const [
+            GlobalCupertinoLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('ru'),
+            Locale('en'),
+          ],
+          themeMode: ThemeMode.light,
+          theme: AppTheme.themeByStyles(
+            colors: appColors,
+            textStyles: appTextStyles,
+          ),
+          routerConfig: ref.watch(routerProvider),
         ),
-        routerConfig: ref.watch(routerProvider),
       ),
     );
   }
