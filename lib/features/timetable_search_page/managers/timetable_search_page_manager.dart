@@ -65,20 +65,28 @@ class TimetableSearchPageManager {
   }
 
   void unfocusSearch() {
-    searchFocus.state.unfocus();
+    if (searchFocus.state.hasFocus) {
+      searchFocus.state.unfocus();
+      if (event.state == TimetableSearchEventType.inputDelay) {
+        instantSearch();
+      }
+    }
   }
 
   Future<void> selectTimetable(TimetableInfo timetable) async {
     await timetablePageManager.selectTimetable(timetable);
   }
 
-  Future<void> instantSearch(String querry) =>
-      search(querry, delayBeforeRequest: false);
+  Future<void> instantSearch() =>
+      search(searchContoller.state.text, delayBeforeRequest: false);
 
-  Future<void> search(String querry, {bool delayBeforeRequest = true}) async {
+  Future<void> delayedSearch([String? text]) =>
+      search(text ?? searchContoller.state.text, delayBeforeRequest: true);
+
+  Future<void> search(String querry, {required bool delayBeforeRequest}) async {
     await Future(() {});
     timer.state.cancel();
-    event.state = TimetableSearchEventType.loading;
+    event.state = TimetableSearchEventType.inputDelay;
     if (delayBeforeRequest) {
       timer.state = Timer(const Duration(milliseconds: 800), () {
         _search(querry);
@@ -90,6 +98,7 @@ class TimetableSearchPageManager {
 
   Future<void> _search(String querry) async {
     await Future(() {});
+    event.state = TimetableSearchEventType.loading;
 
     querryInProgress.add();
 
