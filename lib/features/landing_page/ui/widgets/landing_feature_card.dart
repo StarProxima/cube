@@ -20,7 +20,7 @@ class LandingFeatureCard extends StatelessWidget {
     return Container(
       height: 100,
       decoration: BoxDecoration(
-        color: context.colors.card,
+        color: context.colors.background,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(

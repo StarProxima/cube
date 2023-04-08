@@ -73,7 +73,7 @@ class LessonCard extends ConsumerWidget {
                 margin: const EdgeInsets.only(top: 8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7),
-                  color: context.colors.card,
+                  color: context.colors.background,
                   boxShadow: [
                     BoxShadow(
                       color: context.colors.shadow,

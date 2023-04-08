@@ -53,7 +53,7 @@ class TimetableCard extends ConsumerWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: context.colors.card,
+        color: context.colors.background,
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(

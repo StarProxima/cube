@@ -54,7 +54,7 @@ class LandingFeaturesPage extends ConsumerWidget {
               color: const Color.fromARGB(255, 255, 163, 72).withOpacity(0.65),
               title: 'Актуальность',
               description:
-                  'Проверяйте актуальность просматривая данные о последнем изменении расписания',
+                  'Проверяйте актуальность, просматривая данные о последнем изменении расписания',
             ),
             const SizedBox(height: 16),
             LandingFeatureCard(
@@ -68,7 +68,7 @@ class LandingFeaturesPage extends ConsumerWidget {
             LandingFeatureCard(
               icon: const Icon(Icons.devices_rounded),
               color: const Color(0xFF488aff).withOpacity(0.65),
-              title: 'Мобильность',
+              title: 'Мультиплатформенность',
               description: 'Просматривайте расписание с различных устройств',
             ),
             const SizedBox(height: 24),

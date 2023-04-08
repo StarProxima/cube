@@ -9,7 +9,7 @@ import 'package:cube_system/features/timetable_search_page/state_holders/timetab
 
 import 'package:cube_system/features/timetable_search_page/ui/event_pages/welcome_search_event_page.dart';
 
-import 'package:cube_system/features/timetable_search_page/ui/event_pages/no_connection_search_event_page.dart';
+import 'package:cube_system/ui/widgets/event_pages/no_connection_event_page.dart';
 import 'package:go_router/go_router.dart';
 
 class TimetableSearchPageBody extends ConsumerWidget {
@@ -25,6 +25,7 @@ class TimetableSearchPageBody extends ConsumerWidget {
       case TimetableSearchEventType.welcome:
         return const WelcomeSearchEventPage();
 
+      case TimetableSearchEventType.inputDelay:
       case TimetableSearchEventType.loading:
         return const Center(
           child: Padding(
@@ -37,9 +38,11 @@ class TimetableSearchPageBody extends ConsumerWidget {
         return const NoFoundSearchEventPage();
 
       case TimetableSearchEventType.error:
-        return const NoConnectionSearchEventPage();
+        return NoConnectionEventPage(
+          onTap: manager.delayedSearch,
+        );
 
-      default:
+      case TimetableSearchEventType.results:
     }
 
     return ListView.separated(
