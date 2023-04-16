@@ -17,34 +17,16 @@ class _SettingsPageLessonColors extends ConsumerWidget {
       onSelect: (value) => settingsNotifier.editLessonColorsMode(value),
       items: const [
         AppRadioSelectorItem(
-          title: Text('Куб'),
+          title: Text('Cube'),
           description: Text('Цветовая палитра по умолчанию'),
           value: AppLessonColorsMode.cube,
         ),
         AppRadioSelectorItem(
-          title: Text('Проксима'),
+          title: Text('Accent'),
           description: Text('Цветовая палитра c более насыщенными цветами'),
           value: AppLessonColorsMode.proxima,
         ),
       ],
-    );
-  }
-}
-
-class _ColorCard extends StatelessWidget {
-  final Color? color;
-  const _ColorCard(this.color);
-
-  @override
-  Widget build(BuildContext context) {
-    const radius = 8;
-    return Container(
-      height: radius * 2,
-      width: radius * 2,
-      decoration: BoxDecoration(
-        color: color,
-        shape: BoxShape.circle,
-      ),
     );
   }
 }

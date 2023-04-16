@@ -49,5 +49,6 @@ const _$LessonCardLessonTypePositionEnumMap = {
   LessonCardLessonTypePosition.topRight: 'topRight',
   LessonCardLessonTypePosition.bottomRight: 'bottomRight',
   LessonCardLessonTypePosition.beforeBottomRightBlock: 'beforeBottomRightBlock',
+  LessonCardLessonTypePosition.onIndicator: 'onIndicator',
   LessonCardLessonTypePosition.none: 'none',
 };

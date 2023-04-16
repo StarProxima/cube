@@ -13,6 +13,8 @@ enum LessonCardLessonTypePosition {
   bottomRight,
   @JsonValue('beforeBottomRightBlock')
   beforeBottomRightBlock,
+  @JsonValue('onIndicator')
+  onIndicator,
   @JsonValue('none')
   none;
 
@@ -25,5 +27,6 @@ enum LessonCardLessonTypePosition {
   bool get isBottomRight => this == LessonCardLessonTypePosition.bottomRight;
   bool get isBeforeBottomRightBlock =>
       this == LessonCardLessonTypePosition.beforeBottomRightBlock;
+  bool get isOnIndicator => this == LessonCardLessonTypePosition.onIndicator;
   bool get isNone => this == LessonCardLessonTypePosition.none;
 }
