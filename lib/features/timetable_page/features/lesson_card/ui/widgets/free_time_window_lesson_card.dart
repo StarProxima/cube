@@ -34,7 +34,7 @@ class FreeTimeWindowLessonCard extends ConsumerWidget {
       height: 40,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(7),
-        color: context.colors.card,
+        color: context.colors.background,
         boxShadow: [
           BoxShadow(
             color: context.colors.shadow,

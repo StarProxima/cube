@@ -14,8 +14,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_event.dart';
 
-import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_querry_in_progress.dart';
-
 import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_timer.dart';
 
 final timetableSearchPageManager = Provider<TimetableSearchPageManager>((ref) {
@@ -26,7 +24,6 @@ final timetableSearchPageManager = Provider<TimetableSearchPageManager>((ref) {
     searchContoller: ref.watch(timetableSearchPageSearchController.notifier),
     searchFocus: ref.watch(timetableSearchPageSearchFocus.notifier),
     event: ref.watch(timetableSearchPageEventType.notifier),
-    querryInProgress: ref.watch(timetableSearchPageQuerryInProgress.notifier),
     timer: ref.watch(timetableSearchPageTimer.notifier),
   );
 });
@@ -39,7 +36,6 @@ class TimetableSearchPageManager {
   final StateController<TextEditingController> searchContoller;
   final StateController<FocusNode> searchFocus;
   final StateController<TimetableSearchEventType> event;
-  final TimetableSearchPageQuerryInProgressNotifier querryInProgress;
   final StateController<Timer> timer;
 
   TimetableSearchPageManager({
@@ -49,7 +45,6 @@ class TimetableSearchPageManager {
     required this.searchContoller,
     required this.searchFocus,
     required this.event,
-    required this.querryInProgress,
     required this.timer,
   });
 
@@ -65,29 +60,43 @@ class TimetableSearchPageManager {
   }
 
   void unfocusSearch() {
-    searchFocus.state.unfocus();
+    if (searchFocus.state.hasFocus) {
+      searchFocus.state.unfocus();
+      if (event.state == TimetableSearchEventType.inputDelay) {
+        instantSearch();
+      }
+    }
   }
 
-  void selectTimetable(TimetableInfo timetable) {
-    timetablePageManager.selectTimetable(timetable);
+  Future<void> selectTimetable(TimetableInfo timetable) async {
+    await timetablePageManager.selectTimetable(timetable);
   }
 
-  void search(String querry) async {
+  Future<void> instantSearch() =>
+      search(searchContoller.state.text, delayBeforeRequest: false);
+
+  Future<void> delayedSearch([String? text]) =>
+      search(text ?? searchContoller.state.text, delayBeforeRequest: true);
+
+  Future<void> search(String querry, {required bool delayBeforeRequest}) async {
     await Future(() {});
     timer.state.cancel();
-    event.state = TimetableSearchEventType.loading;
-    timer.state = Timer(const Duration(milliseconds: 700), () {
+    event.state = TimetableSearchEventType.inputDelay;
+    if (delayBeforeRequest) {
+      timer.state = Timer(const Duration(milliseconds: 800), () {
+        _search(querry);
+      });
+    } else {
       _search(querry);
-    });
+    }
   }
 
-  void _search(String querry) async {
+  Future<void> _search(String querry) async {
     await Future(() {});
 
-    querryInProgress.add();
+    event.state = TimetableSearchEventType.loading;
 
     if (querry.strip().isEmpty) {
-      querryInProgress.sub();
       event.state = TimetableSearchEventType.welcome;
       return;
     }
@@ -96,14 +105,15 @@ class TimetableSearchPageManager {
 
     try {
       response = await api.apiLessonsAutocompleteGet(q: querry);
-      querryInProgress.sub();
     } catch (e) {
-      querryInProgress.sub();
       event.state = TimetableSearchEventType.error;
       return;
     }
 
-    if (querryInProgress.state >= 1) return;
+    // If the text is different, then another request is coming soon
+    if (searchContoller.state.text != querry) {
+      return;
+    }
 
     final res = response.body!;
 
@@ -123,7 +133,7 @@ class TimetableSearchPageManager {
       timetablesList.add(
         TimetableInfo(
           id: teacher.id,
-          label: teacher.name,
+          label: teacher.fullName,
           type: TimetableType.teacher,
         ),
       );

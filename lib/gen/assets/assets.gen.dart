@@ -10,6 +10,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
+import 'package:rive/rive.dart';
 
 class $AssetsBrooklynGen {
   const $AssetsBrooklynGen();
@@ -38,6 +39,14 @@ class $AssetsBrooklynGen {
   SvgGenImage get pageNotFound1 =>
       const SvgGenImage('assets/brooklyn/page-not-found-1.svg');
 
+  /// File path: assets/brooklyn/page-under-construction-3.svg
+  SvgGenImage get pageUnderConstruction3 =>
+      const SvgGenImage('assets/brooklyn/page-under-construction-3.svg');
+
+  /// File path: assets/brooklyn/product-development-1.svg
+  SvgGenImage get productDevelopment1 =>
+      const SvgGenImage('assets/brooklyn/product-development-1.svg');
+
   /// File path: assets/brooklyn/rest-3.svg
   SvgGenImage get rest3 => const SvgGenImage('assets/brooklyn/rest-3.svg');
 
@@ -48,6 +57,10 @@ class $AssetsBrooklynGen {
   /// File path: assets/brooklyn/something-went-wrong-2.svg
   SvgGenImage get somethingWentWrong2 =>
       const SvgGenImage('assets/brooklyn/something-went-wrong-2.svg');
+
+  /// File path: assets/brooklyn/virtual-reality-4.svg
+  SvgGenImage get virtualReality4 =>
+      const SvgGenImage('assets/brooklyn/virtual-reality-4.svg');
 
   /// File path: assets/brooklyn/welcome-3.svg
   SvgGenImage get welcome3 =>
@@ -61,9 +74,12 @@ class $AssetsBrooklynGen {
         managerDesk2,
         noConnection4,
         pageNotFound1,
+        pageUnderConstruction3,
+        productDevelopment1,
         rest3,
         smartPeople2,
         somethingWentWrong2,
+        virtualReality4,
         welcome3
       ];
 }
@@ -86,11 +102,36 @@ class $AssetsIconsGen {
   List<dynamic> get values => [cubeIcon, cubeLogo, roundedCubeLogo];
 }
 
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
+
+  /// File path: assets/images/spline.png
+  AssetGenImage get spline => const AssetGenImage('assets/images/spline.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [spline];
+}
+
+class $AssetsRiveGen {
+  const $AssetsRiveGen();
+
+  /// File path: assets/rive/icons.riv
+  RiveGenImage get icons => const RiveGenImage('assets/rive/icons.riv');
+
+  /// File path: assets/rive/shapes.riv
+  RiveGenImage get shapes => const RiveGenImage('assets/rive/shapes.riv');
+
+  /// List of all assets
+  List<RiveGenImage> get values => [icons, shapes];
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsBrooklynGen brooklyn = $AssetsBrooklynGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsRiveGen rive = $AssetsRiveGen();
 }
 
 class AssetGenImage {
@@ -203,6 +244,41 @@ class SvgGenImage {
       colorBlendMode: colorBlendMode,
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
+    );
+  }
+
+  String get path => _assetName;
+
+  String get keyName => _assetName;
+}
+
+class RiveGenImage {
+  const RiveGenImage(this._assetName);
+
+  final String _assetName;
+
+  RiveAnimation rive({
+    String? artboard,
+    List<String> animations = const [],
+    List<String> stateMachines = const [],
+    BoxFit? fit,
+    Alignment? alignment,
+    Widget? placeHolder,
+    bool antialiasing = true,
+    List<RiveAnimationController> controllers = const [],
+    OnInitCallback? onInit,
+  }) {
+    return RiveAnimation.asset(
+      _assetName,
+      artboard: artboard,
+      animations: animations,
+      stateMachines: stateMachines,
+      fit: fit,
+      alignment: alignment,
+      placeHolder: placeHolder,
+      antialiasing: antialiasing,
+      controllers: controllers,
+      onInit: onInit,
     );
   }
 

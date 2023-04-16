@@ -3098,8 +3098,8 @@ class LessonCollisionInfo {
     this.place,
     required this.date,
     required this.id,
-    this.groupNames,
-    this.teacherNames,
+    required this.groupNames,
+    required this.teacherNames,
   });
 
   factory LessonCollisionInfo.fromJson(Map<String, dynamic> json) =>
@@ -3125,9 +3125,9 @@ class LessonCollisionInfo {
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'group_names', defaultValue: <String>[])
-  final List<String>? groupNames;
+  final List<String> groupNames;
   @JsonKey(name: 'teacher_names', defaultValue: <String>[])
-  final List<String>? teacherNames;
+  final List<String> teacherNames;
   static const fromJsonFactory = _$LessonCollisionInfoFromJson;
 
   @override
@@ -3213,8 +3213,8 @@ extension $LessonCollisionInfoExtension on LessonCollisionInfo {
       Wrapped<PlaceInDb?>? place,
       Wrapped<DateTime>? date,
       Wrapped<int>? id,
-      Wrapped<List<String>?>? groupNames,
-      Wrapped<List<String>?>? teacherNames}) {
+      Wrapped<List<String>>? groupNames,
+      Wrapped<List<String>>? teacherNames}) {
     return LessonCollisionInfo(
         number: (number != null ? number.value : this.number),
         isRemotely: (isRemotely != null ? isRemotely.value : this.isRemotely),
@@ -3615,8 +3615,8 @@ class LessonFullNamesInDb {
     required this.id,
     this.theme,
     required this.status,
-    this.groupNames,
-    this.teacherNames,
+    required this.groupNames,
+    required this.teacherNames,
     required this.number,
     required this.isRemotely,
     required this.isElective,
@@ -3643,9 +3643,9 @@ class LessonFullNamesInDb {
   )
   final enums.LessonStatus status;
   @JsonKey(name: 'group_names', defaultValue: <String>[])
-  final List<String>? groupNames;
+  final List<String> groupNames;
   @JsonKey(name: 'teacher_names', defaultValue: <String>[])
-  final List<String>? teacherNames;
+  final List<String> teacherNames;
   @JsonKey(name: 'number')
   final int number;
   @JsonKey(name: 'is_remotely')
@@ -3750,8 +3750,8 @@ extension $LessonFullNamesInDbExtension on LessonFullNamesInDb {
       {Wrapped<int>? id,
       Wrapped<String?>? theme,
       Wrapped<enums.LessonStatus>? status,
-      Wrapped<List<String>?>? groupNames,
-      Wrapped<List<String>?>? teacherNames,
+      Wrapped<List<String>>? groupNames,
+      Wrapped<List<String>>? teacherNames,
       Wrapped<int>? number,
       Wrapped<bool>? isRemotely,
       Wrapped<bool>? isElective,
@@ -4911,8 +4911,8 @@ class MainLessonCollisionInfo {
     required this.id,
     required this.weekday,
     this.parity,
-    this.groupNames,
-    this.teacherNames,
+    required this.groupNames,
+    required this.teacherNames,
   });
 
   factory MainLessonCollisionInfo.fromJson(Map<String, dynamic> json) =>
@@ -4940,9 +4940,9 @@ class MainLessonCollisionInfo {
   @JsonKey(name: 'parity')
   final int? parity;
   @JsonKey(name: 'group_names', defaultValue: <String>[])
-  final List<String>? groupNames;
+  final List<String> groupNames;
   @JsonKey(name: 'teacher_names', defaultValue: <String>[])
-  final List<String>? teacherNames;
+  final List<String> teacherNames;
   static const fromJsonFactory = _$MainLessonCollisionInfoFromJson;
 
   @override
@@ -5035,8 +5035,8 @@ extension $MainLessonCollisionInfoExtension on MainLessonCollisionInfo {
       Wrapped<int>? id,
       Wrapped<int>? weekday,
       Wrapped<int?>? parity,
-      Wrapped<List<String>?>? groupNames,
-      Wrapped<List<String>?>? teacherNames}) {
+      Wrapped<List<String>>? groupNames,
+      Wrapped<List<String>>? teacherNames}) {
     return MainLessonCollisionInfo(
         number: (number != null ? number.value : this.number),
         isRemotely: (isRemotely != null ? isRemotely.value : this.isRemotely),
@@ -9652,8 +9652,8 @@ class SessionEventCollisionInfo {
     required this.semesterId,
     required this.createdUserId,
     required this.id,
-    this.groupNames,
-    this.teacherNames,
+    required this.groupNames,
+    required this.teacherNames,
   });
 
   factory SessionEventCollisionInfo.fromJson(Map<String, dynamic> json) =>
@@ -9685,9 +9685,9 @@ class SessionEventCollisionInfo {
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'group_names', defaultValue: <String>[])
-  final List<String>? groupNames;
+  final List<String> groupNames;
   @JsonKey(name: 'teacher_names', defaultValue: <String>[])
-  final List<String>? teacherNames;
+  final List<String> teacherNames;
   static const fromJsonFactory = _$SessionEventCollisionInfoFromJson;
 
   @override
@@ -9781,8 +9781,8 @@ extension $SessionEventCollisionInfoExtension on SessionEventCollisionInfo {
       Wrapped<int>? semesterId,
       Wrapped<int>? createdUserId,
       Wrapped<int>? id,
-      Wrapped<List<String>?>? groupNames,
-      Wrapped<List<String>?>? teacherNames}) {
+      Wrapped<List<String>>? groupNames,
+      Wrapped<List<String>>? teacherNames}) {
     return SessionEventCollisionInfo(
         eventTypeId:
             (eventTypeId != null ? eventTypeId.value : this.eventTypeId),
@@ -10218,8 +10218,8 @@ class SessionEventInDb {
     required this.isRemotely,
     required this.disciplineId,
     this.placeId,
-    required this.groups,
-    required this.teachers,
+    this.groups,
+    this.teachers,
     required this.semesterId,
     required this.createdUserId,
   });
@@ -10249,9 +10249,9 @@ class SessionEventInDb {
   @JsonKey(name: 'place_id')
   final int? placeId;
   @JsonKey(name: 'groups', defaultValue: <int>[])
-  final List<int> groups;
+  final List<int>? groups;
   @JsonKey(name: 'teachers', defaultValue: <int>[])
-  final List<int> teachers;
+  final List<int>? teachers;
   @JsonKey(name: 'semester_id')
   final int semesterId;
   @JsonKey(name: 'created_user_id')
@@ -10347,8 +10347,8 @@ extension $SessionEventInDbExtension on SessionEventInDb {
       Wrapped<bool>? isRemotely,
       Wrapped<int>? disciplineId,
       Wrapped<int?>? placeId,
-      Wrapped<List<int>>? groups,
-      Wrapped<List<int>>? teachers,
+      Wrapped<List<int>?>? groups,
+      Wrapped<List<int>?>? teachers,
       Wrapped<int>? semesterId,
       Wrapped<int>? createdUserId}) {
     return SessionEventInDb(
@@ -11553,7 +11553,7 @@ class TeacherFullInDb {
     this.academicTitle,
     this.academicDegree,
     required this.id,
-    this.facultiesIds,
+    this.faculties,
   });
 
   factory TeacherFullInDb.fromJson(Map<String, dynamic> json) =>
@@ -11590,8 +11590,8 @@ class TeacherFullInDb {
   final TeacherAcademicDegreeInDb? academicDegree;
   @JsonKey(name: 'id')
   final int id;
-  @JsonKey(name: 'faculties_ids', defaultValue: <int>[])
-  final List<int>? facultiesIds;
+  @JsonKey(name: 'faculties', defaultValue: <FacultyInDb>[])
+  final List<FacultyInDb>? faculties;
   static const fromJsonFactory = _$TeacherFullInDbFromJson;
 
   @override
@@ -11625,9 +11625,9 @@ class TeacherFullInDb {
                     .equals(other.academicDegree, academicDegree)) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.facultiesIds, facultiesIds) ||
+            (identical(other.faculties, faculties) ||
                 const DeepCollectionEquality()
-                    .equals(other.facultiesIds, facultiesIds)));
+                    .equals(other.faculties, faculties)));
   }
 
   @override
@@ -11645,7 +11645,7 @@ class TeacherFullInDb {
       const DeepCollectionEquality().hash(academicTitle) ^
       const DeepCollectionEquality().hash(academicDegree) ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(facultiesIds) ^
+      const DeepCollectionEquality().hash(faculties) ^
       runtimeType.hashCode;
 }
 
@@ -11661,7 +11661,7 @@ extension $TeacherFullInDbExtension on TeacherFullInDb {
       enums.TeacherAcademicTitle? academicTitle,
       TeacherAcademicDegreeInDb? academicDegree,
       int? id,
-      List<int>? facultiesIds}) {
+      List<FacultyInDb>? faculties}) {
     return TeacherFullInDb(
         fullName: fullName ?? this.fullName,
         firstName: firstName ?? this.firstName,
@@ -11673,7 +11673,7 @@ extension $TeacherFullInDbExtension on TeacherFullInDb {
         academicTitle: academicTitle ?? this.academicTitle,
         academicDegree: academicDegree ?? this.academicDegree,
         id: id ?? this.id,
-        facultiesIds: facultiesIds ?? this.facultiesIds);
+        faculties: faculties ?? this.faculties);
   }
 
   TeacherFullInDb copyWithWrapped(
@@ -11687,7 +11687,7 @@ extension $TeacherFullInDbExtension on TeacherFullInDb {
       Wrapped<enums.TeacherAcademicTitle?>? academicTitle,
       Wrapped<TeacherAcademicDegreeInDb?>? academicDegree,
       Wrapped<int>? id,
-      Wrapped<List<int>?>? facultiesIds}) {
+      Wrapped<List<FacultyInDb>?>? faculties}) {
     return TeacherFullInDb(
         fullName: (fullName != null ? fullName.value : this.fullName),
         firstName: (firstName != null ? firstName.value : this.firstName),
@@ -11702,8 +11702,7 @@ extension $TeacherFullInDbExtension on TeacherFullInDb {
             ? academicDegree.value
             : this.academicDegree),
         id: (id != null ? id.value : this.id),
-        facultiesIds:
-            (facultiesIds != null ? facultiesIds.value : this.facultiesIds));
+        faculties: (faculties != null ? faculties.value : this.faculties));
   }
 }
 
@@ -11720,7 +11719,7 @@ class TeacherInDb {
     this.gender,
     this.birthday,
     required this.id,
-    this.facultiesIds,
+    required this.facultiesIds,
   });
 
   factory TeacherInDb.fromJson(Map<String, dynamic> json) =>
@@ -11758,7 +11757,7 @@ class TeacherInDb {
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'faculties_ids', defaultValue: <int>[])
-  final List<int>? facultiesIds;
+  final List<int> facultiesIds;
   static const fromJsonFactory = _$TeacherInDbFromJson;
 
   @override
@@ -11854,7 +11853,7 @@ extension $TeacherInDbExtension on TeacherInDb {
       Wrapped<bool?>? gender,
       Wrapped<DateTime?>? birthday,
       Wrapped<int>? id,
-      Wrapped<List<int>?>? facultiesIds}) {
+      Wrapped<List<int>>? facultiesIds}) {
     return TeacherInDb(
         academicTitle:
             (academicTitle != null ? academicTitle.value : this.academicTitle),
@@ -11878,7 +11877,7 @@ extension $TeacherInDbExtension on TeacherInDb {
 class TeacherShortInDb {
   TeacherShortInDb({
     required this.id,
-    required this.name,
+    required this.fullName,
   });
 
   factory TeacherShortInDb.fromJson(Map<String, dynamic> json) =>
@@ -11889,8 +11888,8 @@ class TeacherShortInDb {
 
   @JsonKey(name: 'id')
   final int id;
-  @JsonKey(name: 'name')
-  final String name;
+  @JsonKey(name: 'full_name')
+  final String fullName;
   static const fromJsonFactory = _$TeacherShortInDbFromJson;
 
   @override
@@ -11899,8 +11898,9 @@ class TeacherShortInDb {
         (other is TeacherShortInDb &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+            (identical(other.fullName, fullName) ||
+                const DeepCollectionEquality()
+                    .equals(other.fullName, fullName)));
   }
 
   @override
@@ -11909,19 +11909,21 @@ class TeacherShortInDb {
   @override
   int get hashCode =>
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(fullName) ^
       runtimeType.hashCode;
 }
 
 extension $TeacherShortInDbExtension on TeacherShortInDb {
-  TeacherShortInDb copyWith({int? id, String? name}) {
-    return TeacherShortInDb(id: id ?? this.id, name: name ?? this.name);
+  TeacherShortInDb copyWith({int? id, String? fullName}) {
+    return TeacherShortInDb(
+        id: id ?? this.id, fullName: fullName ?? this.fullName);
   }
 
-  TeacherShortInDb copyWithWrapped({Wrapped<int>? id, Wrapped<String>? name}) {
+  TeacherShortInDb copyWithWrapped(
+      {Wrapped<int>? id, Wrapped<String>? fullName}) {
     return TeacherShortInDb(
         id: (id != null ? id.value : this.id),
-        name: (name != null ? name.value : this.name));
+        fullName: (fullName != null ? fullName.value : this.fullName));
   }
 }
 

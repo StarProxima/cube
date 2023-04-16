@@ -2,18 +2,16 @@ import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/gen/assets/assets.gen.dart';
-
 import 'package:cube_system/features/landing_page/managers/landing_page_manager.dart';
 
-class LandingPlatformCard extends ConsumerWidget {
+class LandingServiceCard extends ConsumerWidget {
   final String title;
   final Text? subTitle;
   final String? description;
   final String linkName;
   final Uri uri;
 
-  const LandingPlatformCard({
+  const LandingServiceCard({
     required this.title,
     this.subTitle,
     this.description,
@@ -27,7 +25,7 @@ class LandingPlatformCard extends ConsumerWidget {
     final manager = ref.watch(landingPageManager);
     return Container(
       decoration: BoxDecoration(
-        color: context.colors.card,
+        color: context.colors.background,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
@@ -59,10 +57,11 @@ class LandingPlatformCard extends ConsumerWidget {
                           children: [
                             Row(
                               children: [
-                                Assets.icons.roundedCubeLogo.svg(
-                                  height: 36,
-                                ),
-                                const SizedBox(width: 8),
+                                // TODO: Иконки для сервисов
+                                // Assets.icons.roundedCubeLogo.svg(
+                                //   height: 36,
+                                // ),
+                                // const SizedBox(width: 8),
                                 Text(
                                   title,
                                   style: context.textStyles.smallLabel.copyWith(

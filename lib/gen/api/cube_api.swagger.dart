@@ -1794,10 +1794,8 @@ abstract class CubeApi extends ChopperService {
       _apiSemesterLessonsDirectionsSemesterLessonsDirectionIdPut({
     @Path('semester_lessons_direction_id')
         required int? semesterLessonsDirectionId,
-    @Header('Client_name')
-        String? clientName,
-    @Body()
-        required SemesterLessonsDirectionUpdate? body,
+    @Header('Client_name') String? clientName,
+    @Body() required SemesterLessonsDirectionUpdate? body,
   });
 
   ///Delete Semester Lessons Direction
@@ -1824,8 +1822,7 @@ abstract class CubeApi extends ChopperService {
       _apiSemesterLessonsDirectionsSemesterLessonsDirectionIdDelete({
     @Path('semester_lessons_direction_id')
         required int? semesterLessonsDirectionId,
-    @Header('Client_name')
-        String? clientName,
+    @Header('Client_name') String? clientName,
   });
 
   ///Semester Session Directions
@@ -1918,10 +1915,8 @@ abstract class CubeApi extends ChopperService {
       _apiSemesterSessionDirectionsSemesterSessionDirectionIdPut({
     @Path('semester_session_direction_id')
         required int? semesterSessionDirectionId,
-    @Header('Client_name')
-        String? clientName,
-    @Body()
-        required SemesterSessionDirectionUpdate? body,
+    @Header('Client_name') String? clientName,
+    @Body() required SemesterSessionDirectionUpdate? body,
   });
 
   ///Delete Semester Lessons Direction
@@ -1948,8 +1943,7 @@ abstract class CubeApi extends ChopperService {
       _apiSemesterSessionDirectionsSemesterSessionDirectionIdDelete({
     @Path('semester_session_direction_id')
         required int? semesterSessionDirectionId,
-    @Header('Client_name')
-        String? clientName,
+    @Header('Client_name') String? clientName,
   });
 
   ///Get View Modes
@@ -2436,18 +2430,38 @@ abstract class CubeApi extends ChopperService {
   Future<chopper.Response<List<TeacherAcademicDegreeInDb>>>
       _apiTeachersAcademicDegreesGet();
 
+  ///Get Teacher Faculties
+  ///@param teacher_id
+  Future<chopper.Response<List<int>>> apiTeachersTeacherIdFacultiesIdsGet(
+      {required int? teacherId}) {
+    return _apiTeachersTeacherIdFacultiesIdsGet(teacherId: teacherId);
+  }
+
+  ///Get Teacher Faculties
+  ///@param teacher_id
+  @Get(path: '/api/teachers/{teacher_id}/faculties_ids')
+  Future<chopper.Response<List<int>>> _apiTeachersTeacherIdFacultiesIdsGet(
+      {@Path('teacher_id') required int? teacherId});
+
   ///Get Teacher Groups
   ///@param teacher_id
-  Future<chopper.Response<List<int>>> apiTeachersTeacherIdGroupsIdsGet(
-      {required int? teacherId}) {
-    return _apiTeachersTeacherIdGroupsIdsGet(teacherId: teacherId);
+  ///@param faculty_id
+  Future<chopper.Response<List<int>>> apiTeachersTeacherIdGroupsIdsGet({
+    required int? teacherId,
+    int? facultyId,
+  }) {
+    return _apiTeachersTeacherIdGroupsIdsGet(
+        teacherId: teacherId, facultyId: facultyId);
   }
 
   ///Get Teacher Groups
   ///@param teacher_id
+  ///@param faculty_id
   @Get(path: '/api/teachers/{teacher_id}/groups_ids')
-  Future<chopper.Response<List<int>>> _apiTeachersTeacherIdGroupsIdsGet(
-      {@Path('teacher_id') required int? teacherId});
+  Future<chopper.Response<List<int>>> _apiTeachersTeacherIdGroupsIdsGet({
+    @Path('teacher_id') required int? teacherId,
+    @Query('faculty_id') int? facultyId,
+  });
 
   ///Get Teacher Disciplines
   ///@param teacher_id

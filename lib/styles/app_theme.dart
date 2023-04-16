@@ -9,9 +9,12 @@ class AppTheme {
   }) {
     final theme = ThemeData.light();
     return theme.copyWith(
-      scaffoldBackgroundColor: colors.card,
+      scaffoldBackgroundColor: colors.background,
       dividerColor: colors.subduedBorder,
       primaryColor: colors.primary,
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: colors.background,
+      ),
       dividerTheme: DividerThemeData(
         color: colors.subduedBorder,
         thickness: 1,
@@ -20,7 +23,7 @@ class AppTheme {
       appBarTheme: AppBarTheme(
         centerTitle: true,
         titleTextStyle: textStyles.appBarTitle,
-        backgroundColor: colors.card,
+        backgroundColor: colors.background,
         shadowColor: colors.shadow,
       ),
       extensions: [

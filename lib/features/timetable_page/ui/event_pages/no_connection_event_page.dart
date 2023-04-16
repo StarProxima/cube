@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:cube_system/gen/assets/assets.gen.dart';
-import 'package:cube_system/ui/widgets/app_event_page.dart';
+import 'package:cube_system/ui/widgets/event_pages/app_event_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class NoConnectionEventPage extends ConsumerWidget {

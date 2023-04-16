@@ -1,11 +1,12 @@
-import 'package:cube_system/features/landing_page/ui/widgets/landing_availability_page.dart';
+import 'package:cube_system/features/landing_page/ui/widgets/landing_services_page.dart';
+import 'package:cube_system/features/landing_page/ui/widgets/landing_features_page.dart';
 import 'package:cube_system/features/landing_page/ui/widgets/landing_welcome_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/ui/widgets/app_button.dart';
-import 'package:cube_system/features/timetable_page/ui/timetable_page.dart';
+
+import 'package:go_router/go_router.dart';
 
 class LandingPage extends ConsumerWidget {
   const LandingPage({
@@ -40,11 +41,12 @@ class _LandingPageState extends ConsumerState<_LandingPage> {
             child: PageView(
               controller: pageController,
               onPageChanged: (index) {
-                isLastPage = index == 1;
+                isLastPage = index == 2;
               },
               children: const [
                 LandingWelcomePage(),
-                LandingAvailabilityPage(),
+                LandingFeaturesPage(),
+                LandingServicesPage(),
               ],
             ),
           );
@@ -58,13 +60,7 @@ class _LandingPageState extends ConsumerState<_LandingPage> {
           isExpanded: true,
           onTap: () {
             if (isLastPage) {
-              Navigator.of(context).push(
-                CupertinoPageRoute(
-                  builder: (context) {
-                    return const TimetablePage();
-                  },
-                ),
-              );
+              context.go('/timetable');
             } else {
               pageController.nextPage(
                 duration: const Duration(milliseconds: 300),

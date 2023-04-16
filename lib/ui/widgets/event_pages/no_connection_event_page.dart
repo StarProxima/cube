@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/gen/assets/assets.gen.dart';
-import 'package:cube_system/ui/widgets/app_event_page.dart';
+import 'package:cube_system/ui/widgets/event_pages/app_event_page.dart';
 
-class NoConnectionSearchEventPage extends ConsumerWidget {
-  const NoConnectionSearchEventPage({super.key});
+class NoConnectionEventPage extends ConsumerWidget {
+  final VoidCallback onTap;
+  const NoConnectionEventPage({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -15,9 +16,7 @@ class NoConnectionSearchEventPage extends ConsumerWidget {
       title: 'Ошибка соединения',
       subTitle: 'Не удалось подключиться к серверу',
       buttonText: 'Попробовать ещё раз',
-      onTap: () {
-        //TODO: implement this
-      },
+      onTap: onTap,
     );
   }
 }

@@ -12,28 +12,46 @@ class AppButton extends StatelessWidget {
     this.text,
     this.onTap,
     this.rightIcon,
-    this.height = 36,
+    this.height = 42,
     this.isExpanded = false,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: onTap,
-      style: TextButton.styleFrom(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        backgroundColor: context.colors.primary,
-        foregroundColor: context.colors.white,
-        textStyle: context.textStyles.smallLabel.copyWith(fontSize: 15),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
-        maximumSize: Size(double.infinity, height),
-        minimumSize: isExpanded ? Size(double.infinity, height) : null,
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: context.colors.primary.withOpacity(0.3),
+            offset: const Offset(0, 1),
+            blurRadius: 8,
+          )
+        ],
+        borderRadius: BorderRadius.circular(8),
       ),
-      child: Text(
-        text ?? '',
+      child: TextButton(
+        onPressed: onTap,
+        style: TextButton.styleFrom(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          backgroundColor: context.colors.primary,
+          foregroundColor: context.colors.white,
+          disabledBackgroundColor: context.colors.border,
+          disabledForegroundColor: context.colors.white,
+          textStyle: context.textStyles.smallLabel.copyWith(fontSize: 15),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          maximumSize: Size(double.infinity, height),
+          minimumSize: Size(isExpanded ? double.infinity : 0, height),
+        ),
+        child: Text(
+          text ?? '',
+          style: context.textStyles.label.copyWith(
+            fontSize: 15,
+            color: context.colors.white,
+          ),
+        ),
       ),
     );
   }
