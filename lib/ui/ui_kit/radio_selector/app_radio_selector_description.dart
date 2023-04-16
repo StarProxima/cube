@@ -70,7 +70,7 @@ class _AppRadioSelectorDescriptionState
                   padding: const EdgeInsets.only(left: 12, bottom: 8),
                   child: Text(
                     widget.description!,
-                    style: context.textStyles.subTitle.copyWith(
+                    style: context.textStyles.smallSubTitle.copyWith(
                       color: context.colors.subduedText,
                     ),
                   ),

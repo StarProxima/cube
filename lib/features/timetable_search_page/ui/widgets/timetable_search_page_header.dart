@@ -2,7 +2,7 @@ import 'package:cube_system/features/timetable_search_page/ui/widgets/timetable_
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/ui/widgets/app_back_button.dart';
+import 'package:cube_system/ui/ui_kit/app_back_button.dart';
 
 class TimetableSearchPageHeader extends ConsumerWidget
     implements PreferredSizeWidget {

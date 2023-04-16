@@ -1794,10 +1794,8 @@ abstract class CubeApi extends ChopperService {
       _apiSemesterLessonsDirectionsSemesterLessonsDirectionIdPut({
     @Path('semester_lessons_direction_id')
         required int? semesterLessonsDirectionId,
-    @Header('Client_name')
-        String? clientName,
-    @Body()
-        required SemesterLessonsDirectionUpdate? body,
+    @Header('Client_name') String? clientName,
+    @Body() required SemesterLessonsDirectionUpdate? body,
   });
 
   ///Delete Semester Lessons Direction
@@ -1824,8 +1822,7 @@ abstract class CubeApi extends ChopperService {
       _apiSemesterLessonsDirectionsSemesterLessonsDirectionIdDelete({
     @Path('semester_lessons_direction_id')
         required int? semesterLessonsDirectionId,
-    @Header('Client_name')
-        String? clientName,
+    @Header('Client_name') String? clientName,
   });
 
   ///Semester Session Directions
@@ -1918,10 +1915,8 @@ abstract class CubeApi extends ChopperService {
       _apiSemesterSessionDirectionsSemesterSessionDirectionIdPut({
     @Path('semester_session_direction_id')
         required int? semesterSessionDirectionId,
-    @Header('Client_name')
-        String? clientName,
-    @Body()
-        required SemesterSessionDirectionUpdate? body,
+    @Header('Client_name') String? clientName,
+    @Body() required SemesterSessionDirectionUpdate? body,
   });
 
   ///Delete Semester Lessons Direction
@@ -1948,8 +1943,7 @@ abstract class CubeApi extends ChopperService {
       _apiSemesterSessionDirectionsSemesterSessionDirectionIdDelete({
     @Path('semester_session_direction_id')
         required int? semesterSessionDirectionId,
-    @Header('Client_name')
-        String? clientName,
+    @Header('Client_name') String? clientName,
   });
 
   ///Get View Modes

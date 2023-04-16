@@ -60,8 +60,12 @@ class _AppRadioSelectorState<T> extends State<AppRadioSelector<T>> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     dense: true,
-                    visualDensity: VisualDensity.compact,
-                    contentPadding: EdgeInsets.zero,
+                    visualDensity: const VisualDensity(
+                      horizontal: VisualDensity.minimumDensity,
+                      vertical: VisualDensity.minimumDensity,
+                    ),
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    contentPadding: const EdgeInsets.all(4),
                     onChanged: (value) {
                       if (value != null) {
                         widget.onSelect?.call(item.value);
