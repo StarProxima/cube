@@ -25,6 +25,8 @@ mixin _$AppSettingsViewState {
       throw _privateConstructorUsedError;
   LessonCardLessonTypePosition get lessonCardLessonTypePosition =>
       throw _privateConstructorUsedError;
+  LessonCardRecessDisplayCondition get lessonCardRecessDisplayCondition =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +43,8 @@ abstract class $AppSettingsViewStateCopyWith<$Res> {
   $Res call(
       {AppThemeMode appThemeMode,
       AppLessonColorsMode lessonColorsMode,
-      LessonCardLessonTypePosition lessonCardLessonTypePosition});
+      LessonCardLessonTypePosition lessonCardLessonTypePosition,
+      LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition});
 }
 
 /// @nodoc
@@ -61,6 +64,7 @@ class _$AppSettingsViewStateCopyWithImpl<$Res,
     Object? appThemeMode = null,
     Object? lessonColorsMode = null,
     Object? lessonCardLessonTypePosition = null,
+    Object? lessonCardRecessDisplayCondition = null,
   }) {
     return _then(_value.copyWith(
       appThemeMode: null == appThemeMode
@@ -75,6 +79,10 @@ class _$AppSettingsViewStateCopyWithImpl<$Res,
           ? _value.lessonCardLessonTypePosition
           : lessonCardLessonTypePosition // ignore: cast_nullable_to_non_nullable
               as LessonCardLessonTypePosition,
+      lessonCardRecessDisplayCondition: null == lessonCardRecessDisplayCondition
+          ? _value.lessonCardRecessDisplayCondition
+          : lessonCardRecessDisplayCondition // ignore: cast_nullable_to_non_nullable
+              as LessonCardRecessDisplayCondition,
     ) as $Val);
   }
 }
@@ -90,7 +98,8 @@ abstract class _$$_AppSettingsViewStateCopyWith<$Res>
   $Res call(
       {AppThemeMode appThemeMode,
       AppLessonColorsMode lessonColorsMode,
-      LessonCardLessonTypePosition lessonCardLessonTypePosition});
+      LessonCardLessonTypePosition lessonCardLessonTypePosition,
+      LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition});
 }
 
 /// @nodoc
@@ -107,6 +116,7 @@ class __$$_AppSettingsViewStateCopyWithImpl<$Res>
     Object? appThemeMode = null,
     Object? lessonColorsMode = null,
     Object? lessonCardLessonTypePosition = null,
+    Object? lessonCardRecessDisplayCondition = null,
   }) {
     return _then(_$_AppSettingsViewState(
       appThemeMode: null == appThemeMode
@@ -121,6 +131,10 @@ class __$$_AppSettingsViewStateCopyWithImpl<$Res>
           ? _value.lessonCardLessonTypePosition
           : lessonCardLessonTypePosition // ignore: cast_nullable_to_non_nullable
               as LessonCardLessonTypePosition,
+      lessonCardRecessDisplayCondition: null == lessonCardRecessDisplayCondition
+          ? _value.lessonCardRecessDisplayCondition
+          : lessonCardRecessDisplayCondition // ignore: cast_nullable_to_non_nullable
+              as LessonCardRecessDisplayCondition,
     ));
   }
 }
@@ -132,7 +146,9 @@ class _$_AppSettingsViewState implements _AppSettingsViewState {
       {this.appThemeMode = AppThemeMode.system,
       this.lessonColorsMode = AppLessonColorsMode.cube,
       this.lessonCardLessonTypePosition =
-          LessonCardLessonTypePosition.afterBottomLeftBlock});
+          LessonCardLessonTypePosition.afterBottomLeftBlock,
+      this.lessonCardRecessDisplayCondition =
+          LessonCardRecessDisplayCondition.always});
 
   factory _$_AppSettingsViewState.fromJson(Map<String, dynamic> json) =>
       _$$_AppSettingsViewStateFromJson(json);
@@ -146,10 +162,13 @@ class _$_AppSettingsViewState implements _AppSettingsViewState {
   @override
   @JsonKey()
   final LessonCardLessonTypePosition lessonCardLessonTypePosition;
+  @override
+  @JsonKey()
+  final LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition;
 
   @override
   String toString() {
-    return 'AppSettingsViewState(appThemeMode: $appThemeMode, lessonColorsMode: $lessonColorsMode, lessonCardLessonTypePosition: $lessonCardLessonTypePosition)';
+    return 'AppSettingsViewState(appThemeMode: $appThemeMode, lessonColorsMode: $lessonColorsMode, lessonCardLessonTypePosition: $lessonCardLessonTypePosition, lessonCardRecessDisplayCondition: $lessonCardRecessDisplayCondition)';
   }
 
   @override
@@ -164,13 +183,17 @@ class _$_AppSettingsViewState implements _AppSettingsViewState {
             (identical(other.lessonCardLessonTypePosition,
                     lessonCardLessonTypePosition) ||
                 other.lessonCardLessonTypePosition ==
-                    lessonCardLessonTypePosition));
+                    lessonCardLessonTypePosition) &&
+            (identical(other.lessonCardRecessDisplayCondition,
+                    lessonCardRecessDisplayCondition) ||
+                other.lessonCardRecessDisplayCondition ==
+                    lessonCardRecessDisplayCondition));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, appThemeMode, lessonColorsMode,
-      lessonCardLessonTypePosition);
+      lessonCardLessonTypePosition, lessonCardRecessDisplayCondition);
 
   @JsonKey(ignore: true)
   @override
@@ -189,10 +212,11 @@ class _$_AppSettingsViewState implements _AppSettingsViewState {
 
 abstract class _AppSettingsViewState implements AppSettingsViewState {
   factory _AppSettingsViewState(
-          {final AppThemeMode appThemeMode,
-          final AppLessonColorsMode lessonColorsMode,
-          final LessonCardLessonTypePosition lessonCardLessonTypePosition}) =
-      _$_AppSettingsViewState;
+      {final AppThemeMode appThemeMode,
+      final AppLessonColorsMode lessonColorsMode,
+      final LessonCardLessonTypePosition lessonCardLessonTypePosition,
+      final LessonCardRecessDisplayCondition
+          lessonCardRecessDisplayCondition}) = _$_AppSettingsViewState;
 
   factory _AppSettingsViewState.fromJson(Map<String, dynamic> json) =
       _$_AppSettingsViewState.fromJson;
@@ -203,6 +227,8 @@ abstract class _AppSettingsViewState implements AppSettingsViewState {
   AppLessonColorsMode get lessonColorsMode;
   @override
   LessonCardLessonTypePosition get lessonCardLessonTypePosition;
+  @override
+  LessonCardRecessDisplayCondition get lessonCardRecessDisplayCondition;
   @override
   @JsonKey(ignore: true)
   _$$_AppSettingsViewStateCopyWith<_$_AppSettingsViewState> get copyWith =>

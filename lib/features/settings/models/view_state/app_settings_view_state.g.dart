@@ -19,6 +19,10 @@ _$_AppSettingsViewState _$$_AppSettingsViewStateFromJson(
               _$LessonCardLessonTypePositionEnumMap,
               json['lessonCardLessonTypePosition']) ??
           LessonCardLessonTypePosition.afterBottomLeftBlock,
+      lessonCardRecessDisplayCondition: $enumDecodeNullable(
+              _$LessonCardRecessDisplayConditionEnumMap,
+              json['lessonCardRecessDisplayCondition']) ??
+          LessonCardRecessDisplayCondition.always,
     );
 
 Map<String, dynamic> _$$_AppSettingsViewStateToJson(
@@ -29,6 +33,9 @@ Map<String, dynamic> _$$_AppSettingsViewStateToJson(
           _$AppLessonColorsModeEnumMap[instance.lessonColorsMode]!,
       'lessonCardLessonTypePosition': _$LessonCardLessonTypePositionEnumMap[
           instance.lessonCardLessonTypePosition]!,
+      'lessonCardRecessDisplayCondition':
+          _$LessonCardRecessDisplayConditionEnumMap[
+              instance.lessonCardRecessDisplayCondition]!,
     };
 
 const _$AppThemeModeEnumMap = {
@@ -51,4 +58,11 @@ const _$LessonCardLessonTypePositionEnumMap = {
   LessonCardLessonTypePosition.beforeBottomRightBlock: 'beforeBottomRightBlock',
   LessonCardLessonTypePosition.onIndicator: 'onIndicator',
   LessonCardLessonTypePosition.none: 'none',
+};
+
+const _$LessonCardRecessDisplayConditionEnumMap = {
+  LessonCardRecessDisplayCondition.always: 'always',
+  LessonCardRecessDisplayCondition.onlyRecessBetweenLessons:
+      'onlyRecessBetweenLessons',
+  LessonCardRecessDisplayCondition.never: 'never',
 };

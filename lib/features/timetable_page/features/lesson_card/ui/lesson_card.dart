@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:cube_system/features/settings/state_holders/app_settings_view_state_holder.dart';
-import 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/free_time_window_lesson_card.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_recess.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/timetable_page/state_holders/selected_timetable.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +53,7 @@ class LessonCard extends ConsumerWidget {
           if (lesson.emptyLessonsBefore != 0)
             Padding(
               padding: const EdgeInsets.only(bottom: 16, top: 8),
-              child: FreeTimeWindowLessonCard(
+              child: LessonCardRecess(
                 numberStart: lesson.lesson.number - lesson.emptyLessonsBefore,
                 numberEnd: lesson.lesson.number - 1,
               ),

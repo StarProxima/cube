@@ -7,11 +7,11 @@ import 'package:cube_system/features/timetable_page/state_holders/lesson_timings
 
 import 'package:cube_system/features/settings/state_holders/app_lesson_colors.dart';
 
-class FreeTimeWindowLessonCard extends ConsumerWidget {
+class LessonCardRecess extends ConsumerWidget {
   final int numberStart;
   final int numberEnd;
 
-  const FreeTimeWindowLessonCard({
+  const LessonCardRecess({
     required this.numberStart,
     required this.numberEnd,
     super.key,

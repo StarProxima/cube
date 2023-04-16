@@ -8,6 +8,8 @@ import 'package:cube_system/features/settings/models/app_theme_mode.dart';
 
 import 'package:cube_system/features/settings/models/lesson_card_lesson_type_position.dart';
 
+import 'package:cube_system/features/settings/models/lesson_card_recess_display_condition.dart';
+
 final appSettingsViewStateHolder = StateNotifierProvider<
     AppSettingsViewStateHolderNotifier, AppSettingsViewState>((ref) {
   return AppSettingsViewStateHolderNotifier(
@@ -35,6 +37,14 @@ class AppSettingsViewStateHolderNotifier
   ) {
     state = state.copyWith(
       lessonCardLessonTypePosition: lessonCardLessonTypePosition,
+    );
+  }
+
+  void editLessonCardRecessDisplayCondition(
+    LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition,
+  ) {
+    state = state.copyWith(
+      lessonCardRecessDisplayCondition: lessonCardRecessDisplayCondition,
     );
   }
 }

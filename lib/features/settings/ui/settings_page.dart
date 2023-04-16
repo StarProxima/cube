@@ -9,8 +9,11 @@ import 'package:cube_system/features/settings/models/app_lesson_colors_mode.dart
 
 import 'package:cube_system/features/settings/models/lesson_card_lesson_type_position.dart';
 
+import 'package:cube_system/features/settings/models/lesson_card_recess_display_condition.dart';
+
 part 'widgets/settings_page_lesson_colors.dart';
 part 'widgets/settings_page_lesson_card_lesson_type_position.dart';
+part 'widgets/settings_page_lesson_card_recess_display_condition.dart';
 
 class SettingsPage extends ConsumerWidget {
   const SettingsPage({
@@ -46,6 +49,8 @@ class _SettingsPageState extends ConsumerState<_SettingsPage> {
             _SettingsPageLessonColors(),
             SizedBox(height: 20),
             _SettingsPageLessonCardLessonTypePosition(),
+            SizedBox(height: 20),
+            _SettingsPageLessonCardRecessDisplayCondition(),
           ],
         ),
       ),
