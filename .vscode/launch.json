@@ -25,8 +25,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Git/cube_system",
-      "program": "c:/Git/cube_system/build/Debug/outDebug",
+      "cwd": "c:/Git/cube_system/lib/features",
+      "program": "c:/Git/cube_system/lib/features/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
