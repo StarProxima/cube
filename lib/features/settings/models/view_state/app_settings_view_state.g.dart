@@ -18,7 +18,7 @@ _$_AppSettingsViewState _$$_AppSettingsViewStateFromJson(
       lessonCardLessonTypePosition: $enumDecodeNullable(
               _$LessonCardLessonTypePositionEnumMap,
               json['lessonCardLessonTypePosition']) ??
-          LessonCardLessonTypePosition.afterTeacher,
+          LessonCardLessonTypePosition.afterBottomLeftBlock,
     );
 
 Map<String, dynamic> _$$_AppSettingsViewStateToJson(
@@ -43,8 +43,11 @@ const _$AppLessonColorsModeEnumMap = {
 };
 
 const _$LessonCardLessonTypePositionEnumMap = {
-  LessonCardLessonTypePosition.afterTeacher: 'afterTeacher',
+  LessonCardLessonTypePosition.afterBottomLeftBlock: 'afterBottomLeftBlock',
+  LessonCardLessonTypePosition.afterTopLeftBlock: 'afterTopLeftBlock',
   LessonCardLessonTypePosition.bottomLeft: 'bottomLeft',
   LessonCardLessonTypePosition.topRight: 'topRight',
+  LessonCardLessonTypePosition.bottomRight: 'bottomRight',
+  LessonCardLessonTypePosition.beforeBottomRightBlock: 'beforeBottomRightBlock',
   LessonCardLessonTypePosition.none: 'none',
 };

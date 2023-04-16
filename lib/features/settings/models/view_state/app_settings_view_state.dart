@@ -16,7 +16,7 @@ class AppSettingsViewState with _$AppSettingsViewState {
         AppThemeMode appThemeMode,
     @Default(AppLessonColorsMode.cube)
         AppLessonColorsMode lessonColorsMode,
-    @Default(LessonCardLessonTypePosition.afterTeacher)
+    @Default(LessonCardLessonTypePosition.afterBottomLeftBlock)
         LessonCardLessonTypePosition lessonCardLessonTypePosition,
   }) = _AppSettingsViewState;
 

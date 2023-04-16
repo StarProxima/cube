@@ -22,17 +22,15 @@ class LessonCardFooter extends ConsumerWidget {
         ) ??
         'null';
 
-    final type = ref.watch(
-      _lessonInLessonCard.select((value) => value.lesson.type.shortName),
-    );
-
-    final color =
-        ref.watch(appLessonColorByLesson(ref.read(_lessonInLessonCard)));
-
     final teachersIsNotEmpty = teachers != "";
 
     final timetableType =
         ref.watch(selectedTimetable.select((value) => value!.type));
+
+    final lessonTypePosition = ref.watch(
+      appSettingsViewStateHolder
+          .select((value) => value.lessonCardLessonTypePosition),
+    );
 
     final String leftText, rigthText;
 
@@ -57,8 +55,13 @@ class LessonCardFooter extends ConsumerWidget {
       children: [
         Flexible(
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              if (lessonTypePosition.isBottomLeft)
+                const Padding(
+                  padding: EdgeInsets.only(left: 8),
+                  child: LessonCardLessonTypeChip(),
+                ),
               if (teachersIsNotEmpty)
                 Flexible(
                   child: Padding(
@@ -75,37 +78,40 @@ class LessonCardFooter extends ConsumerWidget {
                     ),
                   ),
                 ),
-              Container(
-                margin: const EdgeInsets.only(
-                  bottom: 4,
-                  left: 8,
+              if (lessonTypePosition.isAfterBottomLeftBlock)
+                const Padding(
+                  padding: EdgeInsets.only(left: 8),
+                  child: LessonCardLessonTypeChip(),
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                decoration: BoxDecoration(
-                  color: color,
-                  borderRadius: BorderRadius.circular(2),
-                ),
-                child: Text(
-                  type,
-                  style: context.textStyles.chipLabel
-                      .copyWith(color: Colors.white),
-                ),
-              ),
             ],
           ),
         ),
-        Container(
-          constraints: const BoxConstraints(
-            maxWidth: 160,
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-          child: Text(
-            rigthText,
-            style: context.textStyles.smallLabel.copyWith(
-              color: context.colors.subduedText,
+        Row(
+          children: [
+            if (lessonTypePosition.isBeforeBottomRightBlock)
+              const Padding(
+                padding: EdgeInsets.only(left: 8),
+                child: LessonCardLessonTypeChip(),
+              ),
+            Container(
+              constraints: const BoxConstraints(
+                maxWidth: 160,
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+              child: Text(
+                rigthText,
+                style: context.textStyles.smallLabel.copyWith(
+                  color: context.colors.subduedText,
+                ),
+                textAlign: TextAlign.right,
+              ),
             ),
-            textAlign: TextAlign.right,
-          ),
+            if (lessonTypePosition.isBottomRight)
+              const Padding(
+                padding: EdgeInsets.only(right: 4),
+                child: LessonCardLessonTypeChip(),
+              ),
+          ],
         ),
       ],
     );

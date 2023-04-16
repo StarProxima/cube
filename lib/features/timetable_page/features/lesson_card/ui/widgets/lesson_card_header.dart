@@ -18,8 +18,14 @@ class LessonCardHeader extends ConsumerWidget {
     final color =
         ref.watch(appLessonColorByLesson(ref.read(_lessonInLessonCard)));
 
+    final lessonTypePosition = ref.watch(
+      appSettingsViewStateHolder
+          .select((value) => value.lessonCardLessonTypePosition),
+    );
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Row(
           children: [
@@ -47,8 +53,22 @@ class LessonCardHeader extends ConsumerWidget {
                 color: context.colors.subduedText,
               ),
             ),
+            if (lessonTypePosition.isAfterTopLeftBlock)
+              const Padding(
+                padding: EdgeInsets.only(
+                  left: 8,
+                ),
+                child: LessonCardLessonTypeChip(),
+              ),
           ],
         ),
+        if (lessonTypePosition.isTopRight)
+          const Padding(
+            padding: EdgeInsets.only(
+              left: 8,
+            ),
+            child: LessonCardLessonTypeChip(),
+          ),
       ],
     );
   }

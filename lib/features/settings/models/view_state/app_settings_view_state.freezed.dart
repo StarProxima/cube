@@ -132,7 +132,7 @@ class _$_AppSettingsViewState implements _AppSettingsViewState {
       {this.appThemeMode = AppThemeMode.system,
       this.lessonColorsMode = AppLessonColorsMode.cube,
       this.lessonCardLessonTypePosition =
-          LessonCardLessonTypePosition.afterTeacher});
+          LessonCardLessonTypePosition.afterBottomLeftBlock});
 
   factory _$_AppSettingsViewState.fromJson(Map<String, dynamic> json) =>
       _$$_AppSettingsViewStateFromJson(json);

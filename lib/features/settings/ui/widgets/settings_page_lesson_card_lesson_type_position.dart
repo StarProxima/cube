@@ -19,9 +19,13 @@ class _SettingsPageLessonCardLessonTypePosition extends ConsumerWidget {
           settingsNotifier.editLessonCardLessonTypePosition(value),
       items: const [
         AppRadioSelectorItem(
-          title: Text('afterTeacher'),
+          title: Text('afterBottomLeftBlock'),
           description: Text('Расположение по умолчанию'),
-          value: LessonCardLessonTypePosition.afterTeacher,
+          value: LessonCardLessonTypePosition.afterBottomLeftBlock,
+        ),
+        AppRadioSelectorItem(
+          title: Text('afterTopLeftBlock'),
+          value: LessonCardLessonTypePosition.afterTopLeftBlock,
         ),
         AppRadioSelectorItem(
           title: Text('bottomLeft'),
@@ -30,6 +34,14 @@ class _SettingsPageLessonCardLessonTypePosition extends ConsumerWidget {
         AppRadioSelectorItem(
           title: Text('topRight'),
           value: LessonCardLessonTypePosition.topRight,
+        ),
+        AppRadioSelectorItem(
+          title: Text('bottomRight'),
+          value: LessonCardLessonTypePosition.bottomRight,
+        ),
+        AppRadioSelectorItem(
+          title: Text('beforeBottomRightBlock'),
+          value: LessonCardLessonTypePosition.beforeBottomRightBlock,
         ),
         AppRadioSelectorItem(
           title: Text('none'),

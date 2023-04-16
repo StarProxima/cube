@@ -18,9 +18,9 @@ class LessonCardIcons extends ConsumerWidget {
 
     // final isRemotely = _random.nextInt(100) < 0;
 
-    final presentImportantNote = _random.nextInt(100) < 0;
+    final presentImportantNote = _random.nextInt(100) < 10;
 
-    final numberOfNotes = _random.nextInt(100) < 0 ? _random.nextInt(7) : 0;
+    final numberOfNotes = _random.nextInt(100) < 25 ? _random.nextInt(7) : 0;
 
     return Row(
       children: [

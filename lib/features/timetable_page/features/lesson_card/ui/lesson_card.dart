@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:cube_system/features/settings/state_holders/app_settings_view_state_holder.dart';
 import 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/free_time_window_lesson_card.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/timetable_page/state_holders/selected_timetable.dart';
@@ -29,6 +30,7 @@ part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widget
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_indicator.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_time_left.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/next_lesson_time_to_start_progress_bar.dart';
+part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_lesson_type_chip.dart';
 
 final _lessonInLessonCard = Provider<Lesson>((ref) {
   return throw UnimplementedError();
