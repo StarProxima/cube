@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:cube_system/gen/api/cube_api.swagger.dart';
 import 'package:cube_system/models/lesson_timings/lesson_full_timings.dart';
 import 'package:cube_system/styles/app_lesson_colors/app_lesson_colors.dart';
-import 'package:cube_system/styles/app_theme_state_holders/app_lesson_colors.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/models/lesson/lesson.dart';
@@ -11,16 +10,18 @@ import 'package:cube_system/models/lesson/lesson.dart';
 import 'package:cube_system/models/lesson_timings/lesson_timings.dart';
 import 'package:cube_system/features/timetable_page/state_holders/lesson_timings.dart';
 
+import 'package:cube_system/features/settings/state_holders/app_lesson_colors.dart';
+
 final lessonConvertor = Provider<LessonConvertor>((ref) {
   return LessonConvertor(
     lessonTimings: ref.watch(lessonTimings.notifier),
-    lessonColors: ref.watch(appLessonColors.notifier),
+    lessonColors: ref.watch(appLessonColors),
   );
 });
 
 class LessonConvertor {
   final StateController<Map<int, LessonTimings>> lessonTimings;
-  final StateController<AppLessonColors> lessonColors;
+  final AppLessonColors lessonColors;
 
   LessonConvertor({
     required this.lessonTimings,
@@ -35,7 +36,7 @@ class LessonConvertor {
 
     Color? color;
 
-    final colors = lessonColors.state;
+    final colors = lessonColors;
 
     bool isEvent = false;
 

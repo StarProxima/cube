@@ -34,7 +34,7 @@ class AppLessonColors extends ThemeExtension<AppLessonColors> {
     additional: _$AppLessonColors.additional[0],
   );
 
-  static final AppLessonColors custom = AppLessonColors(
+  static final AppLessonColors proxima = AppLessonColors(
     lecture: _$AppLessonColors.lecture[1],
     laboratory: _$AppLessonColors.laboratory[1],
     practice: _$AppLessonColors.practice[1],
@@ -45,7 +45,7 @@ class AppLessonColors extends ThemeExtension<AppLessonColors> {
 
   static final themes = [
     cube,
-    custom,
+    proxima,
   ];
 
   @override

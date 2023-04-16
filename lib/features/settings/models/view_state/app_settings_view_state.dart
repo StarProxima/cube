@@ -9,6 +9,7 @@ part 'app_settings_view_state.g.dart';
 class AppSettingsViewState with _$AppSettingsViewState {
   factory AppSettingsViewState({
     @Default(AppLessonColorsMode.cube) AppLessonColorsMode lessonColorsMode,
+    @Default(AppThemeMode.system) AppThemeMode appThemeMode,
   }) = _AppSettingsViewState;
 
   factory AppSettingsViewState.fromJson(Map<String, dynamic> json) =>

@@ -1,10 +1,11 @@
 import 'package:cube_system/source/extensions.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
-import 'package:cube_system/styles/app_theme_state_holders/app_lesson_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/timetable_page/state_holders/lesson_timings.dart';
+
+import 'package:cube_system/features/settings/state_holders/app_lesson_colors.dart';
 
 class FreeTimeWindowLessonCard extends ConsumerWidget {
   final int numberStart;

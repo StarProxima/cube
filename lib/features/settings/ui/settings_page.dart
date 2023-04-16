@@ -1,5 +1,4 @@
 import 'package:cube_system/features/settings/state_holders/app_settings_view_state_holder.dart';
-import 'package:cube_system/styles/app_lesson_colors/app_lesson_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

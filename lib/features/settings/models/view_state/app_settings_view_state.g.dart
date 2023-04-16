@@ -15,6 +15,9 @@ _$_AppSettingsViewState _$$_AppSettingsViewStateFromJson(
             json['lessonColorsMode'],
           ) ??
           AppLessonColorsMode.cube,
+      appThemeMode:
+          $enumDecodeNullable(_$AppThemeModeEnumMap, json['appThemeMode']) ??
+              AppThemeMode.system,
     );
 
 Map<String, dynamic> _$$_AppSettingsViewStateToJson(
@@ -23,9 +26,16 @@ Map<String, dynamic> _$$_AppSettingsViewStateToJson(
     <String, dynamic>{
       'lessonColorsMode':
           _$AppLessonColorsModeEnumMap[instance.lessonColorsMode]!,
+      'appThemeMode': _$AppThemeModeEnumMap[instance.appThemeMode]!,
     };
 
 const _$AppLessonColorsModeEnumMap = {
   AppLessonColorsMode.cube: 'cube',
   AppLessonColorsMode.proxima: 'proxima',
+};
+
+const _$AppThemeModeEnumMap = {
+  AppThemeMode.system: 'system',
+  AppThemeMode.light: 'light',
+  AppThemeMode.dark: 'dark',
 };

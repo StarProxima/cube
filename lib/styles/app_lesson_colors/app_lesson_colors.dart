@@ -5,7 +5,7 @@ import 'package:theme_tailor_annotation/theme_tailor_annotation.dart';
 part 'app_lesson_colors.tailor.dart';
 
 @Tailor(
-  themes: ['cube', 'custom'],
+  themes: ['cube', 'proxima'],
   themeGetter: ThemeGetter.none,
 )
 class _$AppLessonColors {
