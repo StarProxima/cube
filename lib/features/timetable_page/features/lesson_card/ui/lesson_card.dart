@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/timetable_page/state_holders/lessons/current_lesson.dart';
-import 'package:cube_system/features/timetable_page/state_holders/lessons/next_lesson.dart';
 import 'package:cube_system/models/lesson/lesson.dart';
 import 'package:cube_system/source/extensions.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
@@ -22,6 +21,8 @@ import 'package:cube_system/features/timetable_page/features/lesson_card/provide
 import 'package:cube_system/models/timetable/timetable_type.dart';
 
 import 'package:cube_system/features/settings/state_holders/app_lesson_colors.dart';
+
+import 'package:cube_system/features/timetable_page/state_holders/lessons/next_lesson.dart';
 
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_body.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_footer.dart';
@@ -60,11 +61,17 @@ class LessonCard extends ConsumerWidget {
             ),
           Consumer(
             builder: (context, ref, _) {
-              final lessonNext = ref.watch(nextLesson);
-              final lessonCurrent = ref.watch(currentLesson);
-              if (lesson != lessonNext || lessonCurrent != null) {
+              final dontShow = ref.watch(
+                nextLessonTimeToStartProvider.select((value) => value == null),
+              );
+
+              final lessonNext = ref.read(nextLesson);
+              final lessonCurrent = ref.read(currentLesson);
+
+              if (dontShow || lesson != lessonNext || lessonCurrent != null) {
                 return const SizedBox();
               }
+
               return const Padding(
                 padding: EdgeInsets.only(bottom: 8),
                 child: NextLessonTimeToStartProgressBar(),

@@ -20,7 +20,7 @@ final _shellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'shell');
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: '/landing',
+    initialLocation: '/timetable',
     routes: [
       GoRoute(
         path: '/',

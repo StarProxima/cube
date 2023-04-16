@@ -6,7 +6,10 @@ class NextLessonTimeToStartProgressBar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final timeToStart = ref.watch(nextLessonTimeToStartProvider);
-    final value = ref.watch(nextLessonTimeToStartProgressValueProvider);
+    final progressValue = ref.watch(nextLessonTimeToStartProgressValueProvider);
+
+    final widthFactor = (1 - progressValue).cutNumberEdgesZeroToOne();
+
     final timeToStartStr = timeToStart?.format() ?? '00:00';
 
     final color =
@@ -25,7 +28,7 @@ class NextLessonTimeToStartProgressBar extends ConsumerWidget {
             child: Align(
               alignment: Alignment.centerRight,
               child: FractionallySizedBox(
-                widthFactor: value.cutNumberEdgesZeroToOne(),
+                widthFactor: widthFactor,
                 child: Container(
                   decoration: BoxDecoration(
                     color: color,

@@ -13,7 +13,7 @@ class _SettingsPageLessonCardRecessDisplayCondition extends ConsumerWidget {
     final settingsNotifier = ref.read(appSettingsViewStateHolder.notifier);
 
     return AppRadioSelector<LessonCardRecessDisplayCondition>(
-      label: const Text('Отображение таймера до занятия'),
+      label: const Text('Отображение таймера до начала занятия'),
       value: lessonCardRecessDisplayCondition,
       onSelect: (value) =>
           settingsNotifier.editLessonCardRecessDisplayCondition(value),
