@@ -7,13 +7,10 @@ part of 'app_settings_view_state.dart';
 // **************************************************************************
 
 _$_AppSettingsViewState _$$_AppSettingsViewStateFromJson(
-  Map<String, dynamic> json,
-) =>
+        Map<String, dynamic> json) =>
     _$_AppSettingsViewState(
       lessonColorsMode: $enumDecodeNullable(
-            _$AppLessonColorsModeEnumMap,
-            json['lessonColorsMode'],
-          ) ??
+              _$AppLessonColorsModeEnumMap, json['lessonColorsMode']) ??
           AppLessonColorsMode.cube,
       appThemeMode:
           $enumDecodeNullable(_$AppThemeModeEnumMap, json['appThemeMode']) ??
@@ -21,8 +18,7 @@ _$_AppSettingsViewState _$$_AppSettingsViewStateFromJson(
     );
 
 Map<String, dynamic> _$$_AppSettingsViewStateToJson(
-  _$_AppSettingsViewState instance,
-) =>
+        _$_AppSettingsViewState instance) =>
     <String, dynamic>{
       'lessonColorsMode':
           _$AppLessonColorsModeEnumMap[instance.lessonColorsMode]!,
