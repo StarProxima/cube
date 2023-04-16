@@ -24,9 +24,9 @@ class AppRadioSelectorItemCard<T> extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         RadioListTile<T>(
-          title: Text(
-            item.title,
+          title: DefaultTextStyle(
             style: context.textStyles.label,
+            child: item.title,
           ),
           value: item.value,
           groupValue: selectedValue,

@@ -2,7 +2,7 @@ import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
 
 class AppRadioSelectorDescription extends StatefulWidget {
-  final String? description;
+  final Widget? description;
   final bool isVisable;
 
   const AppRadioSelectorDescription({
@@ -68,11 +68,11 @@ class _AppRadioSelectorDescriptionState
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 12, bottom: 8),
-                  child: Text(
-                    widget.description!,
+                  child: DefaultTextStyle(
                     style: context.textStyles.smallSubTitle.copyWith(
                       color: context.colors.subduedText,
                     ),
+                    child: widget.description!,
                   ),
                 ),
               ),

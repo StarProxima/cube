@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
+
 class AppRadioSelectorItem<T> {
-  final String title;
-  final String? description;
+  final Widget title;
+  final Widget? description;
   final T value;
 
   const AppRadioSelectorItem({
