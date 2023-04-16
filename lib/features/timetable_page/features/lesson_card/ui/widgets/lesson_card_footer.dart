@@ -26,7 +26,8 @@ class LessonCardFooter extends ConsumerWidget {
       _lessonInLessonCard.select((value) => value.lesson.type.shortName),
     );
 
-    final color = ref.watch(_lessonInLessonCard.select((value) => value.color));
+    final color =
+        ref.watch(appLessonColorByLesson(ref.read(_lessonInLessonCard)));
 
     final teachersIsNotEmpty = teachers != "";
 

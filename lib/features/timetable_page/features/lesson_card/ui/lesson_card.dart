@@ -20,6 +20,8 @@ import 'package:cube_system/features/timetable_page/features/lesson_card/provide
 
 import 'package:cube_system/models/timetable/timetable_type.dart';
 
+import 'package:cube_system/features/settings/state_holders/app_lesson_colors.dart';
+
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_body.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_footer.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_header.dart';

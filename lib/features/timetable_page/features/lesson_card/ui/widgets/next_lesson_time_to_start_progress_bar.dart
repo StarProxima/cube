@@ -5,10 +5,12 @@ class NextLessonTimeToStartProgressBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final lesson = ref.watch(_lessonInLessonCard);
     final timeToStart = ref.watch(nextLessonTimeToStartProvider);
     final value = ref.watch(nextLessonTimeToStartProgressValueProvider);
     final timeToStartStr = timeToStart?.format() ?? '00:00';
+
+    final color =
+        ref.watch(appLessonColorByLesson(ref.read(_lessonInLessonCard)));
 
     return SizedBox(
       height: 20,
@@ -16,7 +18,7 @@ class NextLessonTimeToStartProgressBar extends ConsumerWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: lesson.fadedColor,
+              color: color.toAppFadedColor(),
               borderRadius: BorderRadius.circular(16),
             ),
             clipBehavior: Clip.antiAlias,
@@ -26,7 +28,7 @@ class NextLessonTimeToStartProgressBar extends ConsumerWidget {
                 widthFactor: value.cutNumberEdgesZeroToOne(),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: lesson.color,
+                    color: color,
                   ),
                 ),
               ),

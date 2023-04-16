@@ -19,8 +19,7 @@ class FreeTimeWindowLessonCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final color = ref.watch(appLessonColors).practice;
-    final fadedColor = color?.withOpacity(0.5);
+    final color = ref.watch(appLessonColors).recess;
 
     final timingsStart = ref.watch(lessonTimings)[numberStart]!;
     final timingsEnd = ref.watch(lessonTimings)[numberEnd]!;
@@ -50,7 +49,7 @@ class FreeTimeWindowLessonCard extends ConsumerWidget {
           Container(
             width: 6,
             decoration: BoxDecoration(
-              color: fadedColor,
+              color: color?.toAppFadedColor(),
             ),
             child: Align(
               alignment: Alignment.bottomCenter,

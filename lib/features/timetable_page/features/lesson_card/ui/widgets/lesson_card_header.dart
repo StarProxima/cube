@@ -15,7 +15,8 @@ class LessonCardHeader extends ConsumerWidget {
     final timingsStr =
         '${timings.start.format(context)} - ${timings.end.format(context)}';
 
-    final color = ref.watch(_lessonInLessonCard.select((value) => value.color));
+    final color =
+        ref.watch(appLessonColorByLesson(ref.read(_lessonInLessonCard)));
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

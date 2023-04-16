@@ -9,13 +9,12 @@ class LessonCardIndicator extends ConsumerWidget {
 
     double value = ref.watch(lessonTimeToEndProgressValueProvider(lesson));
 
-    final color = ref.watch(_lessonInLessonCard.select((value) => value.color));
-    final fadedColor =
-        ref.watch(_lessonInLessonCard.select((value) => value.fadedColor));
+    final color = ref.watch(appLessonColorByLesson(lesson));
+
     return Container(
       width: 6,
       decoration: BoxDecoration(
-        color: fadedColor,
+        color: color.toAppFadedColor(),
       ),
       child: Align(
         alignment: Alignment.bottomCenter,

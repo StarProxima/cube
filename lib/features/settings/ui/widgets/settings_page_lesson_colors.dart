@@ -8,6 +8,7 @@ class _SettingsPageLessonColors extends ConsumerWidget {
     final lessonColorsMode = ref.watch(
       appSettingsViewStateHolder.select((value) => value.lessonColorsMode),
     );
+
     final settingsNotifier = ref.read(appSettingsViewStateHolder.notifier);
 
     return AppRadioSelector(
