@@ -11,7 +11,7 @@ class _SettingsPageLessonColors extends ConsumerWidget {
 
     final settingsNotifier = ref.read(appSettingsViewStateHolder.notifier);
 
-    return AppRadioSelector(
+    return AppRadioSelector<AppLessonColorsMode>(
       label: const Text('Цветовая тема для занятий'),
       value: lessonColorsMode,
       onSelect: (value) => settingsNotifier.editLessonColorsMode(value),
@@ -22,12 +22,7 @@ class _SettingsPageLessonColors extends ConsumerWidget {
           value: AppLessonColorsMode.cube,
         ),
         AppRadioSelectorItem(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('Проксима'),
-            ],
-          ),
+          title: Text('Проксима'),
           description: Text('Цветовая палитра c более насыщенными цветами'),
           value: AppLessonColorsMode.proxima,
         ),

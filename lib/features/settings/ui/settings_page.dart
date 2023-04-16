@@ -7,7 +7,10 @@ import 'package:cube_system/ui/ui_kit/radio_selector/models/app_radio_selector_i
 
 import 'package:cube_system/features/settings/models/app_lesson_colors_mode.dart';
 
+import 'package:cube_system/features/settings/models/lesson_card_lesson_type_position.dart';
+
 part 'widgets/settings_page_lesson_colors.dart';
+part 'widgets/settings_page_lesson_card_lesson_type_position.dart';
 
 class SettingsPage extends ConsumerWidget {
   const SettingsPage({
@@ -41,6 +44,8 @@ class _SettingsPageState extends ConsumerState<_SettingsPage> {
         child: Column(
           children: [
             _SettingsPageLessonColors(),
+            SizedBox(height: 20),
+            _SettingsPageLessonCardLessonTypePosition(),
           ],
         ),
       ),

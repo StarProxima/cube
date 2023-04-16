@@ -20,9 +20,11 @@ AppSettingsViewState _$AppSettingsViewStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppSettingsViewState {
+  AppThemeMode get appThemeMode => throw _privateConstructorUsedError;
   AppLessonColorsMode get lessonColorsMode =>
       throw _privateConstructorUsedError;
-  AppThemeMode get appThemeMode => throw _privateConstructorUsedError;
+  LessonCardLessonTypePosition get lessonCardLessonTypePosition =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +38,10 @@ abstract class $AppSettingsViewStateCopyWith<$Res> {
           $Res Function(AppSettingsViewState) then) =
       _$AppSettingsViewStateCopyWithImpl<$Res, AppSettingsViewState>;
   @useResult
-  $Res call({AppLessonColorsMode lessonColorsMode, AppThemeMode appThemeMode});
+  $Res call(
+      {AppThemeMode appThemeMode,
+      AppLessonColorsMode lessonColorsMode,
+      LessonCardLessonTypePosition lessonCardLessonTypePosition});
 }
 
 /// @nodoc
@@ -53,18 +58,23 @@ class _$AppSettingsViewStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lessonColorsMode = null,
     Object? appThemeMode = null,
+    Object? lessonColorsMode = null,
+    Object? lessonCardLessonTypePosition = null,
   }) {
     return _then(_value.copyWith(
-      lessonColorsMode: null == lessonColorsMode
-          ? _value.lessonColorsMode
-          : lessonColorsMode // ignore: cast_nullable_to_non_nullable
-              as AppLessonColorsMode,
       appThemeMode: null == appThemeMode
           ? _value.appThemeMode
           : appThemeMode // ignore: cast_nullable_to_non_nullable
               as AppThemeMode,
+      lessonColorsMode: null == lessonColorsMode
+          ? _value.lessonColorsMode
+          : lessonColorsMode // ignore: cast_nullable_to_non_nullable
+              as AppLessonColorsMode,
+      lessonCardLessonTypePosition: null == lessonCardLessonTypePosition
+          ? _value.lessonCardLessonTypePosition
+          : lessonCardLessonTypePosition // ignore: cast_nullable_to_non_nullable
+              as LessonCardLessonTypePosition,
     ) as $Val);
   }
 }
@@ -77,7 +87,10 @@ abstract class _$$_AppSettingsViewStateCopyWith<$Res>
       __$$_AppSettingsViewStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AppLessonColorsMode lessonColorsMode, AppThemeMode appThemeMode});
+  $Res call(
+      {AppThemeMode appThemeMode,
+      AppLessonColorsMode lessonColorsMode,
+      LessonCardLessonTypePosition lessonCardLessonTypePosition});
 }
 
 /// @nodoc
@@ -91,18 +104,23 @@ class __$$_AppSettingsViewStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lessonColorsMode = null,
     Object? appThemeMode = null,
+    Object? lessonColorsMode = null,
+    Object? lessonCardLessonTypePosition = null,
   }) {
     return _then(_$_AppSettingsViewState(
-      lessonColorsMode: null == lessonColorsMode
-          ? _value.lessonColorsMode
-          : lessonColorsMode // ignore: cast_nullable_to_non_nullable
-              as AppLessonColorsMode,
       appThemeMode: null == appThemeMode
           ? _value.appThemeMode
           : appThemeMode // ignore: cast_nullable_to_non_nullable
               as AppThemeMode,
+      lessonColorsMode: null == lessonColorsMode
+          ? _value.lessonColorsMode
+          : lessonColorsMode // ignore: cast_nullable_to_non_nullable
+              as AppLessonColorsMode,
+      lessonCardLessonTypePosition: null == lessonCardLessonTypePosition
+          ? _value.lessonCardLessonTypePosition
+          : lessonCardLessonTypePosition // ignore: cast_nullable_to_non_nullable
+              as LessonCardLessonTypePosition,
     ));
   }
 }
@@ -111,22 +129,27 @@ class __$$_AppSettingsViewStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_AppSettingsViewState implements _AppSettingsViewState {
   _$_AppSettingsViewState(
-      {this.lessonColorsMode = AppLessonColorsMode.cube,
-      this.appThemeMode = AppThemeMode.system});
+      {this.appThemeMode = AppThemeMode.system,
+      this.lessonColorsMode = AppLessonColorsMode.cube,
+      this.lessonCardLessonTypePosition =
+          LessonCardLessonTypePosition.afterTeacher});
 
   factory _$_AppSettingsViewState.fromJson(Map<String, dynamic> json) =>
       _$$_AppSettingsViewStateFromJson(json);
 
   @override
   @JsonKey()
+  final AppThemeMode appThemeMode;
+  @override
+  @JsonKey()
   final AppLessonColorsMode lessonColorsMode;
   @override
   @JsonKey()
-  final AppThemeMode appThemeMode;
+  final LessonCardLessonTypePosition lessonCardLessonTypePosition;
 
   @override
   String toString() {
-    return 'AppSettingsViewState(lessonColorsMode: $lessonColorsMode, appThemeMode: $appThemeMode)';
+    return 'AppSettingsViewState(appThemeMode: $appThemeMode, lessonColorsMode: $lessonColorsMode, lessonCardLessonTypePosition: $lessonCardLessonTypePosition)';
   }
 
   @override
@@ -134,15 +157,20 @@ class _$_AppSettingsViewState implements _AppSettingsViewState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AppSettingsViewState &&
+            (identical(other.appThemeMode, appThemeMode) ||
+                other.appThemeMode == appThemeMode) &&
             (identical(other.lessonColorsMode, lessonColorsMode) ||
                 other.lessonColorsMode == lessonColorsMode) &&
-            (identical(other.appThemeMode, appThemeMode) ||
-                other.appThemeMode == appThemeMode));
+            (identical(other.lessonCardLessonTypePosition,
+                    lessonCardLessonTypePosition) ||
+                other.lessonCardLessonTypePosition ==
+                    lessonCardLessonTypePosition));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, lessonColorsMode, appThemeMode);
+  int get hashCode => Object.hash(runtimeType, appThemeMode, lessonColorsMode,
+      lessonCardLessonTypePosition);
 
   @JsonKey(ignore: true)
   @override
@@ -161,16 +189,20 @@ class _$_AppSettingsViewState implements _AppSettingsViewState {
 
 abstract class _AppSettingsViewState implements AppSettingsViewState {
   factory _AppSettingsViewState(
-      {final AppLessonColorsMode lessonColorsMode,
-      final AppThemeMode appThemeMode}) = _$_AppSettingsViewState;
+          {final AppThemeMode appThemeMode,
+          final AppLessonColorsMode lessonColorsMode,
+          final LessonCardLessonTypePosition lessonCardLessonTypePosition}) =
+      _$_AppSettingsViewState;
 
   factory _AppSettingsViewState.fromJson(Map<String, dynamic> json) =
       _$_AppSettingsViewState.fromJson;
 
   @override
+  AppThemeMode get appThemeMode;
+  @override
   AppLessonColorsMode get lessonColorsMode;
   @override
-  AppThemeMode get appThemeMode;
+  LessonCardLessonTypePosition get lessonCardLessonTypePosition;
   @override
   @JsonKey(ignore: true)
   _$$_AppSettingsViewStateCopyWith<_$_AppSettingsViewState> get copyWith =>
