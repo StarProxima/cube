@@ -1,8 +1,8 @@
 import 'package:cube_system/styles/app_theme_context_extension.dart';
+import 'package:cube_system/ui/ui_kit/radio_selector/app_radio_selector_item_card.dart';
 import 'package:flutter/material.dart';
 
-import 'package:cube_system/ui/ui_kit/radio_selector/app_radio_selector_description.dart';
-import 'package:cube_system/ui/ui_kit/radio_selector/models/app_radio_selector_item_model.dart';
+import 'package:cube_system/ui/ui_kit/radio_selector/models/app_radio_selector_item.dart';
 
 class AppRadioSelector<T> extends StatefulWidget {
   final T value;
@@ -25,7 +25,6 @@ class AppRadioSelector<T> extends StatefulWidget {
 class _AppRadioSelectorState<T> extends State<AppRadioSelector<T>> {
   @override
   Widget build(BuildContext context) {
-    final T selectedValue = widget.value;
     return RadioTheme(
       data: RadioThemeData(
         fillColor: MaterialStateProperty.all(
@@ -37,49 +36,24 @@ class _AppRadioSelectorState<T> extends State<AppRadioSelector<T>> {
         children: [
           if (widget.label != null)
             Padding(
-              padding: const EdgeInsets.only(bottom: 12),
+              padding: const EdgeInsets.only(bottom: 16),
               child: Text(
                 widget.label!,
                 style: context.textStyles.largeTitle,
               ),
             ),
-          ...widget.items.map(
-            (item) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  RadioListTile<T>(
-                    title: Text(
-                      item.title,
-                      style: context.textStyles.label,
-                    ),
-                    value: item.value,
-                    groupValue: selectedValue,
-                    activeColor: context.colors.primary,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    dense: true,
-                    visualDensity: const VisualDensity(
-                      horizontal: VisualDensity.minimumDensity,
-                      vertical: VisualDensity.minimumDensity,
-                    ),
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    contentPadding: const EdgeInsets.all(4),
-                    onChanged: (value) {
-                      if (value != null) {
-                        widget.onSelect?.call(item.value);
-                      }
-                    },
-                  ),
-                  AppRadioSelectorDescription(
-                    description: item.description,
-                    isVisable: selectedValue == item.value,
-                  ),
-                ],
-              );
-            },
-          ).toList()
+          ListView(
+            primary: false,
+            shrinkWrap: true,
+            children: [
+              for (final item in widget.items)
+                AppRadioSelectorItemCard(
+                  item: item,
+                  selectedValue: widget.value,
+                  onSelect: widget.onSelect,
+                )
+            ],
+          ),
         ],
       ),
     );

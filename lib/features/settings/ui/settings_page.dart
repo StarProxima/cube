@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/ui/ui_kit/radio_selector/app_radio_selector.dart';
-import 'package:cube_system/ui/ui_kit/radio_selector/models/app_radio_selector_item_model.dart';
+import 'package:cube_system/ui/ui_kit/radio_selector/models/app_radio_selector_item.dart';
 
 import 'package:cube_system/features/settings/models/app_theme_enums.dart';
 
