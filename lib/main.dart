@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:cube_system/features/navigation/router/app_router.dart';
-import 'package:cube_system/source/app_scroll_behavior.dart';
+import 'package:cube_system/core/app_scroll_behavior.dart';
 import 'package:cube_system/styles/app_colors/app_colors.dart';
 import 'package:cube_system/styles/app_text_styles/app_text_styles.dart';
 import 'package:cube_system/styles/app_theme.dart';
@@ -13,7 +13,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:window_size/window_size.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/services.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+
+import 'package:cube_system/core/hive_initializer.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +24,7 @@ void main() {
     setWindowMinSize(const Size(460, 380));
   }
 
-  Hive.initFlutter();
+  HiveInitializer.init();
 
   runApp(const ProviderScope(child: MainApp()));
 }

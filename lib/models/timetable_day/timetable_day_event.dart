@@ -8,7 +8,7 @@ part 'timetable_day_event.g.dart';
 
 @freezed
 class TimetableDayEvent with _$TimetableDayEvent {
-  @HiveType(typeId: 5)
+  @HiveType(typeId: 12)
   factory TimetableDayEvent({
     @HiveField(0) required TimetableDayEventType type,
     @HiveField(1) String? title,

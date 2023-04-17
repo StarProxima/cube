@@ -1,7 +1,7 @@
 import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/source/date_time_duration.dart';
+import 'package:cube_system/core/date_time_duration.dart';
 import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
 import 'package:cube_system/features/timetable_page/state_holders/lessons/next_lesson.dart';
 

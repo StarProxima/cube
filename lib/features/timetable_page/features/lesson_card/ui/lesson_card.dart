@@ -9,7 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/timetable_page/state_holders/lessons/current_lesson.dart';
 import 'package:cube_system/models/lesson/lesson.dart';
-import 'package:cube_system/source/extensions.dart';
+import 'package:cube_system/core/extensions.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
 
 import 'package:cube_system/features/timetable_page/features/lesson_card/providers/current_lesson_time_to_end_provider.dart';

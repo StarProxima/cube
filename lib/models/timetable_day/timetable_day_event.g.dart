@@ -8,7 +8,7 @@ part of 'timetable_day_event.dart';
 
 class TimetableDayEventAdapter extends TypeAdapter<_$_TimetableDayEvent> {
   @override
-  final int typeId = 5;
+  final int typeId = 12;
 
   @override
   _$_TimetableDayEvent read(BinaryReader reader) {

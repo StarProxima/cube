@@ -136,7 +136,7 @@ class __$$_TimetableDayEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-@HiveType(typeId: 5)
+@HiveType(typeId: 12)
 class _$_TimetableDayEvent implements _TimetableDayEvent {
   _$_TimetableDayEvent(
       {@HiveField(0) required this.type,
