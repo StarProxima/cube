@@ -6,7 +6,7 @@ class LessonCardHeader extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final number = ref
-        .watch(_lessonInLessonCard.select((value) => value.lesson.number))
+        .watch(_lessonInLessonCard.select((value) => value.number))
         .toString();
 
     final timings =

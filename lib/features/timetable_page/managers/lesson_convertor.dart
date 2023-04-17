@@ -79,13 +79,19 @@ class LessonConvertor {
     );
 
     final newLesson = Lesson(
-      lesson: lesson,
-      type: type,
-      emptyLessonsBefore: emptyLessonsBefore,
+      number: lesson.number,
       timings: fullTiminigs,
-      color: color,
-      fadedColor: color.withOpacity(0.6),
+      type: type,
+      typeShortName: lesson.type.shortName,
+      disciplineName: lesson.discipline?.name,
+      place: lesson.place?.name,
+      groupNames: lesson.groupNames,
+      teacherNames: lesson.teacherNames,
+      isElective: lesson.isElective,
+      isRemotely: lesson.isRemotely,
       isEvent: isEvent,
+      defaultColor: color,
+      emptyLessonsBefore: emptyLessonsBefore,
     );
 
     return newLesson;

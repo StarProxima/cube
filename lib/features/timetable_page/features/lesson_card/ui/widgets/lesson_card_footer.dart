@@ -7,20 +7,20 @@ class LessonCardFooter extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final groups = ref
         .watch(
-          _lessonInLessonCard.select((value) => value.lesson.groupNames),
+          _lessonInLessonCard.select((value) => value.groupNames),
         )
         .join(", ");
 
     final teachers = ref
         .watch(
-          _lessonInLessonCard.select((value) => value.lesson.teacherNames),
+          _lessonInLessonCard.select((value) => value.teacherNames),
         )
         .join(", ");
 
     final place = ref.watch(
-          _lessonInLessonCard.select((value) => value.lesson.place?.name),
+          _lessonInLessonCard.select((value) => value.place),
         ) ??
-        'null';
+        '';
 
     final teachersIsNotEmpty = teachers != "";
 

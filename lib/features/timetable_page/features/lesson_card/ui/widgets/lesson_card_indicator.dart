@@ -18,10 +18,6 @@ class LessonCardIndicator extends ConsumerWidget {
 
     double width = isOnIndicator ? 20 : 6;
 
-    final type = ref.watch(
-      _lessonInLessonCard.select((value) => value.lesson.type.shortName),
-    );
-
     return Stack(
       children: [
         Container(
@@ -48,10 +44,18 @@ class LessonCardIndicator extends ConsumerWidget {
               padding: const EdgeInsets.only(left: 4),
               child: RotatedBox(
                 quarterTurns: 3,
-                child: Text(
-                  type,
-                  style: context.textStyles.chipLabel
-                      .copyWith(color: Colors.white),
+                child: Consumer(
+                  builder: (context, ref, _) {
+                    final type = ref.watch(
+                      _lessonInLessonCard
+                          .select((value) => value.typeShortName),
+                    );
+                    return Text(
+                      type,
+                      style: context.textStyles.chipLabel
+                          .copyWith(color: Colors.white),
+                    );
+                  },
                 ),
               ),
             ),

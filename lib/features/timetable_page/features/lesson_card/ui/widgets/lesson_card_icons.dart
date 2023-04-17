@@ -7,8 +7,8 @@ class LessonCardIcons extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isRemotely = ref
-        .watch(_lessonInLessonCard.select((value) => value.lesson.isRemotely));
+    final isRemotely =
+        ref.watch(_lessonInLessonCard.select((value) => value.isRemotely));
 
     final isActiveLessons =
         ref.watch(_lessonInLessonCard) == ref.watch(currentLesson);

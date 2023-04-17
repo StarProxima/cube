@@ -45,7 +45,7 @@ final appLessonColorByLesson = Provider.family<Color, Lesson>((ref, lesson) {
   final colors = ref.watch(appLessonColors);
   final type = lesson.type;
 
-  final color = _getAppLessonColor(colors, type) ?? lesson.color;
+  final color = _getAppLessonColor(colors, type) ?? lesson.defaultColor;
 
   return color;
 });

@@ -6,7 +6,7 @@ class LessonCardLessonTypeChip extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final type = ref.watch(
-      _lessonInLessonCard.select((value) => value.lesson.type.shortName),
+      _lessonInLessonCard.select((value) => value.typeShortName),
     );
 
     final color =

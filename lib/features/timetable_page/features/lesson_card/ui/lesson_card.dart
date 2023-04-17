@@ -55,8 +55,8 @@ class LessonCard extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.only(bottom: 16, top: 8),
               child: LessonCardRecess(
-                numberStart: lesson.lesson.number - lesson.emptyLessonsBefore,
-                numberEnd: lesson.lesson.number - 1,
+                numberStart: lesson.number - lesson.emptyLessonsBefore,
+                numberEnd: lesson.number - 1,
               ),
             ),
           Consumer(

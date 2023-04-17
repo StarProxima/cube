@@ -19,7 +19,7 @@ final nextLessonTimeToStartProvider = Provider<DateTimeDuration?>((ref) {
     final last = ref.watch(lastLesson);
     final next = ref.watch(nextLesson);
     if (last == null || next == null) return null;
-    if (next.lesson.number - last.lesson.number != 1) return null;
+    if (next.number - last.number != 1) return null;
   }
 
   final dateTime = ref.watch(currentDateTimeQuick);
