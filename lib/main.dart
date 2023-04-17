@@ -9,8 +9,6 @@ import 'package:window_size/window_size.dart';
 
 import 'package:cube_system/core/hive_initializer.dart';
 
-import 'package:cube_system/core/hive_provider_observer.dart';
-
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -23,9 +21,7 @@ void main() {
 
   runApp(
     const ProviderScope(
-      observers: [
-        HiveProviderObserver(),
-      ],
+      observers: [],
       child: MainApp(),
     ),
   );

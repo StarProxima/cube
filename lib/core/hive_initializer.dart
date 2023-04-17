@@ -5,6 +5,7 @@ import 'package:cube_system/features/settings/models/app_lesson_colors_mode/app_
 
 import 'package:cube_system/features/settings/models/app_settings/app_settings_view_state.dart';
 import 'package:cube_system/features/settings/models/lesson_card_lesson_type_position/lesson_card_lesson_type_position.dart';
+import 'package:cube_system/features/settings/models/app_theme_mode/app_theme_mode.dart';
 import 'package:cube_system/features/settings/models/lesson_card_recess_display_condition/lesson_card_recess_display_condition.dart';
 import 'package:cube_system/models/adapters/time_of_day_adapter.dart';
 import 'package:cube_system/models/lesson/lesson.dart';
@@ -34,5 +35,6 @@ abstract class HiveInitializer {
     _reg(TimetableTypeAdapter());
     _reg(TimetableDayEventAdapter());
     _reg(TimetableDayEventTypeAdapter());
+    _reg(AppThemeModeAdapter());
   }
 }

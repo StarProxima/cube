@@ -9,6 +9,7 @@ import 'package:cube_system/features/settings/models/lesson_card_lesson_type_pos
 import 'package:cube_system/features/settings/models/lesson_card_recess_display_condition/lesson_card_recess_display_condition.dart';
 
 import 'package:cube_system/features/settings/models/app_settings/app_settings_view_state.dart';
+import 'package:hive/hive.dart';
 
 final appSettingsStateHolder =
     StateNotifierProvider<AppSettingsNotifier, AppSettings>((ref) {
@@ -22,6 +23,20 @@ class AppSettingsNotifier extends StateNotifier<AppSettings> {
 
   @override
   get state => super.state;
+
+  @override
+  bool updateShouldNotify(old, current) {
+    final b = super.updateShouldNotify(old, current);
+
+    if (b) {
+      Future(() async {
+        final box = await Hive.openBox('appSettings');
+
+        await box.put('appSettings', current);
+      });
+    }
+    return b;
+  }
 
   void editAppThemeMode(AppThemeMode appThemeMode) {
     state = state.copyWith(appThemeMode: appThemeMode);
