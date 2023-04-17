@@ -16,9 +16,13 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LessonFullTimings {
+  @HiveField(0)
   TimeOfDay get start => throw _privateConstructorUsedError;
+  @HiveField(2)
   TimeOfDay get end => throw _privateConstructorUsedError;
+  @HiveField(3)
   DateTime get startDateTime => throw _privateConstructorUsedError;
+  @HiveField(4)
   DateTime get endDateTime => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -33,10 +37,10 @@ abstract class $LessonFullTimingsCopyWith<$Res> {
       _$LessonFullTimingsCopyWithImpl<$Res, LessonFullTimings>;
   @useResult
   $Res call(
-      {TimeOfDay start,
-      TimeOfDay end,
-      DateTime startDateTime,
-      DateTime endDateTime});
+      {@HiveField(0) TimeOfDay start,
+      @HiveField(2) TimeOfDay end,
+      @HiveField(3) DateTime startDateTime,
+      @HiveField(4) DateTime endDateTime});
 }
 
 /// @nodoc
@@ -87,10 +91,10 @@ abstract class _$$_LessonFullTimingsCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {TimeOfDay start,
-      TimeOfDay end,
-      DateTime startDateTime,
-      DateTime endDateTime});
+      {@HiveField(0) TimeOfDay start,
+      @HiveField(2) TimeOfDay end,
+      @HiveField(3) DateTime startDateTime,
+      @HiveField(4) DateTime endDateTime});
 }
 
 /// @nodoc
@@ -132,20 +136,25 @@ class __$$_LessonFullTimingsCopyWithImpl<$Res>
 
 /// @nodoc
 
+@HiveType(typeId: 1)
 class _$_LessonFullTimings implements _LessonFullTimings {
   _$_LessonFullTimings(
-      {required this.start,
-      required this.end,
-      required this.startDateTime,
-      required this.endDateTime});
+      {@HiveField(0) required this.start,
+      @HiveField(2) required this.end,
+      @HiveField(3) required this.startDateTime,
+      @HiveField(4) required this.endDateTime});
 
   @override
+  @HiveField(0)
   final TimeOfDay start;
   @override
+  @HiveField(2)
   final TimeOfDay end;
   @override
+  @HiveField(3)
   final DateTime startDateTime;
   @override
+  @HiveField(4)
   final DateTime endDateTime;
 
   @override
@@ -180,18 +189,23 @@ class _$_LessonFullTimings implements _LessonFullTimings {
 
 abstract class _LessonFullTimings implements LessonFullTimings {
   factory _LessonFullTimings(
-      {required final TimeOfDay start,
-      required final TimeOfDay end,
-      required final DateTime startDateTime,
-      required final DateTime endDateTime}) = _$_LessonFullTimings;
+          {@HiveField(0) required final TimeOfDay start,
+          @HiveField(2) required final TimeOfDay end,
+          @HiveField(3) required final DateTime startDateTime,
+          @HiveField(4) required final DateTime endDateTime}) =
+      _$_LessonFullTimings;
 
   @override
+  @HiveField(0)
   TimeOfDay get start;
   @override
+  @HiveField(2)
   TimeOfDay get end;
   @override
+  @HiveField(3)
   DateTime get startDateTime;
   @override
+  @HiveField(4)
   DateTime get endDateTime;
   @override
   @JsonKey(ignore: true)

@@ -16,18 +16,31 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Lesson {
+  @HiveField(0)
   int get number => throw _privateConstructorUsedError;
+  @HiveField(1)
   LessonFullTimings get timings => throw _privateConstructorUsedError;
+  @HiveField(2)
   LessonType get type => throw _privateConstructorUsedError;
+  @HiveField(3)
   String get typeShortName => throw _privateConstructorUsedError;
+  @HiveField(4)
   String? get disciplineName => throw _privateConstructorUsedError;
+  @HiveField(5)
   String? get place => throw _privateConstructorUsedError;
+  @HiveField(6)
   List<String> get groupNames => throw _privateConstructorUsedError;
+  @HiveField(7)
   List<String> get teacherNames => throw _privateConstructorUsedError;
+  @HiveField(8)
   bool get isRemotely => throw _privateConstructorUsedError;
+  @HiveField(9)
   bool get isElective => throw _privateConstructorUsedError;
+  @HiveField(10)
   bool get isEvent => throw _privateConstructorUsedError;
+  @HiveField(11)
   Color get defaultColor => throw _privateConstructorUsedError;
+  @HiveField(12)
   int get emptyLessonsBefore => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -40,19 +53,19 @@ abstract class $LessonCopyWith<$Res> {
       _$LessonCopyWithImpl<$Res, Lesson>;
   @useResult
   $Res call(
-      {int number,
-      LessonFullTimings timings,
-      LessonType type,
-      String typeShortName,
-      String? disciplineName,
-      String? place,
-      List<String> groupNames,
-      List<String> teacherNames,
-      bool isRemotely,
-      bool isElective,
-      bool isEvent,
-      Color defaultColor,
-      int emptyLessonsBefore});
+      {@HiveField(0) int number,
+      @HiveField(1) LessonFullTimings timings,
+      @HiveField(2) LessonType type,
+      @HiveField(3) String typeShortName,
+      @HiveField(4) String? disciplineName,
+      @HiveField(5) String? place,
+      @HiveField(6) List<String> groupNames,
+      @HiveField(7) List<String> teacherNames,
+      @HiveField(8) bool isRemotely,
+      @HiveField(9) bool isElective,
+      @HiveField(10) bool isEvent,
+      @HiveField(11) Color defaultColor,
+      @HiveField(12) int emptyLessonsBefore});
 
   $LessonFullTimingsCopyWith<$Res> get timings;
 }
@@ -156,19 +169,19 @@ abstract class _$$_LessonCopyWith<$Res> implements $LessonCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int number,
-      LessonFullTimings timings,
-      LessonType type,
-      String typeShortName,
-      String? disciplineName,
-      String? place,
-      List<String> groupNames,
-      List<String> teacherNames,
-      bool isRemotely,
-      bool isElective,
-      bool isEvent,
-      Color defaultColor,
-      int emptyLessonsBefore});
+      {@HiveField(0) int number,
+      @HiveField(1) LessonFullTimings timings,
+      @HiveField(2) LessonType type,
+      @HiveField(3) String typeShortName,
+      @HiveField(4) String? disciplineName,
+      @HiveField(5) String? place,
+      @HiveField(6) List<String> groupNames,
+      @HiveField(7) List<String> teacherNames,
+      @HiveField(8) bool isRemotely,
+      @HiveField(9) bool isElective,
+      @HiveField(10) bool isEvent,
+      @HiveField(11) Color defaultColor,
+      @HiveField(12) int emptyLessonsBefore});
 
   @override
   $LessonFullTimingsCopyWith<$Res> get timings;
@@ -257,38 +270,46 @@ class __$$_LessonCopyWithImpl<$Res>
 
 /// @nodoc
 
+@HiveType(typeId: 0)
 class _$_Lesson implements _Lesson {
   _$_Lesson(
-      {required this.number,
-      required this.timings,
-      required this.type,
-      required this.typeShortName,
-      required this.disciplineName,
-      required this.place,
-      required final List<String> groupNames,
-      required final List<String> teacherNames,
-      required this.isRemotely,
-      required this.isElective,
-      required this.isEvent,
-      required this.defaultColor,
-      required this.emptyLessonsBefore})
+      {@HiveField(0) required this.number,
+      @HiveField(1) required this.timings,
+      @HiveField(2) required this.type,
+      @HiveField(3) required this.typeShortName,
+      @HiveField(4) required this.disciplineName,
+      @HiveField(5) required this.place,
+      @HiveField(6) required final List<String> groupNames,
+      @HiveField(7) required final List<String> teacherNames,
+      @HiveField(8) required this.isRemotely,
+      @HiveField(9) required this.isElective,
+      @HiveField(10) required this.isEvent,
+      @HiveField(11) required this.defaultColor,
+      @HiveField(12) required this.emptyLessonsBefore})
       : _groupNames = groupNames,
         _teacherNames = teacherNames;
 
   @override
+  @HiveField(0)
   final int number;
   @override
+  @HiveField(1)
   final LessonFullTimings timings;
   @override
+  @HiveField(2)
   final LessonType type;
   @override
+  @HiveField(3)
   final String typeShortName;
   @override
+  @HiveField(4)
   final String? disciplineName;
   @override
+  @HiveField(5)
   final String? place;
   final List<String> _groupNames;
   @override
+  @HiveField(6)
   List<String> get groupNames {
     if (_groupNames is EqualUnmodifiableListView) return _groupNames;
     // ignore: implicit_dynamic_type
@@ -297,6 +318,7 @@ class _$_Lesson implements _Lesson {
 
   final List<String> _teacherNames;
   @override
+  @HiveField(7)
   List<String> get teacherNames {
     if (_teacherNames is EqualUnmodifiableListView) return _teacherNames;
     // ignore: implicit_dynamic_type
@@ -304,14 +326,19 @@ class _$_Lesson implements _Lesson {
   }
 
   @override
+  @HiveField(8)
   final bool isRemotely;
   @override
+  @HiveField(9)
   final bool isElective;
   @override
+  @HiveField(10)
   final bool isEvent;
   @override
+  @HiveField(11)
   final Color defaultColor;
   @override
+  @HiveField(12)
   final int emptyLessonsBefore;
 
   @override
@@ -373,45 +400,58 @@ class _$_Lesson implements _Lesson {
 
 abstract class _Lesson implements Lesson {
   factory _Lesson(
-      {required final int number,
-      required final LessonFullTimings timings,
-      required final LessonType type,
-      required final String typeShortName,
-      required final String? disciplineName,
-      required final String? place,
-      required final List<String> groupNames,
-      required final List<String> teacherNames,
-      required final bool isRemotely,
-      required final bool isElective,
-      required final bool isEvent,
-      required final Color defaultColor,
-      required final int emptyLessonsBefore}) = _$_Lesson;
+      {@HiveField(0) required final int number,
+      @HiveField(1) required final LessonFullTimings timings,
+      @HiveField(2) required final LessonType type,
+      @HiveField(3) required final String typeShortName,
+      @HiveField(4) required final String? disciplineName,
+      @HiveField(5) required final String? place,
+      @HiveField(6) required final List<String> groupNames,
+      @HiveField(7) required final List<String> teacherNames,
+      @HiveField(8) required final bool isRemotely,
+      @HiveField(9) required final bool isElective,
+      @HiveField(10) required final bool isEvent,
+      @HiveField(11) required final Color defaultColor,
+      @HiveField(12) required final int emptyLessonsBefore}) = _$_Lesson;
 
   @override
+  @HiveField(0)
   int get number;
   @override
+  @HiveField(1)
   LessonFullTimings get timings;
   @override
+  @HiveField(2)
   LessonType get type;
   @override
+  @HiveField(3)
   String get typeShortName;
   @override
+  @HiveField(4)
   String? get disciplineName;
   @override
+  @HiveField(5)
   String? get place;
   @override
+  @HiveField(6)
   List<String> get groupNames;
   @override
+  @HiveField(7)
   List<String> get teacherNames;
   @override
+  @HiveField(8)
   bool get isRemotely;
   @override
+  @HiveField(9)
   bool get isElective;
   @override
+  @HiveField(10)
   bool get isEvent;
   @override
+  @HiveField(11)
   Color get defaultColor;
   @override
+  @HiveField(12)
   int get emptyLessonsBefore;
   @override
   @JsonKey(ignore: true)
