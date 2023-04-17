@@ -20,11 +20,15 @@ AppSettingsViewState _$AppSettingsViewStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppSettingsViewState {
+  @HiveField(0)
   AppThemeMode get appThemeMode => throw _privateConstructorUsedError;
+  @HiveField(1)
   AppLessonColorsMode get lessonColorsMode =>
       throw _privateConstructorUsedError;
+  @HiveField(2)
   LessonCardLessonTypePosition get lessonCardLessonTypePosition =>
       throw _privateConstructorUsedError;
+  @HiveField(3)
   LessonCardRecessDisplayCondition get lessonCardRecessDisplayCondition =>
       throw _privateConstructorUsedError;
 
@@ -41,10 +45,14 @@ abstract class $AppSettingsViewStateCopyWith<$Res> {
       _$AppSettingsViewStateCopyWithImpl<$Res, AppSettingsViewState>;
   @useResult
   $Res call(
-      {AppThemeMode appThemeMode,
-      AppLessonColorsMode lessonColorsMode,
-      LessonCardLessonTypePosition lessonCardLessonTypePosition,
-      LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition});
+      {@HiveField(0)
+          AppThemeMode appThemeMode,
+      @HiveField(1)
+          AppLessonColorsMode lessonColorsMode,
+      @HiveField(2)
+          LessonCardLessonTypePosition lessonCardLessonTypePosition,
+      @HiveField(3)
+          LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition});
 }
 
 /// @nodoc
@@ -96,10 +104,14 @@ abstract class _$$_AppSettingsViewStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {AppThemeMode appThemeMode,
-      AppLessonColorsMode lessonColorsMode,
-      LessonCardLessonTypePosition lessonCardLessonTypePosition,
-      LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition});
+      {@HiveField(0)
+          AppThemeMode appThemeMode,
+      @HiveField(1)
+          AppLessonColorsMode lessonColorsMode,
+      @HiveField(2)
+          LessonCardLessonTypePosition lessonCardLessonTypePosition,
+      @HiveField(3)
+          LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition});
 }
 
 /// @nodoc
@@ -141,13 +153,14 @@ class __$$_AppSettingsViewStateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 7)
 class _$_AppSettingsViewState implements _AppSettingsViewState {
   _$_AppSettingsViewState(
-      {this.appThemeMode = AppThemeMode.system,
-      this.lessonColorsMode = AppLessonColorsMode.cube,
-      this.lessonCardLessonTypePosition =
+      {@HiveField(0) this.appThemeMode = AppThemeMode.system,
+      @HiveField(1) this.lessonColorsMode = AppLessonColorsMode.cube,
+      @HiveField(2) this.lessonCardLessonTypePosition =
           LessonCardLessonTypePosition.afterBottomLeftBlock,
-      this.lessonCardRecessDisplayCondition =
+      @HiveField(3) this.lessonCardRecessDisplayCondition =
           LessonCardRecessDisplayCondition.always});
 
   factory _$_AppSettingsViewState.fromJson(Map<String, dynamic> json) =>
@@ -155,15 +168,19 @@ class _$_AppSettingsViewState implements _AppSettingsViewState {
 
   @override
   @JsonKey()
+  @HiveField(0)
   final AppThemeMode appThemeMode;
   @override
   @JsonKey()
+  @HiveField(1)
   final AppLessonColorsMode lessonColorsMode;
   @override
   @JsonKey()
+  @HiveField(2)
   final LessonCardLessonTypePosition lessonCardLessonTypePosition;
   @override
   @JsonKey()
+  @HiveField(3)
   final LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition;
 
   @override
@@ -212,22 +229,30 @@ class _$_AppSettingsViewState implements _AppSettingsViewState {
 
 abstract class _AppSettingsViewState implements AppSettingsViewState {
   factory _AppSettingsViewState(
-      {final AppThemeMode appThemeMode,
-      final AppLessonColorsMode lessonColorsMode,
-      final LessonCardLessonTypePosition lessonCardLessonTypePosition,
-      final LessonCardRecessDisplayCondition
-          lessonCardRecessDisplayCondition}) = _$_AppSettingsViewState;
+      {@HiveField(0)
+          final AppThemeMode appThemeMode,
+      @HiveField(1)
+          final AppLessonColorsMode lessonColorsMode,
+      @HiveField(2)
+          final LessonCardLessonTypePosition lessonCardLessonTypePosition,
+      @HiveField(3)
+          final LessonCardRecessDisplayCondition
+              lessonCardRecessDisplayCondition}) = _$_AppSettingsViewState;
 
   factory _AppSettingsViewState.fromJson(Map<String, dynamic> json) =
       _$_AppSettingsViewState.fromJson;
 
   @override
+  @HiveField(0)
   AppThemeMode get appThemeMode;
   @override
+  @HiveField(1)
   AppLessonColorsMode get lessonColorsMode;
   @override
+  @HiveField(2)
   LessonCardLessonTypePosition get lessonCardLessonTypePosition;
   @override
+  @HiveField(3)
   LessonCardRecessDisplayCondition get lessonCardRecessDisplayCondition;
   @override
   @JsonKey(ignore: true)

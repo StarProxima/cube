@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cube_system/styles/app_lesson_colors/app_lesson_colors.dart';
 import 'package:cube_system/features/settings/state_holders/app_settings_view_state_holder.dart';
 
-import 'package:cube_system/features/settings/models/app_lesson_colors_mode.dart';
+import 'package:cube_system/features/settings/models/app_lesson_colors_mode/app_lesson_colors_mode.dart';
 
 final appLessonColors = Provider((ref) {
   final mode = ref.watch(
