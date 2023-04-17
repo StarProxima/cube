@@ -13,9 +13,9 @@ part 'app_settings_view_state.freezed.dart';
 part 'app_settings_view_state.g.dart';
 
 @freezed
-class AppSettingsViewState with _$AppSettingsViewState {
+class AppSettings with _$AppSettings {
   @HiveType(typeId: 7)
-  factory AppSettingsViewState({
+  factory AppSettings({
     @HiveField(0)
     @Default(AppThemeMode.system)
         AppThemeMode appThemeMode,
@@ -28,8 +28,5 @@ class AppSettingsViewState with _$AppSettingsViewState {
     @HiveField(3)
     @Default(LessonCardRecessDisplayCondition.always)
         LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition,
-  }) = _AppSettingsViewState;
-
-  factory AppSettingsViewState.fromJson(Map<String, dynamic> json) =>
-      _$AppSettingsViewStateFromJson(json);
+  }) = _AppSettings;
 }

@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:cube_system/features/settings/state_holders/app_settings_view_state_holder.dart';
+import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
 import 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_recess.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/timetable_page/state_holders/selected_timetable.dart';

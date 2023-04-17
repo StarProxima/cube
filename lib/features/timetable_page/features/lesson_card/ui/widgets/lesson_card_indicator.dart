@@ -12,7 +12,7 @@ class LessonCardIndicator extends ConsumerWidget {
     final color = ref.watch(appLessonColorByLesson(lesson));
 
     final isOnIndicator = ref.watch(
-      appSettingsViewStateHolder
+      appSettingsStateHolder
           .select((value) => value.lessonCardLessonTypePosition.isOnIndicator),
     );
 

@@ -19,7 +19,7 @@ class LessonCardHeader extends ConsumerWidget {
         ref.watch(appLessonColorByLesson(ref.read(_lessonInLessonCard)));
 
     final lessonTypePosition = ref.watch(
-      appSettingsViewStateHolder
+      appSettingsStateHolder
           .select((value) => value.lessonCardLessonTypePosition),
     );
 

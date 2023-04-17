@@ -6,11 +6,11 @@ class _SettingsPageLessonCardLessonTypePosition extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final lessonCardLessonTypePosition = ref.watch(
-      appSettingsViewStateHolder
+      appSettingsStateHolder
           .select((value) => value.lessonCardLessonTypePosition),
     );
 
-    final settingsNotifier = ref.read(appSettingsViewStateHolder.notifier);
+    final settingsNotifier = ref.read(appSettingsStateHolder.notifier);
 
     return AppRadioSelector<LessonCardLessonTypePosition>(
       label: const Text(

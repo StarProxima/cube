@@ -28,7 +28,7 @@ class LessonCardFooter extends ConsumerWidget {
         ref.watch(selectedTimetable.select((value) => value!.type));
 
     final lessonTypePosition = ref.watch(
-      appSettingsViewStateHolder
+      appSettingsStateHolder
           .select((value) => value.lessonCardLessonTypePosition),
     );
 

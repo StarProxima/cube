@@ -6,11 +6,11 @@ import 'package:cube_system/features/timetable_page/state_holders/lessons/next_l
 
 import 'package:cube_system/features/timetable_page/features/lesson_card/providers/next_lesson_time_to_start_provider.dart';
 
-import 'package:cube_system/features/settings/state_holders/app_settings_view_state_holder.dart';
+import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
 
 final nextLessonTimeToStartProgressValueProvider = Provider<double>((ref) {
   ref.watch(
-    appSettingsViewStateHolder
+    appSettingsStateHolder
         .select((value) => value.lessonCardRecessDisplayCondition),
   );
 

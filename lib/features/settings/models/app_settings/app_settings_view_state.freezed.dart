@@ -14,12 +14,8 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-AppSettingsViewState _$AppSettingsViewStateFromJson(Map<String, dynamic> json) {
-  return _AppSettingsViewState.fromJson(json);
-}
-
 /// @nodoc
-mixin _$AppSettingsViewState {
+mixin _$AppSettings {
   @HiveField(0)
   AppThemeMode get appThemeMode => throw _privateConstructorUsedError;
   @HiveField(1)
@@ -32,17 +28,16 @@ mixin _$AppSettingsViewState {
   LessonCardRecessDisplayCondition get lessonCardRecessDisplayCondition =>
       throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AppSettingsViewStateCopyWith<AppSettingsViewState> get copyWith =>
+  $AppSettingsCopyWith<AppSettings> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AppSettingsViewStateCopyWith<$Res> {
-  factory $AppSettingsViewStateCopyWith(AppSettingsViewState value,
-          $Res Function(AppSettingsViewState) then) =
-      _$AppSettingsViewStateCopyWithImpl<$Res, AppSettingsViewState>;
+abstract class $AppSettingsCopyWith<$Res> {
+  factory $AppSettingsCopyWith(
+          AppSettings value, $Res Function(AppSettings) then) =
+      _$AppSettingsCopyWithImpl<$Res, AppSettings>;
   @useResult
   $Res call(
       {@HiveField(0)
@@ -56,10 +51,9 @@ abstract class $AppSettingsViewStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AppSettingsViewStateCopyWithImpl<$Res,
-        $Val extends AppSettingsViewState>
-    implements $AppSettingsViewStateCopyWith<$Res> {
-  _$AppSettingsViewStateCopyWithImpl(this._value, this._then);
+class _$AppSettingsCopyWithImpl<$Res, $Val extends AppSettings>
+    implements $AppSettingsCopyWith<$Res> {
+  _$AppSettingsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -96,11 +90,11 @@ class _$AppSettingsViewStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_AppSettingsViewStateCopyWith<$Res>
-    implements $AppSettingsViewStateCopyWith<$Res> {
-  factory _$$_AppSettingsViewStateCopyWith(_$_AppSettingsViewState value,
-          $Res Function(_$_AppSettingsViewState) then) =
-      __$$_AppSettingsViewStateCopyWithImpl<$Res>;
+abstract class _$$_AppSettingsCopyWith<$Res>
+    implements $AppSettingsCopyWith<$Res> {
+  factory _$$_AppSettingsCopyWith(
+          _$_AppSettings value, $Res Function(_$_AppSettings) then) =
+      __$$_AppSettingsCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -115,11 +109,11 @@ abstract class _$$_AppSettingsViewStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AppSettingsViewStateCopyWithImpl<$Res>
-    extends _$AppSettingsViewStateCopyWithImpl<$Res, _$_AppSettingsViewState>
-    implements _$$_AppSettingsViewStateCopyWith<$Res> {
-  __$$_AppSettingsViewStateCopyWithImpl(_$_AppSettingsViewState _value,
-      $Res Function(_$_AppSettingsViewState) _then)
+class __$$_AppSettingsCopyWithImpl<$Res>
+    extends _$AppSettingsCopyWithImpl<$Res, _$_AppSettings>
+    implements _$$_AppSettingsCopyWith<$Res> {
+  __$$_AppSettingsCopyWithImpl(
+      _$_AppSettings _value, $Res Function(_$_AppSettings) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -130,7 +124,7 @@ class __$$_AppSettingsViewStateCopyWithImpl<$Res>
     Object? lessonCardLessonTypePosition = null,
     Object? lessonCardRecessDisplayCondition = null,
   }) {
-    return _then(_$_AppSettingsViewState(
+    return _then(_$_AppSettings(
       appThemeMode: null == appThemeMode
           ? _value.appThemeMode
           : appThemeMode // ignore: cast_nullable_to_non_nullable
@@ -152,19 +146,16 @@ class __$$_AppSettingsViewStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 @HiveType(typeId: 7)
-class _$_AppSettingsViewState implements _AppSettingsViewState {
-  _$_AppSettingsViewState(
+class _$_AppSettings implements _AppSettings {
+  _$_AppSettings(
       {@HiveField(0) this.appThemeMode = AppThemeMode.system,
       @HiveField(1) this.lessonColorsMode = AppLessonColorsMode.cube,
       @HiveField(2) this.lessonCardLessonTypePosition =
           LessonCardLessonTypePosition.afterBottomLeftBlock,
       @HiveField(3) this.lessonCardRecessDisplayCondition =
           LessonCardRecessDisplayCondition.always});
-
-  factory _$_AppSettingsViewState.fromJson(Map<String, dynamic> json) =>
-      _$$_AppSettingsViewStateFromJson(json);
 
   @override
   @JsonKey()
@@ -185,14 +176,14 @@ class _$_AppSettingsViewState implements _AppSettingsViewState {
 
   @override
   String toString() {
-    return 'AppSettingsViewState(appThemeMode: $appThemeMode, lessonColorsMode: $lessonColorsMode, lessonCardLessonTypePosition: $lessonCardLessonTypePosition, lessonCardRecessDisplayCondition: $lessonCardRecessDisplayCondition)';
+    return 'AppSettings(appThemeMode: $appThemeMode, lessonColorsMode: $lessonColorsMode, lessonCardLessonTypePosition: $lessonCardLessonTypePosition, lessonCardRecessDisplayCondition: $lessonCardRecessDisplayCondition)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppSettingsViewState &&
+            other is _$_AppSettings &&
             (identical(other.appThemeMode, appThemeMode) ||
                 other.appThemeMode == appThemeMode) &&
             (identical(other.lessonColorsMode, lessonColorsMode) ||
@@ -207,7 +198,6 @@ class _$_AppSettingsViewState implements _AppSettingsViewState {
                     lessonCardRecessDisplayCondition));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, appThemeMode, lessonColorsMode,
       lessonCardLessonTypePosition, lessonCardRecessDisplayCondition);
@@ -215,20 +205,12 @@ class _$_AppSettingsViewState implements _AppSettingsViewState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppSettingsViewStateCopyWith<_$_AppSettingsViewState> get copyWith =>
-      __$$_AppSettingsViewStateCopyWithImpl<_$_AppSettingsViewState>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_AppSettingsViewStateToJson(
-      this,
-    );
-  }
+  _$$_AppSettingsCopyWith<_$_AppSettings> get copyWith =>
+      __$$_AppSettingsCopyWithImpl<_$_AppSettings>(this, _$identity);
 }
 
-abstract class _AppSettingsViewState implements AppSettingsViewState {
-  factory _AppSettingsViewState(
+abstract class _AppSettings implements AppSettings {
+  factory _AppSettings(
       {@HiveField(0)
           final AppThemeMode appThemeMode,
       @HiveField(1)
@@ -237,10 +219,7 @@ abstract class _AppSettingsViewState implements AppSettingsViewState {
           final LessonCardLessonTypePosition lessonCardLessonTypePosition,
       @HiveField(3)
           final LessonCardRecessDisplayCondition
-              lessonCardRecessDisplayCondition}) = _$_AppSettingsViewState;
-
-  factory _AppSettingsViewState.fromJson(Map<String, dynamic> json) =
-      _$_AppSettingsViewState.fromJson;
+              lessonCardRecessDisplayCondition}) = _$_AppSettings;
 
   @override
   @HiveField(0)
@@ -256,6 +235,6 @@ abstract class _AppSettingsViewState implements AppSettingsViewState {
   LessonCardRecessDisplayCondition get lessonCardRecessDisplayCondition;
   @override
   @JsonKey(ignore: true)
-  _$$_AppSettingsViewStateCopyWith<_$_AppSettingsViewState> get copyWith =>
+  _$$_AppSettingsCopyWith<_$_AppSettings> get copyWith =>
       throw _privateConstructorUsedError;
 }
