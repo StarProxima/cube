@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 
 part 'timetable_info.freezed.dart';
+part 'timetable_info.g.dart';
 
 @freezed
 class TimetableInfo with _$TimetableInfo {

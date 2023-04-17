@@ -1,3 +1,4 @@
+import 'package:cube_system/models/timetable/timetable_info.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:cube_system/features/settings/models/app_lesson_colors_mode/app_lesson_colors_mode.dart';
@@ -15,28 +16,23 @@ import 'package:cube_system/models/timetable_day/timetable_day_event.dart';
 import 'package:cube_system/models/timetable_day/timetable_day_type.dart';
 
 abstract class HiveInitializer {
-  static void _registerAdapters(List<TypeAdapter> adapters) {
-    for (final adapter in adapters) {
-      Hive.registerAdapter(adapter);
-    }
-  }
+  static void _reg<T>(TypeAdapter<T> adapter) => Hive.registerAdapter(adapter);
 
-  static void init() {
-    Hive.initFlutter();
+  static void init() async {
+    await Hive.initFlutter();
 
-    _registerAdapters([
-      AppLessonColorsModeAdapter(),
-      AppSettingsAdapter(),
-      LessonCardLessonTypePositionAdapter(),
-      LessonCardRecessDisplayConditionAdapter(),
-      TimeOfDayAdapter(),
-      LessonAdapter(),
-      LessonFullTimingsAdapter(),
-      LessonTimingsAdapter(),
-      LessonTypeAdapter(),
-      TimetableTypeAdapter(),
-      TimetableDayEventAdapter(),
-      TimetableDayEventTypeAdapter(),
-    ]);
+    _reg(AppLessonColorsModeAdapter());
+    _reg(AppSettingsAdapter());
+    _reg(LessonCardLessonTypePositionAdapter());
+    _reg(LessonCardRecessDisplayConditionAdapter());
+    _reg(TimeOfDayAdapter());
+    _reg(LessonAdapter());
+    _reg(LessonFullTimingsAdapter());
+    _reg(LessonTimingsAdapter());
+    _reg(LessonTypeAdapter());
+    _reg(TimetableInfoAdapter());
+    _reg(TimetableTypeAdapter());
+    _reg(TimetableDayEventAdapter());
+    _reg(TimetableDayEventTypeAdapter());
   }
 }
