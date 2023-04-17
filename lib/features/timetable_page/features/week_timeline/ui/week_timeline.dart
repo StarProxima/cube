@@ -16,7 +16,12 @@ class WeekTimeline extends ConsumerStatefulWidget {
 
 class _WeekTimelineState extends ConsumerState<WeekTimeline> {
   final initialPage = 1000;
-  late final pageController = PageController(initialPage: initialPage);
+  late final pageController = PageController(
+    initialPage: initialPage +
+        ref.read(weekTimelineManager).calculateWeekOffset(
+              ref.read(selectedDate),
+            ),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +36,7 @@ class _WeekTimelineState extends ConsumerState<WeekTimeline> {
         final offsetInWeeks = manager.calculateWeekOffset(next);
 
         pageController.animateToPage(
-          pageController.initialPage + offsetInWeeks,
+          initialPage + offsetInWeeks,
           duration: const Duration(milliseconds: 500),
           curve: Curves.easeInOut,
         );

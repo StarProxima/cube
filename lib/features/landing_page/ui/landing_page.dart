@@ -4,7 +4,7 @@ import 'package:cube_system/features/landing_page/ui/widgets/landing_welcome_pag
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/ui/widgets/app_button.dart';
+import 'package:cube_system/ui/ui_kit/app_button.dart';
 
 import 'package:go_router/go_router.dart';
 

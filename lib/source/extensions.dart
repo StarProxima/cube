@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 extension IterableExtension<E> on Iterable<E> {
@@ -41,4 +42,8 @@ extension DateTimeExtension on DateTime {
     }
     return woy;
   }
+}
+
+extension ColorExtension on Color {
+  Color toAppFadedColor() => withOpacity(0.6);
 }

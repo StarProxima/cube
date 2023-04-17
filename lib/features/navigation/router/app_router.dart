@@ -1,4 +1,5 @@
 import 'package:cube_system/features/landing_page/ui/landing_page.dart';
+import 'package:cube_system/features/settings/ui/settings_page.dart';
 import 'package:cube_system/features/timetable_page/ui/timetable_page.dart';
 import 'package:cube_system/features/timetable_search_page/ui/timetable_search_page.dart';
 import 'package:cube_system/models/timetable/timetable_info.dart';
@@ -19,7 +20,7 @@ final _shellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'shell');
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: '/landing',
+    initialLocation: '/timetable',
     routes: [
       GoRoute(
         path: '/',
@@ -122,9 +123,7 @@ final routerProvider = Provider<GoRouter>((ref) {
             path: '/settings',
             pageBuilder: (context, state) => AppCustomTransitionPage(
               key: state.pageKey,
-              child: const UnimplementedFeatureEventPage(
-                title: 'Скоро здесь будут настройки',
-              ),
+              child: const SettingsPage(),
             ),
           ),
         ],

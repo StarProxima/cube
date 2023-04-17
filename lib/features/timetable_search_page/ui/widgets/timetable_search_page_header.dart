@@ -2,7 +2,7 @@ import 'package:cube_system/features/timetable_search_page/ui/widgets/timetable_
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/ui/widgets/app_back_button.dart';
+import 'package:cube_system/ui/ui_kit/app_back_button.dart';
 
 class TimetableSearchPageHeader extends ConsumerWidget
     implements PreferredSizeWidget {
@@ -15,18 +15,18 @@ class TimetableSearchPageHeader extends ConsumerWidget
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return PreferredSize(
+    return const PreferredSize(
       preferredSize: _size,
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(
+            padding: EdgeInsets.symmetric(
               vertical: 12,
               horizontal: 16,
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
+              children: [
                 AppBackButton(),
                 SizedBox(width: 12),
                 Flexible(
@@ -35,7 +35,7 @@ class TimetableSearchPageHeader extends ConsumerWidget
               ],
             ),
           ),
-          const Divider(),
+          Divider(),
         ],
       ),
     );

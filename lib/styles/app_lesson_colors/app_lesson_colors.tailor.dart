@@ -14,38 +14,42 @@ class AppLessonColors extends ThemeExtension<AppLessonColors> {
     required this.laboratory,
     required this.practice,
     required this.seminar,
-    required this.ksrs,
     required this.additional,
+    required this.ksrs,
+    required this.recess,
   });
 
   final Color? lecture;
   final Color? laboratory;
   final Color? practice;
   final Color? seminar;
-  final Color? ksrs;
   final Color? additional;
+  final Color? ksrs;
+  final Color? recess;
 
   static final AppLessonColors cube = AppLessonColors(
     lecture: _$AppLessonColors.lecture[0],
     laboratory: _$AppLessonColors.laboratory[0],
     practice: _$AppLessonColors.practice[0],
     seminar: _$AppLessonColors.seminar[0],
-    ksrs: _$AppLessonColors.ksrs[0],
     additional: _$AppLessonColors.additional[0],
+    ksrs: _$AppLessonColors.ksrs[0],
+    recess: _$AppLessonColors.recess[0],
   );
 
-  static final AppLessonColors custom = AppLessonColors(
+  static final AppLessonColors proxima = AppLessonColors(
     lecture: _$AppLessonColors.lecture[1],
     laboratory: _$AppLessonColors.laboratory[1],
     practice: _$AppLessonColors.practice[1],
     seminar: _$AppLessonColors.seminar[1],
-    ksrs: _$AppLessonColors.ksrs[1],
     additional: _$AppLessonColors.additional[1],
+    ksrs: _$AppLessonColors.ksrs[1],
+    recess: _$AppLessonColors.recess[1],
   );
 
   static final themes = [
     cube,
-    custom,
+    proxima,
   ];
 
   @override
@@ -54,16 +58,18 @@ class AppLessonColors extends ThemeExtension<AppLessonColors> {
     Color? laboratory,
     Color? practice,
     Color? seminar,
-    Color? ksrs,
     Color? additional,
+    Color? ksrs,
+    Color? recess,
   }) {
     return AppLessonColors(
       lecture: lecture ?? this.lecture,
       laboratory: laboratory ?? this.laboratory,
       practice: practice ?? this.practice,
       seminar: seminar ?? this.seminar,
-      ksrs: ksrs ?? this.ksrs,
       additional: additional ?? this.additional,
+      ksrs: ksrs ?? this.ksrs,
+      recess: recess ?? this.recess,
     );
   }
 
@@ -75,8 +81,9 @@ class AppLessonColors extends ThemeExtension<AppLessonColors> {
       laboratory: Color.lerp(laboratory, other.laboratory, t),
       practice: Color.lerp(practice, other.practice, t),
       seminar: Color.lerp(seminar, other.seminar, t),
-      ksrs: Color.lerp(ksrs, other.ksrs, t),
       additional: Color.lerp(additional, other.additional, t),
+      ksrs: Color.lerp(ksrs, other.ksrs, t),
+      recess: Color.lerp(recess, other.recess, t),
     );
   }
 
@@ -90,9 +97,10 @@ class AppLessonColors extends ThemeExtension<AppLessonColors> {
                 .equals(laboratory, other.laboratory) &&
             const DeepCollectionEquality().equals(practice, other.practice) &&
             const DeepCollectionEquality().equals(seminar, other.seminar) &&
-            const DeepCollectionEquality().equals(ksrs, other.ksrs) &&
             const DeepCollectionEquality()
-                .equals(additional, other.additional));
+                .equals(additional, other.additional) &&
+            const DeepCollectionEquality().equals(ksrs, other.ksrs) &&
+            const DeepCollectionEquality().equals(recess, other.recess));
   }
 
   @override
@@ -103,7 +111,8 @@ class AppLessonColors extends ThemeExtension<AppLessonColors> {
         const DeepCollectionEquality().hash(laboratory),
         const DeepCollectionEquality().hash(practice),
         const DeepCollectionEquality().hash(seminar),
+        const DeepCollectionEquality().hash(additional),
         const DeepCollectionEquality().hash(ksrs),
-        const DeepCollectionEquality().hash(additional));
+        const DeepCollectionEquality().hash(recess));
   }
 }

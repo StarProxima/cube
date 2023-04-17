@@ -8,10 +8,10 @@ class DateTimeDuration {
   late final int milliseconds;
 
   DateTimeDuration(this.duration) {
-    _calculateFields(duration);
+    _calculateFields();
   }
 
-  void _calculateFields(Duration duration) {
+  void _calculateFields() {
     Duration dur = duration.isNegative
         ? Duration.zero
         : Duration(milliseconds: duration.inMilliseconds);

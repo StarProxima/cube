@@ -2,7 +2,7 @@ import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/ui/widgets/app_button.dart';
+import 'package:cube_system/ui/ui_kit/app_button.dart';
 
 import 'package:cube_system/ui/widgets/short_fade_animated_widget.dart';
 

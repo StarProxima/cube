@@ -1,13 +1,13 @@
 import 'dart:math';
 
-import 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/free_time_window_lesson_card.dart';
+import 'package:cube_system/features/settings/state_holders/app_settings_view_state_holder.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_recess.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/timetable_page/state_holders/selected_timetable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/timetable_page/state_holders/lessons/current_lesson.dart';
-import 'package:cube_system/features/timetable_page/state_holders/lessons/next_lesson.dart';
 import 'package:cube_system/models/lesson/lesson.dart';
 import 'package:cube_system/source/extensions.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
@@ -20,6 +20,10 @@ import 'package:cube_system/features/timetable_page/features/lesson_card/provide
 
 import 'package:cube_system/models/timetable/timetable_type.dart';
 
+import 'package:cube_system/features/settings/state_holders/app_lesson_colors.dart';
+
+import 'package:cube_system/features/timetable_page/state_holders/lessons/next_lesson.dart';
+
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_body.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_footer.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_header.dart';
@@ -27,6 +31,7 @@ part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widget
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_indicator.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_time_left.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/next_lesson_time_to_start_progress_bar.dart';
+part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_lesson_type_chip.dart';
 
 final _lessonInLessonCard = Provider<Lesson>((ref) {
   return throw UnimplementedError();
@@ -49,18 +54,24 @@ class LessonCard extends ConsumerWidget {
           if (lesson.emptyLessonsBefore != 0)
             Padding(
               padding: const EdgeInsets.only(bottom: 16, top: 8),
-              child: FreeTimeWindowLessonCard(
+              child: LessonCardRecess(
                 numberStart: lesson.lesson.number - lesson.emptyLessonsBefore,
                 numberEnd: lesson.lesson.number - 1,
               ),
             ),
           Consumer(
             builder: (context, ref, _) {
-              final lessonNext = ref.watch(nextLesson);
-              final lessonCurrent = ref.watch(currentLesson);
-              if (lesson != lessonNext || lessonCurrent != null) {
+              final dontShow = ref.watch(
+                nextLessonTimeToStartProvider.select((value) => value == null),
+              );
+
+              final lessonNext = ref.read(nextLesson);
+              final lessonCurrent = ref.read(currentLesson);
+
+              if (dontShow || lesson != lessonNext || lessonCurrent != null) {
                 return const SizedBox();
               }
+
               return const Padding(
                 padding: EdgeInsets.only(bottom: 8),
                 child: NextLessonTimeToStartProgressBar(),
@@ -93,10 +104,10 @@ class LessonCard extends ConsumerWidget {
                         Expanded(
                           child: InkWell(
                             onTap: manager.findLastCurrentNextLesson,
-                            child: Column(
+                            child: const Column(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(
+                                  padding: EdgeInsets.only(
                                     left: 12,
                                     right: 12,
                                     top: 8,
@@ -105,7 +116,7 @@ class LessonCard extends ConsumerWidget {
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                    children: const [
+                                    children: [
                                       LessonCardHeader(),
                                       SizedBox(height: 8),
                                       LessonCardBody(),
@@ -113,13 +124,13 @@ class LessonCard extends ConsumerWidget {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(
+                                  padding: EdgeInsets.only(
                                     left: 4,
                                     right: 4,
                                     bottom: 4,
                                   ),
                                   child: Column(
-                                    children: const [
+                                    children: [
                                       LessonCardFooter(),
                                     ],
                                   ),

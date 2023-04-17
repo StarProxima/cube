@@ -1,16 +1,17 @@
 import 'package:cube_system/source/extensions.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
-import 'package:cube_system/styles/app_theme_state_holders/app_lesson_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/timetable_page/state_holders/lesson_timings.dart';
 
-class FreeTimeWindowLessonCard extends ConsumerWidget {
+import 'package:cube_system/features/settings/state_holders/app_lesson_colors.dart';
+
+class LessonCardRecess extends ConsumerWidget {
   final int numberStart;
   final int numberEnd;
 
-  const FreeTimeWindowLessonCard({
+  const LessonCardRecess({
     required this.numberStart,
     required this.numberEnd,
     super.key,
@@ -18,8 +19,7 @@ class FreeTimeWindowLessonCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final color = ref.watch(appLessonColors).practice;
-    final fadedColor = color?.withOpacity(0.5);
+    final color = ref.watch(appLessonColors).recess;
 
     final timingsStart = ref.watch(lessonTimings)[numberStart]!;
     final timingsEnd = ref.watch(lessonTimings)[numberEnd]!;
@@ -49,7 +49,7 @@ class FreeTimeWindowLessonCard extends ConsumerWidget {
           Container(
             width: 6,
             decoration: BoxDecoration(
-              color: fadedColor,
+              color: color?.toAppFadedColor(),
             ),
             child: Align(
               alignment: Alignment.bottomCenter,
