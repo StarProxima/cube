@@ -13,6 +13,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:window_size/window_size.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/services.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,6 +22,8 @@ void main() {
     setWindowTitle('Куб.Расписание');
     setWindowMinSize(const Size(460, 380));
   }
+
+  Hive.initFlutter();
 
   runApp(const ProviderScope(child: MainApp()));
 }
