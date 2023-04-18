@@ -17,17 +17,12 @@ final appSettingsStateHolder =
     StateNotifierProvider<AppSettingsNotifier, AppSettings>((ref) {
   return AppSettingsNotifier(
     AppSettings(),
+    boxName: AppBoxNames.appSettings,
   );
 });
 
 class AppSettingsNotifier extends HiveStateNotifier<AppSettings> {
-  AppSettingsNotifier(super.state);
-
-  @override
-  String get boxName => AppBoxNames.appSettings;
-
-  @override
-  get state => super.state;
+  AppSettingsNotifier(super.state, {required super.boxName});
 
   void editAppThemeMode(AppThemeMode appThemeMode) {
     state = state.copyWith(appThemeMode: appThemeMode);
