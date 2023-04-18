@@ -1,12 +1,6 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 
-class OpenStateNotifier<T> extends StateNotifier<T> {
-  OpenStateNotifier(super.state);
-
-  @override
-  T get state => super.state;
-}
+import 'package:cube_system/core/state_notifiers/open_state_notifier.dart';
 
 class HiveStateNotifier<T> extends OpenStateNotifier<T> {
   String boxName;
@@ -36,10 +30,4 @@ class HiveStateNotifier<T> extends OpenStateNotifier<T> {
 class SingleHiveStateNotifier<T> extends HiveStateNotifier<T?>
     with ChangeStateMixin {
   SingleHiveStateNotifier(super.state, {required super.boxName});
-}
-
-mixin ChangeStateMixin<T> on StateNotifier<T> {
-  void change(T newState) {
-    state = newState;
-  }
 }

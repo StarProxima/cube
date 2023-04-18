@@ -11,7 +11,7 @@ import 'package:cube_system/features/settings/models/lesson_card_recess_display_
 
 import 'package:cube_system/features/settings/models/app_settings/app_settings_view_state.dart';
 
-import 'package:cube_system/core/hive_state_notifier.dart';
+import 'package:cube_system/core/state_notifiers/hive_state_notifier.dart';
 
 final appSettingsStateHolder =
     StateNotifierProvider<AppSettingsNotifier, AppSettings>((ref) {
