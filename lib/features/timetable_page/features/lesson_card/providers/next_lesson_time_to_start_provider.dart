@@ -22,11 +22,11 @@ final nextLessonTimeToStartProvider = Provider<DateTimeDuration?>((ref) {
     if (next.number - last.number != 1) return null;
   }
 
-  final dateTime = ref.watch(currentDateTimeQuick);
-
   final next = ref.watch(nextLesson);
 
   if (next == null) return null;
+
+  final dateTime = ref.watch(currentDateTimeQuick);
 
   final startDateTime = next.timings.startDateTime;
   final duration = startDateTime.difference(dateTime);
