@@ -1,4 +1,3 @@
-import 'package:cube_system/core/hive_notifier_mixin.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/settings/models/app_lesson_colors_mode/app_lesson_colors_mode.dart';
@@ -11,6 +10,8 @@ import 'package:cube_system/features/settings/models/lesson_card_recess_display_
 
 import 'package:cube_system/features/settings/models/app_settings/app_settings_view_state.dart';
 
+import 'package:cube_system/core/hive_state_notifier.dart';
+
 final appSettingsStateHolder =
     StateNotifierProvider<AppSettingsNotifier, AppSettings>((ref) {
   return AppSettingsNotifier(
@@ -18,8 +19,7 @@ final appSettingsStateHolder =
   );
 });
 
-class AppSettingsNotifier extends StateNotifier<AppSettings>
-    with HiveNotifierMixin {
+class AppSettingsNotifier extends HiveStateNotifier<AppSettings> {
   AppSettingsNotifier(super.state);
 
   @override

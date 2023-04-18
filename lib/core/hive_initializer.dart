@@ -19,9 +19,8 @@ import 'package:cube_system/models/timetable_day/timetable_day_type.dart';
 abstract class HiveInitializer {
   static void _reg<T>(TypeAdapter<T> adapter) => Hive.registerAdapter(adapter);
 
-  static void init() async {
+  static Future<void> init() async {
     await Hive.initFlutter();
-
     _reg(AppLessonColorsModeAdapter());
     _reg(AppSettingsAdapter());
     _reg(LessonCardLessonTypePositionAdapter());
