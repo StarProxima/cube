@@ -1,3 +1,4 @@
+import 'package:cube_system/models/app_box_names/app_box_names.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/settings/models/app_lesson_colors_mode/app_lesson_colors_mode.dart';
@@ -23,7 +24,7 @@ class AppSettingsNotifier extends HiveStateNotifier<AppSettings> {
   AppSettingsNotifier(super.state);
 
   @override
-  String get boxName => 'appSettings';
+  String get boxName => AppBoxNames.appSettings;
 
   @override
   get state => super.state;

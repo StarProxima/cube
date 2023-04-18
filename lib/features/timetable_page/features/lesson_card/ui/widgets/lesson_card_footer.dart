@@ -25,7 +25,7 @@ class LessonCardFooter extends ConsumerWidget {
     final teachersIsNotEmpty = teachers != "";
 
     final timetableType =
-        ref.watch(selectedTimetable.select((value) => value!.type));
+        ref.watch(selectedTimetableStateHolder.select((value) => value!.type));
 
     final lessonTypePosition = ref.watch(
       appSettingsStateHolder

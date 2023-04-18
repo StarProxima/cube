@@ -11,7 +11,7 @@ import 'package:cube_system/features/timetable_page/state_holders/selected_timet
 final timetablePageManager = Provider<TimetablePageManager>((ref) {
   return TimetablePageManager(
     lessonsManager: ref.watch(timetableLessonsManager),
-    selectedTimetable: ref.watch(selectedTimetable.notifier),
+    selectedTimetable: ref.watch(selectedTimetableStateHolder.notifier),
     currentDateTime: ref.watch(currentDateTimeQuick.notifier),
     selectedDate: ref.watch(selectedDate.notifier),
     currentPickedDateInPageView:
@@ -22,7 +22,7 @@ final timetablePageManager = Provider<TimetablePageManager>((ref) {
 class TimetablePageManager {
   final TimetableLessonsManager lessonsManager;
 
-  final StateController<TimetableInfo?> selectedTimetable;
+  final SelectedTimetableNotifier selectedTimetable;
   final StateController<DateTime> currentDateTime;
   final StateController<DateTime> selectedDate;
   final StateController<DateTime> currentPickedDateInPageView;
@@ -35,9 +35,10 @@ class TimetablePageManager {
     required this.currentPickedDateInPageView,
   });
 
+  // TODO: Refactor - update current timetable when selected timetable changes
   Future<void> selectTimetable(TimetableInfo timetable) async {
     await Future(() {});
-    selectedTimetable.state = timetable;
+    selectedTimetable.change(timetable);
     lessonsManager.clear();
     lessonsManager.updateCurrentTimetable();
   }

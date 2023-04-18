@@ -22,7 +22,7 @@ class TimetablePageHeader extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final manager = ref.watch(timetablePageManager);
 
-    final timetable = ref.watch(selectedTimetable);
+    final timetable = ref.watch(selectedTimetableStateHolder);
 
     final date = ref.watch(currentDate);
     final weekDate = ref.watch(weekTimelineShownWeekDate);

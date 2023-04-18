@@ -14,7 +14,7 @@ class HiveProviderObserver extends ProviderObserver {
     Object? newValue,
     ProviderContainer container,
   ) {
-    if (provider == selectedTimetable) {
+    if (provider == selectedTimetableStateHolder) {
       print(newValue);
       Future(() async {
         final box = await Hive.openBox('timetables');

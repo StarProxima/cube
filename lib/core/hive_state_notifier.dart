@@ -26,3 +26,9 @@ abstract class HiveStateNotifier<T> extends StateNotifier<T> {
     super.dispose();
   }
 }
+
+mixin ChangeStateMixin<T> on StateNotifier<T> {
+  void change(T newState) {
+    state = newState;
+  }
+}

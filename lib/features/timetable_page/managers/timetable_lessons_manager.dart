@@ -18,8 +18,6 @@ import 'package:cube_system/features/timetable_page/state_holders/timetable_page
 import 'package:cube_system/features/timetable_page/managers/lesson_convertor.dart';
 import 'package:intl/intl.dart';
 
-import 'package:cube_system/models/timetable/timetable_info.dart';
-
 import 'package:cube_system/features/timetable_page/state_holders/selected_timetable.dart';
 
 final timetableLessonsManager = Provider<TimetableLessonsManager>((ref) {
@@ -27,7 +25,7 @@ final timetableLessonsManager = Provider<TimetableLessonsManager>((ref) {
     api: ref.watch(cubeApi),
     lessonConvertor: ref.watch(lessonConvertor),
     eventManager: ref.watch(timetableDayEventManager),
-    selectedTimetable: ref.watch(selectedTimetable.notifier),
+    selectedTimetable: ref.watch(selectedTimetableStateHolder.notifier),
     timetable: ref.watch(timetablePageTimetable.notifier),
     events: ref.watch(timetablePageLessonEvents.notifier),
     currentDateTime: ref.watch(currentDateTimeQuick.notifier),
@@ -43,7 +41,7 @@ class TimetableLessonsManager {
   final LessonConvertor lessonConvertor;
   final TimetableDayEventManager eventManager;
 
-  final StateController<TimetableInfo?> selectedTimetable;
+  final SelectedTimetableNotifier selectedTimetable;
   final StateController<SplayTreeMap<DateTime, List<Lesson>>> timetable;
   final StateController<SplayTreeMap<DateTime, TimetableDayEvent>> events;
   final StateController<DateTime> currentDateTime;

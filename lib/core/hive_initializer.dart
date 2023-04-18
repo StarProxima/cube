@@ -1,3 +1,4 @@
+import 'package:cube_system/models/app_box_names/app_box_names.dart';
 import 'package:cube_system/models/timetable/timetable_info.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -35,5 +36,7 @@ abstract class HiveInitializer {
     _reg(TimetableDayEventAdapter());
     _reg(TimetableDayEventTypeAdapter());
     _reg(AppThemeModeAdapter());
+
+    await Hive.openBox(AppBoxNames.selectedTimetable);
   }
 }
