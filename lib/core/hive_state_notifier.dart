@@ -1,10 +1,14 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 
-class HiveStateNotifier<T> extends StateNotifier<T> {
+class OpenStateNotifier<T> extends StateNotifier<T> {
+  OpenStateNotifier(super.state);
+
   @override
   T get state => super.state;
+}
 
+class HiveStateNotifier<T> extends OpenStateNotifier<T> {
   String boxName;
   late Box _box;
 
