@@ -17,6 +17,8 @@ import 'package:cube_system/models/timetable/timetable_type.dart';
 import 'package:cube_system/models/timetable_day/timetable_day_event.dart';
 import 'package:cube_system/models/timetable_day/timetable_day_type.dart';
 
+import 'package:cube_system/models/adapters/color_adapter.dart';
+
 abstract class HiveInitializer {
   static void _reg<T>(TypeAdapter<T> adapter) => Hive.registerAdapter(adapter);
 
@@ -36,7 +38,11 @@ abstract class HiveInitializer {
     _reg(TimetableDayEventAdapter());
     _reg(TimetableDayEventTypeAdapter());
     _reg(AppThemeModeAdapter());
+    _reg(ColorAdapter());
 
-    await Hive.openBox(AppBoxNames.selectedTimetable);
+    await Future.wait([
+      Hive.openBox(AppBoxNames.selectedTimetable),
+      Hive.openBox(AppBoxNames.timetablePageLessons),
+    ]);
   }
 }

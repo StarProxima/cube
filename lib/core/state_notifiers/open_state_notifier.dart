@@ -7,12 +7,9 @@ class OpenStateNotifier<T> extends StateNotifier<T> {
   T get state => super.state;
 }
 
-class SingleOpenStateNotifier<T> extends StateNotifier<T>
+class SingleStateNotifier<T> extends OpenStateNotifier<T>
     with ChangeStateMixin {
-  SingleOpenStateNotifier(super.state);
-
-  @override
-  T get state => super.state;
+  SingleStateNotifier(super.state);
 }
 
 mixin ChangeStateMixin<T> on StateNotifier<T> {
