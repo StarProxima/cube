@@ -2,7 +2,6 @@ import 'dart:collection';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/models/lesson/lesson.dart';
 import 'package:cube_system/models/timetable_day/timetable_day_event.dart';
 
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_events.dart';
@@ -12,13 +11,13 @@ import 'package:cube_system/models/timetable_day/timetable_day_type.dart';
 
 final timetableDayEventManager = Provider<TimetableDayEventManager>((ref) {
   return TimetableDayEventManager(
-    timetable: ref.watch(timetablePageTimetable.notifier),
+    timetable: ref.watch(timetablePageLessons.notifier),
     events: ref.watch(timetablePageLessonEvents.notifier),
   );
 });
 
 class TimetableDayEventManager {
-  final StateController<SplayTreeMap<DateTime, List<Lesson>>> timetable;
+  final TimetablePageLessonsNotifier timetable;
   final StateController<SplayTreeMap<DateTime, TimetableDayEvent>> events;
 
   TimetableDayEventManager({

@@ -26,7 +26,7 @@ final timetableLessonsManager = Provider<TimetableLessonsManager>((ref) {
     lessonConvertor: ref.watch(lessonConvertor),
     eventManager: ref.watch(timetableDayEventManager),
     selectedTimetable: ref.watch(selectedTimetableStateHolder.notifier),
-    timetable: ref.watch(timetablePageTimetable.notifier),
+    timetable: ref.watch(timetablePageLessons.notifier),
     events: ref.watch(timetablePageLessonEvents.notifier),
     currentDateTime: ref.watch(currentDateTimeQuick.notifier),
     selectedDate: ref.watch(selectedDate.notifier),
@@ -42,7 +42,7 @@ class TimetableLessonsManager {
   final TimetableDayEventManager eventManager;
 
   final SelectedTimetableNotifier selectedTimetable;
-  final StateController<SplayTreeMap<DateTime, List<Lesson>>> timetable;
+  final TimetablePageLessonsNotifier timetable;
   final StateController<SplayTreeMap<DateTime, TimetableDayEvent>> events;
   final StateController<DateTime> currentDateTime;
   final StateController<DateTime> selectedDate;
@@ -65,7 +65,7 @@ class TimetableLessonsManager {
   });
 
   void clear() {
-    timetable.state = SplayTreeMap();
+    timetable.change(SplayTreeMap());
     events.state = SplayTreeMap();
   }
 
@@ -92,8 +92,7 @@ class TimetableLessonsManager {
   }
 
   void _setLessons(List<LessonFullNamesInDb> lessons) {
-    SplayTreeMap<DateTime, List<Lesson>> timetableMap =
-        SplayTreeMap.of(timetable.state.cast());
+    TimetableLessons timetableMap = SplayTreeMap.of(timetable.state.cast());
 
     for (final lesson in lessons) {
       timetableMap[lesson.date] = [];
@@ -113,7 +112,7 @@ class TimetableLessonsManager {
       timetableMap[lesson.date]!.add(l);
     }
 
-    timetable.state = timetableMap;
+    timetable.change(timetableMap);
   }
 
   Future<void> updateCurrentTimetable() async {
