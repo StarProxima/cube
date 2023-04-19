@@ -94,6 +94,10 @@ class TimetableLessonsManager {
   void _setLessons(List<LessonFullNamesInDb> lessons) {
     TimetableLessons timetableMap = SplayTreeMap.of(timetable.state.cast());
 
+    for (final lesson in lessons) {
+      timetableMap[lesson.date] = [];
+    }
+
     for (int i = 0; i < lessons.length; i++) {
       final lesson = lessons[i];
       int emptyLessonsBefore = 0;
