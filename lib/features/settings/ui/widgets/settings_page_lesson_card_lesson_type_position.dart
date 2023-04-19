@@ -21,29 +21,29 @@ class _SettingsPageLessonCardLessonTypePosition extends ConsumerWidget {
           settingsNotifier.editLessonCardLessonTypePosition(value),
       items: const [
         AppRadioSelectorItem(
-          title: Text('После нижнего левого блока'),
+          title: Text('Снизу справа'),
           description: Text('Расположение по умолчанию'),
-          value: LessonCardLessonTypePosition.afterBottomLeftBlock,
-        ),
-        AppRadioSelectorItem(
-          title: Text('После верхнего левого блока'),
-          value: LessonCardLessonTypePosition.afterTopLeftBlock,
+          value: LessonCardLessonTypePosition.bottomRight,
         ),
         AppRadioSelectorItem(
           title: Text('Снизу слева'),
           value: LessonCardLessonTypePosition.bottomLeft,
         ),
         AppRadioSelectorItem(
-          title: Text('Сверху справа'),
-          value: LessonCardLessonTypePosition.topRight,
-        ),
-        AppRadioSelectorItem(
-          title: Text('Снизу справа'),
-          value: LessonCardLessonTypePosition.bottomRight,
+          title: Text('После нижнего левого блока'),
+          value: LessonCardLessonTypePosition.afterBottomLeftBlock,
         ),
         AppRadioSelectorItem(
           title: Text('Перед нижним правым блоком'),
           value: LessonCardLessonTypePosition.beforeBottomRightBlock,
+        ),
+        AppRadioSelectorItem(
+          title: Text('Сверху справа'),
+          value: LessonCardLessonTypePosition.topRight,
+        ),
+        AppRadioSelectorItem(
+          title: Text('После верхнего левого блока'),
+          value: LessonCardLessonTypePosition.afterTopLeftBlock,
         ),
         AppRadioSelectorItem(
           title: Text('На идикаторе'),

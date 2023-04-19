@@ -23,7 +23,7 @@ class AppSettings with _$AppSettings {
     @Default(AppLessonColorsMode.cube)
         AppLessonColorsMode lessonColorsMode,
     @HiveField(2)
-    @Default(LessonCardLessonTypePosition.afterBottomLeftBlock)
+    @Default(LessonCardLessonTypePosition.bottomRight)
         LessonCardLessonTypePosition lessonCardLessonTypePosition,
     @HiveField(3)
     @Default(LessonCardRecessDisplayCondition.always)
