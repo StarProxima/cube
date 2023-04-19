@@ -13,28 +13,30 @@ final timetablePageDayLessons =
   return ref.watch(timetablePageLessons)[date];
 });
 
-// final timetablePageTimetable = StateProvider<TimetableLessons>((ref) {
-//   return SplayTreeMap();
-// });
-
 final timetablePageLessons =
     StateNotifierProvider<TimetablePageLessonsNotifier, TimetableLessons>(
         (ref) {
   return TimetablePageLessonsNotifier(
     SplayTreeMap(),
     boxName: AppBoxNames.timetablePageLessons,
-    converter: Converter<TimetableLessons, Map<DateTime, List<Lesson>>>(
-      to: (data) => data,
-      from: (data) => SplayTreeMap.from(data),
-    ),
   );
 });
 
 class TimetablePageLessonsNotifier
     extends SingleHiveStateNotifier<TimetableLessons> {
-  TimetablePageLessonsNotifier(
-    super.state, {
-    required super.boxName,
-    required super.converter,
-  });
+  TimetablePageLessonsNotifier(super.state, {required super.boxName});
+
+  @override
+  serialize(value) {
+    return value.cast();
+  }
+
+  @override
+  deserialize(value) {
+    final typedMap = (value as Map).map((key, value) {
+      return MapEntry(key as DateTime, List<Lesson>.from(value));
+    });
+
+    return SplayTreeMap.from(typedMap);
+  }
 }

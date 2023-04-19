@@ -8,16 +8,15 @@ class HiveStateNotifier<T> extends OpenStateNotifier<T> {
 
   late Box _box;
 
-  final Converter<T, Object?>? _converter;
-
   HiveStateNotifier(
     super.state, {
     required String boxName,
-    Converter<T, Object?>? converter,
-  })  : _boxName = boxName,
-        _converter = converter {
+  }) : _boxName = boxName {
     _init();
   }
+
+  dynamic serialize(T value) => value;
+  T deserialize(dynamic value) => value as T;
 
   void _init() async {
     await _openBox();
@@ -33,25 +32,12 @@ class HiveStateNotifier<T> extends OpenStateNotifier<T> {
     final data = _box.get(boxName);
 
     if (data != null) {
-      if (_converter != null) {
-        final newState = _converter!.from(data);
-        state = newState;
-      } else {
-        state = data;
-      }
+      state = deserialize(data);
     }
   }
 
   Future<void> _saveData(T data) async {
-    void put(data) {
-      _box.put(boxName, data);
-    }
-
-    if (_converter != null) {
-      put(_converter!.to(data));
-    } else {
-      put(data);
-    }
+    _box.put(boxName, serialize(data));
   }
 
   @override
@@ -66,16 +52,5 @@ abstract class SingleHiveStateNotifier<T> extends HiveStateNotifier<T>
   SingleHiveStateNotifier(
     super.state, {
     required super.boxName,
-    super.converter,
-  });
-}
-
-class Converter<T, K> {
-  K Function(T data) to;
-  T Function(K data) from;
-
-  Converter({
-    required this.to,
-    required this.from,
   });
 }

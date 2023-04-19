@@ -142,6 +142,11 @@ class TimetableLessonsManager {
 
       final lessons = await _getLessons(startDate: startDate, endDate: endDate);
 
+      for (int day = 0; day <= endDate.difference(startDate).inDays; day++) {
+        final date = startDate.add(Duration(days: day));
+        timetable.state[date] ??= [];
+      }
+
       _setLessons(lessons);
 
       eventManager.setLessonsAfterLoading();

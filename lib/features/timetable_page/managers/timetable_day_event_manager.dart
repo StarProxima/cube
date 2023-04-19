@@ -86,10 +86,22 @@ class TimetableDayEventManager {
     SplayTreeMap<DateTime, TimetableDayEvent> eventMap =
         SplayTreeMap.of(events.state.cast());
 
+    final timetableMap = timetable.state;
+
     for (final entry in eventMap.entries) {
       if (entry.value.type == TimetableDayEventType.loading) {
-        eventMap[entry.key] =
-            TimetableDayEvent(type: TimetableDayEventType.error);
+        final TimetableDayEventType type;
+        final lessons = timetableMap[entry.key];
+        if (lessons == null) {
+          type = TimetableDayEventType.error;
+        } else if (lessons.isEmpty) {
+          type = TimetableDayEventType.weekend;
+        } else {
+          type = TimetableDayEventType.lessons;
+        }
+        eventMap[entry.key] = TimetableDayEvent(
+          type: type,
+        );
       }
     }
 
