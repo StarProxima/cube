@@ -25,14 +25,36 @@ class HiveStateNotifier<T> extends OpenStateNotifier<T> {
 
   void _init() async {
     await _openBox();
-    _getData();
+    getData();
     if (_autoSaving) {
-      addListener(_saveData);
+      addListener(saveData);
     }
   }
 
-  void setDataFromDisk() => _getData();
   void save() => _box.put(boxName, serialize(state));
+
+  @protected
+  void saveData(T data) {
+    final shouldSave = updateShouldSave(_lastState, data);
+    _lastState = data;
+
+    if (shouldSave) {
+      _box.put(boxName, serialize(data));
+    }
+  }
+
+  @protected
+  void getData() {
+    final data = _box.get(boxName);
+
+    if (data != null) {
+      state = deserialize(data);
+    }
+  }
+
+  Future<void> _openBox() async {
+    _box = await Hive.openBox(boxName);
+  }
 
   @protected
   bool updateShouldSave(T old, T current) => true;
@@ -42,27 +64,6 @@ class HiveStateNotifier<T> extends OpenStateNotifier<T> {
 
   @protected
   T deserialize(dynamic value) => value as T;
-
-  Future<void> _openBox() async {
-    _box = await Hive.openBox(boxName);
-  }
-
-  void _getData() {
-    final data = _box.get(boxName);
-
-    if (data != null) {
-      state = deserialize(data);
-    }
-  }
-
-  void _saveData(T data) {
-    final shouldSave = updateShouldSave(_lastState, data);
-    _lastState = data;
-
-    if (shouldSave) {
-      _box.put(boxName, serialize(data));
-    }
-  }
 
   @override
   void dispose() {

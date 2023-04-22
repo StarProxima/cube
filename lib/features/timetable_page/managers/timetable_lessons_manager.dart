@@ -26,7 +26,7 @@ final timetableLessonsManager = Provider<TimetableLessonsManager>((ref) {
     lessonConvertor: ref.watch(lessonConvertor),
     eventManager: ref.watch(timetableDayEventManager),
     selectedTimetable: ref.watch(selectedTimetableStateHolder.notifier),
-    timetable: ref.watch(timetablePageLessons.notifier),
+    timetableLessons: ref.watch(timetablePageLessons.notifier),
     events: ref.watch(timetablePageLessonEvents.notifier),
     currentDateTime: ref.watch(currentDateTimeQuick.notifier),
     selectedDate: ref.watch(selectedDate.notifier),
@@ -42,7 +42,7 @@ class TimetableLessonsManager {
   final TimetableDayEventManager eventManager;
 
   final SelectedTimetableNotifier selectedTimetable;
-  final TimetablePageLessonsNotifier timetable;
+  final TimetablePageLessonsNotifier timetableLessons;
   final StateController<SplayTreeMap<DateTime, TimetableDayEvent>> events;
   final StateController<DateTime> currentDateTime;
   final StateController<DateTime> selectedDate;
@@ -55,7 +55,7 @@ class TimetableLessonsManager {
     required this.lessonConvertor,
     required this.eventManager,
     required this.selectedTimetable,
-    required this.timetable,
+    required this.timetableLessons,
     required this.events,
     required this.currentDateTime,
     required this.selectedDate,
@@ -65,7 +65,7 @@ class TimetableLessonsManager {
   });
 
   void clear() {
-    timetable.change(SplayTreeMap());
+    timetableLessons.change(SplayTreeMap());
     events.state = SplayTreeMap();
   }
 
@@ -92,7 +92,8 @@ class TimetableLessonsManager {
   }
 
   void _setLessons(List<LessonFullNamesInDb> lessons) {
-    TimetableLessons timetableMap = SplayTreeMap.of(timetable.state.cast());
+    TimetableLessons timetableMap =
+        SplayTreeMap.of(timetableLessons.state.cast());
 
     for (final lesson in lessons) {
       timetableMap[lesson.date] = [];
@@ -112,7 +113,7 @@ class TimetableLessonsManager {
       timetableMap[lesson.date]!.add(l);
     }
 
-    timetable.change(timetableMap);
+    timetableLessons.change(timetableMap);
   }
 
   Future<void> updateCurrentTimetable() async {
@@ -144,7 +145,7 @@ class TimetableLessonsManager {
 
       for (int day = 0; day <= endDate.difference(startDate).inDays; day++) {
         final date = startDate.add(Duration(days: day));
-        timetable.state[date] ??= [];
+        timetableLessons.state[date] ??= [];
       }
 
       _setLessons(lessons);
@@ -164,10 +165,10 @@ class TimetableLessonsManager {
     Lesson? lessonCurrent;
     Lesson? lessonLast;
 
-    final dates = timetable.state.keys;
+    final dates = timetableLessons.state.keys;
 
     for (final date in dates) {
-      final lessons = timetable.state[date]!;
+      final lessons = timetableLessons.state[date]!;
 
       for (final lesson in lessons) {
         if (lesson.isEvent) continue;
