@@ -32,9 +32,7 @@ class TimetablePage extends ConsumerWidget {
       manager.selectTimetable(timetable!);
     }
 
-    ref.listen(lastCurrentNextLessonListener, (_, __) {
-      manager.findLastCurrentNextLesson();
-    });
+    ref.watch(lastCurrentNextLessonListener);
 
     return const _TimetablePage();
   }
