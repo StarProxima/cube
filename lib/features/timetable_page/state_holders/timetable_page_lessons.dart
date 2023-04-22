@@ -19,23 +19,17 @@ final timetablePageLessons =
   return TimetablePageLessonsNotifier(
     SplayTreeMap(),
     boxName: AppBoxNames.timetablePageLessons,
+    autoSaving: false,
   );
 });
 
 class TimetablePageLessonsNotifier
     extends SingleHiveStateNotifier<TimetableLessons> {
-  TimetablePageLessonsNotifier(super.state, {required super.boxName});
-
-  bool _isFirstTime = true;
-
-  @override
-  bool updateShouldSave(TimetableLessons old, TimetableLessons current) {
-    if (_isFirstTime) {
-      _isFirstTime = false;
-      return true;
-    }
-    return false;
-  }
+  TimetablePageLessonsNotifier(
+    super.state, {
+    required super.boxName,
+    required super.autoSaving,
+  });
 
   @override
   serialize(value) {

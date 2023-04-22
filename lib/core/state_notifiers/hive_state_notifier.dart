@@ -7,6 +7,9 @@ class HiveStateNotifier<T> extends OpenStateNotifier<T> {
   final String _boxName;
   String get boxName => _boxName;
 
+  final bool _autoSaving;
+  bool get autoSaving => true;
+
   late Box _box;
 
   late T _lastState = state;
@@ -14,10 +17,24 @@ class HiveStateNotifier<T> extends OpenStateNotifier<T> {
   HiveStateNotifier(
     super.state, {
     required String boxName,
-  }) : _boxName = boxName {
+    bool autoSaving = true,
+  })  : _boxName = boxName,
+        _autoSaving = autoSaving {
     _init();
   }
 
+  void _init() async {
+    await _openBox();
+    _getData();
+    if (_autoSaving) {
+      addListener(_saveData);
+    }
+  }
+
+  void setDataFromDisk() => _getData();
+  void save() => _box.put(boxName, serialize(state));
+
+  @protected
   bool updateShouldSave(T old, T current) => true;
 
   @protected
@@ -25,12 +42,6 @@ class HiveStateNotifier<T> extends OpenStateNotifier<T> {
 
   @protected
   T deserialize(dynamic value) => value as T;
-
-  void _init() async {
-    await _openBox();
-    _getData();
-    addListener(_saveData);
-  }
 
   Future<void> _openBox() async {
     _box = await Hive.openBox(boxName);
@@ -44,7 +55,7 @@ class HiveStateNotifier<T> extends OpenStateNotifier<T> {
     }
   }
 
-  Future<void> _saveData(T data) async {
+  void _saveData(T data) {
     final shouldSave = updateShouldSave(_lastState, data);
     _lastState = data;
 
@@ -60,10 +71,11 @@ class HiveStateNotifier<T> extends OpenStateNotifier<T> {
   }
 }
 
-abstract class SingleHiveStateNotifier<T> extends HiveStateNotifier<T>
+class SingleHiveStateNotifier<T> extends HiveStateNotifier<T>
     with ChangeStateMixin {
   SingleHiveStateNotifier(
     super.state, {
     required super.boxName,
+    super.autoSaving,
   });
 }
