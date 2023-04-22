@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 
 import 'package:cube_system/core/state_notifiers/open_state_notifier.dart';
@@ -8,6 +9,8 @@ class HiveStateNotifier<T> extends OpenStateNotifier<T> {
 
   late Box _box;
 
+  late T _lastState = state;
+
   HiveStateNotifier(
     super.state, {
     required String boxName,
@@ -15,7 +18,12 @@ class HiveStateNotifier<T> extends OpenStateNotifier<T> {
     _init();
   }
 
+  bool updateShouldSave(T old, T current) => true;
+
+  @protected
   dynamic serialize(T value) => value;
+
+  @protected
   T deserialize(dynamic value) => value as T;
 
   void _init() async {
@@ -37,7 +45,12 @@ class HiveStateNotifier<T> extends OpenStateNotifier<T> {
   }
 
   Future<void> _saveData(T data) async {
-    _box.put(boxName, serialize(data));
+    final shouldSave = updateShouldSave(_lastState, data);
+    _lastState = data;
+
+    if (shouldSave) {
+      _box.put(boxName, serialize(data));
+    }
   }
 
   @override

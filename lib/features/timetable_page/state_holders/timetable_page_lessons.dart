@@ -26,6 +26,17 @@ class TimetablePageLessonsNotifier
     extends SingleHiveStateNotifier<TimetableLessons> {
   TimetablePageLessonsNotifier(super.state, {required super.boxName});
 
+  bool _isFirstTime = true;
+
+  @override
+  bool updateShouldSave(TimetableLessons old, TimetableLessons current) {
+    if (_isFirstTime) {
+      _isFirstTime = false;
+      return true;
+    }
+    return false;
+  }
+
   @override
   serialize(value) {
     return value.cast();
