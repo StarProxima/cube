@@ -29,7 +29,9 @@ class TimetablePageDay extends ConsumerWidget {
 
     final event = ref.watch(timetablePageDayLessonEvent(date));
 
-    if (event == null || event.type == TimetableDayEventType.loading) {
+    if (event == null) return const SizedBox();
+
+    if (event.type == TimetableDayEventType.loading) {
       return const Center(
         child: Padding(
           padding: EdgeInsets.only(bottom: 36),

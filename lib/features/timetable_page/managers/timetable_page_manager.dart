@@ -10,10 +10,13 @@ import 'package:cube_system/features/timetable_page/state_holders/selected_timet
 
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_lessons.dart';
 
+import 'package:cube_system/features/timetable_page/state_holders/timetable_page_events.dart';
+
 final timetablePageManager = Provider<TimetablePageManager>((ref) {
   return TimetablePageManager(
     lessonsManager: ref.watch(timetableLessonsManager),
     timetableLessons: ref.watch(timetablePageLessons.notifier),
+    timetableEvents: ref.watch(timetablePageEvents.notifier),
     selectedTimetable: ref.watch(selectedTimetableStateHolder.notifier),
     currentDateTime: ref.watch(currentDateTimeQuick.notifier),
     selectedDate: ref.watch(selectedDate.notifier),
@@ -25,6 +28,7 @@ final timetablePageManager = Provider<TimetablePageManager>((ref) {
 class TimetablePageManager {
   final TimetableLessonsManager lessonsManager;
   final TimetablePageLessonsNotifier timetableLessons;
+  final TimetablePageEventsNotifier timetableEvents;
   final SelectedTimetableNotifier selectedTimetable;
   final StateController<DateTime> currentDateTime;
   final StateController<DateTime> selectedDate;
@@ -33,11 +37,17 @@ class TimetablePageManager {
   TimetablePageManager({
     required this.lessonsManager,
     required this.timetableLessons,
+    required this.timetableEvents,
     required this.selectedTimetable,
     required this.currentDateTime,
     required this.selectedDate,
     required this.currentPickedDateInPageView,
   });
+
+  void _save() {
+    timetableLessons.save();
+    timetableEvents.save();
+  }
 
   Future<void> setup({required TimetableInfo? timetable}) async {
     await Future(() {});
@@ -45,7 +55,7 @@ class TimetablePageManager {
       selectTimetable(timetable);
     } else {
       await updateCurrentTimetable();
-      timetableLessons.save();
+      _save();
     }
   }
 
@@ -54,7 +64,7 @@ class TimetablePageManager {
     selectedTimetable.change(timetable);
     lessonsManager.clear();
     await lessonsManager.updateCurrentTimetable();
-    timetableLessons.save();
+    _save();
   }
 
   Future<void> updateCurrentTimetable() async =>

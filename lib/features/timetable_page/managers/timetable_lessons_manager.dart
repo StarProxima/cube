@@ -7,7 +7,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cube_system/api/cube_api.dart';
 import 'package:cube_system/gen/api/cube_api.swagger.dart';
 import 'package:cube_system/models/lesson/lesson.dart';
-import 'package:cube_system/models/timetable_day/timetable_day_event.dart';
 import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
 import 'package:cube_system/features/timetable_page/state_holders/lessons/current_lesson.dart';
 import 'package:cube_system/features/timetable_page/state_holders/lessons/last_lesson.dart';
@@ -27,7 +26,7 @@ final timetableLessonsManager = Provider<TimetableLessonsManager>((ref) {
     eventManager: ref.watch(timetableDayEventManager),
     selectedTimetable: ref.watch(selectedTimetableStateHolder.notifier),
     timetableLessons: ref.watch(timetablePageLessons.notifier),
-    events: ref.watch(timetablePageLessonEvents.notifier),
+    events: ref.watch(timetablePageEvents.notifier),
     currentDateTime: ref.watch(currentDateTimeQuick.notifier),
     selectedDate: ref.watch(selectedDate.notifier),
     currentLesson: ref.watch(currentLesson.notifier),
@@ -43,7 +42,7 @@ class TimetableLessonsManager {
 
   final SelectedTimetableNotifier selectedTimetable;
   final TimetablePageLessonsNotifier timetableLessons;
-  final StateController<SplayTreeMap<DateTime, TimetableDayEvent>> events;
+  final TimetablePageEventsNotifier events;
   final StateController<DateTime> currentDateTime;
   final StateController<DateTime> selectedDate;
   final StateController<Lesson?> currentLesson;
@@ -66,7 +65,7 @@ class TimetableLessonsManager {
 
   void clear() {
     timetableLessons.change(SplayTreeMap());
-    events.state = SplayTreeMap();
+    events.change(SplayTreeMap());
   }
 
   Future<List<LessonFullNamesInDb>> _getLessons({

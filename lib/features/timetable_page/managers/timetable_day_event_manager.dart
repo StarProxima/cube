@@ -12,13 +12,13 @@ import 'package:cube_system/models/timetable_day/timetable_day_type.dart';
 final timetableDayEventManager = Provider<TimetableDayEventManager>((ref) {
   return TimetableDayEventManager(
     timetable: ref.watch(timetablePageLessons.notifier),
-    events: ref.watch(timetablePageLessonEvents.notifier),
+    events: ref.watch(timetablePageEvents.notifier),
   );
 });
 
 class TimetableDayEventManager {
   final TimetablePageLessonsNotifier timetable;
-  final StateController<SplayTreeMap<DateTime, TimetableDayEvent>> events;
+  final TimetablePageEventsNotifier events;
 
   TimetableDayEventManager({
     required this.timetable,
@@ -37,7 +37,7 @@ class TimetableDayEventManager {
           TimetableDayEvent(type: TimetableDayEventType.notSelected);
     }
 
-    events.state = eventMap;
+    events.change(eventMap);
   }
 
   static final _shouldLoadingEvents = [
@@ -54,14 +54,16 @@ class TimetableDayEventManager {
 
     for (int day = 0; day < endDate.difference(startDate).inDays; day++) {
       final date = startDate.add(Duration(days: day));
+
       final shouldLoading = !eventMap.containsKey(date) ||
           _shouldLoadingEvents.contains(eventMap[date]?.type);
+
       if (shouldLoading) {
         eventMap[date] = TimetableDayEvent(type: TimetableDayEventType.loading);
       }
     }
 
-    events.state = eventMap;
+    events.change(eventMap);
   }
 
   void setLessonsAfterLoading() {
@@ -79,7 +81,7 @@ class TimetableDayEventManager {
       }
     }
 
-    events.state = eventMap;
+    events.change(eventMap);
   }
 
   void setErrorsAfterLoading() {
@@ -105,6 +107,6 @@ class TimetableDayEventManager {
       }
     }
 
-    events.state = eventMap;
+    events.change(eventMap);
   }
 }
