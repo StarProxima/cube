@@ -16,7 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LessonTimings {
+  @HiveField(0)
   TimeOfDay get start => throw _privateConstructorUsedError;
+  @HiveField(1)
   TimeOfDay get end => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +32,7 @@ abstract class $LessonTimingsCopyWith<$Res> {
           LessonTimings value, $Res Function(LessonTimings) then) =
       _$LessonTimingsCopyWithImpl<$Res, LessonTimings>;
   @useResult
-  $Res call({TimeOfDay start, TimeOfDay end});
+  $Res call({@HiveField(0) TimeOfDay start, @HiveField(1) TimeOfDay end});
 }
 
 /// @nodoc
@@ -70,7 +72,7 @@ abstract class _$$_LessonTimingsCopyWith<$Res>
       __$$_LessonTimingsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({TimeOfDay start, TimeOfDay end});
+  $Res call({@HiveField(0) TimeOfDay start, @HiveField(1) TimeOfDay end});
 }
 
 /// @nodoc
@@ -102,12 +104,16 @@ class __$$_LessonTimingsCopyWithImpl<$Res>
 
 /// @nodoc
 
+@HiveType(typeId: 2)
 class _$_LessonTimings implements _LessonTimings {
-  _$_LessonTimings({required this.start, required this.end});
+  _$_LessonTimings(
+      {@HiveField(0) required this.start, @HiveField(1) required this.end});
 
   @override
+  @HiveField(0)
   final TimeOfDay start;
   @override
+  @HiveField(1)
   final TimeOfDay end;
 
   @override
@@ -136,12 +142,14 @@ class _$_LessonTimings implements _LessonTimings {
 
 abstract class _LessonTimings implements LessonTimings {
   factory _LessonTimings(
-      {required final TimeOfDay start,
-      required final TimeOfDay end}) = _$_LessonTimings;
+      {@HiveField(0) required final TimeOfDay start,
+      @HiveField(1) required final TimeOfDay end}) = _$_LessonTimings;
 
   @override
+  @HiveField(0)
   TimeOfDay get start;
   @override
+  @HiveField(1)
   TimeOfDay get end;
   @override
   @JsonKey(ignore: true)

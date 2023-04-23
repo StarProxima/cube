@@ -6,11 +6,11 @@ class _SettingsPageLessonCardRecessDisplayCondition extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final lessonCardRecessDisplayCondition = ref.watch(
-      appSettingsViewStateHolder
+      appSettingsStateHolder
           .select((value) => value.lessonCardRecessDisplayCondition),
     );
 
-    final settingsNotifier = ref.read(appSettingsViewStateHolder.notifier);
+    final settingsNotifier = ref.read(appSettingsStateHolder.notifier);
 
     return AppRadioSelector<LessonCardRecessDisplayCondition>(
       label: const Text('Отображение таймера до начала занятия'),
@@ -28,7 +28,7 @@ class _SettingsPageLessonCardRecessDisplayCondition extends ConsumerWidget {
           value: LessonCardRecessDisplayCondition.onlyRecessBetweenLessons,
         ),
         AppRadioSelectorItem(
-          title: Text('Нигогда'),
+          title: Text('Никогда'),
           value: LessonCardRecessDisplayCondition.never,
         ),
       ],

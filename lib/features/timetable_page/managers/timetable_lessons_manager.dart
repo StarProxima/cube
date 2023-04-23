@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:cube_system/features/date_time_contol/managers/date_time_manager.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_day_event_manager.dart';
 import 'package:cube_system/models/timetable/timetable_type.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,7 +8,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cube_system/api/cube_api.dart';
 import 'package:cube_system/gen/api/cube_api.swagger.dart';
 import 'package:cube_system/models/lesson/lesson.dart';
-import 'package:cube_system/models/timetable_day/timetable_day_event.dart';
 import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
 import 'package:cube_system/features/timetable_page/state_holders/lessons/current_lesson.dart';
 import 'package:cube_system/features/timetable_page/state_holders/lessons/last_lesson.dart';
@@ -18,8 +18,6 @@ import 'package:cube_system/features/timetable_page/state_holders/timetable_page
 import 'package:cube_system/features/timetable_page/managers/lesson_convertor.dart';
 import 'package:intl/intl.dart';
 
-import 'package:cube_system/models/timetable/timetable_info.dart';
-
 import 'package:cube_system/features/timetable_page/state_holders/selected_timetable.dart';
 
 final timetableLessonsManager = Provider<TimetableLessonsManager>((ref) {
@@ -27,9 +25,10 @@ final timetableLessonsManager = Provider<TimetableLessonsManager>((ref) {
     api: ref.watch(cubeApi),
     lessonConvertor: ref.watch(lessonConvertor),
     eventManager: ref.watch(timetableDayEventManager),
-    selectedTimetable: ref.watch(selectedTimetable.notifier),
-    timetable: ref.watch(timetablePageTimetable.notifier),
-    events: ref.watch(timetablePageLessonEvents.notifier),
+    dateTimeManager: ref.watch(dateTimeManager),
+    selectedTimetable: ref.watch(selectedTimetableStateHolder.notifier),
+    timetableLessons: ref.watch(timetablePageLessons.notifier),
+    events: ref.watch(timetablePageEvents.notifier),
     currentDateTime: ref.watch(currentDateTimeQuick.notifier),
     selectedDate: ref.watch(selectedDate.notifier),
     currentLesson: ref.watch(currentLesson.notifier),
@@ -40,12 +39,14 @@ final timetableLessonsManager = Provider<TimetableLessonsManager>((ref) {
 
 class TimetableLessonsManager {
   final CubeApi api;
+
   final LessonConvertor lessonConvertor;
   final TimetableDayEventManager eventManager;
+  final DateTimeManager dateTimeManager;
 
-  final StateController<TimetableInfo?> selectedTimetable;
-  final StateController<SplayTreeMap<DateTime, List<Lesson>>> timetable;
-  final StateController<SplayTreeMap<DateTime, TimetableDayEvent>> events;
+  final SelectedTimetableNotifier selectedTimetable;
+  final TimetablePageLessonsNotifier timetableLessons;
+  final TimetablePageEventsNotifier events;
   final StateController<DateTime> currentDateTime;
   final StateController<DateTime> selectedDate;
   final StateController<Lesson?> currentLesson;
@@ -56,8 +57,9 @@ class TimetableLessonsManager {
     required this.api,
     required this.lessonConvertor,
     required this.eventManager,
+    required this.dateTimeManager,
     required this.selectedTimetable,
-    required this.timetable,
+    required this.timetableLessons,
     required this.events,
     required this.currentDateTime,
     required this.selectedDate,
@@ -67,8 +69,8 @@ class TimetableLessonsManager {
   });
 
   void clear() {
-    timetable.state = SplayTreeMap();
-    events.state = SplayTreeMap();
+    timetableLessons.change(SplayTreeMap());
+    events.change(SplayTreeMap());
   }
 
   Future<List<LessonFullNamesInDb>> _getLessons({
@@ -94,8 +96,8 @@ class TimetableLessonsManager {
   }
 
   void _setLessons(List<LessonFullNamesInDb> lessons) {
-    SplayTreeMap<DateTime, List<Lesson>> timetableMap =
-        SplayTreeMap.of(timetable.state.cast());
+    TimetableLessons timetableMap =
+        SplayTreeMap.of(timetableLessons.state.cast());
 
     for (final lesson in lessons) {
       timetableMap[lesson.date] = [];
@@ -115,20 +117,16 @@ class TimetableLessonsManager {
       timetableMap[lesson.date]!.add(l);
     }
 
-    timetable.state = timetableMap;
+    timetableLessons.change(timetableMap);
   }
 
   Future<void> updateCurrentTimetable() async {
     await Future(() {});
 
-    final date = selectedDate.state;
+    final bounds = dateTimeManager.getDateTimeBounds(selectedDate.state);
 
-    final dayOffset = date.weekday - 1;
-    final weekStart = date.add(Duration(days: -dayOffset));
-    final weekEnd = date.add(Duration(days: 6 - dayOffset));
-
-    final startDate = weekStart.add(const Duration(days: -7));
-    final endDate = weekEnd.add(const Duration(days: 7));
+    final startDate = bounds.start;
+    final endDate = bounds.end;
 
     if (selectedTimetable.state == null) {
       eventManager.setNotSelectedEvents(
@@ -144,6 +142,11 @@ class TimetableLessonsManager {
       await Future.delayed(const Duration(milliseconds: 350));
 
       final lessons = await _getLessons(startDate: startDate, endDate: endDate);
+
+      for (int day = 0; day <= endDate.difference(startDate).inDays; day++) {
+        final date = startDate.add(Duration(days: day));
+        timetableLessons.state[date] ??= [];
+      }
 
       _setLessons(lessons);
 
@@ -162,10 +165,10 @@ class TimetableLessonsManager {
     Lesson? lessonCurrent;
     Lesson? lessonLast;
 
-    final dates = timetable.state.keys;
+    final dates = timetableLessons.state.keys;
 
     for (final date in dates) {
-      final lessons = timetable.state[date]!;
+      final lessons = timetableLessons.state[date]!;
 
       for (final lesson in lessons) {
         if (lesson.isEvent) continue;

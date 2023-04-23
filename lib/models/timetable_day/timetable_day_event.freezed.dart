@@ -16,9 +16,13 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TimetableDayEvent {
+  @HiveField(0)
   TimetableDayEventType get type => throw _privateConstructorUsedError;
+  @HiveField(1)
   String? get title => throw _privateConstructorUsedError;
+  @HiveField(2)
   String? get subTitle => throw _privateConstructorUsedError;
+  @HiveField(3)
   String? get description => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -33,10 +37,10 @@ abstract class $TimetableDayEventCopyWith<$Res> {
       _$TimetableDayEventCopyWithImpl<$Res, TimetableDayEvent>;
   @useResult
   $Res call(
-      {TimetableDayEventType type,
-      String? title,
-      String? subTitle,
-      String? description});
+      {@HiveField(0) TimetableDayEventType type,
+      @HiveField(1) String? title,
+      @HiveField(2) String? subTitle,
+      @HiveField(3) String? description});
 }
 
 /// @nodoc
@@ -87,10 +91,10 @@ abstract class _$$_TimetableDayEventCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {TimetableDayEventType type,
-      String? title,
-      String? subTitle,
-      String? description});
+      {@HiveField(0) TimetableDayEventType type,
+      @HiveField(1) String? title,
+      @HiveField(2) String? subTitle,
+      @HiveField(3) String? description});
 }
 
 /// @nodoc
@@ -132,17 +136,25 @@ class __$$_TimetableDayEventCopyWithImpl<$Res>
 
 /// @nodoc
 
+@HiveType(typeId: 12)
 class _$_TimetableDayEvent implements _TimetableDayEvent {
   _$_TimetableDayEvent(
-      {required this.type, this.title, this.subTitle, this.description});
+      {@HiveField(0) required this.type,
+      @HiveField(1) this.title,
+      @HiveField(2) this.subTitle,
+      @HiveField(3) this.description});
 
   @override
+  @HiveField(0)
   final TimetableDayEventType type;
   @override
+  @HiveField(1)
   final String? title;
   @override
+  @HiveField(2)
   final String? subTitle;
   @override
+  @HiveField(3)
   final String? description;
 
   @override
@@ -177,18 +189,22 @@ class _$_TimetableDayEvent implements _TimetableDayEvent {
 
 abstract class _TimetableDayEvent implements TimetableDayEvent {
   factory _TimetableDayEvent(
-      {required final TimetableDayEventType type,
-      final String? title,
-      final String? subTitle,
-      final String? description}) = _$_TimetableDayEvent;
+      {@HiveField(0) required final TimetableDayEventType type,
+      @HiveField(1) final String? title,
+      @HiveField(2) final String? subTitle,
+      @HiveField(3) final String? description}) = _$_TimetableDayEvent;
 
   @override
+  @HiveField(0)
   TimetableDayEventType get type;
   @override
+  @HiveField(1)
   String? get title;
   @override
+  @HiveField(2)
   String? get subTitle;
   @override
+  @HiveField(3)
   String? get description;
   @override
   @JsonKey(ignore: true)

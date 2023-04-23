@@ -6,9 +6,11 @@ class LessonCardBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final name = ref.watch(
-          _lessonInLessonCard.select((value) => value.lesson.discipline?.name),
-        ) ??
-        "null";
+      _lessonInLessonCard.select((value) => value.disciplineName),
+    );
+
+    if (name == null) return const SizedBox();
+
     return Text(
       name,
       style: context.textStyles.label,

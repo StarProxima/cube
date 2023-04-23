@@ -6,10 +6,10 @@ class _SettingsPageLessonColors extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final lessonColorsMode = ref.watch(
-      appSettingsViewStateHolder.select((value) => value.lessonColorsMode),
+      appSettingsStateHolder.select((value) => value.lessonColorsMode),
     );
 
-    final settingsNotifier = ref.read(appSettingsViewStateHolder.notifier);
+    final settingsNotifier = ref.read(appSettingsStateHolder.notifier);
 
     return AppRadioSelector<AppLessonColorsMode>(
       label: const Text('Цветовая тема для занятий'),
@@ -18,7 +18,7 @@ class _SettingsPageLessonColors extends ConsumerWidget {
       items: const [
         AppRadioSelectorItem(
           title: Text('Cube'),
-          description: Text('Цветовая палитра по умолчанию'),
+          description: Text('Выбор по умолчанию'),
           value: AppLessonColorsMode.cube,
         ),
         AppRadioSelectorItem(

@@ -1,6 +1,6 @@
+import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_events.dart';
 import 'package:cube_system/models/timetable_day/timetable_day_type.dart';
-import 'package:cube_system/features/timetable_page/ui/event_pages/no_connection_event_page.dart';
 import 'package:cube_system/features/timetable_page/ui/event_pages/weekend_event_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,6 +15,8 @@ import 'package:cube_system/features/timetable_page/ui/event_pages/something_wen
 
 import 'package:cube_system/features/timetable_page/ui/event_pages/welcome_event_page.dart';
 
+import 'package:cube_system/ui/widgets/event_pages/no_connection_event_page.dart';
+
 class TimetablePageDay extends ConsumerWidget {
   final DateTime date;
 
@@ -22,11 +24,14 @@ class TimetablePageDay extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final manager = ref.watch(timetablePageManager);
     final lessons = ref.watch(timetablePageDayLessons(date));
 
     final event = ref.watch(timetablePageDayLessonEvent(date));
 
-    if (event == null || event.type == TimetableDayEventType.loading) {
+    if (event == null) return const SizedBox();
+
+    if (event.type == TimetableDayEventType.loading) {
       return const Center(
         child: Padding(
           padding: EdgeInsets.only(bottom: 36),
@@ -48,7 +53,9 @@ class TimetablePageDay extends ConsumerWidget {
         return const WeekendEventPage();
 
       case TimetableDayEventType.error:
-        return const NoConnectionEventPage();
+        return NoConnectionEventPage(
+          onTap: manager.updateCurrentTimetable,
+        );
 
       case TimetableDayEventType.lessons:
     }

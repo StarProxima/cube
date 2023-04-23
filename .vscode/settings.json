@@ -33,5 +33,6 @@
     "**/.vscode",
     "**/.vscode/**"
   ],
-  "C_Cpp_Runner.useAddressSanitizer": false
+  "C_Cpp_Runner.useAddressSanitizer": false,
+  "cmake.sourceDirectory": "${workspaceFolder}/linux"
 }

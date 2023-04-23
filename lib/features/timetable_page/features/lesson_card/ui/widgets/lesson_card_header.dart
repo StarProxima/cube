@@ -6,7 +6,7 @@ class LessonCardHeader extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final number = ref
-        .watch(_lessonInLessonCard.select((value) => value.lesson.number))
+        .watch(_lessonInLessonCard.select((value) => value.number))
         .toString();
 
     final timings =
@@ -19,7 +19,7 @@ class LessonCardHeader extends ConsumerWidget {
         ref.watch(appLessonColorByLesson(ref.read(_lessonInLessonCard)));
 
     final lessonTypePosition = ref.watch(
-      appSettingsViewStateHolder
+      appSettingsStateHolder
           .select((value) => value.lessonCardLessonTypePosition),
     );
 

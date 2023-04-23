@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import 'package:cube_system/features/settings/state_holders/app_settings_view_state_holder.dart';
-import 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_recess.dart';
+import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
+import 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/recess_card.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/timetable_page/state_holders/selected_timetable.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/timetable_page/state_holders/lessons/current_lesson.dart';
 import 'package:cube_system/models/lesson/lesson.dart';
-import 'package:cube_system/source/extensions.dart';
+import 'package:cube_system/core/extensions.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
 
 import 'package:cube_system/features/timetable_page/features/lesson_card/providers/current_lesson_time_to_end_provider.dart';
@@ -32,6 +32,8 @@ part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widget
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_time_left.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/next_lesson_time_to_start_progress_bar.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_lesson_type_chip.dart';
+part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_time_to_start.dart';
+part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_recess.dart';
 
 final _lessonInLessonCard = Provider<Lesson>((ref) {
   return throw UnimplementedError();
@@ -51,32 +53,11 @@ class LessonCard extends ConsumerWidget {
       ],
       child: Column(
         children: [
-          if (lesson.emptyLessonsBefore != 0)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 16, top: 8),
-              child: LessonCardRecess(
-                numberStart: lesson.lesson.number - lesson.emptyLessonsBefore,
-                numberEnd: lesson.lesson.number - 1,
-              ),
-            ),
-          Consumer(
-            builder: (context, ref, _) {
-              final dontShow = ref.watch(
-                nextLessonTimeToStartProvider.select((value) => value == null),
-              );
-
-              final lessonNext = ref.read(nextLesson);
-              final lessonCurrent = ref.read(currentLesson);
-
-              if (dontShow || lesson != lessonNext || lessonCurrent != null) {
-                return const SizedBox();
-              }
-
-              return const Padding(
-                padding: EdgeInsets.only(bottom: 8),
-                child: NextLessonTimeToStartProgressBar(),
-              );
-            },
+          const LessonCardRecess(
+            margin: EdgeInsets.only(bottom: 8),
+          ),
+          const LessonCardTimeToStart(
+            margin: EdgeInsets.only(bottom: 8),
           ),
           Stack(
             children: [
@@ -129,11 +110,7 @@ class LessonCard extends ConsumerWidget {
                                     right: 4,
                                     bottom: 4,
                                   ),
-                                  child: Column(
-                                    children: [
-                                      LessonCardFooter(),
-                                    ],
-                                  ),
+                                  child: LessonCardFooter(),
                                 ),
                               ],
                             ),

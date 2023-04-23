@@ -8,10 +8,16 @@ import 'package:cube_system/features/timetable_page/state_holders/current_picked
 
 import 'package:cube_system/features/timetable_page/state_holders/selected_timetable.dart';
 
+import 'package:cube_system/features/timetable_page/state_holders/timetable_page_lessons.dart';
+
+import 'package:cube_system/features/timetable_page/state_holders/timetable_page_events.dart';
+
 final timetablePageManager = Provider<TimetablePageManager>((ref) {
   return TimetablePageManager(
     lessonsManager: ref.watch(timetableLessonsManager),
-    selectedTimetable: ref.watch(selectedTimetable.notifier),
+    timetableLessons: ref.watch(timetablePageLessons.notifier),
+    timetableEvents: ref.watch(timetablePageEvents.notifier),
+    selectedTimetable: ref.watch(selectedTimetableStateHolder.notifier),
     currentDateTime: ref.watch(currentDateTimeQuick.notifier),
     selectedDate: ref.watch(selectedDate.notifier),
     currentPickedDateInPageView:
@@ -21,28 +27,48 @@ final timetablePageManager = Provider<TimetablePageManager>((ref) {
 
 class TimetablePageManager {
   final TimetableLessonsManager lessonsManager;
-
-  final StateController<TimetableInfo?> selectedTimetable;
+  final TimetablePageLessonsNotifier timetableLessons;
+  final TimetablePageEventsNotifier timetableEvents;
+  final SelectedTimetableNotifier selectedTimetable;
   final StateController<DateTime> currentDateTime;
   final StateController<DateTime> selectedDate;
   final StateController<DateTime> currentPickedDateInPageView;
 
   TimetablePageManager({
     required this.lessonsManager,
+    required this.timetableLessons,
+    required this.timetableEvents,
     required this.selectedTimetable,
     required this.currentDateTime,
     required this.selectedDate,
     required this.currentPickedDateInPageView,
   });
 
-  Future<void> selectTimetable(TimetableInfo timetable) async {
-    await Future(() {});
-    selectedTimetable.state = timetable;
-    lessonsManager.clear();
-    lessonsManager.updateCurrentTimetable();
+  void _save() {
+    timetableLessons.save();
+    timetableEvents.save();
   }
 
-  void updateCurrentTimetable() => lessonsManager.updateCurrentTimetable();
+  Future<void> setup({required TimetableInfo? timetable}) async {
+    await Future(() {});
+    if (timetable != null) {
+      selectTimetable(timetable);
+    } else {
+      await updateCurrentTimetable();
+      _save();
+    }
+  }
+
+  // TODO: Refactor - update current timetable when selected timetable changes
+  Future<void> selectTimetable(TimetableInfo timetable) async {
+    selectedTimetable.change(timetable);
+    lessonsManager.clear();
+    await lessonsManager.updateCurrentTimetable();
+    _save();
+  }
+
+  Future<void> updateCurrentTimetable() async =>
+      await lessonsManager.updateCurrentTimetable();
 
   void findLastCurrentNextLesson() =>
       lessonsManager.findLastCurrentNextLesson();

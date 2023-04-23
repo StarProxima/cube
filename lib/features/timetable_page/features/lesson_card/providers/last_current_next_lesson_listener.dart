@@ -6,10 +6,11 @@ import 'package:cube_system/features/timetable_page/features/lesson_card/provide
 
 import 'package:cube_system/features/timetable_page/features/lesson_card/providers/next_lesson_time_to_start_provider.dart';
 
+import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
+
 // На этот провайдер нужно подписаться для обновления прошлой, текущей и следующей пары
-//TODO: Найти способ получше
-final lastCurrentNextLessonListener =
-    StateNotifierProvider<LastCurrentNextLessonListenerNotifier, void>((ref) {
+
+final lastCurrentNextLessonListener = Provider<void>((ref) {
   ref.watch(currentDateTimeLazy);
 
   ref.watch(
@@ -22,12 +23,7 @@ final lastCurrentNextLessonListener =
         .select((value) => value?.duration.inSeconds == 0),
   );
 
-  return LastCurrentNextLessonListenerNotifier(true);
+  final manager = ref.read(timetablePageManager);
+
+  manager.findLastCurrentNextLesson();
 });
-
-class LastCurrentNextLessonListenerNotifier extends StateNotifier<bool> {
-  LastCurrentNextLessonListenerNotifier(super.state);
-
-  @override
-  bool updateShouldNotify(void old, void current) => true;
-}

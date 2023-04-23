@@ -16,8 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TimetableInfo {
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   String get label => throw _privateConstructorUsedError;
+  @HiveField(2)
   TimetableType get type => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +34,10 @@ abstract class $TimetableInfoCopyWith<$Res> {
           TimetableInfo value, $Res Function(TimetableInfo) then) =
       _$TimetableInfoCopyWithImpl<$Res, TimetableInfo>;
   @useResult
-  $Res call({int id, String label, TimetableType type});
+  $Res call(
+      {@HiveField(0) int id,
+      @HiveField(1) String label,
+      @HiveField(2) TimetableType type});
 }
 
 /// @nodoc
@@ -76,7 +82,10 @@ abstract class _$$_TimetableInfoCopyWith<$Res>
       __$$_TimetableInfoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String label, TimetableType type});
+  $Res call(
+      {@HiveField(0) int id,
+      @HiveField(1) String label,
+      @HiveField(2) TimetableType type});
 }
 
 /// @nodoc
@@ -113,14 +122,21 @@ class __$$_TimetableInfoCopyWithImpl<$Res>
 
 /// @nodoc
 
+@HiveType(typeId: 4)
 class _$_TimetableInfo implements _TimetableInfo {
-  _$_TimetableInfo({required this.id, required this.label, required this.type});
+  _$_TimetableInfo(
+      {@HiveField(0) required this.id,
+      @HiveField(1) required this.label,
+      @HiveField(2) required this.type});
 
   @override
+  @HiveField(0)
   final int id;
   @override
+  @HiveField(1)
   final String label;
   @override
+  @HiveField(2)
   final TimetableType type;
 
   @override
@@ -150,15 +166,18 @@ class _$_TimetableInfo implements _TimetableInfo {
 
 abstract class _TimetableInfo implements TimetableInfo {
   factory _TimetableInfo(
-      {required final int id,
-      required final String label,
-      required final TimetableType type}) = _$_TimetableInfo;
+      {@HiveField(0) required final int id,
+      @HiveField(1) required final String label,
+      @HiveField(2) required final TimetableType type}) = _$_TimetableInfo;
 
   @override
+  @HiveField(0)
   int get id;
   @override
+  @HiveField(1)
   String get label;
   @override
+  @HiveField(2)
   TimetableType get type;
   @override
   @JsonKey(ignore: true)

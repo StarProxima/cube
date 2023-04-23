@@ -26,15 +26,10 @@ class TimetablePage extends ConsumerWidget {
     timeManager.setTimers();
 
     final manager = ref.read(timetablePageManager);
-    manager.updateCurrentTimetable();
 
-    if (timetable != null) {
-      manager.selectTimetable(timetable!);
-    }
+    manager.setup(timetable: timetable);
 
-    ref.listen(lastCurrentNextLessonListener, (_, __) {
-      manager.findLastCurrentNextLesson();
-    });
+    ref.watch(lastCurrentNextLessonListener);
 
     return const _TimetablePage();
   }
