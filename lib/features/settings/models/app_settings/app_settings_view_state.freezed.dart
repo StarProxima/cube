@@ -153,7 +153,7 @@ class _$_AppSettings implements _AppSettings {
       {@HiveField(0) this.appThemeMode = AppThemeMode.system,
       @HiveField(1) this.lessonColorsMode = AppLessonColorsMode.cube,
       @HiveField(2) this.lessonCardLessonTypePosition =
-          LessonCardLessonTypePosition.afterBottomLeftBlock,
+          LessonCardLessonTypePosition.bottomRight,
       @HiveField(3) this.lessonCardRecessDisplayCondition =
           LessonCardRecessDisplayCondition.always});
 

@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:cube_system/features/date_time_contol/managers/date_time_manager.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_day_event_manager.dart';
 import 'package:cube_system/models/timetable/timetable_type.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -24,6 +25,7 @@ final timetableLessonsManager = Provider<TimetableLessonsManager>((ref) {
     api: ref.watch(cubeApi),
     lessonConvertor: ref.watch(lessonConvertor),
     eventManager: ref.watch(timetableDayEventManager),
+    dateTimeManager: ref.watch(dateTimeManager),
     selectedTimetable: ref.watch(selectedTimetableStateHolder.notifier),
     timetableLessons: ref.watch(timetablePageLessons.notifier),
     events: ref.watch(timetablePageEvents.notifier),
@@ -37,8 +39,10 @@ final timetableLessonsManager = Provider<TimetableLessonsManager>((ref) {
 
 class TimetableLessonsManager {
   final CubeApi api;
+
   final LessonConvertor lessonConvertor;
   final TimetableDayEventManager eventManager;
+  final DateTimeManager dateTimeManager;
 
   final SelectedTimetableNotifier selectedTimetable;
   final TimetablePageLessonsNotifier timetableLessons;
@@ -53,6 +57,7 @@ class TimetableLessonsManager {
     required this.api,
     required this.lessonConvertor,
     required this.eventManager,
+    required this.dateTimeManager,
     required this.selectedTimetable,
     required this.timetableLessons,
     required this.events,
@@ -118,14 +123,10 @@ class TimetableLessonsManager {
   Future<void> updateCurrentTimetable() async {
     await Future(() {});
 
-    final date = selectedDate.state;
+    final bounds = dateTimeManager.getDateTimeBounds(selectedDate.state);
 
-    final dayOffset = date.weekday - 1;
-    final weekStart = date.add(Duration(days: -dayOffset));
-    final weekEnd = date.add(Duration(days: 6 - dayOffset));
-
-    final startDate = weekStart.add(const Duration(days: -7));
-    final endDate = weekEnd.add(const Duration(days: 7));
+    final startDate = bounds.start;
+    final endDate = bounds.end;
 
     if (selectedTimetable.state == null) {
       eventManager.setNotSelectedEvents(

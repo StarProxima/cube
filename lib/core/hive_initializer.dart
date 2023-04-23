@@ -42,8 +42,8 @@ abstract class HiveInitializer {
 
     await Future.wait([
       Hive.openBox(AppBoxNames.selectedTimetable),
-      // Hive.openBox(AppBoxNames.timetablePageLessons),
-      // Hive.openBox(AppBoxNames.timetablePageEvents),
+      Hive.openBox(AppBoxNames.timetablePageLessons),
+      Hive.openBox(AppBoxNames.timetablePageEvents),
     ]);
   }
 }

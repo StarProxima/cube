@@ -1,6 +1,6 @@
 import 'dart:collection';
 
-import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
+import 'package:cube_system/features/date_time_contol/managers/date_time_manager.dart';
 import 'package:cube_system/models/app_box_names/app_box_names.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -21,19 +21,19 @@ final timetablePageEvents =
     TimetableEvents(),
     boxName: AppBoxNames.timetablePageEvents,
     autoSaving: false,
-    currentDate: ref.watch(currentDate.notifier),
+    dateTimeManager: ref.watch(dateTimeManager),
   );
 });
 
 class TimetablePageEventsNotifier
     extends SingleHiveStateNotifier<TimetableEvents> {
-  final StateController<DateTime> currentDate;
+  final DateTimeManager dateTimeManager;
 
   TimetablePageEventsNotifier(
     super.state, {
     required super.boxName,
     required super.autoSaving,
-    required this.currentDate,
+    required this.dateTimeManager,
   });
 
   @override
@@ -50,20 +50,17 @@ class TimetablePageEventsNotifier
 
   @override
   void save() {
-    final newState = TimetableEvents();
+    final clippedState = TimetableEvents();
 
-    final current = currentDate.state;
-    final dayOffset = current.weekday - 1;
-    final weekStart = current.add(Duration(days: -dayOffset));
-    final weekEnd = current.add(Duration(days: 6 - dayOffset));
-    final startDate = weekStart.add(const Duration(days: -7));
-    final endDate = weekEnd.add(const Duration(days: 7));
+    final bounds = dateTimeManager.getDateTimeBounds();
 
     for (final date in state.keys) {
-      if (date.isBefore(startDate) || date.isAfter(endDate)) continue;
-      newState[date] = state[date]!;
+      final isSkip = date.isBefore(bounds.start) || date.isAfter(bounds.end);
+      if (isSkip) continue;
+
+      clippedState[date] = state[date]!;
     }
 
-    saveData(newState);
+    saveData(clippedState);
   }
 }

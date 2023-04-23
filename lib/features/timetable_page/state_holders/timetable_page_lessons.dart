@@ -1,11 +1,12 @@
 import 'dart:collection';
 
-import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
 import 'package:cube_system/models/app_box_names/app_box_names.dart';
 import 'package:cube_system/models/lesson/lesson.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/core/state_notifiers/hive_state_notifier.dart';
+
+import 'package:cube_system/features/date_time_contol/managers/date_time_manager.dart';
 
 typedef TimetableLessons = SplayTreeMap<DateTime, List<Lesson>>;
 
@@ -21,19 +22,19 @@ final timetablePageLessons =
     TimetableLessons(),
     boxName: AppBoxNames.timetablePageLessons,
     autoSaving: false,
-    currentDate: ref.watch(currentDate.notifier),
+    dateTimeManager: ref.watch(dateTimeManager),
   );
 });
 
 class TimetablePageLessonsNotifier
     extends SingleHiveStateNotifier<TimetableLessons> {
-  final StateController<DateTime> currentDate;
+  final DateTimeManager dateTimeManager;
 
   TimetablePageLessonsNotifier(
     super.state, {
     required super.boxName,
     required super.autoSaving,
-    required this.currentDate,
+    required this.dateTimeManager,
   });
 
   @override
@@ -52,20 +53,17 @@ class TimetablePageLessonsNotifier
 
   @override
   void save() {
-    final newState = TimetableLessons();
+    final clippedState = TimetableLessons();
 
-    final current = currentDate.state;
-    final dayOffset = current.weekday - 1;
-    final weekStart = current.add(Duration(days: -dayOffset));
-    final weekEnd = current.add(Duration(days: 6 - dayOffset));
-    final startDate = weekStart.add(const Duration(days: -7));
-    final endDate = weekEnd.add(const Duration(days: 7));
+    final bounds = dateTimeManager.getDateTimeBounds();
 
     for (final date in state.keys) {
-      if (date.isBefore(startDate) || date.isAfter(endDate)) continue;
-      newState[date] = state[date]!;
+      final isSkip = date.isBefore(bounds.start) || date.isAfter(bounds.end);
+      if (isSkip) continue;
+
+      clippedState[date] = state[date]!;
     }
 
-    saveData(newState);
+    saveData(clippedState);
   }
 }
