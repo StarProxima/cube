@@ -4,6 +4,7 @@ import 'package:cube_system/features/timetable_page/ui/timetable_page.dart';
 import 'package:cube_system/features/timetable_search_page/ui/timetable_search_page.dart';
 import 'package:cube_system/models/timetable/timetable_info.dart';
 import 'package:cube_system/models/timetable/timetable_type.dart';
+import 'package:cube_system/ui/widgets/app_splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -14,46 +15,38 @@ import 'package:cube_system/ui/widgets/event_pages/unimplemented_feature_event_p
 
 import 'package:cube_system/features/navigation/router/app_custom_transition_page.dart';
 
-import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
-
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 final _shellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'shell');
 
 final routerProvider = Provider<GoRouter>((ref) {
-  final landingPassed = ref.read(appSettingsStateHolder).landingPassed;
-
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: landingPassed ? '/timetable' : '/landing',
+    initialLocation: '/splash',
     routes: [
       GoRoute(
         path: '/',
-        redirect: (context, state) => '/landing',
+        redirect: (context, state) => '/splash',
+      ),
+      GoRoute(
+        path: '/splash',
+        pageBuilder: (context, state) => AppCustomTransitionPage(
+          key: state.pageKey,
+          child: const AppSplashScreen(),
+        ),
       ),
       GoRoute(
         path: '/landing',
-        redirect: (context, state) {
-          return null;
-        },
-        pageBuilder: (context, state) => CupertinoPage(
+        pageBuilder: (context, state) => AppCustomTransitionPage(
           key: state.pageKey,
           child: const LandingPage(),
         ),
       ),
       ShellRoute(
         navigatorKey: _shellNavigatorKey,
-        // builder: (BuildContext context, GoRouterState state, Widget child) {
-        //   final length = '/'.allMatches(state.fullpath!).length;
-        //   return length < 2 ? NavigationBarWrapper(child) : child;
-        // },
-        builder: (BuildContext context, GoRouterState state, Widget child) {
-          return NavigationBarWrapper(child);
-        },
-        // pageBuilder: (context, state, child) => AppCustomTransitionPage(
-        //   key: state.pageKey,
-        //   child: NavigationBarWrapper(child),
-        // ),
-
+        pageBuilder: (context, state, child) => AppCustomTransitionPage(
+          key: state.pageKey,
+          child: NavigationBarWrapper(child),
+        ),
         routes: [
           GoRoute(
             path: '/search',

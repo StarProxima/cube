@@ -18,15 +18,6 @@ class MainApp extends ConsumerWidget {
     final appColors = AppColors.light;
     final appTextStyles = AppTextStyles.light;
 
-    // ref.listen(selectedTimetable, (previous, next) {
-    //   print(next);
-    //   Future(() async {
-    //     final box = await Hive.openBox('timetables');
-
-    //     await box.put('selectedTimetable', next);
-    //   });
-    // });
-
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,

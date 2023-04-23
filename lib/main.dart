@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:cube_system/core/hive_initializer.dart';
 import 'package:cube_system/ui/main_app.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +15,6 @@ void main() async {
     setWindowMinSize(const Size(460, 380));
     setWindowMaxSize(const Size.fromWidth(700));
   }
-
-  await HiveInitializer.init();
 
   runApp(
     const ProviderScope(
