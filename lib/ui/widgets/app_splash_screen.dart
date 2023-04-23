@@ -21,7 +21,7 @@ class _AppSplashScreenState extends ConsumerState<AppSplashScreen>
   void push() async {
     await Future.wait([
       HiveInitializer.init(),
-      Future.delayed(const Duration(milliseconds: 3000))
+      Future.delayed(const Duration(milliseconds: 2000))
     ]);
 
     final landingPassed = ref.read(appSettingsStateHolder).landingPassed;
@@ -58,11 +58,11 @@ class _AppSplashScreenState extends ConsumerState<AppSplashScreen>
               child: ScaleTransition(
                 scale: CurvedAnimation(
                   parent: logoController,
-                  curve: Curves.easeInOut,
+                  curve: Curves.easeInOutCirc,
                 ),
                 child: Container(
-                  width: 100,
-                  height: 100,
+                  width: 135,
+                  height: 135,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: Assets.icons.cubeIcon.provider(),
@@ -90,7 +90,7 @@ class _AppSplashScreenState extends ConsumerState<AppSplashScreen>
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text('Developed by NullExp | NLabs'),
+                    Text('Developed by NullExp'),
                     // SizedBox(height: 4),
                     // Text('Audit by '),
                   ],
