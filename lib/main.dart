@@ -16,15 +16,11 @@ void main() async {
         ]);
       },
       builder: (context, snapshot, _) {
-        final Widget child;
-
         if (snapshot.connectionState == ConnectionState.done) {
-          child = const ProviderScope(child: MainApp());
-        } else {
-          child = const AppSplash();
+          return const ProviderScope(child: MainApp());
         }
 
-        return child;
+        return const AppSplash();
       },
     ),
     onFlutterError: (errorDetails) {},
