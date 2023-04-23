@@ -24,8 +24,13 @@ class HiveStateNotifier<T> extends OpenStateNotifier<T> {
   }
 
   void _init() async {
-    await _openBox();
-    getData();
+    if (Hive.isBoxOpen(boxName)) {
+      _box = Hive.box(boxName);
+      getData();
+    } else {
+      await _openBox();
+    }
+
     if (_autoSaving) {
       addListener(saveData);
     }

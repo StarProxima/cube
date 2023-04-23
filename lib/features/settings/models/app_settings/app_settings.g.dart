@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'app_settings_view_state.dart';
+part of 'app_settings.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
@@ -22,13 +22,14 @@ class AppSettingsAdapter extends TypeAdapter<_$_AppSettings> {
       lessonCardLessonTypePosition: fields[2] as LessonCardLessonTypePosition,
       lessonCardRecessDisplayCondition:
           fields[3] as LessonCardRecessDisplayCondition,
+      landingPassed: fields[4] == null ? false : fields[4] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$_AppSettings obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.appThemeMode)
       ..writeByte(1)
@@ -36,7 +37,9 @@ class AppSettingsAdapter extends TypeAdapter<_$_AppSettings> {
       ..writeByte(2)
       ..write(obj.lessonCardLessonTypePosition)
       ..writeByte(3)
-      ..write(obj.lessonCardRecessDisplayCondition);
+      ..write(obj.lessonCardRecessDisplayCondition)
+      ..writeByte(4)
+      ..write(obj.landingPassed);
   }
 
   @override

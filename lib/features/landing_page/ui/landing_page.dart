@@ -8,6 +8,8 @@ import 'package:cube_system/ui/ui_kit/app_button.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
+
 class LandingPage extends ConsumerWidget {
   const LandingPage({
     super.key,
@@ -61,6 +63,7 @@ class _LandingPageState extends ConsumerState<_LandingPage> {
           onTap: () {
             if (isLastPage) {
               context.go('/timetable');
+              ref.read(appSettingsStateHolder.notifier).editLandingPassed(true);
             } else {
               pageController.nextPage(
                 duration: const Duration(milliseconds: 300),

@@ -9,8 +9,8 @@ import 'package:cube_system/features/settings/models/lesson_card_lesson_type_pos
 import 'package:cube_system/features/settings/models/lesson_card_recess_display_condition/lesson_card_recess_display_condition.dart';
 import 'package:hive/hive.dart';
 
-part 'app_settings_view_state.freezed.dart';
-part 'app_settings_view_state.g.dart';
+part 'app_settings.freezed.dart';
+part 'app_settings.g.dart';
 
 @freezed
 class AppSettings with _$AppSettings {
@@ -28,5 +28,8 @@ class AppSettings with _$AppSettings {
     @HiveField(3)
     @Default(LessonCardRecessDisplayCondition.always)
         LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition,
+    @HiveField(4, defaultValue: false)
+    @Default(false)
+        bool landingPassed,
   }) = _AppSettings;
 }

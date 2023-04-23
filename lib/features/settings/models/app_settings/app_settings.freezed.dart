@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'app_settings_view_state.dart';
+part of 'app_settings.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -27,6 +27,8 @@ mixin _$AppSettings {
   @HiveField(3)
   LessonCardRecessDisplayCondition get lessonCardRecessDisplayCondition =>
       throw _privateConstructorUsedError;
+  @HiveField(4, defaultValue: false)
+  bool get landingPassed => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppSettingsCopyWith<AppSettings> get copyWith =>
@@ -47,7 +49,9 @@ abstract class $AppSettingsCopyWith<$Res> {
       @HiveField(2)
           LessonCardLessonTypePosition lessonCardLessonTypePosition,
       @HiveField(3)
-          LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition});
+          LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition,
+      @HiveField(4, defaultValue: false)
+          bool landingPassed});
 }
 
 /// @nodoc
@@ -67,6 +71,7 @@ class _$AppSettingsCopyWithImpl<$Res, $Val extends AppSettings>
     Object? lessonColorsMode = null,
     Object? lessonCardLessonTypePosition = null,
     Object? lessonCardRecessDisplayCondition = null,
+    Object? landingPassed = null,
   }) {
     return _then(_value.copyWith(
       appThemeMode: null == appThemeMode
@@ -85,6 +90,10 @@ class _$AppSettingsCopyWithImpl<$Res, $Val extends AppSettings>
           ? _value.lessonCardRecessDisplayCondition
           : lessonCardRecessDisplayCondition // ignore: cast_nullable_to_non_nullable
               as LessonCardRecessDisplayCondition,
+      landingPassed: null == landingPassed
+          ? _value.landingPassed
+          : landingPassed // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -105,7 +114,9 @@ abstract class _$$_AppSettingsCopyWith<$Res>
       @HiveField(2)
           LessonCardLessonTypePosition lessonCardLessonTypePosition,
       @HiveField(3)
-          LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition});
+          LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition,
+      @HiveField(4, defaultValue: false)
+          bool landingPassed});
 }
 
 /// @nodoc
@@ -123,6 +134,7 @@ class __$$_AppSettingsCopyWithImpl<$Res>
     Object? lessonColorsMode = null,
     Object? lessonCardLessonTypePosition = null,
     Object? lessonCardRecessDisplayCondition = null,
+    Object? landingPassed = null,
   }) {
     return _then(_$_AppSettings(
       appThemeMode: null == appThemeMode
@@ -141,6 +153,10 @@ class __$$_AppSettingsCopyWithImpl<$Res>
           ? _value.lessonCardRecessDisplayCondition
           : lessonCardRecessDisplayCondition // ignore: cast_nullable_to_non_nullable
               as LessonCardRecessDisplayCondition,
+      landingPassed: null == landingPassed
+          ? _value.landingPassed
+          : landingPassed // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -155,7 +171,8 @@ class _$_AppSettings implements _AppSettings {
       @HiveField(2) this.lessonCardLessonTypePosition =
           LessonCardLessonTypePosition.bottomRight,
       @HiveField(3) this.lessonCardRecessDisplayCondition =
-          LessonCardRecessDisplayCondition.always});
+          LessonCardRecessDisplayCondition.always,
+      @HiveField(4, defaultValue: false) this.landingPassed = false});
 
   @override
   @JsonKey()
@@ -173,10 +190,14 @@ class _$_AppSettings implements _AppSettings {
   @JsonKey()
   @HiveField(3)
   final LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition;
+  @override
+  @JsonKey()
+  @HiveField(4, defaultValue: false)
+  final bool landingPassed;
 
   @override
   String toString() {
-    return 'AppSettings(appThemeMode: $appThemeMode, lessonColorsMode: $lessonColorsMode, lessonCardLessonTypePosition: $lessonCardLessonTypePosition, lessonCardRecessDisplayCondition: $lessonCardRecessDisplayCondition)';
+    return 'AppSettings(appThemeMode: $appThemeMode, lessonColorsMode: $lessonColorsMode, lessonCardLessonTypePosition: $lessonCardLessonTypePosition, lessonCardRecessDisplayCondition: $lessonCardRecessDisplayCondition, landingPassed: $landingPassed)';
   }
 
   @override
@@ -195,12 +216,19 @@ class _$_AppSettings implements _AppSettings {
             (identical(other.lessonCardRecessDisplayCondition,
                     lessonCardRecessDisplayCondition) ||
                 other.lessonCardRecessDisplayCondition ==
-                    lessonCardRecessDisplayCondition));
+                    lessonCardRecessDisplayCondition) &&
+            (identical(other.landingPassed, landingPassed) ||
+                other.landingPassed == landingPassed));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, appThemeMode, lessonColorsMode,
-      lessonCardLessonTypePosition, lessonCardRecessDisplayCondition);
+  int get hashCode => Object.hash(
+      runtimeType,
+      appThemeMode,
+      lessonColorsMode,
+      lessonCardLessonTypePosition,
+      lessonCardRecessDisplayCondition,
+      landingPassed);
 
   @JsonKey(ignore: true)
   @override
@@ -219,7 +247,9 @@ abstract class _AppSettings implements AppSettings {
           final LessonCardLessonTypePosition lessonCardLessonTypePosition,
       @HiveField(3)
           final LessonCardRecessDisplayCondition
-              lessonCardRecessDisplayCondition}) = _$_AppSettings;
+              lessonCardRecessDisplayCondition,
+      @HiveField(4, defaultValue: false)
+          final bool landingPassed}) = _$_AppSettings;
 
   @override
   @HiveField(0)
@@ -233,6 +263,9 @@ abstract class _AppSettings implements AppSettings {
   @override
   @HiveField(3)
   LessonCardRecessDisplayCondition get lessonCardRecessDisplayCondition;
+  @override
+  @HiveField(4, defaultValue: false)
+  bool get landingPassed;
   @override
   @JsonKey(ignore: true)
   _$$_AppSettingsCopyWith<_$_AppSettings> get copyWith =>

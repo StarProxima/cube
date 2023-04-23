@@ -4,7 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:cube_system/features/settings/models/app_lesson_colors_mode/app_lesson_colors_mode.dart';
 
-import 'package:cube_system/features/settings/models/app_settings/app_settings_view_state.dart';
+import 'package:cube_system/features/settings/models/app_settings/app_settings.dart';
 import 'package:cube_system/features/settings/models/lesson_card_lesson_type_position/lesson_card_lesson_type_position.dart';
 import 'package:cube_system/features/settings/models/app_theme_mode/app_theme_mode.dart';
 import 'package:cube_system/features/settings/models/lesson_card_recess_display_condition/lesson_card_recess_display_condition.dart';
@@ -44,6 +44,7 @@ abstract class HiveInitializer {
       Hive.openBox(AppBoxNames.selectedTimetable),
       Hive.openBox(AppBoxNames.timetablePageLessons),
       Hive.openBox(AppBoxNames.timetablePageEvents),
+      Hive.openBox(AppBoxNames.appSettings),
     ]);
   }
 }

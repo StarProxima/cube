@@ -9,7 +9,7 @@ import 'package:cube_system/features/settings/models/lesson_card_lesson_type_pos
 
 import 'package:cube_system/features/settings/models/lesson_card_recess_display_condition/lesson_card_recess_display_condition.dart';
 
-import 'package:cube_system/features/settings/models/app_settings/app_settings_view_state.dart';
+import 'package:cube_system/features/settings/models/app_settings/app_settings.dart';
 
 import 'package:cube_system/core/state_notifiers/hive_state_notifier.dart';
 
@@ -46,5 +46,9 @@ class AppSettingsNotifier extends HiveStateNotifier<AppSettings> {
     state = state.copyWith(
       lessonCardRecessDisplayCondition: lessonCardRecessDisplayCondition,
     );
+  }
+
+  void editLandingPassed(bool landingPassed) {
+    state = state.copyWith(landingPassed: landingPassed);
   }
 }
