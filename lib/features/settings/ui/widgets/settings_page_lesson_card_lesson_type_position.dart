@@ -22,7 +22,7 @@ class _SettingsPageLessonCardLessonTypePosition extends ConsumerWidget {
       items: const [
         AppRadioSelectorItem(
           title: Text('Снизу справа'),
-          description: Text('Расположение по умолчанию'),
+          description: Text('Выбор по умолчанию'),
           value: LessonCardLessonTypePosition.bottomRight,
         ),
         AppRadioSelectorItem(

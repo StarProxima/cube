@@ -28,7 +28,7 @@ class _SettingsPageLessonCardRecessDisplayCondition extends ConsumerWidget {
           value: LessonCardRecessDisplayCondition.onlyRecessBetweenLessons,
         ),
         AppRadioSelectorItem(
-          title: Text('Нигогда'),
+          title: Text('Никогда'),
           value: LessonCardRecessDisplayCondition.never,
         ),
       ],

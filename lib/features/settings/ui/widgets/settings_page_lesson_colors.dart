@@ -18,7 +18,7 @@ class _SettingsPageLessonColors extends ConsumerWidget {
       items: const [
         AppRadioSelectorItem(
           title: Text('Cube'),
-          description: Text('Цветовая палитра по умолчанию'),
+          description: Text('Выбор по умолчанию'),
           value: AppLessonColorsMode.cube,
         ),
         AppRadioSelectorItem(

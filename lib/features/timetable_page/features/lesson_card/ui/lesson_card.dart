@@ -110,11 +110,7 @@ class LessonCard extends ConsumerWidget {
                                     right: 4,
                                     bottom: 4,
                                   ),
-                                  child: Column(
-                                    children: [
-                                      LessonCardFooter(),
-                                    ],
-                                  ),
+                                  child: LessonCardFooter(),
                                 ),
                               ],
                             ),
