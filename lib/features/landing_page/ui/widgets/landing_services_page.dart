@@ -31,7 +31,7 @@ class LandingServicesPage extends ConsumerWidget {
             Center(
               child: Column(
                 children: [
-                  ShortFadeAnimatedWidget(
+                  FadeAnimatedWidget(
                     child: Assets.brooklyn.managerDesk2.svg(),
                   ),
                   Text(

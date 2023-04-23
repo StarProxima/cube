@@ -1,6 +1,7 @@
+import 'package:cube_system/ui/widgets/app_overlay_style_wrapper.dart';
+import 'package:cube_system/ui/widgets/short_fade_animated_widget.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -18,21 +19,17 @@ class MainApp extends ConsumerWidget {
     final appColors = AppColors.light;
     final appTextStyles = AppTextStyles.light;
 
-    return AnnotatedRegion(
-      value: SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark,
-        systemNavigationBarIconBrightness: Brightness.dark,
-        systemNavigationBarDividerColor: appColors.background,
-        // iOS only
-        statusBarBrightness: Brightness.light,
-      ),
+    return AppOverlayStyleWrapper(
       child: DevicePreview(
         enabled: false,
         builder: (context) => MaterialApp.router(
           debugShowCheckedModeBanner: false,
           locale: DevicePreview.locale(context),
-          builder: DevicePreview.appBuilder,
+          builder: (context, child) => Scaffold(
+            body: FadeAnimatedWidget(
+              child: DevicePreview.appBuilder(context, child),
+            ),
+          ),
           scrollBehavior: AppScrollBehavior(),
           title: 'Куб.Расписание',
           localizationsDelegates: const [

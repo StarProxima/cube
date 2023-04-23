@@ -1,25 +1,43 @@
-import 'dart:io';
-
+import 'package:app_runner/app_runner.dart';
 import 'package:cube_system/ui/main_app.dart';
-import 'package:flutter/foundation.dart';
+import 'package:cube_system/ui/widgets/app_splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:window_size/window_size.dart';
+import 'package:cube_system/core/hive_initializer.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  final widgetConfiguration = WidgetConfiguration(
+    child: AppBuilder<void>(
+      preInitialize: (binding) async {
+        await Future.wait([
+          HiveInitializer.init(),
+          Future.delayed(const Duration(milliseconds: 2000))
+        ]);
+      },
+      builder: (context, snapshot, _) {
+        final Widget child;
 
-  if (!kIsWeb && (Platform.isWindows || Platform.isLinux || Platform.isMacOS)) {
-    setWindowTitle('Куб.Расписание');
-    setWindowMinSize(const Size(460, 380));
-    setWindowMaxSize(const Size.fromWidth(700));
-  }
+        if (snapshot.connectionState == ConnectionState.done) {
+          child = const ProviderScope(child: MainApp());
+        } else {
+          child = const AppSplash();
+        }
 
-  runApp(
-    const ProviderScope(
-      observers: [],
-      child: MainApp(),
+        return child;
+      },
+    ),
+    onFlutterError: (errorDetails) {},
+  );
+
+  final ZoneConfiguration zoneConfiguration = ZoneConfiguration(
+    onZoneError: (Object error, StackTrace stackTrace) {},
+  );
+
+  appRunner(
+    RunnerConfiguration.guarded(
+      widgetConfig: widgetConfiguration,
+      zoneConfig: zoneConfiguration,
     ),
   );
 }

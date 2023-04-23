@@ -39,7 +39,7 @@ class AppRadioSelectorItemCard<T> extends ConsumerWidget {
             horizontal: VisualDensity.minimumDensity,
             vertical: VisualDensity.minimumDensity,
           ),
-          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          // materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           contentPadding: const EdgeInsets.all(4),
           onChanged: (value) {
             if (value != null) {
