@@ -21,39 +21,29 @@ final _shellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'shell');
 
 final routerProvider = Provider<GoRouter>((ref) {
   final landingPassed = ref.read(appSettingsStateHolder).landingPassed;
+  final initialLocation = landingPassed ? '/timetable' : '/landing';
 
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: landingPassed ? '/timetable' : '/landing',
+    initialLocation: initialLocation,
     routes: [
       GoRoute(
         path: '/',
-        redirect: (context, state) => '/landing',
+        redirect: (context, state) => initialLocation,
       ),
       GoRoute(
         path: '/landing',
-        redirect: (context, state) {
-          return null;
-        },
-        pageBuilder: (context, state) => CupertinoPage(
+        pageBuilder: (context, state) => AppCustomTransitionPage(
           key: state.pageKey,
           child: const LandingPage(),
         ),
       ),
       ShellRoute(
         navigatorKey: _shellNavigatorKey,
-        // builder: (BuildContext context, GoRouterState state, Widget child) {
-        //   final length = '/'.allMatches(state.fullpath!).length;
-        //   return length < 2 ? NavigationBarWrapper(child) : child;
-        // },
-        builder: (BuildContext context, GoRouterState state, Widget child) {
-          return NavigationBarWrapper(child);
-        },
-        // pageBuilder: (context, state, child) => AppCustomTransitionPage(
-        //   key: state.pageKey,
-        //   child: NavigationBarWrapper(child),
-        // ),
-
+        pageBuilder: (context, state, child) => AppCustomTransitionPage(
+          key: state.pageKey,
+          child: NavigationBarWrapper(child),
+        ),
         routes: [
           GoRoute(
             path: '/search',

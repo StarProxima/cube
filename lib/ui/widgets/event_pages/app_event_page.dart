@@ -47,7 +47,7 @@ class AppEventPage extends ConsumerWidget {
                       margin: pictureMargin != null
                           ? margin.add(pictureMargin!)
                           : margin,
-                      child: ShortFadeAnimatedWidget(
+                      child: FadeAnimatedWidget(
                         size: 300,
                         child: picture,
                       ),

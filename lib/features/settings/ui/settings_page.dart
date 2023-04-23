@@ -42,10 +42,10 @@ class _SettingsPageState extends ConsumerState<_SettingsPage> {
           'Настройки',
         ),
       ),
-      body: const SingleChildScrollView(
-        padding: EdgeInsets.all(20),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
         child: Column(
-          children: [
+          children: const [
             _SettingsPageLessonColors(),
             SizedBox(height: 20),
             _SettingsPageLessonCardLessonTypePosition(),

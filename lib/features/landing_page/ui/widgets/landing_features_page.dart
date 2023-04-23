@@ -25,7 +25,7 @@ class LandingFeaturesPage extends ConsumerWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 10),
-                  ShortFadeAnimatedWidget(
+                  FadeAnimatedWidget(
                     size: 185,
                     child: Assets.brooklyn.virtualReality4.svg(),
                   ),

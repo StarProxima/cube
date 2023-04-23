@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 
-class ShortFadeAnimatedWidget extends StatefulWidget {
-  final Widget? child;
+class FadeAnimatedWidget extends StatefulWidget {
+  final Duration duration;
   final double? size;
-  const ShortFadeAnimatedWidget({super.key, required this.child, this.size});
+
+  final Widget? child;
+  const FadeAnimatedWidget({
+    super.key,
+    this.duration = const Duration(milliseconds: 400),
+    this.size,
+    required this.child,
+  });
 
   @override
-  State<ShortFadeAnimatedWidget> createState() =>
-      _ShortFadeAnimatedWidgetState();
+  State<FadeAnimatedWidget> createState() => _FadeAnimatedWidgetState();
 }
 
-class _ShortFadeAnimatedWidgetState extends State<ShortFadeAnimatedWidget>
+class _FadeAnimatedWidgetState extends State<FadeAnimatedWidget>
     with SingleTickerProviderStateMixin {
   late final AnimationController animatedController;
 
@@ -19,7 +25,7 @@ class _ShortFadeAnimatedWidgetState extends State<ShortFadeAnimatedWidget>
     super.initState();
     animatedController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 400),
+      duration: widget.duration,
     );
   }
 

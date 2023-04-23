@@ -23,10 +23,10 @@ dependencies:
   theme_tailor_annotation: ^1.0.3
 
   proxima_logger: ^0.6.3
-  intl: ^0.18.0
+  intl: ^0.17.0
   google_fonts: ^4.0.3
   flutter_svg: ^2.0.2
-  easy_splash_screen: ^1.0.4
+  
 
   flutter_riverpod: ^2.3.0
   go_router: ^6.5.1
@@ -37,6 +37,11 @@ dependencies:
   rive: ^0.10.3
   hive: ^2.2.3
   hive_flutter: ^1.1.0
+
+  flutter_native_splash: ^2.2.19
+  easy_splash_screen: ^1.0.4
+  app_runner: ^2.1.2
+  
 
   
 dev_dependencies:
@@ -83,3 +88,9 @@ flutter:
     - assets/rive/shapes.riv
     - assets/images/
     - assets/images/spline.png
+
+flutter_native_splash:
+  color: "#F6F7FF"
+  android_12:
+    color: "#F6F7FF"
+
