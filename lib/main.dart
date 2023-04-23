@@ -14,6 +14,7 @@ void main() async {
   if (!kIsWeb && (Platform.isWindows || Platform.isLinux || Platform.isMacOS)) {
     setWindowTitle('Куб.Расписание');
     setWindowMinSize(const Size(460, 380));
+    setWindowMaxSize(const Size.fromWidth(700));
   }
 
   await HiveInitializer.init();
