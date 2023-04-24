@@ -12,11 +12,13 @@ class NotSelectedEventPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AppEventPage(
-      picture: Assets.brooklyn.pageNotFound1.svg(),
+      picture: Assets.brooklyn.beingProductive3.svg(),
       title: 'Расписание не выбрано',
+      subTitle:
+          'Выберите расписание с помощью поиска, чтобы начать пользоваться приложением',
       buttonText: 'Выбрать',
       onTap: () {
-        context.go('/timetable');
+        context.go('/timetable/search');
       },
     );
   }

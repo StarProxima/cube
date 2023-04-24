@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
 
 import 'package:cube_system/ui/widgets/app_overlay_style_wrapper.dart';
+import 'package:cube_system/styles/app_colors/app_colors.dart';
 
 class AppSplash extends ConsumerStatefulWidget {
   const AppSplash({super.key});
@@ -61,6 +62,7 @@ class _AppSplashState extends ConsumerState<AppSplash>
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
+          backgroundColor: AppColors.light.background,
           body: Stack(
             fit: StackFit.expand,
             children: [
@@ -97,16 +99,9 @@ class _AppSplashState extends ConsumerState<AppSplash>
                       curve: Curves.easeInOut,
                     ),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        Text('Developed by NullExp'),
-                        // SizedBox(height: 4),
-                        // Text('Audit by '),
-                      ],
-                    ),
+                  child: const Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Text('Developed by NullExp'),
                   ),
                 ),
               )

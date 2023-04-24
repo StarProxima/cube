@@ -106,9 +106,7 @@ class TimetablePageHeader extends ConsumerWidget {
             child: Padding(
               padding: const EdgeInsets.only(left: 4, top: 4, right: 4),
               child: InkWell(
-                onTap: () {
-                  context.go('/landing');
-                },
+                onTap: () {},
                 borderRadius: const BorderRadius.all(Radius.circular(12)),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
