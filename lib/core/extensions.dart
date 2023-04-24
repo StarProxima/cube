@@ -10,6 +10,11 @@ extension StringExtension on String {
   String capitalize() {
     return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
   }
+
+  int? indexOfOrNull(Pattern pattern) {
+    final index = indexOf(pattern);
+    return index == -1 ? null : index;
+  }
 }
 
 extension NumExtension on num {

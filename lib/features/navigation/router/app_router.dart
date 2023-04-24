@@ -16,6 +16,9 @@ import 'package:cube_system/features/navigation/router/app_custom_transition_pag
 
 import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
 
+import 'package:cube_system/features/navigation/managers/main_navigation_bar_manager.dart';
+import 'package:cube_system/features/navigation/router/app_router_observer.dart';
+
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 final _shellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'shell');
 
@@ -23,10 +26,16 @@ final routerProvider = Provider<GoRouter>((ref) {
   final landingPassed = ref.read(appSettingsStateHolder).landingPassed;
   final initialLocation = landingPassed ? '/timetable' : '/landing';
 
+  NavigatorObserver getObserver() {
+    return AppGoRouterObserver(
+      mainNavigationBarManager: ref.read(mainNavigationBarManager),
+    );
+  }
+
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
     initialLocation: initialLocation,
-    observers: [AppGoRouterObserver()],
+    observers: [getObserver()],
     routes: [
       GoRoute(
         path: '/',
@@ -45,7 +54,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           state: state,
           child: NavigationBarWrapper(child),
         ),
-        observers: [AppGoRouterObserver()],
+        observers: [getObserver()],
         routes: [
           GoRoute(
             path: '/search',
@@ -128,13 +137,3 @@ final routerProvider = Provider<GoRouter>((ref) {
     ],
   );
 });
-
-class AppGoRouterObserver extends NavigatorObserver {
-  @override
-  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
-    final page = route.settings;
-    if (page is AppCustomTransitionPage) {
-      print('Push: ${page.state.fullpath}');
-    }
-  }
-}
