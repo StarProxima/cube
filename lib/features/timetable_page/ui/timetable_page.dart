@@ -50,12 +50,6 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
         ref.read(currentDate).difference(ref.read(selectedDate)).inDays,
   );
 
-  // @override
-  // void initState() {
-  //   print('initstate - $hashCode');
-  //   super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
     final manager = ref.read(timetablePageManager);
