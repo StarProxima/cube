@@ -71,11 +71,14 @@ class LandingServicesPage extends ConsumerWidget {
                     const TextSpan(
                       text: ' / ',
                     ),
-                    TextSpan(
+                    const TextSpan(
                       text: 'iOS',
-                      style: context.textStyles.smallSubTitle.copyWith(
-                        color: context.colors.subduedText.withOpacity(0.65),
-                      ),
+                    ),
+                    const TextSpan(
+                      text: ' / ',
+                    ),
+                    const TextSpan(
+                      text: 'Desktop',
                     ),
                     const TextSpan(
                       text: ' / ',
@@ -86,20 +89,11 @@ class LandingServicesPage extends ConsumerWidget {
                         color: context.colors.subduedText.withOpacity(0.65),
                       ),
                     ),
-                    const TextSpan(
-                      text: ' / ',
-                    ),
-                    TextSpan(
-                      text: 'Desktop',
-                      style: context.textStyles.smallSubTitle.copyWith(
-                        color: context.colors.subduedText.withOpacity(0.65),
-                      ),
-                    ),
                   ],
                 ),
               ),
               description:
-                  'Многофункциональное приложение для различных платформ (пока не доступно)',
+                  'Многофункциональное приложение для различных платформ',
               linkName: 'github.com/StarProxima/cube',
               uri: Uri.parse('https://github.com/StarProxima/cube'),
             ),
