@@ -89,7 +89,17 @@ class AppButton extends StatelessWidget {
         child: TextButton(
           onPressed: onTap,
           style: buttonStyle,
-          child: Text(text ?? ''),
+          child: rightIcon == null
+              ? Text(text ?? '')
+              : Stack(
+                  children: [
+                    Center(child: Text(text ?? '')),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: rightIcon!,
+                    ),
+                  ],
+                ),
         ),
       ),
     );

@@ -26,6 +26,9 @@ final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
     initialLocation: initialLocation,
+    observers: [
+      GoRouterObserver(),
+    ],
     routes: [
       GoRoute(
         path: '/',
@@ -34,21 +37,24 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/landing',
         pageBuilder: (context, state) => AppCustomTransitionPage(
-          key: state.pageKey,
+          state: state,
           child: const LandingPage(),
         ),
       ),
       ShellRoute(
         navigatorKey: _shellNavigatorKey,
         pageBuilder: (context, state, child) => AppCustomTransitionPage(
-          key: state.pageKey,
+          state: state,
           child: NavigationBarWrapper(child),
         ),
+        observers: [
+          GoRouterObserver(),
+        ],
         routes: [
           GoRoute(
             path: '/search',
             pageBuilder: (context, state) => AppCustomTransitionPage(
-              key: state.pageKey,
+              state: state,
               child: const UnimplementedFeatureEventPage(
                 title: 'Скоро здесь будет поиск',
               ),
@@ -57,7 +63,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: '/notes',
             pageBuilder: (context, state) => AppCustomTransitionPage(
-              key: state.pageKey,
+              state: state,
               child: const UnimplementedFeatureEventPage(
                 title: 'Скоро здесь будут заметки',
               ),
@@ -73,7 +79,7 @@ final routerProvider = Provider<GoRouter>((ref) {
                   : null;
 
               return AppCustomTransitionPage(
-                key: state.pageKey,
+                state: state,
                 child: TimetablePage(timetable: timetable),
               );
             },
@@ -91,11 +97,12 @@ final routerProvider = Provider<GoRouter>((ref) {
               return null;
             },
             pageBuilder: (context, state) => AppCustomTransitionPage(
-              key: state.pageKey,
+              state: state,
               child: const TimetablePage(),
             ),
             routes: [
               GoRoute(
+                name: 'timetable/search',
                 path: 'search',
                 pageBuilder: (context, state) => CupertinoPage(
                   key: state.pageKey,
@@ -107,7 +114,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: '/profile',
             pageBuilder: (context, state) => AppCustomTransitionPage(
-              key: state.pageKey,
+              state: state,
               child: const UnimplementedFeatureEventPage(
                 title: 'Скоро здесь будет профиль',
               ),
@@ -116,7 +123,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: '/settings',
             pageBuilder: (context, state) => AppCustomTransitionPage(
-              key: state.pageKey,
+              state: state,
               child: const SettingsPage(),
             ),
           ),
@@ -125,3 +132,13 @@ final routerProvider = Provider<GoRouter>((ref) {
     ],
   );
 });
+
+class GoRouterObserver extends NavigatorObserver {
+  @override
+  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
+    final page = route.settings;
+    if (page is AppCustomTransitionPage) {
+      print('MyTest didPush: ${page.state.fullpath}');
+    }
+  }
+}
