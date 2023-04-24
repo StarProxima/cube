@@ -14,9 +14,12 @@ import 'package:cube_system/features/settings/models/lesson_card_recess_display_
 
 import 'package:cube_system/features/landing_page/ui/widgets/landing_service_card.dart';
 
+import 'package:cube_system/features/settings/state_holders/package_info_state_holder.dart';
+
 part 'widgets/settings_page_lesson_colors.dart';
 part 'widgets/settings_page_lesson_card_lesson_type_position.dart';
 part 'widgets/settings_page_lesson_card_recess_display_condition.dart';
+part 'widgets/settings_page_app_info.dart';
 
 class SettingsPage extends ConsumerWidget {
   const SettingsPage({
@@ -68,6 +71,9 @@ class _SettingsPageState extends ConsumerState<_SettingsPage> {
             const _SettingsPageLessonCardLessonTypePosition(),
             const SizedBox(height: 20),
             const _SettingsPageLessonCardRecessDisplayCondition(),
+            const SizedBox(height: 32),
+            const _SettingsPageAppInfo(),
+            const SizedBox(height: 16),
           ],
         ),
       ),
