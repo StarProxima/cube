@@ -1,5 +1,7 @@
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 
+import 'package:cube_system/features/settings/models/app_settings/app_settings.dart';
+
 mixin AnalyticalLoggerMixin {
   Future<void> event(String name, [Map<String, Object>? attributes]) async {
     await AppMetrica.reportEventWithMap(name, attributes);
@@ -23,15 +25,25 @@ mixin AnalyticalLoggerMixin {
     event('launch', attributes);
   }
 
-  void settings({
-    required String name,
-    required String value,
-    String? previousValue,
-  }) {
-    final Map<String, Object> attributes = {
-      'value': value,
-      if (previousValue != null) 'previousValue': previousValue,
-    };
+  Map<String, dynamic>? _lastSettingsMap;
+
+  void setInitialSettings(AppSettings settings) =>
+      _lastSettingsMap = settings.toJson();
+
+  void settings(AppSettings settings) {
+    final settingsMap = settings.toJson();
+
+    final Map<String, Object> attributes = {};
+
+    for (final key in settingsMap.keys) {
+      if (settingsMap[key] != _lastSettingsMap?[key]) {
+        attributes[key] = settingsMap[key];
+      }
+    }
+
+    _lastSettingsMap = settingsMap;
+
+    if (attributes.isEmpty) return;
 
     event('settings', attributes);
   }

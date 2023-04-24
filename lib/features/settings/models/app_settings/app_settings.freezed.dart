@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+AppSettings _$AppSettingsFromJson(Map<String, dynamic> json) {
+  return _AppSettings.fromJson(json);
+}
+
 /// @nodoc
 mixin _$AppSettings {
   @HiveField(0)
@@ -30,6 +34,7 @@ mixin _$AppSettings {
   @HiveField(4, defaultValue: false)
   bool get landingPassed => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AppSettingsCopyWith<AppSettings> get copyWith =>
       throw _privateConstructorUsedError;
@@ -162,7 +167,7 @@ class __$$_AppSettingsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 @HiveType(typeId: 7)
 class _$_AppSettings implements _AppSettings {
   _$_AppSettings(
@@ -173,6 +178,9 @@ class _$_AppSettings implements _AppSettings {
       @HiveField(3) this.lessonCardRecessDisplayCondition =
           LessonCardRecessDisplayCondition.always,
       @HiveField(4, defaultValue: false) this.landingPassed = false});
+
+  factory _$_AppSettings.fromJson(Map<String, dynamic> json) =>
+      _$$_AppSettingsFromJson(json);
 
   @override
   @JsonKey()
@@ -221,6 +229,7 @@ class _$_AppSettings implements _AppSettings {
                 other.landingPassed == landingPassed));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -235,6 +244,13 @@ class _$_AppSettings implements _AppSettings {
   @pragma('vm:prefer-inline')
   _$$_AppSettingsCopyWith<_$_AppSettings> get copyWith =>
       __$$_AppSettingsCopyWithImpl<_$_AppSettings>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_AppSettingsToJson(
+      this,
+    );
+  }
 }
 
 abstract class _AppSettings implements AppSettings {
@@ -250,6 +266,9 @@ abstract class _AppSettings implements AppSettings {
               lessonCardRecessDisplayCondition,
       @HiveField(4, defaultValue: false)
           final bool landingPassed}) = _$_AppSettings;
+
+  factory _AppSettings.fromJson(Map<String, dynamic> json) =
+      _$_AppSettings.fromJson;
 
   @override
   @HiveField(0)
