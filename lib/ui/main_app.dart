@@ -1,5 +1,5 @@
 import 'package:cube_system/ui/widgets/app_overlay_style_wrapper.dart';
-import 'package:cube_system/ui/widgets/short_fade_animated_widget.dart';
+import 'package:cube_system/ui/widgets/fade_animated_widget.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -26,6 +26,7 @@ class MainApp extends ConsumerWidget {
           debugShowCheckedModeBanner: false,
           locale: DevicePreview.locale(context),
           builder: (context, child) => Scaffold(
+            resizeToAvoidBottomInset: false,
             body: FadeAnimatedWidget(
               child: DevicePreview.appBuilder(context, child),
             ),

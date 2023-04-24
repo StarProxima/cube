@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/gen/assets/assets.gen.dart';
 
-import 'package:cube_system/ui/widgets/short_fade_animated_widget.dart';
+import 'package:cube_system/ui/widgets/fade_animated_widget.dart';
 
 class LandingFeaturesPage extends ConsumerWidget {
   const LandingFeaturesPage({super.key});

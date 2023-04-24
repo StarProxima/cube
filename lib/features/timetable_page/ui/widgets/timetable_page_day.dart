@@ -17,6 +17,8 @@ import 'package:cube_system/features/timetable_page/ui/event_pages/welcome_event
 
 import 'package:cube_system/ui/widgets/event_pages/no_connection_event_page.dart';
 
+import 'package:cube_system/features/timetable_page/ui/event_pages/not_selected_event_page.dart';
+
 class TimetablePageDay extends ConsumerWidget {
   final DateTime date;
 
@@ -46,7 +48,7 @@ class TimetablePageDay extends ConsumerWidget {
 
       case TimetableDayEventType.welcome:
       case TimetableDayEventType.notSelected:
-        return const WelcomeEventPage();
+        return const NotSelectedEventPage();
 
       case TimetableDayEventType.holiday:
       case TimetableDayEventType.weekend:
