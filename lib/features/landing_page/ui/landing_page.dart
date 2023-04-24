@@ -1,3 +1,4 @@
+import 'package:cube_system/features/landing_page/managers/landing_page_manager.dart';
 import 'package:cube_system/features/landing_page/ui/widgets/landing_last_page.dart';
 import 'package:cube_system/features/landing_page/ui/widgets/landing_services_page.dart';
 import 'package:cube_system/features/landing_page/ui/widgets/landing_features_page.dart';
@@ -6,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/ui/ui_kit/app_button.dart';
+
+import 'package:cube_system/features/landing_page/state_holders/landing_page_index.dart';
 
 class LandingPage extends ConsumerWidget {
   const LandingPage({
@@ -27,10 +30,13 @@ class _LandingPage extends ConsumerStatefulWidget {
 
 class _LandingPageState extends ConsumerState<_LandingPage> {
   final pageController = PageController();
-  bool isLastPage = false;
 
   @override
   Widget build(BuildContext context) {
+    final manager = ref.watch(landingPageManager);
+    final isLastPage =
+        ref.watch(landingPageIndexStateHolder.select((value) => value == 3));
+
     return Scaffold(
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -40,10 +46,7 @@ class _LandingPageState extends ConsumerState<_LandingPage> {
             ),
             child: PageView(
               controller: pageController,
-              onPageChanged: (index) {
-                isLastPage = index == 3;
-                setState(() {});
-              },
+              onPageChanged: manager.changePageIndex,
               children: const [
                 LandingWelcomePage(),
                 LandingFeaturesPage(),
