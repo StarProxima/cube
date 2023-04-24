@@ -12,14 +12,13 @@ void main() async {
       preInitialize: (binding) async {
         await Future.wait([
           HiveInitializer.init(),
-          Future.delayed(const Duration(milliseconds: 2000))
+          Future.delayed(const Duration(milliseconds: 2500))
         ]);
       },
       builder: (context, snapshot, _) {
         if (snapshot.connectionState == ConnectionState.done) {
           return const ProviderScope(child: MainApp());
         }
-
         return const AppSplash();
       },
     ),
