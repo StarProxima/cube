@@ -26,6 +26,7 @@ class MainApp extends ConsumerWidget {
           debugShowCheckedModeBanner: false,
           locale: DevicePreview.locale(context),
           builder: (context, child) => Scaffold(
+            resizeToAvoidBottomInset: false,
             body: FadeAnimatedWidget(
               child: DevicePreview.appBuilder(context, child),
             ),
