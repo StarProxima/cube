@@ -26,6 +26,16 @@ mixin AnalyticalLoggerMixin {
     event('launch', attributes);
   }
 
+  void landingPassage({
+    required bool isSkipSelectingTimetable,
+  }) {
+    final Map<String, Object> attributes = {
+      'isSkipSelectingTimetable': isSkipSelectingTimetable,
+    };
+
+    event('landingPassage', attributes);
+  }
+
   Map<String, dynamic>? _lastSettingsMap;
 
   void setInitialSettings(AppSettings settings) =>
