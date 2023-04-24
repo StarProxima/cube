@@ -1,10 +1,9 @@
-import 'package:cube_system/core/hive_initializer.dart';
 import 'package:cube_system/gen/assets/assets.gen.dart';
+import 'package:cube_system/styles/app_text_styles/app_text_styles.dart';
+import 'package:cube_system/styles/app_theme.dart';
+import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-
-import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
 
 import 'package:cube_system/ui/widgets/app_overlay_style_wrapper.dart';
 import 'package:cube_system/styles/app_colors/app_colors.dart';
@@ -20,18 +19,6 @@ class _AppSplashState extends ConsumerState<AppSplash>
     with TickerProviderStateMixin {
   late final AnimationController logoController;
   late final AnimationController footerController;
-
-  void push() async {
-    await Future.wait([
-      HiveInitializer.init(),
-      Future.delayed(const Duration(milliseconds: 2000))
-    ]);
-
-    final landingPassed = ref.read(appSettingsStateHolder).landingPassed;
-    if (mounted) {
-      context.go(landingPassed ? '/timetable' : '/landing');
-    }
-  }
 
   @override
   void initState() {
@@ -61,8 +48,11 @@ class _AppSplashState extends ConsumerState<AppSplash>
     return AppOverlayStyleWrapper(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        theme: AppTheme.themeByStyles(
+          colors: AppColors.light,
+          textStyles: AppTextStyles.light,
+        ),
         home: Scaffold(
-          backgroundColor: AppColors.light.background,
           body: Stack(
             fit: StackFit.expand,
             children: [
@@ -99,9 +89,18 @@ class _AppSplashState extends ConsumerState<AppSplash>
                       curve: Curves.easeInOut,
                     ),
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Text('Developed by NullExp'),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Builder(
+                      builder: (context) {
+                        return Text(
+                          '© 2023 NullExp Inc.',
+                          style: context.textStyles.smallSubTitle.copyWith(
+                            color: context.colors.subduedText,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               )

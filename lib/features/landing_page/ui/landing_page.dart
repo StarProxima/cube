@@ -29,7 +29,22 @@ class _LandingPage extends ConsumerStatefulWidget {
 }
 
 class _LandingPageState extends ConsumerState<_LandingPage> {
-  final pageController = PageController();
+  late final PageController pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    pageController = PageController();
+    Future(() {
+      ref.read(landingPageIndexStateHolder.notifier).state = 0;
+    });
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

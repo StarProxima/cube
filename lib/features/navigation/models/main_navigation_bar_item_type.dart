@@ -37,6 +37,13 @@ enum MainNavigationBarItemType {
 
   List<String> get iconStateMachines => [iconStateMachine];
 
+  static MainNavigationBarItemType? tryParse(String? value) {
+    for (final type in values) {
+      if (type.name == value) return type;
+    }
+    return null;
+  }
+
   const MainNavigationBarItemType(
     this.label,
     this.iconArtboard,

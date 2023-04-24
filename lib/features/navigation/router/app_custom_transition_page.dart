@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class AppCustomTransitionPage extends CustomTransitionPage {
+  final GoRouterState state;
+
   static Widget _defaultTransitionsBuilder(
     BuildContext context,
     Animation<double> animation,
@@ -23,11 +25,11 @@ class AppCustomTransitionPage extends CustomTransitionPage {
     );
   }
 
-  const AppCustomTransitionPage({
-    super.key,
+  AppCustomTransitionPage({
+    required this.state,
     required super.child,
     super.transitionDuration = const Duration(milliseconds: 150),
     super.reverseTransitionDuration = const Duration(milliseconds: 150),
     super.transitionsBuilder = _defaultTransitionsBuilder,
-  });
+  }) : super(key: state.pageKey);
 }

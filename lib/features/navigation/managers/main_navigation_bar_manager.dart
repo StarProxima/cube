@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rive/rive.dart';
 
-import 'package:cube_system/features/navigation/ui/state_holders/main_navigation_bar_selected_item_type.dart';
-import 'package:cube_system/features/navigation/ui/state_holders/main_navigation_bar_smi_bools.dart';
+import 'package:cube_system/features/navigation/state_holders/main_navigation_bar_selected_item_type.dart';
+import 'package:cube_system/features/navigation/state_holders/main_navigation_bar_smi_bools.dart';
 
 import 'package:cube_system/features/navigation/models/main_navigation_bar_item_type.dart';
 
