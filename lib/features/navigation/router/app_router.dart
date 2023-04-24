@@ -26,9 +26,7 @@ final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
     initialLocation: initialLocation,
-    observers: [
-      GoRouterObserver(),
-    ],
+    observers: [AppGoRouterObserver()],
     routes: [
       GoRoute(
         path: '/',
@@ -47,9 +45,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           state: state,
           child: NavigationBarWrapper(child),
         ),
-        observers: [
-          GoRouterObserver(),
-        ],
+        observers: [AppGoRouterObserver()],
         routes: [
           GoRoute(
             path: '/search',
@@ -133,12 +129,12 @@ final routerProvider = Provider<GoRouter>((ref) {
   );
 });
 
-class GoRouterObserver extends NavigatorObserver {
+class AppGoRouterObserver extends NavigatorObserver {
   @override
   void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
     final page = route.settings;
     if (page is AppCustomTransitionPage) {
-      print('MyTest didPush: ${page.state.fullpath}');
+      print('Push: ${page.state.fullpath}');
     }
   }
 }
