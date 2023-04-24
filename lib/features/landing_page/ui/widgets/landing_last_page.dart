@@ -1,3 +1,4 @@
+import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
 import 'package:cube_system/gen/assets/assets.gen.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:cube_system/ui/ui_kit/app_button.dart';
@@ -12,6 +13,7 @@ class LandingLastPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final settingsNotifier = ref.read(appSettingsStateHolder.notifier);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: SafeArea(
@@ -38,6 +40,7 @@ class LandingLastPage extends ConsumerWidget {
               text: 'Выбрать расписание',
               isExpanded: true,
               onTap: () {
+                settingsNotifier.editLandingPassed(true);
                 context.go('/timetable/search');
               },
             ),
@@ -47,6 +50,7 @@ class LandingLastPage extends ConsumerWidget {
               isExpanded: true,
               style: AppButtonStyle.secondary,
               onTap: () {
+                settingsNotifier.editLandingPassed(true);
                 context.go('/timetable');
               },
             ),
