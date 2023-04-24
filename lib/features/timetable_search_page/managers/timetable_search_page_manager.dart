@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:chopper/chopper.dart';
 import 'package:cube_system/api/cube_api.dart';
+import 'package:cube_system/features/analytics/logger.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_search_controller.dart';
 import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_search_focus.dart';
@@ -91,12 +92,12 @@ class TimetableSearchPageManager {
     }
   }
 
-  Future<void> _search(String querry) async {
+  Future<void> _search(String query) async {
     await Future(() {});
 
     event.state = TimetableSearchEventType.loading;
 
-    if (querry.strip().isEmpty) {
+    if (query.strip().isEmpty) {
       event.state = TimetableSearchEventType.welcome;
       return;
     }
@@ -104,14 +105,14 @@ class TimetableSearchPageManager {
     final Response<LessonAutocomplete> response;
 
     try {
-      response = await api.apiLessonsAutocompleteGet(q: querry);
+      response = await api.apiLessonsAutocompleteGet(q: query);
     } catch (e) {
       event.state = TimetableSearchEventType.error;
       return;
     }
 
     // If the text is different, then another request is coming soon
-    if (searchContoller.state.text != querry) {
+    if (searchContoller.state.text != query) {
       return;
     }
 
@@ -156,5 +157,7 @@ class TimetableSearchPageManager {
     }
 
     timetables.state = timetablesList;
+
+    logger.searchTimetable(query);
   }
 }

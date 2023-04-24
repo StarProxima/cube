@@ -1,6 +1,7 @@
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 
 import 'package:cube_system/features/settings/models/app_settings/app_settings.dart';
+import 'package:cube_system/models/timetable/timetable_info.dart';
 
 mixin AnalyticalLoggerMixin {
   Future<void> event(String name, [Map<String, Object>? attributes]) async {
@@ -24,6 +25,23 @@ mixin AnalyticalLoggerMixin {
     };
 
     event('launch', attributes);
+  }
+
+  void searchTimetable(String query) {
+    final Map<String, Object> attributes = {
+      'query': query,
+    };
+
+    event('searchTimetable', attributes);
+  }
+
+  void selectTimetable(TimetableInfo timetable) {
+    final Map<String, Object> attributes = {
+      'name': timetable.label,
+      'type': timetable.type.label,
+    };
+
+    event('selectTimetable', attributes);
   }
 
   void landingPassage({
