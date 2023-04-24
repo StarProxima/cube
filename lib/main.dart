@@ -3,6 +3,7 @@ import 'package:cube_system/ui/main_app.dart';
 import 'package:cube_system/ui/widgets/app_splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:cube_system/core/hive_initializer.dart';
 
@@ -11,6 +12,7 @@ void main() async {
     child: AppBuilder<void>(
       preInitialize: (binding) async {
         await Future.wait([
+          dotenv.load(),
           HiveInitializer.init(),
           Future.delayed(const Duration(milliseconds: 2500))
         ]);

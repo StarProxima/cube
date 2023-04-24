@@ -42,6 +42,7 @@ dependencies:
   easy_splash_screen: ^1.0.4
   app_runner: ^2.1.2
   package_info_plus: ^3.1.0
+  flutter_dotenv: ^5.0.2
   
 
   
@@ -81,6 +82,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - .env
     - assets/
     - assets/brooklyn/
     - assets/icons/
