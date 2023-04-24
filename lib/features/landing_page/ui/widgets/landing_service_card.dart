@@ -10,14 +10,16 @@ class LandingServiceCard extends ConsumerWidget {
   final String? description;
   final String linkName;
   final Uri uri;
+  final void Function(Uri uri)? onLaunch;
 
   const LandingServiceCard({
+    super.key,
     required this.title,
     this.subTitle,
     this.description,
     required this.linkName,
     required this.uri,
-    super.key,
+    this.onLaunch,
   });
 
   @override
@@ -39,7 +41,10 @@ class LandingServiceCard extends ConsumerWidget {
         type: MaterialType.transparency,
         child: InkWell(
           borderRadius: BorderRadius.circular(12),
-          onTap: () => manager.launchUri(uri),
+          onTap: () {
+            manager.launchUri(uri);
+            onLaunch?.call(uri);
+          },
           child: Padding(
             padding: const EdgeInsets.all(12),
             child: Row(

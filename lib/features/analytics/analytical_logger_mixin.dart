@@ -16,10 +16,11 @@ mixin AnalyticalLoggerMixin {
     event('routing', attributes);
   }
 
-  void launch({required String url, required String launchFromWidget}) {
+  void launch({required Uri uri, required String launchFrom}) {
+    final url = uri.origin + uri.path;
     final Map<String, Object> attributes = {
       'url': url,
-      'launchFromWidget': launchFromWidget,
+      'launchFrom': launchFrom
     };
 
     event('launch', attributes);
