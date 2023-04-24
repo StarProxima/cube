@@ -17,7 +17,9 @@ import 'package:cube_system/features/navigation/router/app_custom_transition_pag
 import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
 
 import 'package:cube_system/features/navigation/managers/main_navigation_bar_manager.dart';
-import 'package:cube_system/features/navigation/router/app_router_observer.dart';
+import 'package:cube_system/features/navigation/router/app_go_router_observer.dart';
+
+import 'package:cube_system/features/navigation/router/analytics_go_router_observer.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 final _shellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'shell');
@@ -26,16 +28,19 @@ final routerProvider = Provider<GoRouter>((ref) {
   final landingPassed = ref.read(appSettingsStateHolder).landingPassed;
   final initialLocation = landingPassed ? '/timetable' : '/landing';
 
-  NavigatorObserver getObserver() {
-    return AppGoRouterObserver(
-      mainNavigationBarManager: ref.read(mainNavigationBarManager),
-    );
+  List<NavigatorObserver> getObservers() {
+    return [
+      AppGoRouterObserver(
+        mainNavigationBarManager: ref.read(mainNavigationBarManager),
+      ),
+      AnalyticsGoRouterObserver(),
+    ];
   }
 
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
     initialLocation: initialLocation,
-    observers: [getObserver()],
+    observers: getObservers(),
     routes: [
       GoRoute(
         path: '/',
@@ -54,14 +59,14 @@ final routerProvider = Provider<GoRouter>((ref) {
           state: state,
           child: NavigationBarWrapper(child),
         ),
-        observers: [getObserver()],
+        observers: getObservers(),
         routes: [
           GoRoute(
             path: '/search',
             pageBuilder: (context, state) => AppCustomTransitionPage(
               state: state,
               child: const UnimplementedFeatureEventPage(
-                title: 'Скоро здесь будет поиск',
+                title: 'Скоро здесь будут поиск и ваши расписания',
               ),
             ),
           ),

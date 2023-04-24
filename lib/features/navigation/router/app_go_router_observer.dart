@@ -18,8 +18,6 @@ class AppGoRouterObserver extends NavigatorObserver {
     if (page is AppCustomTransitionPage) {
       final path = page.state.fullpath;
 
-      print('Push: $path');
-
       // TODO: refactor this shit
       if ((path?.length ?? 0) <= 1) return;
 
