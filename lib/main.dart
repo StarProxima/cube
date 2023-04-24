@@ -1,4 +1,5 @@
 import 'package:app_runner/app_runner.dart';
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:cube_system/ui/main_app.dart';
 import 'package:cube_system/ui/widgets/app_splash.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +12,11 @@ void main() async {
   final widgetConfiguration = WidgetConfiguration(
     child: AppBuilder<void>(
       preInitialize: (binding) async {
+        await dotenv.load();
         await Future.wait([
-          dotenv.load(),
+          AppMetrica.activate(
+            AppMetricaConfig(dotenv.env['APP_METRICA_API_KEY']!),
+          ),
           HiveInitializer.init(),
           Future.delayed(const Duration(milliseconds: 2500))
         ]);
