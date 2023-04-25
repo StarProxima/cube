@@ -1,3 +1,4 @@
+import 'package:cube_system/features/analytics/logger.dart';
 import 'package:cube_system/gen/assets/assets.gen.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
@@ -51,6 +52,7 @@ class LandingServicesPage extends ConsumerWidget {
                   'Основная платформа, просмотр расписания и удобный онлайн конструктор',
               linkName: 'cube.nlabs.su',
               uri: Uri.parse('https://cube.nlabs.su/welcome'),
+              onLaunch: (uri) => logger.launch(uri: uri, launchFrom: 'Landing'),
             ),
             const SizedBox(height: 16),
             LandingServiceCard(
@@ -58,6 +60,7 @@ class LandingServicesPage extends ConsumerWidget {
               description: 'Простой, удобный и функциональный бот в Telegram',
               linkName: 't.me/cubeservicebot',
               uri: Uri.parse('https://t.me/CubeServiceBot'),
+              onLaunch: (uri) => logger.launch(uri: uri, launchFrom: 'Landing'),
             ),
             const SizedBox(height: 16),
             LandingServiceCard(
@@ -96,6 +99,7 @@ class LandingServicesPage extends ConsumerWidget {
                   'Многофункциональное приложение для различных платформ',
               linkName: 'github.com/StarProxima/cube',
               uri: Uri.parse('https://github.com/StarProxima/cube'),
+              onLaunch: (uri) => logger.launch(uri: uri, launchFrom: 'Landing'),
             ),
             const SizedBox(height: 24),
           ],

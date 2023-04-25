@@ -1,3 +1,4 @@
+import 'package:cube_system/features/analytics/logger.dart';
 import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:cube_system/ui/ui_kit/app_button.dart';
@@ -67,6 +68,8 @@ class _SettingsPageState extends ConsumerState<_SettingsPage> {
                   'Тут можно оставить сообщение об ошибке и найти последниe версии приложения на Windows и другие платформы',
               linkName: 'github.com/StarProxima/cube',
               uri: Uri.parse('https://github.com/StarProxima/cube'),
+              onLaunch: (uri) =>
+                  logger.launch(uri: uri, launchFrom: 'Settings'),
             ),
             const SizedBox(height: 20),
             const _SettingsPageLessonColors(),
@@ -97,10 +100,12 @@ class _SettingsPageState extends ConsumerState<_SettingsPage> {
               ),
               style: AppButtonStyle.primary,
               onTap: () {
+                final uri = Uri.parse('https://t.me/CubeServiceOfficial');
                 launchUrl(
-                  Uri.parse('https://t.me/CubeServiceOfficial'),
+                  uri,
                   mode: LaunchMode.externalApplication,
                 );
+                logger.launch(uri: uri, launchFrom: 'Settings');
               },
             ),
             const SizedBox(height: 32),

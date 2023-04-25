@@ -24,7 +24,7 @@ class _SettingsPageLessonColors extends ConsumerWidget {
         AppRadioSelectorItem(
           title: Text('Accent'),
           description: Text('Цветовая палитра c более насыщенными цветами'),
-          value: AppLessonColorsMode.proxima,
+          value: AppLessonColorsMode.accent,
         ),
       ],
     );

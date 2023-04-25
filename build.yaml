@@ -13,4 +13,12 @@ targets:
           output_folder: 'lib/gen/api'
           input_folder: 'api_spec/'
           separate_models: true
-          
+      source_gen|combining_builder:
+        options:
+          ignore_for_file:
+          - lines_longer_than_80_chars
+          - prefer_expression_function_bodies
+          - unused_import
+          - require_trailing_commas
+          - library_private_types_in_public_api
+          - always_use_package_imports

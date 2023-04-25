@@ -13,8 +13,6 @@ import 'package:cube_system/features/timetable_page/ui/event_pages/ksrs_event_pa
 
 import 'package:cube_system/features/timetable_page/ui/event_pages/something_went_wrong_event_page.dart';
 
-import 'package:cube_system/features/timetable_page/ui/event_pages/welcome_event_page.dart';
-
 import 'package:cube_system/ui/widgets/event_pages/no_connection_event_page.dart';
 
 import 'package:cube_system/features/timetable_page/ui/event_pages/not_selected_event_page.dart';

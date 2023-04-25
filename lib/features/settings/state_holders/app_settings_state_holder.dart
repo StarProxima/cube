@@ -1,3 +1,4 @@
+import 'package:cube_system/features/analytics/logger.dart';
 import 'package:cube_system/models/app_box_names/app_box_names.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -51,4 +52,10 @@ class AppSettingsNotifier extends HiveStateNotifier<AppSettings> {
   void editLandingPassed(bool landingPassed) {
     state = state.copyWith(landingPassed: landingPassed);
   }
+
+  @override
+  onSetData(AppSettings data) => logger.setInitialSettings;
+
+  @override
+  onSaveData(AppSettings data) => logger.changingSettings(data);
 }

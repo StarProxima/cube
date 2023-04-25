@@ -1,3 +1,4 @@
+import 'package:cube_system/features/analytics/logger.dart';
 import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
 import 'package:cube_system/gen/assets/assets.gen.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
@@ -40,8 +41,9 @@ class LandingLastPage extends ConsumerWidget {
               text: 'Выбрать расписание',
               isExpanded: true,
               onTap: () {
-                settingsNotifier.editLandingPassed(true);
                 context.go('/timetable/search');
+                settingsNotifier.editLandingPassed(true);
+                logger.landingPassage(isSkipSelectingTimetable: false);
               },
             ),
             const SizedBox(height: 8),
@@ -50,8 +52,9 @@ class LandingLastPage extends ConsumerWidget {
               isExpanded: true,
               style: AppButtonStyle.secondary,
               onTap: () {
-                settingsNotifier.editLandingPassed(true);
                 context.go('/timetable');
+                settingsNotifier.editLandingPassed(true);
+                logger.landingPassage(isSkipSelectingTimetable: true);
               },
             ),
           ],

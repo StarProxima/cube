@@ -12,6 +12,8 @@ import 'package:cube_system/features/timetable_page/state_holders/timetable_page
 
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_events.dart';
 
+import 'package:cube_system/features/analytics/logger.dart';
+
 final timetablePageManager = Provider<TimetablePageManager>((ref) {
   return TimetablePageManager(
     lessonsManager: ref.watch(timetableLessonsManager),
@@ -65,6 +67,7 @@ class TimetablePageManager {
     lessonsManager.clear();
     await lessonsManager.updateCurrentTimetable();
     _save();
+    logger.selectTimetable(timetable);
   }
 
   Future<void> updateCurrentTimetable() async =>

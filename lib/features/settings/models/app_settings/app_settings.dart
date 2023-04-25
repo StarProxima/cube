@@ -16,9 +16,7 @@ part 'app_settings.g.dart';
 class AppSettings with _$AppSettings {
   @HiveType(typeId: 7)
   factory AppSettings({
-    @HiveField(0)
-    @Default(AppThemeMode.system)
-        AppThemeMode appThemeMode,
+    @HiveField(0) @Default(AppThemeMode.system) AppThemeMode appThemeMode,
     @HiveField(1)
     @Default(AppLessonColorsMode.cube)
         AppLessonColorsMode lessonColorsMode,
@@ -28,8 +26,9 @@ class AppSettings with _$AppSettings {
     @HiveField(3)
     @Default(LessonCardRecessDisplayCondition.always)
         LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition,
-    @HiveField(4, defaultValue: false)
-    @Default(false)
-        bool landingPassed,
+    @HiveField(4, defaultValue: false) @Default(false) bool landingPassed,
   }) = _AppSettings;
+
+  factory AppSettings.fromJson(Map<String, dynamic> json) =>
+      _$AppSettingsFromJson(json);
 }

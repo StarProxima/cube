@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: lines_longer_than_80_chars, prefer_expression_function_bodies, unused_import, require_trailing_commas, library_private_types_in_public_api, always_use_package_imports
+
 part of 'app_settings.dart';
 
 // **************************************************************************
@@ -52,3 +54,72 @@ class AppSettingsAdapter extends TypeAdapter<_$_AppSettings> {
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$_AppSettings _$$_AppSettingsFromJson(Map<String, dynamic> json) =>
+    _$_AppSettings(
+      appThemeMode:
+          $enumDecodeNullable(_$AppThemeModeEnumMap, json['appThemeMode']) ??
+              AppThemeMode.system,
+      lessonColorsMode: $enumDecodeNullable(
+            _$AppLessonColorsModeEnumMap,
+            json['lessonColorsMode'],
+          ) ??
+          AppLessonColorsMode.cube,
+      lessonCardLessonTypePosition: $enumDecodeNullable(
+            _$LessonCardLessonTypePositionEnumMap,
+            json['lessonCardLessonTypePosition'],
+          ) ??
+          LessonCardLessonTypePosition.bottomRight,
+      lessonCardRecessDisplayCondition: $enumDecodeNullable(
+            _$LessonCardRecessDisplayConditionEnumMap,
+            json['lessonCardRecessDisplayCondition'],
+          ) ??
+          LessonCardRecessDisplayCondition.always,
+      landingPassed: json['landingPassed'] as bool? ?? false,
+    );
+
+Map<String, dynamic> _$$_AppSettingsToJson(_$_AppSettings instance) =>
+    <String, dynamic>{
+      'appThemeMode': _$AppThemeModeEnumMap[instance.appThemeMode]!,
+      'lessonColorsMode':
+          _$AppLessonColorsModeEnumMap[instance.lessonColorsMode]!,
+      'lessonCardLessonTypePosition': _$LessonCardLessonTypePositionEnumMap[
+          instance.lessonCardLessonTypePosition]!,
+      'lessonCardRecessDisplayCondition':
+          _$LessonCardRecessDisplayConditionEnumMap[
+              instance.lessonCardRecessDisplayCondition]!,
+      'landingPassed': instance.landingPassed,
+    };
+
+const _$AppThemeModeEnumMap = {
+  AppThemeMode.system: 'system',
+  AppThemeMode.light: 'light',
+  AppThemeMode.dark: 'dark',
+};
+
+const _$AppLessonColorsModeEnumMap = {
+  AppLessonColorsMode.cube: 'cube',
+  AppLessonColorsMode.accent: 'proxima',
+};
+
+const _$LessonCardLessonTypePositionEnumMap = {
+  LessonCardLessonTypePosition.afterBottomLeftBlock: 'afterBottomLeftBlock',
+  LessonCardLessonTypePosition.afterTopLeftBlock: 'afterTopLeftBlock',
+  LessonCardLessonTypePosition.bottomLeft: 'bottomLeft',
+  LessonCardLessonTypePosition.topRight: 'topRight',
+  LessonCardLessonTypePosition.bottomRight: 'bottomRight',
+  LessonCardLessonTypePosition.beforeBottomRightBlock: 'beforeBottomRightBlock',
+  LessonCardLessonTypePosition.onIndicator: 'onIndicator',
+  LessonCardLessonTypePosition.none: 'none',
+};
+
+const _$LessonCardRecessDisplayConditionEnumMap = {
+  LessonCardRecessDisplayCondition.always: 'always',
+  LessonCardRecessDisplayCondition.onlyRecessBetweenLessons:
+      'onlyRecessBetweenLessons',
+  LessonCardRecessDisplayCondition.never: 'never',
+};

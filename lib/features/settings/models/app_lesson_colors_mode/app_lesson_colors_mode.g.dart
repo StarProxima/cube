@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: lines_longer_than_80_chars, prefer_expression_function_bodies, unused_import, require_trailing_commas, library_private_types_in_public_api, always_use_package_imports
+
 part of 'app_lesson_colors_mode.dart';
 
 // **************************************************************************
@@ -16,7 +18,7 @@ class AppLessonColorsModeAdapter extends TypeAdapter<AppLessonColorsMode> {
       case 0:
         return AppLessonColorsMode.cube;
       case 1:
-        return AppLessonColorsMode.proxima;
+        return AppLessonColorsMode.accent;
       default:
         return AppLessonColorsMode.cube;
     }
@@ -28,7 +30,7 @@ class AppLessonColorsModeAdapter extends TypeAdapter<AppLessonColorsMode> {
       case AppLessonColorsMode.cube:
         writer.writeByte(0);
         break;
-      case AppLessonColorsMode.proxima:
+      case AppLessonColorsMode.accent:
         writer.writeByte(1);
         break;
     }

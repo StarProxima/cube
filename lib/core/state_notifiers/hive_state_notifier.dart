@@ -26,7 +26,7 @@ class HiveStateNotifier<T> extends OpenStateNotifier<T> {
   void _init() async {
     if (Hive.isBoxOpen(boxName)) {
       _box = Hive.box(boxName);
-      getData();
+      setData();
     } else {
       await _openBox();
     }
@@ -45,15 +45,17 @@ class HiveStateNotifier<T> extends OpenStateNotifier<T> {
 
     if (shouldSave) {
       _box.put(boxName, serialize(data));
+      onSaveData(data);
     }
   }
 
   @protected
-  void getData() {
+  void setData() {
     final data = _box.get(boxName);
 
     if (data != null) {
       state = deserialize(data);
+      onSetData(state);
     }
   }
 
@@ -69,6 +71,12 @@ class HiveStateNotifier<T> extends OpenStateNotifier<T> {
 
   @protected
   T deserialize(dynamic value) => value as T;
+
+  @protected
+  void onSaveData(T data) {}
+
+  @protected
+  void onSetData(T data) {}
 
   @override
   void dispose() {
