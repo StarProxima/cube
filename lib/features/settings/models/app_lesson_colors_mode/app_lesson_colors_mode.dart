@@ -9,6 +9,6 @@ enum AppLessonColorsMode {
   @JsonValue('cube')
   cube,
   @HiveField(1)
-  @JsonValue('proxima')
-  proxima,
+  @JsonValue('accent')
+  accent,
 }

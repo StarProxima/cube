@@ -17,7 +17,7 @@ final appLessonColors = Provider((ref) {
   switch (mode) {
     case AppLessonColorsMode.cube:
       return AppLessonColors.cube;
-    case AppLessonColorsMode.proxima:
+    case AppLessonColorsMode.accent:
       return AppLessonColors.proxima;
   }
 });

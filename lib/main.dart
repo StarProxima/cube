@@ -8,6 +8,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:cube_system/core/hive_initializer.dart';
 
+import 'package:cube_system/features/analytics/logger.dart';
+
 void main() async {
   final widgetConfiguration = WidgetConfiguration(
     child: AppBuilder<void>(
@@ -28,11 +30,11 @@ void main() async {
         return const AppSplash();
       },
     ),
-    onFlutterError: (errorDetails) {},
+    onFlutterError: logger.flutterError,
   );
 
   final ZoneConfiguration zoneConfiguration = ZoneConfiguration(
-    onZoneError: (Object error, StackTrace stackTrace) {},
+    onZoneError: logger.error,
   );
 
   appRunner(

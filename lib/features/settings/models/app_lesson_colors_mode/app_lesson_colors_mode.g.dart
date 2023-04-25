@@ -16,7 +16,7 @@ class AppLessonColorsModeAdapter extends TypeAdapter<AppLessonColorsMode> {
       case 0:
         return AppLessonColorsMode.cube;
       case 1:
-        return AppLessonColorsMode.proxima;
+        return AppLessonColorsMode.accent;
       default:
         return AppLessonColorsMode.cube;
     }
@@ -28,7 +28,7 @@ class AppLessonColorsModeAdapter extends TypeAdapter<AppLessonColorsMode> {
       case AppLessonColorsMode.cube:
         writer.writeByte(0);
         break;
-      case AppLessonColorsMode.proxima:
+      case AppLessonColorsMode.accent:
         writer.writeByte(1);
         break;
     }

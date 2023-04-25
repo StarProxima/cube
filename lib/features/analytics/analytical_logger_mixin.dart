@@ -2,8 +2,11 @@ import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 
 import 'package:cube_system/features/settings/models/app_settings/app_settings.dart';
 import 'package:cube_system/models/timetable/timetable_info.dart';
+import 'package:proxima_logger/proxima_logger.dart' as pr;
 
-mixin AnalyticalLoggerMixin {
+import 'package:cube_system/features/analytics/log_type.dart';
+
+mixin AnalyticalLoggerMixin on pr.ProximaLogger {
   Future<void> event(String name, [Map<String, Object>? attributes]) async {
     await AppMetrica.reportEventWithMap(name, attributes);
   }
@@ -15,6 +18,9 @@ mixin AnalyticalLoggerMixin {
     };
 
     event('routing', attributes);
+
+    final title = previousPath != null ? '$previousPath -> $path' : path;
+    log(Log.route, title: title);
   }
 
   void launch({required Uri uri, required String launchFrom}) {
@@ -25,6 +31,8 @@ mixin AnalyticalLoggerMixin {
     };
 
     event('launch', attributes);
+
+    log(Log.info, title: 'Launch', message: url);
   }
 
   void searchTimetable(String query) {
@@ -33,6 +41,7 @@ mixin AnalyticalLoggerMixin {
     };
 
     event('searchTimetable', attributes);
+    log(Log.info, title: 'Search timetable', message: query);
   }
 
   void selectTimetable(TimetableInfo timetable) {
@@ -42,6 +51,7 @@ mixin AnalyticalLoggerMixin {
     };
 
     event('selectTimetable', attributes);
+    log(Log.info, title: 'Select timetable', message: timetable);
   }
 
   void landingPassage({
@@ -52,14 +62,19 @@ mixin AnalyticalLoggerMixin {
     };
 
     event('landingPassage', attributes);
+    log(Log.info, title: 'Landing passage', message: attributes);
   }
 
   Map<String, dynamic>? _lastSettingsMap;
 
-  void setInitialSettings(AppSettings settings) =>
-      _lastSettingsMap = settings.toJson();
+  void setInitialSettings(AppSettings settings) {
+    _lastSettingsMap = settings.toJson();
 
-  void settings(AppSettings settings) {
+    event('settingsInital', _lastSettingsMap!.cast<String, Object>());
+    log(Log.settings, title: 'Initial', message: _lastSettingsMap);
+  }
+
+  void changingSettings(AppSettings settings) {
     final settingsMap = settings.toJson();
 
     final Map<String, Object> attributes = {};
@@ -74,6 +89,7 @@ mixin AnalyticalLoggerMixin {
 
     if (attributes.isEmpty) return;
 
-    event('settings', attributes);
+    event('settingsChange', attributes);
+    log(Log.settings, title: 'Change', message: attributes);
   }
 }

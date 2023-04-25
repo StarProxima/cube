@@ -10,8 +10,6 @@ class AnalyticsGoRouterObserver extends NavigatorObserver {
     if (page is AppCustomTransitionPage) {
       final path = page.state.fullpath;
 
-      print('Push: $path');
-
       if (path == null) return;
 
       String? previousPath;

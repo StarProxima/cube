@@ -101,7 +101,7 @@ const _$AppThemeModeEnumMap = {
 
 const _$AppLessonColorsModeEnumMap = {
   AppLessonColorsMode.cube: 'cube',
-  AppLessonColorsMode.proxima: 'proxima',
+  AppLessonColorsMode.accent: 'proxima',
 };
 
 const _$LessonCardLessonTypePositionEnumMap = {
