@@ -67,7 +67,6 @@ class LessonCardFooter extends ConsumerWidget {
                   child: Padding(
                     padding: const EdgeInsets.only(
                       top: 4,
-                      bottom: 4,
                       left: 8,
                     ),
                     child: Text(
@@ -75,6 +74,8 @@ class LessonCardFooter extends ConsumerWidget {
                       style: context.textStyles.smallLabel.copyWith(
                         color: context.colors.subduedText,
                       ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ),
@@ -87,6 +88,7 @@ class LessonCardFooter extends ConsumerWidget {
           ),
         ),
         Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             if (lessonTypePosition.isBeforeBottomRightBlock)
               const Padding(
@@ -97,18 +99,20 @@ class LessonCardFooter extends ConsumerWidget {
               constraints: const BoxConstraints(
                 maxWidth: 160,
               ),
-              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+              padding: const EdgeInsets.only(top: 4, left: 8),
               child: Text(
                 rigthText,
                 style: context.textStyles.smallLabel.copyWith(
                   color: context.colors.subduedText,
                 ),
                 textAlign: TextAlign.right,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
             if (lessonTypePosition.isBottomRight)
               const Padding(
-                padding: EdgeInsets.only(right: 4),
+                padding: EdgeInsets.only(right: 4, left: 8),
                 child: LessonCardLessonTypeChip(),
               ),
           ],

@@ -1,13 +1,13 @@
-import 'package:cube_system/models/lesson/lesson.dart';
 import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
+import 'package:cube_system/models/lesson_timings/lesson_date_timings.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final lessonTimeToEndProgressValueProvider =
-    Provider.family.autoDispose<double, Lesson>((ref, lesson) {
+    Provider.family.autoDispose<double, LessonDateTimings>((ref, timings) {
   final currentDateTime = ref.watch(currentDateTimeLazy);
 
-  final lessonStart = lesson.timings.startDateTime;
-  final lessonEnd = lesson.timings.endDateTime;
+  final lessonStart = timings.startDateTime;
+  final lessonEnd = timings.endDateTime;
 
   final lessonIsOver = currentDateTime.isAfter(lessonEnd);
   final lessonNotStarted = currentDateTime.isBefore(lessonStart);

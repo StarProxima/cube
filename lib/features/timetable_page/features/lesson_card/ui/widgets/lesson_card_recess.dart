@@ -12,21 +12,26 @@ class LessonCardRecess extends ConsumerWidget {
     final emptyLessonsBefore = ref
         .watch(_lessonInLessonCard.select((value) => value.emptyLessonsBefore));
 
+    if (emptyLessonsBefore == 0) {
+      return const SizedBox();
+    }
+
     final number =
         ref.watch(_lessonInLessonCard.select((value) => value.number));
 
     final numberStart = number - emptyLessonsBefore;
     final numberEnd = number - 1;
 
-    if (emptyLessonsBefore == 0) {
-      return const SizedBox();
-    }
+    final date = ref.watch(
+      _lessonInLessonCard.select((value) => value.dateTimings.startDateTime),
+    );
 
     return Padding(
       padding: margin ?? EdgeInsets.zero,
       child: RecessCard(
-        numberStart: numberStart,
-        numberEnd: numberEnd,
+        startLessonNumber: numberStart,
+        endLessonNumber: numberEnd,
+        dateTime: DateUtils.dateOnly(date),
       ),
     );
   }

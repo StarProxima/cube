@@ -10,7 +10,7 @@ final currentLessonTimeToEndProvider = Provider<DateTimeDuration?>((ref) {
 
   if (activeLesson == null) return null;
 
-  final endLessonDateTime = activeLesson.timings.endDateTime;
+  final endLessonDateTime = activeLesson.dateTimings.endDateTime;
   final duration = endLessonDateTime.difference(currentDateTime);
 
   return DateTimeDuration(duration);

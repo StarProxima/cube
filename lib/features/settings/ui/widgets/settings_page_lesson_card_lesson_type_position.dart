@@ -14,7 +14,7 @@ class _SettingsPageLessonCardLessonTypePosition extends ConsumerWidget {
 
     return AppRadioSelector<LessonCardLessonTypePosition>(
       label: const Text(
-        'Расположение типа занятия в карточке \n(1000 и 1 способ - pre-release overview)',
+        'Расположение типа занятия в карточке',
       ),
       value: lessonCardLessonTypePosition,
       onSelect: (value) =>

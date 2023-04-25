@@ -11,11 +11,18 @@ import 'package:cube_system/core/hive_initializer.dart';
 import 'package:cube_system/features/analytics/logger.dart';
 
 import 'package:cube_system/core/utils.dart';
+import 'package:window_size/window_size.dart';
 
 void main() async {
   final widgetConfiguration = WidgetConfiguration(
     child: AppBuilder<void>(
       preInitialize: (binding) async {
+        if (kIsDesktop) {
+          setWindowTitle('Куб.Расписание');
+          setWindowMinSize(const Size(460, 380));
+          setWindowMaxSize(const Size.fromWidth(700));
+        }
+
         await dotenv.load();
         await Future.wait([
           if (kIsMobile)

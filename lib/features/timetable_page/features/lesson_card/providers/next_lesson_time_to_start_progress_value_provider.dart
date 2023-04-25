@@ -22,8 +22,8 @@ final nextLessonTimeToStartProgressValueProvider = Provider<double>((ref) {
 
   if (lessonNext == null || lessonLast == null) return 1;
 
-  final startInterval = lessonLast.timings.endDateTime;
-  final endInterval = lessonNext.timings.startDateTime;
+  final startInterval = lessonLast.dateTimings.endDateTime;
+  final endInterval = lessonNext.dateTimings.startDateTime;
 
   final recessTime = endInterval.difference(startInterval);
 

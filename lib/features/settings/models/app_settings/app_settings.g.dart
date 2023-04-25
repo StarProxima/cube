@@ -65,19 +65,15 @@ _$_AppSettings _$$_AppSettingsFromJson(Map<String, dynamic> json) =>
           $enumDecodeNullable(_$AppThemeModeEnumMap, json['appThemeMode']) ??
               AppThemeMode.system,
       lessonColorsMode: $enumDecodeNullable(
-            _$AppLessonColorsModeEnumMap,
-            json['lessonColorsMode'],
-          ) ??
+              _$AppLessonColorsModeEnumMap, json['lessonColorsMode']) ??
           AppLessonColorsMode.cube,
       lessonCardLessonTypePosition: $enumDecodeNullable(
-            _$LessonCardLessonTypePositionEnumMap,
-            json['lessonCardLessonTypePosition'],
-          ) ??
+              _$LessonCardLessonTypePositionEnumMap,
+              json['lessonCardLessonTypePosition']) ??
           LessonCardLessonTypePosition.bottomRight,
       lessonCardRecessDisplayCondition: $enumDecodeNullable(
-            _$LessonCardRecessDisplayConditionEnumMap,
-            json['lessonCardRecessDisplayCondition'],
-          ) ??
+              _$LessonCardRecessDisplayConditionEnumMap,
+              json['lessonCardRecessDisplayCondition']) ??
           LessonCardRecessDisplayCondition.always,
       landingPassed: json['landingPassed'] as bool? ?? false,
     );
@@ -103,7 +99,7 @@ const _$AppThemeModeEnumMap = {
 
 const _$AppLessonColorsModeEnumMap = {
   AppLessonColorsMode.cube: 'cube',
-  AppLessonColorsMode.accent: 'proxima',
+  AppLessonColorsMode.accent: 'accent',
 };
 
 const _$LessonCardLessonTypePositionEnumMap = {

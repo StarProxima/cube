@@ -1,3 +1,5 @@
+import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
+import 'package:cube_system/models/lesson_timings/lesson_date_timings.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,14 +8,18 @@ import 'package:cube_system/features/settings/state_holders/app_lesson_colors.da
 import 'package:cube_system/features/timetable_page/state_holders/lesson_timings.dart';
 import 'package:cube_system/core/extensions.dart';
 
+import 'package:cube_system/features/timetable_page/features/lesson_card/providers/lesson_time_to_start_progress_value_provider.dart';
+
 class RecessCard extends ConsumerWidget {
-  final int numberStart;
-  final int numberEnd;
+  final int startLessonNumber;
+  final int endLessonNumber;
+  final DateTime dateTime;
 
   const RecessCard({
     super.key,
-    required this.numberStart,
-    required this.numberEnd,
+    required this.startLessonNumber,
+    required this.endLessonNumber,
+    required this.dateTime,
   });
 
   @override
@@ -22,15 +28,34 @@ class RecessCard extends ConsumerWidget {
       builder: (context, ref, _) {
         final color = ref.watch(appLessonColors).recess;
 
-        final timingsStart = ref.watch(lessonTimings)[numberStart]!;
-        final timingsEnd = ref.watch(lessonTimings)[numberEnd]!;
+        final startLessonTimings =
+            ref.watch(lessonTimings)[startLessonNumber - 1]!;
+        final endLessonTimings = ref.watch(lessonTimings)[endLessonNumber + 1]!;
 
         final timingsStr =
-            '${timingsStart.start.format(context)} - ${timingsEnd.end.format(context)}';
+            '${startLessonTimings.end.format(context)} - ${endLessonTimings.start.format(context)}';
 
-        final numberStr = numberStart != numberEnd
-            ? '$numberStart - $numberEnd'
-            : '$numberStart';
+        final isOneLengthRecess = startLessonNumber == endLessonNumber;
+
+        final numberStr = isOneLengthRecess
+            ? '$startLessonNumber'
+            : '$startLessonNumber - $endLessonNumber';
+
+        final dateTimings = LessonDateTimings(
+          startDateTime: dateTime.add(
+            Duration(
+              hours: startLessonTimings.end.hour,
+              minutes: startLessonTimings.end.minute,
+            ),
+          ),
+          endDateTime: dateTime.add(
+            Duration(
+              hours: endLessonTimings.start.hour,
+              minutes: endLessonTimings.start.minute,
+            ),
+          ),
+        );
+
         return Container(
           height: 40,
           decoration: BoxDecoration(
@@ -47,42 +72,85 @@ class RecessCard extends ConsumerWidget {
           clipBehavior: Clip.antiAlias,
           child: Row(
             children: [
-              Container(
-                width: 6,
-                decoration: BoxDecoration(
-                  color: color?.toAppFadedColor(),
-                ),
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: FractionallySizedBox(
-                    heightFactor: 1.cutNumberEdgesZeroToOne(),
-                    child: Container(
-                      width: 6,
-                      decoration: BoxDecoration(
-                        color: color,
+              Consumer(
+                builder: (context, ref, _) {
+                  final isOnIndicator = ref.watch(
+                    appSettingsStateHolder.select(
+                      (value) =>
+                          value.lessonCardLessonTypePosition.isOnIndicator,
+                    ),
+                  );
+                  final width = isOnIndicator ? 20.0 : 6.0;
+
+                  return Container(
+                    width: width,
+                    decoration: BoxDecoration(
+                      color: color?.toAppFadedColor(),
+                    ),
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Consumer(
+                        child: Container(
+                          width: width,
+                          decoration: BoxDecoration(
+                            color: color,
+                          ),
+                        ),
+                        builder: (context, ref, child) {
+                          final is0 = ref.watch(
+                            lessonTimeToEndProgressValueProvider(dateTimings)
+                                .select((value) => value == 0),
+                          );
+
+                          final value = is0 ? 0 : 1;
+                          return FractionallySizedBox(
+                            heightFactor: value.cutNumberEdgesZeroToOne(),
+                            child: child,
+                          );
+                        },
+                      ),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(width: 12),
+              if (isOneLengthRecess)
+                Container(
+                  height: 22,
+                  width: 22,
+                  padding: const EdgeInsets.only(left: 0.75, bottom: 0.75),
+                  decoration: BoxDecoration(
+                    color: color,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Center(
+                    child: Text(
+                      numberStr,
+                      style: context.textStyles.label.copyWith(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                )
+              else
+                Container(
+                  height: 22,
+                  padding: const EdgeInsets.only(bottom: 1).add(
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
+                  ),
+                  decoration: BoxDecoration(
+                    color: color,
+                    borderRadius: BorderRadius.circular(99),
+                  ),
+                  child: Center(
+                    child: Text(
+                      numberStr,
+                      style: context.textStyles.label.copyWith(
+                        color: Colors.white,
                       ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(width: 12),
-              Container(
-                height: 22,
-                padding: const EdgeInsets.only(
-                  left: 0.75,
-                  top: 0.75,
-                ).add(const EdgeInsets.symmetric(horizontal: 8, vertical: 1)),
-                decoration: BoxDecoration(
-                  color: color,
-                  borderRadius: BorderRadius.circular(99),
-                ),
-                child: Text(
-                  numberStr,
-                  style: context.textStyles.label.copyWith(
-                    color: Colors.white,
-                  ),
-                ),
-              ),
               const SizedBox(width: 8),
               Text(
                 timingsStr,

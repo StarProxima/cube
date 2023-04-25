@@ -7,7 +7,8 @@ class LessonCardIndicator extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final lesson = ref.watch(_lessonInLessonCard);
 
-    double value = ref.watch(lessonTimeToEndProgressValueProvider(lesson));
+    final value =
+        ref.watch(lessonTimeToEndProgressValueProvider(lesson.dateTimings));
 
     final color = ref.watch(appLessonColorByLesson(lesson));
 
@@ -16,7 +17,7 @@ class LessonCardIndicator extends ConsumerWidget {
           .select((value) => value.lessonCardLessonTypePosition.isOnIndicator),
     );
 
-    double width = isOnIndicator ? 20 : 6;
+    final width = isOnIndicator ? 20.0 : 6.0;
 
     return Stack(
       children: [
