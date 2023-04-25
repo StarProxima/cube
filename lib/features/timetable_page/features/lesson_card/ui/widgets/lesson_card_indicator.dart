@@ -7,7 +7,8 @@ class LessonCardIndicator extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final lesson = ref.watch(_lessonInLessonCard);
 
-    double value = ref.watch(lessonTimeToEndProgressValueProvider(lesson));
+    double value =
+        ref.watch(lessonTimeToEndProgressValueProvider(lesson.dateTimings));
 
     final color = ref.watch(appLessonColorByLesson(lesson));
 

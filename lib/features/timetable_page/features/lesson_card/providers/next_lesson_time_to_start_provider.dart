@@ -28,7 +28,7 @@ final nextLessonTimeToStartProvider = Provider<DateTimeDuration?>((ref) {
 
   final dateTime = ref.watch(currentDateTimeQuick);
 
-  final startDateTime = next.timings.startDateTime;
+  final startDateTime = next.dateTimings.startDateTime;
   final duration = startDateTime.difference(dateTime);
 
   return DateTimeDuration(duration);

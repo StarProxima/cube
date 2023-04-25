@@ -173,10 +173,10 @@ class TimetableLessonsManager {
       for (final lesson in lessons) {
         if (lesson.isEvent) continue;
 
-        if (currentDate.isAfter(lesson.timings.startDateTime) &&
-            currentDate.isBefore(lesson.timings.endDateTime)) {
+        if (currentDate.isAfter(lesson.dateTimings.startDateTime) &&
+            currentDate.isBefore(lesson.dateTimings.endDateTime)) {
           lessonCurrent = lesson;
-        } else if (currentDate.isBefore(lesson.timings.startDateTime)) {
+        } else if (currentDate.isBefore(lesson.dateTimings.startDateTime)) {
           nextLesson.state = lesson;
           currentLesson.state = lessonCurrent;
           lastLesson.state = lessonLast;

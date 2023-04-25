@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:cube_system/gen/api/cube_api.swagger.dart';
-import 'package:cube_system/models/lesson_timings/lesson_full_timings.dart';
+import 'package:cube_system/models/lesson_timings/lesson_date_timings.dart';
 import 'package:cube_system/models/lesson_type/lesson_type.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -67,9 +67,7 @@ class LessonConvertor {
 
     final timings = lessonTimings.state[number]!;
 
-    final fullTiminigs = LessonFullTimings(
-      start: timings.start,
-      end: timings.end,
+    final dateTiminigs = LessonDateTimings(
       startDateTime: date.add(
         Duration(hours: timings.start.hour, minutes: timings.start.minute),
       ),
@@ -80,7 +78,8 @@ class LessonConvertor {
 
     final newLesson = Lesson(
       number: lesson.number,
-      timings: fullTiminigs,
+      timings: timings,
+      dateTimings: dateTiminigs,
       type: type,
       typeShortName: lesson.type.shortName,
       disciplineName: lesson.discipline?.name,

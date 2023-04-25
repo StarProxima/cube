@@ -1,3 +1,4 @@
+import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,6 +32,7 @@ class RecessCard extends ConsumerWidget {
         final numberStr = numberStart != numberEnd
             ? '$numberStart - $numberEnd'
             : '$numberStart';
+
         return Container(
           height: 40,
           decoration: BoxDecoration(
@@ -47,23 +49,40 @@ class RecessCard extends ConsumerWidget {
           clipBehavior: Clip.antiAlias,
           child: Row(
             children: [
-              Container(
-                width: 6,
-                decoration: BoxDecoration(
-                  color: color?.toAppFadedColor(),
-                ),
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: FractionallySizedBox(
-                    heightFactor: 1.cutNumberEdgesZeroToOne(),
-                    child: Container(
-                      width: 6,
-                      decoration: BoxDecoration(
-                        color: color,
+              Consumer(
+                builder: (context, ref, _) {
+                  final isOnIndicator = ref.watch(
+                    appSettingsStateHolder.select(
+                      (value) =>
+                          value.lessonCardLessonTypePosition.isOnIndicator,
+                    ),
+                  );
+                  double width = isOnIndicator ? 20 : 6;
+
+                  return Container(
+                    width: width,
+                    decoration: BoxDecoration(
+                      color: color?.toAppFadedColor(),
+                    ),
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Consumer(
+                        child: Container(
+                          width: width,
+                          decoration: BoxDecoration(
+                            color: color,
+                          ),
+                        ),
+                        builder: (context, ref, child) {
+                          return FractionallySizedBox(
+                            heightFactor: 1.cutNumberEdgesZeroToOne(),
+                            child: child,
+                          );
+                        },
                       ),
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
               const SizedBox(width: 12),
               Container(

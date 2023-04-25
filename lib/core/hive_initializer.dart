@@ -10,7 +10,7 @@ import 'package:cube_system/features/settings/models/app_theme_mode/app_theme_mo
 import 'package:cube_system/features/settings/models/lesson_card_recess_display_condition/lesson_card_recess_display_condition.dart';
 import 'package:cube_system/models/adapters/time_of_day_adapter.dart';
 import 'package:cube_system/models/lesson/lesson.dart';
-import 'package:cube_system/models/lesson_timings/lesson_full_timings.dart';
+import 'package:cube_system/models/lesson_timings/lesson_date_timings.dart';
 import 'package:cube_system/models/lesson_timings/lesson_timings.dart';
 import 'package:cube_system/models/lesson_type/lesson_type.dart';
 import 'package:cube_system/models/timetable/timetable_type.dart';
@@ -30,7 +30,7 @@ abstract class HiveInitializer {
     _reg(LessonCardRecessDisplayConditionAdapter());
     _reg(TimeOfDayAdapter());
     _reg(LessonAdapter());
-    _reg(LessonFullTimingsAdapter());
+    _reg(LessonDateTimingsAdapter());
     _reg(LessonTimingsAdapter());
     _reg(LessonTypeAdapter());
     _reg(TimetableInfoAdapter());
