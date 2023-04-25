@@ -112,6 +112,7 @@ class LessonCard extends ConsumerWidget {
                                   ),
                                   child: LessonCardFooter(),
                                 ),
+                                const SizedBox(height: 4),
                               ],
                             ),
                           ),
