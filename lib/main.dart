@@ -10,15 +10,18 @@ import 'package:cube_system/core/hive_initializer.dart';
 
 import 'package:cube_system/features/analytics/logger.dart';
 
+import 'package:cube_system/core/utils.dart';
+
 void main() async {
   final widgetConfiguration = WidgetConfiguration(
     child: AppBuilder<void>(
       preInitialize: (binding) async {
         await dotenv.load();
         await Future.wait([
-          AppMetrica.activate(
-            AppMetricaConfig(dotenv.env['APP_METRICA_API_KEY']!),
-          ),
+          if (kIsMobile)
+            AppMetrica.activate(
+              AppMetricaConfig(dotenv.env['APP_METRICA_API_KEY']!),
+            ),
           HiveInitializer.init(),
           Future.delayed(const Duration(milliseconds: 2500))
         ]);

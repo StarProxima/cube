@@ -6,9 +6,13 @@ import 'package:proxima_logger/proxima_logger.dart' as pr;
 
 import 'package:cube_system/features/analytics/log_type.dart';
 
+import 'package:cube_system/core/utils.dart';
+
 mixin AnalyticalLoggerMixin on pr.ProximaLogger {
   Future<void> event(String name, [Map<String, Object>? attributes]) async {
-    await AppMetrica.reportEventWithMap(name, attributes);
+    if (kIsMobile) {
+      await AppMetrica.reportEventWithMap(name, attributes);
+    }
   }
 
   void route({required String path, String? previousPath}) {
