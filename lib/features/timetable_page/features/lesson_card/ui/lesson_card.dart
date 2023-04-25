@@ -54,7 +54,7 @@ class LessonCard extends ConsumerWidget {
       child: Column(
         children: [
           const LessonCardRecess(
-            margin: EdgeInsets.only(bottom: 8),
+            margin: EdgeInsets.only(bottom: 16),
           ),
           const LessonCardTimeToStart(
             margin: EdgeInsets.only(bottom: 8),

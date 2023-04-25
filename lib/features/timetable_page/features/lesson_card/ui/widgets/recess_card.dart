@@ -1,4 +1,5 @@
 import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
+import 'package:cube_system/models/lesson_timings/lesson_date_timings.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,14 +8,18 @@ import 'package:cube_system/features/settings/state_holders/app_lesson_colors.da
 import 'package:cube_system/features/timetable_page/state_holders/lesson_timings.dart';
 import 'package:cube_system/core/extensions.dart';
 
+import 'package:cube_system/features/timetable_page/features/lesson_card/providers/lesson_time_to_start_progress_value_provider.dart';
+
 class RecessCard extends ConsumerWidget {
-  final int numberStart;
-  final int numberEnd;
+  final int startLessonNumber;
+  final int endLessonNumber;
+  final DateTime dateTime;
 
   const RecessCard({
     super.key,
-    required this.numberStart,
-    required this.numberEnd,
+    required this.startLessonNumber,
+    required this.endLessonNumber,
+    required this.dateTime,
   });
 
   @override
@@ -23,15 +28,31 @@ class RecessCard extends ConsumerWidget {
       builder: (context, ref, _) {
         final color = ref.watch(appLessonColors).recess;
 
-        final timingsStart = ref.watch(lessonTimings)[numberStart]!;
-        final timingsEnd = ref.watch(lessonTimings)[numberEnd]!;
+        final startLessonTimings =
+            ref.watch(lessonTimings)[startLessonNumber - 1]!;
+        final endLessonTimings = ref.watch(lessonTimings)[endLessonNumber + 1]!;
 
         final timingsStr =
-            '${timingsStart.start.format(context)} - ${timingsEnd.end.format(context)}';
+            '${startLessonTimings.end.format(context)} - ${endLessonTimings.start.format(context)}';
 
-        final numberStr = numberStart != numberEnd
-            ? '$numberStart - $numberEnd'
-            : '$numberStart';
+        final numberStr = startLessonNumber != endLessonNumber
+            ? '$startLessonNumber - $endLessonNumber'
+            : '$startLessonNumber';
+
+        final dateTimings = LessonDateTimings(
+          startDateTime: dateTime.add(
+            Duration(
+              hours: startLessonTimings.end.hour,
+              minutes: startLessonTimings.end.minute,
+            ),
+          ),
+          endDateTime: dateTime.add(
+            Duration(
+              hours: endLessonTimings.start.hour,
+              minutes: endLessonTimings.start.minute,
+            ),
+          ),
+        );
 
         return Container(
           height: 40,
@@ -57,7 +78,7 @@ class RecessCard extends ConsumerWidget {
                           value.lessonCardLessonTypePosition.isOnIndicator,
                     ),
                   );
-                  double width = isOnIndicator ? 20 : 6;
+                  final width = isOnIndicator ? 20.0 : 6.0;
 
                   return Container(
                     width: width,
@@ -74,8 +95,14 @@ class RecessCard extends ConsumerWidget {
                           ),
                         ),
                         builder: (context, ref, child) {
+                          final is0 = ref.watch(
+                            lessonTimeToEndProgressValueProvider(dateTimings)
+                                .select((value) => value == 0),
+                          );
+
+                          final value = is0 ? 0 : 1;
                           return FractionallySizedBox(
-                            heightFactor: 1.cutNumberEdgesZeroToOne(),
+                            heightFactor: value.cutNumberEdgesZeroToOne(),
                             child: child,
                           );
                         },
