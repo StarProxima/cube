@@ -12,7 +12,7 @@ class _SettingsPageAppInfo extends ConsumerWidget {
             final packageInfo = ref.watch(packageInfoStateHolder);
             return packageInfo.when(
               data: (packageInfo) => Text(
-                "${packageInfo.appName} v${packageInfo.version}+${packageInfo.buildNumber}",
+                "Куб.Расписание v${packageInfo.version}+${packageInfo.buildNumber}",
                 style: context.textStyles.smallSubTitle.copyWith(
                   color: context.colors.subduedText,
                 ),
