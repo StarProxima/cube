@@ -27,7 +27,7 @@ class _SettingsPageAppInfo extends ConsumerWidget {
           TextSpan(
             children: [
               TextSpan(
-                text: 'Built using ',
+                text: 'Developed using ',
                 style: context.textStyles.smallSubTitle.copyWith(
                   color: context.colors.subduedText,
                 ),
