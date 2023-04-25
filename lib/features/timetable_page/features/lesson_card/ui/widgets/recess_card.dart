@@ -35,9 +35,11 @@ class RecessCard extends ConsumerWidget {
         final timingsStr =
             '${startLessonTimings.end.format(context)} - ${endLessonTimings.start.format(context)}';
 
-        final numberStr = startLessonNumber != endLessonNumber
-            ? '$startLessonNumber - $endLessonNumber'
-            : '$startLessonNumber';
+        final isOneLengthRecess = startLessonNumber == endLessonNumber;
+
+        final numberStr = isOneLengthRecess
+            ? '$startLessonNumber'
+            : '$startLessonNumber - $endLessonNumber';
 
         final dateTimings = LessonDateTimings(
           startDateTime: dateTime.add(
@@ -112,23 +114,43 @@ class RecessCard extends ConsumerWidget {
                 },
               ),
               const SizedBox(width: 12),
-              Container(
-                height: 22,
-                padding: const EdgeInsets.only(
-                  left: 0.75,
-                  top: 0.75,
-                ).add(const EdgeInsets.symmetric(horizontal: 8, vertical: 1)),
-                decoration: BoxDecoration(
-                  color: color,
-                  borderRadius: BorderRadius.circular(99),
-                ),
-                child: Text(
-                  numberStr,
-                  style: context.textStyles.label.copyWith(
-                    color: Colors.white,
+              if (isOneLengthRecess)
+                Container(
+                  height: 22,
+                  width: 22,
+                  padding: const EdgeInsets.only(left: 0.75, bottom: 0.75),
+                  decoration: BoxDecoration(
+                    color: color,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Center(
+                    child: Text(
+                      numberStr,
+                      style: context.textStyles.label.copyWith(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                )
+              else
+                Container(
+                  height: 22,
+                  padding: const EdgeInsets.only(bottom: 1).add(
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
+                  ),
+                  decoration: BoxDecoration(
+                    color: color,
+                    borderRadius: BorderRadius.circular(99),
+                  ),
+                  child: Center(
+                    child: Text(
+                      numberStr,
+                      style: context.textStyles.label.copyWith(
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
-              ),
               const SizedBox(width: 8),
               Text(
                 timingsStr,
