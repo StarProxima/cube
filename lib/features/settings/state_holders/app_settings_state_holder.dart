@@ -54,7 +54,7 @@ class AppSettingsNotifier extends HiveStateNotifier<AppSettings> {
   }
 
   @override
-  onSetData(AppSettings data) => logger.setInitialSettings;
+  onSetData(AppSettings data) => logger.setInitialSettings(data);
 
   @override
   onSaveData(AppSettings data) => logger.changingSettings(data);
