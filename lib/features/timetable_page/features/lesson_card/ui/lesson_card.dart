@@ -84,7 +84,6 @@ class LessonCard extends ConsumerWidget {
                         const LessonCardIndicator(),
                         Expanded(
                           child: InkWell(
-                            onTap: manager.findLastCurrentNextLesson,
                             child: Column(
                               children: [
                                 Padding(
