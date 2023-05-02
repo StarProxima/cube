@@ -105,15 +105,38 @@ class TimetableLessonsManager {
       timetableMap[lesson.date] = [];
     }
 
+    // for (int i = 0; i < lessons.length; i++) {
+    //   if (lessons[i].date.day == DateTime.now().day) {
+    //     lessons.insert(
+    //       i + 1,
+    //       lessons[i].copyWith(
+    //         place: lessons[i].place?.copyWith(
+    //               name: 'fwefweof',
+    //             ),
+    //       ),
+    //     );
+    //     break;
+    //   }
+    // }
+
     for (int i = 0; i < lessons.length; i++) {
       final lesson = lessons[i];
       int emptyLessonsBefore = 0;
-      if (i > 0 && lessons[i - 1].date == lesson.date) {
+
+      final equalPrevious = i > 0 && lessons[i - 1].number == lesson.number;
+      final equalNext =
+          i < lessons.length - 1 && lessons[i + 1].number == lesson.number;
+
+      final isCollision = equalPrevious || equalNext;
+
+      if (i > 0 && lessons[i - 1].date == lesson.date && !isCollision) {
         emptyLessonsBefore = lesson.number - lessons[i - 1].number - 1;
       }
+
       final l = lessonConvertor.lessonByLessonFullNamesInDb(
         lesson: lesson,
         emptyLessonsBefore: emptyLessonsBefore,
+        isCollision: isCollision,
       );
 
       timetableMap[lesson.date]!.add(l);

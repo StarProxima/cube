@@ -25,7 +25,6 @@ void main() async {
 
         await dotenv.load();
         await Future.wait([
-          // if (kIsMobile && !kDebugMode)
           AppMetrica.activate(
             AppMetricaConfig(dotenv.env['APP_METRICA_API_KEY']!),
           ),

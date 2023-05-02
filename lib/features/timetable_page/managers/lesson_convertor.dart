@@ -26,6 +26,7 @@ class LessonConvertor {
   Lesson lessonByLessonFullNamesInDb({
     required LessonFullInDb lesson,
     int emptyLessonsBefore = 0,
+    bool isCollision = false,
   }) {
     final number = lesson.number;
 
@@ -91,6 +92,7 @@ class LessonConvertor {
       isEvent: isEvent,
       defaultColor: color,
       emptyLessonsBefore: emptyLessonsBefore,
+      isCollision: isCollision,
     );
 
     return newLesson;
