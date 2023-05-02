@@ -77,18 +77,21 @@ class TimetableLessonsManager {
     required DateTime startDate,
     required DateTime endDate,
   }) async {
-    final format = DateFormat('yyyy-MM-dd');
-
     final timetable = selectedTimetable.state;
 
     if (timetable == null) return [];
+
+    final format = DateFormat('yyyy-MM-dd');
+
+    final startDateStr = format.format(startDate);
+    final endDateStr = format.format(endDate);
 
     final lessonResponse = await api.apiTimetableLessonsViewerGet(
       group: timetable.type == TimetableType.group ? [timetable.id] : null,
       teacher: timetable.type == TimetableType.teacher ? [timetable.id] : null,
       place: timetable.type == TimetableType.place ? [timetable.id] : null,
-      startDate: format.format(startDate),
-      endDate: format.format(endDate),
+      startDate: startDateStr,
+      endDate: endDateStr,
     );
 
     return lessonResponse.body!.data;

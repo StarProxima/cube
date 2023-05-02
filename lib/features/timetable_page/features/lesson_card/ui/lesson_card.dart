@@ -27,6 +27,7 @@ import 'package:cube_system/features/timetable_page/state_holders/lessons/next_l
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_body.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_footer.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_header.dart';
+part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_icons_icon.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_icons.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_indicator.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_time_left.dart';
@@ -54,15 +55,15 @@ class LessonCard extends ConsumerWidget {
       child: Column(
         children: [
           const LessonCardRecess(
-            margin: EdgeInsets.only(bottom: 12, top: 8),
+            margin: EdgeInsets.only(bottom: 12, top: 9),
           ),
           const LessonCardTimeToStart(
-            margin: EdgeInsets.only(bottom: 8, top: 4),
+            margin: EdgeInsets.only(bottom: 9, top: 4),
           ),
           Stack(
             children: [
               Container(
-                margin: const EdgeInsets.only(top: 8),
+                margin: const EdgeInsets.only(top: 9),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7),
                   color: context.colors.background,

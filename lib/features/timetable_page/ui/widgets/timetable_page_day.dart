@@ -78,7 +78,7 @@ class TimetablePageDay extends ConsumerWidget {
       ),
       itemCount: lessons.length,
       itemBuilder: (context, index) => LessonCard(lessons[index]),
-      separatorBuilder: (context, index) => const SizedBox(height: 12),
+      separatorBuilder: (context, index) => const SizedBox(height: 11),
     );
   }
 }

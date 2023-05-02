@@ -7,8 +7,8 @@ class LessonCardIcons extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isRemotely =
-        ref.watch(_lessonInLessonCard.select((value) => value.isRemotely));
+    // final isRemotely =
+    //     ref.watch(_lessonInLessonCard.select((value) => value.isRemotely));
 
     final isActiveLessons =
         ref.watch(_lessonInLessonCard) == ref.watch(currentLesson);
@@ -16,63 +16,33 @@ class LessonCardIcons extends ConsumerWidget {
     final color =
         ref.watch(appLessonColorByLesson(ref.read(_lessonInLessonCard)));
 
-    // final isRemotely = _random.nextInt(100) < 0;
+    final isRemotely = _random.nextInt(100) < 25;
 
-    final presentImportantNote = _random.nextInt(100) < 0;
+    final presentImportantNote = _random.nextInt(100) < 25;
 
-    final numberOfNotes = _random.nextInt(100) < 0 ? _random.nextInt(7) : 0;
+    final numberOfNotes = _random.nextInt(100) < 25 ? _random.nextInt(7) : 0;
 
     return Row(
       children: [
         if (isRemotely)
-          Container(
-            margin: const EdgeInsets.only(right: 4),
-            width: 16,
-            height: 16,
-            decoration: BoxDecoration(
-              color: color,
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(
+          const LessonCardIconsIcon.icon(
+            icon: Icon(
               Icons.wifi_rounded,
               size: 12,
               color: Colors.white,
             ),
           ),
         if (presentImportantNote)
-          Container(
-            margin: const EdgeInsets.only(right: 4),
-            width: 16,
-            height: 16,
-            decoration: BoxDecoration(
-              color: color,
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(
+          const LessonCardIconsIcon.icon(
+            icon: Icon(
               Icons.priority_high_rounded,
               size: 12,
               color: Colors.white,
             ),
           ),
         if (numberOfNotes > 0)
-          Container(
-            margin: const EdgeInsets.only(right: 4),
-            width: 16,
-            height: 16,
-            decoration: BoxDecoration(
-              color: color,
-              shape: BoxShape.circle,
-            ),
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 0.5),
-                child: Text(
-                  numberOfNotes.toString(),
-                  style: context.textStyles.chipLabel
-                      .copyWith(color: context.colors.white),
-                ),
-              ),
-            ),
+          LessonCardIconsIcon.number(
+            number: numberOfNotes,
           ),
         if (isActiveLessons)
           Consumer(
