@@ -7,6 +7,8 @@ import 'package:intl/intl.dart';
 import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
 import 'package:cube_system/features/timetable_page/features/week_timeline/state_holders/week_timeline_shown_week_date.dart';
 
+import 'package:cube_system/features/timetable_page/state_holders/selected_timetable.dart';
+
 class TimetablePageHeaderDate extends ConsumerWidget {
   const TimetablePageHeaderDate({super.key});
 
@@ -22,6 +24,11 @@ class TimetablePageHeaderDate extends ConsumerWidget {
     } else {
       weekLabel = 'Знаменатель';
     }
+
+    final isGroup = ref.watch(
+      selectedTimetableStateHolder
+          .select((value) => value?.type.isGroup ?? false),
+    );
 
     return InkWell(
       borderRadius: const BorderRadius.all(Radius.circular(12)),
@@ -40,14 +47,15 @@ class TimetablePageHeaderDate extends ConsumerWidget {
               style: context.textStyles.label.copyWith(),
               textAlign: TextAlign.center,
             ),
-          Text(
-            weekLabel,
-            style: context.textStyles.smallSubTitle.copyWith(
-              fontSize: 10,
-              color: context.colors.subduedText,
+          if (isGroup)
+            Text(
+              weekLabel,
+              style: context.textStyles.smallSubTitle.copyWith(
+                fontSize: 10,
+                color: context.colors.subduedText,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
-          ),
         ],
       ),
     );
