@@ -11,6 +11,7 @@ part 'app_colors.tailor.dart';
 class _$AppColors {
   static List<Color> primary = [const Color(0xFF38a1ff)];
   static List<Color> background = [const Color(0xFFF6F7FF)];
+  static List<Color> destructive = [Colors.red];
 
   static List<Color> text = [const Color(0xFF2B2B2B)];
   static List<Color> hintText = [const Color.fromARGB(255, 161, 161, 161)];

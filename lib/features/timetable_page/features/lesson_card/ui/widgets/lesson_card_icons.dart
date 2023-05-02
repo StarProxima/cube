@@ -16,6 +16,10 @@ class LessonCardIcons extends ConsumerWidget {
     final color =
         ref.watch(appLessonColorByLesson(ref.read(_lessonInLessonCard)));
 
+    final isCancelled = _random.nextInt(100) < 25;
+
+    final isCollision = _random.nextInt(100) < 25;
+
     final isRemotely = _random.nextInt(100) < 25;
 
     final presentImportantNote = _random.nextInt(100) < 25;
@@ -24,21 +28,23 @@ class LessonCardIcons extends ConsumerWidget {
 
     return Row(
       children: [
+        if (isCancelled)
+          const LessonCardIconsIcon.icon(
+            icon: Icon(Icons.cancel),
+            isDestructive: true,
+          ),
+        if (isCollision)
+          const LessonCardIconsIcon.icon(
+            icon: Icon(Icons.error),
+            isDestructive: true,
+          ),
         if (isRemotely)
           const LessonCardIconsIcon.icon(
-            icon: Icon(
-              Icons.wifi_rounded,
-              size: 12,
-              color: Colors.white,
-            ),
+            icon: Icon(Icons.home),
           ),
         if (presentImportantNote)
           const LessonCardIconsIcon.icon(
-            icon: Icon(
-              Icons.priority_high_rounded,
-              size: 12,
-              color: Colors.white,
-            ),
+            icon: Icon(Icons.priority_high_rounded),
           ),
         if (numberOfNotes > 0)
           LessonCardIconsIcon.number(
