@@ -3,6 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final cubeApi = Provider<CubeApi>((ref) {
   return CubeApi.create(
-    baseUrl: Uri.tryParse('https://api.cube.nlabs.su/'),
+    baseUrl: Uri.tryParse('http://2qkhm0fz-test.api.cube.nlabs.su'),
   );
 });

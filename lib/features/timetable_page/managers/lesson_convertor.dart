@@ -24,7 +24,7 @@ class LessonConvertor {
   });
 
   Lesson lessonByLessonFullNamesInDb({
-    required LessonFullNamesInDb lesson,
+    required LessonFullInDb lesson,
     int emptyLessonsBefore = 0,
   }) {
     final number = lesson.number;
@@ -84,8 +84,8 @@ class LessonConvertor {
       typeShortName: lesson.type.shortName,
       disciplineName: lesson.discipline?.name,
       place: lesson.place?.name,
-      groupNames: lesson.groupNames,
-      teacherNames: lesson.teacherNames,
+      groupNames: lesson.groups.map((e) => e.name).toList(),
+      teacherNames: lesson.teachers?.map((e) => e.shortName).toList() ?? [],
       isElective: lesson.isElective,
       isRemotely: lesson.isRemotely,
       isEvent: isEvent,

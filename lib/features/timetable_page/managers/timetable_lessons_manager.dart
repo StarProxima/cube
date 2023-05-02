@@ -73,7 +73,7 @@ class TimetableLessonsManager {
     events.change(SplayTreeMap());
   }
 
-  Future<List<LessonFullNamesInDb>> _getLessons({
+  Future<List<LessonFullInDb>> _getLessons({
     required DateTime startDate,
     required DateTime endDate,
   }) async {
@@ -83,19 +83,18 @@ class TimetableLessonsManager {
 
     if (timetable == null) return [];
 
-    final lessonResponse = await api.apiLessonsGet(
-      fullData: true,
-      groups: timetable.type == TimetableType.group ? [timetable.id] : null,
-      teachers: timetable.type == TimetableType.teacher ? [timetable.id] : null,
-      places: timetable.type == TimetableType.place ? [timetable.id] : null,
+    final lessonResponse = await api.apiTimetableLessonsViewerGet(
+      group: timetable.type == TimetableType.group ? [timetable.id] : null,
+      teacher: timetable.type == TimetableType.teacher ? [timetable.id] : null,
+      place: timetable.type == TimetableType.place ? [timetable.id] : null,
       startDate: format.format(startDate),
       endDate: format.format(endDate),
     );
 
-    return lessonResponse.body!;
+    return lessonResponse.body!.data;
   }
 
-  void _setLessons(List<LessonFullNamesInDb> lessons) {
+  void _setLessons(List<LessonFullInDb> lessons) {
     TimetableLessons timetableMap =
         SplayTreeMap.of(timetableLessons.state.cast());
 

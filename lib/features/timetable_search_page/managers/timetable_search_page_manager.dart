@@ -102,10 +102,11 @@ class TimetableSearchPageManager {
       return;
     }
 
-    final Response<LessonAutocomplete> response;
+    final TimetableAutocomplete res;
 
     try {
-      response = await api.apiLessonsAutocompleteGet(q: query);
+      final response = await api.apiTimetableEntitiesGet(q: query);
+      res = response.body!;
     } catch (e) {
       event.state = TimetableSearchEventType.error;
       return;
@@ -115,8 +116,6 @@ class TimetableSearchPageManager {
     if (searchContoller.state.text != query) {
       return;
     }
-
-    final res = response.body!;
 
     final List<TimetableInfo> timetablesList = [];
 
