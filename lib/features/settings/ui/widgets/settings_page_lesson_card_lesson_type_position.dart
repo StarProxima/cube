@@ -22,13 +22,13 @@ class _SettingsPageLessonCardLessonTypePosition extends ConsumerWidget {
       items: const [
         AppRadioSelectorItem(
           title: Text('На идикаторе'),
-          description:
-              Text('Выбор по умолчанию. Вертикальное расположение слева.'),
+          description: Text(
+            'Выбор по умолчанию. Вертикальный текст на левом индикаторе.',
+          ),
           value: LessonCardLessonTypePosition.onIndicator,
         ),
         AppRadioSelectorItem(
           title: Text('Снизу справа'),
-          description: Text('Вроде норм'),
           value: LessonCardLessonTypePosition.bottomRight,
         ),
         AppRadioSelectorItem(
