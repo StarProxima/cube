@@ -1,5 +1,6 @@
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_events.dart';
+import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_message_card.dart';
 import 'package:cube_system/models/timetable_day/timetable_day_type.dart';
 import 'package:cube_system/features/timetable_page/ui/event_pages/weekend_event_page.dart';
 import 'package:flutter/material.dart';
@@ -76,8 +77,20 @@ class TimetablePageDay extends ConsumerWidget {
       physics: const BouncingScrollPhysics(
         parent: AlwaysScrollableScrollPhysics(),
       ),
-      itemCount: lessons.length,
-      itemBuilder: (context, index) => LessonCard(lessons[index]),
+      itemCount: lessons.length + 1,
+      itemBuilder: (context, index) {
+        if (index == lessons.length) {
+          return const Padding(
+            padding: EdgeInsets.only(top: 9),
+            child: TimetablePageMessageCard(),
+          );
+        }
+        final lesson = lessons[index];
+        return LessonCard(
+          key: ValueKey(lesson),
+          lesson,
+        );
+      },
       separatorBuilder: (context, index) => const SizedBox(height: 11),
     );
   }
