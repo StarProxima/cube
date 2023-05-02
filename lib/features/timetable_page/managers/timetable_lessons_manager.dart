@@ -123,9 +123,12 @@ class TimetableLessonsManager {
       final lesson = lessons[i];
       int emptyLessonsBefore = 0;
 
-      final equalPrevious = i > 0 && lessons[i - 1].number == lesson.number;
-      final equalNext =
-          i < lessons.length - 1 && lessons[i + 1].number == lesson.number;
+      final equalPrevious = i > 0 &&
+          lessons[i - 1].number == lesson.number &&
+          lessons[i - 1].date == lesson.date;
+      final equalNext = i < lessons.length - 1 &&
+          lessons[i + 1].number == lesson.number &&
+          lessons[i + 1].date == lesson.date;
 
       final isCollision = equalPrevious || equalNext;
 
