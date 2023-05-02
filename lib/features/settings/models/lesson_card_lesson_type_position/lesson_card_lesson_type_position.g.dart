@@ -17,52 +17,37 @@ class LessonCardLessonTypePositionAdapter
   LessonCardLessonTypePosition read(BinaryReader reader) {
     switch (reader.readByte()) {
       case 0:
-        return LessonCardLessonTypePosition.afterBottomLeftBlock;
-      case 1:
-        return LessonCardLessonTypePosition.afterTopLeftBlock;
-      case 2:
-        return LessonCardLessonTypePosition.bottomLeft;
-      case 3:
-        return LessonCardLessonTypePosition.topRight;
-      case 4:
-        return LessonCardLessonTypePosition.bottomRight;
-      case 5:
-        return LessonCardLessonTypePosition.beforeBottomRightBlock;
-      case 6:
         return LessonCardLessonTypePosition.onIndicator;
-      case 7:
+      case 1:
+        return LessonCardLessonTypePosition.bottomRight;
+      case 2:
+        return LessonCardLessonTypePosition.afterBottomLeftBlock;
+      case 3:
+        return LessonCardLessonTypePosition.beforeBottomRightBlock;
+      case 4:
         return LessonCardLessonTypePosition.none;
       default:
-        return LessonCardLessonTypePosition.afterBottomLeftBlock;
+        return LessonCardLessonTypePosition.onIndicator;
     }
   }
 
   @override
   void write(BinaryWriter writer, LessonCardLessonTypePosition obj) {
     switch (obj) {
-      case LessonCardLessonTypePosition.afterBottomLeftBlock:
+      case LessonCardLessonTypePosition.onIndicator:
         writer.writeByte(0);
         break;
-      case LessonCardLessonTypePosition.afterTopLeftBlock:
+      case LessonCardLessonTypePosition.bottomRight:
         writer.writeByte(1);
         break;
-      case LessonCardLessonTypePosition.bottomLeft:
+      case LessonCardLessonTypePosition.afterBottomLeftBlock:
         writer.writeByte(2);
         break;
-      case LessonCardLessonTypePosition.topRight:
+      case LessonCardLessonTypePosition.beforeBottomRightBlock:
         writer.writeByte(3);
         break;
-      case LessonCardLessonTypePosition.bottomRight:
-        writer.writeByte(4);
-        break;
-      case LessonCardLessonTypePosition.beforeBottomRightBlock:
-        writer.writeByte(5);
-        break;
-      case LessonCardLessonTypePosition.onIndicator:
-        writer.writeByte(6);
-        break;
       case LessonCardLessonTypePosition.none:
-        writer.writeByte(7);
+        writer.writeByte(4);
         break;
     }
   }

@@ -103,13 +103,10 @@ const _$AppLessonColorsModeEnumMap = {
 };
 
 const _$LessonCardLessonTypePositionEnumMap = {
-  LessonCardLessonTypePosition.afterBottomLeftBlock: 'afterBottomLeftBlock',
-  LessonCardLessonTypePosition.afterTopLeftBlock: 'afterTopLeftBlock',
-  LessonCardLessonTypePosition.bottomLeft: 'bottomLeft',
-  LessonCardLessonTypePosition.topRight: 'topRight',
-  LessonCardLessonTypePosition.bottomRight: 'bottomRight',
-  LessonCardLessonTypePosition.beforeBottomRightBlock: 'beforeBottomRightBlock',
   LessonCardLessonTypePosition.onIndicator: 'onIndicator',
+  LessonCardLessonTypePosition.bottomRight: 'bottomRight',
+  LessonCardLessonTypePosition.afterBottomLeftBlock: 'afterBottomLeftBlock',
+  LessonCardLessonTypePosition.beforeBottomRightBlock: 'beforeBottomRightBlock',
   LessonCardLessonTypePosition.none: 'none',
 };
 

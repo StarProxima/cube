@@ -6,36 +6,24 @@ part 'lesson_card_lesson_type_position.g.dart';
 @HiveType(typeId: 10)
 enum LessonCardLessonTypePosition {
   @HiveField(0)
-  @JsonValue('afterBottomLeftBlock')
-  afterBottomLeftBlock,
-  @HiveField(1)
-  @JsonValue('afterTopLeftBlock')
-  afterTopLeftBlock,
-  @HiveField(2)
-  @JsonValue('bottomLeft')
-  bottomLeft,
-  @HiveField(3)
-  @JsonValue('topRight')
-  topRight,
-  @HiveField(4)
-  @JsonValue('bottomRight')
-  bottomRight,
-  @HiveField(5)
-  @JsonValue('beforeBottomRightBlock')
-  beforeBottomRightBlock,
-  @HiveField(6)
   @JsonValue('onIndicator')
   onIndicator,
-  @HiveField(7)
+  @HiveField(1)
+  @JsonValue('bottomRight')
+  bottomRight,
+  @HiveField(2)
+  @JsonValue('afterBottomLeftBlock')
+  afterBottomLeftBlock,
+  @HiveField(3)
+  @JsonValue('beforeBottomRightBlock')
+  beforeBottomRightBlock,
+  @HiveField(4)
   @JsonValue('none')
   none;
 
   bool get isAfterBottomLeftBlock =>
       this == LessonCardLessonTypePosition.afterBottomLeftBlock;
-  bool get isAfterTopLeftBlock =>
-      this == LessonCardLessonTypePosition.afterTopLeftBlock;
-  bool get isBottomLeft => this == LessonCardLessonTypePosition.bottomLeft;
-  bool get isTopRight => this == LessonCardLessonTypePosition.topRight;
+
   bool get isBottomRight => this == LessonCardLessonTypePosition.bottomRight;
   bool get isBeforeBottomRightBlock =>
       this == LessonCardLessonTypePosition.beforeBottomRightBlock;

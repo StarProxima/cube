@@ -57,11 +57,6 @@ class LessonCardFooter extends ConsumerWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              if (lessonTypePosition.isBottomLeft)
-                const Padding(
-                  padding: EdgeInsets.only(left: 8),
-                  child: LessonCardLessonTypeChip(),
-                ),
               if (teachersIsNotEmpty)
                 Flexible(
                   child: Padding(
@@ -99,7 +94,7 @@ class LessonCardFooter extends ConsumerWidget {
               constraints: const BoxConstraints(
                 maxWidth: 160,
               ),
-              padding: const EdgeInsets.only(top: 4, left: 8),
+              padding: const EdgeInsets.only(top: 4, left: 8, right: 6),
               child: Text(
                 rigthText,
                 style: context.textStyles.smallLabel.copyWith(
@@ -112,7 +107,7 @@ class LessonCardFooter extends ConsumerWidget {
             ),
             if (lessonTypePosition.isBottomRight)
               const Padding(
-                padding: EdgeInsets.only(right: 4, left: 8),
+                padding: EdgeInsets.only(right: 4, left: 4),
                 child: LessonCardLessonTypeChip(),
               ),
           ],
