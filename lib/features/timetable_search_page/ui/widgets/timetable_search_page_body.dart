@@ -1,6 +1,6 @@
 import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_event.dart';
 import 'package:cube_system/features/timetable_search_page/ui/event_pages/no_found_search_event_page.dart';
-import 'package:cube_system/features/timetable_search_page/ui/widgets/timetable_card.dart';
+import 'package:cube_system/features/timetable_search_page/ui/widgets/timetable_search_info_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -53,7 +53,7 @@ class TimetableSearchPageBody extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       itemBuilder: (context, index) {
         final timetable = timetables[index];
-        return TimetableCard(
+        return TimetableSearchInfoCard(
           timetable: timetable,
           onTap: () async {
             manager.selectTimetable(timetable);

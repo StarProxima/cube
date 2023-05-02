@@ -4,6 +4,7 @@ import 'package:chopper/chopper.dart';
 import 'package:cube_system/api/cube_api.dart';
 import 'package:cube_system/features/analytics/logger.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
+import 'package:cube_system/features/timetable_search_page/models/timetable_search_group_info.dart';
 import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_search_controller.dart';
 import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_search_focus.dart';
 import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_timetables.dart';
@@ -16,6 +17,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_event.dart';
 
 import 'package:cube_system/features/timetable_search_page/state_holders/timetable_search_page_timer.dart';
+
+import 'package:cube_system/features/timetable_search_page/models/timetable_search_info.dart';
 
 final timetableSearchPageManager = Provider<TimetableSearchPageManager>((ref) {
   return TimetableSearchPageManager(
@@ -33,7 +36,7 @@ class TimetableSearchPageManager {
   final CubeApi api;
 
   final TimetablePageManager timetablePageManager;
-  final StateController<List<TimetableInfo>> timetables;
+  final StateController<List<TimetableSearchInfo>> timetables;
   final StateController<TextEditingController> searchContoller;
   final StateController<FocusNode> searchFocus;
   final StateController<TimetableSearchEventType> event;
@@ -69,8 +72,8 @@ class TimetableSearchPageManager {
     }
   }
 
-  Future<void> selectTimetable(TimetableInfo timetable) async {
-    await timetablePageManager.selectTimetable(timetable);
+  Future<void> selectTimetable(TimetableSearchInfo timetable) async {
+    await timetablePageManager.selectTimetable(timetable.info);
   }
 
   Future<void> instantSearch() =>
@@ -117,34 +120,47 @@ class TimetableSearchPageManager {
       return;
     }
 
-    final List<TimetableInfo> timetablesList = [];
+    final List<TimetableSearchInfo> timetablesList = [];
 
     for (final group in res.groups) {
       timetablesList.add(
-        TimetableInfo(
-          id: group.id,
-          label: group.name,
-          type: TimetableType.group,
+        TimetableSearchInfo(
+          info: TimetableInfo(
+            id: group.id,
+            label: group.name,
+            type: TimetableType.group,
+          ),
+          groupInfo: TimetableSearchGroupInfo(
+            course: group.course,
+            faculty: group.faculty.shortName,
+            directionCipher: group.direction.cipher,
+            degreeStudy: group.direction.degreeStudy.value ?? '',
+          ),
         ),
       );
     }
 
     for (final teacher in res.teachers) {
       timetablesList.add(
-        TimetableInfo(
-          id: teacher.id,
+        TimetableSearchInfo(
           label: teacher.fullName,
-          type: TimetableType.teacher,
+          info: TimetableInfo(
+            id: teacher.id,
+            label: teacher.shortName,
+            type: TimetableType.teacher,
+          ),
         ),
       );
     }
 
     for (final place in res.places) {
       timetablesList.add(
-        TimetableInfo(
-          id: place.id,
-          label: place.name,
-          type: TimetableType.place,
+        TimetableSearchInfo(
+          info: TimetableInfo(
+            id: place.id,
+            label: place.name,
+            type: TimetableType.place,
+          ),
         ),
       );
     }

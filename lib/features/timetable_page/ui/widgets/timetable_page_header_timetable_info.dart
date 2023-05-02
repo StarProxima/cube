@@ -31,9 +31,11 @@ class TimetablePageHeaderTimetableInfo extends ConsumerWidget {
           children: [
             Row(
               children: [
-                Text(
-                  timetable?.label ?? 'Расписание',
-                  style: labelTextStyle,
+                Flexible(
+                  child: Text(
+                    timetable?.label ?? 'Расписание',
+                    style: labelTextStyle,
+                  ),
                 ),
                 SizedBox(
                   height: 16,
