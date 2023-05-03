@@ -44,6 +44,7 @@ dependencies:
   package_info_plus: ^3.1.0
   flutter_dotenv: ^5.0.2
   appmetrica_plugin: ^1.1.0
+  upgrader: ^6.3.0
   
 
   
