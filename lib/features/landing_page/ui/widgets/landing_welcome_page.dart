@@ -144,7 +144,7 @@ class _LandingWelcomePageState extends ConsumerState<LandingWelcomePage>
                                 ],
                               ),
                               Text(
-                                "Расписание",
+                                'Расписание',
                                 style: context.textStyles.largeTitle.copyWith(
                                   fontSize: 32,
                                   color: context.colors.text,
@@ -156,7 +156,7 @@ class _LandingWelcomePageState extends ConsumerState<LandingWelcomePage>
                       ),
                       const SizedBox(height: 48),
                       Text(
-                        "Организуйте свою академическую жизнь c современным электронным расписанием: актуальность, легкий доступ и приятный дизайн для студентов и преподавателей.",
+                        'Cовременный сервис учебного расписания для студентов, преподавателей и всех желающих, предоставляющий удобный и быстрый доступ, где бы вы ни находились.',
                         style: context.textStyles.subTitle.copyWith(
                           fontSize: 16,
                         ),
