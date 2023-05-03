@@ -33,10 +33,10 @@ void main() async {
         ]);
       },
       builder: (context, snapshot, _) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          return const ProviderScope(child: MainApp());
+        if (snapshot.connectionState != ConnectionState.done) {
+          return const AppSplash();
         }
-        return const AppSplash();
+        return const ProviderScope(child: MainApp());
       },
     ),
     onFlutterError: logger.flutterError,
