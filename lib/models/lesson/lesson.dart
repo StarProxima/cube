@@ -26,6 +26,7 @@ class Lesson with _$Lesson {
     @HiveField(10) required bool isElective,
     @HiveField(11) required bool isEvent,
     @HiveField(14, defaultValue: false) required bool isCollision,
+    @HiveField(15, defaultValue: false) required bool isCancelled,
     @HiveField(12) required Color defaultColor,
     @HiveField(13) required int emptyLessonsBefore,
   }) = _Lesson;

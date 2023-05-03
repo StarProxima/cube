@@ -27,8 +27,9 @@ import 'package:cube_system/features/timetable_page/state_holders/lessons/next_l
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_body.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_footer.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_header.dart';
-part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_icons_icon.dart';
-part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_icons.dart';
+part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/info_panel/lesson_card_info_panel_icon.dart';
+part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/info_panel/lesson_card_info_panel_chip.dart';
+part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/info_panel/lesson_card_info_panel.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_indicator.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_time_left.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/next_lesson_time_to_start_progress_bar.dart';
@@ -125,7 +126,7 @@ class LessonCard extends ConsumerWidget {
               const Positioned(
                 top: 0,
                 right: 8,
-                child: LessonCardIcons(),
+                child: LessonCardInfoPanel(),
               ),
             ],
           ),

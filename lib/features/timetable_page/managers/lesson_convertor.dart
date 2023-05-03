@@ -90,9 +90,10 @@ class LessonConvertor {
       isElective: lesson.isElective,
       isRemotely: lesson.isRemotely,
       isEvent: isEvent,
+      isCollision: isCollision,
+      isCancelled: lesson.status == LessonStatus.value_3,
       defaultColor: color,
       emptyLessonsBefore: emptyLessonsBefore,
-      isCollision: isCollision,
     );
 
     return newLesson;
