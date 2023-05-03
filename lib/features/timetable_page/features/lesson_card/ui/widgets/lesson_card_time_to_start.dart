@@ -15,10 +15,15 @@ class LessonCardTimeToStart extends ConsumerWidget {
       nextLessonTimeToStartProvider.select((value) => value == null),
     );
 
-    final lessonNext = ref.watch(nextLesson);
-    final lessonCurrent = ref.watch(currentLesson);
+    final nextLesson = ref.watch(nextLessonStateHolder);
 
-    if (dontShow || lesson != lessonNext || lessonCurrent != null) {
+    final currentLesson = ref.watch(currentLessonStateHolder);
+
+    final manager = ref.read(timetableLessonsManager);
+
+    final isActiveLessons = manager.isEquelLessons(lesson, nextLesson);
+
+    if (dontShow || !isActiveLessons || currentLesson != null) {
       return const SizedBox();
     }
 

@@ -7,17 +7,22 @@ class LessonCardInfoPanel extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isRemotely =
-        ref.watch(_lessonInLessonCard.select((value) => value.isRemotely));
+    final lesson = ref.watch(_lessonInLessonCard);
 
-    final isCollision =
-        ref.watch(_lessonInLessonCard.select((value) => value.isCollision));
+    final isRemotely = lesson.isRemotely;
 
-    final isCancelled =
-        ref.watch(_lessonInLessonCard.select((value) => value.isCancelled));
+    final isCollision = lesson.isCollision;
 
-    final isActiveLessons =
-        ref.watch(_lessonInLessonCard) == ref.watch(currentLesson);
+    final isCancelled = lesson.isCancelled;
+
+    final currentLesson = ref.watch(currentLessonStateHolder);
+
+    final equelNumber = lesson.number == currentLesson?.number;
+
+    final equelStartDateTime = lesson.dateTimings.startDateTime ==
+        currentLesson?.dateTimings.startDateTime;
+
+    final isActiveLessons = equelNumber && equelStartDateTime;
 
     // final isCollision = _random.nextInt(100) < 25;
 
@@ -43,28 +48,7 @@ class LessonCardInfoPanel extends ConsumerWidget {
           LessonCardInfoPanelIcon(
             icon: Text('$numberOfNotes'),
           ),
-        if (isActiveLessons)
-          Consumer(
-            builder: (context, ref, _) {
-              ref.watch(
-                currentLessonTimeToEndProvider
-                    .select((value) => value?.format().length),
-              );
-
-              final hasHours =
-                  (ref.read(currentLessonTimeToEndProvider)?.hours ?? 0) > 0;
-
-              return hasHours
-                  ? const LessonCardInfoPanelChip(
-                      minWidth: 66,
-                      text: LessonCardTimeLeft(),
-                    )
-                  : const LessonCardInfoPanelChip(
-                      minWidth: 46,
-                      text: LessonCardTimeLeft(),
-                    );
-            },
-          ),
+        const LessonCardInfoPanelTimeToEnd(),
         if (isCollision)
           const LessonCardInfoPanelChip(
             text: Text('Коллизия'),

@@ -31,9 +31,9 @@ final timetableLessonsManager = Provider<TimetableLessonsManager>((ref) {
     events: ref.watch(timetablePageEvents.notifier),
     currentDateTime: ref.watch(currentDateTimeQuick.notifier),
     selectedDate: ref.watch(selectedDate.notifier),
-    currentLesson: ref.watch(currentLesson.notifier),
-    nextLesson: ref.watch(nextLesson.notifier),
-    lastLesson: ref.watch(lastLesson.notifier),
+    currentLesson: ref.watch(currentLessonStateHolder.notifier),
+    nextLesson: ref.watch(nextLessonStateHolder.notifier),
+    lastLesson: ref.watch(lastLessonStateHolder.notifier),
   );
 });
 
@@ -214,5 +214,10 @@ class TimetableLessonsManager {
         lessonLast = lesson;
       }
     }
+  }
+
+  bool isEquelLessons(Lesson? one, Lesson? two) {
+    return one?.dateTimings.startDateTime == two?.dateTimings.startDateTime &&
+        one?.number == two?.number;
   }
 }

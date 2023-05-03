@@ -16,13 +16,13 @@ final nextLessonTimeToStartProvider = Provider<DateTimeDuration?>((ref) {
   if (condition.isNever) return null;
 
   if (condition.isOnlyRecessBetweenLessons) {
-    final last = ref.watch(lastLesson);
-    final next = ref.watch(nextLesson);
+    final last = ref.watch(lastLessonStateHolder);
+    final next = ref.watch(nextLessonStateHolder);
     if (last == null || next == null) return null;
     if (next.number - last.number != 1) return null;
   }
 
-  final next = ref.watch(nextLesson);
+  final next = ref.watch(nextLessonStateHolder);
 
   if (next == null) return null;
 
