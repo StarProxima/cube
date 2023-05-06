@@ -19,19 +19,24 @@ class AppUpgradeAlert extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final appcastConfiguration = ref.watch(_appcastConfigurationProvider);
-
     return Navigator(
       onGenerateRoute: (route) => MaterialPageRoute(
-        builder: (context) => UpgradeAlert(
-          upgrader: Upgrader(
-            countryCode: 'RU',
-            debugLogging: true,
-            debugDisplayAlways: true,
-            appcastConfig: appcastConfiguration,
-          ),
-          child: child,
-        ),
+        builder: (context) {
+          final isFirstRun = !ref.exists(_appcastConfigurationProvider);
+          final appcastConfiguration = ref.watch(_appcastConfigurationProvider);
+
+          return UpgradeAlert(
+            upgrader: Upgrader(
+              enable: isFirstRun,
+              countryCode: 'ru',
+              debugLogging: true,
+              debugDisplayAlways: true,
+              appcastConfig: appcastConfiguration,
+              dialogStyle: UpgradeDialogStyle.material,
+            ),
+            child: child,
+          );
+        },
       ),
     );
   }

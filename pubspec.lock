@@ -1134,10 +1134,11 @@ packages:
   upgrader:
     dependency: "direct main"
     description:
-      name: upgrader
-      sha256: "3c61e3a99184e60947d2b2d93c1b5243a98a634aa6cc852d49dfaaeb9f42a7b5"
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: "21f307fd5f1e15747a0947ad1459af8493e3a564"
+      url: "https://github.com/StarProxima/upgrader"
+    source: git
     version: "6.3.0"
   url_launcher:
     dependency: "direct main"
