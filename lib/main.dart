@@ -25,19 +25,18 @@ void main() async {
 
         await dotenv.load();
         await Future.wait([
-          if (kIsMobile)
-            AppMetrica.activate(
-              AppMetricaConfig(dotenv.env['APP_METRICA_API_KEY']!),
-            ),
+          AppMetrica.activate(
+            AppMetricaConfig(dotenv.env['APP_METRICA_API_KEY']!),
+          ),
           HiveInitializer.init(),
           Future.delayed(const Duration(milliseconds: 2500))
         ]);
       },
       builder: (context, snapshot, _) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          return const ProviderScope(child: MainApp());
+        if (snapshot.connectionState != ConnectionState.done) {
+          return const AppSplash();
         }
-        return const AppSplash();
+        return const ProviderScope(child: MainApp());
       },
     ),
     onFlutterError: logger.flutterError,

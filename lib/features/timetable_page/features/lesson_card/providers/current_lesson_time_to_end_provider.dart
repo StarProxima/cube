@@ -6,7 +6,7 @@ import 'package:cube_system/features/timetable_page/state_holders/lessons/curren
 
 final currentLessonTimeToEndProvider = Provider<DateTimeDuration?>((ref) {
   final currentDateTime = ref.watch(currentDateTimeQuick);
-  final activeLesson = ref.watch(currentLesson);
+  final activeLesson = ref.watch(currentLessonStateHolder);
 
   if (activeLesson == null) return null;
 

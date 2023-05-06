@@ -20,4 +20,8 @@ enum TimetableType {
     }
     return null;
   }
+
+  bool get isGroup => this == TimetableType.group;
+  bool get isTeacher => this == TimetableType.teacher;
+  bool get isPlace => this == TimetableType.place;
 }

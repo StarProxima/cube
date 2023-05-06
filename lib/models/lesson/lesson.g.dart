@@ -31,6 +31,8 @@ class LessonAdapter extends TypeAdapter<_$_Lesson> {
       isRemotely: fields[9] as bool,
       isElective: fields[10] as bool,
       isEvent: fields[11] as bool,
+      isCollision: fields[14] == null ? false : fields[14] as bool,
+      isCancelled: fields[15] == null ? false : fields[15] as bool,
       defaultColor: fields[12] as Color,
       emptyLessonsBefore: fields[13] as int,
     );
@@ -39,7 +41,7 @@ class LessonAdapter extends TypeAdapter<_$_Lesson> {
   @override
   void write(BinaryWriter writer, _$_Lesson obj) {
     writer
-      ..writeByte(14)
+      ..writeByte(16)
       ..writeByte(0)
       ..write(obj.number)
       ..writeByte(1)
@@ -60,6 +62,10 @@ class LessonAdapter extends TypeAdapter<_$_Lesson> {
       ..write(obj.isElective)
       ..writeByte(11)
       ..write(obj.isEvent)
+      ..writeByte(14)
+      ..write(obj.isCollision)
+      ..writeByte(15)
+      ..write(obj.isCancelled)
       ..writeByte(12)
       ..write(obj.defaultColor)
       ..writeByte(13)

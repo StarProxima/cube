@@ -76,9 +76,22 @@ class TimetablePageDay extends ConsumerWidget {
       physics: const BouncingScrollPhysics(
         parent: AlwaysScrollableScrollPhysics(),
       ),
-      itemCount: lessons.length,
-      itemBuilder: (context, index) => LessonCard(lessons[index]),
-      separatorBuilder: (context, index) => const SizedBox(height: 12),
+      itemCount: lessons.length + 1,
+      itemBuilder: (context, index) {
+        if (index == lessons.length) {
+          return const Padding(
+            padding: EdgeInsets.only(top: 9),
+            // child: TimetablePageMessageCard(),
+            child: SizedBox(),
+          );
+        }
+        final lesson = lessons[index];
+        return LessonCard(
+          key: ValueKey(lesson),
+          lesson,
+        );
+      },
+      separatorBuilder: (context, index) => const SizedBox(height: 11),
     );
   }
 }

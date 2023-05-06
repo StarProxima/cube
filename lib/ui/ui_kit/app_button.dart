@@ -72,34 +72,37 @@ class AppButton extends StatelessWidget {
         );
     }
 
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        boxShadow: [
-          if (style.isPrimary && onTap != null)
-            BoxShadow(
-              color: context.colors.primary.withOpacity(0.3),
-              offset: const Offset(0, 1),
-              blurRadius: 8,
-            )
-        ],
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: GestureDetector(
-        onTap: isDisabled ? onDisabledTap : null,
-        child: TextButton(
-          onPressed: onTap,
-          style: buttonStyle,
-          child: rightIcon == null
-              ? Text(text ?? '')
-              : Stack(
-                  children: [
-                    Center(child: Text(text ?? '')),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: rightIcon!,
-                    ),
-                  ],
-                ),
+    return SizedBox(
+      height: height,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          boxShadow: [
+            if (style.isPrimary && onTap != null)
+              BoxShadow(
+                color: context.colors.primary.withOpacity(0.3),
+                offset: const Offset(0, 1),
+                blurRadius: 8,
+              )
+          ],
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: GestureDetector(
+          onTap: isDisabled ? onDisabledTap : null,
+          child: TextButton(
+            onPressed: onTap,
+            style: buttonStyle,
+            child: rightIcon == null
+                ? Text(text ?? '')
+                : Stack(
+                    children: [
+                      Center(child: Text(text ?? '')),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: rightIcon!,
+                      ),
+                    ],
+                  ),
+          ),
         ),
       ),
     );

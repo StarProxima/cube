@@ -31,9 +31,9 @@ final timetableLessonsManager = Provider<TimetableLessonsManager>((ref) {
     events: ref.watch(timetablePageEvents.notifier),
     currentDateTime: ref.watch(currentDateTimeQuick.notifier),
     selectedDate: ref.watch(selectedDate.notifier),
-    currentLesson: ref.watch(currentLesson.notifier),
-    nextLesson: ref.watch(nextLesson.notifier),
-    lastLesson: ref.watch(lastLesson.notifier),
+    currentLesson: ref.watch(currentLessonStateHolder.notifier),
+    nextLesson: ref.watch(nextLessonStateHolder.notifier),
+    lastLesson: ref.watch(lastLessonStateHolder.notifier),
   );
 });
 
@@ -73,29 +73,31 @@ class TimetableLessonsManager {
     events.change(SplayTreeMap());
   }
 
-  Future<List<LessonFullNamesInDb>> _getLessons({
+  Future<List<LessonFullInDb>> _getLessons({
     required DateTime startDate,
     required DateTime endDate,
   }) async {
-    final format = DateFormat('yyyy-MM-dd');
-
     final timetable = selectedTimetable.state;
 
     if (timetable == null) return [];
 
-    final lessonResponse = await api.apiLessonsGet(
-      fullData: true,
-      groups: timetable.type == TimetableType.group ? [timetable.id] : null,
-      teachers: timetable.type == TimetableType.teacher ? [timetable.id] : null,
-      places: timetable.type == TimetableType.place ? [timetable.id] : null,
-      startDate: format.format(startDate),
-      endDate: format.format(endDate),
+    final format = DateFormat('yyyy-MM-dd');
+
+    final startDateStr = format.format(startDate);
+    final endDateStr = format.format(endDate);
+
+    final lessonResponse = await api.apiTimetableLessonsViewerGet(
+      group: timetable.type == TimetableType.group ? [timetable.id] : null,
+      teacher: timetable.type == TimetableType.teacher ? [timetable.id] : null,
+      place: timetable.type == TimetableType.place ? [timetable.id] : null,
+      startDate: startDateStr,
+      endDate: endDateStr,
     );
 
-    return lessonResponse.body!;
+    return lessonResponse.body!.data;
   }
 
-  void _setLessons(List<LessonFullNamesInDb> lessons) {
+  void _setLessons(List<LessonFullInDb> lessons) {
     TimetableLessons timetableMap =
         SplayTreeMap.of(timetableLessons.state.cast());
 
@@ -103,15 +105,41 @@ class TimetableLessonsManager {
       timetableMap[lesson.date] = [];
     }
 
+    // for (int i = 0; i < lessons.length; i++) {
+    //   if (lessons[i].date.day == DateTime.now().day) {
+    //     lessons.insert(
+    //       i + 1,
+    //       lessons[i].copyWith(
+    //         place: lessons[i].place?.copyWith(
+    //               name: 'fwefweof',
+    //             ),
+    //       ),
+    //     );
+    //     break;
+    //   }
+    // }
+
     for (int i = 0; i < lessons.length; i++) {
       final lesson = lessons[i];
       int emptyLessonsBefore = 0;
-      if (i > 0 && lessons[i - 1].date == lesson.date) {
+
+      final equalPrevious = i > 0 &&
+          lessons[i - 1].number == lesson.number &&
+          lessons[i - 1].date == lesson.date;
+      final equalNext = i < lessons.length - 1 &&
+          lessons[i + 1].number == lesson.number &&
+          lessons[i + 1].date == lesson.date;
+
+      final isCollision = equalPrevious || equalNext;
+
+      if (i > 0 && lessons[i - 1].date == lesson.date && !isCollision) {
         emptyLessonsBefore = lesson.number - lessons[i - 1].number - 1;
       }
+
       final l = lessonConvertor.lessonByLessonFullNamesInDb(
         lesson: lesson,
         emptyLessonsBefore: emptyLessonsBefore,
+        isCollision: isCollision,
       );
 
       timetableMap[lesson.date]!.add(l);
@@ -186,5 +214,10 @@ class TimetableLessonsManager {
         lessonLast = lesson;
       }
     }
+  }
+
+  bool isEquelLessons(Lesson? one, Lesson? two) {
+    return one?.dateTimings.startDateTime == two?.dateTimings.startDateTime &&
+        one?.number == two?.number;
   }
 }

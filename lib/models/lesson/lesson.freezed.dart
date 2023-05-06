@@ -40,6 +40,10 @@ mixin _$Lesson {
   bool get isElective => throw _privateConstructorUsedError;
   @HiveField(11)
   bool get isEvent => throw _privateConstructorUsedError;
+  @HiveField(14, defaultValue: false)
+  bool get isCollision => throw _privateConstructorUsedError;
+  @HiveField(15, defaultValue: false)
+  bool get isCancelled => throw _privateConstructorUsedError;
   @HiveField(12)
   Color get defaultColor => throw _privateConstructorUsedError;
   @HiveField(13)
@@ -67,6 +71,8 @@ abstract class $LessonCopyWith<$Res> {
       @HiveField(9) bool isRemotely,
       @HiveField(10) bool isElective,
       @HiveField(11) bool isEvent,
+      @HiveField(14, defaultValue: false) bool isCollision,
+      @HiveField(15, defaultValue: false) bool isCancelled,
       @HiveField(12) Color defaultColor,
       @HiveField(13) int emptyLessonsBefore});
 
@@ -99,6 +105,8 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
     Object? isRemotely = null,
     Object? isElective = null,
     Object? isEvent = null,
+    Object? isCollision = null,
+    Object? isCancelled = null,
     Object? defaultColor = null,
     Object? emptyLessonsBefore = null,
   }) {
@@ -151,6 +159,14 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
           ? _value.isEvent
           : isEvent // ignore: cast_nullable_to_non_nullable
               as bool,
+      isCollision: null == isCollision
+          ? _value.isCollision
+          : isCollision // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCancelled: null == isCancelled
+          ? _value.isCancelled
+          : isCancelled // ignore: cast_nullable_to_non_nullable
+              as bool,
       defaultColor: null == defaultColor
           ? _value.defaultColor
           : defaultColor // ignore: cast_nullable_to_non_nullable
@@ -198,6 +214,8 @@ abstract class _$$_LessonCopyWith<$Res> implements $LessonCopyWith<$Res> {
       @HiveField(9) bool isRemotely,
       @HiveField(10) bool isElective,
       @HiveField(11) bool isEvent,
+      @HiveField(14, defaultValue: false) bool isCollision,
+      @HiveField(15, defaultValue: false) bool isCancelled,
       @HiveField(12) Color defaultColor,
       @HiveField(13) int emptyLessonsBefore});
 
@@ -229,6 +247,8 @@ class __$$_LessonCopyWithImpl<$Res>
     Object? isRemotely = null,
     Object? isElective = null,
     Object? isEvent = null,
+    Object? isCollision = null,
+    Object? isCancelled = null,
     Object? defaultColor = null,
     Object? emptyLessonsBefore = null,
   }) {
@@ -281,6 +301,14 @@ class __$$_LessonCopyWithImpl<$Res>
           ? _value.isEvent
           : isEvent // ignore: cast_nullable_to_non_nullable
               as bool,
+      isCollision: null == isCollision
+          ? _value.isCollision
+          : isCollision // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCancelled: null == isCancelled
+          ? _value.isCancelled
+          : isCancelled // ignore: cast_nullable_to_non_nullable
+              as bool,
       defaultColor: null == defaultColor
           ? _value.defaultColor
           : defaultColor // ignore: cast_nullable_to_non_nullable
@@ -310,6 +338,8 @@ class _$_Lesson implements _Lesson {
       @HiveField(9) required this.isRemotely,
       @HiveField(10) required this.isElective,
       @HiveField(11) required this.isEvent,
+      @HiveField(14, defaultValue: false) required this.isCollision,
+      @HiveField(15, defaultValue: false) required this.isCancelled,
       @HiveField(12) required this.defaultColor,
       @HiveField(13) required this.emptyLessonsBefore})
       : _groupNames = groupNames,
@@ -364,6 +394,12 @@ class _$_Lesson implements _Lesson {
   @HiveField(11)
   final bool isEvent;
   @override
+  @HiveField(14, defaultValue: false)
+  final bool isCollision;
+  @override
+  @HiveField(15, defaultValue: false)
+  final bool isCancelled;
+  @override
   @HiveField(12)
   final Color defaultColor;
   @override
@@ -372,7 +408,7 @@ class _$_Lesson implements _Lesson {
 
   @override
   String toString() {
-    return 'Lesson(number: $number, timings: $timings, dateTimings: $dateTimings, type: $type, typeShortName: $typeShortName, disciplineName: $disciplineName, place: $place, groupNames: $groupNames, teacherNames: $teacherNames, isRemotely: $isRemotely, isElective: $isElective, isEvent: $isEvent, defaultColor: $defaultColor, emptyLessonsBefore: $emptyLessonsBefore)';
+    return 'Lesson(number: $number, timings: $timings, dateTimings: $dateTimings, type: $type, typeShortName: $typeShortName, disciplineName: $disciplineName, place: $place, groupNames: $groupNames, teacherNames: $teacherNames, isRemotely: $isRemotely, isElective: $isElective, isEvent: $isEvent, isCollision: $isCollision, isCancelled: $isCancelled, defaultColor: $defaultColor, emptyLessonsBefore: $emptyLessonsBefore)';
   }
 
   @override
@@ -399,6 +435,10 @@ class _$_Lesson implements _Lesson {
             (identical(other.isElective, isElective) ||
                 other.isElective == isElective) &&
             (identical(other.isEvent, isEvent) || other.isEvent == isEvent) &&
+            (identical(other.isCollision, isCollision) ||
+                other.isCollision == isCollision) &&
+            (identical(other.isCancelled, isCancelled) ||
+                other.isCancelled == isCancelled) &&
             (identical(other.defaultColor, defaultColor) ||
                 other.defaultColor == defaultColor) &&
             (identical(other.emptyLessonsBefore, emptyLessonsBefore) ||
@@ -420,6 +460,8 @@ class _$_Lesson implements _Lesson {
       isRemotely,
       isElective,
       isEvent,
+      isCollision,
+      isCancelled,
       defaultColor,
       emptyLessonsBefore);
 
@@ -444,6 +486,8 @@ abstract class _Lesson implements Lesson {
       @HiveField(9) required final bool isRemotely,
       @HiveField(10) required final bool isElective,
       @HiveField(11) required final bool isEvent,
+      @HiveField(14, defaultValue: false) required final bool isCollision,
+      @HiveField(15, defaultValue: false) required final bool isCancelled,
       @HiveField(12) required final Color defaultColor,
       @HiveField(13) required final int emptyLessonsBefore}) = _$_Lesson;
 
@@ -483,6 +527,12 @@ abstract class _Lesson implements Lesson {
   @override
   @HiveField(11)
   bool get isEvent;
+  @override
+  @HiveField(14, defaultValue: false)
+  bool get isCollision;
+  @override
+  @HiveField(15, defaultValue: false)
+  bool get isCancelled;
   @override
   @HiveField(12)
   Color get defaultColor;

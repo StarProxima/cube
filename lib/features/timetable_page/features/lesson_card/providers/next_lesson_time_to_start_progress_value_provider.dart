@@ -17,8 +17,8 @@ final nextLessonTimeToStartProgressValueProvider = Provider<double>((ref) {
   final timeLeft = ref.read(nextLessonTimeToStartProvider)?.duration;
   if (timeLeft == null) return 1;
 
-  final lessonNext = ref.watch(nextLesson);
-  final lessonLast = ref.watch(lastLesson);
+  final lessonNext = ref.watch(nextLessonStateHolder);
+  final lessonLast = ref.watch(lastLessonStateHolder);
 
   if (lessonNext == null || lessonLast == null) return 1;
 

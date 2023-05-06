@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
 import 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/recess_card.dart';
-import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/timetable_page/state_holders/selected_timetable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -24,12 +23,16 @@ import 'package:cube_system/features/settings/state_holders/app_lesson_colors.da
 
 import 'package:cube_system/features/timetable_page/state_holders/lessons/next_lesson.dart';
 
+import 'package:cube_system/features/timetable_page/managers/timetable_lessons_manager.dart';
+
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_body.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_footer.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_header.dart';
-part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_icons.dart';
+part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/info_panel/lesson_card_info_panel_icon.dart';
+part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/info_panel/lesson_card_info_panel_chip.dart';
+part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/info_panel/lesson_card_info_panel_time_to_end.dart';
+part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/info_panel/lesson_card_info_panel.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_indicator.dart';
-part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_time_left.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/next_lesson_time_to_start_progress_bar.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_lesson_type_chip.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_time_to_start.dart';
@@ -46,7 +49,6 @@ class LessonCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final manager = ref.watch(timetablePageManager);
     return ProviderScope(
       overrides: [
         _lessonInLessonCard.overrideWithValue(lesson),
@@ -54,15 +56,15 @@ class LessonCard extends ConsumerWidget {
       child: Column(
         children: [
           const LessonCardRecess(
-            margin: EdgeInsets.only(bottom: 12, top: 8),
+            margin: EdgeInsets.only(bottom: 12, top: 9),
           ),
           const LessonCardTimeToStart(
-            margin: EdgeInsets.only(bottom: 8, top: 4),
+            margin: EdgeInsets.only(bottom: 9, top: 4),
           ),
           Stack(
             children: [
               Container(
-                margin: const EdgeInsets.only(top: 8),
+                margin: const EdgeInsets.only(top: 9),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7),
                   color: context.colors.background,
@@ -84,7 +86,6 @@ class LessonCard extends ConsumerWidget {
                         const LessonCardIndicator(),
                         Expanded(
                           child: InkWell(
-                            onTap: manager.findLastCurrentNextLesson,
                             child: Column(
                               children: [
                                 Padding(
@@ -125,7 +126,7 @@ class LessonCard extends ConsumerWidget {
               const Positioned(
                 top: 0,
                 right: 8,
-                child: LessonCardIcons(),
+                child: LessonCardInfoPanel(),
               ),
             ],
           ),

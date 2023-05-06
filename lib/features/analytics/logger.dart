@@ -1,6 +1,6 @@
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:cube_system/core/utils.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:proxima_logger/proxima_logger.dart' as pr;
 
 import 'package:cube_system/features/analytics/analytical_logger_mixin.dart';
@@ -8,6 +8,8 @@ import 'package:cube_system/features/analytics/analytical_logger_mixin.dart';
 import 'package:cube_system/features/analytics/log_type.dart';
 
 final logger = AppLogger();
+
+final shouldReportEvent = kIsMobile && !kDebugMode;
 
 class AppLogger extends pr.ProximaLogger with AnalyticalLoggerMixin {
   AppLogger()
@@ -27,7 +29,7 @@ class AppLogger extends pr.ProximaLogger with AnalyticalLoggerMixin {
         );
 
   void error(Object error, StackTrace stackTrace) {
-    if (kIsMobile) {
+    if (shouldReportEvent) {
       AppMetrica.reportError(
         errorDescription: AppMetricaErrorDescription.fromObjectAndStackTrace(
           error,
@@ -44,7 +46,7 @@ class AppLogger extends pr.ProximaLogger with AnalyticalLoggerMixin {
   }
 
   void flutterError(FlutterErrorDetails details) {
-    if (kIsMobile) {
+    if (shouldReportEvent) {
       AppMetrica.reportError(
         message: null,
         errorDescription:

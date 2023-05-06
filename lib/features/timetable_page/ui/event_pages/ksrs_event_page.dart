@@ -11,8 +11,8 @@ class KsrsEventPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return AppEventPage(
       picture: Assets.brooklyn.rest3.svg(),
-      title: 'В этот день пар нет',
-      subTitle: 'Можно отдохнуть',
+      title: 'КСРС',
+      subTitle: 'Контролируемая самостоятельная работа студентов',
     );
   }
 }
