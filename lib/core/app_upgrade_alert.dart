@@ -6,7 +6,10 @@ final _appcastConfigurationProvider = Provider<AppcastConfiguration>((ref) {
   const appcastURL =
       'https://raw.githubusercontent.com/StarProxima/cube_appcast/main/appcast.xml';
 
-  return AppcastConfiguration(url: appcastURL, supportedOS: ['android']);
+  return AppcastConfiguration(
+    url: appcastURL,
+    supportedOS: ['android', 'windows'],
+  );
 });
 
 class AppUpgradeAlert extends ConsumerWidget {
