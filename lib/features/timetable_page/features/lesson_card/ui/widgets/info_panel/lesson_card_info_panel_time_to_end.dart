@@ -40,7 +40,7 @@ class LessonCardInfoPanelTimeToEnd extends ConsumerWidget {
 }
 
 class _LessonCardInfoPanelTimeToEndText extends ConsumerWidget {
-  const _LessonCardInfoPanelTimeToEndText({super.key});
+  const _LessonCardInfoPanelTimeToEndText();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

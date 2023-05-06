@@ -15,15 +15,6 @@ class LessonCardInfoPanel extends ConsumerWidget {
 
     final isCancelled = lesson.isCancelled;
 
-    final currentLesson = ref.watch(currentLessonStateHolder);
-
-    final equelNumber = lesson.number == currentLesson?.number;
-
-    final equelStartDateTime = lesson.dateTimings.startDateTime ==
-        currentLesson?.dateTimings.startDateTime;
-
-    final isActiveLessons = equelNumber && equelStartDateTime;
-
     // final isCollision = _random.nextInt(100) < 25;
 
     // final isRemotely = _random.nextInt(100) < 25;

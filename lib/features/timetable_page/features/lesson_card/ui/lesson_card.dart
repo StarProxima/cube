@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
 import 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/recess_card.dart';
-import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/timetable_page/state_holders/selected_timetable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -50,7 +49,6 @@ class LessonCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final manager = ref.watch(timetablePageManager);
     return ProviderScope(
       overrides: [
         _lessonInLessonCard.overrideWithValue(lesson),
