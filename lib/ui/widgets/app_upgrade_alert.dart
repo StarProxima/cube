@@ -8,7 +8,7 @@ final _appcastConfigurationProvider = Provider<AppcastConfiguration>((ref) {
 
   return AppcastConfiguration(
     url: appcastURL,
-    supportedOS: ['android', 'windows'],
+    supportedOS: ['android', 'ios', 'macos', 'windows'],
   );
 });
 
@@ -30,9 +30,7 @@ class AppUpgradeAlert extends ConsumerWidget {
               enable: isFirstRun,
               countryCode: 'ru',
               debugLogging: true,
-              debugDisplayAlways: true,
               appcastConfig: appcastConfiguration,
-              dialogStyle: UpgradeDialogStyle.material,
             ),
             child: child,
           );

@@ -1,4 +1,4 @@
-import 'package:cube_system/core/app_upgrade_alert.dart';
+import 'package:cube_system/ui/widgets/app_upgrade_alert.dart';
 import 'package:cube_system/ui/widgets/app_overlay_style_wrapper.dart';
 import 'package:cube_system/ui/widgets/fade_animated_widget.dart';
 import 'package:device_preview/device_preview.dart';

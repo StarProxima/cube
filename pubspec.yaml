@@ -18,6 +18,11 @@ dependencies:
       url: https://github.com/google/flutter-desktop-embedding
       path: plugins/window_size
 
+  upgrader: 
+    git:
+      url: https://github.com/StarProxima/upgrader
+  
+
   json_annotation: ^4.8.0
   freezed_annotation: ^2.2.0
   theme_tailor_annotation: ^1.0.3
@@ -44,10 +49,7 @@ dependencies:
   package_info_plus: ^3.1.0
   flutter_dotenv: ^5.0.2
   appmetrica_plugin: ^1.1.0
-  upgrader: 
-    git:
-      url: https://github.com/StarProxima/upgrader
-  
+
 
   
 dev_dependencies:
