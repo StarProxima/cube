@@ -93,9 +93,9 @@ BEGIN
             VALUE "FileDescription", "cube_system" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "cube_system" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 com.nullexp. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2023 NullExp inc. All rights reserved." "\0"
             VALUE "OriginalFilename", "cube_system.exe" "\0"
-            VALUE "ProductName", "cube_system" "\0"
+            VALUE "ProductName", "Куб.Расписание" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

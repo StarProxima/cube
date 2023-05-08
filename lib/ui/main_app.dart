@@ -1,3 +1,4 @@
+import 'package:cube_system/ui/widgets/app_upgrade_alert.dart';
 import 'package:cube_system/ui/widgets/app_overlay_style_wrapper.dart';
 import 'package:cube_system/ui/widgets/fade_animated_widget.dart';
 import 'package:device_preview/device_preview.dart';
@@ -10,7 +11,6 @@ import 'package:cube_system/features/navigation/router/app_router.dart';
 import 'package:cube_system/styles/app_colors/app_colors.dart';
 import 'package:cube_system/styles/app_text_styles/app_text_styles.dart';
 import 'package:cube_system/styles/app_theme.dart';
-import 'package:upgrader/upgrader.dart';
 
 class MainApp extends ConsumerWidget {
   const MainApp({super.key});
@@ -26,14 +26,11 @@ class MainApp extends ConsumerWidget {
         builder: (context) => MaterialApp.router(
           debugShowCheckedModeBanner: false,
           locale: DevicePreview.locale(context),
-          builder: (context, child) => UpgradeAlert(
-            upgrader: Upgrader(
-              countryCode: 'RU',
-            ),
+          builder: (context, child) => AppUpgradeAlert(
             child: Scaffold(
               resizeToAvoidBottomInset: false,
               body: FadeAnimatedWidget(
-                child: DevicePreview.appBuilder(context, child),
+                child: DevicePreview.appBuilder(context, child!),
               ),
             ),
           ),

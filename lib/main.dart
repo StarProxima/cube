@@ -25,9 +25,10 @@ void main() async {
 
         await dotenv.load();
         await Future.wait([
-          AppMetrica.activate(
-            AppMetricaConfig(dotenv.env['APP_METRICA_API_KEY']!),
-          ),
+          if (kIsMobile)
+            AppMetrica.activate(
+              AppMetricaConfig(dotenv.env['APP_METRICA_API_KEY']!),
+            ),
           HiveInitializer.init(),
           Future.delayed(const Duration(milliseconds: 2500))
         ]);
