@@ -7,8 +7,9 @@ class AppTheme {
     required AppColors colors,
     required AppTextStyles textStyles,
   }) {
-    final theme = ThemeData.light();
-    return theme.copyWith(
+    return ThemeData.light().copyWith(
+      useMaterial3: true,
+      colorScheme: ColorScheme.fromSeed(seedColor: colors.primary),
       scaffoldBackgroundColor: colors.background,
       dividerColor: colors.subduedBorder,
       primaryColor: colors.primary,
@@ -22,6 +23,7 @@ class AppTheme {
       ),
       appBarTheme: AppBarTheme(
         centerTitle: true,
+        surfaceTintColor: colors.background,
         titleTextStyle: textStyles.appBarTitle,
         backgroundColor: colors.background,
         shadowColor: colors.shadow,
