@@ -15,51 +15,60 @@ class LandingLastPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settingsNotifier = ref.read(appSettingsStateHolder.notifier);
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
-      child: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: 100),
-            FadeAnimatedWidget(
-              size: 300,
-              child: Assets.brooklyn.welcome3.svg(),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: SafeArea(
+            child: Container(
+              alignment: const Alignment(0, -0.25),
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              child: Column(
+                children: [
+                  const SizedBox(height: 24),
+                  FadeAnimatedWidget(
+                    size: 300,
+                    child: Assets.brooklyn.welcome3.svg(),
+                  ),
+                  Text(
+                    'Вы почти у цели',
+                    style: context.textStyles.largeTitle,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Осталось только выбрать расписание',
+                    style: context.textStyles.subTitle,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 24),
+                  AppButton(
+                    text: 'Выбрать расписание',
+                    isExpanded: true,
+                    onTap: () {
+                      context.go('/timetable/search');
+                      settingsNotifier.editLandingPassed(true);
+                      logger.landingPassage(isSkipSelectingTimetable: false);
+                    },
+                  ),
+                  const SizedBox(height: 8),
+                  AppButton(
+                    text: 'Пропустить',
+                    isExpanded: true,
+                    style: AppButtonStyle.secondary,
+                    onTap: () {
+                      context.go('/timetable');
+                      settingsNotifier.editLandingPassed(true);
+                      logger.landingPassage(isSkipSelectingTimetable: true);
+                    },
+                  ),
+                  const SizedBox(height: 24),
+                ],
+              ),
             ),
-            Text(
-              'Вы почти у цели',
-              style: context.textStyles.largeTitle,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Осталось только выбрать расписание',
-              style: context.textStyles.subTitle,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 24),
-            AppButton(
-              text: 'Выбрать расписание',
-              isExpanded: true,
-              onTap: () {
-                context.go('/timetable/search');
-                settingsNotifier.editLandingPassed(true);
-                logger.landingPassage(isSkipSelectingTimetable: false);
-              },
-            ),
-            const SizedBox(height: 8),
-            AppButton(
-              text: 'Пропустить',
-              isExpanded: true,
-              style: AppButtonStyle.secondary,
-              onTap: () {
-                context.go('/timetable');
-                settingsNotifier.editLandingPassed(true);
-                logger.landingPassage(isSkipSelectingTimetable: true);
-              },
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
