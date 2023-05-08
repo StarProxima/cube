@@ -2,6 +2,7 @@ import 'package:cube_system/core/extensions.dart';
 import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
 import 'package:cube_system/features/timetable_page/state_holders/selected_date.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
+import 'package:cube_system/ui/widgets/app_tooltip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -29,41 +30,59 @@ class WeekTimelineDayButton extends ConsumerWidget {
             ? context.colors.primary.toAppFadedColor()
             : null;
 
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        color: null,
-      ),
-      child: InkWell(
-        onTap: () => manager.pickSelectedDate(date),
-        borderRadius: BorderRadius.circular(8),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              DateFormat('EEE', 'ru').format(date),
-              style: context.textStyles.smallLabel.copyWith(
-                color: context.colors.subduedText,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 5),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4),
-                color: color,
-              ),
-              child: Text(
-                '${date.day}',
-                style: context.textStyles.label.copyWith(
-                  color: isSelectedDate || isCurrentDate
-                      ? context.colors.white
-                      : context.colors.text,
-                  fontWeight: FontWeight.w800,
+    String tooltipMessage =
+        DateFormat('EEEE, d MMMM ', 'ru').format(date).capitalize();
+
+    if (isCurrentDate || isSelectedDate) {
+      tooltipMessage += '\n';
+      if (isCurrentDate && isSelectedDate) {
+        tooltipMessage += '(cегодня, выбранно) ';
+      } else if (isCurrentDate) {
+        tooltipMessage += '(cегодня) ';
+      } else if (isSelectedDate) {
+        tooltipMessage += '(выбранно)';
+      }
+    }
+
+    return AppTooltip.long(
+      message: tooltipMessage,
+      verticalOffset: 32,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          color: null,
+        ),
+        child: InkWell(
+          onTap: () => manager.pickSelectedDate(date),
+          borderRadius: BorderRadius.circular(8),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                DateFormat('EEE', 'ru').format(date),
+                style: context.textStyles.smallLabel.copyWith(
+                  color: context.colors.subduedText,
                 ),
               ),
-            ),
-          ],
+              const SizedBox(height: 4),
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4),
+                  color: color,
+                ),
+                child: Text(
+                  '${date.day}',
+                  style: context.textStyles.label.copyWith(
+                    color: isSelectedDate || isCurrentDate
+                        ? context.colors.white
+                        : context.colors.text,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

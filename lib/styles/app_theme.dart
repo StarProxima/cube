@@ -21,6 +21,25 @@ class AppTheme {
         thickness: 1,
         space: 1,
       ),
+      tooltipTheme: TooltipThemeData(
+        excludeFromSemantics: true,
+        triggerMode: TooltipTriggerMode.tap,
+        waitDuration: const Duration(milliseconds: 500),
+        verticalOffset: 12,
+        textAlign: TextAlign.center,
+        textStyle: textStyles.chipLabel,
+        decoration: BoxDecoration(
+          color: colors.background,
+          borderRadius: BorderRadius.circular(7),
+          boxShadow: [
+            BoxShadow(
+              color: colors.shadow,
+              blurRadius: 12,
+              offset: const Offset(0, 1),
+            )
+          ],
+        ),
+      ),
       appBarTheme: AppBarTheme(
         centerTitle: true,
         surfaceTintColor: colors.background,

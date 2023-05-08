@@ -2,6 +2,7 @@ import 'package:cube_system/features/analytics/logger.dart';
 import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:cube_system/ui/ui_kit/app_button.dart';
+import 'package:cube_system/ui/widgets/app_tooltip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,6 +20,8 @@ import 'package:cube_system/features/landing_page/ui/widgets/landing_service_car
 import 'package:cube_system/features/settings/state_holders/package_info_state_holder.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'package:cube_system/core/secret/secret.dart';
 
 part 'widgets/settings_page_lesson_colors.dart';
 part 'widgets/settings_page_lesson_card_lesson_type_position.dart';

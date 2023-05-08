@@ -3,6 +3,8 @@ part of 'package:cube_system/features/timetable_page/features/lesson_card/ui/les
 class LessonCardInfoPanelTimeToEnd extends ConsumerWidget {
   const LessonCardInfoPanelTimeToEnd({super.key});
 
+  static const _tooltipMessage = 'Осталось времени до конца занятия';
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final lesson = ref.watch(_lessonInLessonCard);
@@ -28,10 +30,12 @@ class LessonCardInfoPanelTimeToEnd extends ConsumerWidget {
         return hasHours
             ? const LessonCardInfoPanelChip(
                 minWidth: 66,
+                tooltipMessage: _tooltipMessage,
                 text: _LessonCardInfoPanelTimeToEndText(),
               )
             : const LessonCardInfoPanelChip(
                 minWidth: 46,
+                tooltipMessage: _tooltipMessage,
                 text: _LessonCardInfoPanelTimeToEndText(),
               );
       },

@@ -10,11 +10,26 @@ class _SettingsPageAppInfo extends ConsumerWidget {
         Consumer(
           builder: (context, ref, _) {
             final packageInfo = ref.watch(packageInfoStateHolder);
+
+            final isSecret = ref.watch(
+              appSettingsStateHolder.select(
+                (settings) =>
+                    settings.lessonColorsMode.isAccent &&
+                    !settings.lessonCardLessonTypePosition.isOnIndicator &&
+                    settings.lessonCardRecessDisplayCondition.isAlways,
+              ),
+            );
+
             return packageInfo.when(
-              data: (packageInfo) => Text(
-                "Куб.Расписание v${packageInfo.version}+${packageInfo.buildNumber}",
-                style: context.textStyles.smallSubTitle.copyWith(
-                  color: context.colors.subduedText,
+              data: (packageInfo) => AppTooltip(
+                message: isSecret ? kSecretString2 : '',
+                textStyle: context.textStyles.smallSubTitle
+                    .copyWith(fontSize: 7, fontWeight: FontWeight.w900),
+                child: Text(
+                  "Куб.Расписание v${packageInfo.version}+${packageInfo.buildNumber}",
+                  style: context.textStyles.smallSubTitle.copyWith(
+                    color: context.colors.subduedText,
+                  ),
                 ),
               ),
               loading: () => const SizedBox.shrink(),
@@ -33,14 +48,20 @@ class _SettingsPageAppInfo extends ConsumerWidget {
                 ),
               ),
               const WidgetSpan(
-                child: FlutterLogo(size: 16),
+                child: AppTooltip(
+                  message: 'Flutter',
+                  child: FlutterLogo(size: 16),
+                ),
               ),
               const TextSpan(text: ' with '),
               const WidgetSpan(
-                child: Icon(
-                  Icons.favorite,
-                  size: 16,
-                  color: Colors.red,
+                child: AppTooltip(
+                  message: 'Love',
+                  child: Icon(
+                    Icons.favorite,
+                    size: 16,
+                    color: Colors.red,
+                  ),
                 ),
               ),
               const TextSpan(text: ' by StarProxima'),

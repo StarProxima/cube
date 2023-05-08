@@ -5,7 +5,7 @@ import 'package:cube_system/features/timetable_page/managers/timetable_day_event
 import 'package:cube_system/models/timetable/timetable_type.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cube_system/api/cube_api.dart';
+import 'package:cube_system/core/api/cube_api.dart';
 import 'package:cube_system/gen/api/cube_api.swagger.dart';
 import 'package:cube_system/models/lesson/lesson.dart';
 import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';

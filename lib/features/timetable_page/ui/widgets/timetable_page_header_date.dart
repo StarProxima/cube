@@ -1,5 +1,6 @@
 import 'package:cube_system/core/extensions.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
+import 'package:cube_system/ui/widgets/app_tooltip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -30,33 +31,37 @@ class TimetablePageHeaderDate extends ConsumerWidget {
           .select((value) => value?.type.isGroup ?? false),
     );
 
-    return InkWell(
-      borderRadius: const BorderRadius.all(Radius.circular(12)),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            DateFormat('MMMM', 'ru').format(weekDate).capitalize(),
-            style: context.textStyles.label,
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 1),
-          if (date.year != weekDate.year)
+    return AppTooltip.long(
+      message: 'Текущий месяц и чётность недели',
+      verticalOffset: 18,
+      child: InkWell(
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
             Text(
-              DateFormat('yyyy', 'ru').format(weekDate).capitalize(),
-              style: context.textStyles.label.copyWith(),
+              DateFormat('MMMM', 'ru').format(weekDate).capitalize(),
+              style: context.textStyles.label,
               textAlign: TextAlign.center,
             ),
-          if (isGroup)
-            Text(
-              weekLabel,
-              style: context.textStyles.smallSubTitle.copyWith(
-                fontSize: 10,
-                color: context.colors.subduedText,
+            const SizedBox(height: 1),
+            if (date.year != weekDate.year)
+              Text(
+                DateFormat('yyyy', 'ru').format(weekDate).capitalize(),
+                style: context.textStyles.label.copyWith(),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
-            ),
-        ],
+            if (isGroup)
+              Text(
+                weekLabel,
+                style: context.textStyles.smallSubTitle.copyWith(
+                  fontSize: 10,
+                  color: context.colors.subduedText,
+                ),
+                textAlign: TextAlign.center,
+              ),
+          ],
+        ),
       ),
     );
   }

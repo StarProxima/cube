@@ -26,12 +26,15 @@ class LessonCardRecess extends ConsumerWidget {
       _lessonInLessonCard.select((value) => value.dateTimings.startDateTime),
     );
 
-    return Padding(
-      padding: margin ?? EdgeInsets.zero,
-      child: RecessCard(
-        startLessonNumber: numberStart,
-        endLessonNumber: numberEnd,
-        dateTime: DateUtils.dateOnly(date),
+    return AppTooltip(
+      message: 'Окно между занятиями',
+      child: Padding(
+        padding: margin ?? EdgeInsets.zero,
+        child: RecessCard(
+          startLessonNumber: numberStart,
+          endLessonNumber: numberEnd,
+          dateTime: DateUtils.dateOnly(date),
+        ),
       ),
     );
   }
