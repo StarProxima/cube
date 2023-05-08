@@ -1,3 +1,4 @@
+import 'package:cube_system/core/extensions.dart';
 import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
 import 'package:cube_system/features/timetable_page/state_holders/selected_date.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
@@ -23,9 +24,9 @@ class WeekTimelineDayButton extends ConsumerWidget {
     final isSelectedDate = date == ref.watch(selectedDate);
 
     final color = isSelectedDate
-        ? Colors.blue
+        ? context.colors.primary
         : isCurrentDate
-            ? Colors.blue.withOpacity(0.5)
+            ? context.colors.primary.toAppFadedColor()
             : null;
 
     return Container(
@@ -36,8 +37,6 @@ class WeekTimelineDayButton extends ConsumerWidget {
       child: InkWell(
         onTap: () => manager.pickSelectedDate(date),
         borderRadius: BorderRadius.circular(8),
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
