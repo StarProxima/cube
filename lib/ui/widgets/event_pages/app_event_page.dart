@@ -29,65 +29,54 @@ class AppEventPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    const margin = EdgeInsets.only(top: 24);
     return LayoutBuilder(
       builder: (context, constraints) {
-        return SizedBox(
-          height: constraints.maxHeight,
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(
-              parent: AlwaysScrollableScrollPhysics(),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 36),
-              child: Center(
-                child: Column(
-                  children: [
-                    Container(
-                      margin: pictureMargin != null
-                          ? margin.add(pictureMargin!)
-                          : margin,
-                      child: FadeAnimatedWidget(
-                        size: 300,
-                        child: picture,
-                      ),
-                    ),
-                    Text(
-                      title ?? '',
-                      style: context.textStyles.largeTitle,
+        return SingleChildScrollView(
+          child: Container(
+            alignment: const Alignment(0, -0.25),
+            padding: const EdgeInsets.symmetric(horizontal: 36),
+            constraints: BoxConstraints(minHeight: constraints.maxHeight),
+            child: Column(
+              children: [
+                FadeAnimatedWidget(
+                  size: 300,
+                  child: picture,
+                ),
+                Text(
+                  title ?? '',
+                  style: context.textStyles.largeTitle,
+                  textAlign: TextAlign.center,
+                ),
+                if (subTitle != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8),
+                    child: Text(
+                      subTitle ?? '',
+                      style: context.textStyles.subTitle,
                       textAlign: TextAlign.center,
                     ),
-                    if (subTitle != null)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child: Text(
-                          subTitle ?? '',
-                          style: context.textStyles.subTitle,
-                          textAlign: TextAlign.center,
-                        ),
+                  ),
+                if (description != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8),
+                    child: Text(
+                      description ?? '',
+                      style: context.textStyles.subTitle.copyWith(
+                        color: context.colors.subduedText,
                       ),
-                    if (description != null)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child: Text(
-                          description ?? '',
-                          style: context.textStyles.subTitle.copyWith(
-                            color: context.colors.subduedText,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    if (buttonText != null || onTap != null)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 12),
-                        child: AppButton(
-                          text: buttonText,
-                          onTap: onTap,
-                        ),
-                      )
-                  ],
-                ),
-              ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                if (buttonText != null || onTap != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 12),
+                    child: AppButton(
+                      text: buttonText,
+                      onTap: onTap,
+                    ),
+                  ),
+                const SizedBox(height: 36),
+              ],
             ),
           ),
         );
