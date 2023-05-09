@@ -10,5 +10,8 @@ enum AppLessonColorsMode {
   cube,
   @HiveField(1)
   @JsonValue('accent')
-  accent,
+  accent;
+
+  bool get isCube => this == AppLessonColorsMode.cube;
+  bool get isAccent => this == AppLessonColorsMode.accent;
 }

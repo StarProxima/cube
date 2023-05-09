@@ -3,11 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:upgrader/upgrader.dart';
 
 final _appcastConfigurationProvider = Provider<AppcastConfiguration>((ref) {
-  const appcastURL =
-      'https://raw.githubusercontent.com/StarProxima/cube_appcast/main/appcast.xml';
-
   return AppcastConfiguration(
-    url: appcastURL,
+    url:
+        'https://raw.githubusercontent.com/StarProxima/cube_appcast/main/appcast.xml',
     supportedOS: ['android', 'ios', 'macos', 'windows'],
   );
 });

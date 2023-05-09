@@ -14,9 +14,6 @@ class LandingServicesPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(
-        parent: AlwaysScrollableScrollPhysics(),
-      ),
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: SafeArea(
         child: Column(
@@ -101,7 +98,7 @@ class LandingServicesPage extends ConsumerWidget {
               uri: Uri.parse('https://github.com/StarProxima/cube'),
               onLaunch: (uri) => logger.launch(uri: uri, launchFrom: 'Landing'),
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 92),
           ],
         ),
       ),

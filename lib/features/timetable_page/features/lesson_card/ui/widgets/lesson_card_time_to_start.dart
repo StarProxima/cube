@@ -27,9 +27,12 @@ class LessonCardTimeToStart extends ConsumerWidget {
       return const SizedBox();
     }
 
-    return Padding(
-      padding: margin ?? EdgeInsets.zero,
-      child: const NextLessonTimeToStartProgressBar(),
+    return AppTooltip.long(
+      message: 'Время до начала занятия',
+      child: Padding(
+        padding: margin ?? EdgeInsets.zero,
+        child: const NextLessonTimeToStartProgressBar(),
+      ),
     );
   }
 }

@@ -22,7 +22,7 @@ class AppButton extends StatelessWidget {
     super.key,
     this.text,
     this.rightIcon,
-    this.height = 42,
+    this.height = 44,
     this.isExpanded = false,
     this.style = AppButtonStyle.primary,
     this.onTap,

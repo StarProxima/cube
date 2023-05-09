@@ -5,24 +5,17 @@ class LessonCardFooter extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final groups = ref
-        .watch(
-          _lessonInLessonCard.select((value) => value.groupNames),
-        )
-        .join(", ");
+    final groups = ref.watch(
+      _lessonInLessonCard.select((value) => value.groupNames),
+    );
 
-    final teachers = ref
-        .watch(
-          _lessonInLessonCard.select((value) => value.teacherNames),
-        )
-        .join(", ");
+    final teachers = ref.watch(
+      _lessonInLessonCard.select((value) => value.teacherNames),
+    );
 
     final place = ref.watch(
-          _lessonInLessonCard.select((value) => value.place),
-        ) ??
-        '';
-
-    final teachersIsNotEmpty = teachers != "";
+      _lessonInLessonCard.select((value) => value.place),
+    );
 
     final timetableType =
         ref.watch(selectedTimetableStateHolder.select((value) => value!.type));
@@ -36,16 +29,16 @@ class LessonCardFooter extends ConsumerWidget {
 
     switch (timetableType) {
       case TimetableType.group:
-        leftText = teachers;
-        rigthText = place;
+        leftText = teachers.join(', ');
+        rigthText = place ?? '';
         break;
       case TimetableType.teacher:
-        leftText = groups;
-        rigthText = place;
+        leftText = groups.join(', ');
+        rigthText = place ?? '';
         break;
       case TimetableType.place:
-        leftText = teachers;
-        rigthText = groups;
+        leftText = teachers.join(', ');
+        rigthText = groups.join(', ');
         break;
     }
 
@@ -57,20 +50,29 @@ class LessonCardFooter extends ConsumerWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              if (teachersIsNotEmpty)
+              if (leftText.isNotEmpty)
                 Flexible(
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      top: 4,
-                      left: 8,
-                    ),
-                    child: Text(
-                      leftText,
-                      style: context.textStyles.smallLabel.copyWith(
-                        color: context.colors.subduedText,
+                  child: AppTooltip.long(
+                    message: timetableType.isTeacher
+                        ? groups.length > 1
+                            ? 'Группы'
+                            : 'Группа'
+                        : teachers.length > 1
+                            ? 'Преподаватели'
+                            : 'Преподаватель',
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        top: 4,
+                        left: 8,
                       ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                      child: Text(
+                        leftText,
+                        style: context.textStyles.smallLabel.copyWith(
+                          color: context.colors.subduedText,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                   ),
                 ),
@@ -95,14 +97,21 @@ class LessonCardFooter extends ConsumerWidget {
                 maxWidth: 160,
               ),
               padding: const EdgeInsets.only(top: 4, left: 8, right: 6),
-              child: Text(
-                rigthText,
-                style: context.textStyles.smallLabel.copyWith(
-                  color: context.colors.subduedText,
+              child: AppTooltip.long(
+                message: timetableType.isPlace
+                    ? groups.length > 1
+                        ? 'Группы'
+                        : 'Группа'
+                    : 'Аудитория',
+                child: Text(
+                  rigthText,
+                  style: context.textStyles.smallLabel.copyWith(
+                    color: context.colors.subduedText,
+                  ),
+                  textAlign: TextAlign.right,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
-                textAlign: TextAlign.right,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
               ),
             ),
             if (lessonTypePosition.isBottomRight)

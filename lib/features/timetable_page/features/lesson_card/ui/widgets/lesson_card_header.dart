@@ -24,28 +24,34 @@ class LessonCardHeader extends ConsumerWidget {
       children: [
         Row(
           children: [
-            Container(
-              height: 22,
-              width: 22,
-              padding: const EdgeInsets.only(left: 0.75, bottom: 0.75),
-              decoration: BoxDecoration(
-                color: color,
-                shape: BoxShape.circle,
-              ),
-              child: Center(
-                child: Text(
-                  number,
-                  style: context.textStyles.label.copyWith(
-                    color: Colors.white,
+            AppTooltip.long(
+              message: 'Номер занятия',
+              child: Container(
+                height: 22,
+                width: 22,
+                padding: const EdgeInsets.only(left: 0.75, bottom: 0.75),
+                decoration: BoxDecoration(
+                  color: color,
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
+                  child: Text(
+                    number,
+                    style: context.textStyles.label.copyWith(
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
             ),
             const SizedBox(width: 8),
-            Text(
-              timingsStr,
-              style: context.textStyles.smallLabel.copyWith(
-                color: context.colors.subduedText,
+            AppTooltip.long(
+              message: 'Время начала и конца занятия',
+              child: Text(
+                timingsStr,
+                style: context.textStyles.smallLabel.copyWith(
+                  color: context.colors.subduedText,
+                ),
               ),
             ),
           ],

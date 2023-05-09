@@ -43,20 +43,23 @@ class LessonCardIndicator extends ConsumerWidget {
           Center(
             child: Padding(
               padding: const EdgeInsets.only(left: 4),
-              child: RotatedBox(
-                quarterTurns: 3,
-                child: Consumer(
-                  builder: (context, ref, _) {
-                    final type = ref.watch(
-                      _lessonInLessonCard
-                          .select((value) => value.typeShortName),
-                    );
-                    return Text(
-                      type,
-                      style: context.textStyles.chipLabel
-                          .copyWith(color: Colors.white),
-                    );
-                  },
+              child: AppTooltip.long(
+                message: 'Тип занятия',
+                child: RotatedBox(
+                  quarterTurns: 3,
+                  child: Consumer(
+                    builder: (context, ref, _) {
+                      final type = ref.watch(
+                        _lessonInLessonCard
+                            .select((value) => value.typeShortName),
+                      );
+                      return Text(
+                        type,
+                        style: context.textStyles.chipLabel
+                            .copyWith(color: Colors.white),
+                      );
+                    },
+                  ),
                 ),
               ),
             ),

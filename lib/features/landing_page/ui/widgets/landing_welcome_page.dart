@@ -41,27 +41,8 @@ class _LandingWelcomePageState extends ConsumerState<LandingWelcomePage>
       builder: (context, constraints) {
         return Stack(
           children: [
-            // Positioned(
-            //   top: 0,
-            //   left: 100,
-            //   child: Transform.translate(
-            //     offset: const Offset(0, -230),
-            //     child: Transform.rotate(
-            //       angle: 1.4,
-            //       child: Container(
-            //         height: 350,
-            //         width: 350,
-            //         decoration: const BoxDecoration(
-            //           color: Color.fromARGB(255, 151, 207, 255),
-            //           shape: BoxShape.circle,
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
-
             Transform.translate(
-              offset: const Offset(-0, -150),
+              offset: const Offset(0, -150),
               child: FadeTransition(
                 opacity: CurvedAnimation(
                   parent: _controller,
@@ -76,93 +57,95 @@ class _LandingWelcomePageState extends ConsumerState<LandingWelcomePage>
                 ),
               ),
             ),
-
             Positioned.fill(
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 110, sigmaY: 110),
                 child: const SizedBox(),
               ),
             ),
-
             Positioned.fill(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.symmetric(horizontal: 36),
                 child: SafeArea(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 196),
-                      Row(
-                        children: [
-                          FadeTransition(
-                            opacity: CurvedAnimation(
-                              parent: _controller,
-                              curve: Curves.easeInOut,
-                            ),
-                            child: SlideTransition(
-                              position: Tween<Offset>(
-                                begin: const Offset(-1, 0),
-                                end: const Offset(0, 0),
-                              ).animate(
-                                CurvedAnimation(
-                                  parent: _controller,
-                                  curve: Curves.easeInOutBack,
-                                ),
+                  child: Container(
+                    alignment: const Alignment(0, -0.25),
+                    constraints:
+                        BoxConstraints(minHeight: constraints.maxHeight),
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 36),
+                        Row(
+                          children: [
+                            FadeTransition(
+                              opacity: CurvedAnimation(
+                                parent: _controller,
+                                curve: Curves.easeInOut,
                               ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(16),
-                                child: SizedBox(
-                                  height: 96,
-                                  width: 96,
-                                  child: Assets.icons.cubeIcon.image(),
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 20),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    "Куб",
-                                    style:
-                                        context.textStyles.largeTitle.copyWith(
-                                      fontSize: 32,
-                                      color: context.colors.text,
-                                    ),
+                              child: SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: const Offset(-1, 0),
+                                  end: const Offset(0, 0),
+                                ).animate(
+                                  CurvedAnimation(
+                                    parent: _controller,
+                                    curve: Curves.easeInOutBack,
                                   ),
-                                  Text(
-                                    ".",
-                                    style:
-                                        context.textStyles.largeTitle.copyWith(
-                                      fontSize: 32,
-                                      color: context.colors.text,
-                                    ),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(16),
+                                  child: SizedBox(
+                                    height: 96,
+                                    width: 96,
+                                    child: Assets.icons.cubeIcon.image(),
                                   ),
-                                ],
-                              ),
-                              Text(
-                                'Расписание',
-                                style: context.textStyles.largeTitle.copyWith(
-                                  fontSize: 32,
-                                  color: context.colors.text,
                                 ),
                               ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 48),
-                      Text(
-                        'Cовременный сервис учебного расписания для студентов, преподавателей и всех желающих, предоставляющий удобный и быстрый доступ, где бы вы ни находились.',
-                        style: context.textStyles.subTitle.copyWith(
-                          fontSize: 16,
+                            ),
+                            const SizedBox(width: 20),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Куб",
+                                      style: context.textStyles.largeTitle
+                                          .copyWith(
+                                        fontSize: 32,
+                                        color: context.colors.text,
+                                      ),
+                                    ),
+                                    Text(
+                                      ".",
+                                      style: context.textStyles.largeTitle
+                                          .copyWith(
+                                        fontSize: 32,
+                                        color: context.colors.text,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  'Расписание',
+                                  style: context.textStyles.largeTitle.copyWith(
+                                    fontSize: 32,
+                                    color: context.colors.text,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                      ),
-                      const SizedBox(height: 32),
-                    ],
+                        const SizedBox(height: 48),
+                        Text(
+                          'Cовременный сервис учебного расписания для студентов, преподавателей и всех желающих, предоставляющий удобный и быстрый доступ, где бы вы ни находились.',
+                          style: context.textStyles.subTitle.copyWith(
+                            fontSize: 16,
+                          ),
+                        ),
+                        const SizedBox(height: 92),
+                      ],
+                    ),
                   ),
                 ),
               ),

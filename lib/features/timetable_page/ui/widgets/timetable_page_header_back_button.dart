@@ -1,3 +1,4 @@
+import 'package:cube_system/ui/widgets/app_tooltip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,17 +21,21 @@ class TimetablePageHeaderBackButton extends ConsumerWidget {
         ref.watch(weekTimelineOffsetBackButtonDirectionProvider);
 
     return weekOffsetButton != WeekTimelineOffsetBackButtonDirection.stay
-        ? InkWell(
-            onTap: () => manager.selectDate(date.add(Duration.zero)),
-            borderRadius: const BorderRadius.all(Radius.circular(99)),
-            child: Container(
-              padding: const EdgeInsets.all(8),
-              child: Icon(
-                weekOffsetButton ==
-                        WeekTimelineOffsetBackButtonDirection.forward
-                    ? Icons.arrow_forward_ios_rounded
-                    : Icons.arrow_back_ios_new_rounded,
-                size: 20,
+        ? AppTooltip(
+            message: 'Вернуться назад',
+            verticalOffset: 18,
+            child: InkWell(
+              onTap: () => manager.selectDate(date.add(Duration.zero)),
+              borderRadius: const BorderRadius.all(Radius.circular(99)),
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                child: Icon(
+                  weekOffsetButton ==
+                          WeekTimelineOffsetBackButtonDirection.forward
+                      ? Icons.arrow_forward_ios_rounded
+                      : Icons.arrow_back_ios_new_rounded,
+                  size: 20,
+                ),
               ),
             ),
           )

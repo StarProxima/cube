@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:chopper/chopper.dart';
-import 'package:cube_system/api/cube_api.dart';
+import 'package:cube_system/core/api/cube_api.dart';
 import 'package:cube_system/features/analytics/logger.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/timetable_search_page/models/timetable_search_group_info.dart';

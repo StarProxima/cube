@@ -19,7 +19,7 @@ class LessonCardInfoPanel extends ConsumerWidget {
 
     // final isRemotely = _random.nextInt(100) < 25;
 
-    // final isCancelled = _random.nextInt(100) < 0;
+    // final isCancelled = _random.nextInt(100) < 25;
 
     final presentImportantNote = _random.nextInt(100) < 0;
 
@@ -29,26 +29,31 @@ class LessonCardInfoPanel extends ConsumerWidget {
       children: [
         if (isRemotely)
           const LessonCardInfoPanelIcon(
+            tooltipMessage: 'Дистанционное занятие',
             icon: Icon(Icons.home),
           ),
         if (presentImportantNote)
           const LessonCardInfoPanelIcon(
+            tooltipMessage: 'Есть важная заметка',
             icon: Icon(Icons.priority_high_rounded),
           ),
         if (numberOfNotes > 0)
           LessonCardInfoPanelIcon(
+            tooltipMessage: 'Количество заметок',
             icon: Text('$numberOfNotes'),
           ),
         const LessonCardInfoPanelTimeToEnd(),
         if (isCollision)
           const LessonCardInfoPanelChip(
-            text: Text('Коллизия'),
             isDestructive: true,
+            tooltipMessage: 'Время занятия совпадает с другим',
+            text: Text('Коллизия'),
           ),
         if (isCancelled)
           const LessonCardInfoPanelChip(
-            text: Text('Отменено'),
             isDestructive: true,
+            tooltipMessage: 'Занятие было отменено',
+            text: Text('Отменено'),
           ),
       ],
     );

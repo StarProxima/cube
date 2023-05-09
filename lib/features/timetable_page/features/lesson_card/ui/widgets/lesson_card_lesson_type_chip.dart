@@ -12,15 +12,18 @@ class LessonCardLessonTypeChip extends ConsumerWidget {
     final color =
         ref.watch(appLessonColorByLesson(ref.read(_lessonInLessonCard)));
 
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(2),
-      ),
-      child: Text(
-        type,
-        style: context.textStyles.chipLabel.copyWith(color: Colors.white),
+    return AppTooltip.long(
+      message: 'Тип занятия',
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(2),
+        ),
+        child: Text(
+          type,
+          style: context.textStyles.chipLabel.copyWith(color: Colors.white),
+        ),
       ),
     );
   }

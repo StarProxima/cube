@@ -16,7 +16,7 @@ class UnimplementedFeatureEventPage extends ConsumerWidget {
     return Scaffold(
       body: AppEventPage(
         picture: Assets.brooklyn.productDevelopment1.svg(),
-        pictureMargin: const EdgeInsets.only(top: 128, bottom: 0),
+        // pictureMargin: const EdgeInsets.only(top: 128, bottom: 0),
         title: title,
         subTitle:
             'Приложение всё ещё находится в активной стадии разработки, поэтому некоторые функции ещё не доступны',

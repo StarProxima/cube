@@ -1,4 +1,5 @@
 import 'package:cube_system/styles/app_theme_context_extension.dart';
+import 'package:cube_system/ui/widgets/app_tooltip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -18,50 +19,54 @@ class TimetablePageHeaderTimetableInfo extends ConsumerWidget {
             ? context.textStyles.label
             : context.textStyles.largeTitle;
 
-    return InkWell(
-      onTap: () {
-        context.go('/timetable/search');
-      },
-      borderRadius: const BorderRadius.all(Radius.circular(12)),
-      child: Padding(
-        padding: const EdgeInsets.only(left: 8),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              children: [
-                Flexible(
-                  child: Text(
-                    timetable?.label ?? 'Расписание',
-                    style: labelTextStyle,
-                  ),
-                ),
-                SizedBox(
-                  height: 16,
-                  child: Text(
-                    String.fromCharCode(
-                      Icons.arrow_drop_down_rounded.codePoint,
-                    ),
-                    style: labelTextStyle.copyWith(
-                      fontFamily: Icons.arrow_drop_down_rounded.fontFamily,
-                      package: Icons.arrow_drop_down_rounded.fontPackage,
-                      fontSize: 20,
-                      height: 0.95,
+    return AppTooltip.long(
+      message: 'Выбранное расписание',
+      verticalOffset: 18,
+      child: InkWell(
+        onTap: () {
+          context.go('/timetable/search');
+        },
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                children: [
+                  Flexible(
+                    child: Text(
+                      timetable?.label ?? 'Расписание',
+                      style: labelTextStyle,
                     ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 1),
-            Text(
-              timetable?.type.label ?? 'Не выбрано',
-              style: context.textStyles.smallSubTitle.copyWith(
-                fontSize: 10,
-                color: context.colors.subduedText,
+                  SizedBox(
+                    height: 16,
+                    child: Text(
+                      String.fromCharCode(
+                        Icons.arrow_drop_down_rounded.codePoint,
+                      ),
+                      style: labelTextStyle.copyWith(
+                        fontFamily: Icons.arrow_drop_down_rounded.fontFamily,
+                        package: Icons.arrow_drop_down_rounded.fontPackage,
+                        fontSize: 20,
+                        height: 0.95,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
+              const SizedBox(height: 1),
+              Text(
+                timetable?.type.label ?? 'Не выбрано',
+                style: context.textStyles.smallSubTitle.copyWith(
+                  fontSize: 10,
+                  color: context.colors.subduedText,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

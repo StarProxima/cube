@@ -25,6 +25,8 @@ import 'package:cube_system/features/timetable_page/state_holders/lessons/next_l
 
 import 'package:cube_system/features/timetable_page/managers/timetable_lessons_manager.dart';
 
+import 'package:cube_system/ui/widgets/app_tooltip.dart';
+
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_body.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_footer.dart';
 part 'package:cube_system/features/timetable_page/features/lesson_card/ui/widgets/lesson_card_header.dart';
@@ -86,6 +88,7 @@ class LessonCard extends ConsumerWidget {
                         const LessonCardIndicator(),
                         Expanded(
                           child: InkWell(
+                            onTap: () {},
                             child: Column(
                               children: [
                                 Padding(

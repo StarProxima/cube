@@ -13,9 +13,6 @@ class LandingFeaturesPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(
-        parent: AlwaysScrollableScrollPhysics(),
-      ),
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: SafeArea(
         child: Column(
@@ -71,7 +68,7 @@ class LandingFeaturesPage extends ConsumerWidget {
               title: 'Мультиплатформенность',
               description: 'Просматривайте расписание с различных устройств',
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 92),
           ],
         ),
       ),

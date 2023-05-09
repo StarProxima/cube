@@ -7,8 +7,9 @@ class AppTheme {
     required AppColors colors,
     required AppTextStyles textStyles,
   }) {
-    final theme = ThemeData.light();
-    return theme.copyWith(
+    return ThemeData.light().copyWith(
+      useMaterial3: true,
+      colorScheme: ColorScheme.fromSeed(seedColor: colors.primary),
       scaffoldBackgroundColor: colors.background,
       dividerColor: colors.subduedBorder,
       primaryColor: colors.primary,
@@ -20,8 +21,28 @@ class AppTheme {
         thickness: 1,
         space: 1,
       ),
+      tooltipTheme: TooltipThemeData(
+        excludeFromSemantics: true,
+        triggerMode: TooltipTriggerMode.tap,
+        waitDuration: const Duration(milliseconds: 500),
+        verticalOffset: 12,
+        textAlign: TextAlign.center,
+        textStyle: textStyles.chipLabel,
+        decoration: BoxDecoration(
+          color: colors.background,
+          borderRadius: BorderRadius.circular(7),
+          boxShadow: [
+            BoxShadow(
+              color: colors.shadow,
+              blurRadius: 12,
+              offset: const Offset(0, 1),
+            )
+          ],
+        ),
+      ),
       appBarTheme: AppBarTheme(
         centerTitle: true,
+        surfaceTintColor: colors.background,
         titleTextStyle: textStyles.appBarTitle,
         backgroundColor: colors.background,
         shadowColor: colors.shadow,
