@@ -13,16 +13,16 @@
 
 #### Это мультиплатформенно приложение, доступное напрямую через [GitHub](https://github.com/StarProxima/cube/releases) и тут:
 
-<a href='https://play.google.com/store/apps/details?id=com.nullexp.cube_system'>
-  <img width="170" src='https://github.com/StarProxima/cube/assets/34741787/81e16b1d-8a3c-42f8-baba-2cba235fbfa2'/>
+<a href='https://play.google.com/store/apps/details?id=com.nullexp.cube_system'>GooglePlay
+<!--   <img width="170" src='https://github.com/StarProxima/cube/assets/34741787/81e16b1d-8a3c-42f8-baba-2cba235fbfa2'/> -->
 </a>
 
-<a href='https://testflight.apple.com/join/MxGcyfzY'>
-  <img width="150" hspace="20" src='https://github.com/StarProxima/cube/assets/34741787/e4959ac6-ca95-42dd-ac8e-6a71061a80f3'/>
+<a href='https://testflight.apple.com/join/MxGcyfzY'>TestFlight
+<!--   <img width="150" hspace="20" src='https://github.com/StarProxima/cube/assets/34741787/e4959ac6-ca95-42dd-ac8e-6a71061a80f3'/> -->
 </a>
 
-<a href='https://apps.rustore.ru/app/com.nullexp.cube_system'>
-  <img width="150" src="https://github.com/StarProxima/cube/assets/34741787/9fc74bf9-ef7f-4f70-924e-f5aa38947899">
+<a href='https://apps.rustore.ru/app/com.nullexp.cube_system'>RuStore
+<!--   <img width="150" src="https://github.com/StarProxima/cube/assets/34741787/9fc74bf9-ef7f-4f70-924e-f5aa38947899"> -->
 </a>
 
 \
