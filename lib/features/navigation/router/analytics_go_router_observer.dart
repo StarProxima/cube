@@ -8,7 +8,7 @@ class AnalyticsGoRouterObserver extends NavigatorObserver {
   void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
     final page = route.settings;
     if (page is AppCustomTransitionPage) {
-      final path = page.state.fullpath;
+      final path = page.state.fullPath;
 
       if (path == null) return;
 
@@ -16,8 +16,8 @@ class AnalyticsGoRouterObserver extends NavigatorObserver {
 
       final prevPage = previousRoute?.settings;
       if (prevPage is AppCustomTransitionPage &&
-          prevPage.state.fullpath != null) {
-        previousPath = prevPage.state.fullpath!;
+          prevPage.state.fullPath != null) {
+        previousPath = prevPage.state.fullPath!;
       }
 
       logger.route(path: path, previousPath: previousPath);

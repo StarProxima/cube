@@ -89,10 +89,10 @@ class LessonCard extends ConsumerWidget {
                         Expanded(
                           child: InkWell(
                             onTap: () {},
-                            child: Column(
+                            child: const Column(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(
+                                  padding: EdgeInsets.only(
                                     left: 12,
                                     right: 12,
                                     top: 8,
@@ -101,14 +101,14 @@ class LessonCard extends ConsumerWidget {
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                    children: const [
+                                    children: [
                                       LessonCardHeader(),
                                       SizedBox(height: 8),
                                       LessonCardBody(),
                                     ],
                                   ),
                                 ),
-                                const Padding(
+                                Padding(
                                   padding: EdgeInsets.only(
                                     left: 4,
                                     right: 4,
@@ -116,7 +116,7 @@ class LessonCard extends ConsumerWidget {
                                   ),
                                   child: LessonCardFooter(),
                                 ),
-                                const SizedBox(height: 4),
+                                SizedBox(height: 4),
                               ],
                             ),
                           ),

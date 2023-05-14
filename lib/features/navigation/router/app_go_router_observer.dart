@@ -16,7 +16,7 @@ class AppGoRouterObserver extends NavigatorObserver {
   void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
     final page = route.settings;
     if (page is AppCustomTransitionPage) {
-      final path = page.state.fullpath;
+      final path = page.state.fullPath;
 
       // TODO: refactor this shit
       if ((path?.length ?? 0) <= 1) return;

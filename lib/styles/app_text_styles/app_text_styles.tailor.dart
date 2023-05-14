@@ -1,40 +1,40 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint, unused_element
+// ignore_for_file: type=lint, unused_element, unnecessary_cast
 
 part of 'app_text_styles.dart';
 
 // **************************************************************************
-// ThemeTailorGenerator
+// TailorAnnotationsGenerator
 // **************************************************************************
 
 class AppTextStyles extends ThemeExtension<AppTextStyles> {
   const AppTextStyles({
     required this.appBarTitle,
-    required this.largeTitle,
-    required this.subTitle,
-    required this.smallSubTitle,
-    required this.label,
-    required this.smallLabel,
     required this.chipLabel,
+    required this.label,
+    required this.largeTitle,
+    required this.smallLabel,
+    required this.smallSubTitle,
+    required this.subTitle,
   });
 
   final TextStyle appBarTitle;
-  final TextStyle largeTitle;
-  final TextStyle subTitle;
-  final TextStyle smallSubTitle;
-  final TextStyle label;
-  final TextStyle smallLabel;
   final TextStyle chipLabel;
+  final TextStyle label;
+  final TextStyle largeTitle;
+  final TextStyle smallLabel;
+  final TextStyle smallSubTitle;
+  final TextStyle subTitle;
 
   static final AppTextStyles light = AppTextStyles(
     appBarTitle: _$AppTextStyles.appBarTitle[0],
-    largeTitle: _$AppTextStyles.largeTitle[0],
-    subTitle: _$AppTextStyles.subTitle[0],
-    smallSubTitle: _$AppTextStyles.smallSubTitle[0],
-    label: _$AppTextStyles.label[0],
-    smallLabel: _$AppTextStyles.smallLabel[0],
     chipLabel: _$AppTextStyles.chipLabel[0],
+    label: _$AppTextStyles.label[0],
+    largeTitle: _$AppTextStyles.largeTitle[0],
+    smallLabel: _$AppTextStyles.smallLabel[0],
+    smallSubTitle: _$AppTextStyles.smallSubTitle[0],
+    subTitle: _$AppTextStyles.subTitle[0],
   );
 
   static final themes = [
@@ -44,35 +44,35 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
   @override
   AppTextStyles copyWith({
     TextStyle? appBarTitle,
-    TextStyle? largeTitle,
-    TextStyle? subTitle,
-    TextStyle? smallSubTitle,
-    TextStyle? label,
-    TextStyle? smallLabel,
     TextStyle? chipLabel,
+    TextStyle? label,
+    TextStyle? largeTitle,
+    TextStyle? smallLabel,
+    TextStyle? smallSubTitle,
+    TextStyle? subTitle,
   }) {
     return AppTextStyles(
       appBarTitle: appBarTitle ?? this.appBarTitle,
-      largeTitle: largeTitle ?? this.largeTitle,
-      subTitle: subTitle ?? this.subTitle,
-      smallSubTitle: smallSubTitle ?? this.smallSubTitle,
-      label: label ?? this.label,
-      smallLabel: smallLabel ?? this.smallLabel,
       chipLabel: chipLabel ?? this.chipLabel,
+      label: label ?? this.label,
+      largeTitle: largeTitle ?? this.largeTitle,
+      smallLabel: smallLabel ?? this.smallLabel,
+      smallSubTitle: smallSubTitle ?? this.smallSubTitle,
+      subTitle: subTitle ?? this.subTitle,
     );
   }
 
   @override
-  AppTextStyles lerp(ThemeExtension<AppTextStyles>? other, double t) {
-    if (other is! AppTextStyles) return this;
+  AppTextStyles lerp(covariant ThemeExtension<AppTextStyles>? other, double t) {
+    if (other is! AppTextStyles) return this as AppTextStyles;
     return AppTextStyles(
       appBarTitle: TextStyle.lerp(appBarTitle, other.appBarTitle, t)!,
-      largeTitle: TextStyle.lerp(largeTitle, other.largeTitle, t)!,
-      subTitle: TextStyle.lerp(subTitle, other.subTitle, t)!,
-      smallSubTitle: TextStyle.lerp(smallSubTitle, other.smallSubTitle, t)!,
-      label: TextStyle.lerp(label, other.label, t)!,
-      smallLabel: TextStyle.lerp(smallLabel, other.smallLabel, t)!,
       chipLabel: TextStyle.lerp(chipLabel, other.chipLabel, t)!,
+      label: TextStyle.lerp(label, other.label, t)!,
+      largeTitle: TextStyle.lerp(largeTitle, other.largeTitle, t)!,
+      smallLabel: TextStyle.lerp(smallLabel, other.smallLabel, t)!,
+      smallSubTitle: TextStyle.lerp(smallSubTitle, other.smallSubTitle, t)!,
+      subTitle: TextStyle.lerp(subTitle, other.subTitle, t)!,
     );
   }
 
@@ -83,27 +83,28 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
             other is AppTextStyles &&
             const DeepCollectionEquality()
                 .equals(appBarTitle, other.appBarTitle) &&
-            const DeepCollectionEquality()
-                .equals(largeTitle, other.largeTitle) &&
-            const DeepCollectionEquality().equals(subTitle, other.subTitle) &&
-            const DeepCollectionEquality()
-                .equals(smallSubTitle, other.smallSubTitle) &&
+            const DeepCollectionEquality().equals(chipLabel, other.chipLabel) &&
             const DeepCollectionEquality().equals(label, other.label) &&
             const DeepCollectionEquality()
+                .equals(largeTitle, other.largeTitle) &&
+            const DeepCollectionEquality()
                 .equals(smallLabel, other.smallLabel) &&
-            const DeepCollectionEquality().equals(chipLabel, other.chipLabel));
+            const DeepCollectionEquality()
+                .equals(smallSubTitle, other.smallSubTitle) &&
+            const DeepCollectionEquality().equals(subTitle, other.subTitle));
   }
 
   @override
   int get hashCode {
     return Object.hash(
-        runtimeType,
-        const DeepCollectionEquality().hash(appBarTitle),
-        const DeepCollectionEquality().hash(largeTitle),
-        const DeepCollectionEquality().hash(subTitle),
-        const DeepCollectionEquality().hash(smallSubTitle),
-        const DeepCollectionEquality().hash(label),
-        const DeepCollectionEquality().hash(smallLabel),
-        const DeepCollectionEquality().hash(chipLabel));
+      runtimeType.hashCode,
+      const DeepCollectionEquality().hash(appBarTitle),
+      const DeepCollectionEquality().hash(chipLabel),
+      const DeepCollectionEquality().hash(label),
+      const DeepCollectionEquality().hash(largeTitle),
+      const DeepCollectionEquality().hash(smallLabel),
+      const DeepCollectionEquality().hash(smallSubTitle),
+      const DeepCollectionEquality().hash(subTitle),
+    );
   }
 }

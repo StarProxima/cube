@@ -1,52 +1,52 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint, unused_element
+// ignore_for_file: type=lint, unused_element, unnecessary_cast
 
 part of 'app_colors.dart';
 
 // **************************************************************************
-// ThemeTailorGenerator
+// TailorAnnotationsGenerator
 // **************************************************************************
 
 class AppColors extends ThemeExtension<AppColors> {
   const AppColors({
-    required this.primary,
     required this.background,
-    required this.destructive,
-    required this.text,
-    required this.hintText,
-    required this.subduedText,
     required this.border,
-    required this.subduedBorder,
+    required this.destructive,
+    required this.hintText,
+    required this.primary,
     required this.shadow,
-    required this.white,
+    required this.subduedBorder,
+    required this.subduedText,
+    required this.text,
     required this.transperent,
+    required this.white,
   });
 
-  final Color primary;
   final Color background;
-  final Color destructive;
-  final Color text;
-  final Color hintText;
-  final Color subduedText;
   final Color border;
-  final Color subduedBorder;
+  final Color destructive;
+  final Color hintText;
+  final Color primary;
   final Color shadow;
-  final Color white;
+  final Color subduedBorder;
+  final Color subduedText;
+  final Color text;
   final Color transperent;
+  final Color white;
 
   static final AppColors light = AppColors(
-    primary: _$AppColors.primary[0],
     background: _$AppColors.background[0],
-    destructive: _$AppColors.destructive[0],
-    text: _$AppColors.text[0],
-    hintText: _$AppColors.hintText[0],
-    subduedText: _$AppColors.subduedText[0],
     border: _$AppColors.border[0],
-    subduedBorder: _$AppColors.subduedBorder[0],
+    destructive: _$AppColors.destructive[0],
+    hintText: _$AppColors.hintText[0],
+    primary: _$AppColors.primary[0],
     shadow: _$AppColors.shadow[0],
-    white: _$AppColors.white[0],
+    subduedBorder: _$AppColors.subduedBorder[0],
+    subduedText: _$AppColors.subduedText[0],
+    text: _$AppColors.text[0],
     transperent: _$AppColors.transperent[0],
+    white: _$AppColors.white[0],
   );
 
   static final themes = [
@@ -55,48 +55,48 @@ class AppColors extends ThemeExtension<AppColors> {
 
   @override
   AppColors copyWith({
-    Color? primary,
     Color? background,
-    Color? destructive,
-    Color? text,
-    Color? hintText,
-    Color? subduedText,
     Color? border,
-    Color? subduedBorder,
+    Color? destructive,
+    Color? hintText,
+    Color? primary,
     Color? shadow,
-    Color? white,
+    Color? subduedBorder,
+    Color? subduedText,
+    Color? text,
     Color? transperent,
+    Color? white,
   }) {
     return AppColors(
-      primary: primary ?? this.primary,
       background: background ?? this.background,
-      destructive: destructive ?? this.destructive,
-      text: text ?? this.text,
-      hintText: hintText ?? this.hintText,
-      subduedText: subduedText ?? this.subduedText,
       border: border ?? this.border,
-      subduedBorder: subduedBorder ?? this.subduedBorder,
+      destructive: destructive ?? this.destructive,
+      hintText: hintText ?? this.hintText,
+      primary: primary ?? this.primary,
       shadow: shadow ?? this.shadow,
-      white: white ?? this.white,
+      subduedBorder: subduedBorder ?? this.subduedBorder,
+      subduedText: subduedText ?? this.subduedText,
+      text: text ?? this.text,
       transperent: transperent ?? this.transperent,
+      white: white ?? this.white,
     );
   }
 
   @override
-  AppColors lerp(ThemeExtension<AppColors>? other, double t) {
-    if (other is! AppColors) return this;
+  AppColors lerp(covariant ThemeExtension<AppColors>? other, double t) {
+    if (other is! AppColors) return this as AppColors;
     return AppColors(
-      primary: Color.lerp(primary, other.primary, t)!,
       background: Color.lerp(background, other.background, t)!,
-      destructive: Color.lerp(destructive, other.destructive, t)!,
-      text: Color.lerp(text, other.text, t)!,
-      hintText: Color.lerp(hintText, other.hintText, t)!,
-      subduedText: Color.lerp(subduedText, other.subduedText, t)!,
       border: Color.lerp(border, other.border, t)!,
-      subduedBorder: Color.lerp(subduedBorder, other.subduedBorder, t)!,
+      destructive: Color.lerp(destructive, other.destructive, t)!,
+      hintText: Color.lerp(hintText, other.hintText, t)!,
+      primary: Color.lerp(primary, other.primary, t)!,
       shadow: Color.lerp(shadow, other.shadow, t)!,
-      white: Color.lerp(white, other.white, t)!,
+      subduedBorder: Color.lerp(subduedBorder, other.subduedBorder, t)!,
+      subduedText: Color.lerp(subduedText, other.subduedText, t)!,
+      text: Color.lerp(text, other.text, t)!,
       transperent: Color.lerp(transperent, other.transperent, t)!,
+      white: Color.lerp(white, other.white, t)!,
     );
   }
 
@@ -105,38 +105,39 @@ class AppColors extends ThemeExtension<AppColors> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is AppColors &&
-            const DeepCollectionEquality().equals(primary, other.primary) &&
             const DeepCollectionEquality()
                 .equals(background, other.background) &&
-            const DeepCollectionEquality()
-                .equals(destructive, other.destructive) &&
-            const DeepCollectionEquality().equals(text, other.text) &&
-            const DeepCollectionEquality().equals(hintText, other.hintText) &&
-            const DeepCollectionEquality()
-                .equals(subduedText, other.subduedText) &&
             const DeepCollectionEquality().equals(border, other.border) &&
             const DeepCollectionEquality()
-                .equals(subduedBorder, other.subduedBorder) &&
+                .equals(destructive, other.destructive) &&
+            const DeepCollectionEquality().equals(hintText, other.hintText) &&
+            const DeepCollectionEquality().equals(primary, other.primary) &&
             const DeepCollectionEquality().equals(shadow, other.shadow) &&
-            const DeepCollectionEquality().equals(white, other.white) &&
             const DeepCollectionEquality()
-                .equals(transperent, other.transperent));
+                .equals(subduedBorder, other.subduedBorder) &&
+            const DeepCollectionEquality()
+                .equals(subduedText, other.subduedText) &&
+            const DeepCollectionEquality().equals(text, other.text) &&
+            const DeepCollectionEquality()
+                .equals(transperent, other.transperent) &&
+            const DeepCollectionEquality().equals(white, other.white));
   }
 
   @override
   int get hashCode {
     return Object.hash(
-        runtimeType,
-        const DeepCollectionEquality().hash(primary),
-        const DeepCollectionEquality().hash(background),
-        const DeepCollectionEquality().hash(destructive),
-        const DeepCollectionEquality().hash(text),
-        const DeepCollectionEquality().hash(hintText),
-        const DeepCollectionEquality().hash(subduedText),
-        const DeepCollectionEquality().hash(border),
-        const DeepCollectionEquality().hash(subduedBorder),
-        const DeepCollectionEquality().hash(shadow),
-        const DeepCollectionEquality().hash(white),
-        const DeepCollectionEquality().hash(transperent));
+      runtimeType.hashCode,
+      const DeepCollectionEquality().hash(background),
+      const DeepCollectionEquality().hash(border),
+      const DeepCollectionEquality().hash(destructive),
+      const DeepCollectionEquality().hash(hintText),
+      const DeepCollectionEquality().hash(primary),
+      const DeepCollectionEquality().hash(shadow),
+      const DeepCollectionEquality().hash(subduedBorder),
+      const DeepCollectionEquality().hash(subduedText),
+      const DeepCollectionEquality().hash(text),
+      const DeepCollectionEquality().hash(transperent),
+      const DeepCollectionEquality().hash(white),
+    );
   }
 }

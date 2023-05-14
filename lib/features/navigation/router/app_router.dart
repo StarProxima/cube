@@ -82,8 +82,8 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: '/timetable/:type-:id',
             pageBuilder: (context, state) {
-              final type = TimetableType.tryParse(state.params['type']);
-              final id = int.tryParse(state.params['id'] ?? '');
+              final type = TimetableType.tryParse(state.pathParameters['type']);
+              final id = int.tryParse(state.pathParameters['id'] ?? '');
               final timetable = type != null && id != null
                   ? TimetableInfo(id: id, label: 'test_label_$id', type: type)
                   : null;

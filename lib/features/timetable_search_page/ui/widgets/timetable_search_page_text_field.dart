@@ -18,13 +18,13 @@ class TimetableSearchPageTextField extends ConsumerWidget {
 
     return TextField(
       controller: contoller,
-      focusNode: focus,
-      onChanged: manager.delayedSearch,
-      onSubmitted: (value) => manager.unfocusSearch(),
-      onEditingComplete: manager.unfocusSearch,
-      style: context.textStyles.smallLabel.copyWith(
-        fontSize: 16,
-      ),
+      // focusNode: focus,
+      // onChanged: manager.delayedSearch,
+      // onSubmitted: (value) => manager.unfocusSearch(),
+      // onEditingComplete: manager.unfocusSearch,
+      // style: context.textStyles.smallLabel.copyWith(
+      //   fontSize: 16,
+      // ),
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
         isDense: true,
