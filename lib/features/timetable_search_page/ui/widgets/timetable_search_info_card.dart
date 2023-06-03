@@ -75,6 +75,7 @@ class TimetableSearchInfoCard extends ConsumerWidget {
               height: 38,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Flexible(
                     child: Row(
@@ -118,26 +119,12 @@ class TimetableSearchInfoCard extends ConsumerWidget {
                     Flexible(
                       child: Padding(
                         padding: const EdgeInsets.only(right: 6),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              timetable.groupInfo!.faculty,
-                              style: context.textStyles.smallSubTitle.copyWith(
-                                color: context.colors.subduedText,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            const SizedBox(height: 1),
-                            Text(
-                              '${timetable.groupInfo!.degreeStudy}, ${timetable.groupInfo!.directionCipher}',
-                              style: context.textStyles.smallSubTitle.copyWith(
-                                color: context.colors.subduedText,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ],
+                        child: Text(
+                          timetable.groupInfo!.faculty,
+                          style: context.textStyles.smallSubTitle.copyWith(
+                            color: context.colors.subduedText,
+                          ),
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ),

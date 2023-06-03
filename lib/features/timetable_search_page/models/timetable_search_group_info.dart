@@ -7,7 +7,5 @@ class TimetableSearchGroupInfo with _$TimetableSearchGroupInfo {
   factory TimetableSearchGroupInfo({
     required int course,
     required String faculty,
-    required String directionCipher,
-    required String degreeStudy,
   }) = _TimetableSearchGroupInfo;
 }

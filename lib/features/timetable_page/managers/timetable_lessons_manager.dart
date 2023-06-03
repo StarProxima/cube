@@ -73,7 +73,7 @@ class TimetableLessonsManager {
     events.change(SplayTreeMap());
   }
 
-  Future<List<LessonFullInDb>> _getLessons({
+  Future<List<AppApiEntitiesTimetableLessonSchemasLesson>> _getLessons({
     required DateTime startDate,
     required DateTime endDate,
   }) async {
@@ -97,7 +97,7 @@ class TimetableLessonsManager {
     return lessonResponse.body!.data;
   }
 
-  void _setLessons(List<LessonFullInDb> lessons) {
+  void _setLessons(List<AppApiEntitiesTimetableLessonSchemasLesson> lessons) {
     TimetableLessons timetableMap =
         SplayTreeMap.of(timetableLessons.state.cast());
 

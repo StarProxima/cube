@@ -133,8 +133,6 @@ class TimetableSearchPageManager {
           groupInfo: TimetableSearchGroupInfo(
             course: group.course,
             faculty: group.faculty.shortName,
-            directionCipher: group.direction.cipher,
-            degreeStudy: group.direction.degreeStudy.value ?? '',
           ),
         ),
       );

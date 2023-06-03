@@ -18,8 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TimetableSearchGroupInfo {
   int get course => throw _privateConstructorUsedError;
   String get faculty => throw _privateConstructorUsedError;
-  String get directionCipher => throw _privateConstructorUsedError;
-  String get degreeStudy => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TimetableSearchGroupInfoCopyWith<TimetableSearchGroupInfo> get copyWith =>
@@ -32,8 +30,7 @@ abstract class $TimetableSearchGroupInfoCopyWith<$Res> {
           $Res Function(TimetableSearchGroupInfo) then) =
       _$TimetableSearchGroupInfoCopyWithImpl<$Res, TimetableSearchGroupInfo>;
   @useResult
-  $Res call(
-      {int course, String faculty, String directionCipher, String degreeStudy});
+  $Res call({int course, String faculty});
 }
 
 /// @nodoc
@@ -52,8 +49,6 @@ class _$TimetableSearchGroupInfoCopyWithImpl<$Res,
   $Res call({
     Object? course = null,
     Object? faculty = null,
-    Object? directionCipher = null,
-    Object? degreeStudy = null,
   }) {
     return _then(_value.copyWith(
       course: null == course
@@ -63,14 +58,6 @@ class _$TimetableSearchGroupInfoCopyWithImpl<$Res,
       faculty: null == faculty
           ? _value.faculty
           : faculty // ignore: cast_nullable_to_non_nullable
-              as String,
-      directionCipher: null == directionCipher
-          ? _value.directionCipher
-          : directionCipher // ignore: cast_nullable_to_non_nullable
-              as String,
-      degreeStudy: null == degreeStudy
-          ? _value.degreeStudy
-          : degreeStudy // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -85,8 +72,7 @@ abstract class _$$_TimetableSearchGroupInfoCopyWith<$Res>
       __$$_TimetableSearchGroupInfoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int course, String faculty, String directionCipher, String degreeStudy});
+  $Res call({int course, String faculty});
 }
 
 /// @nodoc
@@ -103,8 +89,6 @@ class __$$_TimetableSearchGroupInfoCopyWithImpl<$Res>
   $Res call({
     Object? course = null,
     Object? faculty = null,
-    Object? directionCipher = null,
-    Object? degreeStudy = null,
   }) {
     return _then(_$_TimetableSearchGroupInfo(
       course: null == course
@@ -115,14 +99,6 @@ class __$$_TimetableSearchGroupInfoCopyWithImpl<$Res>
           ? _value.faculty
           : faculty // ignore: cast_nullable_to_non_nullable
               as String,
-      directionCipher: null == directionCipher
-          ? _value.directionCipher
-          : directionCipher // ignore: cast_nullable_to_non_nullable
-              as String,
-      degreeStudy: null == degreeStudy
-          ? _value.degreeStudy
-          : degreeStudy // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -130,24 +106,16 @@ class __$$_TimetableSearchGroupInfoCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TimetableSearchGroupInfo implements _TimetableSearchGroupInfo {
-  _$_TimetableSearchGroupInfo(
-      {required this.course,
-      required this.faculty,
-      required this.directionCipher,
-      required this.degreeStudy});
+  _$_TimetableSearchGroupInfo({required this.course, required this.faculty});
 
   @override
   final int course;
   @override
   final String faculty;
-  @override
-  final String directionCipher;
-  @override
-  final String degreeStudy;
 
   @override
   String toString() {
-    return 'TimetableSearchGroupInfo(course: $course, faculty: $faculty, directionCipher: $directionCipher, degreeStudy: $degreeStudy)';
+    return 'TimetableSearchGroupInfo(course: $course, faculty: $faculty)';
   }
 
   @override
@@ -156,16 +124,11 @@ class _$_TimetableSearchGroupInfo implements _TimetableSearchGroupInfo {
         (other.runtimeType == runtimeType &&
             other is _$_TimetableSearchGroupInfo &&
             (identical(other.course, course) || other.course == course) &&
-            (identical(other.faculty, faculty) || other.faculty == faculty) &&
-            (identical(other.directionCipher, directionCipher) ||
-                other.directionCipher == directionCipher) &&
-            (identical(other.degreeStudy, degreeStudy) ||
-                other.degreeStudy == degreeStudy));
+            (identical(other.faculty, faculty) || other.faculty == faculty));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, course, faculty, directionCipher, degreeStudy);
+  int get hashCode => Object.hash(runtimeType, course, faculty);
 
   @JsonKey(ignore: true)
   @override
@@ -178,18 +141,12 @@ class _$_TimetableSearchGroupInfo implements _TimetableSearchGroupInfo {
 abstract class _TimetableSearchGroupInfo implements TimetableSearchGroupInfo {
   factory _TimetableSearchGroupInfo(
       {required final int course,
-      required final String faculty,
-      required final String directionCipher,
-      required final String degreeStudy}) = _$_TimetableSearchGroupInfo;
+      required final String faculty}) = _$_TimetableSearchGroupInfo;
 
   @override
   int get course;
   @override
   String get faculty;
-  @override
-  String get directionCipher;
-  @override
-  String get degreeStudy;
   @override
   @JsonKey(ignore: true)
   _$$_TimetableSearchGroupInfoCopyWith<_$_TimetableSearchGroupInfo>
