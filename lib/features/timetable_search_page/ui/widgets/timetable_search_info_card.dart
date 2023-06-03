@@ -119,12 +119,25 @@ class TimetableSearchInfoCard extends ConsumerWidget {
                     Flexible(
                       child: Padding(
                         padding: const EdgeInsets.only(right: 6),
-                        child: Text(
-                          timetable.groupInfo!.faculty,
-                          style: context.textStyles.smallSubTitle.copyWith(
-                            color: context.colors.subduedText,
-                          ),
-                          overflow: TextOverflow.ellipsis,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '${timetable.groupInfo!.faculty}, ${timetable.groupInfo!.course} курс',
+                              style: context.textStyles.smallSubTitle.copyWith(
+                                color: context.colors.subduedText,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            Text(
+                              '${timetable.groupInfo!.direction}',
+                              style: context.textStyles.smallSubTitle.copyWith(
+                                color: context.colors.subduedText,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
                         ),
                       ),
                     ),
