@@ -30,7 +30,7 @@ void main() async {
               AppMetricaConfig(dotenv.env['APP_METRICA_API_KEY']!),
             ),
           HiveInitializer.init(),
-          Future.delayed(const Duration(milliseconds: 5500))
+          Future.delayed(const Duration(milliseconds: 3500)),
         ]);
       },
       builder: (context, snapshot, _) {

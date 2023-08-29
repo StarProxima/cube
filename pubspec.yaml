@@ -1,7 +1,7 @@
 name: cube_system
 description: Modern electronic timetable
 publish_to: 'none'
-version: 0.8.4+7
+version: 1.0.0+8
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
