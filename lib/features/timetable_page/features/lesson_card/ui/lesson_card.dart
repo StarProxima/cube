@@ -75,50 +75,46 @@ class LessonCard extends ConsumerWidget {
                       color: context.colors.shadow,
                       blurRadius: 12,
                       offset: const Offset(0, 1),
-                    )
+                    ),
                   ],
                 ),
                 clipBehavior: Clip.antiAlias,
-                child: Material(
+                child: const Material(
                   type: MaterialType.transparency,
                   child: IntrinsicHeight(
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const LessonCardIndicator(),
+                        LessonCardIndicator(),
                         Expanded(
-                          child: InkWell(
-                            onTap: () {},
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    left: 12,
-                                    right: 12,
-                                    top: 8,
-                                    bottom: 8,
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: const [
-                                      LessonCardHeader(),
-                                      SizedBox(height: 8),
-                                      LessonCardBody(),
-                                    ],
-                                  ),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  left: 12,
+                                  right: 12,
+                                  top: 8,
+                                  bottom: 8,
                                 ),
-                                const Padding(
-                                  padding: EdgeInsets.only(
-                                    left: 4,
-                                    right: 4,
-                                    bottom: 4,
-                                  ),
-                                  child: LessonCardFooter(),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    LessonCardHeader(),
+                                    SizedBox(height: 8),
+                                    LessonCardBody(),
+                                  ],
                                 ),
-                                const SizedBox(height: 4),
-                              ],
-                            ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  left: 4,
+                                  right: 4,
+                                  bottom: 4,
+                                ),
+                                child: LessonCardFooter(),
+                              ),
+                              SizedBox(height: 4),
+                            ],
                           ),
                         ),
                       ],
