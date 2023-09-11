@@ -17,5 +17,8 @@ enum TimetableDayEventType {
   @HiveField(5)
   loading,
   @HiveField(6)
-  error;
+  error,
+  @HiveField(7)
+  unavailable,
+  ;
 }

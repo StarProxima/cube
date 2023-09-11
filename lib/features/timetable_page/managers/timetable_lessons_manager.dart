@@ -86,15 +86,24 @@ class TimetableLessonsManager {
     final startDateStr = format.format(startDate);
     final endDateStr = format.format(endDate);
 
-    final lessonResponse = await api.apiTimetableLessonsViewerGet(
-      group: timetable.type == TimetableType.group ? [timetable.id] : null,
-      teacher: timetable.type == TimetableType.teacher ? [timetable.id] : null,
-      place: timetable.type == TimetableType.place ? [timetable.id] : null,
-      startDate: startDateStr,
-      endDate: endDateStr,
-    );
+    try {
+      final lessonResponse = await api.apiTimetableLessonsViewerGet(
+        group: timetable.type == TimetableType.group ? [timetable.id] : null,
+        teacher:
+            timetable.type == TimetableType.teacher ? [timetable.id] : null,
+        place: timetable.type == TimetableType.place ? [timetable.id] : null,
+        startDate: startDateStr,
+        endDate: endDateStr,
+      );
 
-    return lessonResponse.body!.data;
+      if (lessonResponse.statusCode >= 400 && lessonResponse.statusCode < 500) {
+        eventManager.setUnavailableAfterLoading();
+      }
+
+      return lessonResponse.body!.data;
+    } catch (e) {
+      return [];
+    }
   }
 
   void _setLessons(List<AppApiEntitiesTimetableLessonSchemasLesson> lessons) {

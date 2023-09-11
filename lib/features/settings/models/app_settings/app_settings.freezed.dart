@@ -47,16 +47,12 @@ abstract class $AppSettingsCopyWith<$Res> {
       _$AppSettingsCopyWithImpl<$Res, AppSettings>;
   @useResult
   $Res call(
-      {@HiveField(0)
-          AppThemeMode appThemeMode,
-      @HiveField(1)
-          AppLessonColorsMode lessonColorsMode,
-      @HiveField(2)
-          LessonCardLessonTypePosition lessonCardLessonTypePosition,
+      {@HiveField(0) AppThemeMode appThemeMode,
+      @HiveField(1) AppLessonColorsMode lessonColorsMode,
+      @HiveField(2) LessonCardLessonTypePosition lessonCardLessonTypePosition,
       @HiveField(3)
-          LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition,
-      @HiveField(4, defaultValue: false)
-          bool landingPassed});
+      LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition,
+      @HiveField(4, defaultValue: false) bool landingPassed});
 }
 
 /// @nodoc
@@ -112,16 +108,12 @@ abstract class _$$_AppSettingsCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@HiveField(0)
-          AppThemeMode appThemeMode,
-      @HiveField(1)
-          AppLessonColorsMode lessonColorsMode,
-      @HiveField(2)
-          LessonCardLessonTypePosition lessonCardLessonTypePosition,
+      {@HiveField(0) AppThemeMode appThemeMode,
+      @HiveField(1) AppLessonColorsMode lessonColorsMode,
+      @HiveField(2) LessonCardLessonTypePosition lessonCardLessonTypePosition,
       @HiveField(3)
-          LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition,
-      @HiveField(4, defaultValue: false)
-          bool landingPassed});
+      LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition,
+      @HiveField(4, defaultValue: false) bool landingPassed});
 }
 
 /// @nodoc
@@ -255,17 +247,14 @@ class _$_AppSettings implements _AppSettings {
 
 abstract class _AppSettings implements AppSettings {
   factory _AppSettings(
-      {@HiveField(0)
-          final AppThemeMode appThemeMode,
-      @HiveField(1)
-          final AppLessonColorsMode lessonColorsMode,
+      {@HiveField(0) final AppThemeMode appThemeMode,
+      @HiveField(1) final AppLessonColorsMode lessonColorsMode,
       @HiveField(2)
-          final LessonCardLessonTypePosition lessonCardLessonTypePosition,
+      final LessonCardLessonTypePosition lessonCardLessonTypePosition,
       @HiveField(3)
-          final LessonCardRecessDisplayCondition
-              lessonCardRecessDisplayCondition,
+      final LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition,
       @HiveField(4, defaultValue: false)
-          final bool landingPassed}) = _$_AppSettings;
+      final bool landingPassed}) = _$_AppSettings;
 
   factory _AppSettings.fromJson(Map<String, dynamic> json) =
       _$_AppSettings.fromJson;

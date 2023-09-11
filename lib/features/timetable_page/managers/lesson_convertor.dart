@@ -34,7 +34,7 @@ class LessonConvertor {
 
     bool isEvent = false;
 
-    switch (lesson.type$.shortName) {
+    switch (lesson.type.shortName) {
       case 'ЛК':
         type = LessonType.lecture;
         break;
@@ -61,7 +61,7 @@ class LessonConvertor {
     }
 
     Color color = Color(
-      int.parse(lesson.type$.color.substring(1, 7), radix: 16) + 0xFF000000,
+      int.parse(lesson.type.color.substring(1, 7), radix: 16) + 0xFF000000,
     );
 
     final date = lesson.date;
@@ -82,7 +82,7 @@ class LessonConvertor {
       timings: timings,
       dateTimings: dateTiminigs,
       type: type,
-      typeShortName: lesson.type$.shortName,
+      typeShortName: lesson.type.shortName,
       disciplineName: lesson.discipline?.name,
       place: lesson.place?.name,
       groupNames: lesson.groups.map((e) => e.name).toList(),
