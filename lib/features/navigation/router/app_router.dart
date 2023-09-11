@@ -62,11 +62,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         observers: getObservers(),
         routes: [
           GoRoute(
-            path: '/search',
+            path: '/notifications',
             pageBuilder: (context, state) => AppCustomTransitionPage(
               state: state,
               child: const UnimplementedFeatureEventPage(
-                title: 'Скоро здесь будут поиск и ваши расписания',
+                title: 'Скоро здесь будут уведомления от системы',
               ),
             ),
           ),

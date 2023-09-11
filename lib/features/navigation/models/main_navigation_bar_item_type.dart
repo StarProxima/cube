@@ -1,8 +1,13 @@
 enum MainNavigationBarItemType {
-  search(
-    'Поиск',
-    'SEARCH',
-    'SEARCH_Interactivity',
+  // search(
+  //   'Поиск',
+  //   'SEARCH',
+  //   'SEARCH_Interactivity',
+  // ),
+  notifications(
+    'Уведомления',
+    'BELL',
+    'BELL_Interactivity',
   ),
   notes(
     'Заметки',
@@ -14,11 +19,6 @@ enum MainNavigationBarItemType {
     'TIMER',
     'TIMER_Interactivity',
   ),
-  // tasks(
-  //   'Задачи',
-  //   'BELL',
-  //   'BELL_Interactivity',
-  // ),
   profile(
     'Профиль',
     'USER',
