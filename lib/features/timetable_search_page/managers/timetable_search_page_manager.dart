@@ -58,7 +58,7 @@ class TimetableSearchPageManager {
     searchContoller.state.clear();
     Future.delayed(const Duration(milliseconds: 250), () {
       if (searchFocus.state.canRequestFocus) {
-        searchFocus.state.requestFocus();
+        // searchFocus.state.requestFocus();
       }
     });
   }
@@ -133,8 +133,7 @@ class TimetableSearchPageManager {
           groupInfo: TimetableSearchGroupInfo(
             course: group.course,
             faculty: group.faculty.shortName,
-            directionCipher: group.direction.cipher,
-            degreeStudy: group.direction.degreeStudy.value ?? '',
+            direction: group.direction.shortName,
           ),
         ),
       );

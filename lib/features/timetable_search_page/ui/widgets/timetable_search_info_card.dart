@@ -75,6 +75,7 @@ class TimetableSearchInfoCard extends ConsumerWidget {
               height: 38,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Flexible(
                     child: Row(
@@ -123,15 +124,14 @@ class TimetableSearchInfoCard extends ConsumerWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              timetable.groupInfo!.faculty,
+                              '${timetable.groupInfo!.faculty}, ${timetable.groupInfo!.course} курс',
                               style: context.textStyles.smallSubTitle.copyWith(
                                 color: context.colors.subduedText,
                               ),
                               overflow: TextOverflow.ellipsis,
                             ),
-                            const SizedBox(height: 1),
                             Text(
-                              '${timetable.groupInfo!.degreeStudy}, ${timetable.groupInfo!.directionCipher}',
+                              '${timetable.groupInfo!.direction}',
                               style: context.textStyles.smallSubTitle.copyWith(
                                 color: context.colors.subduedText,
                               ),
