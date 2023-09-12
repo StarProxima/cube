@@ -27,7 +27,7 @@ class LessonCardTimeToStart extends ConsumerWidget {
       return const SizedBox();
     }
 
-    return AppTooltip.long(
+    return AppTooltip(
       message: 'Время до начала занятия',
       child: Padding(
         padding: margin ?? EdgeInsets.zero,

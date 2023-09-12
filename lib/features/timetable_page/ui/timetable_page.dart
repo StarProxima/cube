@@ -22,12 +22,9 @@ class TimetablePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final timeManager = ref.watch(dateTimeManager);
-    timeManager.setTimers();
+    Future(ref.watch(dateTimeManager).setTimers);
 
-    final manager = ref.read(timetablePageManager);
-
-    manager.setup(timetable: timetable);
+    ref.read(timetablePageManager).setup(timetable: timetable);
 
     ref.watch(lastCurrentNextLessonListener);
 
@@ -49,6 +46,22 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
     initialPage: initialPage -
         ref.read(currentDate).difference(ref.read(selectedDate)).inDays,
   );
+
+  late final AppLifecycleListener appListener;
+
+  @override
+  void initState() {
+    appListener = AppLifecycleListener(
+      onRestart: ref.read(dateTimeManager).refreshCurrentDate,
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    appListener.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -50,6 +50,10 @@ class $AssetsBrooklynGen {
   /// File path: assets/brooklyn/rest-3.svg
   SvgGenImage get rest3 => const SvgGenImage('assets/brooklyn/rest-3.svg');
 
+  /// File path: assets/brooklyn/schedule_unavailable.svg
+  SvgGenImage get scheduleUnavailable =>
+      const SvgGenImage('assets/brooklyn/schedule_unavailable.svg');
+
   /// File path: assets/brooklyn/smart-people-2.svg
   SvgGenImage get smartPeople2 =>
       const SvgGenImage('assets/brooklyn/smart-people-2.svg');
@@ -77,6 +81,7 @@ class $AssetsBrooklynGen {
         pageUnderConstruction3,
         productDevelopment1,
         rest3,
+        scheduleUnavailable,
         smartPeople2,
         somethingWentWrong2,
         virtualReality4,

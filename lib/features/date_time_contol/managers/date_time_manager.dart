@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
@@ -42,11 +43,10 @@ class DateTimeManager {
   void setTimers() {
     setCurrentDateLazyTimeTimer();
     setCurrentDateQuickTimeTimer();
+    refreshCurrentDate();
   }
 
-  void setCurrentDateLazyTimeTimer() async {
-    await Future(() {});
-
+  void setCurrentDateLazyTimeTimer() {
     dateTimeLazyTimer.state?.cancel();
     dateTimeLazyTimer.state = Timer.periodic(
       dateTimeLazyDelay.state,
@@ -56,9 +56,7 @@ class DateTimeManager {
     );
   }
 
-  void setCurrentDateQuickTimeTimer() async {
-    await Future(() {});
-
+  void setCurrentDateQuickTimeTimer() {
     dateTimeQuickTimer.state?.cancel();
     dateTimeQuickTimer.state = Timer.periodic(
       dateTimeQuickDelay.state,
@@ -66,6 +64,10 @@ class DateTimeManager {
         dateTimeQuick.state = DateTime.now();
       },
     );
+  }
+
+  void refreshCurrentDate() {
+    currentDate.state = DateUtils.dateOnly(DateTime.now());
   }
 
   DateTimeBounds getDateTimeBounds([DateTime? date]) {

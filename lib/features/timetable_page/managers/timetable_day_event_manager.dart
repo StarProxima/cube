@@ -42,7 +42,7 @@ class TimetableDayEventManager {
 
   static final _shouldLoadingEvents = [
     TimetableDayEventType.error,
-    TimetableDayEventType.notSelected
+    TimetableDayEventType.notSelected,
   ];
 
   void setLoadingEvents({
@@ -77,6 +77,21 @@ class TimetableDayEventManager {
           type: timetableMap[entry.key]?.isEmpty ?? true
               ? TimetableDayEventType.weekend
               : TimetableDayEventType.lessons,
+        );
+      }
+    }
+
+    events.change(eventMap);
+  }
+
+  void setUnavailableAfterLoading() {
+    SplayTreeMap<DateTime, TimetableDayEvent> eventMap =
+        SplayTreeMap.of(events.state.cast());
+
+    for (final MapEntry(key: date, value: event) in eventMap.entries) {
+      if (event.type == TimetableDayEventType.loading) {
+        eventMap[date] = TimetableDayEvent(
+          type: TimetableDayEventType.unavailable,
         );
       }
     }

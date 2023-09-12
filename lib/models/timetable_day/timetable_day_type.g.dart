@@ -29,6 +29,8 @@ class TimetableDayEventTypeAdapter extends TypeAdapter<TimetableDayEventType> {
         return TimetableDayEventType.loading;
       case 6:
         return TimetableDayEventType.error;
+      case 7:
+        return TimetableDayEventType.unavailable;
       default:
         return TimetableDayEventType.notSelected;
     }
@@ -57,6 +59,9 @@ class TimetableDayEventTypeAdapter extends TypeAdapter<TimetableDayEventType> {
         break;
       case TimetableDayEventType.error:
         writer.writeByte(6);
+        break;
+      case TimetableDayEventType.unavailable:
+        writer.writeByte(7);
         break;
     }
   }

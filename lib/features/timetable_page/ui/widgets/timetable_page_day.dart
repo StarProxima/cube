@@ -1,5 +1,6 @@
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/timetable_page/state_holders/timetable_page_events.dart';
+import 'package:cube_system/features/timetable_page/ui/event_pages/unavailable_event_page.dart';
 import 'package:cube_system/models/timetable_day/timetable_day_type.dart';
 import 'package:cube_system/features/timetable_page/ui/event_pages/weekend_event_page.dart';
 import 'package:flutter/material.dart';
@@ -44,13 +45,14 @@ class TimetablePageDay extends ConsumerWidget {
       case TimetableDayEventType.loading:
         break;
 
-      case TimetableDayEventType.welcome:
-      case TimetableDayEventType.notSelected:
+      case TimetableDayEventType.welcome || TimetableDayEventType.notSelected:
         return const NotSelectedEventPage();
 
-      case TimetableDayEventType.holiday:
-      case TimetableDayEventType.weekend:
+      case TimetableDayEventType.holiday || TimetableDayEventType.weekend:
         return const WeekendEventPage();
+
+      case TimetableDayEventType.unavailable:
+        return const UnavailableEventEventPage();
 
       case TimetableDayEventType.error:
         return NoConnectionEventPage(
@@ -58,6 +60,7 @@ class TimetablePageDay extends ConsumerWidget {
         );
 
       case TimetableDayEventType.lessons:
+        break;
     }
 
     final isKSRS =

@@ -82,7 +82,7 @@ class _SettingsPageState extends ConsumerState<_SettingsPage> {
             const _SettingsPageLessonCardRecessDisplayCondition(),
             const SizedBox(height: 20),
             AppButton(
-              text: 'Посадочная страница',
+              text: 'О сервисе',
               isExpanded: true,
               rightIcon: const Icon(
                 Icons.arrow_forward_ios_rounded,

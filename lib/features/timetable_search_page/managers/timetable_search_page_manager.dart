@@ -58,7 +58,7 @@ class TimetableSearchPageManager {
     searchContoller.state.clear();
     Future.delayed(const Duration(milliseconds: 250), () {
       if (searchFocus.state.canRequestFocus) {
-        // searchFocus.state.requestFocus();
+        searchFocus.state.requestFocus();
       }
     });
   }
