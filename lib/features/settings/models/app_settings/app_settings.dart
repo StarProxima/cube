@@ -19,13 +19,13 @@ class AppSettings with _$AppSettings {
     @HiveField(0) @Default(AppThemeMode.system) AppThemeMode appThemeMode,
     @HiveField(1)
     @Default(AppLessonColorsMode.cube)
-        AppLessonColorsMode lessonColorsMode,
+    AppLessonColorsMode lessonColorsMode,
     @HiveField(2)
-    @Default(LessonCardLessonTypePosition.bottomRight)
-        LessonCardLessonTypePosition lessonCardLessonTypePosition,
+    @Default(LessonCardLessonTypePosition.onIndicator)
+    LessonCardLessonTypePosition lessonCardLessonTypePosition,
     @HiveField(3)
     @Default(LessonCardRecessDisplayCondition.always)
-        LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition,
+    LessonCardRecessDisplayCondition lessonCardRecessDisplayCondition,
     @HiveField(4, defaultValue: false) @Default(false) bool landingPassed,
   }) = _AppSettings;
 
