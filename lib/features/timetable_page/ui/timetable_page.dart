@@ -1,3 +1,5 @@
+import 'package:cube_system/features/analytics/log_type.dart';
+import 'package:cube_system/features/analytics/logger.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_day.dart';
@@ -22,12 +24,9 @@ class TimetablePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final timeManager = ref.watch(dateTimeManager);
-    timeManager.setTimers();
+    Future(ref.watch(dateTimeManager).setTimers);
 
-    final manager = ref.read(timetablePageManager);
-
-    manager.setup(timetable: timetable);
+    ref.read(timetablePageManager).setup(timetable: timetable);
 
     ref.watch(lastCurrentNextLessonListener);
 
@@ -49,6 +48,22 @@ class _TimetablePageState extends ConsumerState<_TimetablePage> {
     initialPage: initialPage -
         ref.read(currentDate).difference(ref.read(selectedDate)).inDays,
   );
+
+  late final AppLifecycleListener appListener;
+
+  @override
+  void initState() {
+    appListener = AppLifecycleListener(
+      onRestart: ref.read(dateTimeManager).refreshCurrentDate,
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    appListener.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
