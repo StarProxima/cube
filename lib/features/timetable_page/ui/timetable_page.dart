@@ -1,5 +1,3 @@
-import 'package:cube_system/features/analytics/log_type.dart';
-import 'package:cube_system/features/analytics/logger.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_day.dart';
