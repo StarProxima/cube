@@ -44,7 +44,7 @@ class _MainBottomNavigationBarState extends ConsumerState<MainNavigationBar> {
           unselectedItemColor: context.colors.text,
           selectedLabelStyle: context.textStyles.smallLabel,
           unselectedLabelStyle: context.textStyles.smallSubTitle,
-          type: BottomNavigationBarType.shifting,
+          // type: BottomNavigationBarType.shifting,
           currentIndex: type.index,
           onTap: (index) {
             manager.selectItem(items[index].type);

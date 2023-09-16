@@ -4,26 +4,26 @@ enum MainNavigationBarItemType {
   //   'SEARCH',
   //   'SEARCH_Interactivity',
   // ),
-  notifications(
-    'Уведомления',
-    'BELL',
-    'BELL_Interactivity',
-  ),
-  notes(
-    'Заметки',
-    'CHAT',
-    'CHAT_Interactivity',
-  ),
+  // notifications(
+  //   'Уведомления',
+  //   'BELL',
+  //   'BELL_Interactivity',
+  // ),
+  // notes(
+  //   'Заметки',
+  //   'CHAT',
+  //   'CHAT_Interactivity',
+  // ),
   timetable(
     'Расписание',
     'TIMER',
     'TIMER_Interactivity',
   ),
-  profile(
-    'Профиль',
-    'USER',
-    'USER_Interactivity',
-  ),
+  // profile(
+  //   'Профиль',
+  //   'USER',
+  //   'USER_Interactivity',
+  // ),
   settings(
     'Настройки',
     'SETTINGS',
