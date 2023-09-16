@@ -82,7 +82,7 @@ class _SettingsPageState extends ConsumerState<_SettingsPage> {
             ),
             const SizedBox(height: 8),
             AppButton(
-              text: 'По всем вопросам',
+              text: 'Поддержка',
               isExpanded: true,
               rightIcon: const Icon(
                 Icons.arrow_forward_ios_rounded,
@@ -93,10 +93,18 @@ class _SettingsPageState extends ConsumerState<_SettingsPage> {
                 final uri = Uri.parse('https://t.me/CubeServiceOfficial');
                 launchUrl(
                   uri,
-                  mode: LaunchMode.externalNonBrowserApplication,
+                  mode: LaunchMode.externalApplication,
                 );
                 logger.launch(uri: uri, launchFrom: 'Settings');
               },
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Если заметили неточности в расписании или у вас есть предложения по улучшению, обращайтесь в поддержку.',
+              style: context.textStyles.smallSubTitle.copyWith(
+                color: context.colors.subduedText,
+              ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 32),
             const _SettingsPageAppInfo(),
