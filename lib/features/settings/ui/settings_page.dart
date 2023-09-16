@@ -1,4 +1,5 @@
 import 'package:cube_system/features/analytics/logger.dart';
+import 'package:cube_system/features/landing_page/ui/widgets/git_info_card.dart';
 import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:cube_system/ui/ui_kit/app_button.dart';
@@ -59,21 +60,7 @@ class _SettingsPageState extends ConsumerState<_SettingsPage> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            LandingServiceCard(
-              title: 'GitHub',
-              subTitle: Text(
-                'Это проект с открытым исходным кодом',
-                style: context.textStyles.smallSubTitle.copyWith(
-                  color: context.colors.subduedText.withOpacity(0.65),
-                ),
-              ),
-              description:
-                  'Тут можно оставить сообщение об ошибке и найти последниe версии приложения на Windows и другие платформы',
-              linkName: 'github.com/StarProxima/cube',
-              uri: Uri.parse('https://github.com/StarProxima/cube'),
-              onLaunch: (uri) =>
-                  logger.launch(uri: uri, launchFrom: 'Settings'),
-            ),
+            const GitInfoCard(launchFrom: 'Settings'),
             const SizedBox(height: 20),
             const _SettingsPageLessonColors(),
             const SizedBox(height: 20),
@@ -95,7 +82,7 @@ class _SettingsPageState extends ConsumerState<_SettingsPage> {
             ),
             const SizedBox(height: 8),
             AppButton(
-              text: 'По всем вопросам',
+              text: 'Поддержка',
               isExpanded: true,
               rightIcon: const Icon(
                 Icons.arrow_forward_ios_rounded,
@@ -110,6 +97,14 @@ class _SettingsPageState extends ConsumerState<_SettingsPage> {
                 );
                 logger.launch(uri: uri, launchFrom: 'Settings');
               },
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Если заметили неточности в расписании или у вас есть предложения по улучшению, обращайтесь в поддержку.',
+              style: context.textStyles.smallSubTitle.copyWith(
+                color: context.colors.subduedText,
+              ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 32),
             const _SettingsPageAppInfo(),

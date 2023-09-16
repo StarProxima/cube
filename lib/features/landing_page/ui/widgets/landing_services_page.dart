@@ -1,4 +1,5 @@
 import 'package:cube_system/features/analytics/logger.dart';
+import 'package:cube_system/features/landing_page/ui/widgets/git_info_card.dart';
 import 'package:cube_system/gen/assets/assets.gen.dart';
 import 'package:cube_system/styles/app_theme_context_extension.dart';
 import 'package:flutter/material.dart';
@@ -19,13 +20,6 @@ class LandingServicesPage extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Center(
-            //   child: Assets.brooklyn.beingProductive3.svg(
-            //     height: 280,
-            //     width: 280,
-            //   ),
-            // ),
-            // const SizedBox(height: 24),
             Center(
               child: Column(
                 children: [
@@ -33,7 +27,7 @@ class LandingServicesPage extends ConsumerWidget {
                     child: Assets.brooklyn.managerDesk2.svg(),
                   ),
                   Text(
-                    'Доступно с любого устройства',
+                    'Все сервисы',
                     style: context.textStyles.smallSubTitle.copyWith(
                       fontSize: 16,
                     ),
@@ -60,44 +54,7 @@ class LandingServicesPage extends ConsumerWidget {
               onLaunch: (uri) => logger.launch(uri: uri, launchFrom: 'Landing'),
             ),
             const SizedBox(height: 16),
-            LandingServiceCard(
-              title: 'Приложение',
-              subTitle: Text.rich(
-                TextSpan(
-                  children: [
-                    const TextSpan(
-                      text: 'Android',
-                    ),
-                    const TextSpan(
-                      text: ' / ',
-                    ),
-                    const TextSpan(
-                      text: 'iOS',
-                    ),
-                    const TextSpan(
-                      text: ' / ',
-                    ),
-                    const TextSpan(
-                      text: 'Desktop',
-                    ),
-                    const TextSpan(
-                      text: ' / ',
-                    ),
-                    TextSpan(
-                      text: 'Web',
-                      style: context.textStyles.smallSubTitle.copyWith(
-                        color: context.colors.subduedText.withOpacity(0.65),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              description:
-                  'Многофункциональное приложение для различных платформ',
-              linkName: 'github.com/StarProxima/cube',
-              uri: Uri.parse('https://github.com/StarProxima/cube'),
-              onLaunch: (uri) => logger.launch(uri: uri, launchFrom: 'Landing'),
-            ),
+            const GitInfoCard(launchFrom: 'Landing'),
             const SizedBox(height: 92),
           ],
         ),

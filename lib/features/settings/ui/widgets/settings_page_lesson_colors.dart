@@ -14,7 +14,7 @@ class _SettingsPageLessonColors extends ConsumerWidget {
     return AppRadioSelector<AppLessonColorsMode>(
       label: const Text('Цветовая тема для занятий'),
       value: lessonColorsMode,
-      onSelect: (value) => settingsNotifier.editLessonColorsMode(value),
+      onSelect: settingsNotifier.editLessonColorsMode,
       items: const [
         AppRadioSelectorItem(
           title: Text('Cube'),
