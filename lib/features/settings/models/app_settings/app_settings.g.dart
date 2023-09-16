@@ -70,7 +70,7 @@ _$_AppSettings _$$_AppSettingsFromJson(Map<String, dynamic> json) =>
       lessonCardLessonTypePosition: $enumDecodeNullable(
               _$LessonCardLessonTypePositionEnumMap,
               json['lessonCardLessonTypePosition']) ??
-          LessonCardLessonTypePosition.bottomRight,
+          LessonCardLessonTypePosition.onIndicator,
       lessonCardRecessDisplayCondition: $enumDecodeNullable(
               _$LessonCardRecessDisplayConditionEnumMap,
               json['lessonCardRecessDisplayCondition']) ??
