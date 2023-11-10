@@ -60,11 +60,11 @@ class TimetablePageHeaderTimetableInfo extends ConsumerWidget {
                     onTap: () => ref
                         .watch(savedTimetablesStateHolder.notifier)
                         .addTimetable(selectedTimetable),
-                    child: const Row(
+                    child: Row(
                       children: [
-                        Icon(Icons.saved_search_outlined),
-                        SizedBox(width: 6),
-                        Text('Сохранить текущее'),
+                        const Icon(Icons.saved_search_outlined),
+                        const SizedBox(width: 6),
+                        Text('Сохранить "${selectedTimetable.label}"'),
                       ],
                     ),
                   ),

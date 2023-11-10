@@ -66,7 +66,7 @@ _$_AppSettings _$$_AppSettingsFromJson(Map<String, dynamic> json) =>
               AppThemeMode.system,
       lessonColorsMode: $enumDecodeNullable(
               _$AppLessonColorsModeEnumMap, json['lessonColorsMode']) ??
-          AppLessonColorsMode.cube,
+          AppLessonColorsMode.accent,
       lessonCardLessonTypePosition: $enumDecodeNullable(
               _$LessonCardLessonTypePositionEnumMap,
               json['lessonCardLessonTypePosition']) ??

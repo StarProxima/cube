@@ -17,14 +17,14 @@ class _SettingsPageLessonColors extends ConsumerWidget {
       onSelect: settingsNotifier.editLessonColorsMode,
       items: const [
         AppRadioSelectorItem(
-          title: Text('Cube'),
+          title: Text('Accent'),
           description: Text('Выбор по умолчанию'),
-          value: AppLessonColorsMode.cube,
+          value: AppLessonColorsMode.accent,
         ),
         AppRadioSelectorItem(
-          title: Text('Accent'),
-          description: Text('Цветовая палитра c более насыщенными цветами'),
-          value: AppLessonColorsMode.accent,
+          title: Text('Cube'),
+          description: Text('Оригинальная палитра'),
+          value: AppLessonColorsMode.cube,
         ),
       ],
     );

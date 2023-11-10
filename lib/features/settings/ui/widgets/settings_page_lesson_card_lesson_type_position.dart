@@ -23,7 +23,7 @@ class _SettingsPageLessonCardLessonTypePosition extends ConsumerWidget {
         AppRadioSelectorItem(
           title: Text('На индикаторе'),
           description: Text(
-            'Выбор по умолчанию. Вертикальный текст на левом индикаторе.',
+            'Выбор по умолчанию. Вертикальный текст на левом индикаторе',
           ),
           value: LessonCardLessonTypePosition.onIndicator,
         ),

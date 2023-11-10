@@ -164,7 +164,7 @@ class __$$_AppSettingsCopyWithImpl<$Res>
 class _$_AppSettings implements _AppSettings {
   _$_AppSettings(
       {@HiveField(0) this.appThemeMode = AppThemeMode.system,
-      @HiveField(1) this.lessonColorsMode = AppLessonColorsMode.cube,
+      @HiveField(1) this.lessonColorsMode = AppLessonColorsMode.accent,
       @HiveField(2) this.lessonCardLessonTypePosition =
           LessonCardLessonTypePosition.onIndicator,
       @HiveField(3) this.lessonCardRecessDisplayCondition =
