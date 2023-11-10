@@ -62,12 +62,12 @@ class TimetablePageManager {
   }
 
   // TODO: Refactor - update current timetable when selected timetable changes
-  Future<void> selectTimetable(TimetableInfo timetable) async {
+  Future<void> selectTimetable(TimetableInfo? timetable) async {
     selectedTimetable.change(timetable);
     lessonsManager.clear();
     await lessonsManager.updateCurrentTimetable();
     _save();
-    logger.selectTimetable(timetable);
+    if (timetable != null) logger.selectTimetable(timetable);
   }
 
   Future<void> updateCurrentTimetable() async =>

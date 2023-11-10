@@ -9,11 +9,11 @@ class TimetablePageHeader extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return SizedBox(
+    return const SizedBox(
       height: 62,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
+        children: [
           Expanded(
             flex: 10,
             child: Padding(
@@ -37,7 +37,7 @@ class TimetablePageHeader extends ConsumerWidget {
                 child: TimetablePageHeaderBackButton(),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

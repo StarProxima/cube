@@ -18,7 +18,9 @@ class LessonCardFooter extends ConsumerWidget {
     );
 
     final timetableType =
-        ref.watch(selectedTimetableStateHolder.select((value) => value!.type));
+        ref.watch(selectedTimetableStateHolder.select((value) => value?.type));
+
+    if (timetableType == null) return const SizedBox();
 
     final lessonTypePosition = ref.watch(
       appSettingsStateHolder
