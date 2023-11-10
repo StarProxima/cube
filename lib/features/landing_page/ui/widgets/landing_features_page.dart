@@ -51,7 +51,7 @@ class LandingFeaturesPage extends ConsumerWidget {
               color: const Color.fromARGB(255, 255, 163, 72).withOpacity(0.65),
               title: 'Актуальность',
               description:
-                  'Проверяйте актуальность, просматривая данные о последнем изменении расписания',
+                  'Просматривайте актуальное расписание на любой день недели',
             ),
             const SizedBox(height: 16),
             LandingFeatureCard(

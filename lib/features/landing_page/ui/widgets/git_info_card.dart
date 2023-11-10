@@ -16,7 +16,7 @@ class GitInfoCard extends StatelessWidget {
     return LandingServiceCard(
       title: 'GitHub',
       subTitle: Text(
-        'Это проект с открытым исходным кодом',
+        'Это приложение с открытым исходным кодом',
         style: context.textStyles.smallSubTitle.copyWith(
           color: context.colors.subduedText.withOpacity(0.65),
         ),

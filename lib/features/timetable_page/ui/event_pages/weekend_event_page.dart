@@ -12,7 +12,7 @@ class WeekendEventPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return AppEventPage(
       picture: Assets.brooklyn.rest3.svg(),
-      title: 'В этот день пар нет',
+      title: 'В этот день занятий нет',
       subTitle: 'Можно отдохнуть',
       // description: 'Длинное описание эвента ' * 10,
     );

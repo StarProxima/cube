@@ -21,7 +21,7 @@ class _SettingsPageLessonCardLessonTypePosition extends ConsumerWidget {
           settingsNotifier.editLessonCardLessonTypePosition(value),
       items: const [
         AppRadioSelectorItem(
-          title: Text('На идикаторе'),
+          title: Text('На индикаторе'),
           description: Text(
             'Выбор по умолчанию. Вертикальный текст на левом индикаторе.',
           ),

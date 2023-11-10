@@ -82,7 +82,7 @@ class AppButton extends StatelessWidget {
                 color: context.colors.primary.withOpacity(0.3),
                 offset: const Offset(0, 1),
                 blurRadius: 8,
-              )
+              ),
           ],
           borderRadius: BorderRadius.circular(8),
         ),

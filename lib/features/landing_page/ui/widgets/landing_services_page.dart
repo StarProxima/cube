@@ -39,8 +39,7 @@ class LandingServicesPage extends ConsumerWidget {
             const SizedBox(height: 24),
             LandingServiceCard(
               title: 'Сайт',
-              description:
-                  'Основная платформа, просмотр расписания и удобный онлайн конструктор',
+              description: 'Основной сайт системы КУБ.Расписание',
               linkName: 'cube.nlabs.su',
               uri: Uri.parse('https://cube.nlabs.su/welcome'),
               onLaunch: (uri) => logger.launch(uri: uri, launchFrom: 'Landing'),

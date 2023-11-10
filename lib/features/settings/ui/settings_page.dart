@@ -52,9 +52,7 @@ class _SettingsPageState extends ConsumerState<_SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Настройки',
-        ),
+        title: const Text('Настройки'),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),

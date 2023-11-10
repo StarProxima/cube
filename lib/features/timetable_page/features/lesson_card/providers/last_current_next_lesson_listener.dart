@@ -8,7 +8,7 @@ import 'package:cube_system/features/timetable_page/features/lesson_card/provide
 
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 
-// На этот провайдер нужно подписаться для обновления прошлой, текущей и следующей пары
+// На этот провайдер нужно подписаться для обновления прошлого, текущего и следующего занятия
 
 final lastCurrentNextLessonListener = Provider<void>((ref) {
   ref.watch(currentDateTimeLazy);

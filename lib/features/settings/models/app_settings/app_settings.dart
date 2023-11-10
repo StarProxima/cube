@@ -18,7 +18,7 @@ class AppSettings with _$AppSettings {
   factory AppSettings({
     @HiveField(0) @Default(AppThemeMode.system) AppThemeMode appThemeMode,
     @HiveField(1)
-    @Default(AppLessonColorsMode.cube)
+    @Default(AppLessonColorsMode.accent)
     AppLessonColorsMode lessonColorsMode,
     @HiveField(2)
     @Default(LessonCardLessonTypePosition.onIndicator)
