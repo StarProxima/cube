@@ -1,3 +1,4 @@
+import 'package:advanced_in_app_review/advanced_in_app_review.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:upgrader/upgrader.dart';
@@ -10,13 +11,30 @@ final _appcastConfigurationProvider = Provider<AppcastConfiguration>((ref) {
   );
 });
 
-class AppUpgradeAlert extends ConsumerWidget {
+class AppUpgradeAlert extends ConsumerStatefulWidget {
   final Widget child;
 
   const AppUpgradeAlert({super.key, required this.child});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<AppUpgradeAlert> createState() => _AppUpgradeAlertState();
+}
+
+class _AppUpgradeAlertState extends ConsumerState<AppUpgradeAlert> {
+  @override
+  void initState() {
+    AdvancedInAppReview()
+        .setMinDaysBeforeRemind(7)
+        .setMinDaysAfterInstall(2)
+        .setMinLaunchTimes(4)
+        .setMinSecondsBeforeShowDialog(30)
+        .monitor();
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Navigator(
       onGenerateRoute: (route) => MaterialPageRoute(
         builder: (context) {
@@ -30,7 +48,7 @@ class AppUpgradeAlert extends ConsumerWidget {
               debugLogging: true,
               appcastConfig: appcastConfiguration,
             ),
-            child: child,
+            child: widget.child,
           );
         },
       ),

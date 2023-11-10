@@ -53,7 +53,7 @@ android {
         applicationId "com.nullexp.cube_system"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -80,5 +80,10 @@ flutter {
 }
 
 dependencies {
+    // This dependency is downloaded from the Google’s Maven repository.
+    // So, make sure you also include that repository in your project's build.gradle file.
+    implementation 'com.google.android.play:review:2.0.1'
+    // For Kotlin users also add the Kotlin extensions library for Play In-App Review:
+    implementation 'com.google.android.play:review-ktx:2.0.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

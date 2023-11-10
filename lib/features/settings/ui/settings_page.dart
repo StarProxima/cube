@@ -1,3 +1,4 @@
+import 'package:advanced_in_app_review/advanced_in_app_review.dart';
 import 'package:cube_system/features/analytics/logger.dart';
 import 'package:cube_system/features/landing_page/ui/widgets/git_info_card.dart';
 import 'package:cube_system/features/settings/state_holders/app_settings_state_holder.dart';
@@ -16,10 +17,9 @@ import 'package:cube_system/features/settings/models/lesson_card_lesson_type_pos
 
 import 'package:cube_system/features/settings/models/lesson_card_recess_display_condition/lesson_card_recess_display_condition.dart';
 
-import 'package:cube_system/features/landing_page/ui/widgets/landing_service_card.dart';
-
 import 'package:cube_system/features/settings/state_holders/package_info_state_holder.dart';
 import 'package:go_router/go_router.dart';
+import 'package:in_app_review/in_app_review.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:cube_system/core/secret/secret.dart';

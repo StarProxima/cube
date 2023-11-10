@@ -1,9 +1,11 @@
+import 'package:advanced_in_app_review/advanced_in_app_review.dart';
 import 'package:cube_system/features/timetable_page/managers/timetable_page_manager.dart';
 import 'package:cube_system/features/date_time_contol/state_holders/current_date_time_state_holders.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_day.dart';
 import 'package:cube_system/features/timetable_page/ui/widgets/timetable_page_header.dart';
 import 'package:cube_system/models/timetable/timetable_info.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cube_system/features/date_time_contol/managers/date_time_manager.dart';
