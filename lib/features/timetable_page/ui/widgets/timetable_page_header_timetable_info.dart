@@ -39,7 +39,6 @@ class TimetablePageHeaderTimetableInfo extends ConsumerWidget {
             color: context.colors.background,
             surfaceTintColor: Colors.transparent,
             initialValue: selectedTimetable,
-            padding: const EdgeInsets.only(left: 100),
             itemBuilder: (context) {
               return [
                 PopupMenuItem<TimetableInfo>(
